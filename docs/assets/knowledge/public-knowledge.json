@@ -1,0 +1,331 @@
+{
+  "generatedAt": "2026-05-13T14:51:39.596301+00:00",
+  "items": [
+    {
+      "title": "About",
+      "summary": "An undergraduate AI student from XX University, interested in vibe coding, embodied intelligence, and full-stack development.",
+      "tags": [
+        "about",
+        "profile",
+        "ai",
+        "fullstack"
+      ],
+      "url": "/en/about/",
+      "sourcePath": "docs/en/about.md",
+      "text": "About Me I am a Class of 2025 undergraduate student majoring in Artificial Intelligence at XX University . This site is my public digital garden: part learning record, part project archive, part living profile, and part conversational entrance through Biying. I do not want this place to feel like a compressed profile. I want it to show a person in motion: someone with technical ambition, a sense of everyday life, a habit of building things, and the patience to write down how ideas become real. What I Care About Vibe Coding I am interested in AI assisted development, especially the process of turning ideas into working prototypes quickly and then refining them with human judgment. Embodied Intelligence I care about how agents move from screens into the physical world: perception, action, feedback, environmental interaction, and the connection between AI and robotic systems. Full Stack Development I want to understand the whole path from frontend experience and backend APIs to data flow, deployment, and product expression. How I Work I like making an idea tangible first, then improving it through actual use. To me, code is not only something for assignments or tests. It can also be a form of expression: turning vague interests into pages, tools, agents, interactive systems, and eventually things other people can experience. I am also practicing writing down the process. Notes record how I understand concepts. Project pages record why I made certain decisions, what constraints I met, and what I want to improve next. Friends can see what I am exploring, and other visitors can read public evidence of my technical interests, learning speed, and communication style. Current Keywords Identity Class of 2025 undergraduate AI student at XX University. Interests Vibe coding, embodied intelligence, and full stack development. Status Building a personal digital site as a long term entrance for learning notes, projects, and self expression. Looking For People who enjoy AI, engineering, building tools, and living with curiosity. How to Know Me You can start from Now to see what I am working on, Projects to see what I have built, Notes to follow my learning process, or Biying to ask my digital persona directly. The guestbook is public. If you want to say hello, exchange ideas, or tell me how this site could be better, you can leave a signal there."
+    },
+    {
+      "title": "Biying",
+      "summary": "Talk to Biying, the male fictional digital persona who answers only from public website content.",
+      "tags": [
+        "avatar",
+        "biying"
+      ],
+      "url": "/en/avatar/",
+      "sourcePath": "docs/en/avatar/index.md",
+      "text": "Biying Biying is the male fictional digital persona of this site. He is careful, reserved, and gentle. He can answer questions from public notes, projects, and current status, and he can chat casually within safe boundaries. He does not read GitHub activity, drafts, or private materials. !!! info \"Current mode\" If the EdgeOne API is not deployed yet, the chat box below automatically falls back to the local public knowledge base. Try Asking What is this person working on now? What stack does this website use? What content can Biying read? Which projects best show this person's abilities?"
+    },
+    {
+      "title": "Guestbook",
+      "summary": "A public guestbook where all messages are displayed publicly by default.",
+      "tags": [
+        "guestbook"
+      ],
+      "url": "/en/guestbook/",
+      "sourcePath": "docs/en/guestbook/index.md",
+      "text": "Guestbook This is a public guestbook. Messages are visible to other visitors, so please do not include phone numbers, addresses, private emails, or other sensitive information."
+    },
+    {
+      "title": "Home",
+      "summary": "The English entrance of Biying Digital Garden, covering public notes, projects, current work, and the digital persona.",
+      "tags": [
+        "home",
+        "profile"
+      ],
+      "url": "/en/",
+      "sourcePath": "docs/en/index.md",
+      "text": "BIYING DIGITAL GARDEN Biying Online This is a bilingual personal digital site: public notes, active projects, a continuously updated profile, and a fictional digital persona that only reads public web content. Talk to Biying View Projects Read Notes PUBLIC KNOWLEDGE PERSONA: BIYING Public Signals Notes Learning records, math, AI, engineering, and long term thinking. Chinese is the source language, and English pages can be AI translated and reviewed. Read notes Projects What is being built and what has been completed. The work itself should reveal capability and judgment. View projects Biying Biying is a fictional persona. She can introduce public content and chat casually, but she cannot access private materials. Start chat Guestbook Visitors can leave public messages. Please do not include private information. Leave a signal Who It Serves Friends See what I am exploring, caring about, and happy to discuss. Peers Enter through concrete notes and projects instead of a flat bio. Visitors Understand my skills through public work, writing quality, and sustained records."
+    },
+    {
+      "title": "Computer Systems Fundamentals Lecture Notes",
+      "summary": "Lecture notes for computer systems fundamentals, covering information representation, Boolean algebra, combinational logic, arithmetic units, sequential logic, ISA, and RISC-V.",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/en/notes/computer-systems-lecture/",
+      "sourcePath": "docs/en/notes/computer-systems-lecture.md",
+      "text": "Computer Systems Fundamentals Lecture Notes !!! info \"Translation status\" This is an English companion version generated for the bilingual site. It summarizes and translates the structure of the Chinese source while keeping key mathematical and technical notation intact. A full line by line translation can be generated later with scripts/translate.py after an API key is configured. Source Chinese source page: 计算机系统基础讲义 Original file: note/SYS 计算机系统基础讲义.md What This Note Covers Lecture notes for computer systems fundamentals, covering information representation, Boolean algebra, combinational logic, arithmetic units, sequential logic, ISA, and RISC V. Study Outline System Perspective : How physical signals, logic gates, RTL components, ISA, assembly, linking, and loading connect into a computer system. Information Representation : Binary encoding, integers, floating point numbers, characters, and data interpretation. Boolean Algebra and Logic : Logic gates, Boolean identities, circuit parameters, and digital abstraction. Combinational Logic and Verilog : Functional blocks, HDL descriptions, and design flow. Arithmetic Units and ALU : Addition, subtraction, multiplication, division, shifting, and floating point arithmetic. Sequential Logic : Latches, flip flops, registers, counters, finite state machines, and timing. ISA and RISC V : Instruction formats, registers, calling conventions, ELF files, linking, loading, and program execution. Preserved Notation Examples The Chinese source contains mathematical notation and technical symbols. Examples preserved for cross language lookup: No compact formula examples extracted. How to Use This Page Use this English page as a quick map before reading the Chinese lecture note. The Chinese page contains the complete detailed content, formulas, examples, tables, and course structure. This companion page makes the topic discoverable to English visitors and gives Biying enough English context to explain what the note is about."
+    },
+    {
+      "title": "Discrete Mathematics Lecture Notes",
+      "summary": "Lecture notes for discrete mathematics, covering logic and proofs, sets and functions, algorithms, induction and recursion, counting, and relations.",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note"
+      ],
+      "url": "/en/notes/discrete-math-lecture/",
+      "sourcePath": "docs/en/notes/discrete-math-lecture.md",
+      "text": "Discrete Mathematics Lecture Notes !!! info \"Translation status\" This is an English companion version generated for the bilingual site. It summarizes and translates the structure of the Chinese source while keeping key mathematical and technical notation intact. A full line by line translation can be generated later with scripts/translate.py after an API key is configured. Source Chinese source page: 离散数学讲义 Original file: note/离散数学讲义.md What This Note Covers Lecture notes for discrete mathematics, covering logic and proofs, sets and functions, algorithms, induction and recursion, counting, and relations. Study Outline Logic and Proofs : Propositional logic, predicate logic, inference rules, and proof strategies. Basic Structures : Sets, functions, sequences, sums, and matrices as discrete objects. Algorithms : Algorithmic thinking, complexity notation, and common analysis patterns. Induction and Recursion : Mathematical induction, strong induction, recursive definitions, and structural reasoning. Counting : Permutations, combinations, binomial coefficients, and counting strategies. Advanced Counting : Recurrence relations, inclusion exclusion, generating functions, and derangements. Relations : Relations, closures, equivalence relations, partial orders, and partitions. Preserved Notation Examples The Chinese source contains mathematical notation and technical symbols. Examples preserved for cross language lookup: $p \\to q$ $\\forall x P(x)$ $O(n\\log n)$ $x+1=4$ $x$ $p,q,r,\\ldots$ $\\neg p$ $p$ $p \\land q$ $q$ How to Use This Page Use this English page as a quick map before reading the Chinese lecture note. The Chinese page contains the complete detailed content, formulas, examples, tables, and course structure. This companion page makes the topic discoverable to English visitors and gives Biying enough English context to explain what the note is about."
+    },
+    {
+      "title": "FDS Data Structures Fundamentals Lecture Notes",
+      "summary": "Lecture notes for data structures, covering algorithm analysis, lists, stacks and queues, trees, heaps, union-find, segment trees, graphs, and topological sorting.",
+      "tags": [
+        "data-structures",
+        "algorithms",
+        "course-note"
+      ],
+      "url": "/en/notes/fds-data-structures-lecture/",
+      "sourcePath": "docs/en/notes/fds-data-structures-lecture.md",
+      "text": "FDS Data Structures Fundamentals Lecture Notes !!! info \"Translation status\" This is an English companion version generated for the bilingual site. It summarizes and translates the structure of the Chinese source while keeping key mathematical and technical notation intact. A full line by line translation can be generated later with scripts/translate.py after an API key is configured. Source Chinese source page: FDS 数据结构基础讲义 Original file: note/FDS 数据结构基础讲义.md What This Note Covers Lecture notes for data structures, covering algorithm analysis, lists, stacks and queues, trees, heaps, union find, segment trees, graphs, and topological sorting. Study Outline Algorithm Analysis : Asymptotic notation, common complexity classes, and the source of time and space costs. Abstract Data Types and Lists : Interface design, linear lists, linked lists, cursor implementation, and polynomial examples. Stacks and Queues : LIFO/FIFO structures, expression conversion, recursion stacks, and circular queues. Trees and Binary Trees : Tree terminology, traversal, expression trees, threaded trees, and recursive structure. Search Trees and Heaps : Binary search trees, priority queues, binary heaps, and heap applications. Union Find and Segment Trees : Dynamic equivalence, path compression, interval query, point update, range update, and lazy propagation. Graphs : Graph definitions, storage methods, AOV networks, and topological sorting. Preserved Notation Examples The Chinese source contains mathematical notation and technical symbols. Examples preserved for cross language lookup: \\(O(N\\log N)\\) \\(O(N)\\) \\(O(1)\\) \\(O(\\log N)\\) \\(N\\) \\(O(N^2)\\) \\(N/2\\) \\(T(N)=O(f(N))\\) \\(T\\) \\(f\\) How to Use This Page Use this English page as a quick map before reading the Chinese lecture note. The Chinese page contains the complete detailed content, formulas, examples, tables, and course structure. This companion page makes the topic discoverable to English visitors and gives Biying enough English context to explain what the note is about."
+    },
+    {
+      "title": "Notes",
+      "summary": "Public notes entrance, including public scope and math rendering tests.",
+      "tags": [
+        "notes"
+      ],
+      "url": "/en/notes/",
+      "sourcePath": "docs/en/notes/index.md",
+      "text": "Notes This is the public notes entrance. Each note can be translated into English, and public plus avatar readable decide whether it enters Biying's knowledge base. Discrete Mathematics Lecture Notes Logic and proofs, sets and functions, algorithms, induction and recursion, counting, and relations. Read Computer Systems Fundamentals Lecture Notes Information representation, Boolean algebra, combinational logic, arithmetic units, sequential logic, ISA, and RISC V. Read FDS Data Structures Fundamentals Lecture Notes Algorithm analysis, lists, stacks and queues, trees, heaps, union find, segment trees, graphs, and topological sorting. Read Public Scope Defines what Biying can and cannot read. Read Math Lab Verifies math rendering inside Markdown. Read Note Template"
+    },
+    {
+      "title": "Math Lab",
+      "summary": "A page for verifying inline and block math rendering in MkDocs.",
+      "tags": [
+        "math",
+        "mkdocs"
+      ],
+      "url": "/en/notes/math-lab/",
+      "sourcePath": "docs/en/notes/math-lab.md",
+      "text": "Math Lab This page tests math rendering inside .md files. Inline example: $E = mc^2$, and $\\alpha + \\beta = \\gamma$. Block example: $$ \\nabla \\cdot \\vec{E} = \\frac{\\rho}{\\epsilon 0} $$ A matrix: $$ A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix} ,\\quad \\det(A) = 2 $$ If you see rendered formulas instead of raw LaTeX text, mathjax.js is working."
+    },
+    {
+      "title": "Public Scope",
+      "summary": "Biying only reads public website content, not GitHub activity, drafts, or private materials.",
+      "tags": [
+        "policy",
+        "avatar"
+      ],
+      "url": "/en/notes/public-scope/",
+      "sourcePath": "docs/en/notes/public-scope.md",
+      "text": "Public Scope Biying's core rule is: only read content publicly published on this website . Allowed Home, About, Now, Projects, and public notes. Markdown pages marked with public: true and avatar readable: true . Titles, summaries, body content, and public links. Not Allowed Unpublished drafts. GitHub activity records. Private notes, diaries, or chat logs. Hidden contact information or other private materials. Any local filesystem content. Answering Style If the public materials do not contain an answer, Biying should say: The public materials do not contain that information yet. This rule matters more than sounding clever."
+    },
+    {
+      "title": "Now",
+      "summary": "Current work around the personal digital site, vibe coding, embodied intelligence, and full-stack development.",
+      "tags": [
+        "now",
+        "status",
+        "ai",
+        "embodied-ai",
+        "fullstack"
+      ],
+      "url": "/en/now/",
+      "sourcePath": "docs/en/now.md",
+      "text": "Now Updated: 2026 05 13 This page answers: \"What am I working on now?\" It is not a fixed profile. It is a more current snapshot of learning, projects, life texture, and directions that are still forming. In Progress Building this bilingual personal digital site with MkDocs as an entrance for public notes, projects, guestbook messages, and a digital persona. Designing the fictional digital persona \"Biying\" so visitors can understand my public content through conversation. Organizing a long term note structure where Chinese content can be translated into English and math formulas render correctly. Practicing AI assisted collaboration to build more complete works instead of stopping at one off demos. Learning Vibe Coding Using AI as a collaborator in development: scaffolding, refactoring, debugging, and organizing content while keeping my own judgment in the loop. Embodied Intelligence Exploring how agents perceive environments, plan actions, and interact with the real world. I am currently building up foundations and project ideas. Full Stack Development Learning pages, interactions, APIs, storage, and deployment together so I can turn ideas into products that other people can actually visit. Life Texture Recently I have been trying to put learning, building, and daily life into the same rhythm: strengthening my AI foundations while making websites and tools that can actually be opened and used. This site will also keep some less template like material: temporary thoughts, debugging notes, good things I read, and records that carry a bit of everyday warmth. Not Doing Biying will not read unpublished GitHub activity, local files, drafts, or private records. This site will not become a single purpose showcase. I want it to naturally show both professional ability and a sense of life. I am not trying to finish everything at once. The site will grow with my learning, projects, and writing."
+    },
+    {
+      "title": "Biying Digital Garden",
+      "summary": "A bilingual personal website combining public notes, projects, public guestbook messages, and a fictional digital persona.",
+      "tags": [
+        "mkdocs",
+        "ai",
+        "edgeone"
+      ],
+      "url": "/en/projects/biying-site/",
+      "sourcePath": "docs/en/projects/biying-site.md",
+      "text": "Biying Digital Garden Biying Digital Garden is a long term home for public personal content. It is not a one time portfolio, but a space that grows with notes, projects, and status updates. Stack MkDocs Material: content site and theme system. MathJax: math rendering inside Markdown. EdgeOne Pages: low cost deployment. EdgeOne Functions: Biying chat and public guestbook APIs. EdgeOne KV: lightweight storage for messages and data. Completed Bilingual directory structure. Cyber visual theme. Biying chat frontend. Public guestbook frontend. Public knowledge builder. EdgeOne API skeleton. Constraint Biying can only read public web content. This constraint appears in the persona, knowledge builder, and API prompt."
+    },
+    {
+      "title": "Projects",
+      "summary": "Project entrance for public work and active builds.",
+      "tags": [
+        "projects"
+      ],
+      "url": "/en/projects/",
+      "sourcePath": "docs/en/projects/index.md",
+      "text": "Projects This section presents public projects. Each project page should explain: what problem it addresses why it is designed this way what has been completed what limitations remain Personal Website + Digital Persona A bilingual personal website for course notes, project records, current status, and the Biying digital persona. View project Biying Digital Garden A personal website project based on MkDocs, EdgeOne, and a digital persona. View project"
+    },
+    {
+      "title": "Personal Website + Digital Persona",
+      "summary": "A bilingual personal website for course notes, project records, and current status, with Biying as a male fictional digital persona for public-content conversations.",
+      "tags": [
+        "personal-site",
+        "digital-avatar",
+        "mkdocs",
+        "rag",
+        "edgeone"
+      ],
+      "url": "/en/projects/personal-site-avatar/",
+      "sourcePath": "docs/en/projects/personal-site-avatar.md",
+      "text": "Personal Website + Digital Persona This project is a personal digital website built for myself. It records course notes, project experience, current learning directions, and public personal updates. It also includes \"Biying\", a male fictional digital persona who helps visitors understand the site's public content through conversation. Background I wanted a long term space with a stronger sense of life. It should collect my learning process, course notes, project records, and temporary thoughts. For friends, it answers \"What are you working on now?\" For other visitors, it shows my technical interests, communication ability, and habit of building things continuously. I also wanted to place AI collaboration into something visitors can actually open and use, instead of leaving it as a local demo. Biying is part of that experiment: he only reads public website content, answers in a RAG like way, and can chat casually within safe boundaries. Tech Stack Content and Site MkDocs Material, Markdown, Pymdown Extensions, and MathJax for a maintainable note oriented static website. Bilingual Content Engineering Chinese and English page structure, language switching navigation, course note import scripts, and public knowledge generation. Digital Persona EdgeOne Functions style chat API, public knowledge retrieval, persona prompt design, and DeepSeek/OpenAI compatible model access. Interaction and Deployment Vanilla JavaScript, cyber style CSS, public guestbook, EdgeOne Pages deployment plan, and GitHub CI validation. What I Did Built the MkDocs Material project structure and planned pages for home, about, now, notes, projects, Biying, and guestbook. Designed the /zh/ and /en/ bilingual content structure and implemented whole site language switching without crowding the sidebar with both languages at once. Imported and organized course notes for discrete mathematics, computer systems fundamentals, and FDS data structures. Fixed math rendering issues in course notes by converting code styled LaTeX back into MathJax renderable formulas. Reworked heading levels for long lecture notes so the right sidebar can serve as a chapter index. Wrote build knowledge.py to turn public pages into a public knowledge base for Biying. Designed Biying as a male fictional persona, including his tone, knowledge scope, and safety boundaries. Implemented a chat API skeleton that answers from public context and leaves room for DeepSeek/OpenAI compatible model providers. Implemented a public guestbook frontend and an EdgeOne KV style API skeleton. Wrote deployment and multi agent collaboration documentation for future extension. Results The website can be built and previewed locally, and mkdocs build strict passes. The bilingual personal website now includes a profile, current status, project pages, course notes, and a digital persona entrance. Three course notes have been organized as website pages with math rendering and right sidebar chapter navigation. Biying can read the public knowledge base and answer questions related to public site content. The guestbook system and EdgeOne deployment route have a working foundation. The project structure is ready for adding more notes, projects, and bilingual pages. Limitations Some English note pages are still companion/overview versions. A translation API or manual review is needed for full English versions. Biying's backend still needs real EdgeOne environment variables, model keys, KV bindings, and rate limiting before production use. The guestbook system needs stronger moderation, deletion, anti spam, and admin tools. The visual direction already has a cyber style, but mobile details, readability, and motion can still be improved. The project is still early and needs more real project records, learning summaries, and personal writing. Next Steps Deploy to EdgeOne Pages and configure Functions, KV, and environment variables. Add more real project pages. Build a more stable bilingual translation workflow. Improve Biying's retrieval quality, source citation, and refusal behavior. Keep refining the visual style so the site feels cyber, personal, and comfortable to read."
+    },
+    {
+      "title": "关于",
+      "summary": "XX 大学 25 级人工智能专业本科生，关注 vibe coding、具身智能和全栈开发。",
+      "tags": [
+        "about",
+        "profile",
+        "ai",
+        "fullstack"
+      ],
+      "url": "/zh/about/",
+      "sourcePath": "docs/zh/about.md",
+      "text": "关于我 我是 XX 大学 25 级人工智能专业本科生 。这个网站是我的公开数字花园：一部分用来记录学习和项目，一部分用来留下生活里的观察，还有一部分交给碧影，让访客可以用对话的方式认识我。 我希望这里给人的感觉不是一份被压缩过的介绍，而是一个正在生长的人：有专业能力，也有生活气息；会写代码、做项目、追新工具，也会认真记录自己怎样理解世界。 我在关注什么 Vibe Coding 我对 AI 辅助开发很感兴趣，尤其关注如何把想法快速变成可运行的原型，再通过人的判断把它打磨成真正可用的东西。 具身智能 我关注智能体如何从屏幕走向物理世界：感知、行动、反馈、环境交互，以及 AI 与机器人系统之间的连接。 全栈开发 我希望自己能从前端体验、后端接口、数据流、部署到产品表达都能理解一遍，做出完整而不是零散的作品。 我的工作方式 我喜欢先把一个想法做出来，再在真实使用中发现问题。对我来说，代码不是只用来完成作业或通过测试的东西，它也可以是一种表达方式：把模糊的兴趣变成页面、工具、机器人、可交互系统，最后变成别人能体验到的东西。 我也在练习把过程写下来。笔记会记录我怎样理解一个概念，项目页会记录我为什么这样做、遇到了什么限制、下一步怎么改。这样朋友可以看到我最近在折腾什么，其他访客也可以从公开内容里看到我的技术兴趣、学习速度和表达能力。 当前关键词 身份 XX 大学 25 级人工智能专业本科生。 兴趣 vibe coding、具身智能、全栈开发。 状态 正在搭建个人数字网站，并把它作为长期记录学习、项目和自我表达的入口。 期待 认识同样喜欢 AI、工程、创造工具和认真生活的人。 如何了解我 你可以从 现在 看我近期在做什么，从 项目 看我已经做出的东西，从 笔记 看我的学习过程，也可以直接去 碧影 问问我的数字分身。 留言板是公开的。如果你想打个招呼、交流想法，或者告诉我这个网站哪里可以更好，都可以在那里留下信号。"
+    },
+    {
+      "title": "碧影",
+      "summary": "与男性虚构数字分身碧影对话，他只基于网站公开内容回答。",
+      "tags": [
+        "avatar",
+        "biying"
+      ],
+      "url": "/zh/avatar/",
+      "sourcePath": "docs/zh/avatar/index.md",
+      "text": "碧影 碧影是这个网站的男性虚构数字分身。他的性格细致、内敛、温柔。碧影可以基于公开笔记、项目和当前状态回答问题，也可以在安全边界内闲聊。他不会读取 GitHub 活动、草稿或私密内容。 !!! info \"当前模式\" 如果 EdgeOne API 尚未部署，下面的对话框会自动使用本地公开知识库进行演示回答。 可以这样问 这个人最近在做什么？ 这个网站用了什么技术？ 碧影能读取哪些内容？ 有哪些项目能体现我的能力？"
+    },
+    {
+      "title": "留言",
+      "summary": "公开留言板，所有留言默认公开展示。",
+      "tags": [
+        "guestbook"
+      ],
+      "url": "/zh/guestbook/",
+      "sourcePath": "docs/zh/guestbook/index.md",
+      "text": "留言 这里是公开留言板。留言会面向其他访客展示，请不要填写手机号、住址、私人邮箱等隐私信息。"
+    },
+    {
+      "title": "入口",
+      "summary": "碧影数字花园的中文入口，展示公开笔记、项目、当前状态和数字分身。",
+      "tags": [
+        "home",
+        "profile"
+      ],
+      "url": "/zh/",
+      "sourcePath": "docs/zh/index.md",
+      "text": "BIYING DIGITAL GARDEN 碧影在线 这里是一个双语的个人数字网站：公开笔记、正在推进的项目、可持续更新的自我介绍，以及一个只读取公开网页内容的虚构数字分身。 和碧影对话 查看项目 进入笔记 PUBLIC KNOWLEDGE PERSONA: BIYING 公开信号 笔记 沉淀学习、数学、AI、工程和长期思考。中文为主源，英文由 AI 翻译后再人工校对。 阅读笔记 项目 展示正在做和已经完成的内容。项目本身会说明能力、风格和判断。 查看项目 碧影 碧影是虚构人格。她可以介绍公开内容，也可以闲聊，但不会访问未公开资料。 启动对话 留言 访客可以公开留言。请不要留下隐私信息，所有留言默认面向其他访客可见。 留下信号 适合谁看 朋友 快速知道我最近在研究什么、关心什么、可以聊什么。 同好 从笔记和项目进入具体问题，而不是只看一段自我介绍。 访客 通过公开作品、表达质量和持续记录了解我的能力结构。"
+    },
+    {
+      "title": "计算机系统基础讲义",
+      "summary": "计算机系统基础讲义，覆盖信息表示、布尔代数、组合逻辑、运算部件、时序逻辑、ISA 与 RISC-V。",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "text": "计算机系统基础讲义 根据 SYS/ 目录下当前 8 份课件整理。生成日期：2026 05 13。 当前覆盖：导论、信息表示、布尔代数、组合逻辑、运算部件、时序逻辑、ISA、RISC V 与程序装载。后续若继续加入新课件，可在本文末尾“增量补充区”继续扩展，不破坏已有章节编号。 资料来源 { note sec 001 } | 讲次 | 文件 | 主题 | 页数 | | | | :| :| | Lec00 | SYS/Lec00 Introduction.pptx | 课程导论、系统分层 | 25 | | Lec01 | SYS/Lec01 Information Representation.pptx | 信息与数据表示 | 101 | | Lec02 | SYS/Lec02 Boolean Algebra.pptx | 布尔代数、逻辑门、电路参数 | 139 | | Lec03 | SYS/Lec03 Combinational Logic.pptx | Verilog、组合逻辑、常用功能块 | 102 | | Lec04 | SYS/Lec04 Arithmetic Unit.pptx | 加减乘除、ALU、浮点运算 | 143 | | Lec05 | SYS/Lec05 Sequential Logic.pptx | 锁存器、触发器、FSM、寄存器、计数器 | 154 | | Lec06 1 | SYS/Lec06 1 ISA.pptx | ISA 设计与分类 | 71 | | Lec06 2 | SYS/Lec06 2 RISCV.pptx | RISC V、调用约定、ELF、链接装载 | 130 | 0. 课程视角：从门电路到系统软件 { note sec 002 } 计算机系统可以看成一组层次化抽象。越往下越接近物理实现，越往上越接近程序员和用户看到的行为。系统课程的核心价值，是把这些层次之间的接口讲清楚。 !!! note \"图像资源待补充：计算机系统课程分层\" 原始讲义引用了 ./sys notes assets/system overview.jpg ，但当前 note/ 目录没有随附图片资源。后续补充图片后可恢复为 Markdown 图片。 0.1 抽象层次 { note sec 003 } 典型计算机系统从上到下可以分为： | 层次 | 主要内容 | 本讲义中的对应章节 | | | | | | 应用程序 | 用户可见的软件功能 | 作为背景 | | 编译器、库、运行时 | 把高级语言程序翻译成机器可执行形式 | 7.6、7.7 | | 操作系统 | 进程、内存、文件、设备、中断、系统调用 | 与后续系统课程衔接 | | ISA | 软件和硬件之间的契约，定义指令、寄存器、地址空间、异常等 | 6、7 | | 微体系结构 | CPU 如何实现 ISA，如单周期、流水线、乱序等 | 本课程略作铺垫 | | RTL | 寄存器传输级：寄存器、总线、ALU、控制信号 | 4、5 | | 数字逻辑电路 | 门电路、组合逻辑、时序逻辑 | 2、3、5 | | 器件技术 | 晶体管、电压、电容、延迟、功耗 | 2.3 | 0.2 本课程主线 { note sec 004 } 本课程不是单独学习“逻辑门”或“汇编语言”，而是建立一条连贯链路： 理解这条链路后，许多系统问题会变得自然：为什么整数会溢出，为什么浮点加法不满足结合律，为什么 RISC V 指令字段要固定位置，为什么函数调用要保存寄存器，为什么链接器要重定位符号。 1. 信息表示 { note sec 005 } 1.1 信息、信号与二值抽象 { note sec 006 } 计算机内部无法直接处理“文字、图像、声音、视频、结构化对象”这些高级信息。它们必须被编码成二进制数据，再由硬件按照 0 和 1 的规则处理。 数字系统中使用二值信号，是因为它把连续物理世界压缩成离散判断： 电压可以表示 0/1，例如低电压表示 0，高电压表示 1。 磁场方向、光盘坑面反射、DRAM 电荷量等也可以表示 0/1。 只要输入电压落在合法低电平或高电平范围内，逻辑电路就能忽略一定程度的噪声。 信号按时间和值域可以粗略分为： | 信号类型 | 值域 | 时间 | 例子 | | | | | | | 模拟信号 | 连续 | 连续 | 音频电压波形 | | 异步数字信号 | 离散 | 连续 | 未统一采样的开关信号 | | 同步数字信号 | 离散 | 离散 | 时钟边沿采样的寄存器输入 | 1.2 外部信息与内部数据 { note sec 007 } 从用户和高级程序员角度看，信息可以是文本、图像、声音、视频、图、树、链表、队列等；从机器内部看，基本数据主要分成： 数值数据：无符号整数、有符号整数、定点数、浮点数。 非数值数据：逻辑值、字符、字符串、媒体编码、结构化数据的地址关系。 课程中的关键思想是： 同一串比特没有天然含义，含义来自解释方式 。例如 11111111 可以是无符号数 255，也可以是补码整数 1，也可以是字符、颜色分量或机器指令的一部分。 1.3 进位计数制 { note sec 008 } 任意正基数 r 的位置计数制可以写成： 其数值为： 其中每一位数字满足 0 = | 建模方式： | 方式 | 特点 | | | | | 结构化建模 | 实例化模块、门级连接，接近电路图 | | 数据流建模 | 使用 assign 描述组合逻辑 | | 行为建模 | 使用 always 、 case 、 if 等过程语句 | 组合逻辑行为建模常用： 组合逻辑中要避免遗漏赋值，否则综合器可能推断锁存器。 3.5 组合逻辑电路定义 { note sec 037 } 组合逻辑电路有： m 个布尔输入。 n 个布尔输出。 n 个开关函数，每个函数把当前输入组合映射到当前输出。 核心性质： 输出只依赖当前输入，不依赖历史状态 。 与时序逻辑对比： | 类型 | 是否有存储 | 输出依赖 | | | | | | 组合逻辑 | 无 | 当前输入 | | 时序逻辑 | 有 | 当前输入和过去状态 | 组合逻辑要求： 每个元件本身是组合逻辑。 一个节点只能被一个元件输出驱动。 不允许形成反馈环路。 3.6 组合逻辑设计流程 { note sec 038 } 设计步骤： 1. 规格说明：明确输入、输出、编码方式和约束。 2. 形式化：列真值表或初始布尔方程。 3. 优化：降低 literal cost、gate input cost 或关键路径延迟。 4. 技术映射：映射到目标门库、NAND/NOR、MUX、FPGA LUT 等。 5. 验证：功能仿真、等价检查、时序分析。 3.7 例：三开关控制单灯 { note sec 039 } 需求：房间只有一盏灯，由三个开关控制，每个开关单独拨动都能改变灯的亮灭。 这实际是奇偶函数。若开关闭合记为 1，灯亮记为 1，则灯亮当且仅当闭合开关数为奇数： SOP 写法： Verilog： 如果只按最小项写 assign ，结果正确但不如 XOR 表达简洁。 3.8 常用组合功能块 { note sec 040 } 3.8.1 基本功能 { note sec 041 } | 功能 | 方程 | 含义 | | | | | | 固定 0 | F = 0 | 输出常 0 | | 固定 1 | F = 1 | 输出常 1 | | 传送 | F = X | 直接传递 | | 反相 | F = X' | 取反 | | 使能传递 | F = X·EN 或 F = X + EN | 控制通过或阻断 | 多位总线可以看成一组并行 bit。宽线表示 vector signal，必要时可拆分为单 bit 或子字段。 3.8.2 Decoder { note sec 042 } Decoder 把 n 位输入码转换为最多 2^n 个输出，其中每个有效输入激活唯一输出。典型 3 to 8 decoder： Decoder 可用于生成最小项，因此可与 OR 门一起实现任意 SOP 函数： 实现方式：3 to 8 decoder 输出 m0 到 m7 ，把 m1、m2、m4、m7 接入 OR。 3.8.3 七段数码管译码器 { note sec 043 } BCD to seven segment decoder 把 4 位 BCD 输入转换为 a 到 g 七段控制信号。 | 类型 | 公共端 | 点亮条件 | | | | | | 共阳极 | 阳极接 1 | 段信号为 0 点亮，active low | | 共阴极 | 阴极接 0 | 段信号为 1 点亮，active high | 设计时必须先确认数码管类型，否则输出极性会反。 3.8.4 Encoder 与 Priority Encoder { note sec 044 } Encoder 与 decoder 方向相反，把 one hot 输入编码成二进制输出。普通 encoder 假设同时只有一个输入为 1。 Priority encoder 允许多个输入同时为 1，并输出最高优先级输入的编号，通常还带一个 valid 位。 3.8.5 Multiplexer { note sec 045 } MUX 从多个输入中选一个输出。 2^n to 1 MUX 有 n 个选择信号。 2 to 1 MUX： 4 to 1 MUX： MUX 也能实现逻辑函数：把函数变量接到选择输入，把真值表每行输出值固定到数据输入。 3.9 时序分析、关键路径与毛刺 { note sec 046 } 传播延迟： 污染延迟： 组合电路最大延迟由关键路径决定： 最短路径影响污染延迟： 毛刺 glitch 通常由不同路径延迟不一致引起。当单个输入变化通过多条路径到达输出，输出可能短暂错误翻转。 分析组合逻辑的步骤： 1. 从输入开始给每个中间节点写布尔函数。 2. 得到输出函数。 3. 化简或等价变换。 4. 列真值表验证功能。 5. 画时序图，检查延迟、毛刺和关键路径。 4. 运算部件与"
+    },
+    {
+      "title": "离散数学讲义",
+      "summary": "离散数学课程讲义，覆盖逻辑与证明、集合与函数、算法、归纳递归、计数、关系等主题。",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
+      "text": "离散数学讲义 版本：2026 05 13 来源：根据 DM/ 目录下现有离散数学课件整理。 维护方式：后续新增 PPT/PDF 时，优先补充到对应章节；若新增内容属于未覆盖章节，则在“待补充章节”中扩展为正式章节。 使用说明 { note sec 001 } 这份讲义按章节组织，目标不是逐页复述课件，而是把课件中的定义、定理、方法、例题类型和解题套路整理成可复习、可发布到笔记网站的 Markdown 文档。 每一章建议按以下顺序学习： 1. 先看“核心目标”，明确本章要解决的问题。 2. 再看定义和定理，注意每个符号的含义。 3. 通过例题类型掌握建模和证明套路。 4. 最后用“小结与补充位”检查是否还有新课件需要补充。 本文使用 LaTeX 公式语法，例如 $p \\to q$、$\\forall x P(x)$、$O(n\\log n)$。上传到笔记网站时，请确认网站支持 Markdown 数学公式渲染。 现有课件索引 { note sec 002 } | 讲义章节 | 对应课件 | | | | | 第 1 章 逻辑与证明 | DM1.1(8).pdf , DM1.2 1.3(5).pdf , DM1.4(6).pdf , DM1.5(5).pdf , DM1.6(6).pdf , DM1.7 1.8(6).pdf | | 第 2 章 基本结构 | DM2.1.pdf , DM2.2.pdf , DM2.3.pdf , DM2.4.pdf , DM2.5 2.6(5).pdf | | 第 3 章 算法 | DM3.1 3.3(4).pdf | | 第 4 章 待补充 | 当前未提供对应课件 | | 第 5 章 归纳与递归 | DM5.1 5.4(7).pdf | | 第 6 章 计数 | DM6.1(3).pdf , DM6.2(3).pdf , DM6.3 6.4(6).pdf , DM6.5(3).pdf | | 第 7 章 待补充 | 当前未提供对应课件 | | 第 8 章 高级计数技术 | DM8.1 8.2(6).pdf , DM8.3.pdf , DM8.4(6).pdf , DM8.5 8.6(9).pdf | | 第 9 章 关系 | DM9.1 9.3(8).pdf , DM9.4(6).pdf , DM9.5(3).pdf | 全书知识结构 { note sec 003 } 第 1 章 逻辑与证明 { note sec 004 } 1.0 核心目标 { note sec 005 } 本章要建立离散数学的语言基础。命题逻辑用于刻画“真或假”的陈述，谓词逻辑用于刻画带变量的数学语句，推理规则和证明方法用于把前提严谨地推到结论。 学完本章应能做到： 判断一句话是否为命题，并写出复合命题的形式。 使用真值表、逻辑等价式、范式分析命题。 把自然语言翻译成谓词逻辑表达式。 正确使用全称量词、存在量词和嵌套量词。 使用推理规则构造有效论证。 区分直接证明、逆否证明、反证法、分情况证明、存在性证明和反例证明。 1.1 命题逻辑 { note sec 006 } 命题 { note sec 007 } 命题是一个具有确定真值的陈述句。它要么为真，要么为假，不能二者同时成立。 常见判断： | 句子 | 是否为命题 | 原因 | | | | | | “2022 年冬奥会在北京举行。” | 是 | 有确定真值 | | “9 是素数。” | 是 | 有确定真值，且为假 | | “请打开书。” | 否 | 命令句，没有真假 | | “现在几点？” | 否 | 疑问句，没有真假 | | $x+1=4$ | 通常不是 | 未指定 $x$ 时没有确定真值 | 通常用 $p,q,r,\\ldots$ 表示命题变量。真值可记为 T/F ，也可记为 1/0 。 复合命题和联结词 { note sec 008 } 复合命题由命题变量和逻辑联结词构成。 | 名称 | 符号 | 读法 | 为真的条件 | | | | | | | 否定 | $\\neg p$ | 非 $p$ | $p$ 为假 | | 合取 | $p \\land q$ | $p$ 且 $q$ | $p,q$ 都真 | | 析取 | $p \\lor q$ | $p$ 或 $q$ | 至少一个真 | | 异或 | $p \\oplus q$ | 要么 $p$ 要么 $q$ | 恰好一个真 | | 条件 | $p \\to q$ | 若 $p$ 则 $q$ | 只有 $p$ 真、$q$ 假时为假 | | 双条件 | $p \\leftrightarrow q$ | $p$ 当且仅当 $q$ | $p,q$ 真值相同 | 条件命题 $p \\to q$ 中，$p$ 称为前件，$q$ 称为后件。它的真假只由前件和后件的真值决定，不要求二者存在因果关系。课件中把它类比为“承诺”：只有承诺条件发生而结果没有发生时，承诺才被违反。 条件命题的相关形式 { note sec 009 } 从 $p \\to q$ 可构造： | 名称 | 形式 | 与原命题的关系 | | | | | | 逆命题 | $q \\to p$ | 不一定等价 | | 否命题 | $\\neg p \\to \\neg q$ | 不一定等价 | | 逆否命题 | $\\neg q \\to \\neg p$ | 与原命题等价 | 因此证明 $p \\to q$ 时，经常改证 $\\neg q \\to \\neg p$。 真值表 { note sec 010 } 真值表列出命题变量的全部可能赋值。若有 $n$ 个命题变量，则真值表有 $2^n$ 行。 例：证明 $p \\to q$ 与 $\\neg p \\lor q$ 等价。 | $p$ | $q$ | $p \\to q$ | $\\neg p \\lor q$ | | | | | | | T | T | T | T | | T | F | F | F | | F | T | T | T | | F | F | T | T | 两列完全相同，所以 $p \\to q \\equiv \\neg p \\lor q$。 运算优先级 { note sec 011 } 常用优先级从高到低为： 1. 括号。 2. 否定 $\\neg$。 3. 合取 $\\land$。 4. 析取 $\\lor$。 5. 条件 $\\to$。 6. 双条件 $\\leftrightarrow$。 表达复杂公式时应尽量加括号，避免歧义。 位运算 { note sec 012 } 计算机中比特 0/1 可看作假/真。位串上的按位运算是把逻辑运算逐位推广。 例：设两个位串为 0110110110 与 1100011101 。 按位 OR：对应位至少一个为 1 时为 1 。 按位 AND：对应位都为 1 时为 1 。 按位 XOR：对应位恰好一个为 1 时为 1 。 这说明命题逻辑不仅是证明语言，也是数字系统和程序判断的基础。 1.2 命题逻辑的应用 { note sec 013 } 自然语言翻译 { note sec 014 } 把自然语言翻译成命题逻辑的目的，是消除自然语言中的歧义，使推理可以形式化。 步骤： 1. 找出原子命题。 2. 给每个原子命题命名。 3. 判断关键词对应的联结词。 4. 注意“only if”“unless”“necessary”“sufficient”等短语。 例：“You can access the Internet from campus only if you are a computer science major or you are not a freshman.” 设： $a$：你可以从校园访问互联网。 $c$：你是计算机科学专业学生。 $f$：你是一年级学生。 “$p$ only if $q$” 表示 $p \\to q$。所以原句翻译为： $a \\to (c \\lor \\neg f)$ 系统规格说明 { note sec 015 } 软件和系统工程中，经常把自然语言需求翻译成逻辑公式。 若一组规格说明可以同时为真，则称其一致；若不存在任何赋值能让所有公式同时为真，则不一致。 例： $p \\to q$、$p$、$\\neg q$ 三条规格不一致，因为由前两条可推出 $q$，与第三条矛盾。 逻辑谜题 { note sec 016 } 骑士与骗子问题、宝箱问题等都可以通过命题变量建模。基本套路： 1. 用命题变量描述“某人说真话”“某箱有宝物”等事实。 2. 把每句话翻译为逻辑表达式。 3. 加入题目约束，例如“骑士总说真话，骗子总说假话”。 4. 用真值表、等价变形或反证排除不可能情况。 1.3 命题等价式与范式 { note sec 017 } 重言式、矛盾式、可满足式 { note sec 018 } | 名称 | 定义 | 例子 | | | | | | 重言式 | 在所有赋值下都为真 | $p \\lor \\neg p$ | | 矛盾式 | 在所有赋值下都为假 | $p \\land \\neg p$ | | 偶然式 | 有时真、有时假 | $p \\to q$ | | 可满足式 | 至少存在一个赋值使其为真 | $p \\lor q$ | | 不可满足式 | 没有赋值使其为真 | $p \\land \\neg p$ | 两个命题公式 $P,Q$ 逻辑等价，当且仅当 $P \\leftrightarrow Q$ 是重言式，记作 $P \\equiv Q$。 常用逻辑等价式 { note sec 019 } | 名称 | 等价式 | | | | | 恒等律 | $p \\land T \\equiv p$, $p \\lor F \\equiv p$ | | 支配律 | $p \\lor T \\equiv T$, $p \\land F \\equiv F$ | | 幂等律 | $p \\lor p \\equiv p$, $p \\land p \\equiv p$ | | 双重否定律 | $\\neg(\\neg p) \\equiv p$ | | 交换律 | $p \\lor q \\e"
+    },
+    {
+      "title": "FDS 数据结构基础讲义",
+      "summary": "数据结构基础讲义，覆盖算法分析、线性表、栈队列、树、堆、并查集、线段树、图与拓扑排序。",
+      "tags": [
+        "data-structures",
+        "algorithms",
+        "course-note"
+      ],
+      "url": "/zh/notes/fds-data-structures-lecture/",
+      "sourcePath": "docs/zh/notes/fds-data-structures-lecture.md",
+      "text": "FDS 数据结构基础讲义 版本：2026 05 13 来源：根据 FDS/ 目录下当前 11 份 PPT/PDF 课件整理。 定位：这份讲义不是逐页转写课件，而是把定义、抽象数据类型、算法思想、复杂度分析、实现模板和典型算例整理成可复习、可发布、可继续增补的 Markdown 文档。 维护方式：后续新增课件时，优先补充到对应章节；若出现新主题，则在文末“增量补充区”登记来源并扩展为正式章节。 使用说明 { note sec 001 } 这门课的主线是：用合适的数据组织方式，让算法能在可接受的时间和空间内完成任务。学习时不要只背接口名称，而要追问三件事： 1. 这个结构维护了什么不变量？ 2. 每个操作为什么能保持这个不变量？ 3. 复杂度来自哪里，瓶颈能不能用结构性质消掉？ 本文的代码示例以 C 风格伪代码为主，变量名尽量贴近课件。公式使用 LaTeX 语法，例如 \\(O(N\\log N)\\)。图示主要采用 Mermaid，上传到笔记网站时建议开启 Mermaid 渲染。 资料来源索引 { note sec 002 } | 讲次 | 文件 | 主题 | 页数/幻灯片数 | | | | | :| | DS00 | FDS/DS00 2026.pdf | 课程导论、数据结构的意义、学习方式 | 17 | | DS01 | FDS/DS01 Ch02 Algorithm Analysis(a) 2026.pdf | 算法定义、分析对象、渐进记号、基本分析规则 | 15 | | DS02 a | FDS/DS02 Ch02 Algorithm Analysis(b).ppt | 最大子列和、二分查找、对数复杂度、实验测量 | 9 | | DS02 b | FDS/DS02 Ch03 List.ppt | ADT、线性表、链表、多项式、多重链表、游标实现 | 14 | | DS03 | FDS/DS03 Ch03 Stack and Queue.ppt | 栈、队列、表达式转换、系统栈、循环队列 | 13 | | DS04 | FDS/DS04 Ch04 Binary Trees.ppt | 树、二叉树、表达式树、遍历、线索二叉树 | 16 | | DS05 | FDS/DS05 Ch04 Search Tree.pdf | 二叉树性质、二叉搜索树及其操作 | 14 | | DS06 | FDS/DS06 Ch05 Priority Queues.ppt | 优先队列、二叉堆、建堆、堆应用、d 堆 | 15 | | DS07 a | FDS/DS07 Ch08 Union and Find.ppt | 等价关系、动态等价问题、并查集、路径压缩 | 9 | | DS07 b | FDS/DS07 Segment Tree.pdf | 线段树、区间查询、点更新、区间更新、懒标记 | 16 | | DS08 | FDS/DS08 Ch09 Graph Definition Topological Sort.ppt | 图定义、图存储、AOV 网络、拓扑排序 | 12 | 全课知识结构 { note sec 003 } 0. 课程视角：为什么需要数据结构 { note sec 004 } 数据结构是组织、处理、检索和存储数据的专门格式。程序当然可以“直接写”，但当数据规模变大、操作频率变高、约束变复杂时，朴素写法往往会被时间复杂度击穿。 一个常见例子是区间求和： 如果每次查询 [L, R] 都从 L 加到 R ，一次查询是 \\(O(N)\\)。 如果查询非常频繁，先花时间建立结构，例如前缀和或线段树，就能把查询降低到 \\(O(1)\\) 或 \\(O(\\log N)\\)。 选择哪种结构，取决于是否需要修改数组：静态数组适合前缀和；频繁修改适合线段树。 因此，这门课的重点不是“某个结构长什么样”，而是“结构如何把操作变快”。每一种数据结构都可以从下面四个角度学习： | 角度 | 要问的问题 | 例子 | | | | | | 对象 | 存的是什么 | 表存序列，堆存带优先级的元素，图存顶点和边 | | 操作 | 用户需要什么动作 | 插入、删除、查找、合并、区间查询 | | 不变量 | 结构必须维持什么性质 | BST 左小右大，堆父节点不大于孩子，并查集根节点代表集合 | | 复杂度 | 每个操作要花多少代价 | 链表插入 \\(O(1)\\)，查找第 k 个元素 \\(O(N)\\) | 1. 算法分析 { note sec 005 } 1.1 算法与程序 { note sec 006 } 算法是有限条指令的集合，按照这些指令执行可以完成特定任务。课件给出的五个条件非常重要： | 条件 | 含义 | 通俗解释 | | | | | | Input | 有零个或多个外部输入 | 算法可以没有输入，例如打印固定字符串 | | Output | 至少产生一个输出 | 必须给出结果，否则任务没有完成 | | Definiteness | 每条指令清楚无歧义 | “适当处理一下”不是算法步骤 | | Finiteness | 对所有情况都在有限步后终止 | 死循环程序不是算法 | | Effectiveness | 每条指令足够基本且可执行 | 步骤不能要求无法实际完成的魔法操作 | 程序是某种编程语言写出的实现，它不一定有限，例如操作系统长期运行；算法是解决问题的抽象步骤，必须保证有限终止。 1.2 分析什么 { note sec 007 } 实际运行时间依赖机器、编译器、语言、缓存、输入分布等因素。算法课通常关心与机器无关的增长趋势： 时间复杂度：基本操作执行次数随输入规模 \\(N\\) 如何增长。 空间复杂度：额外内存随 \\(N\\) 如何增长。 最坏情况：所有输入中代价最大的情况，常用于保证上界。 平均情况：在输入分布已知或可假设时的期望代价。 最好情况：一般只作参考，不能代表算法稳健性。 对循环的基本判断： | 代码形态 | 复杂度 | | | :| | 单层循环执行 \\(N\\) 次 | \\(O(N)\\) | | 双层独立嵌套循环 | \\(O(N^2)\\) | | 每轮问题规模减半 | \\(O(\\log N)\\) | | 外层 \\(N\\) 次，内层每轮减半 | \\(O(N\\log N)\\) | | 递归分成两个规模为 \\(N/2\\) 的子问题并线性合并 | \\(O(N\\log N)\\) | 1.3 渐进记号 { note sec 008 } 渐进记号忽略常数和低阶项，保留增长级别。它解决的问题是：当输入规模很大时，哪个算法更能撑住。 | 记号 | 定义直觉 | 常用说法 | | | | | | \\(T(N)=O(f(N))\\) | \\(T\\) 最多按 \\(f\\) 的级别增长 | 上界 | | \\(T(N)=\\Omega(g(N))\\) | \\(T\\) 至少按 \\(g\\) 的级别增长 | 下界 | | \\(T(N)=\\Theta(h(N))\\) | \\(T\\) 与 \\(h\\) 同阶 | 紧确界 | | \\(T(N)=o(p(N))\\) | \\(T\\) 比 \\(p\\) 低一阶 | 严格小阶 | 典型增长顺序： 常用规则： 若 \\(T 1(N)=O(f(N))\\)，\\(T 2(N)=O(g(N))\\)，则 \\(T 1+T 2=O(\\max(f,g))\\)。 若 \\(T 1(N)=O(f(N))\\)，\\(T 2(N)=O(g(N))\\)，则 \\(T 1T 2=O(fg)\\)。 多项式只保留最高次项：\\(3N^2+10N+7=O(N^2)\\)。 对数底数在渐进复杂度中只差常数：\\(\\log a N=\\Theta(\\log b N)\\)。 1.4 最大子列和：同一问题的四种算法 { note sec 009 } 问题：给定可能含负数的整数序列 \\(A 1,A 2,\\ldots,A N\\)，求连续子列的最大和。如果所有数都为负，课件约定最大和为 0。 算法 1：三重循环，枚举所有区间 { note sec 010 } 区间有 \\(O(N^2)\\) 个，每个区间求和又可能是 \\(O(N)\\)，总复杂度 \\(O(N^3)\\)。 算法 2：枚举右端点时累加 { note sec 011 } 内层不再重复求区间和，总复杂度降为 \\(O(N^2)\\)。这个优化的核心是复用前一次区间和。 算法 3：分治 { note sec 012 } 最大子列要么完全在左半边，要么完全在右半边，要么跨过中点。 递推式为 \\(T(N)=2T(N/2)+O(N)\\)，因此复杂度为 \\(O(N\\log N)\\)。 算法 4：在线算法 { note sec 013 } 在线算法只扫描一遍，任何时刻都能给出当前前缀的答案。 关键直觉：如果当前前缀和已经小于 0，那么它只会拖累后面的子列，应该丢弃并从下一个位置重新开始。复杂度 \\(O(N)\\)，额外空间 \\(O(1)\\)。 1.5 二分查找与对数复杂度 { note sec 014 } 二分查找要求数组有序。每次比较后，搜索区间至少减半。 如果问题规模每次变为原来的一半，最多能减半 \\(\\log 2 N\\) 次，所以时间复杂度为 \\(O(\\log N)\\)。 1.6 检查复杂度分析 { note sec 015 } 课件给出一种很实用的实验检验方法：看输入翻倍时运行时间大约乘以多少。 | 假设复杂度 | 输入从 \\(N\\) 到 \\(2N\\) | 理论比值 | | | :| :| | \\(O(N)\\) | \\(T(2N)/T(N)\\) | 约 2 | | \\(O(N^2)\\) | \\(T(2N)/T(N)\\) | 约 4 | | \\(O(N^3)\\) | \\(T(2N)/T(N)\\) | 约 8 | | \\(O(\\log N)\\) | 增长很慢 | 约 \\(\\log(2N)/\\log N\\) | 实验不能证明复杂度，但能发现明显错误。例如你以为算法是 \\(O(N)\\)，测出来翻倍后接近 4 倍，就要检查是否有隐藏的嵌套循环。 2. 抽象数据类型与线性表 { note sec 01"
+    },
+    {
+      "title": "笔记",
+      "summary": "公开笔记入口，包含公开边界和数学公式测试。",
+      "tags": [
+        "notes"
+      ],
+      "url": "/zh/notes/",
+      "sourcePath": "docs/zh/notes/index.md",
+      "text": "笔记 这里是公开笔记入口。每篇笔记都可以被翻译成英文，并按 public 与 avatar readable 控制是否进入碧影知识库。 离散数学讲义 覆盖逻辑与证明、集合与函数、算法、归纳递归、计数、关系等主题。 阅读 计算机系统基础讲义 覆盖信息表示、布尔代数、组合逻辑、运算部件、时序逻辑、ISA 与 RISC V。 阅读 FDS 数据结构基础讲义 覆盖算法分析、线性表、栈队列、树、堆、并查集、线段树、图与拓扑排序。 阅读 公开边界 定义碧影能读什么、不能读什么。 阅读 数学实验 用于验证 Markdown 中的数学公式渲染。 阅读 笔记模板"
+    },
+    {
+      "title": "数学实验",
+      "summary": "用于验证 MkDocs 中的行内公式和块级公式渲染。",
+      "tags": [
+        "math",
+        "mkdocs"
+      ],
+      "url": "/zh/notes/math-lab/",
+      "sourcePath": "docs/zh/notes/math-lab.md",
+      "text": "数学实验 这页用于测试 .md 文件中的数学公式渲染。 行内公式示例：$E = mc^2$，以及 $\\alpha + \\beta = \\gamma$。 块级公式示例： $$ \\nabla \\cdot \\vec{E} = \\frac{\\rho}{\\epsilon 0} $$ 再来一个矩阵： $$ A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix} ,\\quad \\det(A) = 2 $$ 如果你看到的是排版后的公式，而不是原始 LaTeX 文本，说明 mathjax.js 正常工作。"
+    },
+    {
+      "title": "公开边界",
+      "summary": "碧影只读取网站公开内容，不读取 GitHub 活动、草稿或私密资料。",
+      "tags": [
+        "policy",
+        "avatar"
+      ],
+      "url": "/zh/notes/public-scope/",
+      "sourcePath": "docs/zh/notes/public-scope.md",
+      "text": "公开边界 碧影的核心规则是： 只读取公开发布到网站上的内容 。 可读取 首页、关于、现在、项目和公开笔记。 标记为 public: true 且 avatar readable: true 的 Markdown 页面。 页面中的标题、摘要、正文和公开链接。 不读取 未发布草稿。 GitHub 活动记录。 私密笔记、日记、聊天记录。 未公开联系方式或其他私人资料。 本地文件系统中的任何内容。 回答方式 如果公开资料里没有答案，碧影应该直接说： 公开资料里还没有这部分信息。 这条规则比“看起来聪明”更重要。"
+    },
+    {
+      "title": "现在",
+      "summary": "记录当前正在做的事情：个人数字网站、vibe coding、具身智能和全栈开发。",
+      "tags": [
+        "now",
+        "status",
+        "ai",
+        "embodied-ai",
+        "fullstack"
+      ],
+      "url": "/zh/now/",
+      "sourcePath": "docs/zh/now.md",
+      "text": "现在 更新：2026 05 13 这页用来回答“我最近在做什么”。它不追求完整履历，而是保留一个更接近实时的状态切片：学习、项目、生活感和一些正在形成中的方向。 正在推进 搭建这个基于 MkDocs 的双语个人数字网站，让它成为公开笔记、项目展示、留言和数字分身的入口。 设计虚构数字分身「碧影」，让访客可以通过对话了解我公开发布的内容。 整理适合长期更新的笔记结构，让中文内容可以稳定翻译成英文，并支持数学公式。 练习用 AI 协作完成更完整的作品，而不是只停留在一次性 demo。 正在学习 Vibe Coding 尝试把 AI 当作开发过程中的协作者，用它加速搭建、重构、排错和内容整理，同时保留自己的判断。 具身智能 关注智能体如何感知环境、规划行动并和现实世界交互。现在还在积累基础概念和项目灵感。 全栈开发 从页面、交互、API、存储到部署一起学习，希望能独立把一个想法做成可以给别人访问的产品。 生活里的状态 最近的我在努力把学习、项目和生活放进同一个节奏里：一边补专业基础，一边做能被真实打开的网站和工具。这个网站也会保留一些不那么“模板化”的东西，比如阶段性的想法、踩坑记录、读到的好内容，以及一些能体现日常温度的笔记。 暂不做 不让碧影读取未公开的 GitHub 活动、本地文件、草稿或私人记录。 不把这个网站做成单一用途的展示页；我更希望它自然呈现专业能力和生活气息。 不追求一次性做完。这个站点会随着我的学习、项目和表达慢慢更新。"
+    },
+    {
+      "title": "碧影数字花园",
+      "summary": "一个双语个人网站，结合公开笔记、项目展示、公开留言和虚构数字分身。",
+      "tags": [
+        "mkdocs",
+        "ai",
+        "edgeone"
+      ],
+      "url": "/zh/projects/biying-site/",
+      "sourcePath": "docs/zh/projects/biying-site.md",
+      "text": "碧影数字花园 碧影数字花园是一个用于长期展示个人公开内容的站点。它不是一次性作品集，而是一个会随着笔记、项目和状态页一起增长的空间。 技术栈 MkDocs Material：内容站点和主题系统。 MathJax：Markdown 数学公式渲染。 EdgeOne Pages：低成本部署。 EdgeOne Functions：碧影聊天和公开留言 API。 EdgeOne KV：留言与轻量数据存储。 当前完成 双语目录结构。 赛博视觉主题。 碧影聊天前端。 公开留言前端。 公开知识库构建脚本。 EdgeOne API 雏形。 设计约束 碧影只能读取公开网页内容。这个约束会写进 persona、知识库构建脚本和 API prompt 中。"
+    },
+    {
+      "title": "项目",
+      "summary": "项目入口，展示公开作品和正在推进的内容。",
+      "tags": [
+        "projects"
+      ],
+      "url": "/zh/projects/",
+      "sourcePath": "docs/zh/projects/index.md",
+      "text": "项目 这里展示公开项目。每个项目页都应该说明： 问题是什么 为什么这样做 已经完成什么 还有哪些限制 个人网页 + 数字分身搭建 用于记录课程笔记、项目经历和个人状态的双语个人网站，并接入数字分身碧影。 查看项目 碧影数字花园 MkDocs + EdgeOne + 数字分身的个人网站项目。 查看项目"
+    },
+    {
+      "title": "个人网页 + 数字分身搭建",
+      "summary": "一个用于记录课程笔记、项目经历和个人状态的双语个人网站，并接入男性虚构数字分身碧影作为公开内容对话入口。",
+      "tags": [
+        "personal-site",
+        "digital-avatar",
+        "mkdocs",
+        "rag",
+        "edgeone"
+      ],
+      "url": "/zh/projects/personal-site-avatar/",
+      "sourcePath": "docs/zh/projects/personal-site-avatar.md",
+      "text": "个人网页 + 数字分身搭建 这个项目是我为自己搭建的个人数字网站。它既用于记录课程笔记与项目经历，也用于展示我当前正在学习和探索的内容。网站里接入了男性虚构数字分身「碧影」，访客可以通过对话了解公开页面中的内容。 背景 我希望有一个更长期、也更有生活气息的空间，用来沉淀学习过程、课程笔记、项目经历和阶段性想法。对朋友来说，它可以回答“你最近在做什么”；对其他访客来说，它可以展示我的技术兴趣、表达能力和持续构建的习惯。 同时，我也想把 AI 协作真正放进一个可访问的作品里，而不是只停留在本地 demo。数字分身「碧影」就是这个实验的一部分：他只读取网站公开内容，用类似 RAG 的方式回答问题，也可以在安全边界内和访客闲聊。 技术栈 内容与站点 MkDocs Material、Markdown、Pymdown Extensions、MathJax，用于构建可维护的笔记型静态网站。 双语与内容工程 中英文目录结构、双语导航切换脚本、课程笔记导入脚本、公开知识库生成脚本。 数字分身 EdgeOne Functions 风格的聊天 API、公开知识库检索、persona prompt、DeepSeek/OpenAI 兼容模型接口。 交互与部署 原生 JavaScript、赛博风格 CSS、公开留言板、EdgeOne Pages 部署方案、GitHub CI 验证。 我做了什么 搭建了 MkDocs Material 项目结构，规划首页、关于、现在、笔记、项目、碧影和留言等页面。 设计了 /zh/ 与 /en/ 双语内容结构，并实现了整站语言切换，不让中英文导航同时挤在侧边栏里。 导入并整理课程笔记，包括离散数学、计算机系统基础和 FDS 数据结构基础。 修复课程笔记中的公式渲染问题，把原本被反引号包住的 LaTeX 公式恢复为 MathJax 可渲染格式。 为长篇课程笔记整理标题层级，让章节目录出现在右侧侧边栏，方便快速定位。 编写 build knowledge.py ，把公开页面整理成碧影可读取的公开知识库。 设计男性虚构数字分身「碧影」的人格设定，明确他的语气、资料范围和安全边界。 编写聊天 API 雏形，让碧影可以基于公开上下文回答问题，并预留 DeepSeek/OpenAI 兼容模型接口。 实现公开留言板前端和 EdgeOne KV 风格的留言 API 雏形。 编写部署说明和多 Agent 协作说明，方便后续继续扩展。 成果 网站已经可以本地构建和预览， mkdocs build strict 可以通过。 已经形成双语个人网站骨架，包含个人介绍、当前状态、项目展示、课程笔记和数字分身入口。 三篇课程笔记已经被整理为网站页面，并支持数学公式渲染和右侧章节目录。 碧影可以读取公开知识库，回答网站公开内容相关问题。 留言系统和 EdgeOne 部署路线已经具备基础实现。 项目结构便于继续添加新的笔记、项目和中英文页面。 不足 英文笔记目前部分仍是 companion/overview 版本，后续需要接入翻译 API 或人工校对，生成更完整的英文内容。 碧影的后端还需要在真实 EdgeOne 环境中配置模型密钥、KV 和限流策略后才能完整上线。 留言系统需要进一步加入更完善的审核、删除、反垃圾和管理界面。 视觉风格已经有赛博方向，但还可以继续优化移动端细节、可读性和动效。 当前项目内容仍处在早期阶段，需要持续补充真实项目经历、学习总结和个人表达。 下一步 部署到 EdgeOne Pages，并完成 Functions、KV 和环境变量配置。 为更多真实项目新增项目页。 建立更稳定的中英文翻译工作流。 优化碧影的检索质量、来源引用和拒答策略。 继续打磨网站视觉，让它既有赛博数字分身气质，也保持舒适的阅读体验。"
+    }
+  ]
+}

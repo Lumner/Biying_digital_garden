@@ -1,0 +1,108 @@
+site_name: 碧影数字花园
+site_description: 一个双语、赛博风格、可对话的个人数字网站。
+site_author: Your Name
+site_url: https://example.com/
+
+repo_name: your-name/biying-digital-garden
+repo_url: https://github.com/your-name/biying-digital-garden
+
+theme:
+  name: material
+  custom_dir: docs/overrides
+  language: zh
+  palette:
+    scheme: slate
+    primary: black
+    accent: cyan
+  font:
+    text: Noto Sans SC
+    code: JetBrains Mono
+  favicon: assets/images/favicon.svg
+  logo: assets/images/favicon.svg
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+
+nav:
+  - 首页: zh/index.md
+  - 现在: zh/now.md
+  - 关于: zh/about.md
+  - 笔记:
+      - 笔记首页: zh/notes/index.md
+      - 公开边界: zh/notes/public-scope.md
+      - 数学实验: zh/notes/math-lab.md
+      - 离散数学讲义: zh/notes/discrete-math-lecture.md
+      - 计算机系统基础讲义: zh/notes/computer-systems-lecture.md
+      - FDS 数据结构基础讲义: zh/notes/fds-data-structures-lecture.md
+  - 项目:
+      - 项目首页: zh/projects/index.md
+      - 个人网页 + 数字分身搭建: zh/projects/personal-site-avatar.md
+      - 碧影站点: zh/projects/biying-site.md
+  - 碧影: zh/avatar/index.md
+  - 留言: zh/guestbook/index.md
+  - Home: en/index.md
+  - Now: en/now.md
+  - About: en/about.md
+  - Notes:
+      - Notes Home: en/notes/index.md
+      - Public Scope: en/notes/public-scope.md
+      - Math Lab: en/notes/math-lab.md
+      - Discrete Mathematics Lecture Notes: en/notes/discrete-math-lecture.md
+      - Computer Systems Fundamentals Lecture Notes: en/notes/computer-systems-lecture.md
+      - FDS Data Structures Fundamentals Lecture Notes: en/notes/fds-data-structures-lecture.md
+  - Projects:
+      - Projects Home: en/projects/index.md
+      - Personal Website + Digital Persona: en/projects/personal-site-avatar.md
+      - Biying Site: en/projects/biying-site.md
+  - Biying: en/avatar/index.md
+  - Guestbook: en/guestbook/index.md
+
+not_in_nav: |
+  index.md
+
+plugins:
+  - search:
+      lang:
+        - zh
+        - en
+
+markdown_extensions:
+  - meta
+  - admonition
+  - attr_list
+  - def_list
+  - md_in_html
+  - toc:
+      permalink: true
+      toc_depth: 2-4
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra_css:
+  - assets/styles/cyber.css
+
+extra_javascript:
+  - assets/javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - assets/javascripts/language-switch.js
+  - assets/javascripts/biying-chat.js
+  - assets/javascripts/guestbook.js
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/your-name
+      name: GitHub
