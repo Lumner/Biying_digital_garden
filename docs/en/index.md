@@ -27,12 +27,20 @@ tags:
       <a class="cyber-button secondary" href="./notes/">Read Notes</a>
     </div>
   </div>
-  <div class="cyber-avatar-shell" aria-label="Biying visual terminal">
-    <div class="cyber-avatar-face"></div>
-    <div class="cyber-avatar-label">
-      <span>PUBLIC KNOWLEDGE</span>
-      <span>PERSONA: BIYING</span>
-    </div>
+  <div class="note-cover-stage" data-random-note-cover aria-label="Random note cover">
+    <a class="note-cover" data-cover-link href="./notes/">
+      <span class="note-cover__spine" aria-hidden="true"></span>
+      <span class="note-cover__mark" aria-hidden="true"></span>
+      <span class="note-cover__content">
+        <span class="note-cover__eyebrow" data-cover-kicker>PUBLIC NOTE</span>
+        <strong class="note-cover__title" data-cover-title>Random Note</strong>
+        <span class="note-cover__subtitle" data-cover-subtitle>A cover generated on refresh</span>
+      </span>
+      <span class="note-cover__footer">
+        <span data-cover-code>NOTE</span>
+        <span>BIYING</span>
+      </span>
+    </a>
   </div>
 </section>
 
