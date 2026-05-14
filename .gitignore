@@ -1,7 +1,6 @@
 .venv/
 __pycache__/
 .cache/
-site/
 .env
 .env.*
 node_modules/
