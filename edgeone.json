@@ -1,5 +1,5 @@
 {
-  "installCommand": "pip install -r requirements.txt",
-  "buildCommand": "python scripts/build_knowledge.py && mkdocs build --strict",
+  "installCommand": "python3 -m pip install --upgrade pip setuptools wheel && python3 -m pip install -r requirements.txt",
+  "buildCommand": "python3 scripts/build_knowledge.py && python3 -m mkdocs build --strict",
   "outputDirectory": "./site"
 }
