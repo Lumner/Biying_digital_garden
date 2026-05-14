@@ -95,7 +95,7 @@ DeepSeek 优先：
 ```txt
 AI_PROVIDER=deepseek
 DEEPSEEK_API_KEY=你的 DeepSeek Key
-DEEPSEEK_MODEL=deepseek-chat
+DEEPSEEK_MODEL=deepseek-v4-flash
 BIYING_ADMIN_TOKEN=自定义管理 token
 ```
 

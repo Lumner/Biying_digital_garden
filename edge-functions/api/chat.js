@@ -103,7 +103,7 @@ async function callModel(env, messages) {
     : envValue(env, "DEEPSEEK_API_KEY");
   const model = provider === "openai"
     ? envValue(env, "OPENAI_MODEL", "gpt-4.1-mini")
-    : envValue(env, "DEEPSEEK_MODEL", "deepseek-chat");
+    : envValue(env, "DEEPSEEK_MODEL", "deepseek-v4-flash");
 
   if (!apiKey) {
     return "碧影的模型密钥还没有配置。部署后请在 EdgeOne 环境变量中设置 DEEPSEEK_API_KEY 或 OPENAI_API_KEY。";
