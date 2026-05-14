@@ -41,11 +41,32 @@ This is the long-term personal website I am building for myself. It is not just 
 
 I want it to grow with my learning and building. Right now it may be a few course notes and a conversational entrance; later it can hold more real projects, debugging records, temporary thoughts, and a steadier deployment setup.
 
-## Why I Built It
+## Background
 
 I wanted a space that feels more stable than a social profile and more relaxed than a formal profile. Friends can see what I have been working on recently. People who are also interested in AI and engineering can follow the notes and projects into the actual process.
 
 Biying is the unusual part of this project. He is not an all-knowing substitute for me, just a gentle guide to public content: he reads what has already been published on the site, helps visitors find useful signals, and says he does not know when the material is not there.
+
+## What I Did
+
+<div class="timeline-list">
+  <div class="timeline-item">
+    <strong>Site Structure</strong>
+    <span>Built the MkDocs Material site structure and planned pages for home, about, now, notes, projects, Biying, and guestbook.</span>
+  </div>
+  <div class="timeline-item">
+    <strong>Bilingual Content</strong>
+    <span>Designed the `/zh/` and `/en/` structure so navigation, pages, and public knowledge stay paired.</span>
+  </div>
+  <div class="timeline-item">
+    <strong>Note Import</strong>
+    <span>Imported three course notes, then fixed math rendering and chapter navigation for long lecture pages.</span>
+  </div>
+  <div class="timeline-item">
+    <strong>Biying and Guestbook</strong>
+    <span>Designed Biying's persona, readable scope, and refusal boundaries, then implemented the chat frontend, guestbook frontend, and EdgeOne Functions style API skeletons.</span>
+  </div>
+</div>
 
 ## Tech Stack
 
@@ -68,19 +89,7 @@ Biying is the unusual part of this project. He is not an all-knowing substitute 
   </section>
 </div>
 
-## What I Did
-
-- Built the MkDocs Material site structure and planned pages for home, about, now, notes, projects, Biying, and guestbook.
-- Designed the `/zh/` and `/en/` bilingual content structure so Chinese and English navigation and pages stay paired.
-- Imported and organized three course notes: discrete mathematics, computer systems fundamentals, and FDS data structures.
-- Fixed math rendering in course notes so LaTeX can display correctly through MathJax.
-- Reworked headings in long notes so the right sidebar can serve as a chapter index.
-- Wrote `build_knowledge.py` to generate the public knowledge base that Biying can read.
-- Designed Biying's persona, tone, readable scope, and refusal boundaries.
-- Implemented the chat frontend, guestbook frontend, and EdgeOne Functions style API skeletons.
-- Added deployment, architecture, and collaboration notes so the project can keep being maintained.
-
-## Current Results
+## Results
 
 - The site can be built and previewed locally, and `mkdocs build --strict` passes.
 - Chinese and English pages now have a clear structure for future content.
@@ -88,10 +97,15 @@ Biying is the unusual part of this project. He is not an all-knowing substitute 
 - Biying can answer questions related to site content from the public knowledge base.
 - The guestbook and EdgeOne deployment route have a working foundation for a real online setup.
 
-## What I Want to Improve
+## Limitations
 
 - English course notes still need fuller translation and human review.
 - Before Biying goes fully online, the backend needs real model keys, KV bindings, and rate limiting.
 - The guestbook needs moderation, deletion, anti-spam, and a smoother admin flow.
 - Mobile reading, long-note experience, and visual details can still be refined.
+
+## Next
+
 - Project pages need more real work, reflections, and progress notes over time.
+- Connect EdgeOne Functions, KV, model keys, and public source citations into real online behavior.
+- Keep future projects on the same structure: background, what I did, stack, results, limitations, and next steps.

@@ -81,7 +81,7 @@ EdgeOne Functions 推荐配置：
 BIYING_KV=在 EdgeOne 控制台中绑定 KV 命名空间
 AI_PROVIDER=deepseek
 DEEPSEEK_API_KEY=你的 DeepSeek Key
-DEEPSEEK_MODEL=deepseek-chat
+DEEPSEEK_MODEL=deepseek-v4-flash
 OPENAI_API_KEY=可选
 OPENAI_MODEL=gpt-4.1-mini
 BIYING_ADMIN_TOKEN=留言管理 token

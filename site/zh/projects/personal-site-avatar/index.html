@@ -1011,7 +1011,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        为什么做
+        背景
       
     </span>
   </a>
@@ -1022,7 +1022,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        技术栈
+        我做了什么
       
     </span>
   </a>
@@ -1033,7 +1033,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        我做了什么
+        技术栈
       
     </span>
   </a>
@@ -1044,7 +1044,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        当前成果
+        成果
       
     </span>
   </a>
@@ -1055,7 +1055,18 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        还想改进
+        不足
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        下一步
       
     </span>
   </a>
@@ -1677,7 +1688,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        为什么做
+        背景
       
     </span>
   </a>
@@ -1688,7 +1699,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        技术栈
+        我做了什么
       
     </span>
   </a>
@@ -1699,7 +1710,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        我做了什么
+        技术栈
       
     </span>
   </a>
@@ -1710,7 +1721,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        当前成果
+        成果
       
     </span>
   </a>
@@ -1721,7 +1732,18 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        还想改进
+        不足
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        下一步
       
     </span>
   </a>
@@ -1776,10 +1798,30 @@
 
 <p>这是我为自己搭建的长期个人网站。它不是单独的作品集，也不只是一个聊天 demo，而是把公开笔记、项目记录、当前状态、留言板和数字分身「碧影」放在同一个入口里。</p>
 <p>我希望它能随着我学习和做项目一起长大：今天可能只是几篇课程笔记和一个能对话的入口，之后会慢慢加入更多真实项目、调试记录、阶段性想法和更稳定的部署。</p>
-<h2 id="_1">为什么做<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h2 id="_1">背景<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>我想有一个比社交主页更稳定、比正式介绍更松弛的空间。朋友可以从这里知道我最近在折腾什么；同样对 AI 和工程感兴趣的人，可以顺着笔记和项目看到更具体的过程。</p>
 <p>碧影是这个项目里比较特别的一部分。他不是“全知”的替身，只是一个温和的公开内容向导：读取网站里已经发布的内容，帮访客快速找到线索，也在没有资料时坦白说不知道。</p>
-<h2 id="_2">技术栈<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="_2">我做了什么<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<div class="timeline-list">
+  <div class="timeline-item">
+    <strong>站点结构</strong>
+    <span>搭建 MkDocs Material 站点，规划首页、关于、现在、笔记、项目、碧影和留言等页面。</span>
+  </div>
+  <div class="timeline-item">
+    <strong>双语内容</strong>
+    <span>设计 `/zh/` 与 `/en/` 双语结构，让导航、页面和公开知识库成对维护。</span>
+  </div>
+  <div class="timeline-item">
+    <strong>笔记导入</strong>
+    <span>导入并整理离散数学、计算机系统基础和 FDS 数据结构基础三篇课程讲义，修复公式渲染和章节目录。</span>
+  </div>
+  <div class="timeline-item">
+    <strong>碧影与留言</strong>
+    <span>设计碧影的人格、语气、读取范围和拒答边界，实现聊天前端、留言板前端和 EdgeOne Functions 风格 API 雏形。</span>
+  </div>
+</div>
+
+<h2 id="_3">技术栈<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <div class="cyber-grid">
   <section class="cyber-card">
     <h3>内容站点</h3>
@@ -1799,19 +1841,7 @@
   </section>
 </div>
 
-<h2 id="_3">我做了什么<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<ul>
-<li>搭建 MkDocs Material 站点结构，规划首页、关于、现在、笔记、项目、碧影和留言等页面。</li>
-<li>设计 <code>/zh/</code> 与 <code>/en/</code> 双语内容结构，让中英文导航和页面保持成对维护。</li>
-<li>导入并整理离散数学、计算机系统基础和 FDS 数据结构基础三篇课程讲义。</li>
-<li>修复课程笔记中的公式渲染问题，让 LaTeX 能被 MathJax 正常显示。</li>
-<li>为长篇课程笔记整理标题层级，让右侧目录能承担章节索引。</li>
-<li>编写 <code>build_knowledge.py</code>，把公开页面生成碧影可读取的知识库。</li>
-<li>设计碧影的人格、语气、可读取范围和拒答边界。</li>
-<li>实现聊天前端、留言板前端，以及 EdgeOne Functions 风格的 API 雏形。</li>
-<li>补充部署说明、架构说明和协作说明，方便之后继续维护。</li>
-</ul>
-<h2 id="_4">当前成果<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_4">成果<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <ul>
 <li>网站可以本地构建和预览，<code>mkdocs build --strict</code> 能通过。</li>
 <li>中文和英文页面已经形成基本结构，后续新增内容有清晰位置。</li>
@@ -1819,13 +1849,18 @@
 <li>碧影可以基于公开知识库回答与网站内容相关的问题。</li>
 <li>留言板和 EdgeOne 部署路线已经有基础实现，可以继续往真实线上环境推进。</li>
 </ul>
-<h2 id="_5">还想改进<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_5">不足<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
 <li>英文课程笔记还需要更完整的翻译和人工校对。</li>
 <li>碧影后端上线前，需要配置真实模型密钥、KV 绑定和限流策略。</li>
 <li>留言板还需要审核、删除、反垃圾和更顺手的管理界面。</li>
 <li>移动端阅读、长笔记体验和视觉细节还可以继续打磨。</li>
+</ul>
+<h2 id="_6">下一步<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<ul>
 <li>项目页需要持续补充更真实的作品、复盘和阶段性总结。</li>
+<li>继续把 EdgeOne Functions、KV、模型密钥和公开来源引用流程接成真实线上能力。</li>
+<li>为新增项目保留同样的结构：背景、我做了什么、技术栈、成果、不足、下一步。</li>
 </ul>
 
 

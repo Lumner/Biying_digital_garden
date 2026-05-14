@@ -13,6 +13,11 @@
     const copy = {
       placeholder: zh ? "问问碧影：这个人最近在做什么？" : "Ask Biying: what is this person working on?",
       send: zh ? "发送" : "Send",
+      headerTitle: zh ? "你好，很高兴认识你。" : "Hello, it is nice to meet you.",
+      headerScope: zh
+        ? "碧影只会回答网站公开内容；没有公开资料时会直接说明。"
+        : "Biying only answers from public site content; when the material is missing, he says so.",
+      sources: zh ? "来源" : "Sources",
       initial: zh
         ? "你好，很高兴认识你。我是碧影，只读取这个网站公开发布的内容。你可以问我关于主人、项目、笔记和当前状态的问题，也可以和我闲聊。"
         : "Hello, it is nice to meet you. I am Biying. I only read public content from this site, and I can talk about the owner, projects, notes, current status, or simply chat.",
@@ -47,18 +52,37 @@
 
   function escapeHtml(value) {
     return String(value)
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
+  function accountPrompt() {
+    return `${text("loginRequired")} <a href="${escapeHtml(accountUrl())}">${escapeHtml(text("account"))}</a>`;
+  }
+
+  function renderSources(sources) {
+    const safeSources = (sources || []).filter((source) => source && source.url).slice(0, 4);
+    if (!safeSources.length) return "";
+    const links = safeSources.map((source) => {
+      const title = escapeHtml(source.title || source.url);
+      const url = escapeHtml(source.url);
+      return `<a href="${url}">${title}</a>`;
+    }).join("");
+    return `<div class="biying-sources"><span>${text("sources")}</span>${links}</div>`;
+  }
+
+  function renderMessageContent(content, options = {}) {
+    const body = options.html ? String(content) : escapeHtml(content);
+    return `${body.replace(/\n/g, "<br>")}${renderSources(options.sources)}`;
   }
 
   function addMessage(log, role, content, options = {}) {
     const item = document.createElement("div");
     item.className = `biying-message ${role}`;
-    const safeContent = options.html ? String(content) : escapeHtml(content);
-    item.innerHTML = safeContent.replace(/\n/g, "<br>");
+    item.innerHTML = renderMessageContent(content, options);
     log.appendChild(item);
     log.scrollTop = log.scrollHeight;
     return item;
@@ -97,8 +121,8 @@
 
     if (!ranked.length) {
       return isChinesePage()
-        ? `${text("offline")}\n\n公开资料里还没有直接相关内容。你可以试着问：项目、笔记、现在在做什么、数学公式。`
-        : `${text("offline")}\n\nI did not find a direct match in the public materials. Try asking about projects, notes, current work, or math formulas.`;
+        ? { answer: `${text("offline")}\n\n公开资料里还没有直接相关内容。你可以试着问：项目、笔记、现在在做什么、数学公式。`, sources: [] }
+        : { answer: `${text("offline")}\n\nI did not find a direct match in the public materials. Try asking about projects, notes, current work, or math formulas.`, sources: [] };
     }
 
     const intro = isChinesePage()
@@ -107,9 +131,12 @@
     const lines = ranked.map(({ item }) => {
       const title = item.title || item.url;
       const summary = item.summary || (item.text || "").slice(0, 180);
-      return `- <a href="${item.url}">${title}</a>：${summary}`;
+      return `- ${title}：${summary}`;
     });
-    return `${intro}\n${lines.join("\n")}`;
+    return {
+      answer: `${intro}\n${lines.join("\n")}`,
+      sources: ranked.map(({ item }) => ({ title: item.title || item.url, url: item.url }))
+    };
   }
 
   async function askApi(query) {
@@ -129,7 +156,10 @@
       throw error;
     }
     const data = await response.json();
-    return data.answer || "";
+    return {
+      answer: data.answer || "",
+      sources: Array.isArray(data.sources) ? data.sources : []
+    };
   }
 
   function mount(root) {
@@ -137,6 +167,10 @@
     root.dataset.ready = "true";
 
     root.innerHTML = `
+      <div class="biying-chat__header">
+        <strong>${text("headerTitle")}</strong>
+        <span>${text("headerScope")}</span>
+      </div>
       <div class="biying-chat__log" aria-live="polite"></div>
       <form class="biying-chat__form">
         <p class="meta-line" data-biying-auth-note></p>
@@ -156,7 +190,7 @@
         authNote.textContent = `${user.displayName} (@${user.username})`;
         return;
       }
-      authNote.innerHTML = `${text("loginRequired")} <a href="${accountUrl()}">${text("account")}</a>`;
+      authNote.innerHTML = accountPrompt();
     }
 
     addMessage(log, "biying", text("initial"));
@@ -170,7 +204,7 @@
       event.preventDefault();
       if (state.busy) return;
       if (!currentUser()) {
-        addMessage(log, "biying", `${text("loginRequired")} <a href="${accountUrl()}">${text("account")}</a>`, { html: true });
+        addMessage(log, "biying", accountPrompt(), { html: true });
         return;
       }
       const query = input.value.trim();
@@ -183,20 +217,22 @@
       const pending = addMessage(log, "biying", "...");
       state.busy = true;
       try {
-        let answer;
+        let response;
         try {
-          answer = await askApi(query);
+          response = await askApi(query);
         } catch (error) {
           if (error.status === 401 || error.code === "auth_required") {
-            answer = `${text("authExpired")} <a href="${accountUrl()}">${text("account")}</a>`;
+            response = { answer: `${text("authExpired")} <a href="${escapeHtml(accountUrl())}">${escapeHtml(text("account"))}</a>`, html: true, sources: [] };
           } else if (error.code === "kv_not_configured") {
-            answer = text("kv");
+            response = { answer: text("kv"), sources: [] };
           } else {
-            answer = await localAnswer(query);
+            response = await localAnswer(query);
           }
         }
-        const allowsHtml = answer.includes("<a ");
-        pending.innerHTML = (allowsHtml ? answer : escapeHtml(answer)).replace(/\n/g, "<br>");
+        pending.innerHTML = renderMessageContent(response.answer || "", {
+          html: response.html,
+          sources: response.sources
+        });
       } catch (error) {
         pending.textContent = text("error");
       } finally {
