@@ -11,10 +11,16 @@ tags:
 <section class="cyber-hero">
   <div>
     <div class="cyber-kicker">BIYING DIGITAL GARDEN</div>
-    <h1 class="cyber-title">Biying Online</h1>
+    <h1 class="cyber-title">Biying Digital Garden</h1>
     <p class="cyber-subtitle">
-      This is a bilingual personal digital garden: public notes, active projects, recent updates, and a fictional digital persona that only reads public web content.
+      A bilingual space for long-term learning records, projects, and current notes. Notes are the roots, projects are the branches, and Biying gently connects the public content.
     </p>
+    <div class="cyber-hero-meta">
+      <span class="status-pill leaf">AI Undergraduate</span>
+      <span class="status-pill">vibe coding</span>
+      <span class="status-pill warm">embodied AI</span>
+      <span class="status-pill">full-stack</span>
+    </div>
     <div class="cyber-actions">
       <a class="cyber-button" href="./avatar/">Talk to Biying</a>
       <a class="cyber-button secondary" href="./projects/">View Projects</a>
@@ -31,6 +37,8 @@ tags:
 </section>
 
 ## Public Signals
+
+<p class="section-lede">This is not a finished portfolio. It is a living entrance that can keep growing through notes, projects, current updates, and conversations with Biying.</p>
 
 <div class="cyber-grid">
   <section class="cyber-card">
@@ -55,19 +63,21 @@ tags:
   </section>
 </div>
 
-## Who It Serves
+## Ways In
 
 <div class="signal-list">
   <div class="signal-item">
-    <strong>Friends</strong>
-    <span>See what I am exploring, caring about, and happy to discuss.</span>
+    <strong>Now</strong>
+    <span>Start with the Now page if you want the shortest path to current work and interests.</span>
   </div>
   <div class="signal-item">
-    <strong>Peers</strong>
-    <span>Enter through concrete notes and projects instead of a flat bio.</span>
+    <strong>Practice</strong>
+    <span>Enter through projects and course notes if you want to see concrete technical work.</span>
   </div>
   <div class="signal-item">
-    <strong>Visitors</strong>
-    <span>Understand my growing skill structure through public work, writing, and sustained records.</span>
+    <strong>Talk</strong>
+    <span>Leave a message in the guestbook, or ask Biying to guide you through public content.</span>
   </div>
 </div>
+
+<p class="quiet-panel">Biying only reads content already published on this website. Drafts, private files, and account activity are outside his answer scope.</p>

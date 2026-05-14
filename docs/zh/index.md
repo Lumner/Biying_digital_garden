@@ -11,10 +11,16 @@ tags:
 <section class="cyber-hero">
   <div>
     <div class="cyber-kicker">BIYING DIGITAL GARDEN</div>
-    <h1 class="cyber-title">碧影在线</h1>
+    <h1 class="cyber-title">碧影数字花园</h1>
     <p class="cyber-subtitle">
-      这里是一个双语的个人数字花园：公开笔记、正在推进的项目、一些近况，以及一个只读取公开网页内容的虚构数字分身。
+      一个用来长期沉淀学习、项目和近况的双语空间。笔记是根系，项目是枝干，碧影负责把公开内容温柔地连接起来。
     </p>
+    <div class="cyber-hero-meta">
+      <span class="status-pill leaf">AI 本科生</span>
+      <span class="status-pill">vibe coding</span>
+      <span class="status-pill warm">具身智能</span>
+      <span class="status-pill">全栈开发</span>
+    </div>
     <div class="cyber-actions">
       <a class="cyber-button" href="./avatar/">和碧影对话</a>
       <a class="cyber-button secondary" href="./projects/">查看项目</a>
@@ -31,6 +37,8 @@ tags:
 </section>
 
 ## 公开信号
+
+<p class="section-lede">这里不是一次性完成的作品集，而是一个会持续更新的入口。你可以从不同路径进入：读笔记、看项目、了解现在，或者直接问碧影。</p>
 
 <div class="cyber-grid">
   <section class="cyber-card">
@@ -55,19 +63,21 @@ tags:
   </section>
 </div>
 
-## 适合谁看
+## 进入路径
 
 <div class="signal-list">
   <div class="signal-item">
-    <strong>朋友</strong>
-    <span>快速知道我最近在研究什么、关心什么、可以聊什么。</span>
+    <strong>近况</strong>
+    <span>想快速了解最近在做什么，可以先从 Now 页面进入。</span>
   </div>
   <div class="signal-item">
-    <strong>同好</strong>
-    <span>从笔记和项目进入具体问题，而不是只看一段自我介绍。</span>
+    <strong>能力</strong>
+    <span>想看更具体的技术和实践，可以从项目和课程笔记进入。</span>
   </div>
   <div class="signal-item">
-    <strong>访客</strong>
-    <span>通过公开作品、表达方式和持续记录了解我正在形成的能力结构。</span>
+    <strong>交流</strong>
+    <span>想留下想法或随便聊聊，可以去留言页，或者直接和碧影对话。</span>
   </div>
 </div>
+
+<p class="quiet-panel">碧影只会读取已经公开到网站上的内容。没有发布出来的草稿、私密文件和账号活动，不会进入他的回答范围。</p>
