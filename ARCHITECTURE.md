@@ -20,6 +20,7 @@ EdgeOne Pages 部署
 访客浏览器
   ├─ language-switch.js 语言切换
   ├─ mathjax.js 数学公式渲染
+  ├─ auth.js 注册、登录和会话前端
   ├─ biying-chat.js 碧影聊天前端
   └─ guestbook.js 留言板前端
 
@@ -184,6 +185,12 @@ Node 侧配置。当前主要用于预留 EdgeOne CLI：
 
 留言板本身由 `docs/assets/javascripts/guestbook.js` 实现。
 
+### `docs/zh/register/index.md`
+
+中文注册/登录页。包含账户组件挂载点。
+
+账户组件本身由 `docs/assets/javascripts/auth.js` 实现。
+
 ### `docs/zh/notes/index.md`
 
 中文笔记首页。负责展示笔记入口卡片。
@@ -267,6 +274,10 @@ Node 侧配置。当前主要用于预留 EdgeOne CLI：
 
 英文留言页。
 
+### `docs/en/register/index.md`
+
+英文账户页。
+
 ### `docs/en/notes/index.md`
 
 英文笔记首页。
@@ -342,11 +353,24 @@ $$
 
 后续新增页面时，不需要改这个脚本。只要在 `mkdocs.yml` 里成对添加中英文页面即可。
 
+### `docs/assets/javascripts/auth.js`
+
+注册、登录和会话前端。负责：
+
+- 渲染账户页面
+- 调用 `/api/auth`
+- 把登录 token 存在浏览器 `localStorage`
+- 给留言和碧影聊天提供 `Authorization` header
+- 触发登录状态变化事件
+
+如果你想改账户页面文案或登录状态展示，改这里。
+
 ### `docs/assets/javascripts/biying-chat.js`
 
 碧影聊天前端。负责：
 
 - 渲染聊天框
+- 检查登录状态
 - 调用 `/api/chat`
 - 如果 API 没部署，则退回本地公开知识库回答
 - 加载 `docs/assets/knowledge/public-knowledge.json`
@@ -358,9 +382,10 @@ $$
 留言板前端。负责：
 
 - 渲染留言表单
+- 检查登录状态
 - 获取 `/api/messages`
 - 提交留言到 `/api/messages`
-- API 不可用时保存到浏览器本地预览
+- 编辑和删除当前登录用户自己的留言
 
 如果你想改留言板交互，改这里。
 
@@ -509,6 +534,7 @@ OPENAI_API_KEY
 
 碧影聊天 API。负责：
 
+- 校验登录 session
 - 接收用户问题
 - 读取 KV 中的 `public_knowledge`
 - 如果 KV 没有，则读取静态 `public-knowledge.json`
@@ -523,16 +549,35 @@ OPENAI_API_KEY
 - `data/biying.persona.md`
 - `edge-functions/api/chat.js`
 
+### `edge-functions/api/auth.js`
+
+账户 API。负责：
+
+- `POST /api/auth` 注册或登录
+- `GET /api/auth` 校验当前 session
+- `DELETE /api/auth` 退出登录
+- 使用 EdgeOne KV 保存 `user_*` 和 `session_*`
+- 使用 PBKDF2 保存密码哈希，不保存明文密码
+
+注册和登录依赖 KV 绑定：
+
+```txt
+BIYING_KV
+```
+
 ### `edge-functions/api/messages.js`
 
 留言 API。负责：
 
 - `GET /api/messages` 获取留言
-- `POST /api/messages` 提交留言
+- `POST /api/messages` 提交登录用户留言
+- `PUT /api/messages?id=...` 编辑自己的留言
+- `DELETE /api/messages?id=...` 删除自己的留言
 - 写入 EdgeOne KV
 - 简单过滤空内容和蜜罐字段
+- 返回 `canEdit` 供前端展示编辑/删除按钮
 
-当前留言是公开展示路线。后续可以扩展审核、限流和反垃圾。
+当前留言是公开展示路线。后续可以扩展审核、限流、反垃圾和更完整的管理员界面。
 
 ### `edge-functions/api/admin-messages.js`
 

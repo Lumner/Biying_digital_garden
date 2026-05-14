@@ -1,6 +1,6 @@
 # 部署说明
 
-当前路线：**不注册域名，优先使用 EdgeOne Pages 自动分配的默认访问域名**。先把静态站点、碧影聊天、留言板和公开知识库跑通；以后如果想要更短、更好记的地址，再考虑绑定自定义域名。
+当前路线：使用已经绑定的正式域名 `https://www.biying.site/`。EdgeOne Pages 负责静态站点部署，EdgeOne Functions 负责账户、留言和碧影聊天 API，EdgeOne KV 负责账户、会话和留言持久化。
 
 ## 1. GitHub 仓库
 
@@ -20,7 +20,11 @@ git push
 
 ## 2. EdgeOne Pages 静态站点
 
-在 EdgeOne Pages 中导入 GitHub 仓库，不填写自定义域名。部署成功后，EdgeOne 会给项目分配默认访问域名。
+在 EdgeOne Pages 中导入 GitHub 仓库，并绑定自定义域名：
+
+```txt
+www.biying.site
+```
 
 可以从这个创建入口开始导入：
 
@@ -61,21 +65,20 @@ Output directory:
 
 ## 3. `site_url`
 
-现在不注册域名，所以 `mkdocs.yml` 暂时不写 `site_url`，避免生成错误的 canonical URL。
-
-EdgeOne Pages 默认域名生成后，再把它补回：
+`mkdocs.yml` 当前应保持：
 
 ```yaml
-site_url: https://你的-edgeone-pages-默认域名/
+site_url: https://www.biying.site/
 ```
 
-改完后重新提交并推送，让 EdgeOne 自动重新部署。
+如果以后更换域名，修改这里后重新提交并推送，让 EdgeOne 自动重新部署。
 
 ## 4. Functions
 
 静态站点可访问后，再配置 Pages Functions。上线后接口目标为：
 
 ```txt
+/api/auth
 /api/chat
 /api/messages
 /api/admin-messages
@@ -113,9 +116,11 @@ BIYING_ADMIN_TOKEN=自定义管理 token
 BIYING_KV
 ```
 
-留言会写入：
+账户、会话和留言都会写入这个 KV。主要 key 前缀：
 
 ```txt
+user_*
+session_*
 guestbook_*
 ```
 
@@ -127,14 +132,20 @@ guestbook_*
 
 因此 MVP 阶段不需要手动同步知识库到 KV。
 
+如果没有绑定 `BIYING_KV`：
+
+- 注册/登录不可用。
+- 留言提交、编辑、删除不可用。
+- 碧影真实聊天会要求先配置账户系统。
+
 ## 7. 当前部署顺序
 
 1. GitHub 保持最新。
 2. EdgeOne Pages 导入 GitHub 仓库。
-3. 使用 EdgeOne 默认域名验证静态站点。
-4. 将默认域名写回 `mkdocs.yml` 的 `site_url`。
+3. 绑定并验证 `www.biying.site`。
+4. 确认 `mkdocs.yml` 的 `site_url` 是 `https://www.biying.site/`。
 5. 配置 Functions。
 6. 配置 KV。
 7. 配置模型 API Key。
-8. 测试留言和碧影聊天。
+8. 测试注册/登录、留言和碧影聊天。
 9. 再优化 MathJax 本地化、留言管理、引用来源和移动端体验。

@@ -48,7 +48,8 @@
 - 长课程笔记的章节目录已进入右侧目录栏
 - 完成碧影 persona 设定
 - 完成碧影聊天前端和 API 雏形
-- 完成留言板前端和 API 雏形
+- 完成账户注册/登录 API 雏形
+- 完成留言板前端和 API 雏形，支持登录用户编辑/删除自己的留言
 - 完成合并后的项目页：个人数字花园与碧影
 - 删除站内面向特定用途的显式求职导向文案，让网站保持个人数字空间气质
 - 完成 `ARCHITECTURE.md` 架构说明
@@ -186,7 +187,7 @@ node --check edge-functions\api\admin-messages.js
 
 1. 英文课程笔记目前是 companion/overview 版本，不是完整逐句翻译。
 2. 碧影聊天后端还没有在真实 EdgeOne 环境里配置 API Key、KV 和限流。
-3. 留言系统是基础雏形，缺少完善的管理后台、审核、防刷和删除 UI。
+3. 留言系统已有登录、编辑和删除雏形，但缺少完善的管理后台、审核、防刷和更完整的管理员 UI。
 4. 语言切换通过前端 JS 隐藏另一套导航，静态 HTML 里仍然同时存在中英文导航；页面加载后才会过滤。
 5. MathJax 当前通过 CDN 加载主脚本，国内访问更稳的方案是把 MathJax 资源本地化到 `docs/assets/vendor/`。
 6. `mkdocs serve/build` 会显示 MkDocs Material 关于 MkDocs 2.0 的提示，这不是当前项目错误。
@@ -196,9 +197,9 @@ node --check edge-functions\api\admin-messages.js
 
 优先级从高到低：
 
-1. 配置 EdgeOne Pages 部署，使用平台自动分配的默认域名验证静态站点可访问。
-2. 拿到 EdgeOne 默认域名后，将它写入 `mkdocs.yml` 的 `site_url`。
-3. 配置 EdgeOne Functions、KV、模型 API Key，让碧影聊天和留言系统真正在线。
+1. 确认 EdgeOne Pages 部署在 `https://www.biying.site/` 下稳定可访问。
+2. 保持 `mkdocs.yml` 中的 `site_url: https://www.biying.site/` 与正式域名一致。
+3. 配置 EdgeOne Functions、KV、模型 API Key，让注册、碧影聊天和留言系统真正在线。
 4. 将 MathJax 改成本地资源，降低国内访问不稳定风险。
 5. 为英文课程笔记接入翻译 API 或人工校对，逐步补完整英文内容。
 6. 增加更多真实项目页，继续完善项目经历。

@@ -65,13 +65,20 @@ Output directory:
 ./site
 ```
 
-当前部署路线是不注册域名，先使用 EdgeOne Pages 自动分配的默认访问域名。静态站点、HTTPS、双语页面、笔记、项目页、留言入口和碧影入口都可以先在默认域名上跑通。
+当前站点域名：
+
+```txt
+https://www.biying.site/
+```
+
+如果未来需要迁移域名，更新 `mkdocs.yml` 中的 `site_url` 后重新部署。
 
 ## 环境变量
 
 EdgeOne Functions 推荐配置：
 
 ```txt
+BIYING_KV=在 EdgeOne 控制台中绑定 KV 命名空间
 AI_PROVIDER=deepseek
 DEEPSEEK_API_KEY=你的 DeepSeek Key
 DEEPSEEK_MODEL=deepseek-chat
@@ -85,6 +92,8 @@ KV 绑定名建议：
 ```txt
 BIYING_KV
 ```
+
+账户、登录会话、公开留言都依赖这个 KV 绑定。
 
 ## 内容规则
 
@@ -126,7 +135,7 @@ $$
 
 ## 下一步你需要完善的内容
 
-- EdgeOne Pages 生成默认访问域名后，将它写入 `mkdocs.yml` 的 `site_url`
+- 在 EdgeOne 中绑定 `BIYING_KV`，并配置模型 API Key
 - `docs/zh/about.md` 和 `docs/en/about.md`
 - `docs/zh/projects/` 下的真实项目
 - `data/biying.persona.md` 中更贴近你的碧影设定

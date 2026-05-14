@@ -20,15 +20,45 @@
         ? "API 暂未连接，我先用本地公开知识库回答。"
         : "The API is not connected yet, so I will answer from the local public knowledge base.",
       empty: zh ? "先输入一个问题。" : "Type a question first.",
-      error: zh ? "连接失败。你可以部署 EdgeOne Functions 后再试。" : "Connection failed. Try again after deploying EdgeOne Functions."
+      error: zh ? "连接失败。你可以部署 EdgeOne Functions 后再试。" : "Connection failed. Try again after deploying EdgeOne Functions.",
+      loginRequired: zh ? "注册或登录后就可以和碧影对话。" : "Register or sign in to talk to Biying.",
+      account: zh ? "注册 / 登录" : "Register / Sign in",
+      authExpired: zh ? "登录状态已过期，请重新登录。" : "Your session expired. Please sign in again.",
+      kv: zh ? "聊天需要先在 EdgeOne 中绑定 BIYING_KV。" : "Chat requires BIYING_KV to be bound in EdgeOne."
     };
     return copy[key];
   }
 
-  function addMessage(log, role, content) {
+  function auth() {
+    return window.BiyingAuth;
+  }
+
+  function currentUser() {
+    return auth() ? auth().user() : null;
+  }
+
+  function accountUrl() {
+    return auth() ? auth().accountUrl() : (isChinesePage() ? "/zh/register/" : "/en/register/");
+  }
+
+  function authHeaders() {
+    return auth() ? auth().authHeaders() : {};
+  }
+
+  function escapeHtml(value) {
+    return String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function addMessage(log, role, content, options = {}) {
     const item = document.createElement("div");
     item.className = `biying-message ${role}`;
-    item.innerHTML = content.replace(/\n/g, "<br>");
+    const safeContent = options.html ? String(content) : escapeHtml(content);
+    item.innerHTML = safeContent.replace(/\n/g, "<br>");
     log.appendChild(item);
     log.scrollTop = log.scrollHeight;
     return item;
@@ -85,13 +115,19 @@
   async function askApi(query) {
     const response = await fetch("/api/chat", {
       method: "POST",
-      headers: { "content-type": "application/json" },
+      headers: { "content-type": "application/json", ...authHeaders() },
       body: JSON.stringify({
         message: query,
         locale: isChinesePage() ? "zh" : "en"
       })
     });
-    if (!response.ok) throw new Error("chat api failed");
+    if (!response.ok) {
+      const data = await response.json().catch(() => ({}));
+      const error = new Error(data.error || "chat api failed");
+      error.status = response.status;
+      error.code = data.error;
+      throw error;
+    }
     const data = await response.json();
     return data.answer || "";
   }
@@ -103,6 +139,7 @@
     root.innerHTML = `
       <div class="biying-chat__log" aria-live="polite"></div>
       <form class="biying-chat__form">
+        <p class="meta-line" data-biying-auth-note></p>
         <textarea rows="3" maxlength="900" placeholder="${text("placeholder")}"></textarea>
         <button type="submit">${text("send")}</button>
       </form>
@@ -111,11 +148,31 @@
     const log = root.querySelector(".biying-chat__log");
     const form = root.querySelector("form");
     const input = root.querySelector("textarea");
+    const authNote = root.querySelector("[data-biying-auth-note]");
+
+    function updateAuthNote() {
+      const user = currentUser();
+      if (user) {
+        authNote.textContent = `${user.displayName} (@${user.username})`;
+        return;
+      }
+      authNote.innerHTML = `${text("loginRequired")} <a href="${accountUrl()}">${text("account")}</a>`;
+    }
+
     addMessage(log, "biying", text("initial"));
+    updateAuthNote();
+    if (auth()) {
+      auth().refresh().finally(updateAuthNote);
+    }
+    window.addEventListener("biying-auth-change", updateAuthNote);
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       if (state.busy) return;
+      if (!currentUser()) {
+        addMessage(log, "biying", `${text("loginRequired")} <a href="${accountUrl()}">${text("account")}</a>`, { html: true });
+        return;
+      }
       const query = input.value.trim();
       if (!query) {
         addMessage(log, "biying", text("empty"));
@@ -130,9 +187,16 @@
         try {
           answer = await askApi(query);
         } catch (error) {
-          answer = await localAnswer(query);
+          if (error.status === 401 || error.code === "auth_required") {
+            answer = `${text("authExpired")} <a href="${accountUrl()}">${text("account")}</a>`;
+          } else if (error.code === "kv_not_configured") {
+            answer = text("kv");
+          } else {
+            answer = await localAnswer(query);
+          }
         }
-        pending.innerHTML = answer.replace(/\n/g, "<br>");
+        const allowsHtml = answer.includes("<a ");
+        pending.innerHTML = (allowsHtml ? answer : escapeHtml(answer)).replace(/\n/g, "<br>");
       } catch (error) {
         pending.textContent = text("error");
       } finally {

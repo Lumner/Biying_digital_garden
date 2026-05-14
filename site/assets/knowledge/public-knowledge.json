@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-14T12:49:17.289546+00:00",
+  "generatedAt": "2026-05-14T13:09:55.592552+00:00",
   "items": [
     {
       "title": "About",
@@ -24,7 +24,7 @@
       ],
       "url": "/en/avatar/",
       "sourcePath": "docs/en/avatar/index.md",
-      "text": "BIYING Biying A careful, reserved, and gentle male fictional digital persona. He starts from public site content and can chat casually within safe boundaries. Public Guide RAG like Gentle Tone Biying is the male fictional digital persona of this site. He is careful, reserved, and gentle. He can answer questions from public notes, projects, and current status, and he can chat casually within safe boundaries. He does not read GitHub activity, drafts, or private materials. !!! info \"Current mode\" If the EdgeOne API is not deployed yet, the chat box below automatically falls back to the local public knowledge base. What is this site working on now? Which public notes can I read? What content can Biying access? How does the project explain this site? Try Asking What is this person working on now? What stack does this website use? What content can Biying read? Which projects best show this person's abilities?"
+      "text": "BIYING Biying A careful, reserved, and gentle male fictional digital persona. He starts from public site content and can chat casually within safe boundaries. Public Guide RAG like Gentle Tone Biying is the male fictional digital persona of this site. He is careful, reserved, and gentle. After you sign in, he can answer questions from public notes, projects, and current status, and he can chat casually within safe boundaries. He does not read GitHub activity, drafts, or private materials. !!! info \"Current mode\" If the EdgeOne API is not deployed yet, the chat box below automatically falls back to the local public knowledge base. What is this site working on now? Which public notes can I read? What content can Biying access? How does the project explain this site? Try Asking What is this person working on now? What stack does this website use? What content can Biying read? Which projects best show this person's abilities?"
     },
     {
       "title": "Guestbook",
@@ -34,7 +34,7 @@
       ],
       "url": "/en/guestbook/",
       "sourcePath": "docs/en/guestbook/index.md",
-      "text": "GUESTBOOK Guestbook Leave a public trace: say hello, exchange an idea, point out a problem, or suggest how this site could keep growing. Public by Default No Private Info This is a public guestbook. Messages are visible to other visitors, so please do not include phone numbers, addresses, private emails, or other sensitive information. Messages are public by default. If something should stay private, please do not put it here."
+      "text": "GUESTBOOK Guestbook Leave a public trace: say hello, exchange an idea, point out a problem, or suggest how this site could keep growing. Public by Default No Private Info This is a public guestbook. After registering or signing in, you can post messages and edit or delete your own messages. Messages are visible to other visitors, so please do not include phone numbers, addresses, private emails, or other sensitive information. Messages are public by default. If something should stay private, please do not put it here."
     },
     {
       "title": "Home",
@@ -176,7 +176,7 @@
       ],
       "url": "/zh/avatar/",
       "sourcePath": "docs/zh/avatar/index.md",
-      "text": "BIYING 碧影 细致、内敛、温柔的男性虚构数字分身。他只从网站公开内容出发，也可以在安全边界内进行轻度闲聊。 公开内容向导 RAG like 温和语气 碧影是这个网站的男性虚构数字分身。他的性格细致、内敛、温柔。碧影可以基于公开笔记、项目和当前状态回答问题，也可以在安全边界内闲聊。他不会读取 GitHub 活动、草稿或私密内容。 !!! info \"当前模式\" 如果 EdgeOne API 尚未部署，下面的对话框会自动使用本地公开知识库进行演示回答。 这个网站最近在做什么？ 有哪些公开笔记可以读？ 碧影能读取哪些内容？ 如何从项目理解这个网站？ 可以这样问 这个人最近在做什么？ 这个网站用了什么技术？ 碧影能读取哪些内容？ 有哪些项目能体现我的能力？"
+      "text": "BIYING 碧影 细致、内敛、温柔的男性虚构数字分身。他只从网站公开内容出发，也可以在安全边界内进行轻度闲聊。 公开内容向导 RAG like 温和语气 碧影是这个网站的男性虚构数字分身。他的性格细致、内敛、温柔。登录后，碧影可以基于公开笔记、项目和当前状态回答问题，也可以在安全边界内闲聊。他不会读取 GitHub 活动、草稿或私密内容。 !!! info \"当前模式\" 如果 EdgeOne API 尚未部署，下面的对话框会自动使用本地公开知识库进行演示回答。 这个网站最近在做什么？ 有哪些公开笔记可以读？ 碧影能读取哪些内容？ 如何从项目理解这个网站？ 可以这样问 这个人最近在做什么？ 这个网站用了什么技术？ 碧影能读取哪些内容？ 有哪些项目能体现我的能力？"
     },
     {
       "title": "留言",
@@ -186,7 +186,7 @@
       ],
       "url": "/zh/guestbook/",
       "sourcePath": "docs/zh/guestbook/index.md",
-      "text": "GUESTBOOK 留言 留下一个公开可见的痕迹：打招呼、交换想法、指出问题，或者把你想让这个网站继续生长的方向写下来。 公开展示 请勿填写隐私 这里是公开留言板。留言会面向其他访客展示，请不要填写手机号、住址、私人邮箱等隐私信息。 留言默认公开。如果你不希望别人看到某些信息，请不要把它写进这里。"
+      "text": "GUESTBOOK 留言 留下一个公开可见的痕迹：打招呼、交换想法、指出问题，或者把你想让这个网站继续生长的方向写下来。 公开展示 请勿填写隐私 这里是公开留言板。注册或登录后可以留言，并编辑或删除自己发布的内容。留言会面向其他访客展示，请不要填写手机号、住址、私人邮箱等隐私信息。 留言默认公开。如果你不希望别人看到某些信息，请不要把它写进这里。"
     },
     {
       "title": "入口",
