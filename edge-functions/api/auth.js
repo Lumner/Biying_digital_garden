@@ -70,11 +70,18 @@ async function hashPassword(password, salt) {
 }
 
 function normalizeUsername(value) {
-  return String(value || "").trim().toLowerCase();
+  return String(value || "")
+    .normalize("NFKC")
+    .trim()
+    .toLowerCase();
 }
 
 function cleanDisplayName(value) {
   return String(value || "").replace(/[<>]/g, "").trim().slice(0, 40);
+}
+
+function isValidUsername(username) {
+  return /^[\p{Script=Han}a-z0-9_]{2,24}$/u.test(username);
 }
 
 function publicUser(user) {
@@ -129,10 +136,10 @@ async function requireSession(request, kv) {
 
 async function register(kv, body) {
   const username = normalizeUsername(body.username);
-  const displayName = cleanDisplayName(body.displayName || body.username);
+  const displayName = cleanDisplayName(username);
   const password = String(body.password || "");
 
-  if (!/^[a-z0-9_]{3,24}$/.test(username)) {
+  if (!isValidUsername(username)) {
     return json({ error: "invalid_username" }, { status: 400 });
   }
   if (displayName.length < 2) {

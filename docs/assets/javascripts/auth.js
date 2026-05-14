@@ -16,8 +16,7 @@
       title: zh ? "账户" : "Account",
       registerTitle: zh ? "注册" : "Register",
       loginTitle: zh ? "登录" : "Sign In",
-      username: zh ? "用户名（字母、数字、下划线）" : "Username (letters, numbers, underscore)",
-      displayName: zh ? "显示名称" : "Display name",
+      username: zh ? "用户名（中文、字母、数字、下划线）" : "Username (Chinese, letters, numbers, underscore)",
       password: zh ? "密码（至少 8 位）" : "Password (at least 8 characters)",
       register: zh ? "创建账户" : "Create account",
       login: zh ? "登录" : "Sign in",
@@ -27,7 +26,7 @@
       kv: zh ? "账户功能需要先在 EdgeOne 中绑定 BIYING_KV。" : "Accounts require BIYING_KV to be bound in EdgeOne.",
       badCredentials: zh ? "用户名或密码不正确。" : "The username or password is incorrect.",
       taken: zh ? "这个用户名已经被使用。" : "This username is already taken.",
-      invalidUsername: zh ? "用户名只能使用 3-24 位小写字母、数字和下划线。" : "Use 3-24 lowercase letters, numbers, or underscores.",
+      invalidUsername: zh ? "用户名只能使用 2-24 位中文、字母、数字和下划线。" : "Use 2-24 Chinese characters, letters, numbers, or underscores.",
       invalidPassword: zh ? "密码至少需要 8 位。" : "Password must be at least 8 characters.",
       saved: zh ? "已登录。" : "Signed in.",
       network: zh ? "连接失败，请稍后再试。" : "Connection failed. Please try again later."
@@ -154,7 +153,6 @@
         <form class="auth-card" data-auth-register>
           <h2>${text("registerTitle")}</h2>
           <input name="username" maxlength="24" autocomplete="username" placeholder="${text("username")}" />
-          <input name="displayName" maxlength="40" autocomplete="name" placeholder="${text("displayName")}" />
           <input name="password" type="password" maxlength="80" autocomplete="new-password" placeholder="${text("password")}" />
           <button type="submit">${text("register")}</button>
           <p class="meta-line" data-auth-register-message></p>
@@ -187,7 +185,6 @@
         await requestAuth({
           action: "register",
           username: data.get("username"),
-          displayName: data.get("displayName"),
           password: data.get("password")
         });
         form.reset();
