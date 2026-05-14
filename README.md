@@ -55,14 +55,17 @@ mkdocs build
 推荐构建配置：
 
 ```txt
+Install command:
+pip install -r requirements.txt
+
 Build command:
-pip install -r requirements.txt && python scripts/build_knowledge.py && mkdocs build
+python scripts/build_knowledge.py && mkdocs build --strict
 
 Output directory:
-site
+./site
 ```
 
-如果你不备案，可以先使用 EdgeOne Pages 默认域名或绑定一个不备案域名，选择「全球可用区，不含中国大陆」。这种方式麻烦最少，国内通常可连，但不等于大陆节点加速。
+当前部署路线是不注册域名，先使用 EdgeOne Pages 自动分配的默认访问域名。静态站点、HTTPS、双语页面、笔记、项目页、留言入口和碧影入口都可以先在默认域名上跑通。
 
 ## 环境变量
 
@@ -123,7 +126,7 @@ $$
 
 ## 下一步你需要完善的内容
 
-- EdgeOne Pages 生成真实访问域名后，将 `mkdocs.yml` 中的 `site_url` 从临时 GitHub Pages 风格地址替换为正式域名
+- EdgeOne Pages 生成默认访问域名后，将它写入 `mkdocs.yml` 的 `site_url`
 - `docs/zh/about.md` 和 `docs/en/about.md`
 - `docs/zh/projects/` 下的真实项目
 - `data/biying.persona.md` 中更贴近你的碧影设定

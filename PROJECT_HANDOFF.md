@@ -196,8 +196,8 @@ node --check edge-functions\api\admin-messages.js
 
 优先级从高到低：
 
-1. 用 EdgeOne Pages 生成的真实域名替换当前临时 `site_url`。
-2. 配置 EdgeOne Pages 部署，验证静态站点可访问。
+1. 配置 EdgeOne Pages 部署，使用平台自动分配的默认域名验证静态站点可访问。
+2. 拿到 EdgeOne 默认域名后，将它写入 `mkdocs.yml` 的 `site_url`。
 3. 配置 EdgeOne Functions、KV、模型 API Key，让碧影聊天和留言系统真正在线。
 4. 将 MathJax 改成本地资源，降低国内访问不稳定风险。
 5. 为英文课程笔记接入翻译 API 或人工校对，逐步补完整英文内容。
@@ -205,7 +205,7 @@ node --check edge-functions\api\admin-messages.js
 7. 加入留言管理界面，支持删除、隐藏、反垃圾和限流。
 8. 优化移动端视觉和长笔记阅读体验。
 9. 给碧影回答增加更清晰的来源引用展示。
-10. 推送到 GitHub，并把 EdgeOne 与仓库连接。
+10. 保持 GitHub 与 EdgeOne Pages 自动部署链路同步。
 
 ## 约定
 
