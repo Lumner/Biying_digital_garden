@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#why-i-built-it" class="md-skip">
+        <a href="#background" class="md-skip">
           跳转至
         </a>
       
@@ -1431,21 +1431,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#why-i-built-it" class="md-nav__link">
+  <a href="#background" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why I Built It
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tech-stack" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tech Stack
+        Background
       
     </span>
   </a>
@@ -1464,10 +1453,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#current-results" class="md-nav__link">
+  <a href="#tech-stack" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Current Results
+        Tech Stack
       
     </span>
   </a>
@@ -1475,10 +1464,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-i-want-to-improve" class="md-nav__link">
+  <a href="#results" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What I Want to Improve
+        Results
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limitations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next
       
     </span>
   </a>
@@ -1580,21 +1591,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#why-i-built-it" class="md-nav__link">
+  <a href="#background" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why I Built It
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tech-stack" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tech Stack
+        Background
       
     </span>
   </a>
@@ -1613,10 +1613,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#current-results" class="md-nav__link">
+  <a href="#tech-stack" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Current Results
+        Tech Stack
       
     </span>
   </a>
@@ -1624,10 +1624,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-i-want-to-improve" class="md-nav__link">
+  <a href="#results" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What I Want to Improve
+        Results
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limitations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next
       
     </span>
   </a>
@@ -1682,9 +1704,29 @@
 
 <p>This is the long-term personal website I am building for myself. It is not just a portfolio, and it is not only a chat demo. It brings public notes, project records, current status, a guestbook, and the digital persona "Biying" into one entrance.</p>
 <p>I want it to grow with my learning and building. Right now it may be a few course notes and a conversational entrance; later it can hold more real projects, debugging records, temporary thoughts, and a steadier deployment setup.</p>
-<h2 id="why-i-built-it">Why I Built It<a class="headerlink" href="#why-i-built-it" title="Permanent link">&para;</a></h2>
+<h2 id="background">Background<a class="headerlink" href="#background" title="Permanent link">&para;</a></h2>
 <p>I wanted a space that feels more stable than a social profile and more relaxed than a formal profile. Friends can see what I have been working on recently. People who are also interested in AI and engineering can follow the notes and projects into the actual process.</p>
 <p>Biying is the unusual part of this project. He is not an all-knowing substitute for me, just a gentle guide to public content: he reads what has already been published on the site, helps visitors find useful signals, and says he does not know when the material is not there.</p>
+<h2 id="what-i-did">What I Did<a class="headerlink" href="#what-i-did" title="Permanent link">&para;</a></h2>
+<div class="timeline-list">
+  <div class="timeline-item">
+    <strong>Site Structure</strong>
+    <span>Built the MkDocs Material site structure and planned pages for home, about, now, notes, projects, Biying, and guestbook.</span>
+  </div>
+  <div class="timeline-item">
+    <strong>Bilingual Content</strong>
+    <span>Designed the `/zh/` and `/en/` structure so navigation, pages, and public knowledge stay paired.</span>
+  </div>
+  <div class="timeline-item">
+    <strong>Note Import</strong>
+    <span>Imported three course notes, then fixed math rendering and chapter navigation for long lecture pages.</span>
+  </div>
+  <div class="timeline-item">
+    <strong>Biying and Guestbook</strong>
+    <span>Designed Biying's persona, readable scope, and refusal boundaries, then implemented the chat frontend, guestbook frontend, and EdgeOne Functions style API skeletons.</span>
+  </div>
+</div>
+
 <h2 id="tech-stack">Tech Stack<a class="headerlink" href="#tech-stack" title="Permanent link">&para;</a></h2>
 <div class="cyber-grid">
   <section class="cyber-card">
@@ -1705,19 +1747,7 @@
   </section>
 </div>
 
-<h2 id="what-i-did">What I Did<a class="headerlink" href="#what-i-did" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Built the MkDocs Material site structure and planned pages for home, about, now, notes, projects, Biying, and guestbook.</li>
-<li>Designed the <code>/zh/</code> and <code>/en/</code> bilingual content structure so Chinese and English navigation and pages stay paired.</li>
-<li>Imported and organized three course notes: discrete mathematics, computer systems fundamentals, and FDS data structures.</li>
-<li>Fixed math rendering in course notes so LaTeX can display correctly through MathJax.</li>
-<li>Reworked headings in long notes so the right sidebar can serve as a chapter index.</li>
-<li>Wrote <code>build_knowledge.py</code> to generate the public knowledge base that Biying can read.</li>
-<li>Designed Biying's persona, tone, readable scope, and refusal boundaries.</li>
-<li>Implemented the chat frontend, guestbook frontend, and EdgeOne Functions style API skeletons.</li>
-<li>Added deployment, architecture, and collaboration notes so the project can keep being maintained.</li>
-</ul>
-<h2 id="current-results">Current Results<a class="headerlink" href="#current-results" title="Permanent link">&para;</a></h2>
+<h2 id="results">Results<a class="headerlink" href="#results" title="Permanent link">&para;</a></h2>
 <ul>
 <li>The site can be built and previewed locally, and <code>mkdocs build --strict</code> passes.</li>
 <li>Chinese and English pages now have a clear structure for future content.</li>
@@ -1725,13 +1755,18 @@
 <li>Biying can answer questions related to site content from the public knowledge base.</li>
 <li>The guestbook and EdgeOne deployment route have a working foundation for a real online setup.</li>
 </ul>
-<h2 id="what-i-want-to-improve">What I Want to Improve<a class="headerlink" href="#what-i-want-to-improve" title="Permanent link">&para;</a></h2>
+<h2 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h2>
 <ul>
 <li>English course notes still need fuller translation and human review.</li>
 <li>Before Biying goes fully online, the backend needs real model keys, KV bindings, and rate limiting.</li>
 <li>The guestbook needs moderation, deletion, anti-spam, and a smoother admin flow.</li>
 <li>Mobile reading, long-note experience, and visual details can still be refined.</li>
+</ul>
+<h2 id="next">Next<a class="headerlink" href="#next" title="Permanent link">&para;</a></h2>
+<ul>
 <li>Project pages need more real work, reflections, and progress notes over time.</li>
+<li>Connect EdgeOne Functions, KV, model keys, and public source citations into real online behavior.</li>
+<li>Keep future projects on the same structure: background, what I did, stack, results, limitations, and next steps.</li>
 </ul>
 
 

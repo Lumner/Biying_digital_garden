@@ -44,6 +44,15 @@ tags:
   </div>
 </section>
 
+<section class="biying-presence" aria-label="Biying introduction">
+  <div>
+    <span class="biying-presence__hello">Hello, it is nice to meet you.</span>
+    <h2>Biying sits here as a guide to public content.</h2>
+    <p>He is not a customer service button or an all-knowing assistant. Biying only reads pages already published on this site: notes, projects, now, and about. If the public material does not contain an answer, he says so.</p>
+  </div>
+  <a class="biying-presence__link" href="./avatar/">Talk to Biying</a>
+</section>
+
 ## Public Signals
 
 <p class="section-lede">This is not a finished portfolio. It is a living entrance that can keep growing through notes, projects, current updates, and conversations with Biying.</p>

@@ -13,6 +13,11 @@
     const copy = {
       placeholder: zh ? "问问碧影：这个人最近在做什么？" : "Ask Biying: what is this person working on?",
       send: zh ? "发送" : "Send",
+      headerTitle: zh ? "你好，很高兴认识你。" : "Hello, it is nice to meet you.",
+      headerScope: zh
+        ? "碧影只会回答网站公开内容；没有公开资料时会直接说明。"
+        : "Biying only answers from public site content; when the material is missing, he says so.",
+      sources: zh ? "来源" : "Sources",
       initial: zh
         ? "你好，很高兴认识你。我是碧影，只读取这个网站公开发布的内容。你可以问我关于主人、项目、笔记和当前状态的问题，也可以和我闲聊。"
         : "Hello, it is nice to meet you. I am Biying. I only read public content from this site, and I can talk about the owner, projects, notes, current status, or simply chat.",
@@ -25,10 +30,30 @@
     return copy[key];
   }
 
-  function addMessage(log, role, content) {
+  function escapeHtml(value) {
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
+  function renderSources(sources) {
+    const safeSources = (sources || []).filter((source) => source && source.url).slice(0, 4);
+    if (!safeSources.length) return "";
+    const links = safeSources.map((source) => {
+      const title = escapeHtml(source.title || source.url);
+      const url = escapeHtml(source.url);
+      return `<a href="${url}">${title}</a>`;
+    }).join("");
+    return `<div class="biying-sources"><span>${text("sources")}</span>${links}</div>`;
+  }
+
+  function addMessage(log, role, content, sources = []) {
     const item = document.createElement("div");
     item.className = `biying-message ${role}`;
-    item.innerHTML = content.replace(/\n/g, "<br>");
+    item.innerHTML = `${escapeHtml(content).replace(/\n/g, "<br>")}${renderSources(sources)}`;
     log.appendChild(item);
     log.scrollTop = log.scrollHeight;
     return item;
@@ -67,8 +92,8 @@
 
     if (!ranked.length) {
       return isChinesePage()
-        ? `${text("offline")}\n\n公开资料里还没有直接相关内容。你可以试着问：项目、笔记、现在在做什么、数学公式。`
-        : `${text("offline")}\n\nI did not find a direct match in the public materials. Try asking about projects, notes, current work, or math formulas.`;
+        ? { answer: `${text("offline")}\n\n公开资料里还没有直接相关内容。你可以试着问：项目、笔记、现在在做什么、数学公式。`, sources: [] }
+        : { answer: `${text("offline")}\n\nI did not find a direct match in the public materials. Try asking about projects, notes, current work, or math formulas.`, sources: [] };
     }
 
     const intro = isChinesePage()
@@ -77,9 +102,12 @@
     const lines = ranked.map(({ item }) => {
       const title = item.title || item.url;
       const summary = item.summary || (item.text || "").slice(0, 180);
-      return `- <a href="${item.url}">${title}</a>：${summary}`;
+      return `- ${title}：${summary}`;
     });
-    return `${intro}\n${lines.join("\n")}`;
+    return {
+      answer: `${intro}\n${lines.join("\n")}`,
+      sources: ranked.map(({ item }) => ({ title: item.title || item.url, url: item.url }))
+    };
   }
 
   async function askApi(query) {
@@ -93,7 +121,10 @@
     });
     if (!response.ok) throw new Error("chat api failed");
     const data = await response.json();
-    return data.answer || "";
+    return {
+      answer: data.answer || "",
+      sources: Array.isArray(data.sources) ? data.sources : []
+    };
   }
 
   function mount(root) {
@@ -101,6 +132,10 @@
     root.dataset.ready = "true";
 
     root.innerHTML = `
+      <div class="biying-chat__header">
+        <strong>${text("headerTitle")}</strong>
+        <span>${text("headerScope")}</span>
+      </div>
       <div class="biying-chat__log" aria-live="polite"></div>
       <form class="biying-chat__form">
         <textarea rows="3" maxlength="900" placeholder="${text("placeholder")}"></textarea>
@@ -132,7 +167,7 @@
         } catch (error) {
           answer = await localAnswer(query);
         }
-        pending.innerHTML = answer.replace(/\n/g, "<br>");
+        pending.innerHTML = `${escapeHtml(answer.answer || "").replace(/\n/g, "<br>")}${renderSources(answer.sources)}`;
       } catch (error) {
         pending.textContent = text("error");
       } finally {
