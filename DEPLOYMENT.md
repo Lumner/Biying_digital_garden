@@ -20,6 +20,10 @@ git push -u origin main
 https://github.com/Lumner/Biying_digital_garden
 ```
 
+可以从这个 EdgeOne Pages 创建入口开始导入：
+
+[使用 EdgeOne Pages 部署](https://edgeone.ai/pages/new?repository-url=https%3A%2F%2Fgithub.com%2FLumner%2FBiying_digital_garden&repository-name=Biying_digital_garden&project-name=biying-digital-garden&install-command=pip%20install%20-r%20requirements.txt&build-command=python%20scripts%2Fbuild_knowledge.py%20%26%26%20mkdocs%20build%20--strict&output-directory=.%2Fsite)
+
 构建命令：
 
 ```bash
@@ -30,6 +34,16 @@ pip install -r requirements.txt && python scripts/build_knowledge.py && mkdocs b
 
 ```txt
 site
+```
+
+仓库根目录已经包含 `edgeone.json`，用于让 EdgeOne Pages 自动读取构建命令和输出目录：
+
+```json
+{
+  "installCommand": "pip install -r requirements.txt",
+  "buildCommand": "python scripts/build_knowledge.py && mkdocs build --strict",
+  "outputDirectory": "./site"
+}
 ```
 
 ## 3. Functions
