@@ -49,9 +49,7 @@
 - 完成碧影 persona 设定
 - 完成碧影聊天前端和 API 雏形
 - 完成留言板前端和 API 雏形
-- 完成项目页：
-  - 个人网页 + 数字分身搭建
-  - 碧影数字花园
+- 完成合并后的项目页：个人数字花园与碧影
 - 删除站内面向特定用途的显式求职导向文案，让网站保持个人数字空间气质
 - 完成 `ARCHITECTURE.md` 架构说明
 - 完成 Git 初始提交
@@ -198,7 +196,7 @@ node --check edge-functions\api\admin-messages.js
 
 优先级从高到低：
 
-1. 替换 `Your Name`、仓库链接、站点 URL 等占位信息。
+1. 用 EdgeOne Pages 生成的真实域名替换当前临时 `site_url`。
 2. 配置 EdgeOne Pages 部署，验证静态站点可访问。
 3. 配置 EdgeOne Functions、KV、模型 API Key，让碧影聊天和留言系统真正在线。
 4. 将 MathJax 改成本地资源，降低国内访问不稳定风险。
@@ -237,4 +235,3 @@ avatar_readable: true
 ```txt
 这是一个延续项目。请先阅读项目根目录的 PROJECT_HANDOFF.md、ARCHITECTURE.md、README.md 和最近的 git diff，然后总结你理解的当前状态，再继续完成 PROJECT_HANDOFF.md 里的下一步任务。
 ```
-

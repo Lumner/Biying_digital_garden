@@ -6,13 +6,19 @@
 git add .
 git commit -m "Initial Biying digital garden"
 git branch -M main
-git remote add origin https://github.com/your-name/biying-digital-garden.git
+git remote add origin https://github.com/Lumner/Biying_digital_garden.git
 git push -u origin main
 ```
 
 ## 2. EdgeOne Pages
 
 在 EdgeOne Pages 中导入 GitHub 仓库。
+
+仓库地址：
+
+```txt
+https://github.com/Lumner/Biying_digital_garden
+```
 
 构建命令：
 
@@ -84,4 +90,3 @@ guestbook_*
 - 加速区域选择「全球可用区，不含中国大陆」。
 
 这条路线成本低、流程简单，但不是中国大陆节点加速。
-

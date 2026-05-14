@@ -233,22 +233,15 @@ Node 侧配置。当前主要用于预留 EdgeOne CLI：
 
 ### `docs/zh/projects/personal-site-avatar.md`
 
-项目页：个人网页 + 数字分身搭建。
+项目页：个人数字花园与碧影。
 
-说明这个网站项目的：
+这是合并后的主网站项目页，说明这个站点如何把公开笔记、项目记录、留言板和数字分身碧影放在同一个长期入口里。页面包含：
 
 - 背景
 - 技术栈
 - 你做了什么
-- 成果
-- 不足
-- 下一步
-
-### `docs/zh/projects/biying-site.md`
-
-项目页：碧影数字花园。
-
-更偏技术说明，用于描述 MkDocs + EdgeOne + 数字分身这个站点项目。
+- 当前成果
+- 后续改进
 
 ## 英文页面：`docs/en/`
 
@@ -306,11 +299,7 @@ Node 侧配置。当前主要用于预留 EdgeOne CLI：
 
 ### `docs/en/projects/personal-site-avatar.md`
 
-英文项目页：Personal Website + Digital Persona。
-
-### `docs/en/projects/biying-site.md`
-
-英文项目页：Biying Digital Garden。
+英文项目页：Personal Digital Garden + Biying。
 
 ## 静态资源：`docs/assets/`
 
@@ -760,4 +749,3 @@ node --check edge-functions\api\admin-messages.js
 ```txt
 http://127.0.0.1:8000/zh/
 ```
-

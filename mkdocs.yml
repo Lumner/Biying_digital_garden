@@ -1,10 +1,10 @@
 site_name: 碧影数字花园
 site_description: 一个双语、赛博风格、可对话的个人数字网站。
-site_author: Your Name
-site_url: https://example.com/
+site_author: Lumner
+site_url: https://lumner.github.io/Biying_digital_garden/
 
-repo_name: your-name/biying-digital-garden
-repo_url: https://github.com/your-name/biying-digital-garden
+repo_name: Lumner/Biying_digital_garden
+repo_url: https://github.com/Lumner/Biying_digital_garden
 
 theme:
   name: material
@@ -17,8 +17,8 @@ theme:
   font:
     text: Noto Sans SC
     code: JetBrains Mono
-  favicon: assets/images/favicon.svg
-  logo: assets/images/favicon.svg
+  favicon: assets/images/favicon-pikachu.png
+  logo: assets/images/favicon-pikachu.png
   features:
     - navigation.tabs
     - navigation.sections
@@ -41,8 +41,7 @@ nav:
       - FDS 数据结构基础讲义: zh/notes/fds-data-structures-lecture.md
   - 项目:
       - 项目首页: zh/projects/index.md
-      - 个人网页 + 数字分身搭建: zh/projects/personal-site-avatar.md
-      - 碧影站点: zh/projects/biying-site.md
+      - 个人数字花园与碧影: zh/projects/personal-site-avatar.md
   - 碧影: zh/avatar/index.md
   - 留言: zh/guestbook/index.md
   - Home: en/index.md
@@ -57,8 +56,7 @@ nav:
       - FDS Data Structures Fundamentals Lecture Notes: en/notes/fds-data-structures-lecture.md
   - Projects:
       - Projects Home: en/projects/index.md
-      - Personal Website + Digital Persona: en/projects/personal-site-avatar.md
-      - Biying Site: en/projects/biying-site.md
+      - Personal Digital Garden + Biying: en/projects/personal-site-avatar.md
   - Biying: en/avatar/index.md
   - Guestbook: en/guestbook/index.md
 
@@ -104,5 +102,5 @@ extra:
   generator: false
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/your-name
+      link: https://github.com/Lumner
       name: GitHub

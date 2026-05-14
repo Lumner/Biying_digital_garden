@@ -13,7 +13,7 @@ tags:
     <div class="cyber-kicker">BIYING DIGITAL GARDEN</div>
     <h1 class="cyber-title">Biying Online</h1>
     <p class="cyber-subtitle">
-      This is a bilingual personal digital site: public notes, active projects, a continuously updated profile, and a fictional digital persona that only reads public web content.
+      This is a bilingual personal digital garden: public notes, active projects, recent updates, and a fictional digital persona that only reads public web content.
     </p>
     <div class="cyber-actions">
       <a class="cyber-button" href="./avatar/">Talk to Biying</a>
@@ -35,17 +35,17 @@ tags:
 <div class="cyber-grid">
   <section class="cyber-card">
     <h3>Notes</h3>
-    <p>Learning records, math, AI, engineering, and long-term thinking. Chinese is the source language, and English pages can be AI-translated and reviewed.</p>
+    <p>Learning records, math, AI, engineering, and thoughts that are slowly taking shape. Chinese is the source language, and English stays in step as much as possible.</p>
     <a href="./notes/">Read notes</a>
   </section>
   <section class="cyber-card">
     <h3>Projects</h3>
-    <p>What is being built and what has been completed. The work itself should reveal capability and judgment.</p>
+    <p>Work I am seriously building, along with why it is shaped this way and what still needs care.</p>
     <a href="./projects/">View projects</a>
   </section>
   <section class="cyber-card">
     <h3>Biying</h3>
-    <p>Biying is a fictional persona. She can introduce public content and chat casually, but she cannot access private materials.</p>
+    <p>Biying is a fictional persona. He can introduce public content and chat casually, but he cannot access private materials.</p>
     <a href="./avatar/">Start chat</a>
   </section>
   <section class="cyber-card">
@@ -68,6 +68,6 @@ tags:
   </div>
   <div class="signal-item">
     <strong>Visitors</strong>
-    <span>Understand my skills through public work, writing quality, and sustained records.</span>
+    <span>Understand my growing skill structure through public work, writing, and sustained records.</span>
   </div>
 </div>

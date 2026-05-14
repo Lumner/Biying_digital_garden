@@ -121,9 +121,9 @@ $$
 $$
 ```
 
-## 下一步你需要替换的内容
+## 下一步你需要完善的内容
 
-- `mkdocs.yml` 中的 `site_author`、`repo_url`
+- EdgeOne Pages 生成真实访问域名后，将 `mkdocs.yml` 中的 `site_url` 从临时 GitHub Pages 风格地址替换为正式域名
 - `docs/zh/about.md` 和 `docs/en/about.md`
 - `docs/zh/projects/` 下的真实项目
 - `data/biying.persona.md` 中更贴近你的碧影设定

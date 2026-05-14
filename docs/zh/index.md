@@ -13,7 +13,7 @@ tags:
     <div class="cyber-kicker">BIYING DIGITAL GARDEN</div>
     <h1 class="cyber-title">碧影在线</h1>
     <p class="cyber-subtitle">
-      这里是一个双语的个人数字网站：公开笔记、正在推进的项目、可持续更新的自我介绍，以及一个只读取公开网页内容的虚构数字分身。
+      这里是一个双语的个人数字花园：公开笔记、正在推进的项目、一些近况，以及一个只读取公开网页内容的虚构数字分身。
     </p>
     <div class="cyber-actions">
       <a class="cyber-button" href="./avatar/">和碧影对话</a>
@@ -35,17 +35,17 @@ tags:
 <div class="cyber-grid">
   <section class="cyber-card">
     <h3>笔记</h3>
-    <p>沉淀学习、数学、AI、工程和长期思考。中文为主源，英文由 AI 翻译后再人工校对。</p>
+    <p>记录学习、数学、AI、工程和一些慢慢成形的想法。中文为主源，英文尽量同步维护。</p>
     <a href="./notes/">阅读笔记</a>
   </section>
   <section class="cyber-card">
     <h3>项目</h3>
-    <p>展示正在做和已经完成的内容。项目本身会说明能力、风格和判断。</p>
+    <p>放正在认真推进的作品，也记录它们为什么这样做、哪里还不够好。</p>
     <a href="./projects/">查看项目</a>
   </section>
   <section class="cyber-card">
     <h3>碧影</h3>
-    <p>碧影是虚构人格。她可以介绍公开内容，也可以闲聊，但不会访问未公开资料。</p>
+    <p>碧影是虚构人格。他可以介绍公开内容，也可以闲聊，但不会访问未公开资料。</p>
     <a href="./avatar/">启动对话</a>
   </section>
   <section class="cyber-card">
@@ -68,6 +68,6 @@ tags:
   </div>
   <div class="signal-item">
     <strong>访客</strong>
-    <span>通过公开作品、表达质量和持续记录了解我的能力结构。</span>
+    <span>通过公开作品、表达方式和持续记录了解我正在形成的能力结构。</span>
   </div>
 </div>

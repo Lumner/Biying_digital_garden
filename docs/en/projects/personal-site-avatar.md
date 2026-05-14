@@ -1,6 +1,6 @@
 ---
-title: Personal Website + Digital Persona
-summary: A bilingual personal website for course notes, project records, and current status, with Biying as a male fictional digital persona for public-content conversations.
+title: Personal Digital Garden + Biying
+summary: A bilingual personal website project that brings public notes, project records, a guestbook, and the Biying digital persona into one long-term entrance.
 public: true
 avatar_readable: true
 tags:
@@ -11,71 +11,63 @@ tags:
   - edgeone
 ---
 
-# Personal Website + Digital Persona
+# Personal Digital Garden + Biying
 
-This project is a personal digital website built for myself. It records course notes, project experience, current learning directions, and public personal updates. It also includes "Biying", a male fictional digital persona who helps visitors understand the site's public content through conversation.
+This is the long-term personal website I am building for myself. It is not just a portfolio, and it is not only a chat demo. It brings public notes, project records, current status, a guestbook, and the digital persona "Biying" into one entrance.
 
-## Background
+I want it to grow with my learning and building. Right now it may be a few course notes and a conversational entrance; later it can hold more real projects, debugging records, temporary thoughts, and a steadier deployment setup.
 
-I wanted a long-term space with a stronger sense of life. It should collect my learning process, course notes, project records, and temporary thoughts. For friends, it answers "What are you working on now?" For other visitors, it shows my technical interests, communication ability, and habit of building things continuously.
+## Why I Built It
 
-I also wanted to place AI collaboration into something visitors can actually open and use, instead of leaving it as a local demo. Biying is part of that experiment: he only reads public website content, answers in a RAG-like way, and can chat casually within safe boundaries.
+I wanted a space that feels more stable than a social profile and more relaxed than a resume. Friends can see what I have been working on recently. People who are also interested in AI and engineering can follow the notes and projects into the actual process.
+
+Biying is the unusual part of this project. He is not an all-knowing substitute for me, just a gentle guide to public content: he reads what has already been published on the site, helps visitors find useful signals, and says he does not know when the material is not there.
 
 ## Tech Stack
 
 <div class="cyber-grid">
   <section class="cyber-card">
-    <h3>Content and Site</h3>
-    <p>MkDocs Material, Markdown, Pymdown Extensions, and MathJax for a maintainable note-oriented static website.</p>
+    <h3>Content Site</h3>
+    <p>MkDocs Material, Markdown, Pymdown Extensions, and MathJax for notes, page structure, and math rendering.</p>
   </section>
   <section class="cyber-card">
-    <h3>Bilingual Content Engineering</h3>
-    <p>Chinese and English page structure, language-switching navigation, course-note import scripts, and public knowledge generation.</p>
+    <h3>Bilingual Content</h3>
+    <p>Chinese is the source language, English stays in step, and navigation, pages, and public knowledge are maintained in pairs.</p>
   </section>
   <section class="cyber-card">
-    <h3>Digital Persona</h3>
-    <p>EdgeOne Functions style chat API, public knowledge retrieval, persona prompt design, and DeepSeek/OpenAI-compatible model access.</p>
+    <h3>Biying Chat</h3>
+    <p>Public knowledge generation, persona design, EdgeOne Functions style APIs, and DeepSeek/OpenAI-compatible model access.</p>
   </section>
   <section class="cyber-card">
     <h3>Interaction and Deployment</h3>
-    <p>Vanilla JavaScript, cyber-style CSS, public guestbook, EdgeOne Pages deployment plan, and GitHub CI validation.</p>
+    <p>Vanilla JavaScript, cyber-style CSS, public guestbook, EdgeOne Pages/Functions/KV deployment path, and GitHub CI.</p>
   </section>
 </div>
 
 ## What I Did
 
-- Built the MkDocs Material project structure and planned pages for home, about, now, notes, projects, Biying, and guestbook.
-- Designed the `/zh/` and `/en/` bilingual content structure and implemented whole-site language switching without crowding the sidebar with both languages at once.
-- Imported and organized course notes for discrete mathematics, computer systems fundamentals, and FDS data structures.
-- Fixed math rendering issues in course notes by converting code-styled LaTeX back into MathJax-renderable formulas.
-- Reworked heading levels for long lecture notes so the right sidebar can serve as a chapter index.
-- Wrote `build_knowledge.py` to turn public pages into a public knowledge base for Biying.
-- Designed Biying as a male fictional persona, including his tone, knowledge scope, and safety boundaries.
-- Implemented a chat API skeleton that answers from public context and leaves room for DeepSeek/OpenAI-compatible model providers.
-- Implemented a public guestbook frontend and an EdgeOne KV style API skeleton.
-- Wrote deployment and multi-agent collaboration documentation for future extension.
+- Built the MkDocs Material site structure and planned pages for home, about, now, notes, projects, Biying, and guestbook.
+- Designed the `/zh/` and `/en/` bilingual content structure so Chinese and English navigation and pages stay paired.
+- Imported and organized three course notes: discrete mathematics, computer systems fundamentals, and FDS data structures.
+- Fixed math rendering in course notes so LaTeX can display correctly through MathJax.
+- Reworked headings in long notes so the right sidebar can serve as a chapter index.
+- Wrote `build_knowledge.py` to generate the public knowledge base that Biying can read.
+- Designed Biying's persona, tone, readable scope, and refusal boundaries.
+- Implemented the chat frontend, guestbook frontend, and EdgeOne Functions style API skeletons.
+- Added deployment, architecture, and collaboration notes so the project can keep being maintained.
 
-## Results
+## Current Results
 
-- The website can be built and previewed locally, and `mkdocs build --strict` passes.
-- The bilingual personal website now includes a profile, current status, project pages, course notes, and a digital persona entrance.
-- Three course notes have been organized as website pages with math rendering and right-sidebar chapter navigation.
-- Biying can read the public knowledge base and answer questions related to public site content.
-- The guestbook system and EdgeOne deployment route have a working foundation.
-- The project structure is ready for adding more notes, projects, and bilingual pages.
+- The site can be built and previewed locally, and `mkdocs build --strict` passes.
+- Chinese and English pages now have a clear structure for future content.
+- Three course notes have become readable website pages with math rendering and chapter navigation.
+- Biying can answer questions related to site content from the public knowledge base.
+- The guestbook and EdgeOne deployment route have a working foundation for a real online setup.
 
-## Limitations
+## What I Want to Improve
 
-- Some English note pages are still companion/overview versions. A translation API or manual review is needed for full English versions.
-- Biying's backend still needs real EdgeOne environment variables, model keys, KV bindings, and rate limiting before production use.
-- The guestbook system needs stronger moderation, deletion, anti-spam, and admin tools.
-- The visual direction already has a cyber style, but mobile details, readability, and motion can still be improved.
-- The project is still early and needs more real project records, learning summaries, and personal writing.
-
-## Next Steps
-
-- Deploy to EdgeOne Pages and configure Functions, KV, and environment variables.
-- Add more real project pages.
-- Build a more stable bilingual translation workflow.
-- Improve Biying's retrieval quality, source citation, and refusal behavior.
-- Keep refining the visual style so the site feels cyber, personal, and comfortable to read.
+- English course notes still need fuller translation and human review.
+- Before Biying goes fully online, the backend needs real model keys, KV bindings, and rate limiting.
+- The guestbook needs moderation, deletion, anti-spam, and a smoother admin flow.
+- Mobile reading, long-note experience, and visual details can still be refined.
+- Project pages need more real work, reflections, and progress notes over time.
