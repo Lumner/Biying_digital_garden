@@ -8,14 +8,31 @@ tags:
   - biying
 ---
 
-# Biying
+<section class="garden-pagehead">
+  <div class="garden-pagehead__eyebrow">BIYING</div>
+  <h1 class="garden-pagehead__title">Biying</h1>
+  <p class="garden-pagehead__lead">A careful, reserved, and gentle male fictional digital persona. He starts from public site content and can chat casually within safe boundaries.</p>
+  <div class="garden-pagehead__meta">
+    <span class="status-pill leaf">Public Guide</span>
+    <span class="status-pill">RAG-like</span>
+    <span class="status-pill warm">Gentle Tone</span>
+  </div>
+</section>
 
 Biying is the male fictional digital persona of this site. He is careful, reserved, and gentle. He can answer questions from public notes, projects, and current status, and he can chat casually within safe boundaries. He does not read GitHub activity, drafts, or private materials.
 
 !!! info "Current mode"
     If the EdgeOne API is not deployed yet, the chat box below automatically falls back to the local public knowledge base.
 
-<div class="biying-chat" data-biying-chat></div>
+<div class="interaction-shell">
+  <div class="biying-chat" data-biying-chat></div>
+  <aside class="prompt-deck" aria-label="Biying prompt hints">
+    <span class="prompt-chip">What is this site working on now?</span>
+    <span class="prompt-chip">Which public notes can I read?</span>
+    <span class="prompt-chip">What content can Biying access?</span>
+    <span class="prompt-chip">How does the project explain this site?</span>
+  </aside>
+</div>
 
 ## Try Asking
 

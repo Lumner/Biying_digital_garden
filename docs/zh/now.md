@@ -11,18 +11,39 @@ tags:
   - fullstack
 ---
 
-# 现在
+<section class="garden-pagehead">
+  <div class="garden-pagehead__eyebrow">NOW</div>
+  <h1 class="garden-pagehead__title">现在</h1>
+  <p class="garden-pagehead__lead">一个近期状态切片：正在做什么、正在学什么，以及哪些边界需要被记住。</p>
+  <div class="garden-pagehead__meta">
+    <span class="status-pill">更新：2026-05-13</span>
+    <span class="status-pill leaf">公开状态</span>
+    <span class="status-pill warm">持续变化</span>
+  </div>
+</section>
 
-<span class="status-pill">更新：2026-05-13</span>
-
-这页用来回答“我最近在做什么”。它不是履历，也不是计划书，只是一个比较新的状态切片：最近在学什么、做什么，哪些方向正在慢慢变清楚。
+这页用来回答“我最近在做什么”。它不是正式介绍，也不是计划书，只是一个比较新的状态切片：最近在学什么、做什么，哪些方向正在慢慢变清楚。
 
 ## 正在推进
 
-- 打磨这个基于 MkDocs 的双语个人数字花园，让公开笔记、项目、留言和碧影能放在同一个入口里。
-- 继续整理课程笔记和项目记录，尽量让中文主源和英文版本保持同步。
-- 让碧影更像一个温和的向导：只基于公开内容回答，也知道什么时候该说“不知道”。
-- 练习用 AI 协作把想法做完整，从页面和接口一直走到部署与复盘。
+<div class="timeline-list">
+  <div class="timeline-item">
+    <strong>数字花园</strong>
+    <span>打磨这个基于 MkDocs 的双语个人数字花园，让公开笔记、项目、留言和碧影能放在同一个入口里。</span>
+  </div>
+  <div class="timeline-item">
+    <strong>笔记同步</strong>
+    <span>继续整理课程笔记和项目记录，尽量让中文主源和英文版本保持同步。</span>
+  </div>
+  <div class="timeline-item">
+    <strong>碧影边界</strong>
+    <span>让碧影更像一个温和的向导：只基于公开内容回答，也知道什么时候该说“不知道”。</span>
+  </div>
+  <div class="timeline-item">
+    <strong>AI 协作</strong>
+    <span>练习用 AI 协作把想法做完整，从页面和接口一直走到部署与复盘。</span>
+  </div>
+</div>
 
 ## 正在学习
 

@@ -7,7 +7,16 @@ tags:
   - projects
 ---
 
-# 项目
+<section class="garden-pagehead">
+  <div class="garden-pagehead__eyebrow">PROJECTS</div>
+  <h1 class="garden-pagehead__title">项目</h1>
+  <p class="garden-pagehead__lead">公开记录正在认真推进的作品：为什么做、怎样做、走到哪里、还有什么不足。</p>
+  <div class="garden-pagehead__meta">
+    <span class="status-pill">作品记录</span>
+    <span class="status-pill leaf">过程复盘</span>
+    <span class="status-pill warm">持续补充</span>
+  </div>
+</section>
 
 <p class="section-lede">这里放我正在认真推进、也愿意公开复盘的项目。每个项目都尽量写清楚它为什么存在、我做了哪些取舍、现在到了哪一步，以及后面还想怎么改。</p>
 

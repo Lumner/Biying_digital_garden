@@ -8,7 +8,15 @@ tags:
   - mkdocs
 ---
 
-# 数学实验
+<section class="garden-pagehead">
+  <div class="garden-pagehead__eyebrow">MATH LAB</div>
+  <h1 class="garden-pagehead__title">数学实验</h1>
+  <p class="garden-pagehead__lead">一个小型渲染实验室，用来确认行内公式、块级公式和矩阵在网站里都能被稳定排版。</p>
+  <div class="garden-pagehead__meta">
+    <span class="status-pill">MathJax</span>
+    <span class="status-pill leaf">Markdown</span>
+  </div>
+</section>
 
 这页用于测试 `.md` 文件中的数学公式渲染。
 

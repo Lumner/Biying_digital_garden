@@ -11,9 +11,18 @@ tags:
   - writing
 ---
 
-# About Me
+<section class="garden-pagehead">
+  <div class="garden-pagehead__eyebrow">ABOUT</div>
+  <h1 class="garden-pagehead__title">About Me</h1>
+  <p class="garden-pagehead__lead">An AI student practicing full-stack building, long-form notes, and small systems that can be opened, used, and improved.</p>
+  <div class="garden-pagehead__meta">
+    <span class="status-pill leaf">Class of 2025</span>
+    <span class="status-pill">Artificial Intelligence</span>
+    <span class="status-pill warm">Long-Term Notes</span>
+  </div>
+</section>
 
-I am a **Class of 2025 undergraduate student majoring in Artificial Intelligence at XX University**. This site is my public digital garden: a place for learning notes, project process, current status, and Biying, a digital persona that helps visitors enter the public content through conversation.
+I am a **Class of 2025 undergraduate student majoring in Artificial Intelligence at Zhejiang University**. This site is my public digital garden: a place for learning notes, project process, current status, and Biying, a digital persona that helps visitors enter the public content through conversation.
 
 I do not want this place to feel like a stiff profile. I want it to feel more like a room that is still growing: you can see what I am learning and building, and also catch a little of my judgment, curiosity, and everyday texture.
 
@@ -42,20 +51,20 @@ I also want the process to be honest. Notes should not only keep conclusions, bu
 
 ## Current Keywords
 
-<div class="signal-list">
-  <div class="signal-item">
+<div class="surface-grid">
+  <div class="surface-tile">
     <strong>Identity</strong>
     <span>Class of 2025 undergraduate AI student at Zhejiang University.</span>
   </div>
-  <div class="signal-item">
+  <div class="surface-tile">
     <strong>Interests</strong>
     <span>AI-assisted full-stack building, embodied intelligence, and long-form notes.</span>
   </div>
-  <div class="signal-item">
+  <div class="surface-tile">
     <strong>Status</strong>
     <span>Turning this site into a long-term entrance for learning, projects, and self-expression.</span>
   </div>
-  <div class="signal-item">
+  <div class="surface-tile">
     <strong>Looking For</strong>
     <span>People who enjoy AI, engineering, building tools, and living with curiosity.</span>
   </div>

@@ -11,7 +11,31 @@ tags:
   - edgeone
 ---
 
-# Personal Digital Garden + Biying
+<section class="garden-pagehead">
+  <div class="garden-pagehead__eyebrow">PROJECT CASE</div>
+  <h1 class="garden-pagehead__title">Personal Digital Garden + Biying</h1>
+  <p class="garden-pagehead__lead">A long-term entrance that brings public notes, project records, a guestbook, and Biying into one growing system.</p>
+  <div class="garden-pagehead__meta">
+    <span class="status-pill">MkDocs</span>
+    <span class="status-pill leaf">EdgeOne</span>
+    <span class="status-pill warm">Digital Persona</span>
+  </div>
+</section>
+
+<div class="project-brief">
+  <div>
+    <strong>Positioning</strong>
+    <span>A personal digital garden, not a one-off portfolio.</span>
+  </div>
+  <div>
+    <strong>Core</strong>
+    <span>Public content, bilingual notes, Biying chat, and guestbook.</span>
+  </div>
+  <div>
+    <strong>Status</strong>
+    <span>The static site can deploy; backend abilities keep improving.</span>
+  </div>
+</div>
 
 This is the long-term personal website I am building for myself. It is not just a portfolio, and it is not only a chat demo. It brings public notes, project records, current status, a guestbook, and the digital persona "Biying" into one entrance.
 
@@ -19,7 +43,7 @@ I want it to grow with my learning and building. Right now it may be a few cours
 
 ## Why I Built It
 
-I wanted a space that feels more stable than a social profile and more relaxed than a resume. Friends can see what I have been working on recently. People who are also interested in AI and engineering can follow the notes and projects into the actual process.
+I wanted a space that feels more stable than a social profile and more relaxed than a formal profile. Friends can see what I have been working on recently. People who are also interested in AI and engineering can follow the notes and projects into the actual process.
 
 Biying is the unusual part of this project. He is not an all-knowing substitute for me, just a gentle guide to public content: he reads what has already been published on the site, helps visitors find useful signals, and says he does not know when the material is not there.
 

@@ -11,7 +11,31 @@ tags:
   - edgeone
 ---
 
-# 个人数字花园与碧影
+<section class="garden-pagehead">
+  <div class="garden-pagehead__eyebrow">PROJECT CASE</div>
+  <h1 class="garden-pagehead__title">个人数字花园与碧影</h1>
+  <p class="garden-pagehead__lead">把公开笔记、项目记录、留言板和数字分身碧影放进同一个长期入口里，让内容、交互和部署一起生长。</p>
+  <div class="garden-pagehead__meta">
+    <span class="status-pill">MkDocs</span>
+    <span class="status-pill leaf">EdgeOne</span>
+    <span class="status-pill warm">数字分身</span>
+  </div>
+</section>
+
+<div class="project-brief">
+  <div>
+    <strong>定位</strong>
+    <span>个人数字花园，不是一次性作品集。</span>
+  </div>
+  <div>
+    <strong>核心</strong>
+    <span>公开内容、双语笔记、碧影对话、留言。</span>
+  </div>
+  <div>
+    <strong>状态</strong>
+    <span>静态站点已可部署，后端能力继续完善。</span>
+  </div>
+</div>
 
 这是我为自己搭建的长期个人网站。它不是单独的作品集，也不只是一个聊天 demo，而是把公开笔记、项目记录、当前状态、留言板和数字分身「碧影」放在同一个入口里。
 
@@ -19,7 +43,7 @@ tags:
 
 ## 为什么做
 
-我想有一个比社交主页更稳定、比简历更松弛的空间。朋友可以从这里知道我最近在折腾什么；同样对 AI 和工程感兴趣的人，可以顺着笔记和项目看到更具体的过程。
+我想有一个比社交主页更稳定、比正式介绍更松弛的空间。朋友可以从这里知道我最近在折腾什么；同样对 AI 和工程感兴趣的人，可以顺着笔记和项目看到更具体的过程。
 
 碧影是这个项目里比较特别的一部分。他不是“全知”的替身，只是一个温和的公开内容向导：读取网站里已经发布的内容，帮访客快速找到线索，也在没有资料时坦白说不知道。
 

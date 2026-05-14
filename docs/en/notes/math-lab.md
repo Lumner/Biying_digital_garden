@@ -8,7 +8,15 @@ tags:
   - mkdocs
 ---
 
-# Math Lab
+<section class="garden-pagehead">
+  <div class="garden-pagehead__eyebrow">MATH LAB</div>
+  <h1 class="garden-pagehead__title">Math Lab</h1>
+  <p class="garden-pagehead__lead">A small rendering lab for checking inline formulas, block formulas, and matrices inside the site.</p>
+  <div class="garden-pagehead__meta">
+    <span class="status-pill">MathJax</span>
+    <span class="status-pill leaf">Markdown</span>
+  </div>
+</section>
 
 This page tests math rendering inside `.md` files.
 

@@ -11,18 +11,39 @@ tags:
   - fullstack
 ---
 
-# Now
+<section class="garden-pagehead">
+  <div class="garden-pagehead__eyebrow">NOW</div>
+  <h1 class="garden-pagehead__title">Now</h1>
+  <p class="garden-pagehead__lead">A recent slice of what I am building, learning, and keeping within clear public boundaries.</p>
+  <div class="garden-pagehead__meta">
+    <span class="status-pill">Updated: 2026-05-13</span>
+    <span class="status-pill leaf">Public Status</span>
+    <span class="status-pill warm">In Motion</span>
+  </div>
+</section>
 
-<span class="status-pill">Updated: 2026-05-13</span>
-
-This page answers: "What am I working on now?" It is not a resume or a roadmap, just a recent snapshot of what I am learning, building, and slowly figuring out.
+This page answers: "What am I working on now?" It is not a formal profile or a roadmap, just a recent snapshot of what I am learning, building, and slowly figuring out.
 
 ## In Progress
 
-- Refining this MkDocs-based bilingual digital garden so notes, projects, guestbook messages, and Biying can live behind one clear entrance.
-- Organizing course notes and project records while keeping the Chinese source and English version in step.
-- Making Biying feel more like a gentle guide: answering from public content and knowing when to say "I do not know."
-- Practicing AI-assisted building from pages and APIs all the way to deployment and reflection.
+<div class="timeline-list">
+  <div class="timeline-item">
+    <strong>Digital Garden</strong>
+    <span>Refining this MkDocs-based bilingual digital garden so notes, projects, guestbook messages, and Biying can live behind one clear entrance.</span>
+  </div>
+  <div class="timeline-item">
+    <strong>Notes in Sync</strong>
+    <span>Organizing course notes and project records while keeping the Chinese source and English version in step.</span>
+  </div>
+  <div class="timeline-item">
+    <strong>Biying's Boundary</strong>
+    <span>Making Biying feel more like a gentle guide: answering from public content and knowing when to say "I do not know."</span>
+  </div>
+  <div class="timeline-item">
+    <strong>AI Collaboration</strong>
+    <span>Practicing AI-assisted building from pages and APIs all the way to deployment and reflection.</span>
+  </div>
+</div>
 
 ## Learning
 

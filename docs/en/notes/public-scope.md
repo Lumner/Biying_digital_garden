@@ -8,7 +8,15 @@ tags:
   - avatar
 ---
 
-# Public Scope
+<section class="garden-pagehead">
+  <div class="garden-pagehead__eyebrow">PUBLIC SCOPE</div>
+  <h1 class="garden-pagehead__title">Public Scope</h1>
+  <p class="garden-pagehead__lead">Biying only reads content publicly published on this website. A clear boundary matters more than sounding clever.</p>
+  <div class="garden-pagehead__meta">
+    <span class="status-pill leaf">Public Content</span>
+    <span class="status-pill warm">Privacy Stays Out</span>
+  </div>
+</section>
 
 Biying's core rule is: **only read content publicly published on this website**.
 

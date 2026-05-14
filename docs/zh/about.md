@@ -11,7 +11,16 @@ tags:
   - writing
 ---
 
-# 关于我
+<section class="garden-pagehead">
+  <div class="garden-pagehead__eyebrow">ABOUT</div>
+  <h1 class="garden-pagehead__title">关于我</h1>
+  <p class="garden-pagehead__lead">一个正在学习人工智能、练习全栈构建，也认真记录过程的人。这里保留公开的学习、项目和一点日常温度。</p>
+  <div class="garden-pagehead__meta">
+    <span class="status-pill leaf">浙江大学 25 级</span>
+    <span class="status-pill">人工智能</span>
+    <span class="status-pill warm">长期记录</span>
+  </div>
+</section>
 
 我是 **浙江大学25级人工智能专业本科生**。这里是我的公开数字花园：放一些学习记录、项目过程、近期状态，也放一个名叫碧影的数字分身，方便访客用对话的方式进入这些公开内容。
 
@@ -42,20 +51,20 @@ tags:
 
 ## 当前关键词
 
-<div class="signal-list">
-  <div class="signal-item">
+<div class="surface-grid">
+  <div class="surface-tile">
     <strong>身份</strong>
     <span>浙江大学25级人工智能专业本科生。</span>
   </div>
-  <div class="signal-item">
+  <div class="surface-tile">
     <strong>兴趣</strong>
     <span>AI 协作式全栈构建、具身智能、长期写作。</span>
   </div>
-  <div class="signal-item">
+  <div class="surface-tile">
     <strong>状态</strong>
     <span>正在把这个网站打磨成长期记录学习、项目和自我表达的入口。</span>
   </div>
-  <div class="signal-item">
+  <div class="surface-tile">
     <strong>期待</strong>
     <span>认识同样喜欢 AI、工程、创造工具和认真生活的人。</span>
   </div>
