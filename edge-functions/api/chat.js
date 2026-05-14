@@ -2,7 +2,7 @@ const HEADERS = {
   "content-type": "application/json; charset=utf-8",
   "access-control-allow-origin": "*",
   "access-control-allow-methods": "POST, OPTIONS",
-  "access-control-allow-headers": "content-type"
+  "access-control-allow-headers": "content-type, authorization"
 };
 
 const PERSONA = `你是碧影，一个男性虚构赛博数字分身。
@@ -32,6 +32,29 @@ function getKv(env) {
   if (env && env.BIYING_KV) return env.BIYING_KV;
   if (typeof globalThis.BIYING_KV !== "undefined") return globalThis.BIYING_KV;
   return undefined;
+}
+
+function sessionKey(token) {
+  return `session_${token}`;
+}
+
+function readBearer(request) {
+  const header = request.headers.get("authorization") || "";
+  const match = header.match(/^Bearer\s+(.+)$/i);
+  return match ? match[1].trim() : "";
+}
+
+async function currentSession(request, kv) {
+  const token = readBearer(request);
+  if (!token || !kv || !kv.get) return undefined;
+  const raw = await kv.get(sessionKey(token), { type: "text" });
+  if (!raw) return undefined;
+  const session = JSON.parse(raw);
+  if (Date.parse(session.expiresAt) <= Date.now()) {
+    await kv.delete(sessionKey(token));
+    return undefined;
+  }
+  return session;
 }
 
 async function readKnowledge(env, request) {
@@ -116,6 +139,15 @@ export function onRequestOptions() {
 export async function onRequestPost(context) {
   try {
     const { request, env } = context;
+    const kv = getKv(env);
+    if (!kv || !kv.get) {
+      return json({ error: "kv_not_configured" }, { status: 503 });
+    }
+    const session = await currentSession(request, kv);
+    if (!session) {
+      return json({ error: "auth_required" }, { status: 401 });
+    }
+
     const body = await request.json();
     const message = String(body.message || "").trim().slice(0, 900);
     const locale = body.locale === "en" ? "en" : "zh";
@@ -134,6 +166,7 @@ export async function onRequestPost(context) {
 
     const answer = await callModel(env, [
       { role: "system", content: `${PERSONA}\n回答语言：${locale === "en" ? "English" : "中文"}` },
+      { role: "system", content: `当前登录访客显示名：${session.displayName || session.username}。不要透露他的账户信息。` },
       { role: "system", content: `PUBLIC_CONTEXT:\n${publicContext || "No matching public context."}` },
       { role: "user", content: message }
     ]);

@@ -42,14 +42,14 @@
 - 部署：优先 EdgeOne Pages
 - 仓库：GitHub
 
-推荐部署路径：
+当前部署路径：
 
-1. 先不购买域名。
-2. 使用 EdgeOne Pages 自动分配的免费访问域名。
-3. 跑通网站、碧影聊天、留言板、知识库。
-4. 以后如果用户愿意，再绑定自定义域名，例如 `biying.site`。
+1. 使用 EdgeOne Pages 部署 GitHub 仓库。
+2. 使用已购买并绑定的正式域名 `https://www.biying.site/`。
+3. 跑通网站、注册/登录、碧影聊天、留言板、知识库。
+4. 后续再补充 Functions、KV、模型 Key、留言管理和防刷能力。
 
-域名当前不是必需项。没有域名也可以完成绝大多数功能，包括主页、笔记、项目页、双语切换、数学公式、碧影聊天、公开留言和 HTTPS。
+域名已经不是阻塞项。当前重点是把账户、留言和碧影聊天跑通。
 
 ## 4. 当前项目目录
 
@@ -73,6 +73,7 @@ C:\Users\17597\Desktop\codex\biying-digital-garden
 - `docs/assets/knowledge/public-knowledge.json`：构建生成的公开知识库，供碧影读取。
 - `data/biying.persona.md`：碧影人格设定。
 - `edge-functions/api/chat.js`：碧影聊天 API 雏形。
+- `edge-functions/api/auth.js`：注册、登录、会话校验 API。
 - `edge-functions/api/messages.js`：公开留言 API 雏形。
 - `edge-functions/api/admin-messages.js`：留言管理 API 雏形。
 - `scripts/import_course_notes.py`：从 `note/` 导入课程笔记并生成中英文页面。
@@ -305,17 +306,17 @@ BIYING_ADMIN_TOKEN
 
 优先级从高到低：
 
-1. 部署到 EdgeOne Pages 免费域名，确认静态网站能访问。
-2. 拿到 EdgeOne 默认域名后，将它写入 `mkdocs.yml` 的 `site_url`。
-3. 配置 EdgeOne Functions，让 `/api/messages` 不再 404。
-4. 配置 EdgeOne KV，让公开留言可以持久化。
-5. 配置 `/api/chat` 的模型密钥，让碧影可以真实回答。
+1. 确认 `https://www.biying.site/` 上的 EdgeOne Pages 静态网站能访问。
+2. 保持 `mkdocs.yml` 的 `site_url` 为 `https://www.biying.site/`。
+3. 配置 EdgeOne Functions，让 `/api/auth`、`/api/messages`、`/api/chat` 不再 404。
+4. 配置 EdgeOne KV，让账户、会话和公开留言可以持久化。
+5. 配置 `/api/chat` 的模型密钥，让登录用户可以和碧影真实对话。
 6. 将 `docs/assets/knowledge/public-knowledge.json` 接入到碧影检索流程。
 7. 增加基础防刷逻辑，例如留言长度限制、频率限制、简单敏感词过滤。
 8. 优化移动端阅读体验。
 9. 完善英文翻译质量。
 10. 增加更多真实项目页。
-11. 网站稳定后，再考虑是否购买并绑定自定义域名。
+11. 网站稳定后，再考虑根域名 `https://biying.site/` 是否也要跳转到 `www.biying.site`。
 
 ## 12. 不要做的事
 

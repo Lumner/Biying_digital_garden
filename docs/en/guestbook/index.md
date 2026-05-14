@@ -17,7 +17,7 @@ tags:
   </div>
 </section>
 
-This is a public guestbook. Messages are visible to other visitors, so please do not include phone numbers, addresses, private emails, or other sensitive information.
+This is a public guestbook. After registering or signing in, you can post messages and edit or delete your own messages. Messages are visible to other visitors, so please do not include phone numbers, addresses, private emails, or other sensitive information.
 
 <p class="quiet-panel">Messages are public by default. If something should stay private, please do not put it here.</p>
 

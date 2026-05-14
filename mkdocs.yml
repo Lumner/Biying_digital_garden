@@ -1,6 +1,7 @@
 site_name: 碧影数字花园
 site_description: 一个双语、赛博风格、可对话的个人数字网站。
 site_author: Lumner
+site_url: https://www.biying.site/
 copyright: Copyright &copy; 2026-present 碧影 All Rights Reserved
 
 repo_name: Lumner/Biying_digital_garden
@@ -42,6 +43,7 @@ nav:
   - 项目:
       - 项目首页: zh/projects/index.md
       - 个人数字花园与碧影: zh/projects/personal-site-avatar.md
+  - 注册/登录: zh/register/index.md
   - 碧影: zh/avatar/index.md
   - 留言: zh/guestbook/index.md
   - Home: en/index.md
@@ -57,6 +59,7 @@ nav:
   - Projects:
       - Projects Home: en/projects/index.md
       - Personal Digital Garden + Biying: en/projects/personal-site-avatar.md
+  - Account: en/register/index.md
   - Biying: en/avatar/index.md
   - Guestbook: en/guestbook/index.md
 
@@ -96,6 +99,7 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - assets/javascripts/language-switch.js
   - assets/javascripts/random-note-cover.js
+  - assets/javascripts/auth.js
   - assets/javascripts/biying-chat.js
   - assets/javascripts/guestbook.js
 
