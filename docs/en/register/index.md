@@ -17,6 +17,6 @@ tags:
   </div>
 </section>
 
-This account is only for guestbook messages and Biying chat on this site. Please do not reuse an important password from another service, and do not include private information in public messages.
+This account is only for guestbook messages and Biying chat on this site. Please do not reuse an important password from another service, and do not include private information in public messages. If you forget your password, ask the site owner for a recovery code and reset it here.
 
 <div class="auth-panel" data-auth></div>

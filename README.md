@@ -85,6 +85,7 @@ DEEPSEEK_MODEL=deepseek-v4-flash
 OPENAI_API_KEY=可选
 OPENAI_MODEL=gpt-4.1-mini
 BIYING_ADMIN_TOKEN=留言管理 token
+BIYING_RECOVERY_TOKEN=密码恢复码（可选，建议单独设置）
 ```
 
 KV 绑定名建议：

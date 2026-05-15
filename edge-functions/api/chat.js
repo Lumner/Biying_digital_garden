@@ -28,6 +28,13 @@ function envValue(env, key, fallback = "") {
   return env && env[key] ? env[key] : fallback;
 }
 
+function codedError(code, message, status = 500) {
+  const error = new Error(message || code);
+  error.code = code;
+  error.status = status;
+  return error;
+}
+
 function getKv(env) {
   if (env && env.BIYING_KV) return env.BIYING_KV;
   if (typeof globalThis.BIYING_KV !== "undefined") return globalThis.BIYING_KV;
@@ -67,11 +74,15 @@ async function readKnowledge(env, request) {
 }
 
 async function readStaticKnowledge(request) {
-  const url = new URL("/assets/knowledge/public-knowledge.json", request.url);
-  const response = await fetch(url.toString());
-  if (!response.ok) return [];
-  const parsed = await response.json();
-  return Array.isArray(parsed.items) ? parsed.items : [];
+  try {
+    const url = new URL("/assets/knowledge/public-knowledge.json", request.url);
+    const response = await fetch(url.toString());
+    if (!response.ok) return [];
+    const parsed = await response.json();
+    return Array.isArray(parsed.items) ? parsed.items : [];
+  } catch (error) {
+    return [];
+  }
 }
 
 function score(item, message) {
@@ -106,7 +117,11 @@ async function callModel(env, messages) {
     : envValue(env, "DEEPSEEK_MODEL", "deepseek-v4-flash");
 
   if (!apiKey) {
-    return "碧影的模型密钥还没有配置。部署后请在 EdgeOne 环境变量中设置 DEEPSEEK_API_KEY 或 OPENAI_API_KEY。";
+    throw codedError(
+      "model_key_missing",
+      provider === "openai" ? "OPENAI_API_KEY is not configured" : "DEEPSEEK_API_KEY is not configured",
+      503
+    );
   }
 
   const response = await fetch(`${baseUrl.replace(/\/$/, "")}/v1/chat/completions`, {
@@ -125,7 +140,7 @@ async function callModel(env, messages) {
 
   if (!response.ok) {
     const detail = await response.text();
-    throw new Error(detail || "model request failed");
+    throw codedError("model_request_failed", detail || `model request failed with status ${response.status}`, 502);
   }
 
   const data = await response.json();
@@ -173,6 +188,9 @@ export async function onRequestPost(context) {
 
     return json({ answer, sources: knowledge.map((item) => ({ title: item.title, url: item.url })) });
   } catch (error) {
-    return json({ error: "chat_failed", detail: String(error.message || error) }, { status: 500 });
+    return json(
+      { error: error.code || "chat_failed", detail: String(error.message || error) },
+      { status: error.status || 500 }
+    );
   }
 }

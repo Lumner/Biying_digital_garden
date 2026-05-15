@@ -97,6 +97,7 @@ AI_PROVIDER=deepseek
 DEEPSEEK_API_KEY=你的 DeepSeek Key
 DEEPSEEK_MODEL=deepseek-v4-flash
 BIYING_ADMIN_TOKEN=自定义管理 token
+BIYING_RECOVERY_TOKEN=自定义密码恢复码（可选，建议单独设置）
 ```
 
 如果使用 OpenAI：
@@ -106,6 +107,7 @@ AI_PROVIDER=openai
 OPENAI_API_KEY=你的 OpenAI Key
 OPENAI_MODEL=gpt-4.1-mini
 BIYING_ADMIN_TOKEN=自定义管理 token
+BIYING_RECOVERY_TOKEN=自定义密码恢复码（可选，建议单独设置）
 ```
 
 ## 6. KV

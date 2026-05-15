@@ -16,10 +16,17 @@
       title: zh ? "账户" : "Account",
       registerTitle: zh ? "注册" : "Register",
       loginTitle: zh ? "登录" : "Sign In",
+      resetTitle: zh ? "忘记密码" : "Forgot Password",
       username: zh ? "用户名（中文、字母、数字、下划线）" : "Username (Chinese, letters, numbers, underscore)",
       password: zh ? "密码（至少 8 位）" : "Password (at least 8 characters)",
+      newPassword: zh ? "新密码（至少 8 位）" : "New password (at least 8 characters)",
+      recoveryCode: zh ? "恢复码" : "Recovery code",
+      recoveryHint: zh
+        ? "如果忘记密码，请向站点主人索取一次恢复码，然后在这里重设密码。"
+        : "If you forgot your password, ask the site owner for a recovery code, then reset it here.",
       register: zh ? "创建账户" : "Create account",
       login: zh ? "登录" : "Sign in",
+      reset: zh ? "重设密码" : "Reset password",
       logout: zh ? "退出登录" : "Sign out",
       current: zh ? "当前登录" : "Signed in as",
       required: zh ? "请先注册或登录。" : "Please register or sign in first.",
@@ -28,6 +35,9 @@
       taken: zh ? "这个用户名已经被使用。" : "This username is already taken.",
       invalidUsername: zh ? "用户名只能使用 2-24 位中文、字母、数字和下划线。" : "Use 2-24 Chinese characters, letters, numbers, or underscores.",
       invalidPassword: zh ? "密码至少需要 8 位。" : "Password must be at least 8 characters.",
+      invalidRecovery: zh ? "恢复码不正确。" : "The recovery code is incorrect.",
+      recoveryMissing: zh ? "站点还没有配置密码恢复码。" : "Password recovery is not configured yet.",
+      resetSaved: zh ? "密码已重设，并已登录。" : "Password reset complete. You are signed in.",
       saved: zh ? "已登录。" : "Signed in.",
       network: zh ? "连接失败，请稍后再试。" : "Connection failed. Please try again later."
     };
@@ -74,7 +84,9 @@
       invalid_credentials: text("badCredentials"),
       username_taken: text("taken"),
       invalid_username: text("invalidUsername"),
-      invalid_password: text("invalidPassword")
+      invalid_password: text("invalidPassword"),
+      invalid_recovery_code: text("invalidRecovery"),
+      recovery_not_configured: text("recoveryMissing")
     }[code] || text("network");
   }
 
@@ -164,6 +176,15 @@
           <button type="submit">${text("login")}</button>
           <p class="meta-line" data-auth-login-message></p>
         </form>
+        <form class="auth-card" data-auth-reset>
+          <h2>${text("resetTitle")}</h2>
+          <p class="meta-line">${text("recoveryHint")}</p>
+          <input name="username" maxlength="24" autocomplete="username" placeholder="${text("username")}" />
+          <input name="recoveryToken" type="password" maxlength="120" autocomplete="one-time-code" placeholder="${text("recoveryCode")}" />
+          <input name="password" type="password" maxlength="80" autocomplete="new-password" placeholder="${text("newPassword")}" />
+          <button type="submit">${text("reset")}</button>
+          <p class="meta-line" data-auth-reset-message></p>
+        </form>
       </div>
     `;
 
@@ -208,6 +229,26 @@
         });
         form.reset();
         message.textContent = text("saved");
+      } catch (error) {
+        message.textContent = friendlyError(error);
+      }
+      renderStatus(root);
+    });
+
+    root.querySelector("[data-auth-reset]").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const message = root.querySelector("[data-auth-reset-message]");
+      const data = new FormData(form);
+      try {
+        await requestAuth({
+          action: "reset_password",
+          username: data.get("username"),
+          recoveryToken: data.get("recoveryToken"),
+          password: data.get("password")
+        });
+        form.reset();
+        message.textContent = text("resetSaved");
       } catch (error) {
         message.textContent = friendlyError(error);
       }

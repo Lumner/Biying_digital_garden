@@ -22,6 +22,10 @@ function getKv(env) {
   return undefined;
 }
 
+function envValue(env, key, fallback = "") {
+  return env && env[key] ? env[key] : fallback;
+}
+
 function userKey(username) {
   return `user_${username}`;
 }
@@ -169,6 +173,42 @@ async function register(kv, body) {
   return json({ ok: true, token: session.token, user: publicUser(user) }, { status: 201 });
 }
 
+async function resetPassword(kv, body, env) {
+  const recoveryToken = envValue(env, "BIYING_RECOVERY_TOKEN", envValue(env, "BIYING_ADMIN_TOKEN"));
+  if (!recoveryToken) {
+    return json({ error: "recovery_not_configured" }, { status: 503 });
+  }
+  if (String(body.recoveryToken || "") !== recoveryToken) {
+    return json({ error: "invalid_recovery_code" }, { status: 401 });
+  }
+
+  const username = normalizeUsername(body.username);
+  const password = String(body.password || "");
+  if (!isValidUsername(username)) {
+    return json({ error: "invalid_username" }, { status: 400 });
+  }
+  if (password.length < 8 || password.length > 80) {
+    return json({ error: "invalid_password" }, { status: 400 });
+  }
+
+  const raw = await kv.get(userKey(username), { type: "text" });
+  if (!raw) {
+    return json({ error: "invalid_credentials" }, { status: 404 });
+  }
+  const user = JSON.parse(raw);
+  const salt = randomHex(16);
+  const passwordHash = await hashPassword(password, salt);
+  const updatedUser = {
+    ...user,
+    salt,
+    passwordHash,
+    passwordUpdatedAt: new Date().toISOString()
+  };
+  await kv.put(userKey(username), JSON.stringify(updatedUser));
+  const session = await createSession(kv, updatedUser);
+  return json({ ok: true, token: session.token, user: publicUser(updatedUser) });
+}
+
 async function login(kv, body) {
   const username = normalizeUsername(body.username);
   const password = String(body.password || "");
@@ -208,7 +248,9 @@ export async function onRequestPost({ request, env }) {
       return json({ error: "kv_not_configured" }, { status: 503 });
     }
     const body = await readJson(request);
-    return body.action === "login" ? login(kv, body) : register(kv, body);
+    if (body.action === "login") return login(kv, body);
+    if (body.action === "reset_password") return resetPassword(kv, body, env);
+    return register(kv, body);
   } catch (error) {
     return json({ error: "auth_failed", detail: String(error.message || error) }, { status: 500 });
   }
