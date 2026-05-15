@@ -11,19 +11,13 @@ tags:
 
 # Computer Systems Fundamentals Lecture Notes
 
-!!! info "Translation status"
-    This is an English companion version generated for the bilingual site. It summarizes and translates the structure of the Chinese source while keeping key mathematical and technical notation intact. A full line-by-line translation can be generated later with `scripts/translate.py` after an API key is configured.
+Computer systems become easier to understand when software and hardware are treated as one continuous stack rather than separate subjects.
 
-## Source
-
-- Chinese source page: [计算机系统基础讲义](../../zh/notes/computer-systems-lecture.md)
-- Original file: `note/SYS_计算机系统基础讲义.md`
-
-## What This Note Covers
+## What This Note Is About
 
 Lecture notes for computer systems fundamentals, covering information representation, Boolean algebra, combinational logic, arithmetic units, sequential logic, ISA, and RISC-V.
 
-## Study Outline
+## Reading Thread
 
 - **System Perspective**: How physical signals, logic gates, RTL components, ISA, assembly, linking, and loading connect into a computer system.
 - **Information Representation**: Binary encoding, integers, floating-point numbers, characters, and data interpretation.
@@ -33,12 +27,9 @@ Lecture notes for computer systems fundamentals, covering information representa
 - **Sequential Logic**: Latches, flip-flops, registers, counters, finite-state machines, and timing.
 - **ISA and RISC-V**: Instruction formats, registers, calling conventions, ELF files, linking, loading, and program execution.
 
-## Preserved Notation Examples
+## Questions to Keep in Mind
 
-The Chinese source contains mathematical notation and technical symbols. Examples preserved for cross-language lookup:
-
-- No compact formula examples extracted.
-
-## How to Use This Page
-
-Use this English page as a quick map before reading the Chinese lecture note. The Chinese page contains the complete detailed content, formulas, examples, tables, and course structure. This companion page makes the topic discoverable to English visitors and gives Biying enough English context to explain what the note is about.
+- Why can the same value behave differently under different encodings?
+- Where is the boundary between combinational and sequential logic?
+- Why does the ISA belong to both the software view and the hardware view?
+- How does a high-level program become work that the machine can actually execute?

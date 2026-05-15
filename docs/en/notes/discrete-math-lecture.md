@@ -11,19 +11,13 @@ tags:
 
 # Discrete Mathematics Lecture Notes
 
-!!! info "Translation status"
-    This is an English companion version generated for the bilingual site. It summarizes and translates the structure of the Chinese source while keeping key mathematical and technical notation intact. A full line-by-line translation can be generated later with `scripts/translate.py` after an API key is configured.
+Discrete mathematics is a language for giving abstract problems a clear shape. It starts by making statements precise, then moves on to proving them, counting them, and comparing the structures behind them.
 
-## Source
-
-- Chinese source page: [离散数学讲义](../../zh/notes/discrete-math-lecture.md)
-- Original file: `note/离散数学讲义.md`
-
-## What This Note Covers
+## What This Note Is About
 
 Lecture notes for discrete mathematics, covering logic and proofs, sets and functions, algorithms, induction and recursion, counting, and relations.
 
-## Study Outline
+## Reading Thread
 
 - **Logic and Proofs**: Propositional logic, predicate logic, inference rules, and proof strategies.
 - **Basic Structures**: Sets, functions, sequences, sums, and matrices as discrete objects.
@@ -33,9 +27,17 @@ Lecture notes for discrete mathematics, covering logic and proofs, sets and func
 - **Advanced Counting**: Recurrence relations, inclusion-exclusion, generating functions, and derangements.
 - **Relations**: Relations, closures, equivalence relations, partial orders, and partitions.
 
-## Preserved Notation Examples
+## Questions to Keep in Mind
 
-The Chinese source contains mathematical notation and technical symbols. Examples preserved for cross-language lookup:
+- How does an informal sentence become a formal mathematical statement?
+- When is a direct proof natural, and when is contradiction or contrapositive cleaner?
+- How do recursion, recurrence, and induction relate to one another?
+- Which counting principle fits a given problem, and why?
+- What changes when a plain relation becomes an equivalence relation or a partial order?
+
+## Key Notation
+
+Representative notation used throughout the note:
 
 - `$p \to q$`
 - `$\forall x P(x)$`
@@ -47,7 +49,3 @@ The Chinese source contains mathematical notation and technical symbols. Example
 - `$p$`
 - `$p \land q$`
 - `$q$`
-
-## How to Use This Page
-
-Use this English page as a quick map before reading the Chinese lecture note. The Chinese page contains the complete detailed content, formulas, examples, tables, and course structure. This companion page makes the topic discoverable to English visitors and gives Biying enough English context to explain what the note is about.

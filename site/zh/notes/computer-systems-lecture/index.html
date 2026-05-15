@@ -879,7 +879,7 @@
   <a href="#note-sec-001" class="md-nav__link">
     <span class="md-ellipsis">
       
-        资料来源
+        这篇笔记写什么
       
     </span>
   </a>
@@ -2976,7 +2976,7 @@
   <a href="#note-sec-001" class="md-nav__link">
     <span class="md-ellipsis">
       
-        资料来源
+        这篇笔记写什么
       
     </span>
   </a>
@@ -4347,78 +4347,24 @@
 
 
 <h1 id="_1">计算机系统基础讲义<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<blockquote>
-<p>根据 <code>SYS/</code> 目录下当前 8 份课件整理。生成日期：2026-05-13。<br />
-当前覆盖：导论、信息表示、布尔代数、组合逻辑、运算部件、时序逻辑、ISA、RISC-V 与程序装载。后续若继续加入新课件，可在本文末尾“增量补充区”继续扩展，不破坏已有章节编号。</p>
-</blockquote>
-<h2 id="note-sec-001">资料来源<a class="headerlink" href="#note-sec-001" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>讲次</th>
-<th>文件</th>
-<th style="text-align: right;">主题</th>
-<th style="text-align: right;">页数</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Lec00</td>
-<td><code>SYS/Lec00_Introduction.pptx</code></td>
-<td style="text-align: right;">课程导论、系统分层</td>
-<td style="text-align: right;">25</td>
-</tr>
-<tr>
-<td>Lec01</td>
-<td><code>SYS/Lec01-Information Representation.pptx</code></td>
-<td style="text-align: right;">信息与数据表示</td>
-<td style="text-align: right;">101</td>
-</tr>
-<tr>
-<td>Lec02</td>
-<td><code>SYS/Lec02_Boolean Algebra.pptx</code></td>
-<td style="text-align: right;">布尔代数、逻辑门、电路参数</td>
-<td style="text-align: right;">139</td>
-</tr>
-<tr>
-<td>Lec03</td>
-<td><code>SYS/Lec03_Combinational Logic.pptx</code></td>
-<td style="text-align: right;">Verilog、组合逻辑、常用功能块</td>
-<td style="text-align: right;">102</td>
-</tr>
-<tr>
-<td>Lec04</td>
-<td><code>SYS/Lec04_Arithmetic Unit.pptx</code></td>
-<td style="text-align: right;">加减乘除、ALU、浮点运算</td>
-<td style="text-align: right;">143</td>
-</tr>
-<tr>
-<td>Lec05</td>
-<td><code>SYS/Lec05_Sequential Logic.pptx</code></td>
-<td style="text-align: right;">锁存器、触发器、FSM、寄存器、计数器</td>
-<td style="text-align: right;">154</td>
-</tr>
-<tr>
-<td>Lec06-1</td>
-<td><code>SYS/Lec06-1_ISA.pptx</code></td>
-<td style="text-align: right;">ISA 设计与分类</td>
-<td style="text-align: right;">71</td>
-</tr>
-<tr>
-<td>Lec06-2</td>
-<td><code>SYS/Lec06-2_RISCV.pptx</code></td>
-<td style="text-align: right;">RISC-V、调用约定、ELF、链接装载</td>
-<td style="text-align: right;">130</td>
-</tr>
-</tbody>
-</table>
-<hr />
+<p>计算机系统最迷人的地方，是同一个程序既可以被看成一行高级语言，也可以一路向下拆成指令、寄存器、逻辑门和电信号。这篇笔记试着把这些层次重新接回一条连续的链路。</p>
+<h2 id="note-sec-001">这篇笔记写什么<a class="headerlink" href="#note-sec-001" title="Permanent link">&para;</a></h2>
+<p>这篇笔记从信息表示出发，依次走过布尔代数、组合逻辑、运算部件、时序逻辑、ISA 与 RISC-V，关注的不是单个知识点，而是软件行为怎样逐层落到硬件实现上。</p>
+<p>阅读时可以把握三条线索：</p>
+<ol>
+<li>数据怎样被编码，程序为什么最终都要落到二进制表示。</li>
+<li>逻辑电路怎样逐步组合成能够执行运算和保存状态的部件。</li>
+<li>指令集怎样把硬件能力暴露给软件，再通过汇编、链接和装载变成真正运行的程序。</li>
+</ol>
+<p>先带着几个问题往下看，会更容易把章节接起来：</p>
+<ul>
+<li>为什么同一个“数”在不同编码方式下会表现出不同性质？</li>
+<li>组合逻辑和时序逻辑的分界到底在哪里？</li>
+<li>ISA 为什么既属于软件视角，也属于硬件视角？</li>
+<li>一段高级语言程序，怎样一步步变成机器真正执行的动作？</li>
+</ul>
 <h2 id="note-sec-002">0. 课程视角：从门电路到系统软件<a class="headerlink" href="#note-sec-002" title="Permanent link">&para;</a></h2>
 <p>计算机系统可以看成一组层次化抽象。越往下越接近物理实现，越往上越接近程序员和用户看到的行为。系统课程的核心价值，是把这些层次之间的接口讲清楚。</p>
-<div class="admonition note">
-<p class="admonition-title">图像资源待补充：计算机系统课程分层</p>
-<p>原始讲义引用了 <code>./sys_notes_assets/system_overview.jpg</code>，但当前 <code>note/</code> 目录没有随附图片资源。后续补充图片后可恢复为 Markdown 图片。</p>
-</div>
 <h3 id="note-sec-003">0.1 抽象层次<a class="headerlink" href="#note-sec-003" title="Permanent link">&para;</a></h3>
 <p>典型计算机系统从上到下可以分为：</p>
 <table>

@@ -851,7 +851,7 @@
   <a href="#note-sec-001" class="md-nav__link">
     <span class="md-ellipsis">
       
-        使用说明
+        这篇笔记写什么
       
     </span>
   </a>
@@ -862,7 +862,7 @@
   <a href="#note-sec-002" class="md-nav__link">
     <span class="md-ellipsis">
       
-        现有课件索引
+        阅读主线
       
     </span>
   </a>
@@ -873,7 +873,7 @@
   <a href="#note-sec-003" class="md-nav__link">
     <span class="md-ellipsis">
       
-        全书知识结构
+        先带着这些问题阅读
       
     </span>
   </a>
@@ -5023,7 +5023,7 @@
   <a href="#note-sec-001" class="md-nav__link">
     <span class="md-ellipsis">
       
-        使用说明
+        这篇笔记写什么
       
     </span>
   </a>
@@ -5034,7 +5034,7 @@
   <a href="#note-sec-002" class="md-nav__link">
     <span class="md-ellipsis">
       
-        现有课件索引
+        阅读主线
       
     </span>
   </a>
@@ -5045,7 +5045,7 @@
   <a href="#note-sec-003" class="md-nav__link">
     <span class="md-ellipsis">
       
-        全书知识结构
+        先带着这些问题阅读
       
     </span>
   </a>
@@ -8441,81 +8441,25 @@
 
 
 <h1 id="_1">离散数学讲义<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<blockquote>
-<p>版本：2026-05-13<br />
-来源：根据 <code>DM/</code> 目录下现有离散数学课件整理。<br />
-维护方式：后续新增 PPT/PDF 时，优先补充到对应章节；若新增内容属于未覆盖章节，则在“待补充章节”中扩展为正式章节。</p>
-</blockquote>
-<h2 id="note-sec-001">使用说明<a class="headerlink" href="#note-sec-001" title="Permanent link">&para;</a></h2>
-<p>这份讲义按章节组织，目标不是逐页复述课件，而是把课件中的定义、定理、方法、例题类型和解题套路整理成可复习、可发布到笔记网站的 Markdown 文档。</p>
-<p>每一章建议按以下顺序学习：</p>
+<p>离散数学像一套给抽象问题搭骨架的语言。它先教人把一句话写清楚，再教人证明它、计数它、比较它和别的结构之间的关系。</p>
+<h2 id="note-sec-001">这篇笔记写什么<a class="headerlink" href="#note-sec-001" title="Permanent link">&para;</a></h2>
+<p>这篇笔记围绕“表达、证明、递推、计数、关系”五条线索展开。前半部分先建立逻辑与集合的语言，后半部分再把这些语言接到算法分析、递归思维和组合计数上，最后落到关系与结构本身。</p>
+<p>它更适合用来做两件事：一是在复习时把零散概念重新串起来，二是在遇到题目时快速回查定义、定理和常见证明套路。</p>
+<h2 id="note-sec-002">阅读主线<a class="headerlink" href="#note-sec-002" title="Permanent link">&para;</a></h2>
 <ol>
-<li>先看“核心目标”，明确本章要解决的问题。</li>
-<li>再看定义和定理，注意每个符号的含义。</li>
-<li>通过例题类型掌握建模和证明套路。</li>
-<li>最后用“小结与补充位”检查是否还有新课件需要补充。</li>
+<li>先用命题逻辑、谓词逻辑和证明方法建立“怎样把话说严谨”的基础。</li>
+<li>再进入集合、函数、序列与算法，理解离散对象如何被表示和操作。</li>
+<li>接着学习归纳、递归和计数，把“从局部规则推出整体结论”的能力连起来。</li>
+<li>最后看关系、闭包与等价，把前面的对象进一步组织成结构。</li>
 </ol>
-<p>本文使用 LaTeX 公式语法，例如 <span class="arithmatex">\(p \to q\)</span>、<span class="arithmatex">\(\forall x P(x)\)</span>、<span class="arithmatex">\(O(n\log n)\)</span>。上传到笔记网站时，请确认网站支持 Markdown 数学公式渲染。</p>
-<h2 id="note-sec-002">现有课件索引<a class="headerlink" href="#note-sec-002" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>讲义章节</th>
-<th>对应课件</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>第 1 章 逻辑与证明</td>
-<td><code>DM1.1(8).pdf</code>, <code>DM1.2-1.3(5).pdf</code>, <code>DM1.4(6).pdf</code>, <code>DM1.5(5).pdf</code>, <code>DM1.6(6).pdf</code>, <code>DM1.7-1.8(6).pdf</code></td>
-</tr>
-<tr>
-<td>第 2 章 基本结构</td>
-<td><code>DM2.1.pdf</code>, <code>DM2.2.pdf</code>, <code>DM2.3.pdf</code>, <code>DM2.4.pdf</code>, <code>DM2.5-2.6(5).pdf</code></td>
-</tr>
-<tr>
-<td>第 3 章 算法</td>
-<td><code>DM3.1-3.3(4).pdf</code></td>
-</tr>
-<tr>
-<td>第 4 章 待补充</td>
-<td>当前未提供对应课件</td>
-</tr>
-<tr>
-<td>第 5 章 归纳与递归</td>
-<td><code>DM5.1-5.4(7).pdf</code></td>
-</tr>
-<tr>
-<td>第 6 章 计数</td>
-<td><code>DM6.1(3).pdf</code>, <code>DM6.2(3).pdf</code>, <code>DM6.3-6.4(6).pdf</code>, <code>DM6.5(3).pdf</code></td>
-</tr>
-<tr>
-<td>第 7 章 待补充</td>
-<td>当前未提供对应课件</td>
-</tr>
-<tr>
-<td>第 8 章 高级计数技术</td>
-<td><code>DM8.1-8.2(6).pdf</code>, <code>DM8.3.pdf</code>, <code>DM8.4(6).pdf</code>, <code>DM8.5-8.6(9).pdf</code></td>
-</tr>
-<tr>
-<td>第 9 章 关系</td>
-<td><code>DM9.1-9.3(8).pdf</code>, <code>DM9.4(6).pdf</code>, <code>DM9.5(3).pdf</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="note-sec-003">全书知识结构<a class="headerlink" href="#note-sec-003" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>flowchart TD
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    A[&quot;逻辑语言&quot;] --&gt; B[&quot;证明方法&quot;]
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    B --&gt; C[&quot;集合、函数、序列&quot;]
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    C --&gt; D[&quot;算法与复杂度&quot;]
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    B --&gt; E[&quot;归纳与递归&quot;]
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    C --&gt; F[&quot;计数方法&quot;]
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    E --&gt; G[&quot;递推关系&quot;]
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    F --&gt; G
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    G --&gt; H[&quot;生成函数、容斥、错排&quot;]
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    C --&gt; I[&quot;关系&quot;]
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    I --&gt; J[&quot;闭包、等价关系、划分&quot;]
-</code></pre></div>
+<h2 id="note-sec-003">先带着这些问题阅读<a class="headerlink" href="#note-sec-003" title="Permanent link">&para;</a></h2>
+<ul>
+<li>一个自然语言命题怎样被翻译成形式化表达？</li>
+<li>一个结论应该直接证明、逆否证明，还是用反证法更自然？</li>
+<li>递归、递推和归纳之间分别在解决什么问题？</li>
+<li>面对一个计数题，怎样判断该用加法、乘法、容斥，还是生成函数？</li>
+<li>当两个对象“有关联”时，怎样区分普通关系、等价关系和偏序关系？</li>
+</ul>
 <h2 id="note-sec-004">第 1 章 逻辑与证明<a class="headerlink" href="#note-sec-004" title="Permanent link">&para;</a></h2>
 <h2 id="note-sec-005">1.0 核心目标<a class="headerlink" href="#note-sec-005" title="Permanent link">&para;</a></h2>
 <p>本章要建立离散数学的语言基础。命题逻辑用于刻画“真或假”的陈述，谓词逻辑用于刻画带变量的数学语句，推理规则和证明方法用于把前提严谨地推到结论。</p>
@@ -9602,35 +9546,35 @@
 <h3 id="note-sec-110">伪代码<a class="headerlink" href="#note-sec-110" title="Permanent link">&para;</a></h3>
 <p>伪代码介于自然语言和程序语言之间，用于清晰描述算法而不依赖具体语言。</p>
 <p>求有限整数序列最大值：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>procedure max(a1, a2, ..., an: integers)
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    max := a1
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    for i := 2 to n
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>        if max &lt; ai then max := ai
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    return max
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>procedure max(a1, a2, ..., an: integers)
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    max := a1
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    for i := 2 to n
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        if max &lt; ai then max := ai
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    return max
 </code></pre></div>
 <h3 id="note-sec-111">搜索问题<a class="headerlink" href="#note-sec-111" title="Permanent link">&para;</a></h3>
 <p>一般搜索问题：给定列表 <span class="arithmatex">\(a_1,a_2,\ldots,a_n\)</span> 和目标 <span class="arithmatex">\(x\)</span>，找出 <span class="arithmatex">\(x\)</span> 在列表中的位置；若不存在则返回 0 或其他失败标记。</p>
 <p>线性搜索：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>procedure linear_search(x, a1, a2, ..., an)
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    i := 1
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    while i &lt;= n and x != ai
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>        i := i + 1
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    if i &lt;= n then location := i
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    else location := 0
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    return location
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>procedure linear_search(x, a1, a2, ..., an)
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    i := 1
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    while i &lt;= n and x != ai
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>        i := i + 1
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    if i &lt;= n then location := i
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    else location := 0
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    return location
 </code></pre></div>
 <p>适用于无序列表，最坏情况下要检查 <span class="arithmatex">\(n\)</span> 个元素。</p>
 <p>二分搜索适用于递增有序列表：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>procedure binary_search(x, a1, a2, ..., an)
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    i := 1
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    j := n
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    while i &lt; j
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>        m := floor((i + j) / 2)
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>        if x &gt; am then i := m + 1
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>        else j := m
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    if x = ai then location := i
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    else location := 0
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    return location
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>procedure binary_search(x, a1, a2, ..., an)
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    i := 1
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    j := n
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    while i &lt; j
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>        m := floor((i + j) / 2)
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>        if x &gt; am then i := m + 1
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>        else j := m
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    if x = ai then location := i
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    else location := 0
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    return location
 </code></pre></div>
 <p>每次将搜索区间约减为约一半，效率远高于线性搜索。</p>
 <h3 id="note-sec-112">排序问题<a class="headerlink" href="#note-sec-112" title="Permanent link">&para;</a></h3>
@@ -9873,14 +9817,14 @@
 <h3 id="note-sec-155">递归算法定义<a class="headerlink" href="#note-sec-155" title="Permanent link">&para;</a></h3>
 <p>递归算法通过把问题化为更小规模的同类问题来求解。为了终止，必须最终到达已知解的基础情形。</p>
 <p>阶乘递归算法：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>procedure factorial(n: nonnegative integer)
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    if n = 0 then return 1
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    else return n * factorial(n - 1)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>procedure factorial(n: nonnegative integer)
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    if n = 0 then return 1
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    else return n * factorial(n - 1)
 </code></pre></div>
 <p>最大公约数递归算法：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>procedure gcd(a, b: nonnegative integers, a &lt; b)
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    if a = 0 then return b
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    else return gcd(b mod a, a)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>procedure gcd(a, b: nonnegative integers, a &lt; b)
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    if a = 0 then return b
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    else return gcd(b mod a, a)
 </code></pre></div>
 <h3 id="note-sec-156">递归算法正确性<a class="headerlink" href="#note-sec-156" title="Permanent link">&para;</a></h3>
 <p>证明递归算法正确常用归纳法：</p>
@@ -9894,10 +9838,10 @@
 <p>迭代：通过循环重复更新状态。</p>
 <p>递归表达更贴近数学定义，但可能有额外调用栈开销；迭代通常更直接控制资源。</p>
 <h3 id="note-sec-158">递归斐波那契算法<a class="headerlink" href="#note-sec-158" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>procedure fibo(n: nonnegative integer)
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    if n = 0 then return 0
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    if n = 1 then return 1
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    return fibo(n - 1) + fibo(n - 2)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>procedure fibo(n: nonnegative integer)
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    if n = 0 then return 0
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    if n = 1 then return 1
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    return fibo(n - 1) + fibo(n - 2)
 </code></pre></div>
 <p>该算法形式简单，但会重复计算大量子问题。后续算法课程可用动态规划优化。</p>
 <h2 id="note-sec-159">本章小结与补充位<a class="headerlink" href="#note-sec-159" title="Permanent link">&para;</a></h2>
@@ -10510,12 +10454,12 @@
 <p>设初始矩阵 <span class="arithmatex">\(W_0=M_R\)</span>。逐步允许编号不超过 <span class="arithmatex">\(k\)</span> 的点作为中间点，得到 <span class="arithmatex">\(W_k\)</span>。更新规则：</p>
 <p><span class="arithmatex">\(W_k[i,j]=W_{k-1}[i,j]\lor(W_{k-1}[i,k]\land W_{k-1}[k,j])\)</span></p>
 <p>伪代码：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>W := M_R
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>for k := 1 to n
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    for i := 1 to n
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>        for j := 1 to n
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>            W[i,j] := W[i,j] or (W[i,k] and W[k,j])
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>return W
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>W := M_R
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>for k := 1 to n
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    for i := 1 to n
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>        for j := 1 to n
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>            W[i,j] := W[i,j] or (W[i,k] and W[k,j])
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>return W
 </code></pre></div>
 <p>时间复杂度为 <span class="arithmatex">\(\Theta(n^3)\)</span>。</p>
 <h3 id="note-sec-267">多性质闭包<a class="headerlink" href="#note-sec-267" title="Permanent link">&para;</a></h3>
