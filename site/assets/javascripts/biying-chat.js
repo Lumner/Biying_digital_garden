@@ -89,10 +89,21 @@
   function addMessage(log, role, content, options = {}) {
     const item = document.createElement("div");
     item.className = `biying-message ${role}`;
+    if (options.key) item.dataset.messageKey = options.key;
     item.innerHTML = renderMessageContent(content, options);
     log.appendChild(item);
     log.scrollTop = log.scrollHeight;
     return item;
+  }
+
+  function upsertMessage(log, key, role, content, options = {}) {
+    const existing = log.querySelector(`[data-message-key="${key}"]`);
+    if (existing) {
+      existing.innerHTML = renderMessageContent(content, options);
+      log.scrollTop = log.scrollHeight;
+      return existing;
+    }
+    return addMessage(log, role, content, { ...options, key });
   }
 
   async function loadKnowledge() {
@@ -257,7 +268,7 @@
       event.preventDefault();
       if (state.busy) return;
       if (!currentUser()) {
-        addMessage(log, "biying", accountPrompt(), { html: true });
+        upsertMessage(log, "auth-required", "biying", accountPrompt(), { html: true });
         return;
       }
       const query = input.value.trim();
