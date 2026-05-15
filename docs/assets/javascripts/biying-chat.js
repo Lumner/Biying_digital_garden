@@ -2,7 +2,8 @@
   const state = {
     knowledge: [],
     busy: false,
-    history: []
+    history: [],
+    transcript: []
   };
 
   function isChinesePage() {
@@ -86,6 +87,16 @@
     return `${body.replace(/\n/g, "<br>")}${renderSources(options.sources)}`;
   }
 
+  function rememberMessage(role, content, options = {}) {
+    if (options.remember === false) return;
+    state.transcript.push({
+      role,
+      content,
+      html: Boolean(options.html),
+      sources: Array.isArray(options.sources) ? options.sources : []
+    });
+  }
+
   function addMessage(log, role, content, options = {}) {
     const item = document.createElement("div");
     item.className = `biying-message ${role}`;
@@ -93,6 +104,7 @@
     item.innerHTML = renderMessageContent(content, options);
     log.appendChild(item);
     log.scrollTop = log.scrollHeight;
+    rememberMessage(role, content, options);
     return item;
   }
 
@@ -257,7 +269,17 @@
       authNote.innerHTML = accountPrompt();
     }
 
-    addMessage(log, "biying", text("initial"));
+    if (state.transcript.length) {
+      state.transcript.forEach((message) => {
+        addMessage(log, message.role, message.content, {
+          html: message.html,
+          sources: message.sources,
+          remember: false
+        });
+      });
+    } else {
+      addMessage(log, "biying", text("initial"));
+    }
     updateAuthNote();
     if (auth()) {
       auth().refresh().finally(updateAuthNote);
@@ -278,7 +300,7 @@
       }
       input.value = "";
       addMessage(log, "user", query);
-      const pending = addMessage(log, "biying", "...");
+      const pending = addMessage(log, "biying", "...", { remember: false });
       state.busy = true;
       try {
         let response;
@@ -299,6 +321,10 @@
           }
         }
         pending.innerHTML = renderMessageContent(response.answer || "", {
+          html: response.html,
+          sources: response.sources
+        });
+        rememberMessage("biying", response.answer || "", {
           html: response.html,
           sources: response.sources
         });

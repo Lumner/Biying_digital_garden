@@ -1196,8 +1196,9 @@ body {
 }
 
 .biying-message {
-  width: max-content;
+  width: fit-content;
   max-width: min(82%, 34rem);
+  min-width: 0;
   line-height: 1.72;
   overflow-wrap: anywhere;
   word-break: break-word;
