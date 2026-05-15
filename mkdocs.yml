@@ -92,16 +92,16 @@ markdown_extensions:
       alternate_style: true
 
 extra_css:
-  - assets/styles/cyber.css
+  - assets/styles/cyber.css?v=20260515-1
 
 extra_javascript:
-  - assets/javascripts/mathjax.js
+  - assets/javascripts/mathjax.js?v=20260515-1
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-  - assets/javascripts/language-switch.js
-  - assets/javascripts/random-note-cover.js
-  - assets/javascripts/auth.js
-  - assets/javascripts/biying-chat.js
-  - assets/javascripts/guestbook.js
+  - assets/javascripts/language-switch.js?v=20260515-1
+  - assets/javascripts/random-note-cover.js?v=20260515-1
+  - assets/javascripts/auth.js?v=20260515-1
+  - assets/javascripts/biying-chat.js?v=20260515-1
+  - assets/javascripts/guestbook.js?v=20260515-1
 
 extra:
   generator: false

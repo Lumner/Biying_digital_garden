@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-15T04:25:55.918278+00:00",
+  "generatedAt": "2026-05-15T05:00:15.520759+00:00",
   "items": [
     {
       "title": "About",
@@ -24,7 +24,7 @@
       ],
       "url": "/en/avatar/",
       "sourcePath": "docs/en/avatar/index.md",
-      "text": "BIYING Biying A careful, reserved, and gentle male fictional digital persona. He starts from public site content and can chat casually within safe boundaries. Public Guide RAG like Gentle Tone Biying is the male fictional digital persona of this site. He is careful, reserved, and gentle. After you sign in, he can answer questions from public notes, projects, and current status, and he can chat casually within safe boundaries. He does not read GitHub activity, drafts, or private materials. !!! info \"Current mode\" If the EdgeOne API is not deployed yet, the chat box below automatically falls back to the local public knowledge base. What is this site working on now? Which public notes can I read? What content can Biying access? How does the project explain this site? Try Asking What is this person working on now? What stack does this website use? What content can Biying read? Which projects best show this person's abilities?"
+      "text": "BIYING Biying A careful, reserved, and gentle male fictional digital persona. He starts from public site content and can chat casually within safe boundaries. Public Guide RAG like Gentle Tone Biying is the male fictional digital persona of this site. He is careful, reserved, and gentle. After you sign in, he can answer questions from public notes, projects, and current status, and he can chat casually within safe boundaries. He does not read GitHub activity, drafts, or private materials. !!! info \"Current mode\" After sign in, Biying first uses the live API. The chat box only falls back to the local public knowledge base when the network or endpoint is unavailable. What is this site working on now? Which public notes can I read? What content can Biying access? How does the project explain this site? Try Asking What is this person working on now? What stack does this website use? What content can Biying read? Which projects best show this person's abilities?"
     },
     {
       "title": "Guestbook",
@@ -176,7 +176,7 @@
       ],
       "url": "/zh/avatar/",
       "sourcePath": "docs/zh/avatar/index.md",
-      "text": "BIYING 碧影 细致、内敛、温柔的男性虚构数字分身。他只从网站公开内容出发，也可以在安全边界内进行轻度闲聊。 公开内容向导 RAG like 温和语气 碧影是这个网站的男性虚构数字分身。他的性格细致、内敛、温柔。登录后，碧影可以基于公开笔记、项目和当前状态回答问题，也可以在安全边界内闲聊。他不会读取 GitHub 活动、草稿或私密内容。 !!! info \"当前模式\" 如果 EdgeOne API 尚未部署，下面的对话框会自动使用本地公开知识库进行演示回答。 这个网站最近在做什么？ 有哪些公开笔记可以读？ 碧影能读取哪些内容？ 如何从项目理解这个网站？ 可以这样问 这个人最近在做什么？ 这个网站用了什么技术？ 碧影能读取哪些内容？ 有哪些项目能体现我的能力？"
+      "text": "BIYING 碧影 细致、内敛、温柔的男性虚构数字分身。他只从网站公开内容出发，也可以在安全边界内进行轻度闲聊。 公开内容向导 RAG like 温和语气 碧影是这个网站的男性虚构数字分身。他的性格细致、内敛、温柔。登录后，碧影可以基于公开笔记、项目和当前状态回答问题，也可以在安全边界内闲聊。他不会读取 GitHub 活动、草稿或私密内容。 !!! info \"当前模式\" 登录后，碧影会优先连接线上 API。只有当网络或接口异常时，下面的对话框才会退回本地公开知识库。 这个网站最近在做什么？ 有哪些公开笔记可以读？ 碧影能读取哪些内容？ 如何从项目理解这个网站？ 可以这样问 这个人最近在做什么？ 这个网站用了什么技术？ 碧影能读取哪些内容？ 有哪些项目能体现我的能力？"
     },
     {
       "title": "留言",

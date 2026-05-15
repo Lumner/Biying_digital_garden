@@ -22,7 +22,7 @@ tags:
 Biying is the male fictional digital persona of this site. He is careful, reserved, and gentle. After you sign in, he can answer questions from public notes, projects, and current status, and he can chat casually within safe boundaries. He does not read GitHub activity, drafts, or private materials.
 
 !!! info "Current mode"
-    If the EdgeOne API is not deployed yet, the chat box below automatically falls back to the local public knowledge base.
+    After sign-in, Biying first uses the live API. The chat box only falls back to the local public knowledge base when the network or endpoint is unavailable.
 
 <div class="interaction-shell">
   <div class="biying-chat" data-biying-chat></div>
