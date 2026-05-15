@@ -1196,7 +1196,6 @@ body {
 }
 
 .biying-message {
-  width: fit-content;
   max-width: min(82%, 34rem);
   min-width: 0;
   line-height: 1.72;
@@ -1379,11 +1378,14 @@ body {
 }
 
 .biying-message.user {
+  width: fit-content;
   border-color: rgba(255, 79, 216, 0.32);
   justify-self: end;
 }
 
 .biying-message.biying {
+  width: min(100%, 34rem);
+  max-width: 100%;
   justify-self: start;
 }
 
@@ -1950,14 +1952,9 @@ body {
   .lang-switcher {
     margin-left: auto;
   }
-  .md-footer-meta__inner {
-    display: flex;
-    flex-direction: column; 
-    align-items: center;    
-    text-align: center;
-}
 
   .md-copyright {
+    margin: 0 auto;
     text-align: center;
     padding-top: 10px;
   }
