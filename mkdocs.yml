@@ -35,19 +35,22 @@ nav:
   - 关于: zh/about.md
   - 笔记:
       - 笔记首页: zh/notes/index.md
-      - 主题:
-          - 数学: zh/notes/math.md
-          - 系统: zh/notes/systems.md
-          - 算法: zh/notes/algorithms.md
-          - AI: zh/notes/ai.md
-          - 随笔: zh/notes/essays.md
-          - 站点: zh/notes/site.md
+      - 数学:
+          - 分类首页: zh/notes/math.md
+          - 离散数学讲义: zh/notes/discrete-math-lecture.md
+          - 数学实验: zh/notes/math-lab.md
+      - 系统:
+          - 分类首页: zh/notes/systems.md
+          - 计算机系统基础讲义: zh/notes/computer-systems-lecture.md
+      - 算法:
+          - 分类首页: zh/notes/algorithms.md
+          - FDS 数据结构基础讲义: zh/notes/fds-data-structures-lecture.md
+      - AI: zh/notes/ai.md
+      - 随笔: zh/notes/essays.md
+      - 站点:
+          - 分类首页: zh/notes/site.md
+          - 公开边界: zh/notes/public-scope.md
       - 标签: zh/notes/tags.md
-      - 公开边界: zh/notes/public-scope.md
-      - 数学实验: zh/notes/math-lab.md
-      - 离散数学讲义: zh/notes/discrete-math-lecture.md
-      - 计算机系统基础讲义: zh/notes/computer-systems-lecture.md
-      - FDS 数据结构基础讲义: zh/notes/fds-data-structures-lecture.md
   - 项目:
       - 项目首页: zh/projects/index.md
       - 个人数字花园与碧影: zh/projects/personal-site-avatar.md
@@ -60,19 +63,22 @@ nav:
   - About: en/about.md
   - Notes:
       - Notes Home: en/notes/index.md
-      - Topics:
-          - Math: en/notes/math.md
-          - Systems: en/notes/systems.md
-          - Algorithms: en/notes/algorithms.md
-          - AI: en/notes/ai.md
-          - Essays: en/notes/essays.md
-          - Site: en/notes/site.md
+      - Math:
+          - Category Home: en/notes/math.md
+          - Discrete Mathematics Lecture Notes: en/notes/discrete-math-lecture.md
+          - Math Lab: en/notes/math-lab.md
+      - Systems:
+          - Category Home: en/notes/systems.md
+          - Computer Systems Fundamentals Lecture Notes: en/notes/computer-systems-lecture.md
+      - Algorithms:
+          - Category Home: en/notes/algorithms.md
+          - FDS Data Structures Fundamentals Lecture Notes: en/notes/fds-data-structures-lecture.md
+      - AI: en/notes/ai.md
+      - Essays: en/notes/essays.md
+      - Site:
+          - Category Home: en/notes/site.md
+          - Public Scope: en/notes/public-scope.md
       - Tags: en/notes/tags.md
-      - Public Scope: en/notes/public-scope.md
-      - Math Lab: en/notes/math-lab.md
-      - Discrete Mathematics Lecture Notes: en/notes/discrete-math-lecture.md
-      - Computer Systems Fundamentals Lecture Notes: en/notes/computer-systems-lecture.md
-      - FDS Data Structures Fundamentals Lecture Notes: en/notes/fds-data-structures-lecture.md
   - Projects:
       - Projects Home: en/projects/index.md
       - Personal Digital Garden + Biying: en/projects/personal-site-avatar.md
@@ -119,7 +125,7 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - assets/javascripts/language-switch.js?v=20260515-3
   - assets/javascripts/random-note-cover.js?v=20260515-3
-  - assets/javascripts/notes-hub.js?v=20260515-1
+  - assets/javascripts/notes-hub.js?v=20260515-2
   - assets/javascripts/note-reader.js?v=20260515-1
   - assets/javascripts/auth.js?v=20260515-3
   - assets/javascripts/biying-chat.js?v=20260515-5

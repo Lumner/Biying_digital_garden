@@ -17,6 +17,10 @@
     }[key];
   }
 
+  function notesRoot() {
+    return `/${locale()}/notes/`;
+  }
+
   function esc(value) {
     return String(value || "")
       .replaceAll("&", "&amp;")
@@ -71,7 +75,7 @@
     const counts = new Map();
     items.forEach((item) => (item.tags || []).forEach((tag) => counts.set(tag, (counts.get(tag) || 0) + 1)));
     const tags = [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
-    root.innerHTML = tags.map(([tag, count]) => `<a class="tag-chip" href="./tags/?tag=${encodeURIComponent(tag)}">${esc(tag)}<span>${count}</span></a>`).join("");
+    root.innerHTML = tags.map(([tag, count]) => `<a class="tag-chip" href="${notesRoot()}tags/?tag=${encodeURIComponent(tag)}">${esc(tag)}<span>${count}</span></a>`).join("");
   }
 
   function mountCategory(root, catalog, items) {
