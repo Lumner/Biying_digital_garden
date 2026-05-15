@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-15T12:22:17.319658+00:00",
+  "generatedAt": "2026-05-15T13:30:20.824780+00:00",
   "items": [
     {
       "title": "About",
@@ -157,7 +157,7 @@
       ],
       "url": "/en/notes/public-scope/",
       "sourcePath": "docs/en/notes/public-scope.md",
-      "text": "PUBLIC SCOPE Public Scope This page keeps one thing clear: what Biying may read, and what stays outside. A clear boundary matters more than sounding clever. Public Content Privacy Stays Out Biying's core rule is simple: only read content already published on this website . Allowed Home, About, Now, Projects, and public notes. Markdown pages marked with public: true and avatar readable: true . Titles, summaries, body content, and public links. Not Allowed Unpublished drafts. GitHub activity records. Private notes, diaries, or chat logs. Hidden contact information or other private materials. Any local filesystem content. Answering Style If the public materials do not contain an answer, Biying should say: The public materials do not contain that information yet. This rule matters more than sounding clever."
+      "text": "PUBLIC SCOPE Public Scope This page keeps one thing clear: what Biying may read, and what stays outside. A clear boundary matters more than sounding clever. Public Content Privacy Stays Out Biying's core rule is simple: only read content already published on this website . Allowed Home, About, Now, Projects, and public notes. Markdown pages marked with public: true and avatar readable: true . Titles, summaries, body content, and public links. Not Allowed Unpublished drafts. GitHub activity records. Private notes, diaries, or chat logs. Hidden contact information or other private materials. Any local filesystem content. Answering Style If the public materials do not contain an answer, Biying can say gently: That part has not been written into the public pages here yet. This rule matters more than sounding clever."
     },
     {
       "title": "Site Notes",
@@ -397,7 +397,7 @@
       ],
       "url": "/zh/notes/public-scope/",
       "sourcePath": "docs/zh/notes/public-scope.md",
-      "text": "PUBLIC SCOPE 公开边界 这页只想把一件事说清楚：碧影会读什么，不会读什么。边界清楚，比回答看起来聪明更重要。 公开内容 隐私不进入 碧影的核心规则很简单： 只读取已经公开发布到网站上的内容 。 可读取 首页、关于、现在、项目和公开笔记。 标记为 public: true 且 avatar readable: true 的 Markdown 页面。 页面中的标题、摘要、正文和公开链接。 不读取 未发布草稿。 GitHub 活动记录。 私密笔记、日记、聊天记录。 未公开联系方式或其他私人资料。 本地文件系统中的任何内容。 回答方式 如果公开资料里没有答案，碧影应该直接说： 公开资料里还没有这部分信息。 这条规则比“看起来聪明”更重要。"
+      "text": "PUBLIC SCOPE 公开边界 这页只想把一件事说清楚：碧影会读什么，不会读什么。边界清楚，比回答看起来聪明更重要。 公开内容 隐私不进入 碧影的核心规则很简单： 只读取已经公开发布到网站上的内容 。 可读取 首页、关于、现在、项目和公开笔记。 标记为 public: true 且 avatar readable: true 的 Markdown 页面。 页面中的标题、摘要、正文和公开链接。 不读取 未发布草稿。 GitHub 活动记录。 私密笔记、日记、聊天记录。 未公开联系方式或其他私人资料。 本地文件系统中的任何内容。 回答方式 如果公开资料里没有答案，碧影可以温和地说： 这部分在这里公开的内容里还没有写到。 这条规则比“看起来聪明”更重要。"
     },
     {
       "title": "站点笔记",

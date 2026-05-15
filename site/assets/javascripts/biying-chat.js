@@ -2,7 +2,8 @@
   const state = {
     knowledge: [],
     busy: false,
-    history: []
+    history: [],
+    transcript: []
   };
 
   function isChinesePage() {
@@ -81,25 +82,139 @@
     return `<div class="biying-sources"><span>${text("sources")}</span>${links}</div>`;
   }
 
+  function renderInlineMarkdown(value) {
+    return escapeHtml(value)
+      .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+|\/[^\s)]+)\)/g, '<a href="$2">$1</a>')
+      .replace(/`([^`]+)`/g, "<code>$1</code>")
+      .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+      .replace(/__([^_]+)__/g, "<strong>$1</strong>")
+      .replace(/\*([^*\n]+)\*/g, "<em>$1</em>");
+  }
+
+  function renderMarkdown(value) {
+    const lines = String(value || "").replace(/\r\n/g, "\n").split("\n");
+    const blocks = [];
+    let paragraph = [];
+    let listType = "";
+    let listItems = [];
+    let codeLines = null;
+
+    function flushParagraph() {
+      if (!paragraph.length) return;
+      blocks.push(`<p>${paragraph.map(renderInlineMarkdown).join("<br>")}</p>`);
+      paragraph = [];
+    }
+
+    function flushList() {
+      if (!listItems.length) return;
+      blocks.push(`<${listType}>${listItems.map((item) => `<li>${renderInlineMarkdown(item)}</li>`).join("")}</${listType}>`);
+      listType = "";
+      listItems = [];
+    }
+
+    function flushCode() {
+      if (!codeLines) return;
+      blocks.push(`<pre><code>${escapeHtml(codeLines.join("\n"))}</code></pre>`);
+      codeLines = null;
+    }
+
+    lines.forEach((line) => {
+      if (line.trim().startsWith("```")) {
+        flushParagraph();
+        flushList();
+        if (codeLines) flushCode();
+        else codeLines = [];
+        return;
+      }
+      if (codeLines) {
+        codeLines.push(line);
+        return;
+      }
+      if (!line.trim()) {
+        flushParagraph();
+        flushList();
+        return;
+      }
+
+      const heading = line.match(/^\s{0,3}(#{1,6})\s+(.+)$/);
+      const unordered = line.match(/^\s*[-*]\s+(.+)$/);
+      const ordered = line.match(/^\s*\d+\.\s+(.+)$/);
+      const quote = line.match(/^\s*>\s?(.+)$/);
+
+      if (heading) {
+        flushParagraph();
+        flushList();
+        const level = Math.min(heading[1].length + 2, 6);
+        blocks.push(`<h${level}>${renderInlineMarkdown(heading[2])}</h${level}>`);
+        return;
+      }
+      if (unordered || ordered) {
+        flushParagraph();
+        const nextType = unordered ? "ul" : "ol";
+        if (listType && listType !== nextType) flushList();
+        listType = nextType;
+        listItems.push((unordered || ordered)[1]);
+        return;
+      }
+      if (quote) {
+        flushParagraph();
+        flushList();
+        blocks.push(`<blockquote>${renderInlineMarkdown(quote[1])}</blockquote>`);
+        return;
+      }
+
+      flushList();
+      paragraph.push(line);
+    });
+
+    flushParagraph();
+    flushList();
+    flushCode();
+    return blocks.join("");
+  }
+
   function renderMessageContent(content, options = {}) {
-    const body = options.html ? String(content) : escapeHtml(content);
-    return `${body.replace(/\n/g, "<br>")}${renderSources(options.sources)}`;
+    const body = options.html
+      ? String(content)
+      : options.markdown
+        ? renderMarkdown(content)
+        : escapeHtml(content).replace(/\n/g, "<br>");
+    return `${body}${renderSources(options.sources)}`;
+  }
+
+  function rememberMessage(role, content, options = {}) {
+    if (options.remember === false) return;
+    state.transcript.push({
+      role,
+      content,
+      html: Boolean(options.html),
+      markdown: Boolean(options.markdown),
+      sources: Array.isArray(options.sources) ? options.sources : []
+    });
   }
 
   function addMessage(log, role, content, options = {}) {
+    const renderOptions = {
+      ...options,
+      markdown: options.markdown ?? (role === "biying" && !options.html)
+    };
     const item = document.createElement("div");
     item.className = `biying-message ${role}`;
     if (options.key) item.dataset.messageKey = options.key;
-    item.innerHTML = renderMessageContent(content, options);
+    item.innerHTML = renderMessageContent(content, renderOptions);
     log.appendChild(item);
     log.scrollTop = log.scrollHeight;
+    rememberMessage(role, content, renderOptions);
     return item;
   }
 
   function upsertMessage(log, key, role, content, options = {}) {
     const existing = log.querySelector(`[data-message-key="${key}"]`);
     if (existing) {
-      existing.innerHTML = renderMessageContent(content, options);
+      existing.innerHTML = renderMessageContent(content, {
+        ...options,
+        markdown: options.markdown ?? (role === "biying" && !options.html)
+      });
       log.scrollTop = log.scrollHeight;
       return existing;
     }
@@ -257,7 +372,18 @@
       authNote.innerHTML = accountPrompt();
     }
 
-    addMessage(log, "biying", text("initial"));
+    if (state.transcript.length) {
+      state.transcript.forEach((message) => {
+        addMessage(log, message.role, message.content, {
+          html: message.html,
+          markdown: message.markdown,
+          sources: message.sources,
+          remember: false
+        });
+      });
+    } else {
+      addMessage(log, "biying", text("initial"));
+    }
     updateAuthNote();
     if (auth()) {
       auth().refresh().finally(updateAuthNote);
@@ -278,7 +404,7 @@
       }
       input.value = "";
       addMessage(log, "user", query);
-      const pending = addMessage(log, "biying", "...");
+      const pending = addMessage(log, "biying", "...", { remember: false });
       state.busy = true;
       try {
         let response;
@@ -300,6 +426,12 @@
         }
         pending.innerHTML = renderMessageContent(response.answer || "", {
           html: response.html,
+          markdown: !response.html,
+          sources: response.sources
+        });
+        rememberMessage("biying", response.answer || "", {
+          html: response.html,
+          markdown: !response.html,
           sources: response.sources
         });
         state.history.push({ role: "user", content: query });

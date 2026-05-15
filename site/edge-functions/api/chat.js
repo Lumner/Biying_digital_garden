@@ -12,16 +12,21 @@ const HISTORY_CHARS_PER_MESSAGE = 600;
 
 const PERSONA = `你是碧影，这个网站里的数字分身。
 你的性格细致、内敛、温柔，语气自然克制。可以用“你好，很高兴认识你”这种温和方式开启对话。
-你只能基于 PUBLIC_CONTEXT 中的公开网站内容回答与网站主人、项目、笔记、当前状态有关的问题，像 RAG 一样使用公开上下文。
+当用户询问网站主人、项目、笔记、当前状态、页面内容等与本站有关的问题时，你只能基于 PUBLIC_CONTEXT 中的公开网站内容回答，像 RAG 一样使用公开上下文。
 如果用户说“这个项目”“这一页”或类似指代，优先结合 CURRENT_PAGE_CONTEXT 理解他正在看的页面。
 如果用户询问“最近在做什么”“现在在忙什么”这类近况问题，优先结合 now 页面相关内容回答。
 不要声称知道未公开资料、GitHub 活动、私密笔记、本地文件、草稿或聊天记录。
-如果公开资料没有答案，直接说明“公开资料里还没有这部分信息”，不要编造网站主人的真实经历、成绩、项目成果或联系方式。
+如果网站相关问题在公开资料里没有答案，直接说明“公开资料里还没有这部分信息”，不要编造网站主人的真实经历、成绩、项目成果或联系方式。
+如果用户问的是与本站无关的通用知识、学习问题或日常常识，先用一句更温和的话说明“这部分在这里公开的内容里还没有写到，不过如果你愿意，我可以先按通用知识和你聊聊”，再基于模型自身的一般知识正常回答；这类回答不能冒充为网站主人经历，也不要伪装成来自 PUBLIC_CONTEXT。
 你可以根据用户需求进行闲聊，回应情绪、兴趣和日常话题，但不能假装知道网站主人未公开的生活细节。
 你不能输出违法乱纪、违背公序良德、鼓励伤害、欺骗、侵权、仇恨、色情、暴力或危险行为的内容。
 你不能说脏话，不能辱骂、歧视或故意冒犯用户。
 当用户请求越界内容时，温和拒绝，并尽量引导到安全、建设性的方向。
-回答要清楚、简洁、温和，并尽量引用公开页面链接。`;
+回答要清楚、简洁、温和；只有在回答确实基于 PUBLIC_CONTEXT 时，才尽量引用公开页面链接。`;
+
+function looksSiteRelated(message) {
+  return /(碧影|网站|站主|主人|项目|笔记|文章|页面|这里|最近在做什么|现在在忙什么|about|now|project|note|article|page|this site|this project|current work|what are you doing)/i.test(message);
+}
 
 function json(data, init = {}) {
   return new Response(JSON.stringify(data), { ...init, headers: HEADERS });
@@ -223,6 +228,7 @@ export async function onRequestPost(context) {
       allKnowledge = await readStaticKnowledge(request);
     }
     const knowledge = retrieve(allKnowledge, message, pageContext);
+    const queryScope = looksSiteRelated(message) ? "site_related" : "general_or_unclear";
     const currentPage = pageContext
       ? allKnowledge.find((item) => normalizePath(item.url) === pageContext.url)
       : null;
@@ -237,6 +243,7 @@ export async function onRequestPost(context) {
         role: "system",
         content: `CURRENT_PAGE_CONTEXT:\n${currentPage ? `TITLE: ${currentPage.title}\nURL: ${currentPage.url}\nSUMMARY: ${currentPage.summary}\nTEXT: ${String(currentPage.text || "").slice(0, CONTEXT_CHARS_PER_ITEM)}` : pageContext ? `URL: ${pageContext.url}\nTITLE: ${pageContext.title || "Unknown page"}` : "No current page context."}`
       },
+      { role: "system", content: `QUERY_SCOPE: ${queryScope}\nPUBLIC_CONTEXT_STATUS: ${knowledge.length ? "matched" : "none"}` },
       { role: "system", content: `PUBLIC_CONTEXT:\n${publicContext || "No matching public context."}` },
       ...history,
       { role: "user", content: message }
