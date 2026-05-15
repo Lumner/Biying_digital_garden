@@ -90,6 +90,8 @@ site_url: https://www.biying.site/
 /api/chat
 /api/messages
 /api/admin-messages
+/api/private-messages
+/api/admin
 ```
 
 本地 `mkdocs serve` 不会运行这些接口，所以本地看到 `/api/messages 404` 是正常现象。
@@ -105,7 +107,7 @@ AI_PROVIDER=deepseek
 DEEPSEEK_API_KEY=你的 DeepSeek Key
 DEEPSEEK_MODEL=deepseek-v4-flash
 BIYING_ADMIN_TOKEN=自定义管理 token
-BIYING_RECOVERY_TOKEN=自定义密码恢复码（可选，建议单独设置）
+BIYING_RECOVERY_TOKEN=全局应急恢复码（可选，不建议日常使用）
 ```
 
 如果使用 OpenAI：
@@ -115,7 +117,7 @@ AI_PROVIDER=openai
 OPENAI_API_KEY=你的 OpenAI Key
 OPENAI_MODEL=gpt-4.1-mini
 BIYING_ADMIN_TOKEN=自定义管理 token
-BIYING_RECOVERY_TOKEN=自定义密码恢复码（可选，建议单独设置）
+BIYING_RECOVERY_TOKEN=全局应急恢复码（可选，不建议日常使用）
 ```
 
 ## 6. KV
@@ -132,6 +134,8 @@ BIYING_KV
 user_*
 session_*
 guestbook_*
+private_message_*
+recovery_*
 ```
 
 碧影聊天优先读取 KV 中的 `public_knowledge`。如果不存在，会自动读取静态文件：
@@ -146,9 +150,36 @@ guestbook_*
 
 - 注册/登录不可用。
 - 留言提交、编辑、删除不可用。
+- 私信和一次性恢复码不可用。
 - 碧影真实聊天会要求先配置账户系统。
 
-## 7. 当前部署顺序
+## 7. 后台与密码恢复
+
+后台入口：
+
+```txt
+https://www.biying.site/zh/admin/
+```
+
+用环境变量 `BIYING_ADMIN_TOKEN` 作为管理员 token 登录。后台不会展示密码或密码哈希，只会展示：
+
+- 注册用户名
+- 注册时间
+- 最近改密时间
+- 私信收件箱
+
+推荐的找回密码流程：
+
+1. 用户在 `/zh/register/` 的“私信站点主人”表单中说明情况，并留下联系方式。
+2. 你打开 `/zh/admin/`，输入 `BIYING_ADMIN_TOKEN`。
+3. 在对应用户旁点击“签发恢复码”，填写有效分钟数，例如 `30`。
+4. 后台会生成一枚一次性恢复码，你把它私下发给用户。
+5. 用户在 `/zh/register/` 的“忘记密码”表单中使用恢复码重设密码。
+6. 恢复码使用一次后立即失效；如果过期，也会失效。
+
+`BIYING_RECOVERY_TOKEN` 只建议作为应急兜底使用，因为它是长期固定值，没有天然时效。日常优先使用后台签发的临时恢复码。
+
+## 8. 当前部署顺序
 
 1. GitHub 保持最新。
 2. EdgeOne Pages 导入 GitHub 仓库。
@@ -158,4 +189,4 @@ guestbook_*
 6. 配置 KV。
 7. 配置模型 API Key。
 8. 测试注册/登录、留言和碧影聊天。
-9. 再优化 MathJax 本地化、留言管理、引用来源和移动端体验。
+9. 再优化 MathJax 本地化、引用来源和移动端体验。

@@ -65,6 +65,8 @@ nav:
 
 not_in_nav: |
   index.md
+  zh/admin/index.md
+  en/admin/index.md
 
 plugins:
   - search:
@@ -92,16 +94,17 @@ markdown_extensions:
       alternate_style: true
 
 extra_css:
-  - assets/styles/cyber.css?v=20260515-1
+  - assets/styles/cyber.css?v=20260515-2
 
 extra_javascript:
-  - assets/javascripts/mathjax.js?v=20260515-1
+  - assets/javascripts/mathjax.js?v=20260515-2
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-  - assets/javascripts/language-switch.js?v=20260515-1
-  - assets/javascripts/random-note-cover.js?v=20260515-1
-  - assets/javascripts/auth.js?v=20260515-1
-  - assets/javascripts/biying-chat.js?v=20260515-1
-  - assets/javascripts/guestbook.js?v=20260515-1
+  - assets/javascripts/language-switch.js?v=20260515-2
+  - assets/javascripts/random-note-cover.js?v=20260515-2
+  - assets/javascripts/auth.js?v=20260515-2
+  - assets/javascripts/biying-chat.js?v=20260515-2
+  - assets/javascripts/guestbook.js?v=20260515-2
+  - assets/javascripts/admin-dashboard.js?v=20260515-2
 
 extra:
   generator: false

@@ -17,16 +17,25 @@
       registerTitle: zh ? "注册" : "Register",
       loginTitle: zh ? "登录" : "Sign In",
       resetTitle: zh ? "忘记密码" : "Forgot Password",
+      privateTitle: zh ? "私信站点主人" : "Private message the site owner",
       username: zh ? "用户名（中文、字母、数字、下划线）" : "Username (Chinese, letters, numbers, underscore)",
       password: zh ? "密码（至少 8 位）" : "Password (at least 8 characters)",
       newPassword: zh ? "新密码（至少 8 位）" : "New password (at least 8 characters)",
       recoveryCode: zh ? "恢复码" : "Recovery code",
       recoveryHint: zh
-        ? "如果忘记密码，请向站点主人索取一次恢复码，然后在这里重设密码。"
-        : "If you forgot your password, ask the site owner for a recovery code, then reset it here.",
+        ? "如果忘记密码，请先通过下方私信联系站点主人，再使用收到的恢复码重设密码。"
+        : "If you forgot your password, contact the site owner below first, then use the recovery code you receive here.",
+      privateHint: zh
+        ? "这条消息不会公开展示。若用于找回密码，请写清注册用户名和你希望收到回复的联系方式。"
+        : "This message is not public. For password recovery, include your account username and a contact method for the reply.",
+      privateName: zh ? "你的称呼" : "Your name",
+      privateAccount: zh ? "注册用户名（找回密码时填写）" : "Account username (for password recovery)",
+      privateContact: zh ? "联系方式（邮箱、QQ、微信等）" : "Contact method (email, chat handle, etc.)",
+      privateMessage: zh ? "想私下告诉站点主人的内容" : "What you want to tell the site owner privately",
       register: zh ? "创建账户" : "Create account",
       login: zh ? "登录" : "Sign in",
       reset: zh ? "重设密码" : "Reset password",
+      sendPrivate: zh ? "发送私信" : "Send private message",
       logout: zh ? "退出登录" : "Sign out",
       current: zh ? "当前登录" : "Signed in as",
       required: zh ? "请先注册或登录。" : "Please register or sign in first.",
@@ -36,8 +45,11 @@
       invalidUsername: zh ? "用户名只能使用 2-24 位中文、字母、数字和下划线。" : "Use 2-24 Chinese characters, letters, numbers, or underscores.",
       invalidPassword: zh ? "密码至少需要 8 位。" : "Password must be at least 8 characters.",
       invalidRecovery: zh ? "恢复码不正确。" : "The recovery code is incorrect.",
+      recoveryExpired: zh ? "恢复码已过期，请重新联系站点主人获取新的恢复码。" : "The recovery code has expired. Ask the site owner for a new one.",
       recoveryMissing: zh ? "站点还没有配置密码恢复码。" : "Password recovery is not configured yet.",
       resetSaved: zh ? "密码已重设，并已登录。" : "Password reset complete. You are signed in.",
+      privateSaved: zh ? "私信已发送。" : "Private message sent.",
+      privateRequired: zh ? "请把称呼、联系方式和私信内容都填写完整。" : "Please complete your name, contact method, and message.",
       saved: zh ? "已登录。" : "Signed in.",
       network: zh ? "连接失败，请稍后再试。" : "Connection failed. Please try again later."
     };
@@ -86,6 +98,7 @@
       invalid_username: text("invalidUsername"),
       invalid_password: text("invalidPassword"),
       invalid_recovery_code: text("invalidRecovery"),
+      recovery_expired: text("recoveryExpired"),
       recovery_not_configured: text("recoveryMissing")
     }[code] || text("network");
   }
@@ -185,6 +198,17 @@
           <button type="submit">${text("reset")}</button>
           <p class="meta-line" data-auth-reset-message></p>
         </form>
+        <form class="auth-card" data-auth-private>
+          <h2>${text("privateTitle")}</h2>
+          <p class="meta-line">${text("privateHint")}</p>
+          <input name="name" maxlength="40" placeholder="${text("privateName")}" />
+          <input name="accountUsername" maxlength="40" placeholder="${text("privateAccount")}" />
+          <input name="contact" maxlength="120" placeholder="${text("privateContact")}" />
+          <textarea name="content" rows="4" maxlength="800" placeholder="${text("privateMessage")}"></textarea>
+          <input class="hp-field" name="website" tabindex="-1" autocomplete="off" />
+          <button type="submit">${text("sendPrivate")}</button>
+          <p class="meta-line" data-auth-private-message></p>
+        </form>
       </div>
     `;
 
@@ -253,6 +277,38 @@
         message.textContent = friendlyError(error);
       }
       renderStatus(root);
+    });
+
+    root.querySelector("[data-auth-private]").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const message = root.querySelector("[data-auth-private-message]");
+      const data = new FormData(form);
+      const payload = {
+        name: String(data.get("name") || "").trim(),
+        accountUsername: String(data.get("accountUsername") || "").trim(),
+        contact: String(data.get("contact") || "").trim(),
+        content: String(data.get("content") || "").trim(),
+        website: String(data.get("website") || ""),
+        locale: isChinesePage() ? "zh" : "en"
+      };
+      if (!payload.name || !payload.contact || !payload.content) {
+        message.textContent = text("privateRequired");
+        return;
+      }
+      if (payload.website) return;
+      try {
+        const response = await fetch("/api/private-messages", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        if (!response.ok) throw new Error("private_message_failed");
+        form.reset();
+        message.textContent = text("privateSaved");
+      } catch (error) {
+        message.textContent = text("network");
+      }
     });
   }
 

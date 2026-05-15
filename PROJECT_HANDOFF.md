@@ -10,6 +10,8 @@
 - 课程笔记与项目经历
 - 数学公式渲染
 - 公开留言板
+- 私信站点主人
+- 站点主人后台
 - 数字分身碧影
 - EdgeOne Pages / Functions / KV 部署路线
 
@@ -24,7 +26,7 @@
 - 样式：自定义 CSS，主要在 `docs/assets/styles/cyber.css`
 - 知识库：构建时生成 `docs/assets/knowledge/public-knowledge.json`
 - 数字分身 API：EdgeOne Functions 风格接口
-- 留言存储：计划使用 EdgeOne KV
+- 数据存储：EdgeOne KV，当前承载账户、会话、留言、私信和恢复码
 - AI 模型：DeepSeek 优先，OpenAI 兼容接口预留
 - CI：GitHub Actions
 - 部署：EdgeOne Pages
@@ -50,6 +52,9 @@
 - 完成碧影聊天前端和 API 雏形
 - 完成账户注册/登录 API 雏形
 - 完成留言板前端和 API 雏形，支持登录用户编辑/删除自己的留言
+- 完成站点主人后台，可查看注册用户和私信
+- 完成私信站点主人入口，供忘记密码时联系
+- 完成带时效的一次性恢复码流程
 - 完成合并后的项目页：个人数字花园与碧影
 - 删除站内面向特定用途的显式求职导向文案，让网站保持个人数字空间气质
 - 完成 `ARCHITECTURE.md` 架构说明
@@ -65,11 +70,11 @@
 
 最近一轮主要做了这些事情：
 
-1. 清理站内显式求职导向文本。
-2. 重新生成碧影公开知识库。
-3. 新增 `ARCHITECTURE.md`，详细说明项目架构和每个文件作用。
-4. 执行 Git 初始化基线提交。
-5. 新增当前交接文档 `PROJECT_HANDOFF.md`。
+1. 增加站点主人后台页面 `/zh/admin/` 与 `/en/admin/`。
+2. 增加注册用户列表、私信收件箱和已读状态管理。
+3. 增加私信站点主人入口，便于用户忘记密码时与你联系。
+4. 增加带时效的一次性恢复码签发与校验流程。
+5. 更新部署文档，说明后台 token、私信和恢复码使用方法。
 
 ## 如何运行
 
@@ -151,6 +156,7 @@ node --check edge-functions\api\admin-messages.js
 - `docs/assets/javascripts/mathjax.js`：数学公式配置
 - `docs/assets/javascripts/biying-chat.js`：碧影聊天前端
 - `docs/assets/javascripts/guestbook.js`：留言板前端
+- `docs/assets/javascripts/admin-dashboard.js`：站点主人后台前端
 - `docs/assets/knowledge/public-knowledge.json`：碧影公开知识库，自动生成，不要手改
 - `docs/assets/images/favicon.svg`：站点图标
 
@@ -175,6 +181,13 @@ node --check edge-functions\api\admin-messages.js
 - `edge-functions/api/messages.js`：留言提交和读取
 - `edge-functions/api/admin-messages.js`：管理员删除留言
 
+### 站点主人后台
+
+- `docs/zh/admin/index.md`：中文后台页
+- `docs/en/admin/index.md`：英文后台页
+- `edge-functions/api/private-messages.js`：私信提交
+- `edge-functions/api/admin.js`：注册用户、私信和恢复码管理
+
 ### 原始课程讲义
 
 - `note/离散数学讲义.md`
@@ -186,8 +199,8 @@ node --check edge-functions\api\admin-messages.js
 ## 已知问题
 
 1. 英文课程笔记目前是 companion/overview 版本，不是完整逐句翻译。
-2. 碧影聊天后端还没有在真实 EdgeOne 环境里配置 API Key、KV 和限流。
-3. 留言系统已有登录、编辑和删除雏形，但缺少完善的管理后台、审核、防刷和更完整的管理员 UI。
+2. 碧影聊天已经可用，但还可以继续补限流和更细的错误观测。
+3. 留言系统已有登录、编辑、删除和基础后台，但还缺审核、隐藏、反垃圾和更细的管理能力。
 4. 语言切换通过前端 JS 隐藏另一套导航，静态 HTML 里仍然同时存在中英文导航；页面加载后才会过滤。
 5. MathJax 当前通过 CDN 加载主脚本，国内访问更稳的方案是把 MathJax 资源本地化到 `docs/assets/vendor/`。
 6. `mkdocs serve/build` 会显示 MkDocs Material 关于 MkDocs 2.0 的提示，这不是当前项目错误。
@@ -199,11 +212,11 @@ node --check edge-functions\api\admin-messages.js
 
 1. 确认 EdgeOne Pages 部署在 `https://www.biying.site/` 下稳定可访问。
 2. 保持 `mkdocs.yml` 中的 `site_url: https://www.biying.site/` 与正式域名一致。
-3. 配置 EdgeOne Functions、KV、模型 API Key，让注册、碧影聊天和留言系统真正在线。
+3. 给后台补更细的运营能力，例如按未读筛选私信、搜索用户、批量操作。
 4. 将 MathJax 改成本地资源，降低国内访问不稳定风险。
 5. 为英文课程笔记接入翻译 API 或人工校对，逐步补完整英文内容。
 6. 增加更多真实项目页，继续完善项目经历。
-7. 加入留言管理界面，支持删除、隐藏、反垃圾和限流。
+7. 继续完善留言管理，支持隐藏、反垃圾和限流。
 8. 优化移动端视觉和长笔记阅读体验。
 9. 给碧影回答增加更清晰的来源引用展示。
 10. 保持 GitHub 与 EdgeOne Pages 自动部署链路同步。

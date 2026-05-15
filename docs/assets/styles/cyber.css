@@ -998,6 +998,22 @@ body {
   padding: 0.68rem;
 }
 
+.auth-card textarea {
+  width: 100%;
+  border: 1px solid rgba(79, 255, 219, 0.28);
+  border-radius: 0.35rem;
+  background: rgba(2, 7, 10, 0.9);
+  color: #edfffb;
+  font: inherit;
+  padding: 0.68rem;
+}
+
+.auth-card .hp-field {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+}
+
 .auth-card button,
 .message-actions button {
   min-height: 2.1rem;
@@ -1046,6 +1062,94 @@ body {
 .meta-line {
   color: var(--cyber-muted);
   font-size: 0.82rem;
+}
+
+.admin-panel {
+  border: 1px solid var(--cyber-line);
+  border-radius: 0.5rem;
+  background: rgba(6, 18, 25, 0.82);
+  box-shadow: 0 0 28px rgba(57, 245, 212, 0.1);
+  padding: 1rem;
+}
+
+.admin-token-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.admin-token-form input {
+  flex: 1 1 14rem;
+  min-height: 2.35rem;
+  border: 1px solid rgba(79, 255, 219, 0.28);
+  border-radius: 0.35rem;
+  background: rgba(2, 7, 10, 0.9);
+  color: #edfffb;
+  font: inherit;
+  padding: 0.68rem;
+}
+
+.admin-token-form button,
+.admin-card button {
+  min-height: 2.1rem;
+  border: 1px solid rgba(79, 255, 219, 0.44);
+  border-radius: 0.35rem;
+  background: rgba(57, 245, 212, 0.08);
+  color: #eafffb;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  padding: 0.45rem 0.7rem;
+}
+
+.admin-recovery {
+  display: grid;
+  gap: 0.3rem;
+  border: 1px solid rgba(244, 201, 131, 0.32);
+  border-radius: 0.4rem;
+  background: rgba(244, 201, 131, 0.08);
+  margin-top: 1rem;
+  padding: 0.8rem;
+}
+
+.admin-section {
+  margin-top: 1rem;
+}
+
+.admin-section h2 {
+  margin-top: 1.25rem;
+}
+
+.admin-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.admin-card {
+  display: grid;
+  gap: 0.45rem;
+  border: 1px solid rgba(79, 255, 219, 0.18);
+  border-radius: 0.45rem;
+  background: rgba(3, 10, 14, 0.56);
+  padding: 0.9rem;
+}
+
+.admin-card.unread {
+  border-color: rgba(244, 201, 131, 0.32);
+}
+
+.admin-card__top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.admin-card span,
+.admin-card p {
+  margin: 0;
+  color: #c9e2dd;
 }
 
 @media (max-width: 56rem) {

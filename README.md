@@ -7,6 +7,8 @@
 - MathJax 数学公式渲染
 - 数字分身「碧影」聊天前端
 - 公开留言板前端
+- 私信站点主人表单
+- 站点主人后台与一次性恢复码
 - EdgeOne Pages Functions API 雏形
 - 公开知识库构建脚本
 
@@ -87,8 +89,8 @@ DEEPSEEK_API_KEY=你的 DeepSeek Key
 DEEPSEEK_MODEL=deepseek-v4-flash
 OPENAI_API_KEY=可选
 OPENAI_MODEL=gpt-4.1-mini
-BIYING_ADMIN_TOKEN=留言管理 token
-BIYING_RECOVERY_TOKEN=密码恢复码（可选，建议单独设置）
+BIYING_ADMIN_TOKEN=后台管理员 token
+BIYING_RECOVERY_TOKEN=可选的全局应急恢复码（不建议日常使用）
 ```
 
 KV 绑定名建议：
@@ -97,7 +99,21 @@ KV 绑定名建议：
 BIYING_KV
 ```
 
-账户、登录会话、公开留言都依赖这个 KV 绑定。
+账户、登录会话、公开留言、私信和一次性恢复码都依赖这个 KV 绑定。
+
+站点主人后台入口：
+
+```txt
+https://www.biying.site/zh/admin/
+```
+
+使用 `BIYING_ADMIN_TOKEN` 登录后，可以：
+
+- 查看注册用户
+- 查看私信收件箱
+- 为指定用户名签发一次性恢复码
+
+日常找回密码推荐使用后台签发的临时恢复码，而不是长期固定的 `BIYING_RECOVERY_TOKEN`。
 
 ## 内容规则
 

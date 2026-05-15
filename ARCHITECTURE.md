@@ -21,12 +21,15 @@ EdgeOne Pages 部署
   ├─ language-switch.js 语言切换
   ├─ mathjax.js 数学公式渲染
   ├─ auth.js 注册、登录和会话前端
+  ├─ admin-dashboard.js 站点主人后台前端
   ├─ biying-chat.js 碧影聊天前端
   └─ guestbook.js 留言板前端
 
 EdgeOne Functions
   ├─ /api/chat 碧影聊天接口
   ├─ /api/messages 留言接口
+  ├─ /api/private-messages 私信接口
+  ├─ /api/admin 站点主人后台接口
   └─ /api/admin-messages 管理删除接口
 ```
 
@@ -187,9 +190,13 @@ Node 侧配置。当前主要用于预留 EdgeOne CLI：
 
 ### `docs/zh/register/index.md`
 
-中文注册/登录页。包含账户组件挂载点。
+中文注册/登录页。包含账户组件挂载点，也承载忘记密码时联系站点主人的私信入口。
 
 账户组件本身由 `docs/assets/javascripts/auth.js` 实现。
+
+### `docs/zh/admin/index.md`
+
+中文站点主人后台页。默认不进入公开导航，用于查看注册用户、私信收件箱，并签发一次性恢复码。
 
 ### `docs/zh/notes/index.md`
 
@@ -276,7 +283,11 @@ Node 侧配置。当前主要用于预留 EdgeOne CLI：
 
 ### `docs/en/register/index.md`
 
-英文账户页。
+英文账户页，也包含私信站点主人的找回密码入口。
+
+### `docs/en/admin/index.md`
+
+英文站点主人后台页。
 
 ### `docs/en/notes/index.md`
 
@@ -359,11 +370,23 @@ $$
 
 - 渲染账户页面
 - 调用 `/api/auth`
+- 调用 `/api/private-messages`
 - 把登录 token 存在浏览器 `localStorage`
 - 给留言和碧影聊天提供 `Authorization` header
 - 触发登录状态变化事件
 
 如果你想改账户页面文案或登录状态展示，改这里。
+
+### `docs/assets/javascripts/admin-dashboard.js`
+
+站点主人后台前端。负责：
+
+- 使用 `BIYING_ADMIN_TOKEN` 访问 `/api/admin`
+- 展示注册用户列表
+- 展示私信收件箱
+- 标记私信已读/未读
+- 删除私信
+- 为指定用户签发带时效的一次性恢复码
 
 ### `docs/assets/javascripts/biying-chat.js`
 
@@ -557,6 +580,7 @@ OPENAI_API_KEY
 - `GET /api/auth` 校验当前 session
 - `DELETE /api/auth` 退出登录
 - 使用 EdgeOne KV 保存 `user_*` 和 `session_*`
+- 读取 `recovery_*` 一次性恢复码并校验时效
 - 使用 PBKDF2 保存密码哈希，不保存明文密码
 
 注册和登录依赖 KV 绑定：
@@ -578,6 +602,26 @@ BIYING_KV
 - 返回 `canEdit` 供前端展示编辑/删除按钮
 
 当前留言是公开展示路线。后续可以扩展审核、限流、反垃圾和更完整的管理员界面。
+
+### `edge-functions/api/private-messages.js`
+
+私信接口。负责：
+
+- `POST /api/private-messages` 接收访客发给站点主人的私信
+- 记录姓名、联系方式、可选关联用户名和正文
+- 写入 EdgeOne KV 的 `private_message_*`
+- 使用蜜罐字段过滤一部分自动化垃圾提交
+
+### `edge-functions/api/admin.js`
+
+站点主人后台接口。负责：
+
+- 检查 `BIYING_ADMIN_TOKEN`
+- `GET /api/admin` 汇总注册用户与私信
+- `POST /api/admin` 为指定用户名签发一次性恢复码
+- `PUT /api/admin?id=...` 标记私信已读/未读
+- `DELETE /api/admin?id=...` 删除私信
+- 把恢复码哈希写入 `recovery_*`，并保存过期时间
 
 ### `edge-functions/api/admin-messages.js`
 
@@ -759,6 +803,8 @@ docs/en/guestbook/index.md
 
 ```txt
 edge-functions/api/messages.js
+edge-functions/api/private-messages.js
+edge-functions/api/admin.js
 edge-functions/api/admin-messages.js
 ```
 
@@ -778,8 +824,11 @@ edge-functions/api/admin-messages.js
 node --check docs\assets\javascripts\language-switch.js
 node --check docs\assets\javascripts\biying-chat.js
 node --check docs\assets\javascripts\guestbook.js
+node --check docs\assets\javascripts\admin-dashboard.js
 node --check edge-functions\api\chat.js
 node --check edge-functions\api\messages.js
+node --check edge-functions\api\private-messages.js
+node --check edge-functions\api\admin.js
 node --check edge-functions\api\admin-messages.js
 ```
 

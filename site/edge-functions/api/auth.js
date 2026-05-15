@@ -34,6 +34,10 @@ function sessionKey(token) {
   return `session_${token}`;
 }
 
+function recoveryKey(username) {
+  return `recovery_${username}`;
+}
+
 function bytesToHex(bytes) {
   return Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join("");
 }
@@ -71,6 +75,11 @@ async function hashPassword(password, salt) {
     256
   );
   return bytesToHex(new Uint8Array(bits));
+}
+
+async function hashText(value) {
+  const digest = await crypto.subtle.digest("SHA-256", encoder.encode(value));
+  return bytesToHex(new Uint8Array(digest));
 }
 
 function normalizeUsername(value) {
@@ -174,14 +183,6 @@ async function register(kv, body) {
 }
 
 async function resetPassword(kv, body, env) {
-  const recoveryToken = envValue(env, "BIYING_RECOVERY_TOKEN", envValue(env, "BIYING_ADMIN_TOKEN"));
-  if (!recoveryToken) {
-    return json({ error: "recovery_not_configured" }, { status: 503 });
-  }
-  if (String(body.recoveryToken || "") !== recoveryToken) {
-    return json({ error: "invalid_recovery_code" }, { status: 401 });
-  }
-
   const username = normalizeUsername(body.username);
   const password = String(body.password || "");
   if (!isValidUsername(username)) {
@@ -195,6 +196,28 @@ async function resetPassword(kv, body, env) {
   if (!raw) {
     return json({ error: "invalid_credentials" }, { status: 404 });
   }
+
+  const submittedCode = String(body.recoveryToken || "").trim();
+  const rawRecovery = await kv.get(recoveryKey(username), { type: "text" });
+  let matchedTimedCode = false;
+  if (rawRecovery) {
+    const recovery = JSON.parse(rawRecovery);
+    if (Date.parse(recovery.expiresAt) <= Date.now()) {
+      await kv.delete(recoveryKey(username));
+      return json({ error: "recovery_expired" }, { status: 410 });
+    }
+    matchedTimedCode = await hashText(submittedCode) === recovery.codeHash;
+  }
+
+  const fallbackRecoveryToken = envValue(env, "BIYING_RECOVERY_TOKEN", envValue(env, "BIYING_ADMIN_TOKEN"));
+  const matchedFallbackCode = Boolean(fallbackRecoveryToken && submittedCode === fallbackRecoveryToken);
+  if (!rawRecovery && !fallbackRecoveryToken) {
+    return json({ error: "recovery_not_configured" }, { status: 503 });
+  }
+  if (!matchedTimedCode && !matchedFallbackCode) {
+    return json({ error: "invalid_recovery_code" }, { status: 401 });
+  }
+
   const user = JSON.parse(raw);
   const salt = randomHex(16);
   const passwordHash = await hashPassword(password, salt);
@@ -205,6 +228,9 @@ async function resetPassword(kv, body, env) {
     passwordUpdatedAt: new Date().toISOString()
   };
   await kv.put(userKey(username), JSON.stringify(updatedUser));
+  if (matchedTimedCode) {
+    await kv.delete(recoveryKey(username));
+  }
   const session = await createSession(kv, updatedUser);
   return json({ ok: true, token: session.token, user: publicUser(updatedUser) });
 }
