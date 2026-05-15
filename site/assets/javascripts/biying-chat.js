@@ -182,6 +182,11 @@
     return `${body}${renderSources(options.sources)}`;
   }
 
+  function typesetMath(node) {
+    if (!node || !window.MathJax || !window.MathJax.typesetPromise) return;
+    window.MathJax.typesetPromise([node]).catch(() => {});
+  }
+
   function rememberMessage(role, content, options = {}) {
     if (options.remember === false) return;
     state.transcript.push({
@@ -200,22 +205,27 @@
     };
     const item = document.createElement("div");
     item.className = `biying-message ${role}`;
+    if (role === "biying" && renderOptions.markdown) item.classList.add("arithmatex");
     if (options.key) item.dataset.messageKey = options.key;
     item.innerHTML = renderMessageContent(content, renderOptions);
     log.appendChild(item);
     log.scrollTop = log.scrollHeight;
     rememberMessage(role, content, renderOptions);
+    typesetMath(item);
     return item;
   }
 
   function upsertMessage(log, key, role, content, options = {}) {
     const existing = log.querySelector(`[data-message-key="${key}"]`);
     if (existing) {
-      existing.innerHTML = renderMessageContent(content, {
+      const renderOptions = {
         ...options,
         markdown: options.markdown ?? (role === "biying" && !options.html)
-      });
+      };
+      existing.classList.toggle("arithmatex", role === "biying" && renderOptions.markdown);
+      existing.innerHTML = renderMessageContent(content, renderOptions);
       log.scrollTop = log.scrollHeight;
+      typesetMath(existing);
       return existing;
     }
     return addMessage(log, role, content, { ...options, key });
@@ -429,6 +439,8 @@
           markdown: !response.html,
           sources: response.sources
         });
+        pending.classList.toggle("arithmatex", !response.html);
+        typesetMath(pending);
         rememberMessage("biying", response.answer || "", {
           html: response.html,
           markdown: !response.html,
