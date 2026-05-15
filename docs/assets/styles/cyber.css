@@ -1878,4 +1878,15 @@ body {
   .lang-switcher {
     margin-left: auto;
   }
+  .md-footer-meta__inner {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;    
+    text-align: center;
+}
+
+  .md-copyright {
+    text-align: center;
+    padding-top: 10px;
+  }
 }
