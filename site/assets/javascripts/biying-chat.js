@@ -322,7 +322,20 @@
       <section class="biying-chat biying-chat--companion biying-companion__panel" hidden>
         <div data-biying-chat></div>
       </section>
-      <button class="biying-companion__toggle" type="button" aria-expanded="false">${isChinesePage() ? "和碧影聊聊" : "Talk with Biying"}</button>
+      <button
+        class="biying-companion__toggle"
+        type="button"
+        aria-expanded="false"
+        aria-label="${isChinesePage() ? "和碧影聊聊" : "Talk with Biying"}"
+        title="${isChinesePage() ? "和碧影聊聊" : "Talk with Biying"}"
+      >
+        <svg class="biying-companion__icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5.75 17.25 4 20l4.12-1.48A8.5 8.5 0 1 0 5.75 17.25Z"></path>
+          <circle cx="9" cy="12" r="1.15"></circle>
+          <circle cx="15" cy="12" r="1.15"></circle>
+        </svg>
+        <span class="sr-only">${isChinesePage() ? "和碧影聊聊" : "Talk with Biying"}</span>
+      </button>
     `;
     document.body.appendChild(shell);
     const panel = shell.querySelector(".biying-companion__panel");
@@ -333,6 +346,7 @@
       const open = panel.hasAttribute("hidden");
       panel.toggleAttribute("hidden", !open);
       toggle.setAttribute("aria-expanded", String(open));
+      toggle.classList.toggle("is-open", open);
     });
   }
 
