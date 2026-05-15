@@ -44,22 +44,25 @@ http://127.0.0.1:8000/zh/
 ## 构建
 
 ```bash
-python scripts/build_knowledge.py
-mkdocs build
+python scripts/build_site.py
 ```
 
-输出目录是 `site/`。
+输出目录是 `site/`。这个命令会依次完成：
+
+1. 生成公开知识库
+2. 构建 MkDocs 静态站点
+3. 把 `edge-functions/` 和 `package.json` 打包进 `site/`
 
 ## EdgeOne Pages 部署
 
-推荐构建配置：
+当前部署采用“提交预构建 `site/`”的方式，以避开 EdgeOne 构建环境中的 Python 兼容问题。EdgeOne 控制台使用：
 
 ```txt
 Install command:
-pip install -r requirements.txt
+echo skip install
 
 Build command:
-python scripts/build_knowledge.py && mkdocs build --strict
+echo skip build
 
 Output directory:
 ./site

@@ -34,8 +34,8 @@ www.biying.site
 
 ```json
 {
-  "installCommand": "pip install -r requirements.txt",
-  "buildCommand": "python scripts/build_knowledge.py && mkdocs build --strict",
+  "installCommand": "echo skip install",
+  "buildCommand": "echo skip build",
   "outputDirectory": "./site"
 }
 ```
@@ -44,14 +44,22 @@ www.biying.site
 
 ```txt
 Install command:
-pip install -r requirements.txt
+echo skip install
 
 Build command:
-python scripts/build_knowledge.py && mkdocs build --strict
+echo skip build
 
 Output directory:
 ./site
 ```
+
+当前采用预构建发布流程。每次准备部署前，本地先运行：
+
+```bash
+python scripts/build_site.py
+```
+
+这个命令会重新生成 `site/`，并把 `edge-functions/` 与 `package.json` 一起打包进发布目录。因为 EdgeOne 现在直接发布 `site/`，这一步缺失时，静态页面会存在，但 `/api/auth`、`/api/chat`、`/api/messages` 这些 Functions 路由不会随站点一起上线。
 
 部署成功后先验证：
 

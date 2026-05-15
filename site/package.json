@@ -1,0 +1,14 @@
+{
+  "name": "biying-digital-garden",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "edgeone:dev": "edgeone pages dev",
+    "knowledge": "python scripts/build_knowledge.py"
+  },
+  "devDependencies": {
+    "edgeone": "latest"
+  }
+}
+

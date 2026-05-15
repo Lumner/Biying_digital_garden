@@ -26,6 +26,8 @@
       deleted: zh ? "已删除。" : "Deleted.",
       authExpired: zh ? "登录状态已过期，请重新登录。" : "Your session expired. Please sign in again.",
       kv: zh ? "留言需要先在 EdgeOne 中绑定 BIYING_KV。" : "Guestbook requires BIYING_KV to be bound in EdgeOne.",
+      apiNotFound: zh ? "没有找到 /api/messages。通常是 EdgeOne Functions 没有部署成功，或当前项目只发布了静态 site 目录。" : "/api/messages was not found. EdgeOne Functions may not be deployed, or the project is only serving the static site directory.",
+      apiUnavailable: zh ? "留言 API 没有返回可用响应。请检查 EdgeOne Functions 是否已经随本次部署生效。" : "The guestbook API did not return a usable response. Please check whether EdgeOne Functions are active for this deployment.",
       error: zh ? "操作失败，请稍后再试。" : "The action failed. Please try again later."
     }[key];
   }
@@ -60,10 +62,13 @@
   }
 
   async function parseResponse(response) {
-    const data = await response.json().catch(() => ({}));
+    const type = response.headers.get("content-type") || "";
+    const data = type.includes("application/json")
+      ? await response.json().catch(() => ({}))
+      : { detail: await response.text().catch(() => "") };
     if (!response.ok) {
       const error = new Error(data.error || "request_failed");
-      error.code = data.error;
+      error.code = response.status === 404 ? "api_not_found" : data.error;
       error.status = response.status;
       throw error;
     }
@@ -73,16 +78,25 @@
   function friendlyError(error) {
     if (error.status === 401 || error.code === "auth_required") return copy("authExpired");
     if (error.code === "kv_not_configured") return copy("kv");
+    if (error.code === "api_not_found" || error.status === 404) return copy("apiNotFound");
+    if (error.code === "fetch_failed") return copy("apiUnavailable");
     return copy("error");
   }
 
   async function fetchMessages() {
-    const response = await fetch("/api/messages", {
-      cache: "no-store",
-      headers: authHeaders()
-    });
-    const data = await parseResponse(response);
-    return Array.isArray(data.messages) ? data.messages : [];
+    try {
+      const response = await fetch("/api/messages", {
+        cache: "no-store",
+        headers: authHeaders()
+      });
+      const data = await parseResponse(response);
+      return Array.isArray(data.messages) ? data.messages : [];
+    } catch (error) {
+      if (error && error.status) throw error;
+      const wrapped = new Error("fetch_failed");
+      wrapped.code = "fetch_failed";
+      throw wrapped;
+    }
   }
 
   async function postMessage(message) {
