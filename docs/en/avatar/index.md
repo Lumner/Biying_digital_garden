@@ -25,6 +25,6 @@ He answers from content already published on this site, and when something has n
 !!! info "Current mode"
     After sign-in, Biying first uses the live API. The chat box only falls back to the local public knowledge base when the network or endpoint is unavailable.
 
-<div class="interaction-shell">
+<div class="interaction-shell interaction-shell--page-chat">
   <div class="biying-chat" data-biying-chat></div>
 </div>

@@ -25,6 +25,6 @@ tags:
 !!! info "当前模式"
     登录后，碧影会优先连接线上 API。只有当网络或接口异常时，下面的对话框才会退回本地公开知识库。
 
-<div class="interaction-shell">
+<div class="interaction-shell interaction-shell--page-chat">
   <div class="biying-chat" data-biying-chat></div>
 </div>

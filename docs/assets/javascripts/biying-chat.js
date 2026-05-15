@@ -331,6 +331,14 @@
     shell.dataset.biyingCompanion = "true";
     shell.innerHTML = `
       <section class="biying-chat biying-chat--companion biying-companion__panel" hidden>
+        <button
+          class="biying-companion__close"
+          type="button"
+          aria-label="${isChinesePage() ? "关闭聊天" : "Close chat"}"
+          title="${isChinesePage() ? "关闭聊天" : "Close chat"}"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
         <div data-biying-chat></div>
       </section>
       <button
@@ -351,14 +359,17 @@
     document.body.appendChild(shell);
     const panel = shell.querySelector(".biying-companion__panel");
     const toggle = shell.querySelector(".biying-companion__toggle");
+    const close = shell.querySelector(".biying-companion__close");
     const root = shell.querySelector("[data-biying-chat]");
     mount(root);
-    toggle.addEventListener("click", () => {
-      const open = panel.hasAttribute("hidden");
+    function setOpen(open) {
       panel.toggleAttribute("hidden", !open);
       toggle.setAttribute("aria-expanded", String(open));
       toggle.classList.toggle("is-open", open);
-    });
+      document.body.classList.toggle("biying-companion-open", open);
+    }
+    toggle.addEventListener("click", () => setOpen(panel.hasAttribute("hidden")));
+    close.addEventListener("click", () => setOpen(false));
   }
 
   document.addEventListener("DOMContentLoaded", () => {

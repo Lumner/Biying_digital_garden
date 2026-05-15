@@ -118,7 +118,7 @@ markdown_extensions:
       alternate_style: true
 
 extra_css:
-  - assets/styles/cyber.css?v=20260515-8
+  - assets/styles/cyber.css?v=20260515-9
 
 extra_javascript:
   - assets/javascripts/mathjax.js?v=20260515-3
@@ -128,7 +128,7 @@ extra_javascript:
   - assets/javascripts/notes-hub.js?v=20260515-2
   - assets/javascripts/note-reader.js?v=20260515-1
   - assets/javascripts/auth.js?v=20260515-3
-  - assets/javascripts/biying-chat.js?v=20260515-6
+  - assets/javascripts/biying-chat.js?v=20260515-7
   - assets/javascripts/guestbook.js?v=20260515-4
   - assets/javascripts/admin-dashboard.js?v=20260515-4
 
