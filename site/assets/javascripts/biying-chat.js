@@ -11,16 +11,16 @@
   function text(key) {
     const zh = isChinesePage();
     const copy = {
-      placeholder: zh ? "问问碧影：这个人最近在做什么？" : "Ask Biying: what is this person working on?",
+      placeholder: zh ? "和碧影说点什么..." : "Say something to Biying...",
       send: zh ? "发送" : "Send",
       headerTitle: zh ? "你好，很高兴认识你。" : "Hello, it is nice to meet you.",
       headerScope: zh
-        ? "碧影只会回答网站公开内容；没有公开资料时会直接说明。"
-        : "Biying only answers from public site content; when the material is missing, he says so.",
+        ? "我会从这个网站已经公开的内容里陪你慢慢聊。"
+        : "I answer from what has already been shared on this site.",
       sources: zh ? "来源" : "Sources",
       initial: zh
-        ? "你好，很高兴认识你。我是碧影，只读取这个网站公开发布的内容。你可以问我关于主人、项目、笔记和当前状态的问题，也可以和我闲聊。"
-        : "Hello, it is nice to meet you. I am Biying. I only read public content from this site, and I can talk about the owner, projects, notes, current status, or simply chat.",
+        ? "你好，很高兴认识你。我是碧影。你可以和我聊聊这里已经写下的内容，也可以只是随便说说话。"
+        : "Hello, it is nice to meet you. I am Biying. You can ask about what has already been shared here, or simply stay for a chat.",
       offline: zh
         ? "我先用本地公开知识库回答。"
         : "I will answer from the local public knowledge base for now.",

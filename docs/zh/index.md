@@ -47,8 +47,8 @@ tags:
 <section class="biying-presence" aria-label="碧影介绍">
   <div>
     <span class="biying-presence__hello">你好，很高兴认识你。</span>
-    <h2>碧影坐在这里，帮你进入公开内容。</h2>
-    <p>他不是客服按钮，也不是全知助手。碧影只读取这个网站已经公开的页面：笔记、项目、现在和关于。如果公开资料里没有答案，他会直接说明。</p>
+    <h2>碧影在这里，陪你从容地逛一逛。</h2>
+    <p>想知道我最近在做什么、这里有哪些内容，或者只是想随便聊聊，都可以先和碧影说句话。这个网站没有写到的部分，他也会如实告诉你。</p>
   </div>
   <a class="biying-presence__link" href="./avatar/">和碧影聊聊</a>
 </section>
@@ -70,7 +70,7 @@ tags:
   </section>
   <section class="cyber-card">
     <h3>碧影</h3>
-    <p>碧影是虚构人格。他可以介绍公开内容，也可以闲聊，但不会访问未公开资料。</p>
+    <p>想更轻松地了解这里，可以直接和碧影聊聊。他会从已经公开的内容里陪你找线索。</p>
     <a href="./avatar/">启动对话</a>
   </section>
   <section class="cyber-card">

@@ -351,26 +351,7 @@ body {
 }
 
 .interaction-shell {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(14rem, 0.42fr);
-  gap: 1rem;
-  align-items: start;
   margin: 1rem 0;
-}
-
-.prompt-deck {
-  display: grid;
-  gap: 0.65rem;
-}
-
-.prompt-chip {
-  display: block;
-  border: 1px solid rgba(112, 244, 219, 0.16);
-  border-radius: 0.42rem;
-  background: rgba(5, 14, 17, 0.58);
-  color: #d9fff8;
-  padding: 0.72rem 0.82rem;
-  line-height: 1.55;
 }
 
 .project-brief {
@@ -1192,10 +1173,6 @@ body {
 
   .garden-pagehead__title {
     font-size: 1.75rem;
-  }
-
-  .interaction-shell {
-    grid-template-columns: 1fr;
   }
 
   .biying-presence {

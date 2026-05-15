@@ -47,8 +47,8 @@ tags:
 <section class="biying-presence" aria-label="Biying introduction">
   <div>
     <span class="biying-presence__hello">Hello, it is nice to meet you.</span>
-    <h2>Biying sits here as a guide to public content.</h2>
-    <p>He is not a customer service button or an all-knowing assistant. Biying only reads pages already published on this site: notes, projects, now, and about. If the public material does not contain an answer, he says so.</p>
+    <h2>Biying is here if you want a gentler way in.</h2>
+    <p>If you want to know what I have been doing, what lives on this site, or simply chat for a moment, you can start with Biying. When something has not been written here yet, he says so plainly.</p>
   </div>
   <a class="biying-presence__link" href="./avatar/">Talk to Biying</a>
 </section>
@@ -70,7 +70,7 @@ tags:
   </section>
   <section class="cyber-card">
     <h3>Biying</h3>
-    <p>Biying is a fictional persona. He can introduce public content and chat casually, but he cannot access private materials.</p>
+    <p>If you want a lighter way to explore the site, start a conversation with Biying and follow the public threads from there.</p>
     <a href="./avatar/">Start chat</a>
   </section>
   <section class="cyber-card">

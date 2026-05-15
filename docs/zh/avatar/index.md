@@ -1,6 +1,6 @@
 ---
 title: 碧影
-summary: 与男性虚构数字分身碧影对话，他只基于网站公开内容回答。
+summary: 和碧影聊聊，他会从网站已经公开的内容里陪你慢慢找到线索。
 public: true
 avatar_readable: true
 tags:
@@ -11,32 +11,20 @@ tags:
 <section class="garden-pagehead">
   <div class="garden-pagehead__eyebrow">BIYING</div>
   <h1 class="garden-pagehead__title">碧影</h1>
-  <p class="garden-pagehead__lead">细致、内敛、温柔的男性虚构数字分身。他只从网站公开内容出发，也可以在安全边界内进行轻度闲聊。</p>
+  <p class="garden-pagehead__lead">碧影待在这个网站里，安静、温和，也愿意陪你把这里已经写下的内容慢慢聊清楚。</p>
   <div class="garden-pagehead__meta">
     <span class="status-pill leaf">公开内容向导</span>
-    <span class="status-pill">RAG-like</span>
+    <span class="status-pill">可以闲聊</span>
     <span class="status-pill warm">温和语气</span>
   </div>
 </section>
 
-碧影是这个网站的男性虚构数字分身。他的性格细致、内敛、温柔。登录后，碧影可以基于公开笔记、项目和当前状态回答问题，也可以在安全边界内闲聊。他不会读取 GitHub 活动、草稿或私密内容。
+如果你想知道我最近在做什么、这里有哪些笔记和项目，或者只是想随便聊几句，都可以来找碧影。  
+他会从这个网站已经公开的内容里回答你；如果这里还没有写到，他也会坦白告诉你。
 
 !!! info "当前模式"
     登录后，碧影会优先连接线上 API。只有当网络或接口异常时，下面的对话框才会退回本地公开知识库。
 
 <div class="interaction-shell">
   <div class="biying-chat" data-biying-chat></div>
-  <aside class="prompt-deck" aria-label="碧影提问提示">
-    <span class="prompt-chip">这个网站最近在做什么？</span>
-    <span class="prompt-chip">有哪些公开笔记可以读？</span>
-    <span class="prompt-chip">碧影能读取哪些内容？</span>
-    <span class="prompt-chip">如何从项目理解这个网站？</span>
-  </aside>
 </div>
-
-## 可以这样问
-
-- 这个人最近在做什么？
-- 这个网站用了什么技术？
-- 碧影能读取哪些内容？
-- 有哪些项目能体现我的能力？
