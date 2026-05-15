@@ -44,6 +44,21 @@ tags:
   </div>
 </section>
 
+<section class="home-pulse" aria-label="当前动态">
+  <div class="home-pulse__item">
+    <span>此刻</span>
+    <strong>正在继续打磨数字花园与碧影</strong>
+  </div>
+  <div class="home-pulse__item">
+    <span>最近整理</span>
+    <strong>课程讲义、项目复盘与站点边界</strong>
+  </div>
+  <div class="home-pulse__item">
+    <span>建议入口</span>
+    <strong>想快速了解近况，可以先看“现在”</strong>
+  </div>
+</section>
+
 <section class="biying-presence" aria-label="碧影介绍">
   <div>
     <span class="biying-presence__hello">你好，很高兴认识你。</span>
@@ -52,6 +67,25 @@ tags:
   </div>
   <a class="biying-presence__link" href="./avatar/">和碧影聊聊</a>
 </section>
+
+## 模块近况
+
+<p class="section-lede">想先看站点最近哪里有变化，可以从这里扫一眼；更完整的记录放在 <a href="./updates/">模块更新</a>。</p>
+
+<div class="module-update-preview">
+  <a href="./updates/">
+    <span>碧影</span>
+    <strong>增加公开上下文与最近对话记忆</strong>
+  </a>
+  <a href="./updates/">
+    <span>留言</span>
+    <strong>补上隐私提醒、节流与站主治理</strong>
+  </a>
+  <a href="./updates/">
+    <span>后台</span>
+    <strong>增加恢复码与账号维护工具</strong>
+  </a>
+</div>
 
 ## 公开信号
 
@@ -84,16 +118,16 @@ tags:
 
 <div class="signal-list">
   <div class="signal-item">
-    <strong>近况</strong>
-    <span>想快速了解最近在做什么，可以先从 Now 页面进入。</span>
+    <strong>先认识我</strong>
+    <span>从 <a href="./about/">关于我</a> 和 <a href="./now/">现在</a> 开始，能最快看见我是谁、最近又在忙什么。</span>
   </div>
   <div class="signal-item">
-    <strong>能力</strong>
-    <span>想看更具体的技术和实践，可以从项目和课程笔记进入。</span>
+    <strong>看我怎么做</strong>
+    <span>从 <a href="./projects/">项目</a> 和 <a href="./notes/">笔记</a> 进入，会更容易看见技术、取舍和长期积累。</span>
   </div>
   <div class="signal-item">
-    <strong>交流</strong>
-    <span>想留下想法或随便聊聊，可以去留言页，或者直接和碧影对话。</span>
+    <strong>想交流</strong>
+    <span>可以去 <a href="./guestbook/">留言</a>，也可以直接和 <a href="./avatar/">碧影</a> 说句话。</span>
   </div>
 </div>
 

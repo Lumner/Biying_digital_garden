@@ -24,6 +24,11 @@
       deleteConfirm: zh ? "确定删除这条留言吗？" : "Delete this message?",
       saved: zh ? "已保存。" : "Saved.",
       deleted: zh ? "已删除。" : "Deleted.",
+      count: zh ? "公开留言" : "Public messages",
+      writingAs: zh ? "以此身份留言" : "Posting as",
+      characters: zh ? "字" : "characters",
+      privacyHint: zh ? "这段内容像是带有联系方式或隐私信息。若你仍想公开，请再确认一次。" : "This looks like it may contain contact details or private information. Please double-check before posting publicly.",
+      tooFrequent: zh ? "留言有点太快了，请稍等片刻再试。" : "You are posting a little too quickly. Please wait a moment and try again.",
       authExpired: zh ? "登录状态已过期，请重新登录。" : "Your session expired. Please sign in again.",
       kv: zh ? "留言需要先在 EdgeOne 中绑定 BIYING_KV。" : "Guestbook requires BIYING_KV to be bound in EdgeOne.",
       apiNotFound: zh ? "没有找到 /api/messages。通常是 EdgeOne Functions 没有部署成功，或当前项目只发布了静态 site 目录。" : "/api/messages was not found. EdgeOne Functions may not be deployed, or the project is only serving the static site directory.",
@@ -77,6 +82,7 @@
 
   function friendlyError(error) {
     if (error.status === 401 || error.code === "auth_required") return copy("authExpired");
+    if (error.status === 429 || error.code === "too_frequent") return copy("tooFrequent");
     if (error.code === "kv_not_configured") return copy("kv");
     if (error.code === "api_not_found" || error.status === 404) return copy("apiNotFound");
     if (error.code === "fetch_failed") return copy("apiUnavailable");
@@ -148,9 +154,12 @@
           </div>`
         : "";
       item.innerHTML = `
-        <strong>${escapeHtml(message.name)}</strong>
+        <div class="guestbook-message__head">
+          <strong>${escapeHtml(message.name)}</strong>
+          <span>${escapeHtml(date)}</span>
+        </div>
         <p>${escapeHtml(message.content)}</p>
-        <div class="meta-line">${date}${editDate}</div>
+        ${editDate ? `<div class="meta-line">${editDate.replace(/^ · /, "")}</div>` : ""}
         ${actions}
       `;
       list.appendChild(item);
@@ -170,8 +179,12 @@
     }
     slot.innerHTML = `
       <form class="guestbook__form">
-        <p class="meta-line">${copy("signedIn")} ${escapeHtml(user.displayName)} (@${escapeHtml(user.username)})</p>
+        <div class="guestbook__composer-meta">
+          <p class="meta-line">${copy("writingAs")} ${escapeHtml(user.displayName)} (@${escapeHtml(user.username)})</p>
+          <span data-guestbook-counter>0 / 800 ${copy("characters")}</span>
+        </div>
         <textarea name="content" rows="4" maxlength="800" placeholder="${copy("message")}"></textarea>
+        <p class="meta-line guestbook__privacy-hint" data-guestbook-privacy hidden>${copy("privacyHint")}</p>
         <input class="hp-field" name="website" tabindex="-1" autocomplete="off" />
         <button type="submit">${copy("submit")}</button>
       </form>
@@ -182,6 +195,10 @@
     if (!root || root.dataset.ready) return;
     root.dataset.ready = "true";
     root.innerHTML = `
+      <div class="guestbook__summary">
+        <strong>${copy("count")}</strong>
+        <span data-guestbook-count>0</span>
+      </div>
       <div class="guestbook__list"></div>
       <div data-guestbook-form></div>
       <p class="meta-line" data-guestbook-message></p>
@@ -190,6 +207,7 @@
     const list = root.querySelector(".guestbook__list");
     const formSlot = root.querySelector("[data-guestbook-form]");
     const status = root.querySelector("[data-guestbook-message]");
+    const count = root.querySelector("[data-guestbook-count]");
 
     async function refresh() {
       renderForm(formSlot);
@@ -200,6 +218,7 @@
         state.messages = [];
       }
       renderList(list, state.messages);
+      count.textContent = String(state.messages.length);
     }
 
     refresh();
@@ -230,6 +249,18 @@
         await refresh();
       } catch (error) {
         status.textContent = friendlyError(error);
+      }
+    });
+
+    formSlot.addEventListener("input", (event) => {
+      const textarea = event.target.closest("textarea[name='content']");
+      if (!textarea) return;
+      const counter = formSlot.querySelector("[data-guestbook-counter]");
+      const hint = formSlot.querySelector("[data-guestbook-privacy]");
+      if (counter) counter.textContent = `${textarea.value.length} / 800 ${copy("characters")}`;
+      if (hint) {
+        const looksPrivate = /(?:1[3-9]\d{9}|[\w.+-]+@[\w-]+\.[\w.-]+|微信|QQ|手机号|邮箱|wechat)/i.test(textarea.value);
+        hint.hidden = !looksPrivate;
       }
     });
 

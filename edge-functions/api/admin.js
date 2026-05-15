@@ -95,6 +95,33 @@ async function listPrivateMessages(kv) {
   return messages.sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)));
 }
 
+async function listGuestbookMessages(kv) {
+  const messages = await listRecords(kv, "guestbook_", (message) => ({
+    id: message.id,
+    userId: message.userId || "",
+    username: message.username || "",
+    name: message.name,
+    content: message.content,
+    locale: message.locale,
+    moderationStatus: message.moderationStatus || "visible",
+    createdAt: message.createdAt,
+    updatedAt: message.updatedAt || ""
+  }));
+  return messages
+    .filter((message) => message.id && message.name && typeof message.content === "string")
+    .sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)));
+}
+
+async function deleteUserArtifacts(kv, username) {
+  const sessions = await listRecords(kv, "session_", (session) => session);
+  for (const session of sessions) {
+    if (session.username === username && session.token) {
+      await kv.delete(`session_${session.token}`);
+    }
+  }
+  await kv.delete(`recovery_${username}`);
+}
+
 export function onRequestOptions() {
   return new Response(null, { status: 204, headers: HEADERS });
 }
@@ -110,7 +137,8 @@ export async function onRequestGet({ request, env }) {
     }
     return json({
       users: await listUsers(kv),
-      privateMessages: await listPrivateMessages(kv)
+      privateMessages: await listPrivateMessages(kv),
+      guestbookMessages: await listGuestbookMessages(kv)
     });
   } catch (error) {
     return json({ error: "admin_failed", detail: String(error.message || error) }, { status: 500 });
@@ -171,15 +199,21 @@ export async function onRequestPut({ request, env }) {
     }
     const url = new URL(request.url);
     const id = url.searchParams.get("id");
+    const kind = url.searchParams.get("kind") || "private";
     if (!id) return json({ error: "id_required" }, { status: 400 });
 
-    const raw = await kv.get(`private_message_${id}`, { type: "text" });
+    const prefix = kind === "guestbook" ? "guestbook_" : "private_message_";
+    const raw = await kv.get(`${prefix}${id}`, { type: "text" });
     if (!raw) return json({ error: "not_found" }, { status: 404 });
     const message = JSON.parse(raw);
     const body = await readJson(request);
-    message.status = body.status === "unread" ? "unread" : "read";
+    if (kind === "guestbook") {
+      message.moderationStatus = body.status === "hidden" ? "hidden" : "visible";
+    } else {
+      message.status = body.status === "unread" ? "unread" : "read";
+    }
     message.updatedAt = new Date().toISOString();
-    await kv.put(`private_message_${id}`, JSON.stringify(message));
+    await kv.put(`${prefix}${id}`, JSON.stringify(message));
     return json({ ok: true });
   } catch (error) {
     return json({ error: "admin_update_failed", detail: String(error.message || error) }, { status: 500 });
@@ -197,8 +231,17 @@ export async function onRequestDelete({ request, env }) {
     }
     const url = new URL(request.url);
     const id = url.searchParams.get("id");
+    const kind = url.searchParams.get("kind") || "private";
     if (!id) return json({ error: "id_required" }, { status: 400 });
-    await kv.delete(`private_message_${id}`);
+    if (kind === "user") {
+      const username = normalizeUsername(id);
+      const rawUser = await kv.get(`user_${username}`, { type: "text" });
+      if (!rawUser) return json({ error: "user_not_found" }, { status: 404 });
+      await kv.delete(`user_${username}`);
+      await deleteUserArtifacts(kv, username);
+      return json({ ok: true });
+    }
+    await kv.delete(`${kind === "guestbook" ? "guestbook_" : "private_message_"}${id}`);
     return json({ ok: true });
   } catch (error) {
     return json({ error: "admin_delete_failed", detail: String(error.message || error) }, { status: 500 });

@@ -1,7 +1,8 @@
 (function () {
   const state = {
     knowledge: [],
-    busy: false
+    busy: false,
+    history: []
   };
 
   function isChinesePage() {
@@ -17,7 +18,7 @@
       headerScope: zh
         ? "我会从这个网站已经公开的内容里陪你慢慢聊。"
         : "I answer from what has already been shared on this site.",
-      sources: zh ? "来源" : "Sources",
+      sources: zh ? "想继续往下看，可以从这些页接着走" : "You can keep reading from",
       initial: zh
         ? "你好，很高兴认识你。我是碧影。你可以和我聊聊这里已经写下的内容，也可以只是随便说说话。"
         : "Hello, it is nice to meet you. I am Biying. You can ask about what has already been shared here, or simply stay for a chat.",
@@ -106,7 +107,26 @@
     return state.knowledge;
   }
 
-  function scoreItem(item, query) {
+  function isNowIntent(query) {
+    return /(最近|近况|现在在做什么|最近在做什么|what are you doing|working on now|currently working on)/i.test(query);
+  }
+
+  function isPageIntent(query) {
+    return /(这个项目|这个页面|这一页|这里|this project|this page|on this page)/i.test(query);
+  }
+
+  function normalizePath(value) {
+    return String(value || "").replace(/\/+$/, "") || "/";
+  }
+
+  function currentPageContext() {
+    return {
+      url: normalizePath(window.location.pathname),
+      title: document.title
+    };
+  }
+
+  function scoreItem(item, query, pageContext = null) {
     const q = query.toLowerCase();
     const haystack = `${item.title || ""} ${item.summary || ""} ${item.text || ""} ${(item.tags || []).join(" ")}`.toLowerCase();
     let score = 0;
@@ -114,6 +134,10 @@
       if (haystack.includes(token)) score += token.length > 2 ? 3 : 1;
     }
     if (haystack.includes(q)) score += 8;
+    if (isNowIntent(query) && normalizePath(item.url).endsWith("/now")) score += 18;
+    if (pageContext && normalizePath(item.url) === normalizePath(pageContext.url)) {
+      score += isPageIntent(query) ? 20 : 4;
+    }
     return score;
   }
 
@@ -129,8 +153,9 @@
 
   async function localAnswer(query, reason = "") {
     const knowledge = await loadKnowledge();
+    const pageContext = currentPageContext();
     const ranked = knowledge
-      .map((item) => ({ item, score: scoreItem(item, query) }))
+      .map((item) => ({ item, score: scoreItem(item, query, pageContext) }))
       .filter((entry) => entry.score > 0)
       .sort((a, b) => b.score - a.score)
       .slice(0, 3);
@@ -155,7 +180,7 @@
     };
   }
 
-  async function askApi(query) {
+  async function askApi(query, history) {
     let response;
     try {
       response = await fetch("/api/chat", {
@@ -163,7 +188,9 @@
         headers: { "content-type": "application/json", ...authHeaders() },
         body: JSON.stringify({
           message: query,
-          locale: isChinesePage() ? "zh" : "en"
+          locale: isChinesePage() ? "zh" : "en",
+          history,
+          pageContext: currentPageContext()
         })
       });
     } catch (error) {
@@ -244,8 +271,9 @@
       state.busy = true;
       try {
         let response;
+        const previousHistory = state.history.slice(-12);
         try {
-          response = await askApi(query);
+          response = await askApi(query, previousHistory);
         } catch (error) {
           if (error.status === 401 || error.code === "auth_required") {
             response = { answer: `${text("authExpired")} <a href="${escapeHtml(accountUrl())}">${escapeHtml(text("account"))}</a>`, html: true, sources: [] };
@@ -263,6 +291,10 @@
           html: response.html,
           sources: response.sources
         });
+        state.history.push({ role: "user", content: query });
+        if (response.answer) {
+          state.history.push({ role: "assistant", content: response.answer });
+        }
       } catch (error) {
         pending.textContent = text("error");
       } finally {
@@ -271,7 +303,41 @@
     });
   }
 
+  function shouldMountCompanion() {
+    const path = window.location.pathname;
+    return (
+      (path.startsWith("/zh/") || path.startsWith("/en/")) &&
+      !path.includes("/avatar/") &&
+      !path.includes("/admin/") &&
+      !path.includes("/register/")
+    );
+  }
+
+  function mountCompanion() {
+    if (!shouldMountCompanion() || document.querySelector("[data-biying-companion]")) return;
+    const shell = document.createElement("aside");
+    shell.className = "biying-companion";
+    shell.dataset.biyingCompanion = "true";
+    shell.innerHTML = `
+      <section class="biying-chat biying-chat--companion biying-companion__panel" hidden>
+        <div data-biying-chat></div>
+      </section>
+      <button class="biying-companion__toggle" type="button" aria-expanded="false">${isChinesePage() ? "和碧影聊聊" : "Talk with Biying"}</button>
+    `;
+    document.body.appendChild(shell);
+    const panel = shell.querySelector(".biying-companion__panel");
+    const toggle = shell.querySelector(".biying-companion__toggle");
+    const root = shell.querySelector("[data-biying-chat]");
+    mount(root);
+    toggle.addEventListener("click", () => {
+      const open = panel.hasAttribute("hidden");
+      panel.toggleAttribute("hidden", !open);
+      toggle.setAttribute("aria-expanded", String(open));
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll("[data-biying-chat]").forEach(mount);
+    mountCompanion();
   });
 })();

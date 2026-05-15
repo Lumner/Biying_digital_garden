@@ -196,13 +196,12 @@ Node 侧配置。当前主要用于预留 EdgeOne CLI：
 
 ### `docs/zh/admin/index.md`
 
-中文站点主人后台页。默认不进入公开导航，用于查看注册用户、私信收件箱，并签发一次性恢复码。
+中文站点主人后台页。默认不进入公开导航，用于查看注册用户、私信收件箱、公开留言，注销用户，并签发一次性恢复码。
 
 ### `docs/zh/notes/index.md`
 
-中文笔记首页。负责展示笔记入口卡片。
-
-新增中文笔记后，建议在这里加一个卡片入口。
+中文笔记首页。负责承载主题入口、最近更新、推荐阅读和标签聚合的挂载点。  
+实际卡片数据来自 `docs/assets/knowledge/note-catalog.json`，新增笔记时优先维护 frontmatter，而不是手工堆入口。
 
 ### `docs/zh/notes/public-scope.md`
 
@@ -384,8 +383,10 @@ $$
 - 使用 `BIYING_ADMIN_TOKEN` 访问 `/api/admin`
 - 展示注册用户列表
 - 展示私信收件箱
+- 对私信做未读筛选、关键字搜索和联系方式复制
 - 标记私信已读/未读
 - 删除私信
+- 管理公开留言：搜索、隐藏、恢复显示和删除
 - 为指定用户签发带时效的一次性恢复码
 
 ### `docs/assets/javascripts/biying-chat.js`
@@ -395,6 +396,9 @@ $$
 - 渲染聊天框
 - 检查登录状态
 - 调用 `/api/chat`
+- 保存最近一段会话，并随请求发送给接口
+- 发送当前页面上下文，供“这个项目”“这一页”一类问题使用
+- 在非碧影页挂载轻量陪伴入口
 - 如果 API 没部署，则退回本地公开知识库回答
 - 加载 `docs/assets/knowledge/public-knowledge.json`
 
@@ -409,6 +413,8 @@ $$
 - 获取 `/api/messages`
 - 提交留言到 `/api/messages`
 - 编辑和删除当前登录用户自己的留言
+- 展示留言数量和字数统计
+- 对疑似隐私内容给出轻提示
 
 如果你想改留言板交互，改这里。
 
@@ -426,6 +432,11 @@ $$
 ```powershell
 .venv\Scripts\python scripts\build_knowledge.py
 ```
+
+### `docs/assets/knowledge/note-catalog.json`
+
+笔记目录数据。由 `scripts/build_note_catalog.py` 自动生成，供笔记首页、分类页和标签页使用。  
+不要手改这个文件，新增笔记时维护 frontmatter 中的 `category`、`tags`、`updated`、`recommended` 和 `reading_order`。
 
 ## 主题覆盖：`docs/overrides/`
 
@@ -561,7 +572,7 @@ OPENAI_API_KEY
 - 读取 KV 中的 `public_knowledge`
 - 如果 KV 没有，则读取静态 `public-knowledge.json`
 - 检索相关公开内容
-- 构造 prompt
+- 构造包含最近对话的 prompt
 - 调用 DeepSeek 或 OpenAI 兼容接口
 - 返回碧影回答和来源
 
@@ -598,9 +609,11 @@ BIYING_KV
 - `DELETE /api/messages?id=...` 删除自己的留言
 - 写入 EdgeOne KV
 - 简单过滤空内容和蜜罐字段
+- 限制过于频繁的提交
+- 跳过被站点主人隐藏的留言
 - 返回 `canEdit` 供前端展示编辑/删除按钮
 
-当前留言是公开展示路线。后续可以扩展审核、限流、反垃圾和更完整的管理员界面。
+当前留言是公开展示路线，后台已支持隐藏和删除。
 
 ### `edge-functions/api/private-messages.js`
 
@@ -616,10 +629,13 @@ BIYING_KV
 站点主人后台接口。负责：
 
 - 检查 `BIYING_ADMIN_TOKEN`
-- `GET /api/admin` 汇总注册用户与私信
+- `GET /api/admin` 汇总注册用户、私信与公开留言
 - `POST /api/admin` 为指定用户名签发一次性恢复码
 - `PUT /api/admin?id=...` 标记私信已读/未读
+- `PUT /api/admin?id=...&kind=guestbook` 隐藏或恢复公开留言
 - `DELETE /api/admin?id=...` 删除私信
+- `DELETE /api/admin?id=...&kind=guestbook` 删除公开留言
+- `DELETE /api/admin?id=...&kind=user` 注销用户，并清理恢复码与活跃会话
 - 把恢复码哈希写入 `recovery_*`，并保存过期时间
 
 ### `edge-functions/api/admin-messages.js`
@@ -735,15 +751,24 @@ docs/zh/notes/your-note.md
 docs/en/notes/your-note.md
 ```
 
-2. 修改：
+2. 在 frontmatter 至少补：
+
+```yaml
+category: math
+tags:
+  - example
+updated: 2026-05-15
+recommended: false
+reading_order: 999
+```
+
+3. 修改：
 
 ```txt
-docs/zh/notes/index.md
-docs/en/notes/index.md
 mkdocs.yml
 ```
 
-3. 重新生成知识库。
+4. 重新生成目录和知识库。
 
 ### 更新课程讲义
 

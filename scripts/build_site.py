@@ -13,6 +13,7 @@ def run(*args: str) -> None:
 
 
 def main() -> None:
+    run(sys.executable, "scripts/build_note_catalog.py")
     run(sys.executable, "scripts/build_knowledge.py")
     run("mkdocs", "build", "--strict")
     run(sys.executable, "scripts/package_site.py")

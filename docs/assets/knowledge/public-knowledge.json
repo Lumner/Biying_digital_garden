@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-15T06:29:42.069782+00:00",
+  "generatedAt": "2026-05-15T11:39:50.228939+00:00",
   "items": [
     {
       "title": "About",
@@ -34,7 +34,7 @@
       ],
       "url": "/en/guestbook/",
       "sourcePath": "docs/en/guestbook/index.md",
-      "text": "GUESTBOOK Guestbook If you have passed through here, you are welcome to leave a line: say hello, exchange an idea, point out a problem, or tell me what you hope this site grows into. Public by Default No Private Info This is a public guestbook. After registering or signing in, you can leave a note and edit or delete what you wrote later. Other visitors can read these messages, so please do not include phone numbers, addresses, private emails, or other sensitive information. This space is for words other visitors may also read. If something should stay private, please keep it out of the guestbook."
+      "text": "GUESTBOOK Guestbook If you have passed through here, you are welcome to leave a line: say hello, exchange an idea, point out a problem, or tell me what you hope this site grows into. Public by Default No Private Info This is a public guestbook. After registering or signing in, you can leave a note and edit or delete what you wrote later. Other visitors can read these messages, so please do not include phone numbers, addresses, private emails, or other sensitive information. The form adds a gentle reminder when something looks private and slows down overly frequent posting. This space is for words other visitors may also read. If something should stay private, please keep it out of the guestbook."
     },
     {
       "title": "Home",
@@ -45,7 +45,29 @@
       ],
       "url": "/en/",
       "sourcePath": "docs/en/index.md",
-      "text": "BIYING DIGITAL GARDEN Biying Digital Garden A bilingual space for long term learning records, projects, and current notes. Notes are the roots, projects are the branches, and Biying gently connects the public content. AI Undergraduate vibe coding embodied AI full stack Talk to Biying View Projects Read Notes PUBLIC NOTE Random Note A cover generated on refresh NOTE BIYING Hello, it is nice to meet you. Biying is here if you want a gentler way in. If you want to know what I have been doing, what lives on this site, or simply chat for a moment, you can start with Biying. When something has not been written here yet, he says so plainly. Talk to Biying Public Signals This is not a finished portfolio. It is a living entrance that can keep growing through notes, projects, current updates, and conversations with Biying. Notes Learning records, math, AI, engineering, and thoughts that are slowly taking shape. Chinese is the source language, and English stays in step as much as possible. Read notes Projects Work I am seriously building, along with why it is shaped this way and what still needs care. View projects Biying If you want a lighter way to explore the site, start a conversation with Biying and follow the public threads from there. Start chat Guestbook Visitors can leave public messages. Please do not include private information. Leave a signal Ways In Now Start with the Now page if you want the shortest path to current work and interests. Practice Enter through projects and course notes if you want to see concrete technical work. Talk Leave a message in the guestbook, or ask Biying to guide you through public content. Biying only reads content already published on this website. Drafts, private files, and account activity are outside his answer scope."
+      "text": "BIYING DIGITAL GARDEN Biying Digital Garden A bilingual space for long term learning records, projects, and current notes. Notes are the roots, projects are the branches, and Biying gently connects the public content. AI Undergraduate vibe coding embodied AI full stack Talk to Biying View Projects Read Notes PUBLIC NOTE Random Note A cover generated on refresh NOTE BIYING Now Still refining the digital garden and Biying Recently Course notes, project reflection, and site boundaries Best start Use the Now page for the quickest update Hello, it is nice to meet you. Biying is here if you want a gentler way in. If you want to know what I have been doing, what lives on this site, or simply chat for a moment, you can start with Biying. When something has not been written here yet, he says so plainly. Talk to Biying Module Updates If you want a quick read on what changed recently, start here. The fuller log lives on the Updates page. Biying More public context and recent conversation memory Guestbook Privacy nudges, pacing limits, and owner moderation Admin Recovery codes and account maintenance tools Public Signals This is not a finished portfolio. It is a living entrance that can keep growing through notes, projects, current updates, and conversations with Biying. Notes Learning records, math, AI, engineering, and thoughts that are slowly taking shape. Chinese is the source language, and English stays in step as much as possible. Read notes Projects Work I am seriously building, along with why it is shaped this way and what still needs care. View projects Biying If you want a lighter way to explore the site, start a conversation with Biying and follow the public threads from there. Start chat Guestbook Visitors can leave public messages. Please do not include private information. Leave a signal Ways In Meet me Start with About and Now if you want the fastest sense of who I am and what currently has my attention. See the work Enter through Projects and Notes to see technical choices, experiments, and longer term accumulation. Say hello Leave a note in the Guestbook , or let Biying guide you through what is already public. Biying only reads content already published on this website. Drafts, private files, and account activity are outside his answer scope."
+    },
+    {
+      "title": "AI Notes",
+      "summary": "Entrance for future AI-related notes.",
+      "tags": [
+        "notes",
+        "ai"
+      ],
+      "url": "/en/notes/ai/",
+      "sourcePath": "docs/en/notes/ai.md",
+      "text": "TOPIC AI A clear place for future model, agent, and experiment notes."
+    },
+    {
+      "title": "Algorithms Notes",
+      "summary": "Entrance for algorithms and data-structure notes.",
+      "tags": [
+        "notes",
+        "algorithms"
+      ],
+      "url": "/en/notes/algorithms/",
+      "sourcePath": "docs/en/notes/algorithms.md",
+      "text": "TOPIC Algorithms Structures, complexity, and the tradeoffs behind them."
     },
     {
       "title": "Computer Systems Fundamentals Lecture Notes",
@@ -57,7 +79,7 @@
       ],
       "url": "/en/notes/computer-systems-lecture/",
       "sourcePath": "docs/en/notes/computer-systems-lecture.md",
-      "text": "Computer Systems Fundamentals Lecture Notes Computer systems become easier to understand when software and hardware are treated as one continuous stack rather than separate subjects. What This Note Is About Lecture notes for computer systems fundamentals, covering information representation, Boolean algebra, combinational logic, arithmetic units, sequential logic, ISA, and RISC V. Reading Thread System Perspective : How physical signals, logic gates, RTL components, ISA, assembly, linking, and loading connect into a computer system. Information Representation : Binary encoding, integers, floating point numbers, characters, and data interpretation. Boolean Algebra and Logic : Logic gates, Boolean identities, circuit parameters, and digital abstraction. Combinational Logic and Verilog : Functional blocks, HDL descriptions, and design flow. Arithmetic Units and ALU : Addition, subtraction, multiplication, division, shifting, and floating point arithmetic. Sequential Logic : Latches, flip flops, registers, counters, finite state machines, and timing. ISA and RISC V : Instruction formats, registers, calling conventions, ELF files, linking, loading, and program execution. Questions to Keep in Mind Why can the same value behave differently under different encodings? Where is the boundary between combinational and sequential logic? Why does the ISA belong to both the software view and the hardware view? How does a high level program become work that the machine can actually execute?"
+      "text": "Computer Systems Fundamentals Lecture Notes !!! info \"Translation status\" This is an English companion version generated for the bilingual site. It summarizes and translates the structure of the Chinese source while keeping key mathematical and technical notation intact. A full line by line translation can be generated later with scripts/translate.py after an API key is configured. Source Chinese source page: 计算机系统基础讲义 Original file: note/SYS 计算机系统基础讲义.md What This Note Covers Lecture notes for computer systems fundamentals, covering information representation, Boolean algebra, combinational logic, arithmetic units, sequential logic, ISA, and RISC V. Study Outline System Perspective : How physical signals, logic gates, RTL components, ISA, assembly, linking, and loading connect into a computer system. Information Representation : Binary encoding, integers, floating point numbers, characters, and data interpretation. Boolean Algebra and Logic : Logic gates, Boolean identities, circuit parameters, and digital abstraction. Combinational Logic and Verilog : Functional blocks, HDL descriptions, and design flow. Arithmetic Units and ALU : Addition, subtraction, multiplication, division, shifting, and floating point arithmetic. Sequential Logic : Latches, flip flops, registers, counters, finite state machines, and timing. ISA and RISC V : Instruction formats, registers, calling conventions, ELF files, linking, loading, and program execution. Preserved Notation Examples The Chinese source contains mathematical notation and technical symbols. Examples preserved for cross language lookup: No compact formula examples extracted. How to Use This Page Use this English page as a quick map before reading the Chinese lecture note. The Chinese page contains the complete detailed content, formulas, examples, tables, and course structure. This companion page makes the topic discoverable to English visitors and gives Biying enough English context to explain what the note is about."
     },
     {
       "title": "Discrete Mathematics Lecture Notes",
@@ -69,7 +91,18 @@
       ],
       "url": "/en/notes/discrete-math-lecture/",
       "sourcePath": "docs/en/notes/discrete-math-lecture.md",
-      "text": "Discrete Mathematics Lecture Notes Discrete mathematics is a language for giving abstract problems a clear shape. It starts by making statements precise, then moves on to proving them, counting them, and comparing the structures behind them. What This Note Is About Lecture notes for discrete mathematics, covering logic and proofs, sets and functions, algorithms, induction and recursion, counting, and relations. Reading Thread Logic and Proofs : Propositional logic, predicate logic, inference rules, and proof strategies. Basic Structures : Sets, functions, sequences, sums, and matrices as discrete objects. Algorithms : Algorithmic thinking, complexity notation, and common analysis patterns. Induction and Recursion : Mathematical induction, strong induction, recursive definitions, and structural reasoning. Counting : Permutations, combinations, binomial coefficients, and counting strategies. Advanced Counting : Recurrence relations, inclusion exclusion, generating functions, and derangements. Relations : Relations, closures, equivalence relations, partial orders, and partitions. Questions to Keep in Mind How does an informal sentence become a formal mathematical statement? When is a direct proof natural, and when is contradiction or contrapositive cleaner? How do recursion, recurrence, and induction relate to one another? Which counting principle fits a given problem, and why? What changes when a plain relation becomes an equivalence relation or a partial order? Key Notation Representative notation used throughout the note: $p \\to q$ $\\forall x P(x)$ $O(n\\log n)$ $x+1=4$ $x$ $p,q,r,\\ldots$ $\\neg p$ $p$ $p \\land q$ $q$"
+      "text": "Discrete Mathematics Lecture Notes !!! info \"Translation status\" This is an English companion version generated for the bilingual site. It summarizes and translates the structure of the Chinese source while keeping key mathematical and technical notation intact. A full line by line translation can be generated later with scripts/translate.py after an API key is configured. Source Chinese source page: 离散数学讲义 Original file: note/离散数学讲义.md What This Note Covers Lecture notes for discrete mathematics, covering logic and proofs, sets and functions, algorithms, induction and recursion, counting, and relations. Study Outline Logic and Proofs : Propositional logic, predicate logic, inference rules, and proof strategies. Basic Structures : Sets, functions, sequences, sums, and matrices as discrete objects. Algorithms : Algorithmic thinking, complexity notation, and common analysis patterns. Induction and Recursion : Mathematical induction, strong induction, recursive definitions, and structural reasoning. Counting : Permutations, combinations, binomial coefficients, and counting strategies. Advanced Counting : Recurrence relations, inclusion exclusion, generating functions, and derangements. Relations : Relations, closures, equivalence relations, partial orders, and partitions. Preserved Notation Examples The Chinese source contains mathematical notation and technical symbols. Examples preserved for cross language lookup: $p \\to q$ $\\forall x P(x)$ $O(n\\log n)$ $x+1=4$ $x$ $p,q,r,\\ldots$ $\\neg p$ $p$ $p \\land q$ $q$ How to Use This Page Use this English page as a quick map before reading the Chinese lecture note. The Chinese page contains the complete detailed content, formulas, examples, tables, and course structure. This companion page makes the topic discoverable to English visitors and gives Biying enough English context to explain what the note is about."
+    },
+    {
+      "title": "Essays",
+      "summary": "Entrance for lighter notes and reflections.",
+      "tags": [
+        "notes",
+        "essays"
+      ],
+      "url": "/en/notes/essays/",
+      "sourcePath": "docs/en/notes/essays.md",
+      "text": "TOPIC Essays A home for lighter reflections and notes that are not lecture shaped."
     },
     {
       "title": "FDS Data Structures Fundamentals Lecture Notes",
@@ -81,7 +114,7 @@
       ],
       "url": "/en/notes/fds-data-structures-lecture/",
       "sourcePath": "docs/en/notes/fds-data-structures-lecture.md",
-      "text": "FDS Data Structures Fundamentals Lecture Notes Data structures are less about containers than tradeoffs. The same task can behave very differently once the data is organized to support the operations that matter most. What This Note Is About Lecture notes for data structures, covering algorithm analysis, lists, stacks and queues, trees, heaps, union find, segment trees, graphs, and topological sorting. Reading Thread Algorithm Analysis : Asymptotic notation, common complexity classes, and the source of time and space costs. Abstract Data Types and Lists : Interface design, linear lists, linked lists, cursor implementation, and polynomial examples. Stacks and Queues : LIFO/FIFO structures, expression conversion, recursion stacks, and circular queues. Trees and Binary Trees : Tree terminology, traversal, expression trees, threaded trees, and recursive structure. Search Trees and Heaps : Binary search trees, priority queues, binary heaps, and heap applications. Union Find and Segment Trees : Dynamic equivalence, path compression, interval query, point update, range update, and lazy propagation. Graphs : Graph definitions, storage methods, AOV networks, and topological sorting. Questions to Keep in Mind What invariant does this structure preserve? Which operations become faster, and which ones become more expensive? Where does the stated complexity actually come from? When the access pattern changes, is the original structure still the right one? If the name of a structure is familiar but its tradeoff is not, what understanding is still missing? Key Notation Representative notation used throughout the note: \\(O(N\\log N)\\) \\(O(N)\\) \\(O(1)\\) \\(O(\\log N)\\) \\(N\\) \\(O(N^2)\\) \\(N/2\\) \\(T(N)=O(f(N))\\) \\(T\\) \\(f\\)"
+      "text": "FDS Data Structures Fundamentals Lecture Notes !!! info \"Translation status\" This is an English companion version generated for the bilingual site. It summarizes and translates the structure of the Chinese source while keeping key mathematical and technical notation intact. A full line by line translation can be generated later with scripts/translate.py after an API key is configured. Source Chinese source page: FDS 数据结构基础讲义 Original file: note/FDS 数据结构基础讲义.md What This Note Covers Lecture notes for data structures, covering algorithm analysis, lists, stacks and queues, trees, heaps, union find, segment trees, graphs, and topological sorting. Study Outline Algorithm Analysis : Asymptotic notation, common complexity classes, and the source of time and space costs. Abstract Data Types and Lists : Interface design, linear lists, linked lists, cursor implementation, and polynomial examples. Stacks and Queues : LIFO/FIFO structures, expression conversion, recursion stacks, and circular queues. Trees and Binary Trees : Tree terminology, traversal, expression trees, threaded trees, and recursive structure. Search Trees and Heaps : Binary search trees, priority queues, binary heaps, and heap applications. Union Find and Segment Trees : Dynamic equivalence, path compression, interval query, point update, range update, and lazy propagation. Graphs : Graph definitions, storage methods, AOV networks, and topological sorting. Preserved Notation Examples The Chinese source contains mathematical notation and technical symbols. Examples preserved for cross language lookup: \\(O(N\\log N)\\) \\(O(N)\\) \\(O(1)\\) \\(O(\\log N)\\) \\(N\\) \\(O(N^2)\\) \\(N/2\\) \\(T(N)=O(f(N))\\) \\(T\\) \\(f\\) How to Use This Page Use this English page as a quick map before reading the Chinese lecture note. The Chinese page contains the complete detailed content, formulas, examples, tables, and course structure. This companion page makes the topic discoverable to English visitors and gives Biying enough English context to explain what the note is about."
     },
     {
       "title": "Notes",
@@ -91,7 +124,7 @@
       ],
       "url": "/en/notes/",
       "sourcePath": "docs/en/notes/index.md",
-      "text": "NOTES Notes A home for the notes I am willing to leave in public: course notes, math checks, and a clear record of what belongs in Biying's answer range. Chinese Source Biying readable In Progress Chinese is the source language here, and I keep the English side in step as much as I can. public and avatar readable together decide what can enter Biying's knowledge base. Discrete Mathematics Lecture Notes Logic and proofs, sets and functions, algorithms, induction and recursion, counting, and relations. Math Proofs Counting Read Computer Systems Fundamentals Lecture Notes Information representation, Boolean algebra, combinational logic, arithmetic units, sequential logic, ISA, and RISC V. Systems Logic RISC V Read FDS Data Structures Fundamentals Lecture Notes Algorithm analysis, lists, stacks and queues, trees, heaps, union find, segment trees, graphs, and topological sorting. Algorithms Structures Graphs Read Public Scope Explains what belongs inside Biying's answer range, and what does not. Scope Biying Read Math Lab Checks that math inside Markdown renders the way it should. MathJax Formula Read Note Template"
+      "text": "NOTES Notes A home for the notes I am willing to leave in public: course notes, math checks, and a clear record of what belongs in Biying's answer range. Chinese Source Biying readable In Progress Chinese is the source language here, and I keep the English side in step as much as I can. public and avatar readable together decide what can enter Biying's knowledge base. Study steadily Start with the course notes and move chapter by chapter. Understand the site Read the public scope first to see what belongs in Biying's answer range. Check formulas Open Math Lab to verify how equations render in Markdown. Topics Recently Updated Recommended Reading Tags Course Notes { course notes} Discrete Mathematics Lecture Notes Logic and proofs, sets and functions, algorithms, induction and recursion, counting, and relations. Math Proofs Counting Read Computer Systems Fundamentals Lecture Notes Information representation, Boolean algebra, combinational logic, arithmetic units, sequential logic, ISA, and RISC V. Systems Logic RISC V Read FDS Data Structures Fundamentals Lecture Notes Algorithm analysis, lists, stacks and queues, trees, heaps, union find, segment trees, graphs, and topological sorting. Algorithms Structures Graphs Read Site Notes { site notes} Public Scope Explains what belongs inside Biying's answer range, and what does not. Scope Biying Read Math Lab Checks that math inside Markdown renders the way it should. MathJax Formula Read If this is your first visit, a natural route is to begin with one course note, then come back here when another thread catches your attention. This page will keep growing as the note shelf does."
     },
     {
       "title": "Math Lab",
@@ -105,6 +138,17 @@
       "text": "MATH LAB Math Lab A small rendering lab for checking inline formulas, block formulas, and matrices inside the site. MathJax Markdown This page tests math rendering inside .md files. Inline example: $E = mc^2$, and $\\alpha + \\beta = \\gamma$. Block example: $$ \\nabla \\cdot \\vec{E} = \\frac{\\rho}{\\epsilon 0} $$ A matrix: $$ A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix} ,\\quad \\det(A) = 2 $$ If you see rendered formulas instead of raw LaTeX text, mathjax.js is working."
     },
     {
+      "title": "Math Notes",
+      "summary": "Entrance for math-related notes.",
+      "tags": [
+        "notes",
+        "math"
+      ],
+      "url": "/en/notes/math/",
+      "sourcePath": "docs/en/notes/math.md",
+      "text": "TOPIC Math Logic, proofs, counting, and formulas gathered under one thread."
+    },
+    {
       "title": "Public Scope",
       "summary": "Biying only reads public website content, not GitHub activity, drafts, or private materials.",
       "tags": [
@@ -114,6 +158,39 @@
       "url": "/en/notes/public-scope/",
       "sourcePath": "docs/en/notes/public-scope.md",
       "text": "PUBLIC SCOPE Public Scope This page keeps one thing clear: what Biying may read, and what stays outside. A clear boundary matters more than sounding clever. Public Content Privacy Stays Out Biying's core rule is simple: only read content already published on this website . Allowed Home, About, Now, Projects, and public notes. Markdown pages marked with public: true and avatar readable: true . Titles, summaries, body content, and public links. Not Allowed Unpublished drafts. GitHub activity records. Private notes, diaries, or chat logs. Hidden contact information or other private materials. Any local filesystem content. Answering Style If the public materials do not contain an answer, Biying should say: The public materials do not contain that information yet. This rule matters more than sounding clever."
+    },
+    {
+      "title": "Site Notes",
+      "summary": "Notes about the site itself.",
+      "tags": [
+        "notes",
+        "site"
+      ],
+      "url": "/en/notes/site/",
+      "sourcePath": "docs/en/notes/site.md",
+      "text": "TOPIC Site Public scope, formula checks, and notes about the site itself."
+    },
+    {
+      "title": "Systems Notes",
+      "summary": "Entrance for systems-related notes.",
+      "tags": [
+        "notes",
+        "systems"
+      ],
+      "url": "/en/notes/systems/",
+      "sourcePath": "docs/en/notes/systems.md",
+      "text": "TOPIC Systems From representation and logic all the way to ISA and running programs."
+    },
+    {
+      "title": "Tags",
+      "summary": "Browse all public notes by tag.",
+      "tags": [
+        "notes",
+        "tags"
+      ],
+      "url": "/en/notes/tags/",
+      "sourcePath": "docs/en/notes/tags.md",
+      "text": "TAGS All Tags Topics answer where a note broadly belongs. Tags are better for finding cross connections."
     },
     {
       "title": "Now",
@@ -137,7 +214,7 @@
       ],
       "url": "/en/projects/",
       "sourcePath": "docs/en/projects/index.md",
-      "text": "PROJECTS Projects A place for work I am willing to explain properly: why it began, how I shaped it, where it stands now, and what still needs care. Build Records Reflection Growing I want project pages to keep more than a list of things I built. Each one tries to leave some trace of the thinking too: why it began, what tradeoffs I made, where it stands now, and what I still want to improve. Status: static site live, backend abilities still improving Personal Digital Garden + Biying A bilingual personal website that brings public notes, project records, guestbook messages, and Biying into one long term entrance. MkDocs EdgeOne RAG Bilingual Open Details Future project pages will keep the same shape when possible: background, stack, what I did, results, limitations, and next steps. That makes them easier to revisit and easier for others to understand quickly."
+      "text": "PROJECTS Projects A place for work I am willing to explain properly: why it began, how I shaped it, where it stands now, and what still needs care. Build Records Reflection Growing I want project pages to keep more than a list of things I built. Each one tries to leave some trace of the thinking too: why it began, what tradeoffs I made, where it stands now, and what I still want to improve. Why it exists Start with the problem, the motivation, and what the project is trying to solve. What I did Show the work I actually completed instead of only listing technology names. What comes next Keep the rough edges visible so the next step stays clear. Status: static site live, backend abilities still improving Personal Digital Garden + Biying A bilingual personal website that brings public notes, project records, guestbook messages, and Biying into one long term entrance. Core Content structure, language switching, and public knowledge retrieval. My part Information architecture, UI implementation, deployment, and chat flow. Next Keep smoothing the interactions, maintenance flow, and small details. MkDocs EdgeOne RAG Bilingual Open Details Future project pages will keep the same shape when possible: background, stack, what I did, results, limitations, and next steps. That makes them easier for me to revisit, and easier for visitors to understand quickly."
     },
     {
       "title": "Personal Digital Garden + Biying",
@@ -152,6 +229,17 @@
       "url": "/en/projects/personal-site-avatar/",
       "sourcePath": "docs/en/projects/personal-site-avatar.md",
       "text": "PROJECT CASE Personal Digital Garden + Biying A long term entrance where public notes, project records, guestbook messages, and Biying can grow together. MkDocs EdgeOne Digital Persona Positioning A personal digital garden, not a one off portfolio. Core Public content, bilingual notes, Biying chat, and guestbook. Status The static site is live; backend abilities keep improving. This is the long term personal website I am building for myself. It is not just a portfolio, and it is not only a chat demo. It brings public notes, project records, current status, guestbook messages, and Biying into one entrance. I want it to grow with my learning and building. Right now it may only be a few course notes and a conversational entrance; later it can hold more real projects, debugging records, temporary thoughts, and a steadier deployment setup. Background I wanted a place that feels more stable than a social profile and more relaxed than a formal introduction. Friends can see what I have been working on recently. People who are also interested in AI and engineering can follow the notes and projects into the actual process. Biying is the unusual part of this project. He is not an all knowing substitute for me, just a gentle guide to public content: he reads what has already been published on the site, helps visitors find useful signals, and says he does not know when the material is not there. What I Did Site Structure Built the MkDocs Material site structure and planned pages for home, about, now, notes, projects, Biying, and guestbook. Bilingual Content Designed the /zh/ and /en/ structure so navigation, pages, and public knowledge stay paired. Note Import Imported three course notes, then fixed math rendering and chapter navigation for long lecture pages. Biying and Guestbook Designed Biying's tone, readable scope, and refusal boundaries, then implemented the chat frontend, guestbook frontend, and EdgeOne Functions style API skeletons. Tech Stack Content Site MkDocs Material, Markdown, Pymdown Extensions, and MathJax for notes, page structure, and math rendering. Bilingual Content Chinese is the source language, English stays in step, and navigation, pages, and public knowledge are maintained in pairs. Biying Chat Public knowledge generation, dialogue design, EdgeOne Functions style APIs, and DeepSeek/OpenAI compatible model access. Interaction and Deployment Vanilla JavaScript, cyber style CSS, public guestbook, EdgeOne Pages/Functions/KV deployment path, and GitHub CI. Results The site can be built and previewed locally, and mkdocs build strict passes. Chinese and English pages now have a clear structure for future additions. Three course notes have become readable website pages with math rendering and chapter navigation. Biying can answer questions related to site content from the public knowledge base. The guestbook and EdgeOne deployment route now have a working foundation for a real online setup. Limitations English course notes still need fuller translation and human review. Before Biying goes fully online, the backend needs real model keys, KV bindings, and rate limiting. The guestbook needs moderation, deletion, anti spam, and a smoother admin flow. Mobile reading, long note experience, and visual details can still be refined. Next Project pages need more real work, reflections, and progress notes over time. Connect EdgeOne Functions, KV, model keys, and public source citations into real online behavior. Keep future projects on the same structure: background, what I did, stack, results, limitations, and next steps."
+    },
+    {
+      "title": "Updates",
+      "summary": "Recent maintenance notes for each public module of the site.",
+      "tags": [
+        "updates",
+        "status"
+      ],
+      "url": "/en/updates/",
+      "sourcePath": "docs/en/updates.md",
+      "text": "UPDATES Module Updates This is not a grand roadmap. It is a compact record of what actually changed in each public module, so the current shape of the site stays easy to read as it grows. Public maintenance log Updated: 2026 05 15 Home Second UI pass completed Sharper entry hierarchy, a random note cover, and clearer paths for first time visitors. Notes Course material still expanding Reading first pages now keep section indexes, formulas, and bilingual versions together. Projects Case study structure improved Project pages now foreground background, decisions, stack, outcomes, and limitations. Biying More public context and short term memory Biying can reference more published material and keep a recent stretch of conversation in view. Guestbook Light moderation added Visitors get privacy nudges and pacing limits, while the owner can filter, hide, or delete messages. Admin Account tools expanded The dashboard now supports unread filters, contact copying, recovery codes, and owner side user deletion."
     },
     {
       "title": "关于",
@@ -186,7 +274,7 @@
       ],
       "url": "/zh/guestbook/",
       "sourcePath": "docs/zh/guestbook/index.md",
-      "text": "GUESTBOOK 留言 如果你来过这里，也欢迎留下一句话：打个招呼、交换想法、指出问题，或者告诉我你希望它以后长成什么样。 公开展示 请勿填写隐私 这里是公开留言板。注册或登录后，你可以留下几句话，也可以修改或删除自己写过的内容。留言会被其他访客看到，所以请不要写手机号、住址、私人邮箱之类的隐私信息。 这里更适合留给别人也能看到的话。想私下说的内容，请不要写在这里。"
+      "text": "GUESTBOOK 留言 如果你来过这里，也欢迎留下一句话：打个招呼、交换想法、指出问题，或者告诉我你希望它以后长成什么样。 公开展示 请勿填写隐私 这里是公开留言板。注册或登录后，你可以留下几句话，也可以修改或删除自己写过的内容。留言会被其他访客看到，所以请不要写手机号、住址、私人邮箱之类的隐私信息。系统会对明显像隐私信息的内容做轻提醒，也会限制过于频繁的提交。 这里更适合留给别人也能看到的话。想私下说的内容，请不要写在这里。"
     },
     {
       "title": "入口",
@@ -197,7 +285,29 @@
       ],
       "url": "/zh/",
       "sourcePath": "docs/zh/index.md",
-      "text": "BIYING DIGITAL GARDEN 碧影数字花园 一个用来长期沉淀学习、项目和近况的双语空间。笔记是根系，项目是枝干，碧影负责把公开内容温柔地连接起来。 AI 本科生 vibe coding 具身智能 全栈开发 和碧影对话 查看项目 进入笔记 PUBLIC NOTE 随机笔记 刷新生成一枚封面 NOTE BIYING 你好，很高兴认识你。 碧影在这里，陪你从容地逛一逛。 想知道我最近在做什么、这里有哪些内容，或者只是想随便聊聊，都可以先和碧影说句话。这个网站没有写到的部分，他也会如实告诉你。 和碧影聊聊 公开信号 这里不是一次性完成的作品集，而是一个会持续更新的入口。你可以从不同路径进入：读笔记、看项目、了解现在，或者直接问碧影。 笔记 记录学习、数学、AI、工程和一些慢慢成形的想法。中文为主源，英文尽量同步维护。 阅读笔记 项目 放正在认真推进的作品，也记录它们为什么这样做、哪里还不够好。 查看项目 碧影 想更轻松地了解这里，可以直接和碧影聊聊。他会从已经公开的内容里陪你找线索。 启动对话 留言 访客可以公开留言。请不要留下隐私信息，所有留言默认面向其他访客可见。 留下信号 进入路径 近况 想快速了解最近在做什么，可以先从 Now 页面进入。 能力 想看更具体的技术和实践，可以从项目和课程笔记进入。 交流 想留下想法或随便聊聊，可以去留言页，或者直接和碧影对话。 碧影只会读取已经公开到网站上的内容。没有发布出来的草稿、私密文件和账号活动，不会进入他的回答范围。"
+      "text": "BIYING DIGITAL GARDEN 碧影数字花园 一个用来长期沉淀学习、项目和近况的双语空间。笔记是根系，项目是枝干，碧影负责把公开内容温柔地连接起来。 AI 本科生 vibe coding 具身智能 全栈开发 和碧影对话 查看项目 进入笔记 PUBLIC NOTE 随机笔记 刷新生成一枚封面 NOTE BIYING 此刻 正在继续打磨数字花园与碧影 最近整理 课程讲义、项目复盘与站点边界 建议入口 想快速了解近况，可以先看“现在” 你好，很高兴认识你。 碧影在这里，陪你从容地逛一逛。 想知道我最近在做什么、这里有哪些内容，或者只是想随便聊聊，都可以先和碧影说句话。这个网站没有写到的部分，他也会如实告诉你。 和碧影聊聊 模块近况 想先看站点最近哪里有变化，可以从这里扫一眼；更完整的记录放在 模块更新 。 碧影 增加公开上下文与最近对话记忆 留言 补上隐私提醒、节流与站主治理 后台 增加恢复码与账号维护工具 公开信号 这里不是一次性完成的作品集，而是一个会持续更新的入口。你可以从不同路径进入：读笔记、看项目、了解现在，或者直接问碧影。 笔记 记录学习、数学、AI、工程和一些慢慢成形的想法。中文为主源，英文尽量同步维护。 阅读笔记 项目 放正在认真推进的作品，也记录它们为什么这样做、哪里还不够好。 查看项目 碧影 想更轻松地了解这里，可以直接和碧影聊聊。他会从已经公开的内容里陪你找线索。 启动对话 留言 访客可以公开留言。请不要留下隐私信息，所有留言默认面向其他访客可见。 留下信号 进入路径 先认识我 从 关于我 和 现在 开始，能最快看见我是谁、最近又在忙什么。 看我怎么做 从 项目 和 笔记 进入，会更容易看见技术、取舍和长期积累。 想交流 可以去 留言 ，也可以直接和 碧影 说句话。 碧影只会读取已经公开到网站上的内容。没有发布出来的草稿、私密文件和账号活动，不会进入他的回答范围。"
+    },
+    {
+      "title": "AI 笔记",
+      "summary": "AI 相关笔记入口。",
+      "tags": [
+        "notes",
+        "ai"
+      ],
+      "url": "/zh/notes/ai/",
+      "sourcePath": "docs/zh/notes/ai.md",
+      "text": "TOPIC AI 给未来的模型、智能体和实验记录留一个清楚入口。"
+    },
+    {
+      "title": "算法笔记",
+      "summary": "算法与数据结构相关笔记入口。",
+      "tags": [
+        "notes",
+        "algorithms"
+      ],
+      "url": "/zh/notes/algorithms/",
+      "sourcePath": "docs/zh/notes/algorithms.md",
+      "text": "TOPIC 算法 把数据结构、复杂度和算法取舍放在一起理解。"
     },
     {
       "title": "计算机系统基础讲义",
@@ -209,7 +319,7 @@
       ],
       "url": "/zh/notes/computer-systems-lecture/",
       "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
-      "text": "计算机系统基础讲义 计算机系统最迷人的地方，是同一个程序既可以被看成一行高级语言，也可以一路向下拆成指令、寄存器、逻辑门和电信号。这篇笔记试着把这些层次重新接回一条连续的链路。 这篇笔记写什么 { note sec 001 } 这篇笔记从信息表示出发，依次走过布尔代数、组合逻辑、运算部件、时序逻辑、ISA 与 RISC V，关注的不是单个知识点，而是软件行为怎样逐层落到硬件实现上。 阅读时可以把握三条线索： 1. 数据怎样被编码，程序为什么最终都要落到二进制表示。 2. 逻辑电路怎样逐步组合成能够执行运算和保存状态的部件。 3. 指令集怎样把硬件能力暴露给软件，再通过汇编、链接和装载变成真正运行的程序。 先带着几个问题往下看，会更容易把章节接起来： 为什么同一个“数”在不同编码方式下会表现出不同性质？ 组合逻辑和时序逻辑的分界到底在哪里？ ISA 为什么既属于软件视角，也属于硬件视角？ 一段高级语言程序，怎样一步步变成机器真正执行的动作？ 0. 课程视角：从门电路到系统软件 { note sec 002 } 计算机系统可以看成一组层次化抽象。越往下越接近物理实现，越往上越接近程序员和用户看到的行为。系统课程的核心价值，是把这些层次之间的接口讲清楚。 0.1 抽象层次 { note sec 003 } 典型计算机系统从上到下可以分为： | 层次 | 主要内容 | 本讲义中的对应章节 | | | | | | 应用程序 | 用户可见的软件功能 | 作为背景 | | 编译器、库、运行时 | 把高级语言程序翻译成机器可执行形式 | 7.6、7.7 | | 操作系统 | 进程、内存、文件、设备、中断、系统调用 | 与后续系统课程衔接 | | ISA | 软件和硬件之间的契约，定义指令、寄存器、地址空间、异常等 | 6、7 | | 微体系结构 | CPU 如何实现 ISA，如单周期、流水线、乱序等 | 本课程略作铺垫 | | RTL | 寄存器传输级：寄存器、总线、ALU、控制信号 | 4、5 | | 数字逻辑电路 | 门电路、组合逻辑、时序逻辑 | 2、3、5 | | 器件技术 | 晶体管、电压、电容、延迟、功耗 | 2.3 | 0.2 本课程主线 { note sec 004 } 本课程不是单独学习“逻辑门”或“汇编语言”，而是建立一条连贯链路： 理解这条链路后，许多系统问题会变得自然：为什么整数会溢出，为什么浮点加法不满足结合律，为什么 RISC V 指令字段要固定位置，为什么函数调用要保存寄存器，为什么链接器要重定位符号。 1. 信息表示 { note sec 005 } 1.1 信息、信号与二值抽象 { note sec 006 } 计算机内部无法直接处理“文字、图像、声音、视频、结构化对象”这些高级信息。它们必须被编码成二进制数据，再由硬件按照 0 和 1 的规则处理。 数字系统中使用二值信号，是因为它把连续物理世界压缩成离散判断： 电压可以表示 0/1，例如低电压表示 0，高电压表示 1。 磁场方向、光盘坑面反射、DRAM 电荷量等也可以表示 0/1。 只要输入电压落在合法低电平或高电平范围内，逻辑电路就能忽略一定程度的噪声。 信号按时间和值域可以粗略分为： | 信号类型 | 值域 | 时间 | 例子 | | | | | | | 模拟信号 | 连续 | 连续 | 音频电压波形 | | 异步数字信号 | 离散 | 连续 | 未统一采样的开关信号 | | 同步数字信号 | 离散 | 离散 | 时钟边沿采样的寄存器输入 | 1.2 外部信息与内部数据 { note sec 007 } 从用户和高级程序员角度看，信息可以是文本、图像、声音、视频、图、树、链表、队列等；从机器内部看，基本数据主要分成： 数值数据：无符号整数、有符号整数、定点数、浮点数。 非数值数据：逻辑值、字符、字符串、媒体编码、结构化数据的地址关系。 课程中的关键思想是： 同一串比特没有天然含义，含义来自解释方式 。例如 11111111 可以是无符号数 255，也可以是补码整数 1，也可以是字符、颜色分量或机器指令的一部分。 1.3 进位计数制 { note sec 008 } 任意正基数 r 的位置计数制可以写成： 其数值为： 其中每一位数字满足 0 = | 建模方式： | 方式 | 特点 | | | | | 结构化建模 | 实例化模块、门级连接，接近电路图 | | 数据流建模 | 使用 assign 描述组合逻辑 | | 行为建模 | 使用 always 、 case 、 if 等过程语句 | 组合逻辑行为建模常用： 组合逻辑中要避免遗漏赋值，否则综合器可能推断锁存器。 3.5 组合逻辑电路定义 { note sec 037 } 组合逻辑电路有： m 个布尔输入。 n 个布尔输出。 n 个开关函数，每个函数把当前输入组合映射到当前输出。 核心性质： 输出只依赖当前输入，不依赖历史状态 。 与时序逻辑对比： | 类型 | 是否有存储 | 输出依赖 | | | | | | 组合逻辑 | 无 | 当前输入 | | 时序逻辑 | 有 | 当前输入和过去状态 | 组合逻辑要求： 每个元件本身是组合逻辑。 一个节点只能被一个元件输出驱动。 不允许形成反馈环路。 3.6 组合逻辑设计流程 { note sec 038 } 设计步骤： 1. 规格说明：明确输入、输出、编码方式和约束。 2. 形式化：列真值表或初始布尔方程。 3. 优化：降低 literal cost、gate input cost 或关键路径延迟。 4. 技术映射：映射到目标门库、NAND/NOR、MUX、FPGA LUT 等。 5. 验证：功能仿真、等价检查、时序分析。 3.7 例：三开关控制单灯 { note sec 039 } 需求：房间只有一盏灯，由三个开关控制，每个开关单独拨动都能改变灯的亮灭。 这实际是奇偶函数。若开关闭合记为 1，灯亮记为 1，则灯亮当且仅当闭合开关数为奇数： SOP 写法： Verilog： 如果只按最小项写 assign ，结果正确但不如 XOR 表达简洁。 3.8 常用组合功能块 { note sec 040 } 3.8.1 基本功能 { note sec 041 } | 功能 | 方程 | 含义 | | | | | | 固定 0 | F = 0 | 输出常 0 | | 固定 1 | F = 1 | 输出常 1 | | 传送 | F = X | 直接传递 | | 反相 | F = X' | 取反 | | 使能传递 | F = X·EN 或 F = X + EN | 控制通过或阻断 | 多位总线可以看成一组并行 bit。宽线表示 vector signal，必要时可拆分为单 bit 或子字段。 3.8.2 Decoder { note sec 042 } Decoder 把 n 位输入码转换为最多 2^n 个输出，其中每个有效输入激活唯一输出。典型 3 to 8 decoder： Decoder 可用于生成最小项，因此可与 OR 门一起实现任意 SOP 函数： 实现方式：3 to 8 decoder 输出 m0 到 m7 ，把 m1、m2、m4、m7 接入 OR。 3.8.3 七段数码管译码器 { note sec 043 } BCD to seven segment decoder 把 4 位 BCD 输入转换为 a 到 g 七段控制信号。 | 类型 | 公共端 | 点亮条件 | | | | | | 共阳极 | 阳极接 1 | 段信号为 0 点亮，active low | | 共阴极 | 阴极接 0 | 段信号为 1 点亮，active high | 设计时必须先确认数码管类型，否则输出极性会反。 3.8.4 Encoder 与 Priority Encoder { note sec 044 } Encoder 与 decoder 方向相反，把 one hot 输入编码成二进制输出。普通 encoder 假设同时只有一个输入为 1。 Priority encoder 允许多个输入同时为 1，并输出最高优先级输入的编号，通常还带一个 valid 位。 3.8.5 Multiplexer { note sec 045 } MUX 从多个输入中选一个输出。 2^n to 1 MUX 有 n 个选择信号。 2 to 1 MUX： 4 to 1 MUX： MUX 也能实现逻辑函数：把函数变量接到选择输入，把真值表每行输出值固定到数据输入。 3.9 时序分析、关键路径与毛刺 { note sec 046 } 传播延迟： 污染延迟： 组合电路最大延迟由关键路径决定： 最短路径影响污染延迟： 毛刺 glitch 通常由不同路径延迟不一致引起。当单个输入变化通过多条路径到达输出，输出可能短暂错误翻转。 分析组合逻辑的步骤： 1. 从输入开始给每个中间节点写布尔函数。 2. 得到输出函数。 3. 化简或等价变换。 4. 列真值表验证功能。 5. 画时序图，检查延迟、毛刺和关键路径。 4. 运算部件与 ALU { note sec 047 } 4.1 迭代组合电路 { note sec 048 } 很多算术运算作用于二进制向量，并在每一位重复类似结构。例如加法器、乘法器、除法器都可以看成由多个 cell 组成的迭代阵列。 | 概念 | 含义 | | | | | Cell | 单个位或局部子功能模块 | | Iterative array | 多个 cell 按位连接形成整体功能 | | 1D array | 如串行进位加法器 | | 2D array | 如阵列乘法器 | 4.2 半加器与全加器 { note sec 049 } 半加器输入 A, B ，输出和位 S 与进位 Cout ： 全加器输入 A, B, Cin ，输出： 也可用 generate/propagate 表示： 4.3 多位加法器 { note sec 050 } 常见 CPA（carry propagate adder）： | 类型 | "
+      "text": "计算机系统基础讲义 根据 SYS/ 目录下当前 8 份课件整理。生成日期：2026 05 13。 当前覆盖：导论、信息表示、布尔代数、组合逻辑、运算部件、时序逻辑、ISA、RISC V 与程序装载。后续若继续加入新课件，可在本文末尾“增量补充区”继续扩展，不破坏已有章节编号。 资料来源 { note sec 001 } | 讲次 | 文件 | 主题 | 页数 | | | | :| :| | Lec00 | SYS/Lec00 Introduction.pptx | 课程导论、系统分层 | 25 | | Lec01 | SYS/Lec01 Information Representation.pptx | 信息与数据表示 | 101 | | Lec02 | SYS/Lec02 Boolean Algebra.pptx | 布尔代数、逻辑门、电路参数 | 139 | | Lec03 | SYS/Lec03 Combinational Logic.pptx | Verilog、组合逻辑、常用功能块 | 102 | | Lec04 | SYS/Lec04 Arithmetic Unit.pptx | 加减乘除、ALU、浮点运算 | 143 | | Lec05 | SYS/Lec05 Sequential Logic.pptx | 锁存器、触发器、FSM、寄存器、计数器 | 154 | | Lec06 1 | SYS/Lec06 1 ISA.pptx | ISA 设计与分类 | 71 | | Lec06 2 | SYS/Lec06 2 RISCV.pptx | RISC V、调用约定、ELF、链接装载 | 130 | 0. 课程视角：从门电路到系统软件 { note sec 002 } 计算机系统可以看成一组层次化抽象。越往下越接近物理实现，越往上越接近程序员和用户看到的行为。系统课程的核心价值，是把这些层次之间的接口讲清楚。 !!! note \"图像资源待补充：计算机系统课程分层\" 原始讲义引用了 ./sys notes assets/system overview.jpg ，但当前 note/ 目录没有随附图片资源。后续补充图片后可恢复为 Markdown 图片。 0.1 抽象层次 { note sec 003 } 典型计算机系统从上到下可以分为： | 层次 | 主要内容 | 本讲义中的对应章节 | | | | | | 应用程序 | 用户可见的软件功能 | 作为背景 | | 编译器、库、运行时 | 把高级语言程序翻译成机器可执行形式 | 7.6、7.7 | | 操作系统 | 进程、内存、文件、设备、中断、系统调用 | 与后续系统课程衔接 | | ISA | 软件和硬件之间的契约，定义指令、寄存器、地址空间、异常等 | 6、7 | | 微体系结构 | CPU 如何实现 ISA，如单周期、流水线、乱序等 | 本课程略作铺垫 | | RTL | 寄存器传输级：寄存器、总线、ALU、控制信号 | 4、5 | | 数字逻辑电路 | 门电路、组合逻辑、时序逻辑 | 2、3、5 | | 器件技术 | 晶体管、电压、电容、延迟、功耗 | 2.3 | 0.2 本课程主线 { note sec 004 } 本课程不是单独学习“逻辑门”或“汇编语言”，而是建立一条连贯链路： 理解这条链路后，许多系统问题会变得自然：为什么整数会溢出，为什么浮点加法不满足结合律，为什么 RISC V 指令字段要固定位置，为什么函数调用要保存寄存器，为什么链接器要重定位符号。 1. 信息表示 { note sec 005 } 1.1 信息、信号与二值抽象 { note sec 006 } 计算机内部无法直接处理“文字、图像、声音、视频、结构化对象”这些高级信息。它们必须被编码成二进制数据，再由硬件按照 0 和 1 的规则处理。 数字系统中使用二值信号，是因为它把连续物理世界压缩成离散判断： 电压可以表示 0/1，例如低电压表示 0，高电压表示 1。 磁场方向、光盘坑面反射、DRAM 电荷量等也可以表示 0/1。 只要输入电压落在合法低电平或高电平范围内，逻辑电路就能忽略一定程度的噪声。 信号按时间和值域可以粗略分为： | 信号类型 | 值域 | 时间 | 例子 | | | | | | | 模拟信号 | 连续 | 连续 | 音频电压波形 | | 异步数字信号 | 离散 | 连续 | 未统一采样的开关信号 | | 同步数字信号 | 离散 | 离散 | 时钟边沿采样的寄存器输入 | 1.2 外部信息与内部数据 { note sec 007 } 从用户和高级程序员角度看，信息可以是文本、图像、声音、视频、图、树、链表、队列等；从机器内部看，基本数据主要分成： 数值数据：无符号整数、有符号整数、定点数、浮点数。 非数值数据：逻辑值、字符、字符串、媒体编码、结构化数据的地址关系。 课程中的关键思想是： 同一串比特没有天然含义，含义来自解释方式 。例如 11111111 可以是无符号数 255，也可以是补码整数 1，也可以是字符、颜色分量或机器指令的一部分。 1.3 进位计数制 { note sec 008 } 任意正基数 r 的位置计数制可以写成： 其数值为： 其中每一位数字满足 0 = | 建模方式： | 方式 | 特点 | | | | | 结构化建模 | 实例化模块、门级连接，接近电路图 | | 数据流建模 | 使用 assign 描述组合逻辑 | | 行为建模 | 使用 always 、 case 、 if 等过程语句 | 组合逻辑行为建模常用： 组合逻辑中要避免遗漏赋值，否则综合器可能推断锁存器。 3.5 组合逻辑电路定义 { note sec 037 } 组合逻辑电路有： m 个布尔输入。 n 个布尔输出。 n 个开关函数，每个函数把当前输入组合映射到当前输出。 核心性质： 输出只依赖当前输入，不依赖历史状态 。 与时序逻辑对比： | 类型 | 是否有存储 | 输出依赖 | | | | | | 组合逻辑 | 无 | 当前输入 | | 时序逻辑 | 有 | 当前输入和过去状态 | 组合逻辑要求： 每个元件本身是组合逻辑。 一个节点只能被一个元件输出驱动。 不允许形成反馈环路。 3.6 组合逻辑设计流程 { note sec 038 } 设计步骤： 1. 规格说明：明确输入、输出、编码方式和约束。 2. 形式化：列真值表或初始布尔方程。 3. 优化：降低 literal cost、gate input cost 或关键路径延迟。 4. 技术映射：映射到目标门库、NAND/NOR、MUX、FPGA LUT 等。 5. 验证：功能仿真、等价检查、时序分析。 3.7 例：三开关控制单灯 { note sec 039 } 需求：房间只有一盏灯，由三个开关控制，每个开关单独拨动都能改变灯的亮灭。 这实际是奇偶函数。若开关闭合记为 1，灯亮记为 1，则灯亮当且仅当闭合开关数为奇数： SOP 写法： Verilog： 如果只按最小项写 assign ，结果正确但不如 XOR 表达简洁。 3.8 常用组合功能块 { note sec 040 } 3.8.1 基本功能 { note sec 041 } | 功能 | 方程 | 含义 | | | | | | 固定 0 | F = 0 | 输出常 0 | | 固定 1 | F = 1 | 输出常 1 | | 传送 | F = X | 直接传递 | | 反相 | F = X' | 取反 | | 使能传递 | F = X·EN 或 F = X + EN | 控制通过或阻断 | 多位总线可以看成一组并行 bit。宽线表示 vector signal，必要时可拆分为单 bit 或子字段。 3.8.2 Decoder { note sec 042 } Decoder 把 n 位输入码转换为最多 2^n 个输出，其中每个有效输入激活唯一输出。典型 3 to 8 decoder： Decoder 可用于生成最小项，因此可与 OR 门一起实现任意 SOP 函数： 实现方式：3 to 8 decoder 输出 m0 到 m7 ，把 m1、m2、m4、m7 接入 OR。 3.8.3 七段数码管译码器 { note sec 043 } BCD to seven segment decoder 把 4 位 BCD 输入转换为 a 到 g 七段控制信号。 | 类型 | 公共端 | 点亮条件 | | | | | | 共阳极 | 阳极接 1 | 段信号为 0 点亮，active low | | 共阴极 | 阴极接 0 | 段信号为 1 点亮，active high | 设计时必须先确认数码管类型，否则输出极性会反。 3.8.4 Encoder 与 Priority Encoder { note sec 044 } Encoder 与 decoder 方向相反，把 one hot 输入编码成二进制输出。普通 encoder 假设同时只有一个输入为 1。 Priority encoder 允许多个输入同时为 1，并输出最高优先级输入的编号，通常还带一个 valid 位。 3.8.5 Multiplexer { note sec 045 } MUX 从多个输入中选一个输出。 2^n to 1 MUX 有 n 个选择信号。 2 to 1 MUX： 4 to 1 MUX： MUX 也能实现逻辑函数：把函数变量接到选择输入，把真值表每行输出值固定到数据输入。 3.9 时序分析、关键路径与毛刺 { note sec 046 } 传播延迟： 污染延迟： 组合电路最大延迟由关键路径决定： 最短路径影响污染延迟： 毛刺 glitch 通常由不同路径延迟不一致引起。当单个输入变化通过多条路径到达输出，输出可能短暂错误翻转。 分析组合逻辑的步骤： 1. 从输入开始给每个中间节点写布尔函数。 2. 得到输出函数。 3. 化简或等价变换。 4. 列真值表验证功能。 5. 画时序图，检查延迟、毛刺和关键路径。 4. 运算部件与"
     },
     {
       "title": "离散数学讲义",
@@ -221,7 +331,18 @@
       ],
       "url": "/zh/notes/discrete-math-lecture/",
       "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
-      "text": "离散数学讲义 离散数学像一套给抽象问题搭骨架的语言。它先教人把一句话写清楚，再教人证明它、计数它、比较它和别的结构之间的关系。 这篇笔记写什么 { note sec 001 } 这篇笔记围绕“表达、证明、递推、计数、关系”五条线索展开。前半部分先建立逻辑与集合的语言，后半部分再把这些语言接到算法分析、递归思维和组合计数上，最后落到关系与结构本身。 它更适合用来做两件事：一是在复习时把零散概念重新串起来，二是在遇到题目时快速回查定义、定理和常见证明套路。 阅读主线 { note sec 002 } 1. 先用命题逻辑、谓词逻辑和证明方法建立“怎样把话说严谨”的基础。 2. 再进入集合、函数、序列与算法，理解离散对象如何被表示和操作。 3. 接着学习归纳、递归和计数，把“从局部规则推出整体结论”的能力连起来。 4. 最后看关系、闭包与等价，把前面的对象进一步组织成结构。 先带着这些问题阅读 { note sec 003 } 一个自然语言命题怎样被翻译成形式化表达？ 一个结论应该直接证明、逆否证明，还是用反证法更自然？ 递归、递推和归纳之间分别在解决什么问题？ 面对一个计数题，怎样判断该用加法、乘法、容斥，还是生成函数？ 当两个对象“有关联”时，怎样区分普通关系、等价关系和偏序关系？ 第 1 章 逻辑与证明 { note sec 004 } 1.0 核心目标 { note sec 005 } 本章要建立离散数学的语言基础。命题逻辑用于刻画“真或假”的陈述，谓词逻辑用于刻画带变量的数学语句，推理规则和证明方法用于把前提严谨地推到结论。 学完本章应能做到： 判断一句话是否为命题，并写出复合命题的形式。 使用真值表、逻辑等价式、范式分析命题。 把自然语言翻译成谓词逻辑表达式。 正确使用全称量词、存在量词和嵌套量词。 使用推理规则构造有效论证。 区分直接证明、逆否证明、反证法、分情况证明、存在性证明和反例证明。 1.1 命题逻辑 { note sec 006 } 命题 { note sec 007 } 命题是一个具有确定真值的陈述句。它要么为真，要么为假，不能二者同时成立。 常见判断： | 句子 | 是否为命题 | 原因 | | | | | | “2022 年冬奥会在北京举行。” | 是 | 有确定真值 | | “9 是素数。” | 是 | 有确定真值，且为假 | | “请打开书。” | 否 | 命令句，没有真假 | | “现在几点？” | 否 | 疑问句，没有真假 | | $x+1=4$ | 通常不是 | 未指定 $x$ 时没有确定真值 | 通常用 $p,q,r,\\ldots$ 表示命题变量。真值可记为 T/F ，也可记为 1/0 。 复合命题和联结词 { note sec 008 } 复合命题由命题变量和逻辑联结词构成。 | 名称 | 符号 | 读法 | 为真的条件 | | | | | | | 否定 | $\\neg p$ | 非 $p$ | $p$ 为假 | | 合取 | $p \\land q$ | $p$ 且 $q$ | $p,q$ 都真 | | 析取 | $p \\lor q$ | $p$ 或 $q$ | 至少一个真 | | 异或 | $p \\oplus q$ | 要么 $p$ 要么 $q$ | 恰好一个真 | | 条件 | $p \\to q$ | 若 $p$ 则 $q$ | 只有 $p$ 真、$q$ 假时为假 | | 双条件 | $p \\leftrightarrow q$ | $p$ 当且仅当 $q$ | $p,q$ 真值相同 | 条件命题 $p \\to q$ 中，$p$ 称为前件，$q$ 称为后件。它的真假只由前件和后件的真值决定，不要求二者存在因果关系。课件中把它类比为“承诺”：只有承诺条件发生而结果没有发生时，承诺才被违反。 条件命题的相关形式 { note sec 009 } 从 $p \\to q$ 可构造： | 名称 | 形式 | 与原命题的关系 | | | | | | 逆命题 | $q \\to p$ | 不一定等价 | | 否命题 | $\\neg p \\to \\neg q$ | 不一定等价 | | 逆否命题 | $\\neg q \\to \\neg p$ | 与原命题等价 | 因此证明 $p \\to q$ 时，经常改证 $\\neg q \\to \\neg p$。 真值表 { note sec 010 } 真值表列出命题变量的全部可能赋值。若有 $n$ 个命题变量，则真值表有 $2^n$ 行。 例：证明 $p \\to q$ 与 $\\neg p \\lor q$ 等价。 | $p$ | $q$ | $p \\to q$ | $\\neg p \\lor q$ | | | | | | | T | T | T | T | | T | F | F | F | | F | T | T | T | | F | F | T | T | 两列完全相同，所以 $p \\to q \\equiv \\neg p \\lor q$。 运算优先级 { note sec 011 } 常用优先级从高到低为： 1. 括号。 2. 否定 $\\neg$。 3. 合取 $\\land$。 4. 析取 $\\lor$。 5. 条件 $\\to$。 6. 双条件 $\\leftrightarrow$。 表达复杂公式时应尽量加括号，避免歧义。 位运算 { note sec 012 } 计算机中比特 0/1 可看作假/真。位串上的按位运算是把逻辑运算逐位推广。 例：设两个位串为 0110110110 与 1100011101 。 按位 OR：对应位至少一个为 1 时为 1 。 按位 AND：对应位都为 1 时为 1 。 按位 XOR：对应位恰好一个为 1 时为 1 。 这说明命题逻辑不仅是证明语言，也是数字系统和程序判断的基础。 1.2 命题逻辑的应用 { note sec 013 } 自然语言翻译 { note sec 014 } 把自然语言翻译成命题逻辑的目的，是消除自然语言中的歧义，使推理可以形式化。 步骤： 1. 找出原子命题。 2. 给每个原子命题命名。 3. 判断关键词对应的联结词。 4. 注意“only if”“unless”“necessary”“sufficient”等短语。 例：“You can access the Internet from campus only if you are a computer science major or you are not a freshman.” 设： $a$：你可以从校园访问互联网。 $c$：你是计算机科学专业学生。 $f$：你是一年级学生。 “$p$ only if $q$” 表示 $p \\to q$。所以原句翻译为： $a \\to (c \\lor \\neg f)$ 系统规格说明 { note sec 015 } 软件和系统工程中，经常把自然语言需求翻译成逻辑公式。 若一组规格说明可以同时为真，则称其一致；若不存在任何赋值能让所有公式同时为真，则不一致。 例： $p \\to q$、$p$、$\\neg q$ 三条规格不一致，因为由前两条可推出 $q$，与第三条矛盾。 逻辑谜题 { note sec 016 } 骑士与骗子问题、宝箱问题等都可以通过命题变量建模。基本套路： 1. 用命题变量描述“某人说真话”“某箱有宝物”等事实。 2. 把每句话翻译为逻辑表达式。 3. 加入题目约束，例如“骑士总说真话，骗子总说假话”。 4. 用真值表、等价变形或反证排除不可能情况。 1.3 命题等价式与范式 { note sec 017 } 重言式、矛盾式、可满足式 { note sec 018 } | 名称 | 定义 | 例子 | | | | | | 重言式 | 在所有赋值下都为真 | $p \\lor \\neg p$ | | 矛盾式 | 在所有赋值下都为假 | $p \\land \\neg p$ | | 偶然式 | 有时真、有时假 | $p \\to q$ | | 可满足式 | 至少存在一个赋值使其为真 | $p \\lor q$ | | 不可满足式 | 没有赋值使其为真 | $p \\land \\neg p$ | 两个命题公式 $P,Q$ 逻辑等价，当且仅当 $P \\leftrightarrow Q$ 是重言式，记作 $P \\equiv Q$。 常用逻辑等价式 { note sec 019 } | 名称 | 等价式 | | | | | 恒等律 | $p \\land T \\equiv p$, $p \\lor F \\equiv p$ | | 支配律 | $p \\lor T \\equiv T$, $p \\land F \\equiv F$ | | 幂等律 | $p \\lor p \\equiv p$, $p \\land p \\equiv p$ | | 双重否定律 | $\\neg(\\neg p) \\equiv p$ | | 交换律 | $p \\lor q \\equiv q \\lor p$, $p \\land q \\equiv q \\land p$ | | 结合律 | $(p\\lor q)\\lor r \\equiv p\\lor(q\\lor r)$, $(p\\land q)\\land r \\equiv p\\land(q\\land r)$ | | 分配律 | $p\\lor(q\\land r)\\equiv(p\\lor q)\\land(p\\lor r)$ | | 分配律 | $p\\land(q\\lor r)\\equiv(p\\land q)\\lor(p\\land r)$ | | 德摩根律 | $\\neg(p\\land q)\\equiv \\neg p\\lor \\neg q$ | | 德摩根律 | $\\neg(p\\lor q)\\equiv \\neg p\\land \\neg q$ | | 吸收律 | $p\\lor(p\\land q)\\equiv p$, $p\\land(p\\lor q)\\equiv p$ | | 条件等价 | $p\\to q\\equiv \\neg p\\lor q$ | | 双"
+      "text": "离散数学讲义 版本：2026 05 13 来源：根据 DM/ 目录下现有离散数学课件整理。 维护方式：后续新增 PPT/PDF 时，优先补充到对应章节；若新增内容属于未覆盖章节，则在“待补充章节”中扩展为正式章节。 使用说明 { note sec 001 } 这份讲义按章节组织，目标不是逐页复述课件，而是把课件中的定义、定理、方法、例题类型和解题套路整理成可复习、可发布到笔记网站的 Markdown 文档。 每一章建议按以下顺序学习： 1. 先看“核心目标”，明确本章要解决的问题。 2. 再看定义和定理，注意每个符号的含义。 3. 通过例题类型掌握建模和证明套路。 4. 最后用“小结与补充位”检查是否还有新课件需要补充。 本文使用 LaTeX 公式语法，例如 $p \\to q$、$\\forall x P(x)$、$O(n\\log n)$。上传到笔记网站时，请确认网站支持 Markdown 数学公式渲染。 现有课件索引 { note sec 002 } | 讲义章节 | 对应课件 | | | | | 第 1 章 逻辑与证明 | DM1.1(8).pdf , DM1.2 1.3(5).pdf , DM1.4(6).pdf , DM1.5(5).pdf , DM1.6(6).pdf , DM1.7 1.8(6).pdf | | 第 2 章 基本结构 | DM2.1.pdf , DM2.2.pdf , DM2.3.pdf , DM2.4.pdf , DM2.5 2.6(5).pdf | | 第 3 章 算法 | DM3.1 3.3(4).pdf | | 第 4 章 待补充 | 当前未提供对应课件 | | 第 5 章 归纳与递归 | DM5.1 5.4(7).pdf | | 第 6 章 计数 | DM6.1(3).pdf , DM6.2(3).pdf , DM6.3 6.4(6).pdf , DM6.5(3).pdf | | 第 7 章 待补充 | 当前未提供对应课件 | | 第 8 章 高级计数技术 | DM8.1 8.2(6).pdf , DM8.3.pdf , DM8.4(6).pdf , DM8.5 8.6(9).pdf | | 第 9 章 关系 | DM9.1 9.3(8).pdf , DM9.4(6).pdf , DM9.5(3).pdf | 全书知识结构 { note sec 003 } 第 1 章 逻辑与证明 { note sec 004 } 1.0 核心目标 { note sec 005 } 本章要建立离散数学的语言基础。命题逻辑用于刻画“真或假”的陈述，谓词逻辑用于刻画带变量的数学语句，推理规则和证明方法用于把前提严谨地推到结论。 学完本章应能做到： 判断一句话是否为命题，并写出复合命题的形式。 使用真值表、逻辑等价式、范式分析命题。 把自然语言翻译成谓词逻辑表达式。 正确使用全称量词、存在量词和嵌套量词。 使用推理规则构造有效论证。 区分直接证明、逆否证明、反证法、分情况证明、存在性证明和反例证明。 1.1 命题逻辑 { note sec 006 } 命题 { note sec 007 } 命题是一个具有确定真值的陈述句。它要么为真，要么为假，不能二者同时成立。 常见判断： | 句子 | 是否为命题 | 原因 | | | | | | “2022 年冬奥会在北京举行。” | 是 | 有确定真值 | | “9 是素数。” | 是 | 有确定真值，且为假 | | “请打开书。” | 否 | 命令句，没有真假 | | “现在几点？” | 否 | 疑问句，没有真假 | | $x+1=4$ | 通常不是 | 未指定 $x$ 时没有确定真值 | 通常用 $p,q,r,\\ldots$ 表示命题变量。真值可记为 T/F ，也可记为 1/0 。 复合命题和联结词 { note sec 008 } 复合命题由命题变量和逻辑联结词构成。 | 名称 | 符号 | 读法 | 为真的条件 | | | | | | | 否定 | $\\neg p$ | 非 $p$ | $p$ 为假 | | 合取 | $p \\land q$ | $p$ 且 $q$ | $p,q$ 都真 | | 析取 | $p \\lor q$ | $p$ 或 $q$ | 至少一个真 | | 异或 | $p \\oplus q$ | 要么 $p$ 要么 $q$ | 恰好一个真 | | 条件 | $p \\to q$ | 若 $p$ 则 $q$ | 只有 $p$ 真、$q$ 假时为假 | | 双条件 | $p \\leftrightarrow q$ | $p$ 当且仅当 $q$ | $p,q$ 真值相同 | 条件命题 $p \\to q$ 中，$p$ 称为前件，$q$ 称为后件。它的真假只由前件和后件的真值决定，不要求二者存在因果关系。课件中把它类比为“承诺”：只有承诺条件发生而结果没有发生时，承诺才被违反。 条件命题的相关形式 { note sec 009 } 从 $p \\to q$ 可构造： | 名称 | 形式 | 与原命题的关系 | | | | | | 逆命题 | $q \\to p$ | 不一定等价 | | 否命题 | $\\neg p \\to \\neg q$ | 不一定等价 | | 逆否命题 | $\\neg q \\to \\neg p$ | 与原命题等价 | 因此证明 $p \\to q$ 时，经常改证 $\\neg q \\to \\neg p$。 真值表 { note sec 010 } 真值表列出命题变量的全部可能赋值。若有 $n$ 个命题变量，则真值表有 $2^n$ 行。 例：证明 $p \\to q$ 与 $\\neg p \\lor q$ 等价。 | $p$ | $q$ | $p \\to q$ | $\\neg p \\lor q$ | | | | | | | T | T | T | T | | T | F | F | F | | F | T | T | T | | F | F | T | T | 两列完全相同，所以 $p \\to q \\equiv \\neg p \\lor q$。 运算优先级 { note sec 011 } 常用优先级从高到低为： 1. 括号。 2. 否定 $\\neg$。 3. 合取 $\\land$。 4. 析取 $\\lor$。 5. 条件 $\\to$。 6. 双条件 $\\leftrightarrow$。 表达复杂公式时应尽量加括号，避免歧义。 位运算 { note sec 012 } 计算机中比特 0/1 可看作假/真。位串上的按位运算是把逻辑运算逐位推广。 例：设两个位串为 0110110110 与 1100011101 。 按位 OR：对应位至少一个为 1 时为 1 。 按位 AND：对应位都为 1 时为 1 。 按位 XOR：对应位恰好一个为 1 时为 1 。 这说明命题逻辑不仅是证明语言，也是数字系统和程序判断的基础。 1.2 命题逻辑的应用 { note sec 013 } 自然语言翻译 { note sec 014 } 把自然语言翻译成命题逻辑的目的，是消除自然语言中的歧义，使推理可以形式化。 步骤： 1. 找出原子命题。 2. 给每个原子命题命名。 3. 判断关键词对应的联结词。 4. 注意“only if”“unless”“necessary”“sufficient”等短语。 例：“You can access the Internet from campus only if you are a computer science major or you are not a freshman.” 设： $a$：你可以从校园访问互联网。 $c$：你是计算机科学专业学生。 $f$：你是一年级学生。 “$p$ only if $q$” 表示 $p \\to q$。所以原句翻译为： $a \\to (c \\lor \\neg f)$ 系统规格说明 { note sec 015 } 软件和系统工程中，经常把自然语言需求翻译成逻辑公式。 若一组规格说明可以同时为真，则称其一致；若不存在任何赋值能让所有公式同时为真，则不一致。 例： $p \\to q$、$p$、$\\neg q$ 三条规格不一致，因为由前两条可推出 $q$，与第三条矛盾。 逻辑谜题 { note sec 016 } 骑士与骗子问题、宝箱问题等都可以通过命题变量建模。基本套路： 1. 用命题变量描述“某人说真话”“某箱有宝物”等事实。 2. 把每句话翻译为逻辑表达式。 3. 加入题目约束，例如“骑士总说真话，骗子总说假话”。 4. 用真值表、等价变形或反证排除不可能情况。 1.3 命题等价式与范式 { note sec 017 } 重言式、矛盾式、可满足式 { note sec 018 } | 名称 | 定义 | 例子 | | | | | | 重言式 | 在所有赋值下都为真 | $p \\lor \\neg p$ | | 矛盾式 | 在所有赋值下都为假 | $p \\land \\neg p$ | | 偶然式 | 有时真、有时假 | $p \\to q$ | | 可满足式 | 至少存在一个赋值使其为真 | $p \\lor q$ | | 不可满足式 | 没有赋值使其为真 | $p \\land \\neg p$ | 两个命题公式 $P,Q$ 逻辑等价，当且仅当 $P \\leftrightarrow Q$ 是重言式，记作 $P \\equiv Q$。 常用逻辑等价式 { note sec 019 } | 名称 | 等价式 | | | | | 恒等律 | $p \\land T \\equiv p$, $p \\lor F \\equiv p$ | | 支配律 | $p \\lor T \\equiv T$, $p \\land F \\equiv F$ | | 幂等律 | $p \\lor p \\equiv p$, $p \\land p \\equiv p$ | | 双重否定律 | $\\neg(\\neg p) \\equiv p$ | | 交换律 | $p \\lor q \\e"
+    },
+    {
+      "title": "随笔",
+      "summary": "更轻的记录与复盘入口。",
+      "tags": [
+        "notes",
+        "essays"
+      ],
+      "url": "/zh/notes/essays/",
+      "sourcePath": "docs/zh/notes/essays.md",
+      "text": "TOPIC 随笔 以后放想法、复盘和不那么像讲义的记录。"
     },
     {
       "title": "FDS 数据结构基础讲义",
@@ -233,7 +354,7 @@
       ],
       "url": "/zh/notes/fds-data-structures-lecture/",
       "sourcePath": "docs/zh/notes/fds-data-structures-lecture.md",
-      "text": "FDS 数据结构基础讲义 数据结构研究的并不是“把数据放进什么容器”，而是“为了让某些操作更快，应该怎样组织数据”。同一个问题，换一种结构，常常就会得到完全不同的复杂度。 这篇笔记写什么 { note sec 001 } 这篇笔记把数据结构放在“问题、结构、操作、代价”的关系里理解。线性表、栈、队列、树、堆、并查集、线段树和图并不是孤立名词，它们都在回答同一件事：为了支持某类查询和修改，系统应该保留怎样的结构信息。 阅读主线 { note sec 002 } 1. 先用算法分析建立复杂度直觉，知道代价究竟从哪里来。 2. 再看线性结构，理解顺序、局部修改和访问方式之间的关系。 3. 接着进入树、堆、并查集和线段树，体会“额外结构换取更快操作”的思路。 4. 最后到图，把局部连接推广到更一般的关系网络。 先带着这些问题阅读 { note sec 003 } 这个结构维护了什么不变量？ 它让哪些操作变快，又让哪些操作变慢？ 一次查询或更新的复杂度，真正花在了哪里？ 当数据分布或操作模式改变时，原来的结构还合适吗？ 如果只记住一个结构的名字，却说不出它为什么有效，说明还缺了哪一层理解？ 0. 课程视角：为什么需要数据结构 { note sec 004 } 数据结构是组织、处理、检索和存储数据的专门格式。程序当然可以“直接写”，但当数据规模变大、操作频率变高、约束变复杂时，朴素写法往往会被时间复杂度击穿。 一个常见例子是区间求和： 如果每次查询 [L, R] 都从 L 加到 R ，一次查询是 \\(O(N)\\)。 如果查询非常频繁，先花时间建立结构，例如前缀和或线段树，就能把查询降低到 \\(O(1)\\) 或 \\(O(\\log N)\\)。 选择哪种结构，取决于是否需要修改数组：静态数组适合前缀和；频繁修改适合线段树。 因此，这门课的重点不是“某个结构长什么样”，而是“结构如何把操作变快”。每一种数据结构都可以从下面四个角度学习： | 角度 | 要问的问题 | 例子 | | | | | | 对象 | 存的是什么 | 表存序列，堆存带优先级的元素，图存顶点和边 | | 操作 | 用户需要什么动作 | 插入、删除、查找、合并、区间查询 | | 不变量 | 结构必须维持什么性质 | BST 左小右大，堆父节点不大于孩子，并查集根节点代表集合 | | 复杂度 | 每个操作要花多少代价 | 链表插入 \\(O(1)\\)，查找第 k 个元素 \\(O(N)\\) | 1. 算法分析 { note sec 005 } 1.1 算法与程序 { note sec 006 } 算法是有限条指令的集合，按照这些指令执行可以完成特定任务。课件给出的五个条件非常重要： | 条件 | 含义 | 通俗解释 | | | | | | Input | 有零个或多个外部输入 | 算法可以没有输入，例如打印固定字符串 | | Output | 至少产生一个输出 | 必须给出结果，否则任务没有完成 | | Definiteness | 每条指令清楚无歧义 | “适当处理一下”不是算法步骤 | | Finiteness | 对所有情况都在有限步后终止 | 死循环程序不是算法 | | Effectiveness | 每条指令足够基本且可执行 | 步骤不能要求无法实际完成的魔法操作 | 程序是某种编程语言写出的实现，它不一定有限，例如操作系统长期运行；算法是解决问题的抽象步骤，必须保证有限终止。 1.2 分析什么 { note sec 007 } 实际运行时间依赖机器、编译器、语言、缓存、输入分布等因素。算法课通常关心与机器无关的增长趋势： 时间复杂度：基本操作执行次数随输入规模 \\(N\\) 如何增长。 空间复杂度：额外内存随 \\(N\\) 如何增长。 最坏情况：所有输入中代价最大的情况，常用于保证上界。 平均情况：在输入分布已知或可假设时的期望代价。 最好情况：一般只作参考，不能代表算法稳健性。 对循环的基本判断： | 代码形态 | 复杂度 | | | :| | 单层循环执行 \\(N\\) 次 | \\(O(N)\\) | | 双层独立嵌套循环 | \\(O(N^2)\\) | | 每轮问题规模减半 | \\(O(\\log N)\\) | | 外层 \\(N\\) 次，内层每轮减半 | \\(O(N\\log N)\\) | | 递归分成两个规模为 \\(N/2\\) 的子问题并线性合并 | \\(O(N\\log N)\\) | 1.3 渐进记号 { note sec 008 } 渐进记号忽略常数和低阶项，保留增长级别。它解决的问题是：当输入规模很大时，哪个算法更能撑住。 | 记号 | 定义直觉 | 常用说法 | | | | | | \\(T(N)=O(f(N))\\) | \\(T\\) 最多按 \\(f\\) 的级别增长 | 上界 | | \\(T(N)=\\Omega(g(N))\\) | \\(T\\) 至少按 \\(g\\) 的级别增长 | 下界 | | \\(T(N)=\\Theta(h(N))\\) | \\(T\\) 与 \\(h\\) 同阶 | 紧确界 | | \\(T(N)=o(p(N))\\) | \\(T\\) 比 \\(p\\) 低一阶 | 严格小阶 | 典型增长顺序： 常用规则： 若 \\(T 1(N)=O(f(N))\\)，\\(T 2(N)=O(g(N))\\)，则 \\(T 1+T 2=O(\\max(f,g))\\)。 若 \\(T 1(N)=O(f(N))\\)，\\(T 2(N)=O(g(N))\\)，则 \\(T 1T 2=O(fg)\\)。 多项式只保留最高次项：\\(3N^2+10N+7=O(N^2)\\)。 对数底数在渐进复杂度中只差常数：\\(\\log a N=\\Theta(\\log b N)\\)。 1.4 最大子列和：同一问题的四种算法 { note sec 009 } 问题：给定可能含负数的整数序列 \\(A 1,A 2,\\ldots,A N\\)，求连续子列的最大和。如果所有数都为负，课件约定最大和为 0。 算法 1：三重循环，枚举所有区间 { note sec 010 } 区间有 \\(O(N^2)\\) 个，每个区间求和又可能是 \\(O(N)\\)，总复杂度 \\(O(N^3)\\)。 算法 2：枚举右端点时累加 { note sec 011 } 内层不再重复求区间和，总复杂度降为 \\(O(N^2)\\)。这个优化的核心是复用前一次区间和。 算法 3：分治 { note sec 012 } 最大子列要么完全在左半边，要么完全在右半边，要么跨过中点。 递推式为 \\(T(N)=2T(N/2)+O(N)\\)，因此复杂度为 \\(O(N\\log N)\\)。 算法 4：在线算法 { note sec 013 } 在线算法只扫描一遍，任何时刻都能给出当前前缀的答案。 关键直觉：如果当前前缀和已经小于 0，那么它只会拖累后面的子列，应该丢弃并从下一个位置重新开始。复杂度 \\(O(N)\\)，额外空间 \\(O(1)\\)。 1.5 二分查找与对数复杂度 { note sec 014 } 二分查找要求数组有序。每次比较后，搜索区间至少减半。 如果问题规模每次变为原来的一半，最多能减半 \\(\\log 2 N\\) 次，所以时间复杂度为 \\(O(\\log N)\\)。 1.6 检查复杂度分析 { note sec 015 } 课件给出一种很实用的实验检验方法：看输入翻倍时运行时间大约乘以多少。 | 假设复杂度 | 输入从 \\(N\\) 到 \\(2N\\) | 理论比值 | | | :| :| | \\(O(N)\\) | \\(T(2N)/T(N)\\) | 约 2 | | \\(O(N^2)\\) | \\(T(2N)/T(N)\\) | 约 4 | | \\(O(N^3)\\) | \\(T(2N)/T(N)\\) | 约 8 | | \\(O(\\log N)\\) | 增长很慢 | 约 \\(\\log(2N)/\\log N\\) | 实验不能证明复杂度，但能发现明显错误。例如你以为算法是 \\(O(N)\\)，测出来翻倍后接近 4 倍，就要检查是否有隐藏的嵌套循环。 2. 抽象数据类型与线性表 { note sec 016 } 2.1 ADT：把“是什么”和“怎么做”分开 { note sec 017 } 数据类型可以看成 {对象集合} + {操作集合} 。抽象数据类型 ADT 更强调接口和语义，而不是具体实现。 以线性表为例： 对象：\\((item 0,item 1,\\ldots,item {N 1})\\)。 操作：求长度、打印、查找第 k 个元素、查找某元素位置、插入、删除等。 实现：数组、链表、游标链表都可以实现同一个 List ADT。 这就是抽象的价值：用户只关心 Insert 、 Delete 、 Find 的行为；实现者负责选择结构并控制复杂度。 2.2 数组实现线性表 { note sec 018 } 数组实现使用连续内存，天然支持随机访问： | 操作 | 复杂度 | 原因 | | | :| | | Find Kth(k) | \\(O(1)\\) | 地址可直接计算 | | Find(x) | \\(O(N)\\) | 需要顺序扫描 | | 在末尾插入 | 平均可为 \\(O(1)\\) | 若容量足够 | | 在中间插入 | \\(O(N)\\) | 后续元素需要右移 | | 删除中间元素 | \\(O(N)\\) | 后续元素需要左移 | 数组的主要问题是容量需要预估，扩容需要搬迁元素；中间插入删除代价高。 2.3 链表实现线性表 { note sec 019 } 链表由节点组成，每个节点保存数据和指向下一节点的指针。 使用头节点可以统一空表、首元节点插入和普通插入的处理。 插入 { note sec 020 } 在位置 P 后插入 X ： 链表插入本身是 \\(O(1)\\)，但前提是已经拿到位置 P 。如果还要先查找 P ，总复杂度会包含查找的 \\(O(N)\\)。 删除 { note sec 021 } 删除值为 X 的第一个节点： 删除需要找到前驱节点，因为单链表无法从当前节点直接回到前一个节点。 2.4 双向循环链表 { note se"
+      "text": "FDS 数据结构基础讲义 版本：2026 05 13 来源：根据 FDS/ 目录下当前 11 份 PPT/PDF 课件整理。 定位：这份讲义不是逐页转写课件，而是把定义、抽象数据类型、算法思想、复杂度分析、实现模板和典型算例整理成可复习、可发布、可继续增补的 Markdown 文档。 维护方式：后续新增课件时，优先补充到对应章节；若出现新主题，则在文末“增量补充区”登记来源并扩展为正式章节。 使用说明 { note sec 001 } 这门课的主线是：用合适的数据组织方式，让算法能在可接受的时间和空间内完成任务。学习时不要只背接口名称，而要追问三件事： 1. 这个结构维护了什么不变量？ 2. 每个操作为什么能保持这个不变量？ 3. 复杂度来自哪里，瓶颈能不能用结构性质消掉？ 本文的代码示例以 C 风格伪代码为主，变量名尽量贴近课件。公式使用 LaTeX 语法，例如 \\(O(N\\log N)\\)。图示主要采用 Mermaid，上传到笔记网站时建议开启 Mermaid 渲染。 资料来源索引 { note sec 002 } | 讲次 | 文件 | 主题 | 页数/幻灯片数 | | | | | :| | DS00 | FDS/DS00 2026.pdf | 课程导论、数据结构的意义、学习方式 | 17 | | DS01 | FDS/DS01 Ch02 Algorithm Analysis(a) 2026.pdf | 算法定义、分析对象、渐进记号、基本分析规则 | 15 | | DS02 a | FDS/DS02 Ch02 Algorithm Analysis(b).ppt | 最大子列和、二分查找、对数复杂度、实验测量 | 9 | | DS02 b | FDS/DS02 Ch03 List.ppt | ADT、线性表、链表、多项式、多重链表、游标实现 | 14 | | DS03 | FDS/DS03 Ch03 Stack and Queue.ppt | 栈、队列、表达式转换、系统栈、循环队列 | 13 | | DS04 | FDS/DS04 Ch04 Binary Trees.ppt | 树、二叉树、表达式树、遍历、线索二叉树 | 16 | | DS05 | FDS/DS05 Ch04 Search Tree.pdf | 二叉树性质、二叉搜索树及其操作 | 14 | | DS06 | FDS/DS06 Ch05 Priority Queues.ppt | 优先队列、二叉堆、建堆、堆应用、d 堆 | 15 | | DS07 a | FDS/DS07 Ch08 Union and Find.ppt | 等价关系、动态等价问题、并查集、路径压缩 | 9 | | DS07 b | FDS/DS07 Segment Tree.pdf | 线段树、区间查询、点更新、区间更新、懒标记 | 16 | | DS08 | FDS/DS08 Ch09 Graph Definition Topological Sort.ppt | 图定义、图存储、AOV 网络、拓扑排序 | 12 | 全课知识结构 { note sec 003 } 0. 课程视角：为什么需要数据结构 { note sec 004 } 数据结构是组织、处理、检索和存储数据的专门格式。程序当然可以“直接写”，但当数据规模变大、操作频率变高、约束变复杂时，朴素写法往往会被时间复杂度击穿。 一个常见例子是区间求和： 如果每次查询 [L, R] 都从 L 加到 R ，一次查询是 \\(O(N)\\)。 如果查询非常频繁，先花时间建立结构，例如前缀和或线段树，就能把查询降低到 \\(O(1)\\) 或 \\(O(\\log N)\\)。 选择哪种结构，取决于是否需要修改数组：静态数组适合前缀和；频繁修改适合线段树。 因此，这门课的重点不是“某个结构长什么样”，而是“结构如何把操作变快”。每一种数据结构都可以从下面四个角度学习： | 角度 | 要问的问题 | 例子 | | | | | | 对象 | 存的是什么 | 表存序列，堆存带优先级的元素，图存顶点和边 | | 操作 | 用户需要什么动作 | 插入、删除、查找、合并、区间查询 | | 不变量 | 结构必须维持什么性质 | BST 左小右大，堆父节点不大于孩子，并查集根节点代表集合 | | 复杂度 | 每个操作要花多少代价 | 链表插入 \\(O(1)\\)，查找第 k 个元素 \\(O(N)\\) | 1. 算法分析 { note sec 005 } 1.1 算法与程序 { note sec 006 } 算法是有限条指令的集合，按照这些指令执行可以完成特定任务。课件给出的五个条件非常重要： | 条件 | 含义 | 通俗解释 | | | | | | Input | 有零个或多个外部输入 | 算法可以没有输入，例如打印固定字符串 | | Output | 至少产生一个输出 | 必须给出结果，否则任务没有完成 | | Definiteness | 每条指令清楚无歧义 | “适当处理一下”不是算法步骤 | | Finiteness | 对所有情况都在有限步后终止 | 死循环程序不是算法 | | Effectiveness | 每条指令足够基本且可执行 | 步骤不能要求无法实际完成的魔法操作 | 程序是某种编程语言写出的实现，它不一定有限，例如操作系统长期运行；算法是解决问题的抽象步骤，必须保证有限终止。 1.2 分析什么 { note sec 007 } 实际运行时间依赖机器、编译器、语言、缓存、输入分布等因素。算法课通常关心与机器无关的增长趋势： 时间复杂度：基本操作执行次数随输入规模 \\(N\\) 如何增长。 空间复杂度：额外内存随 \\(N\\) 如何增长。 最坏情况：所有输入中代价最大的情况，常用于保证上界。 平均情况：在输入分布已知或可假设时的期望代价。 最好情况：一般只作参考，不能代表算法稳健性。 对循环的基本判断： | 代码形态 | 复杂度 | | | :| | 单层循环执行 \\(N\\) 次 | \\(O(N)\\) | | 双层独立嵌套循环 | \\(O(N^2)\\) | | 每轮问题规模减半 | \\(O(\\log N)\\) | | 外层 \\(N\\) 次，内层每轮减半 | \\(O(N\\log N)\\) | | 递归分成两个规模为 \\(N/2\\) 的子问题并线性合并 | \\(O(N\\log N)\\) | 1.3 渐进记号 { note sec 008 } 渐进记号忽略常数和低阶项，保留增长级别。它解决的问题是：当输入规模很大时，哪个算法更能撑住。 | 记号 | 定义直觉 | 常用说法 | | | | | | \\(T(N)=O(f(N))\\) | \\(T\\) 最多按 \\(f\\) 的级别增长 | 上界 | | \\(T(N)=\\Omega(g(N))\\) | \\(T\\) 至少按 \\(g\\) 的级别增长 | 下界 | | \\(T(N)=\\Theta(h(N))\\) | \\(T\\) 与 \\(h\\) 同阶 | 紧确界 | | \\(T(N)=o(p(N))\\) | \\(T\\) 比 \\(p\\) 低一阶 | 严格小阶 | 典型增长顺序： 常用规则： 若 \\(T 1(N)=O(f(N))\\)，\\(T 2(N)=O(g(N))\\)，则 \\(T 1+T 2=O(\\max(f,g))\\)。 若 \\(T 1(N)=O(f(N))\\)，\\(T 2(N)=O(g(N))\\)，则 \\(T 1T 2=O(fg)\\)。 多项式只保留最高次项：\\(3N^2+10N+7=O(N^2)\\)。 对数底数在渐进复杂度中只差常数：\\(\\log a N=\\Theta(\\log b N)\\)。 1.4 最大子列和：同一问题的四种算法 { note sec 009 } 问题：给定可能含负数的整数序列 \\(A 1,A 2,\\ldots,A N\\)，求连续子列的最大和。如果所有数都为负，课件约定最大和为 0。 算法 1：三重循环，枚举所有区间 { note sec 010 } 区间有 \\(O(N^2)\\) 个，每个区间求和又可能是 \\(O(N)\\)，总复杂度 \\(O(N^3)\\)。 算法 2：枚举右端点时累加 { note sec 011 } 内层不再重复求区间和，总复杂度降为 \\(O(N^2)\\)。这个优化的核心是复用前一次区间和。 算法 3：分治 { note sec 012 } 最大子列要么完全在左半边，要么完全在右半边，要么跨过中点。 递推式为 \\(T(N)=2T(N/2)+O(N)\\)，因此复杂度为 \\(O(N\\log N)\\)。 算法 4：在线算法 { note sec 013 } 在线算法只扫描一遍，任何时刻都能给出当前前缀的答案。 关键直觉：如果当前前缀和已经小于 0，那么它只会拖累后面的子列，应该丢弃并从下一个位置重新开始。复杂度 \\(O(N)\\)，额外空间 \\(O(1)\\)。 1.5 二分查找与对数复杂度 { note sec 014 } 二分查找要求数组有序。每次比较后，搜索区间至少减半。 如果问题规模每次变为原来的一半，最多能减半 \\(\\log 2 N\\) 次，所以时间复杂度为 \\(O(\\log N)\\)。 1.6 检查复杂度分析 { note sec 015 } 课件给出一种很实用的实验检验方法：看输入翻倍时运行时间大约乘以多少。 | 假设复杂度 | 输入从 \\(N\\) 到 \\(2N\\) | 理论比值 | | | :| :| | \\(O(N)\\) | \\(T(2N)/T(N)\\) | 约 2 | | \\(O(N^2)\\) | \\(T(2N)/T(N)\\) | 约 4 | | \\(O(N^3)\\) | \\(T(2N)/T(N)\\) | 约 8 | | \\(O(\\log N)\\) | 增长很慢 | 约 \\(\\log(2N)/\\log N\\) | 实验不能证明复杂度，但能发现明显错误。例如你以为算法是 \\(O(N)\\)，测出来翻倍后接近 4 倍，就要检查是否有隐藏的嵌套循环。 2. 抽象数据类型与线性表 { note sec 01"
     },
     {
       "title": "笔记",
@@ -243,7 +364,7 @@
       ],
       "url": "/zh/notes/",
       "sourcePath": "docs/zh/notes/index.md",
-      "text": "NOTES 笔记 这里收着我愿意公开留下的笔记。课程讲义、公式测试和公开边界都会在这里慢慢排好位置。 中文主源 可被碧影读取 持续整理 这里的笔记以中文为主源，也会尽量同步英文版本。哪些内容能被碧影读取，由 public 与 avatar readable 共同决定。 离散数学讲义 覆盖逻辑与证明、集合与函数、算法、归纳递归、计数、关系等主题。 数学 证明 计数 阅读 计算机系统基础讲义 覆盖信息表示、布尔代数、组合逻辑、运算部件、时序逻辑、ISA 与 RISC V。 系统 逻辑 RISC V 阅读 FDS 数据结构基础讲义 覆盖算法分析、线性表、栈队列、树、堆、并查集、线段树、图与拓扑排序。 算法 数据结构 图 阅读 公开边界 说明哪些内容会进入碧影的回答范围，哪些不会。 公开范围 碧影 阅读 数学实验 用来确认 Markdown 里的数学公式能正常显示。 MathJax 公式 阅读 笔记模板"
+      "text": "NOTES 笔记 这里收着我愿意公开留下的笔记。课程讲义、公式测试和公开边界都会在这里慢慢排好位置。 中文主源 可被碧影读取 持续整理 这里的笔记以中文为主源，也会尽量同步英文版本。哪些内容能被碧影读取，由 public 与 avatar readable 共同决定。 想系统学习 从课程笔记开始，顺着章节慢慢读。 想了解本站 先看公开边界，知道哪些内容会进入碧影的回答范围。 想检查公式 进入数学实验，确认 Markdown 里的公式排版是否正常。 主题入口 最近更新 推荐阅读 标签 课程笔记 { course notes} 离散数学讲义 覆盖逻辑与证明、集合与函数、算法、归纳递归、计数、关系等主题。 数学 证明 计数 阅读 计算机系统基础讲义 覆盖信息表示、布尔代数、组合逻辑、运算部件、时序逻辑、ISA 与 RISC V。 系统 逻辑 RISC V 阅读 FDS 数据结构基础讲义 覆盖算法分析、线性表、栈队列、树、堆、并查集、线段树、图与拓扑排序。 算法 数据结构 图 阅读 站点说明 { site notes} 公开边界 说明哪些内容会进入碧影的回答范围，哪些不会。 公开范围 碧影 阅读 数学实验 用来确认 Markdown 里的数学公式能正常显示。 MathJax 公式 阅读 如果你只是第一次来，比较自然的路线是：先看一篇课程讲义，遇到感兴趣的地方再回到这里继续挑下一本。这个页面会随着新笔记一起慢慢长大。"
     },
     {
       "title": "数学实验",
@@ -257,6 +378,17 @@
       "text": "MATH LAB 数学实验 一个小型渲染实验室，用来确认行内公式、块级公式和矩阵在网站里都能被稳定排版。 MathJax Markdown 这页用于测试 .md 文件中的数学公式渲染。 行内公式示例：$E = mc^2$，以及 $\\alpha + \\beta = \\gamma$。 块级公式示例： $$ \\nabla \\cdot \\vec{E} = \\frac{\\rho}{\\epsilon 0} $$ 再来一个矩阵： $$ A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix} ,\\quad \\det(A) = 2 $$ 如果你看到的是排版后的公式，而不是原始 LaTeX 文本，说明 mathjax.js 正常工作。"
     },
     {
+      "title": "数学笔记",
+      "summary": "数学相关笔记入口。",
+      "tags": [
+        "notes",
+        "math"
+      ],
+      "url": "/zh/notes/math/",
+      "sourcePath": "docs/zh/notes/math.md",
+      "text": "TOPIC 数学 把逻辑、证明、计数和公式放在同一条线索里看。"
+    },
+    {
       "title": "公开边界",
       "summary": "碧影只读取网站公开内容，不读取 GitHub 活动、草稿或私密资料。",
       "tags": [
@@ -266,6 +398,39 @@
       "url": "/zh/notes/public-scope/",
       "sourcePath": "docs/zh/notes/public-scope.md",
       "text": "PUBLIC SCOPE 公开边界 这页只想把一件事说清楚：碧影会读什么，不会读什么。边界清楚，比回答看起来聪明更重要。 公开内容 隐私不进入 碧影的核心规则很简单： 只读取已经公开发布到网站上的内容 。 可读取 首页、关于、现在、项目和公开笔记。 标记为 public: true 且 avatar readable: true 的 Markdown 页面。 页面中的标题、摘要、正文和公开链接。 不读取 未发布草稿。 GitHub 活动记录。 私密笔记、日记、聊天记录。 未公开联系方式或其他私人资料。 本地文件系统中的任何内容。 回答方式 如果公开资料里没有答案，碧影应该直接说： 公开资料里还没有这部分信息。 这条规则比“看起来聪明”更重要。"
+    },
+    {
+      "title": "站点笔记",
+      "summary": "关于这个网站本身的说明与实验。",
+      "tags": [
+        "notes",
+        "site"
+      ],
+      "url": "/zh/notes/site/",
+      "sourcePath": "docs/zh/notes/site.md",
+      "text": "TOPIC 站点 公开边界、公式实验和这个网站自己的说明。"
+    },
+    {
+      "title": "系统笔记",
+      "summary": "系统相关笔记入口。",
+      "tags": [
+        "notes",
+        "systems"
+      ],
+      "url": "/zh/notes/systems/",
+      "sourcePath": "docs/zh/notes/systems.md",
+      "text": "TOPIC 系统 从二进制、逻辑电路一路看到指令集与程序运行。"
+    },
+    {
+      "title": "标签",
+      "summary": "按标签浏览所有公开笔记。",
+      "tags": [
+        "notes",
+        "tags"
+      ],
+      "url": "/zh/notes/tags/",
+      "sourcePath": "docs/zh/notes/tags.md",
+      "text": "TAGS 全部标签 同一篇笔记可以同时落在多个标签下。主题页告诉你“它大致属于哪里”，标签更适合横向找关联。"
     },
     {
       "title": "现在",
@@ -289,7 +454,7 @@
       ],
       "url": "/zh/projects/",
       "sourcePath": "docs/zh/projects/index.md",
-      "text": "PROJECTS 项目 这里放我愿意认真讲清楚的作品：为什么开始、怎么做、现在走到哪一步、还有哪里不够好。 作品记录 过程复盘 持续补充 我希望项目页不只是“做过什么”的清单，也能留下思考的纹理。每个项目都会尽量写清它为什么开始、我做过哪些取舍、现在到了哪一步，以及之后还想怎么继续。 当前状态：静态站点已上线，后端能力继续完善 个人数字花园与碧影 一个双语个人网站，把公开笔记、项目记录、留言和碧影放进同一个会长期生长的入口里。 MkDocs EdgeOne RAG 双语内容 进入详情 后续新增项目时，我会尽量沿用同一套结构：背景、技术栈、做了什么、成果、不足、下一步。这样既方便回看，也方便别人快速理解。"
+      "text": "PROJECTS 项目 这里放我愿意认真讲清楚的作品：为什么开始、怎么做、现在走到哪一步、还有哪里不够好。 作品记录 过程复盘 持续补充 我希望项目页不只是“做过什么”的清单，也能留下思考的纹理。每个项目都会尽量写清它为什么开始、我做过哪些取舍、现在到了哪一步，以及之后还想怎么继续。 为什么做 先说明问题、动机和这个项目想解决什么。 我做了什么 记录真正动手完成的部分，而不是只罗列技术名词。 接下来 把还不够好的地方也写下来，方便继续往前推。 当前状态：静态站点已上线，后端能力继续完善 个人数字花园与碧影 一个双语个人网站，把公开笔记、项目记录、留言和碧影放进同一个会长期生长的入口里。 核心 内容整理、双语切换、公开知识读取。 我负责 信息架构、页面实现、部署和对话流程。 下一步 继续把交互、内容维护和站点细节做得更顺。 MkDocs EdgeOne RAG 双语内容 进入详情 后续新增项目时，我会尽量沿用同一套结构：背景、技术栈、做了什么、成果、不足、下一步。这样既方便自己回看，也方便来访的人很快抓住重点。"
     },
     {
       "title": "个人数字花园与碧影",
@@ -304,6 +469,17 @@
       "url": "/zh/projects/personal-site-avatar/",
       "sourcePath": "docs/zh/projects/personal-site-avatar.md",
       "text": "PROJECT CASE 个人数字花园与碧影 把公开笔记、项目记录、留言和碧影放进同一个长期入口里，让内容、交互和部署一起慢慢长出来。 MkDocs EdgeOne 数字分身 定位 个人数字花园，不是一次性作品集。 核心 公开内容、双语笔记、碧影对话、留言。 状态 静态站点已上线，后端能力继续完善。 这是我为自己搭建的长期个人网站。它不是单独的作品集，也不只是一个聊天 demo，而是把公开笔记、项目记录、当前状态、留言和碧影放进同一个入口里。 我希望它能随着我学习和做项目一起长大：今天也许只是几篇课程笔记和一个能对话的入口，之后会慢慢加入更多真实项目、调试记录、阶段性的想法，以及更稳定的部署。 背景 我想要一个比社交主页更稳定、又比正式介绍更松弛的地方。朋友可以从这里知道我最近在折腾什么；同样对 AI 和工程感兴趣的人，也能顺着笔记和项目看到更具体的过程。 碧影是这个项目里比较特别的一部分。他不是“全知”的替身，只是一个温和的公开内容向导：读取网站里已经发布的内容，帮访客快速找到线索，也在没有资料时坦白说不知道。 我做了什么 站点结构 搭建 MkDocs Material 站点，规划首页、关于、现在、笔记、项目、碧影和留言等页面。 双语内容 设计 /zh/ 与 /en/ 双语结构，让导航、页面和公开知识库成对维护。 笔记导入 导入并整理离散数学、计算机系统基础和 FDS 数据结构基础三篇课程讲义，修复公式渲染和章节目录。 碧影与留言 设计碧影的语气、读取范围和拒答边界，实现聊天前端、留言板前端和 EdgeOne Functions 风格 API 雏形。 技术栈 内容站点 MkDocs Material、Markdown、Pymdown Extensions 和 MathJax，用来维护笔记、页面结构和数学公式。 双语内容 中文作为主源，英文同步维护；导航、页面和公开知识库都按中英文成对组织。 碧影对话 公开知识库构建脚本、对话设定、EdgeOne Functions 风格 API，以及 DeepSeek/OpenAI 兼容模型接口。 交互与部署 原生 JavaScript、赛博风格 CSS、公开留言板、EdgeOne Pages/Functions/KV 部署路线和 GitHub CI。 成果 网站可以本地构建和预览， mkdocs build strict 能通过。 中文和英文页面已经有了清晰结构，后续新增内容知道该往哪里放。 三篇课程讲义已经变成可阅读的网站页面，支持数学公式和章节目录。 碧影可以基于公开知识库回答与网站内容相关的问题。 留言板和 EdgeOne 部署路线已经有了基础实现，可以继续往真实线上环境推进。 不足 英文课程笔记还需要更完整的翻译和人工校对。 碧影后端上线前，还需要配置真实模型密钥、KV 绑定和限流策略。 留言板还需要审核、删除、反垃圾和更顺手的管理界面。 移动端阅读、长笔记体验和视觉细节还可以继续打磨。 下一步 项目页需要持续补充更真实的作品、复盘和阶段性总结。 继续把 EdgeOne Functions、KV、模型密钥和公开来源引用流程接成真实线上能力。 为新增项目保留同样的结构：背景、我做了什么、技术栈、成果、不足、下一步。"
+    },
+    {
+      "title": "模块更新",
+      "summary": "记录站点各个公开模块最近的维护状态，方便快速了解哪里刚刚有变化。",
+      "tags": [
+        "updates",
+        "status"
+      ],
+      "url": "/zh/updates/",
+      "sourcePath": "docs/zh/updates.md",
+      "text": "UPDATES 模块更新 这里不写宏大路线图，只留下每个公开模块最近一次真正发生的变化。以后继续加内容时，优先更新这一页，就能让整个站点的近况更容易被看见。 公开维护记录 更新：2026 05 15 首页 完成第二轮界面整理 强化入口层级、随机笔记封面与模块导览，让第一次进入时更容易找到路。 笔记 持续整理课程内容 正文更偏阅读型，保留章节索引、数学公式与中英文版本。 项目 补足案例展示结构 项目页开始强调背景、做法、技术栈、结果与不足，而不只是一段简介。 碧影 增加公开上下文与对话记忆 能参考更多公开资料，也会保留最近一段对话，让来回交流更自然。 留言 补上轻量治理能力 访客侧有隐私提醒与节流，站主侧可以筛选、隐藏或删除公开留言。 后台 增加账号维护工具 支持未读筛选、联系方式复制、恢复码签发，以及站主注销用户。"
     }
   ]
 }

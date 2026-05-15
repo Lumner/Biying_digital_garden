@@ -20,6 +20,39 @@ tags:
 
 这里的笔记以中文为主源，也会尽量同步英文版本。哪些内容能被碧影读取，由 `public` 与 `avatar_readable` 共同决定。
 
+<div class="note-entry-grid" aria-label="阅读入口">
+  <a href="#course-notes">
+    <strong>想系统学习</strong>
+    <span>从课程笔记开始，顺着章节慢慢读。</span>
+  </a>
+  <a href="#site-notes">
+    <strong>想了解本站</strong>
+    <span>先看公开边界，知道哪些内容会进入碧影的回答范围。</span>
+  </a>
+  <a href="./math-lab/">
+    <strong>想检查公式</strong>
+    <span>进入数学实验，确认 Markdown 里的公式排版是否正常。</span>
+  </a>
+</div>
+
+## 主题入口
+
+<div class="topic-grid" data-note-topics></div>
+
+## 最近更新
+
+<div class="note-library note-library--compact" data-note-recent></div>
+
+## 推荐阅读
+
+<div class="note-library" data-note-recommended></div>
+
+## 标签
+
+<div class="tag-cloud" data-note-tags></div>
+
+## 课程笔记 {#course-notes}
+
 <div class="note-library">
   <section class="note-tile">
     <h3>离散数学讲义</h3>
@@ -51,6 +84,11 @@ tags:
     </div>
     <a href="./fds-data-structures-lecture/">阅读</a>
   </section>
+</div>
+
+## 站点说明 {#site-notes}
+
+<div class="note-library note-library--compact">
   <section class="note-tile">
     <h3>公开边界</h3>
     <p>说明哪些内容会进入碧影的回答范围，哪些不会。</p>
@@ -71,15 +109,4 @@ tags:
   </section>
 </div>
 
-## 笔记模板
-
-```yaml
----
-title: 标题
-summary: 一句话摘要
-public: true
-avatar_readable: true
-tags:
-  - tag
----
-```
+<p class="quiet-panel">如果你只是第一次来，比较自然的路线是：先看一篇课程讲义，遇到感兴趣的地方再回到这里继续挑下一本。这个页面会随着新笔记一起慢慢长大。</p>

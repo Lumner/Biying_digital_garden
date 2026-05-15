@@ -17,7 +17,7 @@ tags:
   </div>
 </section>
 
-This is a public guestbook. After registering or signing in, you can leave a note and edit or delete what you wrote later. Other visitors can read these messages, so please do not include phone numbers, addresses, private emails, or other sensitive information.
+This is a public guestbook. After registering or signing in, you can leave a note and edit or delete what you wrote later. Other visitors can read these messages, so please do not include phone numbers, addresses, private emails, or other sensitive information. The form adds a gentle reminder when something looks private and slows down overly frequent posting.
 
 <p class="quiet-panel">This space is for words other visitors may also read. If something should stay private, please keep it out of the guestbook.</p>
 

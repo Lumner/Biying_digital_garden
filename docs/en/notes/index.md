@@ -20,6 +20,39 @@ tags:
 
 Chinese is the source language here, and I keep the English side in step as much as I can. `public` and `avatar_readable` together decide what can enter Biying's knowledge base.
 
+<div class="note-entry-grid" aria-label="Reading entrances">
+  <a href="#course-notes">
+    <strong>Study steadily</strong>
+    <span>Start with the course notes and move chapter by chapter.</span>
+  </a>
+  <a href="#site-notes">
+    <strong>Understand the site</strong>
+    <span>Read the public scope first to see what belongs in Biying's answer range.</span>
+  </a>
+  <a href="./math-lab/">
+    <strong>Check formulas</strong>
+    <span>Open Math Lab to verify how equations render in Markdown.</span>
+  </a>
+</div>
+
+## Topics
+
+<div class="topic-grid" data-note-topics></div>
+
+## Recently Updated
+
+<div class="note-library note-library--compact" data-note-recent></div>
+
+## Recommended Reading
+
+<div class="note-library" data-note-recommended></div>
+
+## Tags
+
+<div class="tag-cloud" data-note-tags></div>
+
+## Course Notes {#course-notes}
+
 <div class="note-library">
   <section class="note-tile">
     <h3>Discrete Mathematics Lecture Notes</h3>
@@ -51,6 +84,11 @@ Chinese is the source language here, and I keep the English side in step as much
     </div>
     <a href="./fds-data-structures-lecture/">Read</a>
   </section>
+</div>
+
+## Site Notes {#site-notes}
+
+<div class="note-library note-library--compact">
   <section class="note-tile">
     <h3>Public Scope</h3>
     <p>Explains what belongs inside Biying's answer range, and what does not.</p>
@@ -71,15 +109,4 @@ Chinese is the source language here, and I keep the English side in step as much
   </section>
 </div>
 
-## Note Template
-
-```yaml
----
-title: Title
-summary: One-line summary
-public: true
-avatar_readable: true
-tags:
-  - tag
----
-```
+<p class="quiet-panel">If this is your first visit, a natural route is to begin with one course note, then come back here when another thread catches your attention. This page will keep growing as the note shelf does.</p>

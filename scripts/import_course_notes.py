@@ -16,6 +16,9 @@ COURSES = [
         "summary_zh": "离散数学课程讲义，覆盖逻辑与证明、集合与函数、算法、归纳递归、计数、关系等主题。",
         "summary_en": "Lecture notes for discrete mathematics, covering logic and proofs, sets and functions, algorithms, induction and recursion, counting, and relations.",
         "tags": ["math", "discrete-math", "course-note"],
+        "category": "math",
+        "recommended": True,
+        "reading_order": 10,
         "outline": [
             ("Logic and Proofs", "Propositional logic, predicate logic, inference rules, and proof strategies."),
             ("Basic Structures", "Sets, functions, sequences, sums, and matrices as discrete objects."),
@@ -34,6 +37,9 @@ COURSES = [
         "summary_zh": "计算机系统基础讲义，覆盖信息表示、布尔代数、组合逻辑、运算部件、时序逻辑、ISA 与 RISC-V。",
         "summary_en": "Lecture notes for computer systems fundamentals, covering information representation, Boolean algebra, combinational logic, arithmetic units, sequential logic, ISA, and RISC-V.",
         "tags": ["computer-systems", "risc-v", "course-note"],
+        "category": "systems",
+        "recommended": True,
+        "reading_order": 20,
         "outline": [
             ("System Perspective", "How physical signals, logic gates, RTL components, ISA, assembly, linking, and loading connect into a computer system."),
             ("Information Representation", "Binary encoding, integers, floating-point numbers, characters, and data interpretation."),
@@ -52,6 +58,9 @@ COURSES = [
         "summary_zh": "数据结构基础讲义，覆盖算法分析、线性表、栈队列、树、堆、并查集、线段树、图与拓扑排序。",
         "summary_en": "Lecture notes for data structures, covering algorithm analysis, lists, stacks and queues, trees, heaps, union-find, segment trees, graphs, and topological sorting.",
         "tags": ["data-structures", "algorithms", "course-note"],
+        "category": "algorithms",
+        "recommended": True,
+        "reading_order": 30,
         "outline": [
             ("Algorithm Analysis", "Asymptotic notation, common complexity classes, and the source of time and space costs."),
             ("Abstract Data Types and Lists", "Interface design, linear lists, linked lists, cursor implementation, and polynomial examples."),
@@ -65,7 +74,14 @@ COURSES = [
 ]
 
 
-def frontmatter(title: str, summary: str, tags: list[str]) -> str:
+def frontmatter(
+    title: str,
+    summary: str,
+    tags: list[str],
+    category: str,
+    recommended: bool,
+    reading_order: int,
+) -> str:
     tag_lines = "\n".join(f"  - {tag}" for tag in tags)
     return (
         "---\n"
@@ -73,6 +89,10 @@ def frontmatter(title: str, summary: str, tags: list[str]) -> str:
         f"summary: {summary}\n"
         "public: true\n"
         "avatar_readable: true\n"
+        f"category: {category}\n"
+        f"recommended: {'true' if recommended else 'false'}\n"
+        "updated: 2026-05-13\n"
+        f"reading_order: {reading_order}\n"
         "tags:\n"
         f"{tag_lines}\n"
         "---\n\n"
@@ -163,7 +183,14 @@ def write_chinese(course: dict) -> None:
     body = normalize_headings_for_sidebar(body, max_depth=4)
     target = DOCS / "zh" / "notes" / f"{course['slug']}.md"
     target.write_text(
-        frontmatter(course["zh_title"], course["summary_zh"], course["tags"])
+        frontmatter(
+            course["zh_title"],
+            course["summary_zh"],
+            course["tags"],
+            course["category"],
+            course["recommended"],
+            course["reading_order"],
+        )
         + f"# {course['zh_title']}\n\n"
         + body.strip()
         + "\n",
@@ -224,7 +251,14 @@ Use this English page as a quick map before reading the Chinese lecture note. Th
 """
     target = DOCS / "en" / "notes" / f"{course['slug']}.md"
     target.write_text(
-        frontmatter(course["en_title"], course["summary_en"], course["tags"])
+        frontmatter(
+            course["en_title"],
+            course["summary_en"],
+            course["tags"],
+            course["category"],
+            course["recommended"],
+            course["reading_order"],
+        )
         + body.strip()
         + "\n",
         encoding="utf-8",

@@ -35,6 +35,14 @@ nav:
   - 关于: zh/about.md
   - 笔记:
       - 笔记首页: zh/notes/index.md
+      - 主题:
+          - 数学: zh/notes/math.md
+          - 系统: zh/notes/systems.md
+          - 算法: zh/notes/algorithms.md
+          - AI: zh/notes/ai.md
+          - 随笔: zh/notes/essays.md
+          - 站点: zh/notes/site.md
+      - 标签: zh/notes/tags.md
       - 公开边界: zh/notes/public-scope.md
       - 数学实验: zh/notes/math-lab.md
       - 离散数学讲义: zh/notes/discrete-math-lecture.md
@@ -46,11 +54,20 @@ nav:
   - 注册/登录: zh/register/index.md
   - 碧影: zh/avatar/index.md
   - 留言: zh/guestbook/index.md
+  - 模块更新: zh/updates.md
   - Home: en/index.md
   - Now: en/now.md
   - About: en/about.md
   - Notes:
       - Notes Home: en/notes/index.md
+      - Topics:
+          - Math: en/notes/math.md
+          - Systems: en/notes/systems.md
+          - Algorithms: en/notes/algorithms.md
+          - AI: en/notes/ai.md
+          - Essays: en/notes/essays.md
+          - Site: en/notes/site.md
+      - Tags: en/notes/tags.md
       - Public Scope: en/notes/public-scope.md
       - Math Lab: en/notes/math-lab.md
       - Discrete Mathematics Lecture Notes: en/notes/discrete-math-lecture.md
@@ -62,6 +79,7 @@ nav:
   - Account: en/register/index.md
   - Biying: en/avatar/index.md
   - Guestbook: en/guestbook/index.md
+  - Updates: en/updates.md
 
 not_in_nav: |
   index.md
@@ -94,17 +112,19 @@ markdown_extensions:
       alternate_style: true
 
 extra_css:
-  - assets/styles/cyber.css?v=20260515-3
+  - assets/styles/cyber.css?v=20260515-7
 
 extra_javascript:
   - assets/javascripts/mathjax.js?v=20260515-3
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - assets/javascripts/language-switch.js?v=20260515-3
   - assets/javascripts/random-note-cover.js?v=20260515-3
+  - assets/javascripts/notes-hub.js?v=20260515-1
+  - assets/javascripts/note-reader.js?v=20260515-1
   - assets/javascripts/auth.js?v=20260515-3
-  - assets/javascripts/biying-chat.js?v=20260515-3
-  - assets/javascripts/guestbook.js?v=20260515-3
-  - assets/javascripts/admin-dashboard.js?v=20260515-3
+  - assets/javascripts/biying-chat.js?v=20260515-5
+  - assets/javascripts/guestbook.js?v=20260515-4
+  - assets/javascripts/admin-dashboard.js?v=20260515-4
 
 extra:
   generator: false

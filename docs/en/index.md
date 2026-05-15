@@ -44,6 +44,21 @@ tags:
   </div>
 </section>
 
+<section class="home-pulse" aria-label="Current signals">
+  <div class="home-pulse__item">
+    <span>Now</span>
+    <strong>Still refining the digital garden and Biying</strong>
+  </div>
+  <div class="home-pulse__item">
+    <span>Recently</span>
+    <strong>Course notes, project reflection, and site boundaries</strong>
+  </div>
+  <div class="home-pulse__item">
+    <span>Best start</span>
+    <strong>Use the Now page for the quickest update</strong>
+  </div>
+</section>
+
 <section class="biying-presence" aria-label="Biying introduction">
   <div>
     <span class="biying-presence__hello">Hello, it is nice to meet you.</span>
@@ -52,6 +67,25 @@ tags:
   </div>
   <a class="biying-presence__link" href="./avatar/">Talk to Biying</a>
 </section>
+
+## Module Updates
+
+<p class="section-lede">If you want a quick read on what changed recently, start here. The fuller log lives on the <a href="./updates/">Updates</a> page.</p>
+
+<div class="module-update-preview">
+  <a href="./updates/">
+    <span>Biying</span>
+    <strong>More public context and recent conversation memory</strong>
+  </a>
+  <a href="./updates/">
+    <span>Guestbook</span>
+    <strong>Privacy nudges, pacing limits, and owner moderation</strong>
+  </a>
+  <a href="./updates/">
+    <span>Admin</span>
+    <strong>Recovery codes and account maintenance tools</strong>
+  </a>
+</div>
 
 ## Public Signals
 
@@ -84,16 +118,16 @@ tags:
 
 <div class="signal-list">
   <div class="signal-item">
-    <strong>Now</strong>
-    <span>Start with the Now page if you want the shortest path to current work and interests.</span>
+    <strong>Meet me</strong>
+    <span>Start with <a href="./about/">About</a> and <a href="./now/">Now</a> if you want the fastest sense of who I am and what currently has my attention.</span>
   </div>
   <div class="signal-item">
-    <strong>Practice</strong>
-    <span>Enter through projects and course notes if you want to see concrete technical work.</span>
+    <strong>See the work</strong>
+    <span>Enter through <a href="./projects/">Projects</a> and <a href="./notes/">Notes</a> to see technical choices, experiments, and longer-term accumulation.</span>
   </div>
   <div class="signal-item">
-    <strong>Talk</strong>
-    <span>Leave a message in the guestbook, or ask Biying to guide you through public content.</span>
+    <strong>Say hello</strong>
+    <span>Leave a note in the <a href="./guestbook/">Guestbook</a>, or let <a href="./avatar/">Biying</a> guide you through what is already public.</span>
   </div>
 </div>
 

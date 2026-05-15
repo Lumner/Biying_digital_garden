@@ -3,6 +3,10 @@ title: Math Lab
 summary: A page for verifying inline and block math rendering in MkDocs.
 public: true
 avatar_readable: true
+category: math
+recommended: false
+updated: 2026-05-13
+reading_order: 40
 tags:
   - math
   - mkdocs

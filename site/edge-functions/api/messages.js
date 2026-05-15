@@ -17,6 +17,10 @@ function sessionKey(token) {
   return `session_${token}`;
 }
 
+function lastPostKey(userId) {
+  return `rate_guestbook_last_post_${userId}`;
+}
+
 function clean(value, max) {
   return String(value || "").replace(/[<>]/g, "").trim().slice(0, max);
 }
@@ -63,8 +67,13 @@ function publicMessage(message, session, admin) {
     locale: message.locale,
     createdAt: message.createdAt,
     updatedAt: message.updatedAt || "",
+    moderationStatus: message.moderationStatus || "visible",
     canEdit: canEdit(message, session, admin)
   };
+}
+
+function isGuestbookMessage(message) {
+  return Boolean(message && message.id && message.name && typeof message.content === "string");
 }
 
 async function listMessages(kv, session, admin) {
@@ -75,7 +84,10 @@ async function listMessages(kv, session, admin) {
     const raw = await kv.get(entry.key, { type: "text" });
     if (!raw) continue;
     try {
-      messages.push(publicMessage(JSON.parse(raw), session, admin));
+      const message = JSON.parse(raw);
+      if (!isGuestbookMessage(message)) continue;
+      if (!admin && message.moderationStatus === "hidden") continue;
+      messages.push(publicMessage(message, session, admin));
     } catch (error) {
       // Ignore malformed records so one bad message does not break the page.
     }
@@ -128,6 +140,16 @@ export async function onRequestPost({ request, env, clientIp }) {
       return json({ error: "content_required" }, { status: 400 });
     }
 
+    const lastPostRaw = await kv.get(lastPostKey(session.userId), { type: "text" });
+    const lastPostAt = Number(lastPostRaw || 0);
+    const minIntervalMs = 20 * 1000;
+    if (lastPostAt && Date.now() - lastPostAt < minIntervalMs) {
+      return json({
+        error: "too_frequent",
+        retryAfterMs: minIntervalMs - (Date.now() - lastPostAt)
+      }, { status: 429 });
+    }
+
     const now = new Date().toISOString();
     const id = `${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
     const message = {
@@ -139,10 +161,12 @@ export async function onRequestPost({ request, env, clientIp }) {
       locale: body.locale === "en" ? "en" : "zh",
       createdAt: now,
       updatedAt: "",
+      moderationStatus: "visible",
       ipHint: clientIp ? String(clientIp).split(".").slice(0, 2).join(".") : ""
     };
 
     await kv.put(key(id), JSON.stringify(message));
+    await kv.put(lastPostKey(session.userId), String(Date.now()));
     return json({ ok: true, message: publicMessage(message, session, false) }, { status: 201 });
   } catch (error) {
     return json({ error: "post_failed", detail: String(error.message || error) }, { status: 500 });

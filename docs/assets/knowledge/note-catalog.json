@@ -1,0 +1,221 @@
+{
+  "generatedAt": "2026-05-15T11:39:50.165005+00:00",
+  "categories": {
+    "zh": [
+      {
+        "key": "math",
+        "label": "数学",
+        "description": "逻辑、证明、计数和公式。"
+      },
+      {
+        "key": "systems",
+        "label": "系统",
+        "description": "从信息表示到 ISA 的系统脉络。"
+      },
+      {
+        "key": "algorithms",
+        "label": "算法",
+        "description": "数据结构、复杂度与算法取舍。"
+      },
+      {
+        "key": "ai",
+        "label": "AI",
+        "description": "以后放模型、智能体与实验记录。"
+      },
+      {
+        "key": "essays",
+        "label": "随笔",
+        "description": "想法、复盘和更轻的记录。"
+      },
+      {
+        "key": "site",
+        "label": "站点",
+        "description": "这个网站自己的说明与实验。"
+      }
+    ],
+    "en": [
+      {
+        "key": "math",
+        "label": "Math",
+        "description": "Logic, proofs, counting, and formulas."
+      },
+      {
+        "key": "systems",
+        "label": "Systems",
+        "description": "From representation to ISA."
+      },
+      {
+        "key": "algorithms",
+        "label": "Algorithms",
+        "description": "Structures, complexity, and tradeoffs."
+      },
+      {
+        "key": "ai",
+        "label": "AI",
+        "description": "Future notes on models, agents, and experiments."
+      },
+      {
+        "key": "essays",
+        "label": "Essays",
+        "description": "Lighter reflections and records."
+      },
+      {
+        "key": "site",
+        "label": "Site",
+        "description": "Notes about this website itself."
+      }
+    ]
+  },
+  "items": {
+    "zh": [
+      {
+        "title": "计算机系统基础讲义",
+        "summary": "计算机系统基础讲义，覆盖信息表示、布尔代数、组合逻辑、运算部件、时序逻辑、ISA 与 RISC-V。",
+        "url": "/zh/notes/computer-systems-lecture/",
+        "category": "systems",
+        "tags": [
+          "computer-systems",
+          "risc-v",
+          "course-note"
+        ],
+        "updated": "2026-05-13",
+        "recommended": true,
+        "readingOrder": 20,
+        "chapterCount": 11
+      },
+      {
+        "title": "离散数学讲义",
+        "summary": "离散数学课程讲义，覆盖逻辑与证明、集合与函数、算法、归纳递归、计数、关系等主题。",
+        "url": "/zh/notes/discrete-math-lecture/",
+        "category": "math",
+        "tags": [
+          "math",
+          "discrete-math",
+          "course-note"
+        ],
+        "updated": "2026-05-13",
+        "recommended": true,
+        "readingOrder": 10,
+        "chapterCount": 82
+      },
+      {
+        "title": "FDS 数据结构基础讲义",
+        "summary": "数据结构基础讲义，覆盖算法分析、线性表、栈队列、树、堆、并查集、线段树、图与拓扑排序。",
+        "url": "/zh/notes/fds-data-structures-lecture/",
+        "category": "algorithms",
+        "tags": [
+          "data-structures",
+          "algorithms",
+          "course-note"
+        ],
+        "updated": "2026-05-13",
+        "recommended": true,
+        "readingOrder": 30,
+        "chapterCount": 17
+      },
+      {
+        "title": "数学实验",
+        "summary": "用于验证 MkDocs 中的行内公式和块级公式渲染。",
+        "url": "/zh/notes/math-lab/",
+        "category": "math",
+        "tags": [
+          "math",
+          "mkdocs"
+        ],
+        "updated": "2026-05-13",
+        "recommended": false,
+        "readingOrder": 40,
+        "chapterCount": 0
+      },
+      {
+        "title": "公开边界",
+        "summary": "碧影只读取网站公开内容，不读取 GitHub 活动、草稿或私密资料。",
+        "url": "/zh/notes/public-scope/",
+        "category": "site",
+        "tags": [
+          "policy",
+          "avatar"
+        ],
+        "updated": "2026-05-13",
+        "recommended": false,
+        "readingOrder": 50,
+        "chapterCount": 3
+      }
+    ],
+    "en": [
+      {
+        "title": "Computer Systems Fundamentals Lecture Notes",
+        "summary": "Lecture notes for computer systems fundamentals, covering information representation, Boolean algebra, combinational logic, arithmetic units, sequential logic, ISA, and RISC-V.",
+        "url": "/en/notes/computer-systems-lecture/",
+        "category": "systems",
+        "tags": [
+          "computer-systems",
+          "risc-v",
+          "course-note"
+        ],
+        "updated": "2026-05-13",
+        "recommended": true,
+        "readingOrder": 20,
+        "chapterCount": 5
+      },
+      {
+        "title": "Discrete Mathematics Lecture Notes",
+        "summary": "Lecture notes for discrete mathematics, covering logic and proofs, sets and functions, algorithms, induction and recursion, counting, and relations.",
+        "url": "/en/notes/discrete-math-lecture/",
+        "category": "math",
+        "tags": [
+          "math",
+          "discrete-math",
+          "course-note"
+        ],
+        "updated": "2026-05-13",
+        "recommended": true,
+        "readingOrder": 10,
+        "chapterCount": 5
+      },
+      {
+        "title": "FDS Data Structures Fundamentals Lecture Notes",
+        "summary": "Lecture notes for data structures, covering algorithm analysis, lists, stacks and queues, trees, heaps, union-find, segment trees, graphs, and topological sorting.",
+        "url": "/en/notes/fds-data-structures-lecture/",
+        "category": "algorithms",
+        "tags": [
+          "data-structures",
+          "algorithms",
+          "course-note"
+        ],
+        "updated": "2026-05-13",
+        "recommended": true,
+        "readingOrder": 30,
+        "chapterCount": 5
+      },
+      {
+        "title": "Math Lab",
+        "summary": "A page for verifying inline and block math rendering in MkDocs.",
+        "url": "/en/notes/math-lab/",
+        "category": "math",
+        "tags": [
+          "math",
+          "mkdocs"
+        ],
+        "updated": "2026-05-13",
+        "recommended": false,
+        "readingOrder": 40,
+        "chapterCount": 0
+      },
+      {
+        "title": "Public Scope",
+        "summary": "Biying only reads public website content, not GitHub activity, drafts, or private materials.",
+        "url": "/en/notes/public-scope/",
+        "category": "site",
+        "tags": [
+          "policy",
+          "avatar"
+        ],
+        "updated": "2026-05-13",
+        "recommended": false,
+        "readingOrder": 50,
+        "chapterCount": 3
+      }
+    ]
+  }
+}

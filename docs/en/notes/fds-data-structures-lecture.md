@@ -3,6 +3,10 @@ title: FDS Data Structures Fundamentals Lecture Notes
 summary: Lecture notes for data structures, covering algorithm analysis, lists, stacks and queues, trees, heaps, union-find, segment trees, graphs, and topological sorting.
 public: true
 avatar_readable: true
+category: algorithms
+recommended: true
+updated: 2026-05-13
+reading_order: 30
 tags:
   - data-structures
   - algorithms
@@ -11,13 +15,19 @@ tags:
 
 # FDS Data Structures Fundamentals Lecture Notes
 
-Data structures are less about containers than tradeoffs. The same task can behave very differently once the data is organized to support the operations that matter most.
+!!! info "Translation status"
+    This is an English companion version generated for the bilingual site. It summarizes and translates the structure of the Chinese source while keeping key mathematical and technical notation intact. A full line-by-line translation can be generated later with `scripts/translate.py` after an API key is configured.
 
-## What This Note Is About
+## Source
+
+- Chinese source page: [FDS 数据结构基础讲义](../../zh/notes/fds-data-structures-lecture.md)
+- Original file: `note/FDS_数据结构基础讲义.md`
+
+## What This Note Covers
 
 Lecture notes for data structures, covering algorithm analysis, lists, stacks and queues, trees, heaps, union-find, segment trees, graphs, and topological sorting.
 
-## Reading Thread
+## Study Outline
 
 - **Algorithm Analysis**: Asymptotic notation, common complexity classes, and the source of time and space costs.
 - **Abstract Data Types and Lists**: Interface design, linear lists, linked lists, cursor implementation, and polynomial examples.
@@ -27,17 +37,9 @@ Lecture notes for data structures, covering algorithm analysis, lists, stacks an
 - **Union-Find and Segment Trees**: Dynamic equivalence, path compression, interval query, point update, range update, and lazy propagation.
 - **Graphs**: Graph definitions, storage methods, AOV networks, and topological sorting.
 
-## Questions to Keep in Mind
+## Preserved Notation Examples
 
-- What invariant does this structure preserve?
-- Which operations become faster, and which ones become more expensive?
-- Where does the stated complexity actually come from?
-- When the access pattern changes, is the original structure still the right one?
-- If the name of a structure is familiar but its tradeoff is not, what understanding is still missing?
-
-## Key Notation
-
-Representative notation used throughout the note:
+The Chinese source contains mathematical notation and technical symbols. Examples preserved for cross-language lookup:
 
 - `\(O(N\log N)\)`
 - `\(O(N)\)`
@@ -49,3 +51,7 @@ Representative notation used throughout the note:
 - `\(T(N)=O(f(N))\)`
 - `\(T\)`
 - `\(f\)`
+
+## How to Use This Page
+
+Use this English page as a quick map before reading the Chinese lecture note. The Chinese page contains the complete detailed content, formulas, examples, tables, and course structure. This companion page makes the topic discoverable to English visitors and gives Biying enough English context to explain what the note is about.
