@@ -11,14 +11,14 @@ tags:
 <section class="garden-pagehead">
   <div class="garden-pagehead__eyebrow">PUBLIC SCOPE</div>
   <h1 class="garden-pagehead__title">公开边界</h1>
-  <p class="garden-pagehead__lead">碧影只读取公开发布到网站上的内容。边界清楚，比回答看起来聪明更重要。</p>
+  <p class="garden-pagehead__lead">这页只想把一件事说清楚：碧影会读什么，不会读什么。边界清楚，比回答看起来聪明更重要。</p>
   <div class="garden-pagehead__meta">
     <span class="status-pill leaf">公开内容</span>
     <span class="status-pill warm">隐私不进入</span>
   </div>
 </section>
 
-碧影的核心规则是：**只读取公开发布到网站上的内容**。
+碧影的核心规则很简单：**只读取已经公开发布到网站上的内容**。
 
 ## 可读取
 

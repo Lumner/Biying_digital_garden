@@ -10,16 +10,16 @@ tags:
 <section class="garden-pagehead">
   <div class="garden-pagehead__eyebrow">GUESTBOOK</div>
   <h1 class="garden-pagehead__title">Guestbook</h1>
-  <p class="garden-pagehead__lead">Leave a public trace: say hello, exchange an idea, point out a problem, or suggest how this site could keep growing.</p>
+  <p class="garden-pagehead__lead">If you have passed through here, you are welcome to leave a line: say hello, exchange an idea, point out a problem, or tell me what you hope this site grows into.</p>
   <div class="garden-pagehead__meta">
     <span class="status-pill leaf">Public by Default</span>
     <span class="status-pill warm">No Private Info</span>
   </div>
 </section>
 
-This is a public guestbook. After registering or signing in, you can post messages and edit or delete your own messages. Messages are visible to other visitors, so please do not include phone numbers, addresses, private emails, or other sensitive information.
+This is a public guestbook. After registering or signing in, you can leave a note and edit or delete what you wrote later. Other visitors can read these messages, so please do not include phone numbers, addresses, private emails, or other sensitive information.
 
-<p class="quiet-panel">Messages are public by default. If something should stay private, please do not put it here.</p>
+<p class="quiet-panel">This space is for words other visitors may also read. If something should stay private, please keep it out of the guestbook.</p>
 
 <div class="guestbook" data-guestbook></div>
 

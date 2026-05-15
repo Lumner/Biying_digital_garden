@@ -225,6 +225,7 @@ body {
   color: #bddbd6;
   font-size: 1rem;
   line-height: 1.78;
+  text-wrap: pretty;
 }
 
 .garden-pagehead__meta,
@@ -258,6 +259,7 @@ body {
   color: var(--cyber-muted);
   font-size: 0.82rem;
   line-height: 1.55;
+  overflow-wrap: anywhere;
 }
 
 .timeline-list {
@@ -273,6 +275,10 @@ body {
   border-left: 2px solid rgba(112, 244, 219, 0.4);
   background: rgba(6, 18, 22, 0.5);
   padding: 0.78rem 0.9rem 0.78rem 1rem;
+}
+
+.timeline-item span {
+  overflow-wrap: anywhere;
 }
 
 .timeline-item::before {
@@ -335,6 +341,7 @@ body {
 .note-tile p {
   margin: 0;
   color: #bfdcd6;
+  overflow-wrap: anywhere;
 }
 
 .note-tile__meta {
@@ -378,6 +385,7 @@ body {
   color: #c9e2dd;
   font-size: 0.82rem;
   line-height: 1.55;
+  overflow-wrap: anywhere;
 }
 
 .cyber-button,
@@ -432,6 +440,7 @@ body {
 .biying-presence p {
   margin: 0;
   color: #c6e0db;
+  text-wrap: pretty;
 }
 
 .biying-presence__hello {
@@ -454,6 +463,8 @@ body {
   font-weight: 800;
   padding: 0.44rem 0.7rem;
   text-decoration: none;
+  text-align: center;
+  white-space: normal;
 }
 
 .project-list {
@@ -492,11 +503,14 @@ body {
   font-size: 0.7rem;
   font-weight: 800;
   padding: 0.15rem 0.58rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
 }
 
 .work-card p {
   margin: 0;
   color: #c5dfda;
+  overflow-wrap: anywhere;
 }
 
 .work-card__tags {
@@ -717,6 +731,10 @@ body {
   margin-bottom: 0;
 }
 
+.cyber-card p {
+  text-wrap: pretty;
+}
+
 .cyber-card a {
   font-weight: 700;
 }
@@ -756,6 +774,7 @@ body {
   color: #cce5df;
   background: rgba(155, 226, 143, 0.045);
   padding: 0.75rem 0.9rem;
+  text-wrap: pretty;
 }
 
 .signal-list {
@@ -1026,6 +1045,9 @@ body {
   padding: 0.12rem 0.6rem;
   font-size: 0.74rem;
   font-weight: 700;
+  max-width: 100%;
+  text-align: center;
+  white-space: normal;
 }
 
 .status-pill.warm {

@@ -10,7 +10,7 @@ tags:
 <section class="garden-pagehead">
   <div class="garden-pagehead__eyebrow">NOTES</div>
   <h1 class="garden-pagehead__title">笔记</h1>
-  <p class="garden-pagehead__lead">这里是公开笔记入口。课程讲义、公式测试、公开边界都会在这里形成索引，也会按公开范围进入碧影的知识库。</p>
+  <p class="garden-pagehead__lead">这里收着我愿意公开留下的笔记。课程讲义、公式测试和公开边界都会在这里慢慢排好位置。</p>
   <div class="garden-pagehead__meta">
     <span class="status-pill">中文主源</span>
     <span class="status-pill leaf">可被碧影读取</span>
@@ -18,7 +18,7 @@ tags:
   </div>
 </section>
 
-这里是公开笔记入口。每篇笔记都可以被翻译成英文，并按 `public` 与 `avatar_readable` 控制是否进入碧影知识库。
+这里的笔记以中文为主源，也会尽量同步英文版本。哪些内容能被碧影读取，由 `public` 与 `avatar_readable` 共同决定。
 
 <div class="note-library">
   <section class="note-tile">
@@ -53,7 +53,7 @@ tags:
   </section>
   <section class="note-tile">
     <h3>公开边界</h3>
-    <p>定义碧影能读什么、不能读什么。</p>
+    <p>说明哪些内容会进入碧影的回答范围，哪些不会。</p>
     <div class="note-tile__meta">
       <span class="cyber-tag">公开范围</span>
       <span class="cyber-tag">碧影</span>
@@ -62,7 +62,7 @@ tags:
   </section>
   <section class="note-tile">
     <h3>数学实验</h3>
-    <p>用于验证 Markdown 中的数学公式渲染。</p>
+    <p>用来确认 Markdown 里的数学公式能正常显示。</p>
     <div class="note-tile__meta">
       <span class="cyber-tag">MathJax</span>
       <span class="cyber-tag">公式</span>

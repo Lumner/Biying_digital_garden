@@ -10,7 +10,7 @@ tags:
 <section class="garden-pagehead">
   <div class="garden-pagehead__eyebrow">NOTES</div>
   <h1 class="garden-pagehead__title">Notes</h1>
-  <p class="garden-pagehead__lead">The public note entrance for course notes, math checks, and public-scope records that can also feed Biying's knowledge base.</p>
+  <p class="garden-pagehead__lead">A home for the notes I am willing to leave in public: course notes, math checks, and a clear record of what belongs in Biying's answer range.</p>
   <div class="garden-pagehead__meta">
     <span class="status-pill">Chinese Source</span>
     <span class="status-pill leaf">Biying-readable</span>
@@ -18,7 +18,7 @@ tags:
   </div>
 </section>
 
-This is the public notes entrance. Each note can be translated into English, and `public` plus `avatar_readable` decide whether it enters Biying's knowledge base.
+Chinese is the source language here, and I keep the English side in step as much as I can. `public` and `avatar_readable` together decide what can enter Biying's knowledge base.
 
 <div class="note-library">
   <section class="note-tile">
@@ -53,7 +53,7 @@ This is the public notes entrance. Each note can be translated into English, and
   </section>
   <section class="note-tile">
     <h3>Public Scope</h3>
-    <p>Defines what Biying can and cannot read.</p>
+    <p>Explains what belongs inside Biying's answer range, and what does not.</p>
     <div class="note-tile__meta">
       <span class="cyber-tag">Scope</span>
       <span class="cyber-tag">Biying</span>
@@ -62,7 +62,7 @@ This is the public notes entrance. Each note can be translated into English, and
   </section>
   <section class="note-tile">
     <h3>Math Lab</h3>
-    <p>Verifies math rendering inside Markdown.</p>
+    <p>Checks that math inside Markdown renders the way it should.</p>
     <div class="note-tile__meta">
       <span class="cyber-tag">MathJax</span>
       <span class="cyber-tag">Formula</span>
