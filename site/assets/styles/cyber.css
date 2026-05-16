@@ -1187,6 +1187,12 @@ body {
   padding: 1rem;
 }
 
+.biying-chat__log {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .biying-message,
 .guestbook-message {
   border: 1px solid rgba(79, 255, 219, 0.18);
@@ -1196,7 +1202,9 @@ body {
 }
 
 .biying-message {
-  max-width: min(82%, 34rem);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 34rem;
   min-width: 0;
   line-height: 1.72;
   overflow-wrap: anywhere;
@@ -1378,14 +1386,17 @@ body {
 }
 
 .biying-message.user {
-  width: fit-content;
+  width: auto;
+  max-width: 82%;
+  align-self: flex-end;
   border-color: rgba(255, 79, 216, 0.32);
   justify-self: end;
 }
 
 .biying-message.biying {
-  width: min(100%, 34rem);
-  max-width: 100%;
+  width: 100%;
+  max-width: 34rem;
+  align-self: flex-start;
   justify-self: start;
 }
 
@@ -1938,6 +1949,7 @@ body {
 
   .interaction-shell--page-chat .biying-message.biying {
     width: 100%;
+    max-width: 100%;
   }
 
   .interaction-shell--page-chat .biying-message.user {
