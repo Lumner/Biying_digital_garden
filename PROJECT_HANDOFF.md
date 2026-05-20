@@ -1,94 +1,145 @@
 # Project Handoff
 
+本文档用于交接当前的“碧影数字花园”项目。下一个 AI 或开发者接手时，建议先阅读：
+
+1. `PROJECT_HANDOFF.md`
+2. `ARCHITECTURE.md`
+3. `ARCHITECTURE_OPTIMIZATION_REVIEW.md`
+4. `README.md`
+5. 最近的 `git log` 和 `git diff`
+
 ## 项目目标
 
-这是一个基于 MkDocs Material 的双语个人数字网站，目标是沉淀个人课程笔记、项目经历、当前状态和长期公开表达，同时接入数字分身「碧影」作为公开内容的对话入口。
+这是一个部署在 EdgeOne Pages 上的个人数字花园，用来长期沉淀课程笔记、项目经历、当前状态和公开表达。
 
-网站不是单一用途展示页，而是一个可以长期维护的个人数字花园：
+项目不是单纯的展示页，而是一个可以长期维护的个人空间。它的核心目标是：
 
-- 中文/英文双语页面
-- 课程笔记与项目经历
-- 数学公式渲染
-- 公开留言板
-- 私信站点主人
-- 站点主人后台
-- 数字分身碧影
-- EdgeOne Pages / Functions / KV 部署路线
+- 记录和展示公开笔记。
+- 展示个人项目与学习进展。
+- 支持中英文双语访问。
+- 通过数字分身“碧影”让访客以对话方式理解网站公开内容。
+- 支持公开留言和私信站主。
+- 支持账户注册、登录、密码恢复和站主后台。
+- 在低成本、国内可访问的部署条件下稳定运行。
 
-碧影只读取网站公开内容，不读取未发布草稿、本地文件、GitHub 活动或私人资料。
+碧影的边界很重要：
+
+- 可以读取网站上公开发布的内容。
+- 可以基于通用知识回答非网站内容问题，但需要先温和说明这部分不是来自本站公开内容。
+- 不读取 GitHub 活动、草稿、本地文件、私密笔记、未公开联系方式或聊天记录。
+- 不编造网站主人的经历、成绩、项目成果或隐私信息。
 
 ## 技术栈
 
-- 静态站点：MkDocs + MkDocs Material
+### 静态站点
+
+- 框架：MkDocs
+- 主题：MkDocs Material
 - 内容格式：Markdown
-- 数学公式：Pymdown Extensions + MathJax
-- 前端脚本：原生 JavaScript
+- 数学公式：pymdownx.arithmatex + MathJax
 - 样式：自定义 CSS，主要在 `docs/assets/styles/cyber.css`
-- 知识库：构建时生成 `docs/assets/knowledge/public-knowledge.json`
-- 数字分身 API：EdgeOne Functions 风格接口
-- 数据存储：EdgeOne KV，当前承载账户、会话、留言、私信和恢复码
-- AI 模型：DeepSeek 优先，OpenAI 兼容接口预留
-- CI：GitHub Actions
+- 前端脚本：原生 JavaScript
+
+### 后端与数据
+
 - 部署：EdgeOne Pages
+- API：EdgeOne Functions
+- 数据存储：EdgeOne KV
+- AI 模型：DeepSeek，默认模型为 `deepseek-v4-flash`
+- OpenAI 兼容接口：代码中保留了 `AI_PROVIDER=openai` 的兼容路径
+
+### 构建与部署
+
+- 本地构建：`python scripts/build_site.py`
+- 输出目录：`site/`
+- EdgeOne 配置：`edgeone.json`
+- 当前部署策略：EdgeOne 跳过云端构建，直接发布预构建的 `site/`
+- CI：GitHub Actions
 
 ## 当前状态
 
-已完成：
+目前项目已经具备完整可用的基础功能。
 
-- 初始化 MkDocs Material 项目
-- 完成中英文页面结构
-- 完成赛博风格视觉
-- 完成首页、关于、现在、笔记、项目、碧影、留言页面
-- 完成中英文语言切换
-- 完成英文版左侧目录恢复：中英文导航都保留在 `mkdocs.yml`，前端按当前语言隐藏另一套
-- 完成 MathJax 配置
-- 导入三篇课程讲义：
-  - 离散数学讲义
-  - 计算机系统基础讲义
-  - FDS 数据结构基础讲义
-- 修复课程笔记中被反引号包住的公式，保证能被 MathJax 渲染
-- 长课程笔记的章节目录已进入右侧目录栏
-- 笔记首页已接入自动分类、标签聚合、最近更新、推荐阅读和长文阅读进度
-- 完成碧影 persona 设定
-- 完成碧影聊天前端和 API 雏形，支持当前页上下文与全站轻量入口
-- 完成账户注册/登录 API 雏形
-- 完成留言板前端和 API 雏形，支持登录用户编辑/删除自己的留言
-- 完成站点主人后台，可查看注册用户和私信
-- 完成私信站点主人入口，供忘记密码时联系
-- 完成带时效的一次性恢复码流程
-- 完成合并后的项目页：个人数字花园与碧影
-- 删除站内面向特定用途的显式求职导向文案，让网站保持个人数字空间气质
-- 完成 `ARCHITECTURE.md` 架构说明
-- 完成 Git 初始提交
+已完成模块：
 
-当前 git 基线：
+- 中文与英文页面结构。
+- 首页、关于、现在、笔记、项目、碧影、留言、账户、后台页面。
+- 中英文语言切换。
+- MkDocs Material 主题定制。
+- 赛博数字花园视觉风格。
+- 数学公式渲染。
+- 公开笔记导入与整理。
+- 笔记分类、标签、最近更新、推荐阅读、阅读进度。
+- 项目页。
+- 数字分身“碧影”页面与全站浮动入口。
+- 碧影聊天前端。
+- 碧影 Edge Function API。
+- 碧影基于公开知识库的轻量 RAG。
+- 碧影支持 Markdown 与数学公式渲染。
+- 账户注册、登录、登出。
+- 用户名支持中文。
+- 密码恢复码流程。
+- 私信站主。
+- 公开留言。
+- 登录用户编辑和删除自己的留言。
+- 站主后台查看用户、私信、留言。
+- 站主后台签发恢复码、删除用户、隐藏或删除留言。
+- EdgeOne KV 数据模型雏形。
+- `site/` 预构建部署方案。
+- 项目架构说明文档。
+- 架构优化评审文档。
+
+当前线上目标域名：
 
 ```txt
-05ec0d9 Initial Biying digital garden baseline
+https://www.biying.site/
 ```
 
 ## 最近修改
 
-最近一轮主要做了这些事情：
+最近几轮主要围绕碧影聊天体验和移动端稳定性：
 
-1. 优化公开留言页：补留言数量、字数统计、隐私提醒和提交间隔控制。
-2. 扩展站点主人后台：增加私信搜索、未读筛选、联系方式复制、公开留言治理和用户注销。
-3. 增加碧影最近对话记忆，并扩大公开知识检索上下文。
-4. 新增中英文“模块更新”页，并在首页放入近况入口。
-5. 继续保留注册用户列表、私信入口和带时效的一次性恢复码流程。
+1. 修复碧影聊天中用户消息偶发消失的问题。
+2. 让碧影面对非网站内容问题时，先说明边界，再使用模型通用知识回答。
+3. 让碧影回复支持 Markdown 渲染。
+4. 让碧影回复支持数学公式渲染。
+5. 修复移动端碧影回复被压成一字一行的问题。
+6. 将整条碧影消息从 `arithmatex` 公式块样式中隔离出来，改用 `mathjax-process` 仅供 MathJax 识别。
+7. 更新静态资源版本号，减少移动端缓存导致的“修了但没生效”。
+8. 新增 `ARCHITECTURE_OPTIMIZATION_REVIEW.md`，记录后续架构优化方向。
+
+最近关键提交：
+
+```txt
+9b2188e Isolate chat math rendering from formula styles
+9b587d3 Harden mobile Biying reply layout
+99bb389 Fix collapsed Biying reply bubbles
+a627e12 Render math in Biying chat
+801ead2 Render Markdown in Biying replies
+0576373 Preserve chat transcript and allow general answers
+```
 
 ## 如何运行
 
 项目目录：
 
-```txt
+```powershell
 C:\Users\17597\Desktop\codex\biying-digital-garden
 ```
 
-本地预览：
+### 安装依赖
+
+如果已有 `.venv`，一般不需要重复安装。
 
 ```powershell
 cd C:\Users\17597\Desktop\codex\biying-digital-garden
+python -m venv .venv
+.venv\Scripts\python -m pip install -r requirements.txt
+```
+
+### 本地预览
+
+```powershell
 .venv\Scripts\mkdocs serve
 ```
 
@@ -98,134 +149,242 @@ cd C:\Users\17597\Desktop\codex\biying-digital-garden
 http://127.0.0.1:8000/zh/
 ```
 
-如果没有 `.venv`，先安装依赖：
+### 完整构建
+
+推荐使用统一构建脚本：
 
 ```powershell
-python -m venv .venv
-.venv\Scripts\python -m pip install -r requirements.txt
+.venv\Scripts\python scripts\build_site.py
 ```
 
-构建：
+这个脚本会依次执行：
+
+1. 生成笔记目录数据。
+2. 生成碧影公开知识库。
+3. 执行 `mkdocs build --strict`。
+4. 将 `edge-functions/` 和 `package.json` 打包进 `site/`。
+
+### 常用检查命令
 
 ```powershell
-.venv\Scripts\python scripts\build_knowledge.py
 .venv\Scripts\python scripts\validate_public_scope.py
-.venv\Scripts\mkdocs build --strict
-```
-
-如果修改了 JS：
-
-```powershell
-node --check docs\assets\javascripts\language-switch.js
+node --check docs\assets\javascripts\auth.js
 node --check docs\assets\javascripts\biying-chat.js
 node --check docs\assets\javascripts\guestbook.js
+node --check docs\assets\javascripts\admin-dashboard.js
+node --check docs\assets\javascripts\mathjax.js
 node --check edge-functions\api\chat.js
+node --check edge-functions\api\auth.js
 node --check edge-functions\api\messages.js
-node --check edge-functions\api\admin-messages.js
+node --check edge-functions\api\admin.js
+node --check edge-functions\api\private-messages.js
+```
+
+### 部署说明
+
+当前 `edgeone.json`：
+
+```json
+{
+  "installCommand": "echo skip install",
+  "buildCommand": "echo skip build",
+  "outputDirectory": "./site"
+}
+```
+
+这表示 EdgeOne 不在云端重新构建，而是直接发布仓库里的 `site/`。
+
+因此修改源码后必须：
+
+```powershell
+.venv\Scripts\python scripts\build_site.py
+git add .
+git commit -m "your message"
+git push
 ```
 
 ## 关键文件
 
 ### 项目说明
 
-- `README.md`：快速上手说明
-- `ARCHITECTURE.md`：完整架构与文件职责说明
-- `PROJECT_HANDOFF.md`：当前交接文档
-- `DEPLOYMENT.md`：EdgeOne 部署说明
-- `AGENTS.md`：多 Agent 分工说明
+- `README.md`：项目快速说明。
+- `ARCHITECTURE.md`：当前架构与文件职责说明。
+- `ARCHITECTURE_OPTIMIZATION_REVIEW.md`：下一阶段架构优化建议。
+- `PROJECT_HANDOFF.md`：当前交接文档。
+- `DEPLOYMENT.md`：部署说明。
+- `AGENTS.md`：多 Agent 分工说明。
+- `NEXT_AI_DEVELOPMENT_BRIEF.md`：下一阶段开发简报。
 
 ### 核心配置
 
-- `mkdocs.yml`：MkDocs 主配置、导航、主题、JS/CSS 入口
-- `requirements.txt`：Python 依赖
-- `package.json`：Node/EdgeOne CLI 预留配置
-- `.github/workflows/ci.yml`：GitHub CI
+- `mkdocs.yml`：站点配置、导航、主题、扩展、CSS/JS 入口。
+- `requirements.txt`：Python 依赖。
+- `package.json`：Node/EdgeOne CLI 依赖。
+- `edgeone.json`：EdgeOne Pages 部署配置。
+- `.github/workflows/ci.yml`：GitHub CI。
 
 ### 内容目录
 
-- `docs/zh/`：中文页面
-- `docs/en/`：英文页面
-- `docs/zh/notes/`：中文笔记
-- `docs/en/notes/`：英文笔记
-- `docs/zh/projects/`：中文项目
-- `docs/en/projects/`：英文项目
+- `docs/zh/`：中文页面。
+- `docs/en/`：英文页面。
+- `docs/zh/notes/`：中文笔记。
+- `docs/en/notes/`：英文笔记。
+- `docs/zh/projects/`：中文项目页。
+- `docs/en/projects/`：英文项目页。
+- `note/`：原始课程笔记来源。
 
-### 静态资源
+### 前端资源
 
-- `docs/assets/styles/cyber.css`：全站视觉样式
-- `docs/assets/javascripts/language-switch.js`：语言切换与导航过滤
-- `docs/assets/javascripts/mathjax.js`：数学公式配置
-- `docs/assets/javascripts/biying-chat.js`：碧影聊天前端
-- `docs/assets/javascripts/guestbook.js`：留言板前端
-- `docs/assets/javascripts/admin-dashboard.js`：站点主人后台前端
-- `docs/assets/knowledge/public-knowledge.json`：碧影公开知识库，自动生成，不要手改
-- `docs/assets/images/favicon.svg`：站点图标
+- `docs/assets/styles/cyber.css`：全站主要样式。
+- `docs/assets/javascripts/language-switch.js`：语言切换与导航过滤。
+- `docs/assets/javascripts/random-note-cover.js`：首页随机笔记封面。
+- `docs/assets/javascripts/notes-hub.js`：笔记首页分类、标签、推荐、最近更新。
+- `docs/assets/javascripts/note-reader.js`：长文阅读进度。
+- `docs/assets/javascripts/mathjax.js`：MathJax 配置。
+- `docs/assets/javascripts/auth.js`：账户前端。
+- `docs/assets/javascripts/biying-chat.js`：碧影聊天前端。
+- `docs/assets/javascripts/guestbook.js`：留言板前端。
+- `docs/assets/javascripts/admin-dashboard.js`：站主后台前端。
 
-### 脚本
+### 后端 API
 
-- `scripts/import_course_notes.py`：从 `note/` 导入课程讲义，整理标题、公式和英文 companion 页面
-- `scripts/build_knowledge.py`：生成碧影公开知识库
-- `scripts/validate_public_scope.py`：检查公开内容中的敏感词
-- `scripts/translate.py`：预留 AI 翻译脚本
+- `edge-functions/api/auth.js`：注册、登录、登出、密码恢复。
+- `edge-functions/api/chat.js`：碧影聊天、模型调用、公开知识检索。
+- `edge-functions/api/messages.js`：公开留言。
+- `edge-functions/api/private-messages.js`：私信站主。
+- `edge-functions/api/admin.js`：站主后台。
+- `edge-functions/api/admin-messages.js`：旧留言管理接口，后续可考虑合并或清理。
 
-### 碧影
+### 构建脚本
 
-- `data/biying.persona.md`：碧影长期人格设定
-- `edge-functions/api/chat.js`：真实聊天 API prompt 和模型调用逻辑
-- `docs/zh/avatar/index.md`：中文碧影页面
-- `docs/en/avatar/index.md`：英文碧影页面
+- `scripts/build_site.py`：统一构建入口。
+- `scripts/build_knowledge.py`：生成碧影公开知识库。
+- `scripts/build_note_catalog.py`：生成笔记目录数据。
+- `scripts/import_course_notes.py`：从 `note/` 导入课程笔记。
+- `scripts/translate.py`：翻译脚本预留。
+- `scripts/validate_public_scope.py`：公开范围校验。
+- `scripts/package_site.py`：将 Functions 打包进 `site/`。
 
-### 留言
+### 自动生成文件
 
-- `docs/zh/guestbook/index.md`：中文留言页
-- `docs/en/guestbook/index.md`：英文留言页
-- `edge-functions/api/messages.js`：留言提交和读取
-- `edge-functions/api/admin-messages.js`：管理员删除留言
+不要手动修改这些文件，应该通过脚本生成：
 
-### 站点主人后台
+- `docs/assets/knowledge/public-knowledge.json`
+- `docs/assets/knowledge/note-catalog.json`
+- `site/`
 
-- `docs/zh/admin/index.md`：中文后台页
-- `docs/en/admin/index.md`：英文后台页
-- `edge-functions/api/private-messages.js`：私信提交
-- `edge-functions/api/admin.js`：注册用户、私信和恢复码管理
+## 已知问题与风险点
 
-### 原始课程讲义
+### 1. 后端缺少统一限流
 
-- `note/离散数学讲义.md`
-- `note/SYS_计算机系统基础讲义.md`
-- `note/FDS_数据结构基础讲义.md`
+聊天、登录、注册、私信、密码恢复仍需要统一限流。否则可能带来模型额度消耗、撞库、刷屏和大量无效账户。
 
-这些是课程笔记的源文件。不要优先手改 `docs/zh/notes/*lecture.md`，因为它们会被 `scripts/import_course_notes.py` 覆盖。
+详见 `ARCHITECTURE_OPTIMIZATION_REVIEW.md` 的“后端缺少统一限流”。
 
-## 已知问题
+### 2. Edge Functions 重复代码较多
 
-1. 英文课程笔记目前是 companion/overview 版本，不是完整逐句翻译。
-2. 碧影聊天已经可用，但还可以继续补限流和更细的错误观测。
-3. 留言系统已有登录、编辑、删除和基础后台，但还缺审核、隐藏、反垃圾和更细的管理能力。
-4. 语言切换通过前端 JS 隐藏另一套导航，静态 HTML 里仍然同时存在中英文导航；页面加载后才会过滤。
-5. MathJax 当前通过 CDN 加载主脚本，国内访问更稳的方案是把 MathJax 资源本地化到 `docs/assets/vendor/`。
-6. `mkdocs serve/build` 会显示 MkDocs Material 关于 MkDocs 2.0 的提示，这不是当前项目错误。
-7. 浏览器插件在当前 Codex 桌面环境里多次超时，主要验证依赖命令行构建和静态 HTML 检查。
+多个 API 重复实现 `getKv`、`readBearer`、`currentSession`、`json`、CORS、错误处理等逻辑。
+
+建议下一阶段抽出：
+
+```txt
+edge-functions/api/_shared.js
+```
+
+### 3. KV 列表读取会遇到增长瓶颈
+
+留言和后台目前依赖 `kv.list({ prefix, limit })`。数据增长后会遇到分页、排序和完整管理问题。
+
+### 4. RAG 检索质量还能提升
+
+当前检索是轻量关键词打分。后续建议：
+
+- 按语言优先检索。
+- 长文章按章节切块。
+- 只有网站相关问题返回 sources。
+- 当前页、now 页、项目页增加权重。
+
+### 5. 前端脚本重复逻辑较多
+
+`auth.js`、`guestbook.js`、`biying-chat.js`、`admin-dashboard.js` 重复实现 fetch、错误处理、转义、文案映射。
+
+建议后续抽出：
+
+- `api-client.js`
+- `i18n.js`
+- `dom-utils.js`
+- `auth-client.js`
+
+### 6. 移动端缺少自动化回归测试
+
+碧影移动端聊天已多次出现适配问题。建议后续加入 Playwright 测试，检查：
+
+- 中文回复不竖排。
+- 输入框不被底部浏览器栏遮挡。
+- 长公式不撑破布局。
+- 浮动聊天窗可正常关闭。
+
+### 7. MathJax 依赖外部 CDN
+
+当前 MathJax 从 jsDelivr 加载。国内访问存在不稳定风险。后续建议自托管到：
+
+```txt
+docs/assets/vendor/mathjax/
+```
+
+### 8. `site/` 预构建带来大量 diff
+
+这是当前为了适配 EdgeOne 环境采取的稳定方案，但后续要通过 CI 防止忘记构建产物。
+
+### 9. 公开范围校验较弱
+
+`scripts/validate_public_scope.py` 只检查少量敏感词。后续应扩展手机号、邮箱、QQ、微信、token、`.env` 等模式。
+
+### 10. API 错误详情不宜直接返回前端
+
+多个 API 会返回 `detail: error.message`。生产环境建议只返回稳定错误码，详细错误留在日志里。
 
 ## 下一步计划
 
-优先级从高到低：
+按优先级建议如下。
 
-1. 确认 EdgeOne Pages 部署在 `https://www.biying.site/` 下稳定可访问。
-2. 保持 `mkdocs.yml` 中的 `site_url: https://www.biying.site/` 与正式域名一致。
-3. 给后台补更细的运营能力，例如按未读筛选私信、搜索用户、批量操作。
-4. 将 MathJax 改成本地资源，降低国内访问不稳定风险。
-5. 为英文课程笔记接入翻译 API 或人工校对，逐步补完整英文内容。
-6. 增加更多真实项目页，继续完善项目经历。
-7. 继续完善留言管理，支持隐藏、反垃圾和限流。
-8. 继续观察移动端上浮动碧影入口和长文阅读条的手感。
-9. 文章数量明显增加后，再继续优化全文搜索体验。
-10. 保持 GitHub 与 EdgeOne Pages 自动部署链路同步。
+### 第一阶段：后端稳定性
+
+1. 新增 `edge-functions/api/_shared.js`。
+2. 抽出 KV、session、CORS、JSON、错误处理、admin 校验。
+3. 新增统一 `rateLimit` helper。
+4. 将聊天、登录、注册、私信、留言接入限流。
+5. 移除或合并旧的 `admin-messages.js`。
+
+### 第二阶段：碧影检索质量
+
+1. `build_knowledge.py` 支持按章节切块。
+2. `chat.js` 检索优先当前语言。
+3. sources 只在网站相关回答中返回。
+4. 优化 `now`、当前页、项目页权重。
+5. 让碧影回答时更明确区分“来自本站”和“通用知识”。
+
+### 第三阶段：前端基础设施
+
+1. 新增统一 `api-client.js`。
+2. 新增统一 `i18n.js`。
+3. 新增 `dom-utils.js`。
+4. 重构 auth、chat、guestbook、admin 的重复逻辑。
+5. 给前端错误码做统一映射。
+
+### 第四阶段：测试与部署约束
+
+1. 加入 Playwright 移动端截图测试。
+2. CI 中运行 `python scripts/build_site.py`。
+3. CI 检查 `site/` 是否和源码同步。
+4. 自托管 MathJax。
+5. 增强公开内容校验。
 
 ## 约定
 
-- 中文是主源，英文同步维护。
-- 新增页面时，`mkdocs.yml` 里中英文导航要成对添加。
+- 中文为主源，英文同步维护。
+- 新增页面时，中英文页面应成对添加。
+- 新增页面后要同步更新 `mkdocs.yml`。
 - 想让碧影读取页面，frontmatter 必须包含：
 
 ```yaml
@@ -233,20 +392,24 @@ public: true
 avatar_readable: true
 ```
 
-- 不要手改 `docs/assets/knowledge/public-knowledge.json`，它由脚本生成。
-- 不要手改由课程导入脚本生成的课程讲义页，优先改 `note/` 原文或 `scripts/import_course_notes.py`。
-- 改完内容后至少运行：
-
-```powershell
-.venv\Scripts\python scripts\build_knowledge.py
-.venv\Scripts\python scripts\validate_public_scope.py
-.venv\Scripts\mkdocs build --strict
-```
+- 不要手动修改 `docs/assets/knowledge/public-knowledge.json`。
+- 不要手动修改 `docs/assets/knowledge/note-catalog.json`。
+- 修改源码后必须运行 `python scripts/build_site.py`。
+- 因为当前 EdgeOne 直接发布 `site/`，所以 `site/` 也要提交。
+- 不要把 GitHub 活动、草稿、本地文件、私密笔记、未公开联系方式放入公开知识库。
+- 碧影介绍应自然随和，不要把 prompt 原文暴露给访客。
+- 不要把“面向 HR”写成网站显性文案；网站是个人数字花园，只是功能上可以展示个人能力。
 
 ## 下个会话建议开场
 
 下次继续时，可以直接对 Codex 说：
 
 ```txt
-这是一个延续项目。请先阅读项目根目录的 PROJECT_HANDOFF.md、ARCHITECTURE.md、README.md 和最近的 git diff，然后总结你理解的当前状态，再继续完成 PROJECT_HANDOFF.md 里的下一步任务。
+这是一个延续项目。请先阅读项目根目录的 PROJECT_HANDOFF.md、ARCHITECTURE.md、ARCHITECTURE_OPTIMIZATION_REVIEW.md、README.md 和最近的 git diff，然后总结你理解的当前状态，再继续完成 PROJECT_HANDOFF.md 里的下一步任务。不要重构无关代码。
+```
+
+如果要从架构优化开始，建议说：
+
+```txt
+请根据 ARCHITECTURE_OPTIMIZATION_REVIEW.md 的第一阶段计划，先抽出 edge-functions/api/_shared.js，并把 auth/chat/messages/private-messages/admin 逐步接入共享 helper。保持行为不变，完成后运行构建和语法检查。
 ```
