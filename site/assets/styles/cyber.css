@@ -1206,15 +1206,19 @@ body {
   width: 100%;
   max-width: 34rem;
   min-width: 0;
+  writing-mode: horizontal-tb;
+  text-orientation: mixed;
   line-height: 1.72;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .biying-message * {
   max-width: 100%;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  writing-mode: horizontal-tb;
+  text-orientation: mixed;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .biying-message p,
@@ -1396,6 +1400,7 @@ body {
 .biying-message.biying {
   width: 100%;
   max-width: 34rem;
+  min-width: 12rem;
   align-self: flex-start;
   justify-self: start;
 }
@@ -1831,6 +1836,7 @@ body {
 
   .biying-message.biying {
     width: 100%;
+    min-width: 0;
     justify-self: stretch;
   }
 
@@ -1950,6 +1956,7 @@ body {
   .interaction-shell--page-chat .biying-message.biying {
     width: 100%;
     max-width: 100%;
+    min-width: 0;
   }
 
   .interaction-shell--page-chat .biying-message.user {

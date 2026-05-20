@@ -205,7 +205,7 @@
     };
     const item = document.createElement("div");
     item.className = `biying-message ${role}`;
-    if (role === "biying" && renderOptions.markdown) item.classList.add("arithmatex");
+    if (role === "biying" && renderOptions.markdown) item.classList.add("mathjax-process");
     if (options.key) item.dataset.messageKey = options.key;
     item.innerHTML = renderMessageContent(content, renderOptions);
     log.appendChild(item);
@@ -222,7 +222,7 @@
         ...options,
         markdown: options.markdown ?? (role === "biying" && !options.html)
       };
-      existing.classList.toggle("arithmatex", role === "biying" && renderOptions.markdown);
+      existing.classList.toggle("mathjax-process", role === "biying" && renderOptions.markdown);
       existing.innerHTML = renderMessageContent(content, renderOptions);
       log.scrollTop = log.scrollHeight;
       typesetMath(existing);
@@ -439,7 +439,7 @@
           markdown: !response.html,
           sources: response.sources
         });
-        pending.classList.toggle("arithmatex", !response.html);
+        pending.classList.toggle("mathjax-process", !response.html);
         typesetMath(pending);
         rememberMessage("biying", response.answer || "", {
           html: response.html,

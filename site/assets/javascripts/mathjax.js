@@ -7,7 +7,7 @@ window.MathJax = {
   },
   options: {
     ignoreHtmlClass: ".*|",
-    processHtmlClass: "arithmatex"
+    processHtmlClass: "arithmatex|mathjax-process"
   },
   startup: {
     typeset: false,
@@ -23,4 +23,3 @@ document.addEventListener("DOMContentLoaded", () => {
     window.MathJax.typesetPromise();
   }
 });
-
