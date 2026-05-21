@@ -1,37 +1,23 @@
-const HEADERS = {
-  "content-type": "application/json; charset=utf-8",
-  "access-control-allow-origin": "*",
-  "access-control-allow-methods": "GET, POST, DELETE, OPTIONS",
-  "access-control-allow-headers": "content-type, authorization"
-};
+import {
+  cors,
+  currentSession,
+  enforceRateLimit,
+  envValue,
+  getClientIp,
+  getKv,
+  json,
+  normalizeUsername,
+  readBearer,
+  readJson,
+  serverError,
+  sessionKey
+} from "./_shared.js";
 
 const SESSION_DAYS = 30;
 const encoder = new TextEncoder();
 
-function json(data, init = {}) {
-  return new Response(JSON.stringify(data), { ...init, headers: HEADERS });
-}
-
-function cors() {
-  return new Response(null, { status: 204, headers: HEADERS });
-}
-
-function getKv(env) {
-  if (env && env.BIYING_KV) return env.BIYING_KV;
-  if (typeof globalThis.BIYING_KV !== "undefined") return globalThis.BIYING_KV;
-  return undefined;
-}
-
-function envValue(env, key, fallback = "") {
-  return env && env[key] ? env[key] : fallback;
-}
-
 function userKey(username) {
   return `user_${username}`;
-}
-
-function sessionKey(token) {
-  return `session_${token}`;
 }
 
 function recoveryKey(username) {
@@ -82,13 +68,6 @@ async function hashText(value) {
   return bytesToHex(new Uint8Array(digest));
 }
 
-function normalizeUsername(value) {
-  return String(value || "")
-    .normalize("NFKC")
-    .trim()
-    .toLowerCase();
-}
-
 function cleanDisplayName(value) {
   return String(value || "").replace(/[<>]/g, "").trim().slice(0, 40);
 }
@@ -105,20 +84,6 @@ function publicUser(user) {
   };
 }
 
-function readBearer(request) {
-  const header = request.headers.get("authorization") || "";
-  const match = header.match(/^Bearer\s+(.+)$/i);
-  return match ? match[1].trim() : "";
-}
-
-async function readJson(request) {
-  try {
-    return await request.json();
-  } catch (error) {
-    return {};
-  }
-}
-
 async function createSession(kv, user) {
   const token = randomHex(32);
   const now = Date.now();
@@ -131,19 +96,6 @@ async function createSession(kv, user) {
     expiresAt: new Date(now + SESSION_DAYS * 24 * 60 * 60 * 1000).toISOString()
   };
   await kv.put(sessionKey(token), JSON.stringify(session));
-  return session;
-}
-
-async function requireSession(request, kv) {
-  const token = readBearer(request);
-  if (!token) return undefined;
-  const raw = await kv.get(sessionKey(token), { type: "text" });
-  if (!raw) return undefined;
-  const session = JSON.parse(raw);
-  if (Date.parse(session.expiresAt) <= Date.now()) {
-    await kv.delete(sessionKey(token));
-    return undefined;
-  }
   return session;
 }
 
@@ -251,6 +203,26 @@ async function login(kv, body) {
   return json({ ok: true, token: session.token, user: publicUser(user) });
 }
 
+async function limitAuthRequest(kv, request, clientIp, body) {
+  const action = body.action === "login"
+    ? "login"
+    : body.action === "reset_password"
+      ? "reset_password"
+      : "register";
+  const ip = getClientIp(request, clientIp);
+  const username = normalizeUsername(body.username);
+  const settings = {
+    login: { limit: 8, windowMs: 60 * 1000, identifier: `${username || "unknown"}_${ip}` },
+    reset_password: { limit: 5, windowMs: 10 * 60 * 1000, identifier: `${username || "unknown"}_${ip}` },
+    register: { limit: 5, windowMs: 60 * 60 * 1000, identifier: ip }
+  }[action];
+
+  return enforceRateLimit(kv, {
+    action: `auth_${action}`,
+    ...settings
+  });
+}
+
 export function onRequestOptions() {
   return cors();
 }
@@ -259,26 +231,28 @@ export async function onRequestGet({ request, env }) {
   try {
     const kv = getKv(env);
     if (!kv || !kv.get) return json({ error: "kv_not_configured" }, { status: 503 });
-    const session = await requireSession(request, kv);
+    const session = await currentSession(request, kv);
     if (!session) return json({ user: null }, { status: 401 });
     return json({ user: publicUser(session) });
   } catch (error) {
-    return json({ error: "auth_failed", detail: String(error.message || error) }, { status: 500 });
+    return serverError(error, "auth_failed");
   }
 }
 
-export async function onRequestPost({ request, env }) {
+export async function onRequestPost({ request, env, clientIp }) {
   try {
     const kv = getKv(env);
     if (!kv || !kv.put || !kv.get) {
       return json({ error: "kv_not_configured" }, { status: 503 });
     }
     const body = await readJson(request);
+    const limited = await limitAuthRequest(kv, request, clientIp, body);
+    if (limited) return limited;
     if (body.action === "login") return login(kv, body);
     if (body.action === "reset_password") return resetPassword(kv, body, env);
     return register(kv, body);
   } catch (error) {
-    return json({ error: "auth_failed", detail: String(error.message || error) }, { status: 500 });
+    return serverError(error, "auth_failed");
   }
 }
 
@@ -290,6 +264,6 @@ export async function onRequestDelete({ request, env }) {
     if (token) await kv.delete(sessionKey(token));
     return json({ ok: true });
   } catch (error) {
-    return json({ error: "logout_failed", detail: String(error.message || error) }, { status: 500 });
+    return serverError(error, "logout_failed");
   }
 }

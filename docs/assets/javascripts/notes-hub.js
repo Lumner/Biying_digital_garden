@@ -13,7 +13,9 @@
       updated: zh ? "更新" : "Updated",
       chapters: zh ? "章" : "chapters",
       allTags: zh ? "全部标签" : "All tags",
-      related: zh ? "相关笔记" : "Related notes"
+      related: zh ? "相关笔记" : "Related notes",
+      clear: zh ? "清除筛选" : "Clear filter",
+      currentFilter: zh ? "当前筛选" : "Current filter"
     }[key];
   }
 
@@ -73,9 +75,14 @@
 
   function mountTags(root, items) {
     const counts = new Map();
+    const params = new URLSearchParams(window.location.search);
+    const activeTag = params.get("tag") || "";
     items.forEach((item) => (item.tags || []).forEach((tag) => counts.set(tag, (counts.get(tag) || 0) + 1)));
     const tags = [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
-    root.innerHTML = tags.map(([tag, count]) => `<a class="tag-chip" href="${notesRoot()}tags/?tag=${encodeURIComponent(tag)}">${esc(tag)}<span>${count}</span></a>`).join("");
+    root.innerHTML = tags.map(([tag, count]) => {
+      const active = tag === activeTag;
+      return `<a class="tag-chip${active ? " active" : ""}" href="${notesRoot()}tags/?tag=${encodeURIComponent(tag)}" data-note-tag="${esc(tag)}" aria-current="${active ? "true" : "false"}">${esc(tag)}<span>${count}</span></a>`;
+    }).join("");
   }
 
   function mountCategory(root, catalog, items) {
@@ -92,6 +99,15 @@
     const tag = params.get("tag");
     const title = root.closest(".note-tag-page")?.querySelector("[data-note-tag-title]");
     if (title) title.textContent = tag ? `${copy("related")} · ${tag}` : copy("allTags");
+    const existing = root.parentElement?.querySelector("[data-note-filter-summary]");
+    if (existing) existing.remove();
+    if (tag && root.parentElement) {
+      const summary = document.createElement("div");
+      summary.className = "note-filter-summary";
+      summary.dataset.noteFilterSummary = "true";
+      summary.innerHTML = `<span>${copy("currentFilter")}：${esc(tag)}</span><a href="${notesRoot()}tags/">${copy("clear")}</a>`;
+      root.before(summary);
+    }
     mountList(root, tag ? items.filter((item) => (item.tags || []).includes(tag)) : items);
   }
 

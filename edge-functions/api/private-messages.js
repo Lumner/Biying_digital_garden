@@ -1,22 +1,16 @@
-const HEADERS = {
-  "content-type": "application/json; charset=utf-8",
-  "access-control-allow-origin": "*",
-  "access-control-allow-methods": "POST, OPTIONS",
-  "access-control-allow-headers": "content-type, authorization"
-};
-
-function json(data, init = {}) {
-  return new Response(JSON.stringify(data), { ...init, headers: HEADERS });
-}
-
-function getKv(env) {
-  if (env && env.BIYING_KV) return env.BIYING_KV;
-  if (typeof globalThis.BIYING_KV !== "undefined") return globalThis.BIYING_KV;
-  return undefined;
-}
+import {
+  cleanText,
+  cors,
+  enforceRateLimit,
+  getClientIp,
+  getKv,
+  json,
+  readJson,
+  serverError
+} from "./_shared.js";
 
 function clean(value, max) {
-  return String(value || "").replace(/[<>]/g, "").trim().slice(0, max);
+  return cleanText(value, max);
 }
 
 function randomId() {
@@ -25,19 +19,11 @@ function randomId() {
   return Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join("");
 }
 
-async function readJson(request) {
-  try {
-    return await request.json();
-  } catch (error) {
-    return {};
-  }
-}
-
 export function onRequestOptions() {
-  return new Response(null, { status: 204, headers: HEADERS });
+  return cors("POST, OPTIONS");
 }
 
-export async function onRequestPost({ request, env }) {
+export async function onRequestPost({ request, env, clientIp }) {
   try {
     const kv = getKv(env);
     if (!kv || !kv.put) {
@@ -57,6 +43,14 @@ export async function onRequestPost({ request, env }) {
     if (!contact) return json({ error: "contact_required" }, { status: 400 });
     if (!content) return json({ error: "content_required" }, { status: 400 });
 
+    const limited = await enforceRateLimit(kv, {
+      action: "private_message",
+      identifier: getClientIp(request, clientIp),
+      limit: 3,
+      windowMs: 10 * 60 * 1000
+    });
+    if (limited) return limited;
+
     const now = new Date().toISOString();
     const id = `${Date.now()}_${randomId()}`;
     const message = {
@@ -74,6 +68,6 @@ export async function onRequestPost({ request, env }) {
     await kv.put(`private_message_${id}`, JSON.stringify(message));
     return json({ ok: true }, { status: 201 });
   } catch (error) {
-    return json({ error: "private_message_failed", detail: String(error.message || error) }, { status: 500 });
+    return serverError(error, "private_message_failed");
   }
 }

@@ -1,8 +1,11 @@
 (function () {
   const storageKey = "biying-admin-token";
+  const api = window.BiyingApi;
+  const dom = window.BiyingDom;
+  const i18n = window.BiyingI18n;
 
   function isChinesePage() {
-    return window.location.pathname.includes("/zh/");
+    return i18n.isChinesePage();
   }
 
   function text(key) {
@@ -55,16 +58,11 @@
   }
 
   function escapeHtml(value) {
-    return String(value || "")
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
+    return dom.escapeHtml(value);
   }
 
   function formatDate(value) {
-    return value ? new Date(value).toLocaleString() : "-";
+    return dom.formatDate(value, "-");
   }
 
   function readToken() {
@@ -83,56 +81,47 @@
     };
   }
 
-  async function parseResponse(response) {
-    const data = await response.json().catch(() => ({}));
-    if (!response.ok) {
-      const error = new Error(data.error || "request_failed");
-      error.code = data.error;
-      error.status = response.status;
-      throw error;
-    }
-    return data;
-  }
-
   function friendlyError(error) {
-    if (error.status === 401 || error.code === "unauthorized") return text("unauthorized");
-    if (error.code === "kv_not_configured") return text("kv");
-    if (error.code === "user_not_found") return text("userNotFound");
-    return text("failed");
+    return api.friendlyError(error, {
+      "401": text("unauthorized"),
+      unauthorized: text("unauthorized"),
+      kv_not_configured: text("kv"),
+      user_not_found: text("userNotFound")
+    }, text("failed"));
   }
 
   async function loadDashboard() {
-    return parseResponse(await fetch("/api/admin", {
+    return api.request("/api/admin", {
       cache: "no-store",
       headers: headers()
-    }));
+    });
   }
 
   async function issueCode(username, minutes) {
-    return parseResponse(await fetch("/api/admin", {
+    return api.request("/api/admin", {
       method: "POST",
       headers: headers(),
-      body: JSON.stringify({
+      json: {
         action: "issue_recovery_code",
         username,
         minutes
-      })
-    }));
+      }
+    });
   }
 
   async function updateMessage(id, status, kind = "private") {
-    return parseResponse(await fetch(`/api/admin?id=${encodeURIComponent(id)}&kind=${encodeURIComponent(kind)}`, {
+    return api.request(`/api/admin?id=${encodeURIComponent(id)}&kind=${encodeURIComponent(kind)}`, {
       method: "PUT",
       headers: headers(),
-      body: JSON.stringify({ status })
-    }));
+      json: { status }
+    });
   }
 
   async function deleteMessage(id, kind = "private") {
-    return parseResponse(await fetch(`/api/admin?id=${encodeURIComponent(id)}&kind=${encodeURIComponent(kind)}`, {
+    return api.request(`/api/admin?id=${encodeURIComponent(id)}&kind=${encodeURIComponent(kind)}`, {
       method: "DELETE",
       headers: headers()
-    }));
+    });
   }
 
   function normalize(value) {

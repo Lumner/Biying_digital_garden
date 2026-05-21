@@ -1,10 +1,13 @@
 (function () {
+  const api = window.BiyingApi;
+  const dom = window.BiyingDom;
+  const i18n = window.BiyingI18n;
   const state = {
     messages: []
   };
 
   function isChinesePage() {
-    return window.location.pathname.includes("/zh/");
+    return i18n.isChinesePage();
   }
 
   function copy(key) {
@@ -46,7 +49,7 @@
   }
 
   function accountUrl() {
-    return auth() ? auth().accountUrl() : (isChinesePage() ? "/zh/register/" : "/en/register/");
+    return auth() ? auth().accountUrl() : dom.accountUrl();
   }
 
   function authHeaders() {
@@ -54,84 +57,64 @@
   }
 
   function escapeHtml(value) {
-    return String(value)
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
+    return dom.escapeHtml(value);
   }
 
   function formatDate(value) {
-    return value ? new Date(value).toLocaleString() : "";
-  }
-
-  async function parseResponse(response) {
-    const type = response.headers.get("content-type") || "";
-    const data = type.includes("application/json")
-      ? await response.json().catch(() => ({}))
-      : { detail: await response.text().catch(() => "") };
-    if (!response.ok) {
-      const error = new Error(data.error || "request_failed");
-      error.code = response.status === 404 ? "api_not_found" : data.error;
-      error.status = response.status;
-      throw error;
-    }
-    return data;
+    return dom.formatDate(value);
   }
 
   function friendlyError(error) {
-    if (error.status === 401 || error.code === "auth_required") return copy("authExpired");
-    if (error.status === 429 || error.code === "too_frequent") return copy("tooFrequent");
-    if (error.code === "kv_not_configured") return copy("kv");
-    if (error.code === "api_not_found" || error.status === 404) return copy("apiNotFound");
-    if (error.code === "fetch_failed") return copy("apiUnavailable");
-    return copy("error");
+    return api.friendlyError(error, {
+      "401": copy("authExpired"),
+      "429": copy("tooFrequent"),
+      auth_required: copy("authExpired"),
+      too_frequent: copy("tooFrequent"),
+      kv_not_configured: copy("kv"),
+      api_not_found: copy("apiNotFound"),
+      fetch_failed: copy("apiUnavailable")
+    }, copy("error"));
+  }
+
+  function notify(message, type = "info") {
+    if (window.BiyingToast && window.BiyingToast.show) {
+      window.BiyingToast.show(message, { type });
+    }
+    return message;
   }
 
   async function fetchMessages() {
-    try {
-      const response = await fetch("/api/messages", {
-        cache: "no-store",
-        headers: authHeaders()
-      });
-      const data = await parseResponse(response);
-      return Array.isArray(data.messages) ? data.messages : [];
-    } catch (error) {
-      if (error && error.status) throw error;
-      const wrapped = new Error("fetch_failed");
-      wrapped.code = "fetch_failed";
-      throw wrapped;
-    }
+    const data = await api.request("/api/messages", {
+      cache: "no-store",
+      headers: authHeaders()
+    });
+    return Array.isArray(data.messages) ? data.messages : [];
   }
 
   async function postMessage(message) {
-    const response = await fetch("/api/messages", {
+    return api.request("/api/messages", {
       method: "POST",
-      headers: { "content-type": "application/json", ...authHeaders() },
-      body: JSON.stringify(message)
+      headers: authHeaders(),
+      json: message
     });
-    return parseResponse(response);
   }
 
   async function editMessage(id, content) {
-    const response = await fetch(`/api/messages?id=${encodeURIComponent(id)}`, {
+    return api.request(`/api/messages?id=${encodeURIComponent(id)}`, {
       method: "PUT",
-      headers: { "content-type": "application/json", ...authHeaders() },
-      body: JSON.stringify({ content })
+      headers: authHeaders(),
+      json: { content }
     });
-    return parseResponse(response);
   }
 
   async function deleteMessage(id) {
-    const response = await fetch(`/api/messages?id=${encodeURIComponent(id)}`, {
+    return api.request(`/api/messages?id=${encodeURIComponent(id)}`, {
       method: "DELETE",
       headers: authHeaders()
     });
-    return parseResponse(response);
   }
 
-  function renderList(list, messages) {
+  function renderList(list, messages, highlightId = "") {
     list.innerHTML = "";
     if (!messages.length) {
       const empty = document.createElement("div");
@@ -144,6 +127,7 @@
     messages.forEach((message) => {
       const item = document.createElement("article");
       item.className = "guestbook-message";
+      if (message.id === highlightId) item.classList.add("is-new");
       item.dataset.id = message.id;
       const date = formatDate(message.createdAt);
       const editDate = message.updatedAt ? ` · ${copy("edited")} ${formatDate(message.updatedAt)}` : "";
@@ -209,15 +193,15 @@
     const status = root.querySelector("[data-guestbook-message]");
     const count = root.querySelector("[data-guestbook-count]");
 
-    async function refresh() {
+    async function refresh(highlightId = "") {
       renderForm(formSlot);
       try {
         state.messages = await fetchMessages();
       } catch (error) {
-        status.textContent = friendlyError(error);
+        status.textContent = notify(friendlyError(error), "error");
         state.messages = [];
       }
-      renderList(list, state.messages);
+      renderList(list, state.messages, highlightId);
       count.textContent = String(state.messages.length);
     }
 
@@ -235,20 +219,20 @@
       const message = {
         content: String(formData.get("content") || "").trim(),
         website: String(formData.get("website") || ""),
-        locale: isChinesePage() ? "zh" : "en"
+        locale: dom.locale()
       };
       if (!message.content) {
-        status.textContent = copy("empty");
+        status.textContent = notify(copy("empty"), "warning");
         return;
       }
       if (message.website) return;
       try {
-        await postMessage(message);
+        const result = await postMessage(message);
         form.reset();
-        status.textContent = copy("saved");
-        await refresh();
+        status.textContent = notify(copy("saved"), "success");
+        await refresh(result && result.message ? result.message.id : "");
       } catch (error) {
-        status.textContent = friendlyError(error);
+        status.textContent = notify(friendlyError(error), "error");
       }
     });
 
@@ -278,18 +262,20 @@
           if (next === null) return;
           const content = next.trim();
           if (!content) {
-            status.textContent = copy("empty");
+            status.textContent = notify(copy("empty"), "warning");
             return;
           }
           await editMessage(id, content);
-          status.textContent = copy("saved");
+          status.textContent = notify(copy("saved"), "success");
         } else if (window.confirm(copy("deleteConfirm"))) {
+          const card = list.querySelector(`[data-id="${CSS.escape(id)}"]`);
+          if (card) card.classList.add("is-removing");
           await deleteMessage(id);
-          status.textContent = copy("deleted");
+          status.textContent = notify(copy("deleted"), "success");
         }
         await refresh();
       } catch (error) {
-        status.textContent = friendlyError(error);
+        status.textContent = notify(friendlyError(error), "error");
       }
     });
   }

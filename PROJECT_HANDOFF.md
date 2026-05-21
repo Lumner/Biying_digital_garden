@@ -107,6 +107,12 @@ https://www.biying.site/
 6. 将整条碧影消息从 `arithmatex` 公式块样式中隔离出来，改用 `mathjax-process` 仅供 MathJax 识别。
 7. 更新静态资源版本号，减少移动端缓存导致的“修了但没生效”。
 8. 新增 `ARCHITECTURE_OPTIMIZATION_REVIEW.md`，记录后续架构优化方向。
+9. 抽出 Edge Functions 共享 helper，并给 auth/chat/messages/private-messages 接入统一限流。
+10. 将公开知识库按章节切块，并优化碧影检索的语言优先级、sources 返回边界和当前页/now/项目页权重。
+11. 抽出前端 `api-client.js`、`i18n.js`、`dom-utils.js`，收口 auth/chat/guestbook/admin 的重复请求和错误文案逻辑。
+12. CI 改为运行统一构建脚本，并检查 `site/` 与公开知识库是否和源码同步。
+13. 新增 Playwright 移动端截图测试，覆盖碧影页面聊天布局和全站浮动聊天窗开关。
+14. MathJax 已改为自托管到 `docs/assets/vendor/mathjax/`，公开范围校验也已扩展到邮箱、手机号、token、`.env` 等模式。
 
 最近关键提交：
 
@@ -168,6 +174,8 @@ http://127.0.0.1:8000/zh/
 
 ```powershell
 .venv\Scripts\python scripts\validate_public_scope.py
+.venv\Scripts\python scripts\check_site_sync.py
+npm run test:mobile
 node --check docs\assets\javascripts\auth.js
 node --check docs\assets\javascripts\biying-chat.js
 node --check docs\assets\javascripts\guestbook.js
@@ -315,18 +323,18 @@ edge-functions/api/_shared.js
 - `dom-utils.js`
 - `auth-client.js`
 
-### 6. 移动端缺少自动化回归测试
+### 6. 移动端自动化回归测试仍可扩展
 
-碧影移动端聊天已多次出现适配问题。建议后续加入 Playwright 测试，检查：
+已新增 Playwright 移动端截图测试，覆盖碧影页面聊天布局和浮动聊天窗开关。后续还可以继续扩大检查：
 
 - 中文回复不竖排。
 - 输入框不被底部浏览器栏遮挡。
 - 长公式不撑破布局。
 - 浮动聊天窗可正常关闭。
 
-### 7. MathJax 依赖外部 CDN
+### 7. MathJax 已自托管
 
-当前 MathJax 从 jsDelivr 加载。国内访问存在不稳定风险。后续建议自托管到：
+MathJax 主脚本和常用字体已自托管到：
 
 ```txt
 docs/assets/vendor/mathjax/
@@ -334,11 +342,11 @@ docs/assets/vendor/mathjax/
 
 ### 8. `site/` 预构建带来大量 diff
 
-这是当前为了适配 EdgeOne 环境采取的稳定方案，但后续要通过 CI 防止忘记构建产物。
+这是当前为了适配 EdgeOne 环境采取的稳定方案。CI 已加入 `python scripts/build_site.py` 和 `python scripts/check_site_sync.py`，用于防止忘记提交构建产物。
 
-### 9. 公开范围校验较弱
+### 9. 公开范围校验仍需持续维护
 
-`scripts/validate_public_scope.py` 只检查少量敏感词。后续应扩展手机号、邮箱、QQ、微信、token、`.env` 等模式。
+`scripts/validate_public_scope.py` 已扩展手机号、邮箱、QQ、微信、token、`.env` 等模式。后续新增内容类型时，仍要按实际误报和漏报继续维护规则。
 
 ### 10. API 错误详情不宜直接返回前端
 
@@ -372,7 +380,7 @@ docs/assets/vendor/mathjax/
 4. 重构 auth、chat、guestbook、admin 的重复逻辑。
 5. 给前端错误码做统一映射。
 
-### 第四阶段：测试与部署约束
+### 第四阶段：测试与部署约束（已完成基础版）
 
 1. 加入 Playwright 移动端截图测试。
 2. CI 中运行 `python scripts/build_site.py`。

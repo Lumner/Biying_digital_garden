@@ -34,6 +34,7 @@ C:\Users\17597\Desktop\codex\biying-digital-garden
 
 ```bash
 pip install -r requirements.txt
+npm install
 python scripts/build_knowledge.py
 mkdocs serve
 ```
@@ -52,9 +53,21 @@ python scripts/build_site.py
 
 输出目录是 `site/`。这个命令会依次完成：
 
-1. 生成公开知识库
-2. 构建 MkDocs 静态站点
-3. 把 `edge-functions/` 和 `package.json` 打包进 `site/`
+1. 生成笔记目录数据
+2. 生成公开知识库
+3. 构建 MkDocs 静态站点
+4. 把 `edge-functions/` 和 `package.json` 打包进 `site/`
+
+## 检查
+
+```bash
+python scripts/validate_public_scope.py
+python scripts/build_site.py
+python scripts/check_site_sync.py
+npm run test:mobile
+```
+
+`check_site_sync.py` 用于 CI 检查预构建的 `site/` 和公开知识库是否已经随源码一起提交。移动端测试使用 Playwright，会启动本地 `site/` 静态服务并保存截图产物。
 
 ## EdgeOne Pages 部署
 

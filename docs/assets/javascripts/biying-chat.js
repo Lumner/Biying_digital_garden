@@ -1,4 +1,7 @@
 (function () {
+  const api = window.BiyingApi;
+  const dom = window.BiyingDom;
+  const i18n = window.BiyingI18n;
   const state = {
     knowledge: [],
     busy: false,
@@ -7,7 +10,7 @@
   };
 
   function isChinesePage() {
-    return window.location.pathname.includes("/zh/");
+    return i18n.isChinesePage();
   }
 
   function text(key) {
@@ -37,6 +40,7 @@
       modelKeyMissing: zh ? "模型密钥未配置。请在 EdgeOne 环境变量中设置 DEEPSEEK_API_KEY，并重新部署。" : "The model API key is missing. Set DEEPSEEK_API_KEY in EdgeOne environment variables and redeploy.",
       modelFailed: zh ? "模型服务请求失败。请检查 DEEPSEEK_API_KEY、DEEPSEEK_MODEL、账户余额和模型名称是否正确。" : "The model request failed. Check DEEPSEEK_API_KEY, DEEPSEEK_MODEL, balance, and the model name.",
       chatFailed: zh ? "聊天 API 运行失败。请查看 EdgeOne Functions 日志获取更具体的错误。" : "The chat API failed. Check EdgeOne Functions logs for details.",
+      tooFrequent: zh ? "问得有点太快了，请稍等片刻再继续。" : "That was a little too fast. Please wait a moment before continuing.",
       reason: zh ? "不能直接连接线上碧影的原因：" : "Why the live Biying API cannot be used:"
     };
     return copy[key];
@@ -51,7 +55,7 @@
   }
 
   function accountUrl() {
-    return auth() ? auth().accountUrl() : (isChinesePage() ? "/zh/register/" : "/en/register/");
+    return auth() ? auth().accountUrl() : dom.accountUrl();
   }
 
   function authHeaders() {
@@ -59,12 +63,7 @@
   }
 
   function escapeHtml(value) {
-    return String(value)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
+    return dom.escapeHtml(value);
   }
 
   function accountPrompt() {
@@ -205,10 +204,12 @@
     };
     const item = document.createElement("div");
     item.className = `biying-message ${role}`;
+    item.classList.add("biying-message--enter");
     if (role === "biying" && renderOptions.markdown) item.classList.add("mathjax-process");
     if (options.key) item.dataset.messageKey = options.key;
     item.innerHTML = renderMessageContent(content, renderOptions);
     log.appendChild(item);
+    window.requestAnimationFrame(() => item.classList.add("is-visible"));
     log.scrollTop = log.scrollHeight;
     rememberMessage(role, content, renderOptions);
     typesetMath(item);
@@ -234,8 +235,7 @@
   async function loadKnowledge() {
     if (state.knowledge.length) return state.knowledge;
     try {
-      const response = await fetch("/assets/knowledge/public-knowledge.json", { cache: "no-store" });
-      const data = await response.json();
+      const data = await api.request("/assets/knowledge/public-knowledge.json", { cache: "no-store" });
       state.knowledge = Array.isArray(data.items) ? data.items : [];
     } catch (error) {
       state.knowledge = [];
@@ -247,12 +247,46 @@
     return /(最近|近况|现在在做什么|最近在做什么|what are you doing|working on now|currently working on)/i.test(query);
   }
 
+  function looksSiteRelated(query) {
+    return /(碧影|网站|站主|主人|项目|作品|笔记|文章|页面|这里|最近在做什么|现在在忙什么|关于|现在|留言|about|now|project|work|note|article|page|guestbook|this site|this project|current work|what are you doing)/i.test(query);
+  }
+
   function isPageIntent(query) {
     return /(这个项目|这个页面|这一页|这里|this project|this page|on this page)/i.test(query);
   }
 
+  function isProjectIntent(query) {
+    return /(项目|作品|做过什么|做了什么|project|projects|work|built|building)/i.test(query);
+  }
+
   function normalizePath(value) {
-    return String(value || "").replace(/\/+$/, "") || "/";
+    return dom.normalizePath(value);
+  }
+
+  function itemLocale(item) {
+    if (item.locale === "en" || item.locale === "zh") return item.locale;
+    return normalizePath(item.url).startsWith("/en/") ? "en" : "zh";
+  }
+
+  function isProjectPage(item) {
+    return normalizePath(item.url).includes("/projects");
+  }
+
+  function extractTerms(query) {
+    const lower = query.toLowerCase();
+    const terms = new Set();
+    for (const token of lower.match(/[a-z0-9_-]{2,}/g) || []) {
+      terms.add(token);
+    }
+    for (const token of lower.match(/[\p{Script=Han}]{2,}/gu) || []) {
+      terms.add(token);
+      if (token.length <= 12) {
+        for (let index = 0; index < token.length - 1; index += 1) {
+          terms.add(token.slice(index, index + 2));
+        }
+      }
+    }
+    return Array.from(terms);
   }
 
   function currentPageContext() {
@@ -262,39 +296,60 @@
     };
   }
 
-  function scoreItem(item, query, pageContext = null) {
+  function scoreItem(item, query, pageContext = null, locale = "zh") {
     const q = query.toLowerCase();
     const haystack = `${item.title || ""} ${item.summary || ""} ${item.text || ""} ${(item.tags || []).join(" ")}`.toLowerCase();
     let score = 0;
-    for (const token of q.split(/\s+/).filter(Boolean)) {
+    for (const token of extractTerms(query)) {
       if (haystack.includes(token)) score += token.length > 2 ? 3 : 1;
     }
     if (haystack.includes(q)) score += 8;
+    if (score > 0 && itemLocale(item) === locale) score += 6;
+    if (score > 0 && itemLocale(item) !== locale) score -= 2;
     if (isNowIntent(query) && normalizePath(item.url).endsWith("/now")) score += 18;
+    if (isProjectIntent(query) && isProjectPage(item)) score += 12;
     if (pageContext && normalizePath(item.url) === normalizePath(pageContext.url)) {
-      score += isPageIntent(query) ? 20 : 4;
+      score += isPageIntent(query) ? 28 : 8;
+      if (item.kind === "section") score += 4;
     }
     return score;
   }
 
+  function uniqueSources(items) {
+    const seen = new Set();
+    const sources = [];
+    for (const item of items) {
+      if (!item.url || seen.has(item.url)) continue;
+      seen.add(item.url);
+      sources.push({ title: item.parentTitle || item.title || item.url, url: item.url });
+    }
+    return sources;
+  }
+
   function reasonFromError(error) {
-    if (error.status === 401 || error.code === "auth_required") return text("authExpired");
-    if (error.code === "kv_not_configured") return text("kv");
-    if (error.code === "api_not_found" || error.status === 404) return text("apiNotFound");
-    if (error.code === "model_key_missing") return text("modelKeyMissing");
-    if (error.code === "model_request_failed") return text("modelFailed");
-    if (error.code === "chat_failed") return text("chatFailed");
-    return text("apiUnavailable");
+    return api.friendlyError(error, {
+      "401": text("authExpired"),
+      "429": text("tooFrequent"),
+      auth_required: text("authExpired"),
+      kv_not_configured: text("kv"),
+      api_not_found: text("apiNotFound"),
+      model_key_missing: text("modelKeyMissing"),
+      model_request_failed: text("modelFailed"),
+      too_frequent: text("tooFrequent"),
+      chat_failed: text("chatFailed")
+    }, text("apiUnavailable"));
   }
 
   async function localAnswer(query, reason = "") {
     const knowledge = await loadKnowledge();
     const pageContext = currentPageContext();
-    const ranked = knowledge
-      .map((item) => ({ item, score: scoreItem(item, query, pageContext) }))
+    const locale = isChinesePage() ? "zh" : "en";
+    const rankedAll = looksSiteRelated(query) ? knowledge
+      .map((item) => ({ item, score: scoreItem(item, query, pageContext, locale) }))
       .filter((entry) => entry.score > 0)
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 3);
+      .sort((a, b) => b.score - a.score) : [];
+    const preferred = rankedAll.filter((entry) => itemLocale(entry.item) === locale);
+    const ranked = (preferred.length ? preferred : rankedAll).slice(0, 3);
 
     if (!ranked.length) {
       return isChinesePage()
@@ -312,39 +367,21 @@
     });
     return {
       answer: `${intro}\n${lines.join("\n")}`,
-      sources: ranked.map(({ item }) => ({ title: item.title || item.url, url: item.url }))
+      sources: uniqueSources(ranked.map(({ item }) => item))
     };
   }
 
   async function askApi(query, history) {
-    let response;
-    try {
-      response = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "content-type": "application/json", ...authHeaders() },
-        body: JSON.stringify({
-          message: query,
-          locale: isChinesePage() ? "zh" : "en",
-          history,
-          pageContext: currentPageContext()
-        })
-      });
-    } catch (error) {
-      const wrapped = new Error("fetch_failed");
-      wrapped.code = "fetch_failed";
-      throw wrapped;
-    }
-    const type = response.headers.get("content-type") || "";
-    const data = type.includes("application/json")
-      ? await response.json().catch(() => ({}))
-      : { detail: await response.text().catch(() => "") };
-    if (!response.ok) {
-      const error = new Error(data.error || "chat api failed");
-      error.status = response.status;
-      error.code = response.status === 404 ? "api_not_found" : data.error;
-      error.detail = data.detail || "";
-      throw error;
-    }
+    const data = await api.request("/api/chat", {
+      method: "POST",
+      headers: authHeaders(),
+      json: {
+        message: query,
+        locale: dom.locale(),
+        history,
+        pageContext: currentPageContext()
+      }
+    });
     return {
       answer: data.answer || "",
       sources: Array.isArray(data.sources) ? data.sources : []
@@ -414,7 +451,8 @@
       }
       input.value = "";
       addMessage(log, "user", query);
-      const pending = addMessage(log, "biying", "...", { remember: false });
+      const pending = addMessage(log, "biying", '<span class="typing-dots" aria-label="Biying is thinking"><i></i><i></i><i></i></span>', { remember: false, html: true });
+      pending.classList.add("is-typing");
       state.busy = true;
       try {
         let response;
@@ -439,6 +477,7 @@
           markdown: !response.html,
           sources: response.sources
         });
+        pending.classList.remove("is-typing");
         pending.classList.toggle("mathjax-process", !response.html);
         typesetMath(pending);
         rememberMessage("biying", response.answer || "", {
@@ -451,6 +490,7 @@
           state.history.push({ role: "assistant", content: response.answer });
         }
       } catch (error) {
+        pending.classList.remove("is-typing");
         pending.textContent = text("error");
       } finally {
         state.busy = false;

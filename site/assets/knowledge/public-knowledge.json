@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T10:58:30.770523+00:00",
+  "generatedAt": "2026-05-21T03:04:32.308260+00:00",
   "items": [
     {
       "title": "About",
@@ -13,6 +13,8 @@
       ],
       "url": "/en/about/",
       "sourcePath": "docs/en/about.md",
+      "locale": "en",
+      "kind": "page",
       "text": "ABOUT About Me I study AI and practice turning ideas into things people can actually open, use, and respond to. This site keeps my learning, projects, and a little everyday texture. Class of 2025 Artificial Intelligence Long Term Notes I am a Class of 2025 undergraduate student majoring in Artificial Intelligence at Zhejiang University . This site is a small room I keep for myself: learning notes, project traces, recent thoughts, and Biying, who gives visitors a conversational way into the public parts of it. I do not want it to read like a stiff profile. I would rather let the process show: what I am learning, why something caught my attention, and how a loose idea slowly becomes something real. What I Care About AI Assisted Full Stack Building I like treating AI as a development partner: first making an idea tangible, then using my own judgment to refine the details, the experience, and the last mile to something useful. Embodied Intelligence I care about how agents move from screens into the real world: how they sense, act, learn from feedback, and meet robotic systems in practice. Long Term Notes I am practicing how to write the learning process clearly: what finally clicked, where I took the long way around, and what still needs more thought. How I Work I like making an idea tangible first, then improving it through actual use. To me, code is not only for assignments or tests. It can also be a form of expression: turning vague interests into pages, tools, agents, and interactive systems that other people can genuinely open, experience, and answer back. I also want the process to stay honest. Notes should keep more than conclusions; they should keep the route toward understanding. Project pages should show more than stacks; they should explain why I made certain choices, what still feels unfinished, and what I want to improve next. Current Keywords Identity Class of 2025 undergraduate AI student at Zhejiang University. Interests AI assisted full stack building, embodied intelligence, and long term notes. Status Slowly turning this site into a long term entrance for learning, projects, and self expression. Looking For People who enjoy AI, engineering, building tools, and living with curiosity. How to Know Me You can start from Now to see what I am working on, Projects to see what I have built, Notes to follow my learning process, or Biying to ask about public content on this site. The guestbook is public. If you want to say hello, exchange ideas, or tell me how this site could be better, you can leave a few words there."
     },
     {
@@ -24,6 +26,8 @@
       ],
       "url": "/en/avatar/",
       "sourcePath": "docs/en/avatar/index.md",
+      "locale": "en",
+      "kind": "page",
       "text": "BIYING Biying Biying lives quietly inside this site: gentle, unhurried, and happy to help you make sense of what has already been shared here. Public Guide Open to Chat Gentle Tone If you want to know what I have been working on, what notes are here, or simply exchange a few words, you can start with Biying. He answers from content already published on this site, and when something has not been written down yet, he says so plainly. !!! info \"Current mode\" After sign in, Biying first uses the live API. The chat box only falls back to the local public knowledge base when the network or endpoint is unavailable."
     },
     {
@@ -34,6 +38,8 @@
       ],
       "url": "/en/guestbook/",
       "sourcePath": "docs/en/guestbook/index.md",
+      "locale": "en",
+      "kind": "page",
       "text": "GUESTBOOK Guestbook If you have passed through here, you are welcome to leave a line: say hello, exchange an idea, point out a problem, or tell me what you hope this site grows into. Public by Default No Private Info This is a public guestbook. After registering or signing in, you can leave a note and edit or delete what you wrote later. Other visitors can read these messages, so please do not include phone numbers, addresses, private emails, or other sensitive information. The form adds a gentle reminder when something looks private and slows down overly frequent posting. This space is for words other visitors may also read. If something should stay private, please keep it out of the guestbook."
     },
     {
@@ -45,6 +51,8 @@
       ],
       "url": "/en/",
       "sourcePath": "docs/en/index.md",
+      "locale": "en",
+      "kind": "page",
       "text": "BIYING DIGITAL GARDEN Biying Digital Garden A bilingual space for long term learning records, projects, and current notes. Notes are the roots, projects are the branches, and Biying gently connects the public content. AI Undergraduate vibe coding embodied AI full stack Talk to Biying View Projects Read Notes PUBLIC NOTE Random Note A cover generated on refresh NOTE BIYING Now Still refining the digital garden and Biying Recently Course notes, project reflection, and site boundaries Best start Use the Now page for the quickest update Hello, it is nice to meet you. Biying is here if you want a gentler way in. If you want to know what I have been doing, what lives on this site, or simply chat for a moment, you can start with Biying. When something has not been written here yet, he says so plainly. Talk to Biying Module Updates If you want a quick read on what changed recently, start here. The fuller log lives on the Updates page. Biying More public context and recent conversation memory Guestbook Privacy nudges, pacing limits, and owner moderation Admin Recovery codes and account maintenance tools Public Signals This is not a finished portfolio. It is a living entrance that can keep growing through notes, projects, current updates, and conversations with Biying. Notes Learning records, math, AI, engineering, and thoughts that are slowly taking shape. Chinese is the source language, and English stays in step as much as possible. Read notes Projects Work I am seriously building, along with why it is shaped this way and what still needs care. View projects Biying If you want a lighter way to explore the site, start a conversation with Biying and follow the public threads from there. Start chat Guestbook Visitors can leave public messages. Please do not include private information. Leave a signal Ways In Meet me Start with About and Now if you want the fastest sense of who I am and what currently has my attention. See the work Enter through Projects and Notes to see technical choices, experiments, and longer term accumulation. Say hello Leave a note in the Guestbook , or let Biying guide you through what is already public. Biying only reads content already published on this website. Drafts, private files, and account activity are outside his answer scope."
     },
     {
@@ -56,6 +64,8 @@
       ],
       "url": "/en/notes/ai/",
       "sourcePath": "docs/en/notes/ai.md",
+      "locale": "en",
+      "kind": "page",
       "text": "TOPIC AI A clear place for future model, agent, and experiment notes."
     },
     {
@@ -67,6 +77,8 @@
       ],
       "url": "/en/notes/algorithms/",
       "sourcePath": "docs/en/notes/algorithms.md",
+      "locale": "en",
+      "kind": "page",
       "text": "TOPIC Algorithms Structures, complexity, and the tradeoffs behind them."
     },
     {
@@ -79,6 +91,8 @@
       ],
       "url": "/en/notes/computer-systems-lecture/",
       "sourcePath": "docs/en/notes/computer-systems-lecture.md",
+      "locale": "en",
+      "kind": "page",
       "text": "Computer Systems Fundamentals Lecture Notes !!! info \"Translation status\" This is an English companion version generated for the bilingual site. It summarizes and translates the structure of the Chinese source while keeping key mathematical and technical notation intact. A full line by line translation can be generated later with scripts/translate.py after an API key is configured. Source Chinese source page: 计算机系统基础讲义 Original file: note/SYS 计算机系统基础讲义.md What This Note Covers Lecture notes for computer systems fundamentals, covering information representation, Boolean algebra, combinational logic, arithmetic units, sequential logic, ISA, and RISC V. Study Outline System Perspective : How physical signals, logic gates, RTL components, ISA, assembly, linking, and loading connect into a computer system. Information Representation : Binary encoding, integers, floating point numbers, characters, and data interpretation. Boolean Algebra and Logic : Logic gates, Boolean identities, circuit parameters, and digital abstraction. Combinational Logic and Verilog : Functional blocks, HDL descriptions, and design flow. Arithmetic Units and ALU : Addition, subtraction, multiplication, division, shifting, and floating point arithmetic. Sequential Logic : Latches, flip flops, registers, counters, finite state machines, and timing. ISA and RISC V : Instruction formats, registers, calling conventions, ELF files, linking, loading, and program execution. Preserved Notation Examples The Chinese source contains mathematical notation and technical symbols. Examples preserved for cross language lookup: No compact formula examples extracted. How to Use This Page Use this English page as a quick map before reading the Chinese lecture note. The Chinese page contains the complete detailed content, formulas, examples, tables, and course structure. This companion page makes the topic discoverable to English visitors and gives Biying enough English context to explain what the note is about."
     },
     {
@@ -91,6 +105,8 @@
       ],
       "url": "/en/notes/discrete-math-lecture/",
       "sourcePath": "docs/en/notes/discrete-math-lecture.md",
+      "locale": "en",
+      "kind": "page",
       "text": "Discrete Mathematics Lecture Notes !!! info \"Translation status\" This is an English companion version generated for the bilingual site. It summarizes and translates the structure of the Chinese source while keeping key mathematical and technical notation intact. A full line by line translation can be generated later with scripts/translate.py after an API key is configured. Source Chinese source page: 离散数学讲义 Original file: note/离散数学讲义.md What This Note Covers Lecture notes for discrete mathematics, covering logic and proofs, sets and functions, algorithms, induction and recursion, counting, and relations. Study Outline Logic and Proofs : Propositional logic, predicate logic, inference rules, and proof strategies. Basic Structures : Sets, functions, sequences, sums, and matrices as discrete objects. Algorithms : Algorithmic thinking, complexity notation, and common analysis patterns. Induction and Recursion : Mathematical induction, strong induction, recursive definitions, and structural reasoning. Counting : Permutations, combinations, binomial coefficients, and counting strategies. Advanced Counting : Recurrence relations, inclusion exclusion, generating functions, and derangements. Relations : Relations, closures, equivalence relations, partial orders, and partitions. Preserved Notation Examples The Chinese source contains mathematical notation and technical symbols. Examples preserved for cross language lookup: $p \\to q$ $\\forall x P(x)$ $O(n\\log n)$ $x+1=4$ $x$ $p,q,r,\\ldots$ $\\neg p$ $p$ $p \\land q$ $q$ How to Use This Page Use this English page as a quick map before reading the Chinese lecture note. The Chinese page contains the complete detailed content, formulas, examples, tables, and course structure. This companion page makes the topic discoverable to English visitors and gives Biying enough English context to explain what the note is about."
     },
     {
@@ -102,6 +118,8 @@
       ],
       "url": "/en/notes/essays/",
       "sourcePath": "docs/en/notes/essays.md",
+      "locale": "en",
+      "kind": "page",
       "text": "TOPIC Essays A home for lighter reflections and notes that are not lecture shaped."
     },
     {
@@ -114,6 +132,8 @@
       ],
       "url": "/en/notes/fds-data-structures-lecture/",
       "sourcePath": "docs/en/notes/fds-data-structures-lecture.md",
+      "locale": "en",
+      "kind": "page",
       "text": "FDS Data Structures Fundamentals Lecture Notes !!! info \"Translation status\" This is an English companion version generated for the bilingual site. It summarizes and translates the structure of the Chinese source while keeping key mathematical and technical notation intact. A full line by line translation can be generated later with scripts/translate.py after an API key is configured. Source Chinese source page: FDS 数据结构基础讲义 Original file: note/FDS 数据结构基础讲义.md What This Note Covers Lecture notes for data structures, covering algorithm analysis, lists, stacks and queues, trees, heaps, union find, segment trees, graphs, and topological sorting. Study Outline Algorithm Analysis : Asymptotic notation, common complexity classes, and the source of time and space costs. Abstract Data Types and Lists : Interface design, linear lists, linked lists, cursor implementation, and polynomial examples. Stacks and Queues : LIFO/FIFO structures, expression conversion, recursion stacks, and circular queues. Trees and Binary Trees : Tree terminology, traversal, expression trees, threaded trees, and recursive structure. Search Trees and Heaps : Binary search trees, priority queues, binary heaps, and heap applications. Union Find and Segment Trees : Dynamic equivalence, path compression, interval query, point update, range update, and lazy propagation. Graphs : Graph definitions, storage methods, AOV networks, and topological sorting. Preserved Notation Examples The Chinese source contains mathematical notation and technical symbols. Examples preserved for cross language lookup: \\(O(N\\log N)\\) \\(O(N)\\) \\(O(1)\\) \\(O(\\log N)\\) \\(N\\) \\(O(N^2)\\) \\(N/2\\) \\(T(N)=O(f(N))\\) \\(T\\) \\(f\\) How to Use This Page Use this English page as a quick map before reading the Chinese lecture note. The Chinese page contains the complete detailed content, formulas, examples, tables, and course structure. This companion page makes the topic discoverable to English visitors and gives Biying enough English context to explain what the note is about."
     },
     {
@@ -124,7 +144,9 @@
       ],
       "url": "/en/notes/",
       "sourcePath": "docs/en/notes/index.md",
-      "text": "NOTES Notes A home for the notes I am willing to leave in public: course notes, math checks, and a clear record of what belongs in Biying's answer range. Chinese Source Biying readable In Progress Chinese is the source language here, and I keep the English side in step as much as I can. public and avatar readable together decide what can enter Biying's knowledge base. Study steadily Start with the course notes and move chapter by chapter. Understand the site Read the public scope first to see what belongs in Biying's answer range. Check formulas Open Math Lab to verify how equations render in Markdown. Topics Recently Updated Recommended Reading Tags Course Notes { course notes} Discrete Mathematics Lecture Notes Logic and proofs, sets and functions, algorithms, induction and recursion, counting, and relations. Math Proofs Counting Read Computer Systems Fundamentals Lecture Notes Information representation, Boolean algebra, combinational logic, arithmetic units, sequential logic, ISA, and RISC V. Systems Logic RISC V Read FDS Data Structures Fundamentals Lecture Notes Algorithm analysis, lists, stacks and queues, trees, heaps, union find, segment trees, graphs, and topological sorting. Algorithms Structures Graphs Read Site Notes { site notes} Public Scope Explains what belongs inside Biying's answer range, and what does not. Scope Biying Read Math Lab Checks that math inside Markdown renders the way it should. MathJax Formula Read If this is your first visit, a natural route is to begin with one course note, then come back here when another thread catches your attention. This page will keep growing as the note shelf does."
+      "locale": "en",
+      "kind": "page",
+      "text": "NOTES Notes A home for the notes I am willing to leave in public: course notes, math checks, and a clear record of what belongs in Biying's answer range. Chinese Source Biying readable In Progress Chinese is the source language here, and I keep the English side in step as much as I can. public and avatar readable together decide what can enter Biying's knowledge base. Study steadily Start with the course notes and move chapter by chapter. Understand the site Read the public scope first to see what belongs in Biying's answer range. Check formulas Open Math Lab to verify how equations render in Markdown. Topics Recently Updated Recommended Reading Tags Course Notes Discrete Mathematics Lecture Notes Logic and proofs, sets and functions, algorithms, induction and recursion, counting, and relations. Math Proofs Counting Read Computer Systems Fundamentals Lecture Notes Information representation, Boolean algebra, combinational logic, arithmetic units, sequential logic, ISA, and RISC V. Systems Logic RISC V Read FDS Data Structures Fundamentals Lecture Notes Algorithm analysis, lists, stacks and queues, trees, heaps, union find, segment trees, graphs, and topological sorting. Algorithms Structures Graphs Read Site Notes Public Scope Explains what belongs inside Biying's answer range, and what does not. Scope Biying Read Math Lab Checks that math inside Markdown renders the way it should. MathJax Formula Read If this is your first visit, a natural route is to begin with one course note, then come back here when another thread catches your attention. This page will keep growing as the note shelf does."
     },
     {
       "title": "Math Lab",
@@ -135,6 +157,8 @@
       ],
       "url": "/en/notes/math-lab/",
       "sourcePath": "docs/en/notes/math-lab.md",
+      "locale": "en",
+      "kind": "page",
       "text": "MATH LAB Math Lab A small rendering lab for checking inline formulas, block formulas, and matrices inside the site. MathJax Markdown This page tests math rendering inside .md files. Inline example: $E = mc^2$, and $\\alpha + \\beta = \\gamma$. Block example: $$ \\nabla \\cdot \\vec{E} = \\frac{\\rho}{\\epsilon 0} $$ A matrix: $$ A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix} ,\\quad \\det(A) = 2 $$ If you see rendered formulas instead of raw LaTeX text, mathjax.js is working."
     },
     {
@@ -146,6 +170,8 @@
       ],
       "url": "/en/notes/math/",
       "sourcePath": "docs/en/notes/math.md",
+      "locale": "en",
+      "kind": "page",
       "text": "TOPIC Math Logic, proofs, counting, and formulas gathered under one thread."
     },
     {
@@ -157,6 +183,8 @@
       ],
       "url": "/en/notes/public-scope/",
       "sourcePath": "docs/en/notes/public-scope.md",
+      "locale": "en",
+      "kind": "page",
       "text": "PUBLIC SCOPE Public Scope This page keeps one thing clear: what Biying may read, and what stays outside. A clear boundary matters more than sounding clever. Public Content Privacy Stays Out Biying's core rule is simple: only read content already published on this website . Allowed Home, About, Now, Projects, and public notes. Markdown pages marked with public: true and avatar readable: true . Titles, summaries, body content, and public links. Not Allowed Unpublished drafts. GitHub activity records. Private notes, diaries, or chat logs. Hidden contact information or other private materials. Any local filesystem content. Answering Style If the public materials do not contain an answer, Biying can say gently: That part has not been written into the public pages here yet. This rule matters more than sounding clever."
     },
     {
@@ -168,6 +196,8 @@
       ],
       "url": "/en/notes/site/",
       "sourcePath": "docs/en/notes/site.md",
+      "locale": "en",
+      "kind": "page",
       "text": "TOPIC Site Public scope, formula checks, and notes about the site itself."
     },
     {
@@ -179,6 +209,8 @@
       ],
       "url": "/en/notes/systems/",
       "sourcePath": "docs/en/notes/systems.md",
+      "locale": "en",
+      "kind": "page",
       "text": "TOPIC Systems From representation and logic all the way to ISA and running programs."
     },
     {
@@ -190,6 +222,8 @@
       ],
       "url": "/en/notes/tags/",
       "sourcePath": "docs/en/notes/tags.md",
+      "locale": "en",
+      "kind": "page",
       "text": "TAGS All Tags Topics answer where a note broadly belongs. Tags are better for finding cross connections."
     },
     {
@@ -204,6 +238,8 @@
       ],
       "url": "/en/now/",
       "sourcePath": "docs/en/now.md",
+      "locale": "en",
+      "kind": "page",
       "text": "NOW Now A recent slice of what has my attention: what I am building, what I am learning, and what I want to keep clear. Updated: 2026 05 13 Public Status In Motion This page answers: \"What am I working on now?\" It is not a formal profile or a roadmap, just a recent snapshot of what is currently on my desk: what I am learning, building, and slowly figuring out. In Progress Digital Garden Refining this MkDocs based bilingual digital garden so notes, projects, guestbook messages, and Biying can really live behind one clear entrance. Notes in Sync Organizing course notes and project records while keeping the Chinese source and English version moving together. Biying's Boundary Making Biying feel more like a gentle companion: able to help from public content, and honest enough to say \"I do not know.\" AI Collaboration Practicing AI assisted building all the way through: pages, APIs, deployment, feedback, and reflection. Learning AI Assisted Full Stack Building Putting AI into real development work: pages, APIs, data, debugging, deployment, and the human judgment that moves something from merely working to genuinely useful. Embodied Intelligence Exploring how agents perceive environments, plan actions, and interact with the real world. I am still building foundations and collecting ideas I want to try by hand. Writing It Down Keeping records of learning, debugging, and temporary thoughts. Not to look complete, but to see how understanding slowly grows over time. Life Texture Recently I have been trying to put learning, building, and daily life into the same rhythm: strengthening my AI foundations while making websites and tools that can actually be opened and used. This site will keep some less template like material too: temporary thoughts, debugging notes, good things I read, and records with a little everyday warmth. Boundaries Biying only reads content that has already been published on this site. He does not touch local files, drafts, or private records. The site is not meant to be finished all at once; it will grow with my learning, projects, and writing."
     },
     {
@@ -214,6 +250,8 @@
       ],
       "url": "/en/projects/",
       "sourcePath": "docs/en/projects/index.md",
+      "locale": "en",
+      "kind": "page",
       "text": "PROJECTS Projects A place for work I am willing to explain properly: why it began, how I shaped it, where it stands now, and what still needs care. Build Records Reflection Growing I want project pages to keep more than a list of things I built. Each one tries to leave some trace of the thinking too: why it began, what tradeoffs I made, where it stands now, and what I still want to improve. Why it exists Start with the problem, the motivation, and what the project is trying to solve. What I did Show the work I actually completed instead of only listing technology names. What comes next Keep the rough edges visible so the next step stays clear. Status: static site live, backend abilities still improving Personal Digital Garden + Biying A bilingual personal website that brings public notes, project records, guestbook messages, and Biying into one long term entrance. Core Content structure, language switching, and public knowledge retrieval. My part Information architecture, UI implementation, deployment, and chat flow. Next Keep smoothing the interactions, maintenance flow, and small details. MkDocs EdgeOne RAG Bilingual Open Details Future project pages will keep the same shape when possible: background, stack, what I did, results, limitations, and next steps. That makes them easier for me to revisit, and easier for visitors to understand quickly."
     },
     {
@@ -228,6 +266,8 @@
       ],
       "url": "/en/projects/personal-site-avatar/",
       "sourcePath": "docs/en/projects/personal-site-avatar.md",
+      "locale": "en",
+      "kind": "page",
       "text": "PROJECT CASE Personal Digital Garden + Biying A long term entrance where public notes, project records, guestbook messages, and Biying can grow together. MkDocs EdgeOne Digital Persona Positioning A personal digital garden, not a one off portfolio. Core Public content, bilingual notes, Biying chat, and guestbook. Status The static site is live; backend abilities keep improving. This is the long term personal website I am building for myself. It is not just a portfolio, and it is not only a chat demo. It brings public notes, project records, current status, guestbook messages, and Biying into one entrance. I want it to grow with my learning and building. Right now it may only be a few course notes and a conversational entrance; later it can hold more real projects, debugging records, temporary thoughts, and a steadier deployment setup. Background I wanted a place that feels more stable than a social profile and more relaxed than a formal introduction. Friends can see what I have been working on recently. People who are also interested in AI and engineering can follow the notes and projects into the actual process. Biying is the unusual part of this project. He is not an all knowing substitute for me, just a gentle guide to public content: he reads what has already been published on the site, helps visitors find useful signals, and says he does not know when the material is not there. What I Did Site Structure Built the MkDocs Material site structure and planned pages for home, about, now, notes, projects, Biying, and guestbook. Bilingual Content Designed the /zh/ and /en/ structure so navigation, pages, and public knowledge stay paired. Note Import Imported three course notes, then fixed math rendering and chapter navigation for long lecture pages. Biying and Guestbook Designed Biying's tone, readable scope, and refusal boundaries, then implemented the chat frontend, guestbook frontend, and EdgeOne Functions style API skeletons. Tech Stack Content Site MkDocs Material, Markdown, Pymdown Extensions, and MathJax for notes, page structure, and math rendering. Bilingual Content Chinese is the source language, English stays in step, and navigation, pages, and public knowledge are maintained in pairs. Biying Chat Public knowledge generation, dialogue design, EdgeOne Functions style APIs, and DeepSeek/OpenAI compatible model access. Interaction and Deployment Vanilla JavaScript, cyber style CSS, public guestbook, EdgeOne Pages/Functions/KV deployment path, and GitHub CI. Results The site can be built and previewed locally, and mkdocs build strict passes. Chinese and English pages now have a clear structure for future additions. Three course notes have become readable website pages with math rendering and chapter navigation. Biying can answer questions related to site content from the public knowledge base. The guestbook and EdgeOne deployment route now have a working foundation for a real online setup. Limitations English course notes still need fuller translation and human review. Before Biying goes fully online, the backend needs real model keys, KV bindings, and rate limiting. The guestbook needs moderation, deletion, anti spam, and a smoother admin flow. Mobile reading, long note experience, and visual details can still be refined. Next Project pages need more real work, reflections, and progress notes over time. Connect EdgeOne Functions, KV, model keys, and public source citations into real online behavior. Keep future projects on the same structure: background, what I did, stack, results, limitations, and next steps."
     },
     {
@@ -239,6 +279,8 @@
       ],
       "url": "/en/updates/",
       "sourcePath": "docs/en/updates.md",
+      "locale": "en",
+      "kind": "page",
       "text": "UPDATES Module Updates This is not a grand roadmap. It is a compact record of what actually changed in each public module, so the current shape of the site stays easy to read as it grows. Public maintenance log Updated: 2026 05 15 Home Second UI pass completed Sharper entry hierarchy, a random note cover, and clearer paths for first time visitors. Notes Course material still expanding Reading first pages now keep section indexes, formulas, and bilingual versions together. Projects Case study structure improved Project pages now foreground background, decisions, stack, outcomes, and limitations. Biying More public context and short term memory Biying can reference more published material and keep a recent stretch of conversation in view. Guestbook Light moderation added Visitors get privacy nudges and pacing limits, while the owner can filter, hide, or delete messages. Admin Account tools expanded The dashboard now supports unread filters, contact copying, recovery codes, and owner side user deletion."
     },
     {
@@ -253,6 +295,8 @@
       ],
       "url": "/zh/about/",
       "sourcePath": "docs/zh/about.md",
+      "locale": "zh",
+      "kind": "page",
       "text": "ABOUT 关于我 我在学人工智能，也在练习把想法做成真正能打开、能使用的东西。这里留着我的学习、项目和一点日常。 浙江大学 25 级 人工智能 长期记录 我是 浙江大学 25 级人工智能专业本科生 。这个网站像我给自己留的一间小房间：放学习记录、项目过程、最近在想什么，也放着碧影，方便来访的人用聊天的方式逛一逛这些公开内容。 我不太想把它做成一份板正的个人简介。比起只列结论，我更希望这里能看见过程：我在学什么、为什么会对某件事感兴趣、一个想法是怎样一点点长成作品的。 我在关注什么 AI 协作式全栈构建 我喜欢把 AI 当作开发伙伴：先一起把想法做出来，再靠自己的判断补细节、调体验、把它推到真正能用。 具身智能 我关心智能体怎样从屏幕走到真实世界：怎样感知、怎样行动、怎样从反馈里继续变好，以及 AI 和机器人之间能发生什么。 长期记录 我在练习把学习过程写清楚：哪些概念终于通了，哪些地方绕了远路，哪些问题还没想明白，都值得留下来。 我的工作方式 我喜欢先把一个想法做出来，再在真实使用里慢慢把它修好。对我来说，代码不只是完成作业或通过测试的工具，它也可以是一种表达方式：把模糊的兴趣变成页面、工具、智能体和可交互系统，最后变成别人真的能打开、能体验、能回应的东西。 我也想把过程写得诚实一点。笔记不只放最后的答案，也留下自己是怎么想通的；项目页不只列技术栈，也记录为什么这样做、哪里还不够好、下一步还想怎么改。 当前关键词 身份 浙江大学 25 级人工智能专业本科生。 兴趣 AI 协作式全栈构建、具身智能、长期记录。 状态 正在把这个网站慢慢打磨成学习、项目和自我表达的长期入口。 期待 认识同样喜欢 AI、工程、创造工具和认真生活的人。 如何了解我 你可以从 现在 看我近期在做什么，从 项目 看我已经做出的东西，从 笔记 看我的学习过程，也可以去 碧影 问问这个网站公开写过的内容。 留言板是公开的。如果你想打个招呼、交流想法，或者告诉我哪里可以做得更好，都可以在那里留下几句话。"
     },
     {
@@ -264,6 +308,8 @@
       ],
       "url": "/zh/avatar/",
       "sourcePath": "docs/zh/avatar/index.md",
+      "locale": "zh",
+      "kind": "page",
       "text": "BIYING 碧影 碧影待在这个网站里，安静、温和，也愿意陪你把这里已经写下的内容慢慢聊清楚。 公开内容向导 可以闲聊 温和语气 如果你想知道我最近在做什么、这里有哪些笔记和项目，或者只是想随便聊几句，都可以来找碧影。 他会从这个网站已经公开的内容里回答你；如果这里还没有写到，他也会坦白告诉你。 !!! info \"当前模式\" 登录后，碧影会优先连接线上 API。只有当网络或接口异常时，下面的对话框才会退回本地公开知识库。"
     },
     {
@@ -274,6 +320,8 @@
       ],
       "url": "/zh/guestbook/",
       "sourcePath": "docs/zh/guestbook/index.md",
+      "locale": "zh",
+      "kind": "page",
       "text": "GUESTBOOK 留言 如果你来过这里，也欢迎留下一句话：打个招呼、交换想法、指出问题，或者告诉我你希望它以后长成什么样。 公开展示 请勿填写隐私 这里是公开留言板。注册或登录后，你可以留下几句话，也可以修改或删除自己写过的内容。留言会被其他访客看到，所以请不要写手机号、住址、私人邮箱之类的隐私信息。系统会对明显像隐私信息的内容做轻提醒，也会限制过于频繁的提交。 这里更适合留给别人也能看到的话。想私下说的内容，请不要写在这里。"
     },
     {
@@ -285,6 +333,8 @@
       ],
       "url": "/zh/",
       "sourcePath": "docs/zh/index.md",
+      "locale": "zh",
+      "kind": "page",
       "text": "BIYING DIGITAL GARDEN 碧影数字花园 一个用来长期沉淀学习、项目和近况的双语空间。笔记是根系，项目是枝干，碧影负责把公开内容温柔地连接起来。 AI 本科生 vibe coding 具身智能 全栈开发 和碧影对话 查看项目 进入笔记 PUBLIC NOTE 随机笔记 刷新生成一枚封面 NOTE BIYING 此刻 正在继续打磨数字花园与碧影 最近整理 课程讲义、项目复盘与站点边界 建议入口 想快速了解近况，可以先看“现在” 你好，很高兴认识你。 碧影在这里，陪你从容地逛一逛。 想知道我最近在做什么、这里有哪些内容，或者只是想随便聊聊，都可以先和碧影说句话。这个网站没有写到的部分，他也会如实告诉你。 和碧影聊聊 模块近况 想先看站点最近哪里有变化，可以从这里扫一眼；更完整的记录放在 模块更新 。 碧影 增加公开上下文与最近对话记忆 留言 补上隐私提醒、节流与站主治理 后台 增加恢复码与账号维护工具 公开信号 这里不是一次性完成的作品集，而是一个会持续更新的入口。你可以从不同路径进入：读笔记、看项目、了解现在，或者直接问碧影。 笔记 记录学习、数学、AI、工程和一些慢慢成形的想法。中文为主源，英文尽量同步维护。 阅读笔记 项目 放正在认真推进的作品，也记录它们为什么这样做、哪里还不够好。 查看项目 碧影 想更轻松地了解这里，可以直接和碧影聊聊。他会从已经公开的内容里陪你找线索。 启动对话 留言 访客可以公开留言。请不要留下隐私信息，所有留言默认面向其他访客可见。 留下信号 进入路径 先认识我 从 关于我 和 现在 开始，能最快看见我是谁、最近又在忙什么。 看我怎么做 从 项目 和 笔记 进入，会更容易看见技术、取舍和长期积累。 想交流 可以去 留言 ，也可以直接和 碧影 说句话。 碧影只会读取已经公开到网站上的内容。没有发布出来的草稿、私密文件和账号活动，不会进入他的回答范围。"
     },
     {
@@ -296,6 +346,8 @@
       ],
       "url": "/zh/notes/ai/",
       "sourcePath": "docs/zh/notes/ai.md",
+      "locale": "zh",
+      "kind": "page",
       "text": "TOPIC AI 给未来的模型、智能体和实验记录留一个清楚入口。"
     },
     {
@@ -307,6 +359,8 @@
       ],
       "url": "/zh/notes/algorithms/",
       "sourcePath": "docs/zh/notes/algorithms.md",
+      "locale": "zh",
+      "kind": "page",
       "text": "TOPIC 算法 把数据结构、复杂度和算法取舍放在一起理解。"
     },
     {
@@ -319,7 +373,617 @@
       ],
       "url": "/zh/notes/computer-systems-lecture/",
       "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
-      "text": "计算机系统基础讲义 根据 SYS/ 目录下当前 8 份课件整理。生成日期：2026 05 13。 当前覆盖：导论、信息表示、布尔代数、组合逻辑、运算部件、时序逻辑、ISA、RISC V 与程序装载。后续若继续加入新课件，可在本文末尾“增量补充区”继续扩展，不破坏已有章节编号。 资料来源 { note sec 001 } | 讲次 | 文件 | 主题 | 页数 | | | | :| :| | Lec00 | SYS/Lec00 Introduction.pptx | 课程导论、系统分层 | 25 | | Lec01 | SYS/Lec01 Information Representation.pptx | 信息与数据表示 | 101 | | Lec02 | SYS/Lec02 Boolean Algebra.pptx | 布尔代数、逻辑门、电路参数 | 139 | | Lec03 | SYS/Lec03 Combinational Logic.pptx | Verilog、组合逻辑、常用功能块 | 102 | | Lec04 | SYS/Lec04 Arithmetic Unit.pptx | 加减乘除、ALU、浮点运算 | 143 | | Lec05 | SYS/Lec05 Sequential Logic.pptx | 锁存器、触发器、FSM、寄存器、计数器 | 154 | | Lec06 1 | SYS/Lec06 1 ISA.pptx | ISA 设计与分类 | 71 | | Lec06 2 | SYS/Lec06 2 RISCV.pptx | RISC V、调用约定、ELF、链接装载 | 130 | 0. 课程视角：从门电路到系统软件 { note sec 002 } 计算机系统可以看成一组层次化抽象。越往下越接近物理实现，越往上越接近程序员和用户看到的行为。系统课程的核心价值，是把这些层次之间的接口讲清楚。 !!! note \"图像资源待补充：计算机系统课程分层\" 原始讲义引用了 ./sys notes assets/system overview.jpg ，但当前 note/ 目录没有随附图片资源。后续补充图片后可恢复为 Markdown 图片。 0.1 抽象层次 { note sec 003 } 典型计算机系统从上到下可以分为： | 层次 | 主要内容 | 本讲义中的对应章节 | | | | | | 应用程序 | 用户可见的软件功能 | 作为背景 | | 编译器、库、运行时 | 把高级语言程序翻译成机器可执行形式 | 7.6、7.7 | | 操作系统 | 进程、内存、文件、设备、中断、系统调用 | 与后续系统课程衔接 | | ISA | 软件和硬件之间的契约，定义指令、寄存器、地址空间、异常等 | 6、7 | | 微体系结构 | CPU 如何实现 ISA，如单周期、流水线、乱序等 | 本课程略作铺垫 | | RTL | 寄存器传输级：寄存器、总线、ALU、控制信号 | 4、5 | | 数字逻辑电路 | 门电路、组合逻辑、时序逻辑 | 2、3、5 | | 器件技术 | 晶体管、电压、电容、延迟、功耗 | 2.3 | 0.2 本课程主线 { note sec 004 } 本课程不是单独学习“逻辑门”或“汇编语言”，而是建立一条连贯链路： 理解这条链路后，许多系统问题会变得自然：为什么整数会溢出，为什么浮点加法不满足结合律，为什么 RISC V 指令字段要固定位置，为什么函数调用要保存寄存器，为什么链接器要重定位符号。 1. 信息表示 { note sec 005 } 1.1 信息、信号与二值抽象 { note sec 006 } 计算机内部无法直接处理“文字、图像、声音、视频、结构化对象”这些高级信息。它们必须被编码成二进制数据，再由硬件按照 0 和 1 的规则处理。 数字系统中使用二值信号，是因为它把连续物理世界压缩成离散判断： 电压可以表示 0/1，例如低电压表示 0，高电压表示 1。 磁场方向、光盘坑面反射、DRAM 电荷量等也可以表示 0/1。 只要输入电压落在合法低电平或高电平范围内，逻辑电路就能忽略一定程度的噪声。 信号按时间和值域可以粗略分为： | 信号类型 | 值域 | 时间 | 例子 | | | | | | | 模拟信号 | 连续 | 连续 | 音频电压波形 | | 异步数字信号 | 离散 | 连续 | 未统一采样的开关信号 | | 同步数字信号 | 离散 | 离散 | 时钟边沿采样的寄存器输入 | 1.2 外部信息与内部数据 { note sec 007 } 从用户和高级程序员角度看，信息可以是文本、图像、声音、视频、图、树、链表、队列等；从机器内部看，基本数据主要分成： 数值数据：无符号整数、有符号整数、定点数、浮点数。 非数值数据：逻辑值、字符、字符串、媒体编码、结构化数据的地址关系。 课程中的关键思想是： 同一串比特没有天然含义，含义来自解释方式 。例如 11111111 可以是无符号数 255，也可以是补码整数 1，也可以是字符、颜色分量或机器指令的一部分。 1.3 进位计数制 { note sec 008 } 任意正基数 r 的位置计数制可以写成： 其数值为： 其中每一位数字满足 0 = | 建模方式： | 方式 | 特点 | | | | | 结构化建模 | 实例化模块、门级连接，接近电路图 | | 数据流建模 | 使用 assign 描述组合逻辑 | | 行为建模 | 使用 always 、 case 、 if 等过程语句 | 组合逻辑行为建模常用： 组合逻辑中要避免遗漏赋值，否则综合器可能推断锁存器。 3.5 组合逻辑电路定义 { note sec 037 } 组合逻辑电路有： m 个布尔输入。 n 个布尔输出。 n 个开关函数，每个函数把当前输入组合映射到当前输出。 核心性质： 输出只依赖当前输入，不依赖历史状态 。 与时序逻辑对比： | 类型 | 是否有存储 | 输出依赖 | | | | | | 组合逻辑 | 无 | 当前输入 | | 时序逻辑 | 有 | 当前输入和过去状态 | 组合逻辑要求： 每个元件本身是组合逻辑。 一个节点只能被一个元件输出驱动。 不允许形成反馈环路。 3.6 组合逻辑设计流程 { note sec 038 } 设计步骤： 1. 规格说明：明确输入、输出、编码方式和约束。 2. 形式化：列真值表或初始布尔方程。 3. 优化：降低 literal cost、gate input cost 或关键路径延迟。 4. 技术映射：映射到目标门库、NAND/NOR、MUX、FPGA LUT 等。 5. 验证：功能仿真、等价检查、时序分析。 3.7 例：三开关控制单灯 { note sec 039 } 需求：房间只有一盏灯，由三个开关控制，每个开关单独拨动都能改变灯的亮灭。 这实际是奇偶函数。若开关闭合记为 1，灯亮记为 1，则灯亮当且仅当闭合开关数为奇数： SOP 写法： Verilog： 如果只按最小项写 assign ，结果正确但不如 XOR 表达简洁。 3.8 常用组合功能块 { note sec 040 } 3.8.1 基本功能 { note sec 041 } | 功能 | 方程 | 含义 | | | | | | 固定 0 | F = 0 | 输出常 0 | | 固定 1 | F = 1 | 输出常 1 | | 传送 | F = X | 直接传递 | | 反相 | F = X' | 取反 | | 使能传递 | F = X·EN 或 F = X + EN | 控制通过或阻断 | 多位总线可以看成一组并行 bit。宽线表示 vector signal，必要时可拆分为单 bit 或子字段。 3.8.2 Decoder { note sec 042 } Decoder 把 n 位输入码转换为最多 2^n 个输出，其中每个有效输入激活唯一输出。典型 3 to 8 decoder： Decoder 可用于生成最小项，因此可与 OR 门一起实现任意 SOP 函数： 实现方式：3 to 8 decoder 输出 m0 到 m7 ，把 m1、m2、m4、m7 接入 OR。 3.8.3 七段数码管译码器 { note sec 043 } BCD to seven segment decoder 把 4 位 BCD 输入转换为 a 到 g 七段控制信号。 | 类型 | 公共端 | 点亮条件 | | | | | | 共阳极 | 阳极接 1 | 段信号为 0 点亮，active low | | 共阴极 | 阴极接 0 | 段信号为 1 点亮，active high | 设计时必须先确认数码管类型，否则输出极性会反。 3.8.4 Encoder 与 Priority Encoder { note sec 044 } Encoder 与 decoder 方向相反，把 one hot 输入编码成二进制输出。普通 encoder 假设同时只有一个输入为 1。 Priority encoder 允许多个输入同时为 1，并输出最高优先级输入的编号，通常还带一个 valid 位。 3.8.5 Multiplexer { note sec 045 } MUX 从多个输入中选一个输出。 2^n to 1 MUX 有 n 个选择信号。 2 to 1 MUX： 4 to 1 MUX： MUX 也能实现逻辑函数：把函数变量接到选择输入，把真值表每行输出值固定到数据输入。 3.9 时序分析、关键路径与毛刺 { note sec 046 } 传播延迟： 污染延迟： 组合电路最大延迟由关键路径决定： 最短路径影响污染延迟： 毛刺 glitch 通常由不同路径延迟不一致引起。当单个输入变化通过多条路径到达输出，输出可能短暂错误翻转。 分析组合逻辑的步骤： 1. 从输入开始给每个中间节点写布尔函数。 2. 得到输出函数。 3. 化简或等价变换。 4. 列真值表验证功能。 5. 画时序图，检查延迟、毛刺和关键路径。 4. 运算部件与"
+      "locale": "zh",
+      "kind": "page",
+      "text": "计算机系统基础讲义 根据 SYS/ 目录下当前 8 份课件整理。生成日期：2026 05 13。 当前覆盖：导论、信息表示、布尔代数、组合逻辑、运算部件、时序逻辑、ISA、RISC V 与程序装载。后续若继续加入新课件，可在本文末尾“增量补充区”继续扩展，不破坏已有章节编号。 资料来源 | 讲次 | 文件 | 主题 | 页数 | | | | :| :| | Lec00 | SYS/Lec00 Introduction.pptx | 课程导论、系统分层 | 25 | | Lec01 | SYS/Lec01 Information Representation.pptx | 信息与数据表示 | 101 | | Lec02 | SYS/Lec02 Boolean Algebra.pptx | 布尔代数、逻辑门、电路参数 | 139 | | Lec03 | SYS/Lec03 Combinational Logic.pptx | Verilog、组合逻辑、常用功能块 | 102 | | Lec04 | SYS/Lec04 Arithmetic Unit.pptx | 加减乘除、ALU、浮点运算 | 143 | | Lec05 | SYS/Lec05 Sequential Logic.pptx | 锁存器、触发器、FSM、寄存器、计数器 | 154 | | Lec06 1 | SYS/Lec06 1 ISA.pptx | ISA 设计与分类 | 71 | | Lec06 2 | SYS/Lec06 2 RISCV.pptx | RISC V、调用约定、ELF、链接装载 | 130 | 0. 课程视角：从门电路到系统软件 计算机系统可以看成一组层次化抽象。越往下越接近物理实现，越往上越接近程序员和用户看到的行为。系统课程的核心价值，是把这些层次之间的接口讲清楚。 !!! note \"图像资源待补充：计算机系统课程分层\" 原始讲义引用了 ./sys notes assets/system overview.jpg ，但当前 note/ 目录没有随附图片资源。后续补充图片后可恢复为 Markdown 图片。 0.1 抽象层次 典型计算机系统从上到下可以分为： | 层次 | 主要内容 | 本讲义中的对应章节 | | | | | | 应用程序 | 用户可见的软件功能 | 作为背景 | | 编译器、库、运行时 | 把高级语言程序翻译成机器可执行形式 | 7.6、7.7 | | 操作系统 | 进程、内存、文件、设备、中断、系统调用 | 与后续系统课程衔接 | | ISA | 软件和硬件之间的契约，定义指令、寄存器、地址空间、异常等 | 6、7 | | 微体系结构 | CPU 如何实现 ISA，如单周期、流水线、乱序等 | 本课程略作铺垫 | | RTL | 寄存器传输级：寄存器、总线、ALU、控制信号 | 4、5 | | 数字逻辑电路 | 门电路、组合逻辑、时序逻辑 | 2、3、5 | | 器件技术 | 晶体管、电压、电容、延迟、功耗 | 2.3 | 0.2 本课程主线 本课程不是单独学习“逻辑门”或“汇编语言”，而是建立一条连贯链路： 理解这条链路后，许多系统问题会变得自然：为什么整数会溢出，为什么浮点加法不满足结合律，为什么 RISC V 指令字段要固定位置，为什么函数调用要保存寄存器，为什么链接器要重定位符号。 1. 信息表示 1.1 信息、信号与二值抽象 计算机内部无法直接处理“文字、图像、声音、视频、结构化对象”这些高级信息。它们必须被编码成二进制数据，再由硬件按照 0 和 1 的规则处理。 数字系统中使用二值信号，是因为它把连续物理世界压缩成离散判断： 电压可以表示 0/1，例如低电压表示 0，高电压表示 1。 磁场方向、光盘坑面反射、DRAM 电荷量等也可以表示 0/1。 只要输入电压落在合法低电平或高电平范围内，逻辑电路就能忽略一定程度的噪声。 信号按时间和值域可以粗略分为： | 信号类型 | 值域 | 时间 | 例子 | | | | | | | 模拟信号 | 连续 | 连续 | 音频电压波形 | | 异步数字信号 | 离散 | 连续 | 未统一采样的开关信号 | | 同步数字信号 | 离散 | 离散 | 时钟边沿采样的寄存器输入 | 1.2 外部信息与内部数据 从用户和高级程序员角度看，信息可以是文本、图像、声音、视频、图、树、链表、队列等；从机器内部看，基本数据主要分成： 数值数据：无符号整数、有符号整数、定点数、浮点数。 非数值数据：逻辑值、字符、字符串、媒体编码、结构化数据的地址关系。 课程中的关键思想是： 同一串比特没有天然含义，含义来自解释方式 。例如 11111111 可以是无符号数 255，也可以是补码整数 1，也可以是字符、颜色分量或机器指令的一部分。 1.3 进位计数制 任意正基数 r 的位置计数制可以写成： 其数值为： 其中每一位数字满足 0 = | 建模方式： | 方式 | 特点 | | | | | 结构化建模 | 实例化模块、门级连接，接近电路图 | | 数据流建模 | 使用 assign 描述组合逻辑 | | 行为建模 | 使用 always 、 case 、 if 等过程语句 | 组合逻辑行为建模常用： 组合逻辑中要避免遗漏赋值，否则综合器可能推断锁存器。 3.5 组合逻辑电路定义 组合逻辑电路有： m 个布尔输入。 n 个布尔输出。 n 个开关函数，每个函数把当前输入组合映射到当前输出。 核心性质： 输出只依赖当前输入，不依赖历史状态 。 与时序逻辑对比： | 类型 | 是否有存储 | 输出依赖 | | | | | | 组合逻辑 | 无 | 当前输入 | | 时序逻辑 | 有 | 当前输入和过去状态 | 组合逻辑要求： 每个元件本身是组合逻辑。 一个节点只能被一个元件输出驱动。 不允许形成反馈环路。 3.6 组合逻辑设计流程 设计步骤： 1. 规格说明：明确输入、输出、编码方式和约束。 2. 形式化：列真值表或初始布尔方程。 3. 优化：降低 literal cost、gate input cost 或关键路径延迟。 4. 技术映射：映射到目标门库、NAND/NOR、MUX、FPGA LUT 等。 5. 验证：功能仿真、等价检查、时序分析。 3.7 例：三开关控制单灯 需求：房间只有一盏灯，由三个开关控制，每个开关单独拨动都能改变灯的亮灭。 这实际是奇偶函数。若开关闭合记为 1，灯亮记为 1，则灯亮当且仅当闭合开关数为奇数： SOP 写法： Verilog： 如果只按最小项写 assign ，结果正确但不如 XOR 表达简洁。 3.8 常用组合功能块 3.8.1 基本功能 | 功能 | 方程 | 含义 | | | | | | 固定 0 | F = 0 | 输出常 0 | | 固定 1 | F = 1 | 输出常 1 | | 传送 | F = X | 直接传递 | | 反相 | F = X' | 取反 | | 使能传递 | F = X·EN 或 F = X + EN | 控制通过或阻断 | 多位总线可以看成一组并行 bit。宽线表示 vector signal，必要时可拆分为单 bit 或子字段。 3.8.2 Decoder Decoder 把 n 位输入码转换为最多 2^n 个输出，其中每个有效输入激活唯一输出。典型 3 to 8 decoder： Decoder 可用于生成最小项，因此可与 OR 门一起实现任意 SOP 函数： 实现方式：3 to 8 decoder 输出 m0 到 m7 ，把 m1、m2、m4、m7 接入 OR。 3.8.3 七段数码管译码器 BCD to seven segment decoder 把 4 位 BCD 输入转换为 a 到 g 七段控制信号。 | 类型 | 公共端 | 点亮条件 | | | | | | 共阳极 | 阳极接 1 | 段信号为 0 点亮，active low | | 共阴极 | 阴极接 0 | 段信号为 1 点亮，active high | 设计时必须先确认数码管类型，否则输出极性会反。 3.8.4 Encoder 与 Priority Encoder Encoder 与 decoder 方向相反，把 one hot 输入编码成二进制输出。普通 encoder 假设同时只有一个输入为 1。 Priority encoder 允许多个输入同时为 1，并输出最高优先级输入的编号，通常还带一个 valid 位。 3.8.5 Multiplexer MUX 从多个输入中选一个输出。 2^n to 1 MUX 有 n 个选择信号。 2 to 1 MUX： 4 to 1 MUX： MUX 也能实现逻辑函数：把函数变量接到选择输入，把真值表每行输出值固定到数据输入。 3.9 时序分析、关键路径与毛刺 传播延迟： 污染延迟： 组合电路最大延迟由关键路径决定： 最短路径影响污染延迟： 毛刺 glitch 通常由不同路径延迟不一致引起。当单个输入变化通过多条路径到达输出，输出可能短暂错误翻转。 分析组合逻辑的步骤： 1. 从输入开始给每个中间节点写布尔函数。 2. 得到输出函数。 3. 化简或等价变换。 4. 列真值表验证功能。 5. 画时序图，检查延迟、毛刺和关键路径。 4. 运算部件与 ALU 4.1 迭代组合电路 很多算术运算作用于二进制向量，并在每一位重复类似结构。例如加法器、乘法器、除法器都可以看成由多个 cell 组成的迭代阵列。 | 概念 | 含义 | | | | | Cell | 单个位或局部子功能模块 | | Iterative array | 多个 cell 按位连接形成整体功能 | | 1D array | 如串行进位加法器 | | 2D array | 如阵列乘法器 | 4.2 半加器与全加器 半加器输入 A, B ，输出和位 S 与进位 Cout ： 全加器输入 A, B, Cin ，输出： 也可用 generate/propagate 表示： 4.3 多位加法器"
+    },
+    {
+      "title": "计算机系统基础讲义 · 资料来源",
+      "summary": "资料来源 | 讲次 | 文件 | 主题 | 页数 | | | | :| :| | Lec00 | SYS/Lec00 Introduction.pptx | 课程导论、系统分层 | 25 | | Lec01 | SYS/Lec01 Information Representation.pptx | 信息与数据表示 | 101 | | Lec02 | SYS/Lec02 Boolean Algebra.pptx | 布尔代数、逻辑门、电路",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "资料来源 | 讲次 | 文件 | 主题 | 页数 | | | | :| :| | Lec00 | SYS/Lec00 Introduction.pptx | 课程导论、系统分层 | 25 | | Lec01 | SYS/Lec01 Information Representation.pptx | 信息与数据表示 | 101 | | Lec02 | SYS/Lec02 Boolean Algebra.pptx | 布尔代数、逻辑门、电路参数 | 139 | | Lec03 | SYS/Lec03 Combinational Logic.pptx | Verilog、组合逻辑、常用功能块 | 102 | | Lec04 | SYS/Lec04 Arithmetic Unit.pptx | 加减乘除、ALU、浮点运算 | 143 | | Lec05 | SYS/Lec05 Sequential Logic.pptx | 锁存器、触发器、FSM、寄存器、计数器 | 154 | | Lec06 1 | SYS/Lec06 1 ISA.pptx | ISA 设计与分类 | 71 | | Lec06 2 | SYS/Lec06 2 RISCV.pptx | RISC V、调用约定、ELF、链接装载 | 130 |",
+      "section": "资料来源",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 0.1 抽象层次",
+      "summary": "0.1 抽象层次 典型计算机系统从上到下可以分为： | 层次 | 主要内容 | 本讲义中的对应章节 | | | | | | 应用程序 | 用户可见的软件功能 | 作为背景 | | 编译器、库、运行时 | 把高级语言程序翻译成机器可执行形式 | 7.6、7.7 | | 操作系统 | 进程、内存、文件、设备、中断、系统调用 | 与后续系统课程衔接 | | ISA | 软件和硬件之间的契约，定义指令、寄存器、地址空间、异常等 | 6、7 | ",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "0.1 抽象层次 典型计算机系统从上到下可以分为： | 层次 | 主要内容 | 本讲义中的对应章节 | | | | | | 应用程序 | 用户可见的软件功能 | 作为背景 | | 编译器、库、运行时 | 把高级语言程序翻译成机器可执行形式 | 7.6、7.7 | | 操作系统 | 进程、内存、文件、设备、中断、系统调用 | 与后续系统课程衔接 | | ISA | 软件和硬件之间的契约，定义指令、寄存器、地址空间、异常等 | 6、7 | | 微体系结构 | CPU 如何实现 ISA，如单周期、流水线、乱序等 | 本课程略作铺垫 | | RTL | 寄存器传输级：寄存器、总线、ALU、控制信号 | 4、5 | | 数字逻辑电路 | 门电路、组合逻辑、时序逻辑 | 2、3、5 | | 器件技术 | 晶体管、电压、电容、延迟、功耗 | 2.3 |",
+      "section": "0.1 抽象层次",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 1.1 信息、信号与二值抽象",
+      "summary": "1.1 信息、信号与二值抽象 计算机内部无法直接处理“文字、图像、声音、视频、结构化对象”这些高级信息。它们必须被编码成二进制数据，再由硬件按照 0 和 1 的规则处理。 数字系统中使用二值信号，是因为它把连续物理世界压缩成离散判断： 电压可以表示 0/1，例如低电压表示 0，高电压表示 1。 磁场方向、光盘坑面反射、DRAM 电荷量等也可以表示 0/1。 只要输入电压落在合法低电平或高电平范围内，逻辑电路就能忽略一定程度的噪声。 信号",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "1.1 信息、信号与二值抽象 计算机内部无法直接处理“文字、图像、声音、视频、结构化对象”这些高级信息。它们必须被编码成二进制数据，再由硬件按照 0 和 1 的规则处理。 数字系统中使用二值信号，是因为它把连续物理世界压缩成离散判断： 电压可以表示 0/1，例如低电压表示 0，高电压表示 1。 磁场方向、光盘坑面反射、DRAM 电荷量等也可以表示 0/1。 只要输入电压落在合法低电平或高电平范围内，逻辑电路就能忽略一定程度的噪声。 信号按时间和值域可以粗略分为： | 信号类型 | 值域 | 时间 | 例子 | | | | | | | 模拟信号 | 连续 | 连续 | 音频电压波形 | | 异步数字信号 | 离散 | 连续 | 未统一采样的开关信号 | | 同步数字信号 | 离散 | 离散 | 时钟边沿采样的寄存器输入 |",
+      "section": "1.1 信息、信号与二值抽象",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 1.7 定点整数表示",
+      "summary": "1.7 定点整数表示 机器数是计算机内部编码，真值是该编码所表示的数学值。对于 n 位无符号整数： 有符号整数常见表示方式包括： | 表示法 | 思想 | 0 的表示 | 运算便利性 | | | | | | | 原码 sign magnitude | 最高位表示符号，其余位表示绝对值 | +0 和 0 两种 | 加减复杂 | | 反码 one's complement | 负数为正数逐位取反 | +0 和 0 两种 | 比原码好，但仍有",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "1.7 定点整数表示 机器数是计算机内部编码，真值是该编码所表示的数学值。对于 n 位无符号整数： 有符号整数常见表示方式包括： | 表示法 | 思想 | 0 的表示 | 运算便利性 | | | | | | | 原码 sign magnitude | 最高位表示符号，其余位表示绝对值 | +0 和 0 两种 | 加减复杂 | | 反码 one's complement | 负数为正数逐位取反 | +0 和 0 两种 | 比原码好，但仍有双零 | | 补码 two's complement | 负数为反码加 1 | 只有一个 0 | 最适合硬件加减 | | 移码 biased notation | 真值加偏置后编码 | 常用于浮点指数 | 便于比较指数 | 补码是现代计算机整数的核心表示。 n 位补码范围为： 例如 32 位补码范围是：",
+      "section": "1.7 定点整数表示",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 1.9 浮点数表示",
+      "summary": "1.9 浮点数表示 浮点数用于表示很大、很小或带小数的数。IEEE 754 浮点数的数学形式： 其中： s 是符号位。 M 是尾数或有效数，规格化时通常满足 1.0 <= M < 2.0 。 E 是指数，通常使用移码表示。 单精度和双精度： | 类型 | 总位数 | 符号位 | 指数位 | fraction 位 | 指数偏置 | 约十进制精度 | | | :| :| :| :| :| :| | float | 32 | 1 | 8 | ",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "1.9 浮点数表示 浮点数用于表示很大、很小或带小数的数。IEEE 754 浮点数的数学形式： 其中： s 是符号位。 M 是尾数或有效数，规格化时通常满足 1.0 <= M < 2.0 。 E 是指数，通常使用移码表示。 单精度和双精度： | 类型 | 总位数 | 符号位 | 指数位 | fraction 位 | 指数偏置 | 约十进制精度 | | | :| :| :| :| :| :| | float | 32 | 1 | 8 | 23 | 127 | 约 7 位 | | double | 64 | 1 | 11 | 52 | 1023 | 约 16 位 | 例：表示 0.75 ：",
+      "section": "1.9 浮点数表示",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 1.11 舍入与浮点运算陷阱",
+      "summary": "1.11 舍入与浮点运算陷阱 IEEE 754 的基本思想是：先计算精确结果，再舍入到目标精度。常见舍入模式： | 模式 | 含义 | | | | | toward zero | 向 0 截断 | | round down | 向 ∞ 舍入 | | round up | 向 +∞ 舍入 | | nearest even | 最接近，正好居中时选最低有效位为偶数的结果 | 默认通常是 round to nearest even，因为它在统",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "1.11 舍入与浮点运算陷阱 IEEE 754 的基本思想是：先计算精确结果，再舍入到目标精度。常见舍入模式： | 模式 | 含义 | | | | | toward zero | 向 0 截断 | | round down | 向 ∞ 舍入 | | round up | 向 +∞ 舍入 | | nearest even | 最接近，正好居中时选最低有效位为偶数的结果 | 默认通常是 round to nearest even，因为它在统计上较少产生系统偏差。 浮点运算不等同于实数运算。例如加法可能不满足结合律： 原因是 y + z 中的 z 相对 y 太小，可能在对阶和舍入中丢失。",
+      "section": "1.11 舍入与浮点运算陷阱",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 1.14 数据宽度、字长与大小端",
+      "summary": "1.14 数据宽度、字长与大小端 基本单位： bit：二进制位。 byte：8 bit。 word：机器自然处理的整数或地址大小，常见为 32 位或 64 位。 多字节数据在内存中的排列方式： | 方式 | 低地址存放 | 高地址存放 | 例子 | | | | | | | Big Endian | 高字节 | 低字节 | 网络字节序、部分 PowerPC | | Little Endian | 低字节 | 高字节 | x86、RISC ",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "1.14 数据宽度、字长与大小端 基本单位： bit：二进制位。 byte：8 bit。 word：机器自然处理的整数或地址大小，常见为 32 位或 64 位。 多字节数据在内存中的排列方式： | 方式 | 低地址存放 | 高地址存放 | 例子 | | | | | | | Big Endian | 高字节 | 低字节 | 网络字节序、部分 PowerPC | | Little Endian | 低字节 | 高字节 | x86、RISC V | 例如 32 位数据 0x01234567 从地址 0x100 开始存放：",
+      "section": "1.14 数据宽度、字长与大小端",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 2.3 晶体管与逻辑门",
+      "summary": "2.3 晶体管与逻辑门 早期计算机使用继电器和真空管作为开关，现代数字电路主要使用晶体管。CMOS 电路由 NMOS 和 PMOS 晶体管组合而成，常用于实现 NAND、NOR、反相器等逻辑门。 数字电路不是理想数学对象，它受到物理参数影响： | 参数 | 含义 | | | | | VCC / VDD | 电源电压 | | VIH | 输入被识别为高电平的最低电压 | | VIL | 输入被识别为低电平的最高电压 | | VOH | 输",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "2.3 晶体管与逻辑门 早期计算机使用继电器和真空管作为开关，现代数字电路主要使用晶体管。CMOS 电路由 NMOS 和 PMOS 晶体管组合而成，常用于实现 NAND、NOR、反相器等逻辑门。 数字电路不是理想数学对象，它受到物理参数影响： | 参数 | 含义 | | | | | VCC / VDD | 电源电压 | | VIH | 输入被识别为高电平的最低电压 | | VIL | 输入被识别为低电平的最高电压 | | VOH | 输出高电平保证值 | | VOL | 输出低电平保证值 | | 噪声容限 | 高/低电平能承受的噪声范围 | | 传播延迟 | 输入变化到输出稳定变化的时间 | | 转换时间 | 输出从低到高或高到低所需时间 | | 功耗 | 静态功耗和动态功耗 | | 扇入 | 一个门可接受的输入数量 | | 扇出 | 一个输出可驱动的输入负载数量 | 噪声容限： 传播延迟可分为： tPLH ：输出从低到高的延迟。 tPHL ：输出从高到低的延迟。 tpd = max(tPLH, tPHL) 。 延迟模型： | 模型 | 含义 | | | | | Transport delay | 输入变化经过固定延迟后体现在输出 | | Inertial delay | 太窄的脉冲会被电路“过滤”掉，更接近真实电路 | 动态功耗通常与开关活动、电容、电压和频率相关。CMOS 静态功耗低，但随着工艺缩小，泄漏功耗也变得重要。",
+      "section": "2.3 晶体管与逻辑门",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 2.4 布尔代数基本律",
+      "summary": "2.4 布尔代数基本律 常用恒等式： | 名称 | 表达式 | | | | | 恒等律 | X + 0 = X ， X·1 = X | | 零一律 | X + 1 = 1 ， X·0 = 0 | | 幂等律 | X + X = X ， X·X = X | | 互补律 | X + X' = 1 ， X·X' = 0 | | 双重否定 | (X')' = X | | 交换律 | X + Y = Y + X ， XY = YX | | 结合律",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "2.4 布尔代数基本律 常用恒等式： | 名称 | 表达式 | | | | | 恒等律 | X + 0 = X ， X·1 = X | | 零一律 | X + 1 = 1 ， X·0 = 0 | | 幂等律 | X + X = X ， X·X = X | | 互补律 | X + X' = 1 ， X·X' = 0 | | 双重否定 | (X')' = X | | 交换律 | X + Y = Y + X ， XY = YX | | 结合律 | (X+Y)+Z = X+(Y+Z) ， (XY)Z = X(YZ) | | 分配律 | X(Y+Z)=XY+XZ ， X+YZ=(X+Y)(X+Z) | | 吸收律 | X + XY = X ， X(X+Y)=X | | 合并律 | XY + XY' = X | | 共识定理 | AB + A'C + BC = AB + A'C | | De Morgan | (XY)' = X' + Y' ， (X+Y)' = X'Y' | 运算优先级：",
+      "section": "2.4 布尔代数基本律",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 2.7 最小项、最大项与标准形式",
+      "summary": "2.7 最小项、最大项与标准形式 定义： Literal：变量或变量的反。 Product term：若干 literal 通过 AND 连接。 Sum term：若干 literal 通过 OR 连接。 Minterm：包含所有变量且每个变量出现一次的乘积项。 Maxterm：包含所有变量且每个变量出现一次的和项。 最小项 m j 对应真值表中编号为 j 的一行，且只在该行取 1。最大项 M j 对应真值表中编号为 j 的一行，且只在",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "2.7 最小项、最大项与标准形式 定义： Literal：变量或变量的反。 Product term：若干 literal 通过 AND 连接。 Sum term：若干 literal 通过 OR 连接。 Minterm：包含所有变量且每个变量出现一次的乘积项。 Maxterm：包含所有变量且每个变量出现一次的和项。 最小项 m j 对应真值表中编号为 j 的一行，且只在该行取 1。最大项 M j 对应真值表中编号为 j 的一行，且只在该行取 0。 规范形式： 规范形式在变量顺序固定时唯一。标准 SOP/POS 形式不要求每个项都包含所有变量，因此不唯一。",
+      "section": "2.7 最小项、最大项与标准形式",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 2.9 Karnaugh Map",
+      "summary": "2.9 Karnaugh Map K map 是小变量数布尔函数的图形化化简工具。每个格子对应一个最小项，相邻格子只相差一个变量。 K map 化简规则： 1. 每个函数值为 1 的格子必须至少被圈一次。 2. 每个圈的格子数必须是 2 的幂。 3. 圈应尽可能大。 4. 圈可以跨越边界，因为 K map 边界相邻。 5. don't care 只在有助于化简时圈入。 6. 最后选择尽量少、尽量大的 prime implicants。 ",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "2.9 Karnaugh Map K map 是小变量数布尔函数的图形化化简工具。每个格子对应一个最小项，相邻格子只相差一个变量。 K map 化简规则： 1. 每个函数值为 1 的格子必须至少被圈一次。 2. 每个圈的格子数必须是 2 的幂。 3. 圈应尽可能大。 4. 圈可以跨越边界，因为 K map 边界相邻。 5. don't care 只在有助于化简时圈入。 6. 最后选择尽量少、尽量大的 prime implicants。 术语： | 名称 | 含义 | | | | | Implicant | 能覆盖某些 1 的乘积项 | | Prime implicant | 不能再扩大的 implicant | | Essential prime implicant | 覆盖了某些只被它覆盖的 1 | 化简结果可能不唯一。不同结果可能逻辑等价，但成本、延迟、布局效果不同。",
+      "section": "2.9 Karnaugh Map",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 2.11 XOR、奇偶校验与三态逻辑",
+      "summary": "2.11 XOR、奇偶校验与三态逻辑 XOR 表示“不同为 1”： 性质： XOR 常用于： 加法器。 减法器。 乘法器。 计数器。 奇偶校验生成与检查。 奇偶校验通过添加一位 parity bit，让整个码字中 1 的个数为奇数或偶数。它能检测单比特错误，但不能纠正错误，也不能可靠检测所有多比特错误。 三态输出除了 0 和 1，还有 Hi Z 高阻态。高阻态相当于输出断开，常用于多设备共享总线。三态缓冲器： | EN | IN | O",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "2.11 XOR、奇偶校验与三态逻辑 XOR 表示“不同为 1”： 性质： XOR 常用于： 加法器。 减法器。 乘法器。 计数器。 奇偶校验生成与检查。 奇偶校验通过添加一位 parity bit，让整个码字中 1 的个数为奇数或偶数。它能检测单比特错误，但不能纠正错误，也不能可靠检测所有多比特错误。 三态输出除了 0 和 1，还有 Hi Z 高阻态。高阻态相当于输出断开，常用于多设备共享总线。三态缓冲器： | EN | IN | OUT | | | | | | 0 | X | Hi Z | | 1 | 0 | 0 | | 1 | 1 | 1 | 传输门也是一种电子开关，可在控制信号作用下连接或断开两个节点。",
+      "section": "2.11 XOR、奇偶校验与三态逻辑",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 3.1 HDL 设计流",
+      "summary": "3.1 HDL 设计流 HDL 是硬件描述语言，用形式化方法描述数字电路与逻辑系统。Verilog 是常用 HDL 之一。 !!! note \"图像资源待补充：ASIC 与 FPGA 设计流\" 原始讲义引用了 ./sys notes assets/hdl design flow.png ，但当前 note/ 目录没有随附图片资源。后续补充图片后可恢复为 Markdown 图片。 典型流程： ASIC 和 FPGA 区别： | 维度 | ",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "3.1 HDL 设计流 HDL 是硬件描述语言，用形式化方法描述数字电路与逻辑系统。Verilog 是常用 HDL 之一。 !!! note \"图像资源待补充：ASIC 与 FPGA 设计流\" 原始讲义引用了 ./sys notes assets/hdl design flow.png ，但当前 note/ 目录没有随附图片资源。后续补充图片后可恢复为 Markdown 图片。 典型流程： ASIC 和 FPGA 区别： | 维度 | ASIC | FPGA | | | | | | 性能/功耗 | 通常更优 | 通常较弱 | | 开发成本 | 高 | 低 | | 修改成本 | 极高 | 可重新配置 | | 设计周期 | 长 | 短 | | 适用场景 | 大批量、固定功能 | 教学、原型、低中批量、可重构加速 |",
+      "section": "3.1 HDL 设计流",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 3.3 Verilog 数字与数据类型",
+      "summary": "3.3 Verilog 数字与数据类型 定宽数字语法： 例子： 基数： | 符号 | 基数 | | | | | b | 二进制 | | o | 八进制 | | d | 十进制 | | h | 十六进制 | 特殊值： x ：未知。 z ：高阻。 ? ：在数字中通常等价于 z ，常用于 casez/casex 或 don't care 表达。 负数要把符号写在 size 前： 常用数据类型： | 类型 | 含义 | | | | | wire",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "3.3 Verilog 数字与数据类型 定宽数字语法： 例子： 基数： | 符号 | 基数 | | | | | b | 二进制 | | o | 八进制 | | d | 十进制 | | h | 十六进制 | 特殊值： x ：未知。 z ：高阻。 ? ：在数字中通常等价于 z ，常用于 casez/casex 或 don't care 表达。 负数要把符号写在 size 前： 常用数据类型： | 类型 | 含义 | | | | | wire | 连线，通常由连续赋值或模块输出驱动 | | reg | 过程赋值变量，不一定综合为寄存器 | | vector | 多位信号，如 wire [7:0] a | | array | 数组，如 reg [15:0] mem [1023:0] | | parameter | 模块内常量参数 | 端口习惯： input 默认是 wire。 output 可定义为 wire 或 reg，取决于赋值方式。 实例化连接时，模块输出一般接 wire。",
+      "section": "3.3 Verilog 数字与数据类型",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 3.4 运算符与建模方式",
+      "summary": "3.4 运算符与建模方式 常见运算符： | 类别 | 运算符 | | | | | 一元 | + | | 位运算 | ~ & | ^ ^~ | | 算术 | + / % | | 归约 | & ~& | ~| ^ ^~ | | 逻辑 | && || ! | | 等价 | == != | | 关系 | = | 建模方式： | 方式 | 特点 | | | | | 结构化建模 | 实例化模块、门级连接，接近电路图 | | 数据流建模 | 使用 a",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "3.4 运算符与建模方式 常见运算符： | 类别 | 运算符 | | | | | 一元 | + | | 位运算 | ~ & | ^ ^~ | | 算术 | + / % | | 归约 | & ~& | ~| ^ ^~ | | 逻辑 | && || ! | | 等价 | == != | | 关系 | = | 建模方式： | 方式 | 特点 | | | | | 结构化建模 | 实例化模块、门级连接，接近电路图 | | 数据流建模 | 使用 assign 描述组合逻辑 | | 行为建模 | 使用 always 、 case 、 if 等过程语句 | 组合逻辑行为建模常用： 组合逻辑中要避免遗漏赋值，否则综合器可能推断锁存器。",
+      "section": "3.4 运算符与建模方式",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 4.3 多位加法器",
+      "summary": "4.3 多位加法器 常见 CPA（carry propagate adder）： | 类型 | 思想 | 优点 | 缺点 | | | | | | | RCA | 进位逐位传播 | 硬件简单 | 慢，延迟随位数线性增长 | | Carry Skip | 某些块整体传播时跳过 | 比 RCA 快 | 控制和分块复杂 | | Carry Select | 同时计算 Cin=0/1，最后选择 | 快 | 硬件重复 | | CLA | 直接推导多",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "4.3 多位加法器 常见 CPA（carry propagate adder）： | 类型 | 思想 | 优点 | 缺点 | | | | | | | RCA | 进位逐位传播 | 硬件简单 | 慢，延迟随位数线性增长 | | Carry Skip | 某些块整体传播时跳过 | 比 RCA 快 | 控制和分块复杂 | | Carry Select | 同时计算 Cin=0/1，最后选择 | 快 | 硬件重复 | | CLA | 直接推导多位进位 | 快 | 扇入和布线复杂 | | Prefix Adder | 用前缀树计算进位 | log N 级 | 面积和布线开销较大 | Ripple carry adder 延迟近似： Carry lookahead 展开： 当位数很大时，直接展开会导致门扇入过大，因此使用分组 generate/propagate 或 prefix tree。 Prefix adder 的核心递推： 延迟近似：",
+      "section": "4.3 多位加法器",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 4.4 减法与溢出",
+      "summary": "4.4 减法与溢出 无符号减法可通过补码加法实现： 硬件上： 4 位加减器可用控制信号 S ： S=0 ：执行 A + B 。 S=1 ：执行 A + ~B + 1 。 Carry 和 overflow 区别： | 标志 | 用于 | 含义 | | | | | | Carry / Borrow | 无符号运算 | 结果超出无符号范围 | | Overflow | 有符号补码运算 | 结果超出补码范围 | 有符号溢出发生于： 两个正数相加",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "4.4 减法与溢出 无符号减法可通过补码加法实现： 硬件上： 4 位加减器可用控制信号 S ： S=0 ：执行 A + B 。 S=1 ：执行 A + ~B + 1 。 Carry 和 overflow 区别： | 标志 | 用于 | 含义 | | | | | | Carry / Borrow | 无符号运算 | 结果超出无符号范围 | | Overflow | 有符号补码运算 | 结果超出补码范围 | 有符号溢出发生于： 两个正数相加得到负数。 两个负数相加得到正数。 检测方式： 其中 Cn 是最高位的进位输出， Cn 1 是进入符号位的进位。 常见标志： | 标志 | 含义 | | | | | ZF | 结果为 0 | | SF / NF | 结果符号位 | | CF | 无符号进位或借位 | | OF | 有符号溢出 |",
+      "section": "4.4 减法与溢出",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 4.5 ALU",
+      "summary": "4.5 ALU ALU 是处理器数据通路的核心，执行算术和逻辑操作。 !!! note \"图像资源待补充：ALU 符号\" 原始讲义引用了 ./sys notes assets/alu symbol.png ，但当前 note/ 目录没有随附图片资源。后续补充图片后可恢复为 Markdown 图片。 典型 ALU 操作： | 控制 | 功能 | | | | | AND | 按位与 | | OR | 按位或 | | ADD | 加法 | |",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "4.5 ALU ALU 是处理器数据通路的核心，执行算术和逻辑操作。 !!! note \"图像资源待补充：ALU 符号\" 原始讲义引用了 ./sys notes assets/alu symbol.png ，但当前 note/ 目录没有随附图片资源。后续补充图片后可恢复为 Markdown 图片。 典型 ALU 操作： | 控制 | 功能 | | | | | AND | 按位与 | | OR | 按位或 | | ADD | 加法 | | SUB | 减法 | | SLT | set less than | | NOT | 取反 | | SRL/SRA/SLL | 移位 | | XOR | 按位异或 | SLT 的基本思路： 硬件常通过计算 rs rt ，再根据符号与溢出判断大小。对于有符号比较，不能只看减法结果符号位，还要结合 overflow。",
+      "section": "4.5 ALU",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 4.6 移位器",
+      "summary": "4.6 移位器 移位类型： | 类型 | 右移填充 | 用途 | | | | | | 逻辑左移/右移 | 0 | 无符号位操作 | | 算术右移 | 原符号位 | 有符号除以 2 的幂 | | 循环移位 | 移出的位绕回 | 加密、校验、位操作 | 关系： Barrel shifter 可以在组合逻辑中一次完成多位移位，避免多周期逐位移动。 !!! note \"图像资源待补充：4 位 barrel shifter 功能表\" 原始讲义引用",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "4.6 移位器 移位类型： | 类型 | 右移填充 | 用途 | | | | | | 逻辑左移/右移 | 0 | 无符号位操作 | | 算术右移 | 原符号位 | 有符号除以 2 的幂 | | 循环移位 | 移出的位绕回 | 加密、校验、位操作 | 关系： Barrel shifter 可以在组合逻辑中一次完成多位移位，避免多周期逐位移动。 !!! note \"图像资源待补充：4 位 barrel shifter 功能表\" 原始讲义引用了 ./sys notes assets/barrel shifter table.png ，但当前 note/ 目录没有随附图片资源。后续补充图片后可恢复为 Markdown 图片。",
+      "section": "4.6 移位器",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 4.7 乘法",
+      "summary": "4.7 乘法 二进制乘法类似十进制竖式： 1. 根据乘数每一位生成部分积。 2. 部分积按位移位。 3. 将部分积相加。 最直接的 shift add 算法： 硬件实现可以逐步优化： | 实现 | 特点 | | | | | 实现 1 | ALU 和寄存器较宽，直接但浪费 | | 实现 2 | 被乘数固定，乘数右移，部分积右移 | | 实现 3 | 乘数放在部分积寄存器右半部，减少寄存器 | | 阵列乘法器 | 并行加部分积，速度快但面积",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "4.7 乘法 二进制乘法类似十进制竖式： 1. 根据乘数每一位生成部分积。 2. 部分积按位移位。 3. 将部分积相加。 最直接的 shift add 算法： 硬件实现可以逐步优化： | 实现 | 特点 | | | | | 实现 1 | ALU 和寄存器较宽，直接但浪费 | | 实现 2 | 被乘数固定，乘数右移，部分积右移 | | 实现 3 | 乘数放在部分积寄存器右半部，减少寄存器 | | 阵列乘法器 | 并行加部分积，速度快但面积大 | 有符号乘法的简单方法： 1. 记录两个操作数符号。 2. 转成非负数做无符号乘法。 3. 根据符号决定结果正负。 更高效方法：Booth 算法。",
+      "section": "4.7 乘法",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 4.8 Booth 算法",
+      "summary": "4.8 Booth 算法 Booth 算法利用乘数中连续的 1： 一长串连续 1 可以用一次加和一次减代替多次加。 规则可用当前位和右侧前一位判断： | 当前位 | 右侧位 | 含义 | 操作 | | | | | | | 0 | 0 | 0 串中间 | 无操作 | | 0 | 1 | 1 串结束 | 加 | | 1 | 0 | 1 串开始 | 减 | | 1 | 1 | 1 串中间 | 无操作 | Booth 编码也可扩展到每周期处理 ",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "4.8 Booth 算法 Booth 算法利用乘数中连续的 1： 一长串连续 1 可以用一次加和一次减代替多次加。 规则可用当前位和右侧前一位判断： | 当前位 | 右侧位 | 含义 | 操作 | | | | | | | 0 | 0 | 0 串中间 | 无操作 | | 0 | 1 | 1 串结束 | 加 | | 1 | 0 | 1 串开始 | 减 | | 1 | 1 | 1 串中间 | 无操作 | Booth 编码也可扩展到每周期处理 2 位： | 编码效果 | 操作 | | | | | 2 | 左移被乘数 1 位后减 | | 1 | 减 | | 0 | 无操作 | | +1 | 加 | | +2 | 左移被乘数 1 位后加 | 优点是减少部分积数量，缺点是控制逻辑更复杂。",
+      "section": "4.8 Booth 算法",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 5.3 SR Latch、D Latch 与 Flip Flop",
+      "summary": "5.3 SR Latch、D Latch 与 Flip Flop SR latch 可由交叉耦合 NAND 或 NOR 构成。它有 set、reset、hold 行为，但存在非法输入组合。 D latch 通过把 SR 输入约束为互补，避免非法状态： Latch 是电平敏感，可能在时钟有效电平期间多次透传。Flip flop 是边沿触发，只在时钟边沿采样输入，更适合同步设计。 常见触发器： | 类型 | 输入 | 行为 | | | | ",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "5.3 SR Latch、D Latch 与 Flip Flop SR latch 可由交叉耦合 NAND 或 NOR 构成。它有 set、reset、hold 行为，但存在非法输入组合。 D latch 通过把 SR 输入约束为互补，避免非法状态： Latch 是电平敏感，可能在时钟有效电平期间多次透传。Flip flop 是边沿触发，只在时钟边沿采样输入，更适合同步设计。 常见触发器： | 类型 | 输入 | 行为 | | | | | | D FF | D | 边沿到来时 Q < D | | JK FF | J,K | 00 保持， 01 reset， 10 set， 11 翻转 | | T FF | T | 0 保持， 1 翻转 |",
+      "section": "5.3 SR Latch、D Latch 与 Flip Flop",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 5.4 触发器时序参数",
+      "summary": "5.4 触发器时序参数 | 参数 | 含义 | | | | | setup time ts | 时钟边沿前输入必须稳定的时间 | | hold time th | 时钟边沿后输入必须继续稳定的时间 | | clock to Q delay tpd,FF | 时钟边沿到输出变化的延迟 | | pulse width tw | 时钟脉冲宽度 | 对于从一个触发器到另一个触发器的路径： 课件中使用 slack 写法： 要正确工作，所有路径都应",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "5.4 触发器时序参数 | 参数 | 含义 | | | | | setup time ts | 时钟边沿前输入必须稳定的时间 | | hold time th | 时钟边沿后输入必须继续稳定的时间 | | clock to Q delay tpd,FF | 时钟边沿到输出变化的延迟 | | pulse width tw | 时钟脉冲宽度 | 对于从一个触发器到另一个触发器的路径： 课件中使用 slack 写法： 要正确工作，所有路径都应满足 tslack = 0 。 例：时钟 250 MHz，则周期 tp = 4 ns 。若 tpd,FF = 1.0 ns ，边沿触发器 ts = 0.3 ns ：",
+      "section": "5.4 触发器时序参数",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 5.10 未使用状态与自启动",
+      "summary": "5.10 未使用状态与自启动 当状态编码数量大于实际状态数，会出现 unused states。电路上电、复位异常或噪声可能让 FSM 进入未使用状态。 处理策略： | 策略 | 含义 | | | | | reset | 上电或错误时强制进入初始状态 | | self starting | 所有非法状态最终回到合法状态 | | error state | 进入非法状态后停在错误状态并报告 | | don't care 优化 | 面积小，",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "5.10 未使用状态与自启动 当状态编码数量大于实际状态数，会出现 unused states。电路上电、复位异常或噪声可能让 FSM 进入未使用状态。 处理策略： | 策略 | 含义 | | | | | reset | 上电或错误时强制进入初始状态 | | self starting | 所有非法状态最终回到合法状态 | | error state | 进入非法状态后停在错误状态并报告 | | don't care 优化 | 面积小，但需验证非法状态行为 | 若非法状态互相循环，机器可能“卡死”。工程中不能只看合法状态图，还要检查完整编码空间。",
+      "section": "5.10 未使用状态与自启动",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 5.11 寄存器与寄存器传输",
+      "summary": "5.11 寄存器与寄存器传输 寄存器是一组触发器，用于存储多位二进制值。寄存器常用于处理器中的临时数据保存，比主存更快。 带使能的触发器和寄存器： !!! note \"图像资源待补充：带 EN 的 D 触发器与 4 位寄存器\" 原始讲义引用了 ./sys notes assets/register enable.png ，但当前 note/ 目录没有随附图片资源。后续补充图片后可恢复为 Markdown 图片。 寄存器传输操作由三部分描",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "5.11 寄存器与寄存器传输 寄存器是一组触发器，用于存储多位二进制值。寄存器常用于处理器中的临时数据保存，比主存更快。 带使能的触发器和寄存器： !!! note \"图像资源待补充：带 EN 的 D 触发器与 4 位寄存器\" 原始讲义引用了 ./sys notes assets/register enable.png ，但当前 note/ 目录没有随附图片资源。后续补充图片后可恢复为 Markdown 图片。 寄存器传输操作由三部分描述： 1. 系统中的寄存器集合。 2. 对寄存器数据执行的微操作。 3. 控制这些操作发生顺序的控制信号。 常见微操作： | 类型 | 例子 | | | | | Transfer | R2 < R1 | | Arithmetic | R3 < R1 + R2 | | Logic | R3 < R1 XOR R2 | | Shift | R1 < R1 << 1 | 控制表达式写在左侧： 含义：当 K1 = 1 时执行该传输。",
+      "section": "5.11 寄存器与寄存器传输",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 5.14 计数器",
+      "summary": "5.14 计数器 计数器按固定状态序列前进。用途包括： 时间基准。 事件计数。 位数/步骤计数。 程序计数器 PC。 类型： | 类型 | 特点 | | | | | Ripple counter | 低位触发高位，非真正同步，低功耗但延迟逐级累加 | | Synchronous counter | 所有触发器共用时钟，组合逻辑产生下一状态 | | Modulo N counter | 按 N 个状态循环 | | BCD counter ",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "5.14 计数器 计数器按固定状态序列前进。用途包括： 时间基准。 事件计数。 位数/步骤计数。 程序计数器 PC。 类型： | 类型 | 特点 | | | | | Ripple counter | 低位触发高位，非真正同步，低功耗但延迟逐级累加 | | Synchronous counter | 所有触发器共用时钟，组合逻辑产生下一状态 | | Modulo N counter | 按 N 个状态循环 | | BCD counter | 十进制 0 到 9 循环 | Ripple counter 最坏延迟约为： 同步计数器可用 incrementer 生成下一状态，但 carry chain 也可能变成长路径；可用并行 gating 或 lookahead 优化。 设计 modulo N counter 时应避免“suicide counter”：异步检测终止状态后立即清零可能产生窄脉冲和时序风险。更稳妥方法是在终止状态前一拍同步 load/clear。",
+      "section": "5.14 计数器",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 6.3 指令格式设计因素",
+      "summary": "6.3 指令格式设计因素 设计 ISA 时要考虑： 指令长度：定长、变长、混合。 操作数个数：3、2、1、0 地址。 可寻址寄存器数量。 内存是按字节还是按字寻址。 支持哪些寻址方式。 opcode 是否预留扩展空间。 字段位置是否规则。 指令对齐要求。 Hennessy 和 Patterson 的设计原则： 1. Simplicity favors regularity：简单源于规则。 2. Make the common case ",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "6.3 指令格式设计因素 设计 ISA 时要考虑： 指令长度：定长、变长、混合。 操作数个数：3、2、1、0 地址。 可寻址寄存器数量。 内存是按字节还是按字寻址。 支持哪些寻址方式。 opcode 是否预留扩展空间。 字段位置是否规则。 指令对齐要求。 Hennessy 和 Patterson 的设计原则： 1. Simplicity favors regularity：简单源于规则。 2. Make the common case fast：让常见情况更快。 3. Smaller is faster：更小通常更快。 4. Good design demands good compromises：好设计需要折中。",
+      "section": "6.3 指令格式设计因素",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 6.5 寻址方式",
+      "summary": "6.5 寻址方式 有效地址是实际访问操作数的位置。常见寻址方式： | 方式 | 示例 | 含义 | | | | | | Immediate | ADD 5 | 操作数就是常数 5 | | Direct | ADD 100 | 访问内存地址 100 的内容 | | Indirect | ADD [100] | 地址 100 中存着真正地址 | | Register direct | ADD R5 | 操作数在寄存器 R5 | | Regi",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "6.5 寻址方式 有效地址是实际访问操作数的位置。常见寻址方式： | 方式 | 示例 | 含义 | | | | | | Immediate | ADD 5 | 操作数就是常数 5 | | Direct | ADD 100 | 访问内存地址 100 的内容 | | Indirect | ADD [100] | 地址 100 中存着真正地址 | | Register direct | ADD R5 | 操作数在寄存器 R5 | | Register indirect | ADD [R3] | R3 中存着内存地址 | | Relative | PC + offset | 常用于分支 | | Indexed | base + index | 常用于数组 | | Based | base register + displacement | 常用于结构体、栈帧 | 寻址方式越丰富，编程越方便，但解码和执行硬件越复杂。",
+      "section": "6.5 寻址方式",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 6.8 CISC 与 RISC",
+      "summary": "6.8 CISC 与 RISC CISC 动机： 缩小高级语言与机器指令之间的语义差距。 降低代码大小。 在内存昂贵的时代减少程序体积。 常用微码实现复杂指令。 RISC 动机： 实际常用指令较少。 复杂指令会拖慢整体解码和实现。 简化指令格式和寻址方式，方便流水线。 把更多优化责任交给编译器。 典型对比： | CISC | RISC | | | | | 变长指令 | 固定长度指令 | | 指令和寻址方式多 | 指令和寻址方式少 | |",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "6.8 CISC 与 RISC CISC 动机： 缩小高级语言与机器指令之间的语义差距。 降低代码大小。 在内存昂贵的时代减少程序体积。 常用微码实现复杂指令。 RISC 动机： 实际常用指令较少。 复杂指令会拖慢整体解码和实现。 简化指令格式和寻址方式，方便流水线。 把更多优化责任交给编译器。 典型对比： | CISC | RISC | | | | | 变长指令 | 固定长度指令 | | 指令和寻址方式多 | 指令和寻址方式少 | | 解码复杂 | 解码简单 | | 支持内存到内存操作 | load/store 架构 | | 常用微码 | 通常硬连线控制 | | 代码密度较好 | 易流水线、易超标量 | 现实中 CISC/RISC 不是绝对二分。现代 x86 外部是 CISC ISA，内部常把复杂指令解码为类似 RISC 的 micro ops。",
+      "section": "6.8 CISC 与 RISC",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 6.9 ISA 分类",
+      "summary": "6.9 ISA 分类 按操作数位置分类： | 类型 | 示例 | 特点 | | | | | | Accumulator | add A ， acc < acc + mem[A] | 硬件简单，累加器瓶颈明显 | | Stack | add ，操作栈顶 | 指令短，难并行优化 | | Memory Memory | add A,B,C | 指令数少，内存流量大 | | Register Memory | add R1,A | 代码密度好，",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "6.9 ISA 分类 按操作数位置分类： | 类型 | 示例 | 特点 | | | | | | Accumulator | add A ， acc < acc + mem[A] | 硬件简单，累加器瓶颈明显 | | Stack | add ，操作栈顶 | 指令短，难并行优化 | | Memory Memory | add A,B,C | 指令数少，内存流量大 | | Register Memory | add R1,A | 代码密度好，操作数不对称 | | Load Store | add R1,R2,R3 | 算术只用寄存器，访存只用 load/store | 现代新 ISA 几乎都采用 load store，因为： 寄存器比内存快。 固定长度编码简单。 指令周期更一致。 易流水线和超标量。 寄存器字段比内存地址字段短。 缺点是： 指令条数可能更多。 编译器必须更好地分配寄存器。 函数调用和上下文切换要保存/恢复寄存器。",
+      "section": "6.9 ISA 分类",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 7.1 RISC V 概览",
+      "summary": "7.1 RISC V 概览 RISC V 是开放的 RISC 指令集标准，起源于 UC Berkeley。目标是： 完全开放，可用于学术界和工业界。 适合真实硬件实现，而不只是模拟。 不绑定特定微体系结构或实现技术。 使用小型基础整数 ISA，加标准扩展和自定义扩展。 支持 IEEE 754 浮点扩展。 RISC V 命名： 例： | 名称 | 含义 | | | | | RV32I | 32 位地址/寄存器，基础整数 ISA | | R",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "7.1 RISC V 概览 RISC V 是开放的 RISC 指令集标准，起源于 UC Berkeley。目标是： 完全开放，可用于学术界和工业界。 适合真实硬件实现，而不只是模拟。 不绑定特定微体系结构或实现技术。 使用小型基础整数 ISA，加标准扩展和自定义扩展。 支持 IEEE 754 浮点扩展。 RISC V 命名： 例： | 名称 | 含义 | | | | | RV32I | 32 位地址/寄存器，基础整数 ISA | | RV64I | 64 位基础整数 ISA | | RV32IM | RV32I + 乘除扩展 | | RV32G | IMAFD 通用组合 | 标准扩展： | 扩展 | 含义 | | | | | I | Integer base | | M | Integer multiply/divide | | A | Atomic | | F | Single precision floating point | | D | Double precision floating point | | C | Compressed 16 bit instructions |",
+      "section": "7.1 RISC V 概览",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 7.3 指令格式",
+      "summary": "7.3 指令格式 RISC V 基础指令通常是 32 位，字段位置尽量固定，便于解码。最低两位为 11 表示 32 位基础指令；压缩指令使用其他低位编码。 !!! note \"图像资源待补充：RISC V 核心指令格式\" 原始讲义引用了 ./sys notes assets/riscv formats.png ，但当前 note/ 目录没有随附图片资源。后续补充图片后可恢复为 Markdown 图片。 核心格式： | 格式 | 用途 |",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "7.3 指令格式 RISC V 基础指令通常是 32 位，字段位置尽量固定，便于解码。最低两位为 11 表示 32 位基础指令；压缩指令使用其他低位编码。 !!! note \"图像资源待补充：RISC V 核心指令格式\" 原始讲义引用了 ./sys notes assets/riscv formats.png ，但当前 note/ 目录没有随附图片资源。后续补充图片后可恢复为 Markdown 图片。 核心格式： | 格式 | 用途 | 主要字段 | | | | | | R type | 寄存器 寄存器 ALU | funct7 rs2 rs1 funct3 rd opcode | | I type | 立即数 ALU、load、jalr | imm[11:0] rs1 funct3 rd opcode | | S type | store | imm[11:5] rs2 rs1 funct3 imm[4:0] opcode | | B type | conditional branch | 分散 immediate + rs2 rs1 funct3 opcode | | U type | lui、auipc | imm[31:12] rd opcode | | J type | jal | 分散 immediate + rd opcode | 重要设计点： rd 、 rs1 、 rs2 位置尽量固定。 立即数符号位总在 instruction bit 31。 branch/jump 偏移按 2 字节粒度编码，以兼容压缩指令。",
+      "section": "7.3 指令格式",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 7.6 RISC V 调用约定",
+      "summary": "7.6 RISC V 调用约定 函数调用六步： 1. 把参数放到被调函数能访问的位置。 2. 跳转到函数。 3. 分配局部存储，按约定保存必要寄存器。 4. 执行函数主体。 5. 放置返回值，恢复寄存器，释放栈帧。 6. 返回调用点。 常用寄存器约定： | ABI 名称 | 编号 | 用途 | 调用后是否保持 | | | | | | | zero | x0 | 常数 0 | n/a | | ra | x1 | 返回地址 | 否；非叶子函",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "7.6 RISC V 调用约定 函数调用六步： 1. 把参数放到被调函数能访问的位置。 2. 跳转到函数。 3. 分配局部存储，按约定保存必要寄存器。 4. 执行函数主体。 5. 放置返回值，恢复寄存器，释放栈帧。 6. 返回调用点。 常用寄存器约定： | ABI 名称 | 编号 | 用途 | 调用后是否保持 | | | | | | | zero | x0 | 常数 0 | n/a | | ra | x1 | 返回地址 | 否；非叶子函数若还要返回原调用者，需保存 | | sp | x2 | 栈指针 | 是 | | gp | x3 | 全局指针 | 通常固定 | | tp | x4 | 线程指针 | 通常固定 | | t0 t2 | x5 x7 | 临时寄存器 | 否 | | s0/fp | x8 | 保存寄存器/帧指针 | 是 | | s1 | x9 | 保存寄存器 | 是 | | a0 a7 | x10 x17 | 参数/返回值 | 否 | | s2 s11 | x18 x27 | 保存寄存器 | 是 | | t3 t6 | x28 x31 | 临时寄存器 | 否 | 课件中使用 RV64 风格示例，栈以 8 字节为单位保存 sd/ld 。 叶子函数例： 可能的汇编：",
+      "section": "7.6 RISC V 调用约定",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 7.7 栈帧与内存布局",
+      "summary": "7.7 栈帧与内存布局 栈通常从高地址向低地址增长： 栈帧保存： 返回地址。 旧帧指针。 callee saved registers。 局部变量。 溢出到栈上的参数。 !!! note \"图像资源待补充：栈帧结构\" 原始讲义引用了 ./sys notes assets/stack frame.png ，但当前 note/ 目录没有随附图片资源。后续补充图片后可恢复为 Markdown 图片。 典型进程内存布局： 递归函数必须保存返回地",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "7.7 栈帧与内存布局 栈通常从高地址向低地址增长： 栈帧保存： 返回地址。 旧帧指针。 callee saved registers。 局部变量。 溢出到栈上的参数。 !!! note \"图像资源待补充：栈帧结构\" 原始讲义引用了 ./sys notes assets/stack frame.png ，但当前 note/ 目录没有随附图片资源。后续补充图片后可恢复为 Markdown 图片。 典型进程内存布局： 递归函数必须保存返回地址和调用后仍要使用的参数/临时值。递归过深会造成栈溢出。尾递归或循环可减少栈消耗。",
+      "section": "7.7 栈帧与内存布局",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 7.10 ELF 目标文件",
+      "summary": "7.10 ELF 目标文件 ELF 是 Unix like 系统常见目标文件、可执行文件、共享库格式。 目标文件类型： | 类型 | 含义 | | | | | relocatable file | 可重定位目标文件，用于链接 | | executable file | 可执行程序 | | shared object file | 共享库，可被动态链接 | 可重定位目标文件包含： ELF header：文件结构、入口等元信息。 .text",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "7.10 ELF 目标文件 ELF 是 Unix like 系统常见目标文件、可执行文件、共享库格式。 目标文件类型： | 类型 | 含义 | | | | | relocatable file | 可重定位目标文件，用于链接 | | executable file | 可执行程序 | | shared object file | 共享库，可被动态链接 | 可重定位目标文件包含： ELF header：文件结构、入口等元信息。 .text ：机器指令。 .data ：已初始化静态数据。 .bss ：未初始化静态数据，装载时清零。 relocation information：哪些位置需要链接器修正地址。 symbol table：定义和引用的符号。 debug information：调试信息。",
+      "section": "7.10 ELF 目标文件",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 7.12 静态链接与动态链接",
+      "summary": "7.12 静态链接与动态链接 静态链接： 所需库代码在链接时复制进可执行文件。 启动时简单，运行时开销低。 多个程序可能重复包含同一库代码。 库修复 bug 后，程序需重新链接才能使用新版。 动态链接： 程序启动或首次调用时解析共享库符号。 多个程序可共享内存中的同一库代码。 更新库后程序可使用新版本。 首次调用有解析开销。 静态库类似对象文件集合，例如 libc.a 中有 printf.o 、 read.o 等。链接器只选取需要解析未",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "7.12 静态链接与动态链接 静态链接： 所需库代码在链接时复制进可执行文件。 启动时简单，运行时开销低。 多个程序可能重复包含同一库代码。 库修复 bug 后，程序需重新链接才能使用新版。 动态链接： 程序启动或首次调用时解析共享库符号。 多个程序可共享内存中的同一库代码。 更新库后程序可使用新版本。 首次调用有解析开销。 静态库类似对象文件集合，例如 libc.a 中有 printf.o 、 read.o 等。链接器只选取需要解析未定义符号的对象文件。 共享库依赖装载器和动态链接器完成最终绑定，常涉及 GOT 和 PLT。",
+      "section": "7.12 静态链接与动态链接",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 7.13 装载器、PIC 与 Lazy Binding",
+      "summary": "7.13 装载器、PIC 与 Lazy Binding 装载器的任务： 1. 读取可执行文件头，确定地址空间需求。 2. 分配地址空间。 3. 把 text/data 等段读入内存。 4. 清零 .bss 。 5. 创建栈。 6. 设置参数、环境变量和初始寄存器。 7. 跳转到入口点。 动态链接程序启动时，操作系统可能先启动动态链接器，由它完成共享库映射和符号解析。 位置无关代码 PIC： 代码不依赖固定装载地址。 常用 PC rela",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "7.13 装载器、PIC 与 Lazy Binding 装载器的任务： 1. 读取可执行文件头，确定地址空间需求。 2. 分配地址空间。 3. 把 text/data 等段读入内存。 4. 清零 .bss 。 5. 创建栈。 6. 设置参数、环境变量和初始寄存器。 7. 跳转到入口点。 动态链接程序启动时，操作系统可能先启动动态链接器，由它完成共享库映射和符号解析。 位置无关代码 PIC： 代码不依赖固定装载地址。 常用 PC relative addressing。 共享库可被映射到不同进程地址空间的不同位置。 ELF 中可通过 GOT 访问全局数据。 Lazy binding： 第一次调用动态库函数时进入 stub。 动态链接器解析真实地址并修补跳转表。 后续调用直接跳到真实函数。",
+      "section": "7.13 装载器、PIC 与 Lazy Binding",
+      "parentTitle": "计算机系统基础讲义"
+    },
+    {
+      "title": "计算机系统基础讲义 · 8.6 常用 RISC V 寄存器",
+      "summary": "8.6 常用 RISC V 寄存器 | ABI | 编号 | 用途 | | | | | | zero | x0 | 常数 0 | | ra | x1 | 返回地址 | | sp | x2 | 栈指针 | | gp | x3 | 全局指针 | | tp | x4 | 线程指针 | | t0 t2 | x5 x7 | 临时 | | s0/fp | x8 | 保存寄存器/帧指针 | | s1 | x9 | 保存寄存器 | | a0 a7 | ",
+      "tags": [
+        "computer-systems",
+        "risc-v",
+        "course-note"
+      ],
+      "url": "/zh/notes/computer-systems-lecture/",
+      "sourcePath": "docs/zh/notes/computer-systems-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "8.6 常用 RISC V 寄存器 | ABI | 编号 | 用途 | | | | | | zero | x0 | 常数 0 | | ra | x1 | 返回地址 | | sp | x2 | 栈指针 | | gp | x3 | 全局指针 | | tp | x4 | 线程指针 | | t0 t2 | x5 x7 | 临时 | | s0/fp | x8 | 保存寄存器/帧指针 | | s1 | x9 | 保存寄存器 | | a0 a7 | x10 x17 | 参数/返回值 | | s2 s11 | x18 x27 | 保存寄存器 | | t3 t6 | x28 x31 | 临时 |",
+      "section": "8.6 常用 RISC V 寄存器",
+      "parentTitle": "计算机系统基础讲义"
     },
     {
       "title": "离散数学讲义",
@@ -331,7 +995,377 @@
       ],
       "url": "/zh/notes/discrete-math-lecture/",
       "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
-      "text": "离散数学讲义 版本：2026 05 13 来源：根据 DM/ 目录下现有离散数学课件整理。 维护方式：后续新增 PPT/PDF 时，优先补充到对应章节；若新增内容属于未覆盖章节，则在“待补充章节”中扩展为正式章节。 使用说明 { note sec 001 } 这份讲义按章节组织，目标不是逐页复述课件，而是把课件中的定义、定理、方法、例题类型和解题套路整理成可复习、可发布到笔记网站的 Markdown 文档。 每一章建议按以下顺序学习： 1. 先看“核心目标”，明确本章要解决的问题。 2. 再看定义和定理，注意每个符号的含义。 3. 通过例题类型掌握建模和证明套路。 4. 最后用“小结与补充位”检查是否还有新课件需要补充。 本文使用 LaTeX 公式语法，例如 $p \\to q$、$\\forall x P(x)$、$O(n\\log n)$。上传到笔记网站时，请确认网站支持 Markdown 数学公式渲染。 现有课件索引 { note sec 002 } | 讲义章节 | 对应课件 | | | | | 第 1 章 逻辑与证明 | DM1.1(8).pdf , DM1.2 1.3(5).pdf , DM1.4(6).pdf , DM1.5(5).pdf , DM1.6(6).pdf , DM1.7 1.8(6).pdf | | 第 2 章 基本结构 | DM2.1.pdf , DM2.2.pdf , DM2.3.pdf , DM2.4.pdf , DM2.5 2.6(5).pdf | | 第 3 章 算法 | DM3.1 3.3(4).pdf | | 第 4 章 待补充 | 当前未提供对应课件 | | 第 5 章 归纳与递归 | DM5.1 5.4(7).pdf | | 第 6 章 计数 | DM6.1(3).pdf , DM6.2(3).pdf , DM6.3 6.4(6).pdf , DM6.5(3).pdf | | 第 7 章 待补充 | 当前未提供对应课件 | | 第 8 章 高级计数技术 | DM8.1 8.2(6).pdf , DM8.3.pdf , DM8.4(6).pdf , DM8.5 8.6(9).pdf | | 第 9 章 关系 | DM9.1 9.3(8).pdf , DM9.4(6).pdf , DM9.5(3).pdf | 全书知识结构 { note sec 003 } 第 1 章 逻辑与证明 { note sec 004 } 1.0 核心目标 { note sec 005 } 本章要建立离散数学的语言基础。命题逻辑用于刻画“真或假”的陈述，谓词逻辑用于刻画带变量的数学语句，推理规则和证明方法用于把前提严谨地推到结论。 学完本章应能做到： 判断一句话是否为命题，并写出复合命题的形式。 使用真值表、逻辑等价式、范式分析命题。 把自然语言翻译成谓词逻辑表达式。 正确使用全称量词、存在量词和嵌套量词。 使用推理规则构造有效论证。 区分直接证明、逆否证明、反证法、分情况证明、存在性证明和反例证明。 1.1 命题逻辑 { note sec 006 } 命题 { note sec 007 } 命题是一个具有确定真值的陈述句。它要么为真，要么为假，不能二者同时成立。 常见判断： | 句子 | 是否为命题 | 原因 | | | | | | “2022 年冬奥会在北京举行。” | 是 | 有确定真值 | | “9 是素数。” | 是 | 有确定真值，且为假 | | “请打开书。” | 否 | 命令句，没有真假 | | “现在几点？” | 否 | 疑问句，没有真假 | | $x+1=4$ | 通常不是 | 未指定 $x$ 时没有确定真值 | 通常用 $p,q,r,\\ldots$ 表示命题变量。真值可记为 T/F ，也可记为 1/0 。 复合命题和联结词 { note sec 008 } 复合命题由命题变量和逻辑联结词构成。 | 名称 | 符号 | 读法 | 为真的条件 | | | | | | | 否定 | $\\neg p$ | 非 $p$ | $p$ 为假 | | 合取 | $p \\land q$ | $p$ 且 $q$ | $p,q$ 都真 | | 析取 | $p \\lor q$ | $p$ 或 $q$ | 至少一个真 | | 异或 | $p \\oplus q$ | 要么 $p$ 要么 $q$ | 恰好一个真 | | 条件 | $p \\to q$ | 若 $p$ 则 $q$ | 只有 $p$ 真、$q$ 假时为假 | | 双条件 | $p \\leftrightarrow q$ | $p$ 当且仅当 $q$ | $p,q$ 真值相同 | 条件命题 $p \\to q$ 中，$p$ 称为前件，$q$ 称为后件。它的真假只由前件和后件的真值决定，不要求二者存在因果关系。课件中把它类比为“承诺”：只有承诺条件发生而结果没有发生时，承诺才被违反。 条件命题的相关形式 { note sec 009 } 从 $p \\to q$ 可构造： | 名称 | 形式 | 与原命题的关系 | | | | | | 逆命题 | $q \\to p$ | 不一定等价 | | 否命题 | $\\neg p \\to \\neg q$ | 不一定等价 | | 逆否命题 | $\\neg q \\to \\neg p$ | 与原命题等价 | 因此证明 $p \\to q$ 时，经常改证 $\\neg q \\to \\neg p$。 真值表 { note sec 010 } 真值表列出命题变量的全部可能赋值。若有 $n$ 个命题变量，则真值表有 $2^n$ 行。 例：证明 $p \\to q$ 与 $\\neg p \\lor q$ 等价。 | $p$ | $q$ | $p \\to q$ | $\\neg p \\lor q$ | | | | | | | T | T | T | T | | T | F | F | F | | F | T | T | T | | F | F | T | T | 两列完全相同，所以 $p \\to q \\equiv \\neg p \\lor q$。 运算优先级 { note sec 011 } 常用优先级从高到低为： 1. 括号。 2. 否定 $\\neg$。 3. 合取 $\\land$。 4. 析取 $\\lor$。 5. 条件 $\\to$。 6. 双条件 $\\leftrightarrow$。 表达复杂公式时应尽量加括号，避免歧义。 位运算 { note sec 012 } 计算机中比特 0/1 可看作假/真。位串上的按位运算是把逻辑运算逐位推广。 例：设两个位串为 0110110110 与 1100011101 。 按位 OR：对应位至少一个为 1 时为 1 。 按位 AND：对应位都为 1 时为 1 。 按位 XOR：对应位恰好一个为 1 时为 1 。 这说明命题逻辑不仅是证明语言，也是数字系统和程序判断的基础。 1.2 命题逻辑的应用 { note sec 013 } 自然语言翻译 { note sec 014 } 把自然语言翻译成命题逻辑的目的，是消除自然语言中的歧义，使推理可以形式化。 步骤： 1. 找出原子命题。 2. 给每个原子命题命名。 3. 判断关键词对应的联结词。 4. 注意“only if”“unless”“necessary”“sufficient”等短语。 例：“You can access the Internet from campus only if you are a computer science major or you are not a freshman.” 设： $a$：你可以从校园访问互联网。 $c$：你是计算机科学专业学生。 $f$：你是一年级学生。 “$p$ only if $q$” 表示 $p \\to q$。所以原句翻译为： $a \\to (c \\lor \\neg f)$ 系统规格说明 { note sec 015 } 软件和系统工程中，经常把自然语言需求翻译成逻辑公式。 若一组规格说明可以同时为真，则称其一致；若不存在任何赋值能让所有公式同时为真，则不一致。 例： $p \\to q$、$p$、$\\neg q$ 三条规格不一致，因为由前两条可推出 $q$，与第三条矛盾。 逻辑谜题 { note sec 016 } 骑士与骗子问题、宝箱问题等都可以通过命题变量建模。基本套路： 1. 用命题变量描述“某人说真话”“某箱有宝物”等事实。 2. 把每句话翻译为逻辑表达式。 3. 加入题目约束，例如“骑士总说真话，骗子总说假话”。 4. 用真值表、等价变形或反证排除不可能情况。 1.3 命题等价式与范式 { note sec 017 } 重言式、矛盾式、可满足式 { note sec 018 } | 名称 | 定义 | 例子 | | | | | | 重言式 | 在所有赋值下都为真 | $p \\lor \\neg p$ | | 矛盾式 | 在所有赋值下都为假 | $p \\land \\neg p$ | | 偶然式 | 有时真、有时假 | $p \\to q$ | | 可满足式 | 至少存在一个赋值使其为真 | $p \\lor q$ | | 不可满足式 | 没有赋值使其为真 | $p \\land \\neg p$ | 两个命题公式 $P,Q$ 逻辑等价，当且仅当 $P \\leftrightarrow Q$ 是重言式，记作 $P \\equiv Q$。 常用逻辑等价式 { note sec 019 } | 名称 | 等价式 | | | | | 恒等律 | $p \\land T \\equiv p$, $p \\lor F \\equiv p$ | | 支配律 | $p \\lor T \\equiv T$, $p \\land F \\equiv F$ | | 幂等律 | $p \\lor p \\equiv p$, $p \\land p \\equiv p$ | | 双重否定律 | $\\neg(\\neg p) \\equiv p$ | | 交换律 | $p \\lor q \\e"
+      "locale": "zh",
+      "kind": "page",
+      "text": "离散数学讲义 版本：2026 05 13 来源：根据 DM/ 目录下现有离散数学课件整理。 维护方式：后续新增 PPT/PDF 时，优先补充到对应章节；若新增内容属于未覆盖章节，则在“待补充章节”中扩展为正式章节。 使用说明 这份讲义按章节组织，目标不是逐页复述课件，而是把课件中的定义、定理、方法、例题类型和解题套路整理成可复习、可发布到笔记网站的 Markdown 文档。 每一章建议按以下顺序学习： 1. 先看“核心目标”，明确本章要解决的问题。 2. 再看定义和定理，注意每个符号的含义。 3. 通过例题类型掌握建模和证明套路。 4. 最后用“小结与补充位”检查是否还有新课件需要补充。 本文使用 LaTeX 公式语法，例如 $p \\to q$、$\\forall x P(x)$、$O(n\\log n)$。上传到笔记网站时，请确认网站支持 Markdown 数学公式渲染。 现有课件索引 | 讲义章节 | 对应课件 | | | | | 第 1 章 逻辑与证明 | DM1.1(8).pdf , DM1.2 1.3(5).pdf , DM1.4(6).pdf , DM1.5(5).pdf , DM1.6(6).pdf , DM1.7 1.8(6).pdf | | 第 2 章 基本结构 | DM2.1.pdf , DM2.2.pdf , DM2.3.pdf , DM2.4.pdf , DM2.5 2.6(5).pdf | | 第 3 章 算法 | DM3.1 3.3(4).pdf | | 第 4 章 待补充 | 当前未提供对应课件 | | 第 5 章 归纳与递归 | DM5.1 5.4(7).pdf | | 第 6 章 计数 | DM6.1(3).pdf , DM6.2(3).pdf , DM6.3 6.4(6).pdf , DM6.5(3).pdf | | 第 7 章 待补充 | 当前未提供对应课件 | | 第 8 章 高级计数技术 | DM8.1 8.2(6).pdf , DM8.3.pdf , DM8.4(6).pdf , DM8.5 8.6(9).pdf | | 第 9 章 关系 | DM9.1 9.3(8).pdf , DM9.4(6).pdf , DM9.5(3).pdf | 全书知识结构 第 1 章 逻辑与证明 1.0 核心目标 本章要建立离散数学的语言基础。命题逻辑用于刻画“真或假”的陈述，谓词逻辑用于刻画带变量的数学语句，推理规则和证明方法用于把前提严谨地推到结论。 学完本章应能做到： 判断一句话是否为命题，并写出复合命题的形式。 使用真值表、逻辑等价式、范式分析命题。 把自然语言翻译成谓词逻辑表达式。 正确使用全称量词、存在量词和嵌套量词。 使用推理规则构造有效论证。 区分直接证明、逆否证明、反证法、分情况证明、存在性证明和反例证明。 1.1 命题逻辑 命题 命题是一个具有确定真值的陈述句。它要么为真，要么为假，不能二者同时成立。 常见判断： | 句子 | 是否为命题 | 原因 | | | | | | “2022 年冬奥会在北京举行。” | 是 | 有确定真值 | | “9 是素数。” | 是 | 有确定真值，且为假 | | “请打开书。” | 否 | 命令句，没有真假 | | “现在几点？” | 否 | 疑问句，没有真假 | | $x+1=4$ | 通常不是 | 未指定 $x$ 时没有确定真值 | 通常用 $p,q,r,\\ldots$ 表示命题变量。真值可记为 T/F ，也可记为 1/0 。 复合命题和联结词 复合命题由命题变量和逻辑联结词构成。 | 名称 | 符号 | 读法 | 为真的条件 | | | | | | | 否定 | $\\neg p$ | 非 $p$ | $p$ 为假 | | 合取 | $p \\land q$ | $p$ 且 $q$ | $p,q$ 都真 | | 析取 | $p \\lor q$ | $p$ 或 $q$ | 至少一个真 | | 异或 | $p \\oplus q$ | 要么 $p$ 要么 $q$ | 恰好一个真 | | 条件 | $p \\to q$ | 若 $p$ 则 $q$ | 只有 $p$ 真、$q$ 假时为假 | | 双条件 | $p \\leftrightarrow q$ | $p$ 当且仅当 $q$ | $p,q$ 真值相同 | 条件命题 $p \\to q$ 中，$p$ 称为前件，$q$ 称为后件。它的真假只由前件和后件的真值决定，不要求二者存在因果关系。课件中把它类比为“承诺”：只有承诺条件发生而结果没有发生时，承诺才被违反。 条件命题的相关形式 从 $p \\to q$ 可构造： | 名称 | 形式 | 与原命题的关系 | | | | | | 逆命题 | $q \\to p$ | 不一定等价 | | 否命题 | $\\neg p \\to \\neg q$ | 不一定等价 | | 逆否命题 | $\\neg q \\to \\neg p$ | 与原命题等价 | 因此证明 $p \\to q$ 时，经常改证 $\\neg q \\to \\neg p$。 真值表 真值表列出命题变量的全部可能赋值。若有 $n$ 个命题变量，则真值表有 $2^n$ 行。 例：证明 $p \\to q$ 与 $\\neg p \\lor q$ 等价。 | $p$ | $q$ | $p \\to q$ | $\\neg p \\lor q$ | | | | | | | T | T | T | T | | T | F | F | F | | F | T | T | T | | F | F | T | T | 两列完全相同，所以 $p \\to q \\equiv \\neg p \\lor q$。 运算优先级 常用优先级从高到低为： 1. 括号。 2. 否定 $\\neg$。 3. 合取 $\\land$。 4. 析取 $\\lor$。 5. 条件 $\\to$。 6. 双条件 $\\leftrightarrow$。 表达复杂公式时应尽量加括号，避免歧义。 位运算 计算机中比特 0/1 可看作假/真。位串上的按位运算是把逻辑运算逐位推广。 例：设两个位串为 0110110110 与 1100011101 。 按位 OR：对应位至少一个为 1 时为 1 。 按位 AND：对应位都为 1 时为 1 。 按位 XOR：对应位恰好一个为 1 时为 1 。 这说明命题逻辑不仅是证明语言，也是数字系统和程序判断的基础。 1.2 命题逻辑的应用 自然语言翻译 把自然语言翻译成命题逻辑的目的，是消除自然语言中的歧义，使推理可以形式化。 步骤： 1. 找出原子命题。 2. 给每个原子命题命名。 3. 判断关键词对应的联结词。 4. 注意“only if”“unless”“necessary”“sufficient”等短语。 例：“You can access the Internet from campus only if you are a computer science major or you are not a freshman.” 设： $a$：你可以从校园访问互联网。 $c$：你是计算机科学专业学生。 $f$：你是一年级学生。 “$p$ only if $q$” 表示 $p \\to q$。所以原句翻译为： $a \\to (c \\lor \\neg f)$ 系统规格说明 软件和系统工程中，经常把自然语言需求翻译成逻辑公式。 若一组规格说明可以同时为真，则称其一致；若不存在任何赋值能让所有公式同时为真，则不一致。 例： $p \\to q$、$p$、$\\neg q$ 三条规格不一致，因为由前两条可推出 $q$，与第三条矛盾。 逻辑谜题 骑士与骗子问题、宝箱问题等都可以通过命题变量建模。基本套路： 1. 用命题变量描述“某人说真话”“某箱有宝物”等事实。 2. 把每句话翻译为逻辑表达式。 3. 加入题目约束，例如“骑士总说真话，骗子总说假话”。 4. 用真值表、等价变形或反证排除不可能情况。 1.3 命题等价式与范式 重言式、矛盾式、可满足式 | 名称 | 定义 | 例子 | | | | | | 重言式 | 在所有赋值下都为真 | $p \\lor \\neg p$ | | 矛盾式 | 在所有赋值下都为假 | $p \\land \\neg p$ | | 偶然式 | 有时真、有时假 | $p \\to q$ | | 可满足式 | 至少存在一个赋值使其为真 | $p \\lor q$ | | 不可满足式 | 没有赋值使其为真 | $p \\land \\neg p$ | 两个命题公式 $P,Q$ 逻辑等价，当且仅当 $P \\leftrightarrow Q$ 是重言式，记作 $P \\equiv Q$。 常用逻辑等价式 | 名称 | 等价式 | | | | | 恒等律 | $p \\land T \\equiv p$, $p \\lor F \\equiv p$ | | 支配律 | $p \\lor T \\equiv T$, $p \\land F \\equiv F$ | | 幂等律 | $p \\lor p \\equiv p$, $p \\land p \\equiv p$ | | 双重否定律 | $\\neg(\\neg p) \\equiv p$ | | 交换律 | $p \\lor q \\equiv q \\lor p$, $p \\land q \\equiv q \\land p$ | | 结合律 | $(p\\lor q)\\lor r \\equiv p\\lor(q\\lor r)$, $(p\\land q)\\land r \\equiv p\\land(q\\land r)$ | | 分配律 | $p\\lor(q\\land r)\\equiv(p\\lor q)\\land(p\\lor r)$ | | 分配律 | $p\\land(q\\lor r)\\equiv(p\\land q)\\lor(p\\land r)$ | | 德摩根律 | $\\neg(p\\land q)\\equiv \\neg p\\lor \\neg q$ | | 德摩根律 | $\\neg"
+    },
+    {
+      "title": "离散数学讲义 · 使用说明",
+      "summary": "使用说明 这份讲义按章节组织，目标不是逐页复述课件，而是把课件中的定义、定理、方法、例题类型和解题套路整理成可复习、可发布到笔记网站的 Markdown 文档。 每一章建议按以下顺序学习： 1. 先看“核心目标”，明确本章要解决的问题。 2. 再看定义和定理，注意每个符号的含义。 3. 通过例题类型掌握建模和证明套路。 4. 最后用“小结与补充位”检查是否还有新课件需要补充。 本文使用 LaTeX 公式语法，例如 $p \\to q$、$",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "使用说明 这份讲义按章节组织，目标不是逐页复述课件，而是把课件中的定义、定理、方法、例题类型和解题套路整理成可复习、可发布到笔记网站的 Markdown 文档。 每一章建议按以下顺序学习： 1. 先看“核心目标”，明确本章要解决的问题。 2. 再看定义和定理，注意每个符号的含义。 3. 通过例题类型掌握建模和证明套路。 4. 最后用“小结与补充位”检查是否还有新课件需要补充。 本文使用 LaTeX 公式语法，例如 $p \\to q$、$\\forall x P(x)$、$O(n\\log n)$。上传到笔记网站时，请确认网站支持 Markdown 数学公式渲染。",
+      "section": "使用说明",
+      "parentTitle": "离散数学讲义"
+    },
+    {
+      "title": "离散数学讲义 · 现有课件索引",
+      "summary": "现有课件索引 | 讲义章节 | 对应课件 | | | | | 第 1 章 逻辑与证明 | DM1.1(8).pdf , DM1.2 1.3(5).pdf , DM1.4(6).pdf , DM1.5(5).pdf , DM1.6(6).pdf , DM1.7 1.8(6).pdf | | 第 2 章 基本结构 | DM2.1.pdf , DM2.2.pdf , DM2.3.pdf , DM2.4.pdf , DM2.5 2.6(5).p",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "现有课件索引 | 讲义章节 | 对应课件 | | | | | 第 1 章 逻辑与证明 | DM1.1(8).pdf , DM1.2 1.3(5).pdf , DM1.4(6).pdf , DM1.5(5).pdf , DM1.6(6).pdf , DM1.7 1.8(6).pdf | | 第 2 章 基本结构 | DM2.1.pdf , DM2.2.pdf , DM2.3.pdf , DM2.4.pdf , DM2.5 2.6(5).pdf | | 第 3 章 算法 | DM3.1 3.3(4).pdf | | 第 4 章 待补充 | 当前未提供对应课件 | | 第 5 章 归纳与递归 | DM5.1 5.4(7).pdf | | 第 6 章 计数 | DM6.1(3).pdf , DM6.2(3).pdf , DM6.3 6.4(6).pdf , DM6.5(3).pdf | | 第 7 章 待补充 | 当前未提供对应课件 | | 第 8 章 高级计数技术 | DM8.1 8.2(6).pdf , DM8.3.pdf , DM8.4(6).pdf , DM8.5 8.6(9).pdf | | 第 9 章 关系 | DM9.1 9.3(8).pdf , DM9.4(6).pdf , DM9.5(3).pdf |",
+      "section": "现有课件索引",
+      "parentTitle": "离散数学讲义"
+    },
+    {
+      "title": "离散数学讲义 · 命题",
+      "summary": "命题 命题是一个具有确定真值的陈述句。它要么为真，要么为假，不能二者同时成立。 常见判断： | 句子 | 是否为命题 | 原因 | | | | | | “2022 年冬奥会在北京举行。” | 是 | 有确定真值 | | “9 是素数。” | 是 | 有确定真值，且为假 | | “请打开书。” | 否 | 命令句，没有真假 | | “现在几点？” | 否 | 疑问句，没有真假 | | $x+1=4$ | 通常不是 | 未指定 $x$ 时没",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "命题 命题是一个具有确定真值的陈述句。它要么为真，要么为假，不能二者同时成立。 常见判断： | 句子 | 是否为命题 | 原因 | | | | | | “2022 年冬奥会在北京举行。” | 是 | 有确定真值 | | “9 是素数。” | 是 | 有确定真值，且为假 | | “请打开书。” | 否 | 命令句，没有真假 | | “现在几点？” | 否 | 疑问句，没有真假 | | $x+1=4$ | 通常不是 | 未指定 $x$ 时没有确定真值 | 通常用 $p,q,r,\\ldots$ 表示命题变量。真值可记为 T/F ，也可记为 1/0 。",
+      "section": "命题",
+      "parentTitle": "离散数学讲义"
+    },
+    {
+      "title": "离散数学讲义 · 复合命题和联结词",
+      "summary": "复合命题和联结词 复合命题由命题变量和逻辑联结词构成。 | 名称 | 符号 | 读法 | 为真的条件 | | | | | | | 否定 | $\\neg p$ | 非 $p$ | $p$ 为假 | | 合取 | $p \\land q$ | $p$ 且 $q$ | $p,q$ 都真 | | 析取 | $p \\lor q$ | $p$ 或 $q$ | 至少一个真 | | 异或 | $p \\oplus q$ | 要么 $p$ 要么 $q$ | ",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "复合命题和联结词 复合命题由命题变量和逻辑联结词构成。 | 名称 | 符号 | 读法 | 为真的条件 | | | | | | | 否定 | $\\neg p$ | 非 $p$ | $p$ 为假 | | 合取 | $p \\land q$ | $p$ 且 $q$ | $p,q$ 都真 | | 析取 | $p \\lor q$ | $p$ 或 $q$ | 至少一个真 | | 异或 | $p \\oplus q$ | 要么 $p$ 要么 $q$ | 恰好一个真 | | 条件 | $p \\to q$ | 若 $p$ 则 $q$ | 只有 $p$ 真、$q$ 假时为假 | | 双条件 | $p \\leftrightarrow q$ | $p$ 当且仅当 $q$ | $p,q$ 真值相同 | 条件命题 $p \\to q$ 中，$p$ 称为前件，$q$ 称为后件。它的真假只由前件和后件的真值决定，不要求二者存在因果关系。课件中把它类比为“承诺”：只有承诺条件发生而结果没有发生时，承诺才被违反。",
+      "section": "复合命题和联结词",
+      "parentTitle": "离散数学讲义"
+    },
+    {
+      "title": "离散数学讲义 · 自然语言翻译",
+      "summary": "自然语言翻译 把自然语言翻译成命题逻辑的目的，是消除自然语言中的歧义，使推理可以形式化。 步骤： 1. 找出原子命题。 2. 给每个原子命题命名。 3. 判断关键词对应的联结词。 4. 注意“only if”“unless”“necessary”“sufficient”等短语。 例：“You can access the Internet from campus only if you are a computer science ma",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "自然语言翻译 把自然语言翻译成命题逻辑的目的，是消除自然语言中的歧义，使推理可以形式化。 步骤： 1. 找出原子命题。 2. 给每个原子命题命名。 3. 判断关键词对应的联结词。 4. 注意“only if”“unless”“necessary”“sufficient”等短语。 例：“You can access the Internet from campus only if you are a computer science major or you are not a freshman.” 设： $a$：你可以从校园访问互联网。 $c$：你是计算机科学专业学生。 $f$：你是一年级学生。 “$p$ only if $q$” 表示 $p \\to q$。所以原句翻译为： $a \\to (c \\lor \\neg f)$",
+      "section": "自然语言翻译",
+      "parentTitle": "离散数学讲义"
+    },
+    {
+      "title": "离散数学讲义 · 重言式、矛盾式、可满足式",
+      "summary": "重言式、矛盾式、可满足式 | 名称 | 定义 | 例子 | | | | | | 重言式 | 在所有赋值下都为真 | $p \\lor \\neg p$ | | 矛盾式 | 在所有赋值下都为假 | $p \\land \\neg p$ | | 偶然式 | 有时真、有时假 | $p \\to q$ | | 可满足式 | 至少存在一个赋值使其为真 | $p \\lor q$ | | 不可满足式 | 没有赋值使其为真 | $p \\land \\neg p$ ",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "重言式、矛盾式、可满足式 | 名称 | 定义 | 例子 | | | | | | 重言式 | 在所有赋值下都为真 | $p \\lor \\neg p$ | | 矛盾式 | 在所有赋值下都为假 | $p \\land \\neg p$ | | 偶然式 | 有时真、有时假 | $p \\to q$ | | 可满足式 | 至少存在一个赋值使其为真 | $p \\lor q$ | | 不可满足式 | 没有赋值使其为真 | $p \\land \\neg p$ | 两个命题公式 $P,Q$ 逻辑等价，当且仅当 $P \\leftrightarrow Q$ 是重言式，记作 $P \\equiv Q$。",
+      "section": "重言式、矛盾式、可满足式",
+      "parentTitle": "离散数学讲义"
+    },
+    {
+      "title": "离散数学讲义 · 常用逻辑等价式",
+      "summary": "常用逻辑等价式 | 名称 | 等价式 | | | | | 恒等律 | $p \\land T \\equiv p$, $p \\lor F \\equiv p$ | | 支配律 | $p \\lor T \\equiv T$, $p \\land F \\equiv F$ | | 幂等律 | $p \\lor p \\equiv p$, $p \\land p \\equiv p$ | | 双重否定律 | $\\neg(\\neg p) \\equiv p$ | |",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "常用逻辑等价式 | 名称 | 等价式 | | | | | 恒等律 | $p \\land T \\equiv p$, $p \\lor F \\equiv p$ | | 支配律 | $p \\lor T \\equiv T$, $p \\land F \\equiv F$ | | 幂等律 | $p \\lor p \\equiv p$, $p \\land p \\equiv p$ | | 双重否定律 | $\\neg(\\neg p) \\equiv p$ | | 交换律 | $p \\lor q \\equiv q \\lor p$, $p \\land q \\equiv q \\land p$ | | 结合律 | $(p\\lor q)\\lor r \\equiv p\\lor(q\\lor r)$, $(p\\land q)\\land r \\equiv p\\land(q\\land r)$ | | 分配律 | $p\\lor(q\\land r)\\equiv(p\\lor q)\\land(p\\lor r)$ | | 分配律 | $p\\land(q\\lor r)\\equiv(p\\land q)\\lor(p\\land r)$ | | 德摩根律 | $\\neg(p\\land q)\\equiv \\neg p\\lor \\neg q$ | | 德摩根律 | $\\neg(p\\lor q)\\equiv \\neg p\\land \\neg q$ | | 吸收律 | $p\\lor(p\\land q)\\equiv p$, $p\\land(p\\lor q)\\equiv p$ | | 条件等价 | $p\\to q\\equiv \\neg p\\lor q$ | | 双条件等价 | $p\\leftrightarrow q\\equiv(p\\to q)\\land(q\\to p)$ | 扩展德摩根律： $\\neg(p 1\\lor p 2\\lor\\cdots\\lor p n)\\equiv \\neg p 1\\land\\neg p 2\\land\\cdots\\land\\neg p n$ $\\neg(p 1\\land p 2\\land\\cdots\\land p n)\\equiv \\neg p 1\\lor\\neg p 2\\lor\\cdots\\lor\\neg p n$",
+      "section": "常用逻辑等价式",
+      "parentTitle": "离散数学讲义"
+    },
+    {
+      "title": "离散数学讲义 · 命题逻辑推理规则",
+      "summary": "命题逻辑推理规则 | 名称 | 形式 | | | | | 假言推理 Modus Ponens | $p,\\ p\\to q\\ \\therefore q$ | | 拒取式 Modus Tollens | $\\neg q,\\ p\\to q\\ \\therefore \\neg p$ | | 假言三段论 | $p\\to q,\\ q\\to r\\ \\therefore p\\to r$ | | 析取三段论 | $p\\lor q,\\ \\neg p\\ \\th",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "命题逻辑推理规则 | 名称 | 形式 | | | | | 假言推理 Modus Ponens | $p,\\ p\\to q\\ \\therefore q$ | | 拒取式 Modus Tollens | $\\neg q,\\ p\\to q\\ \\therefore \\neg p$ | | 假言三段论 | $p\\to q,\\ q\\to r\\ \\therefore p\\to r$ | | 析取三段论 | $p\\lor q,\\ \\neg p\\ \\therefore q$ | | 合取引入 | $p,\\ q\\ \\therefore p\\land q$ | | 简化 | $p\\land q\\ \\therefore p$ | | 附加 | $p\\ \\therefore p\\lor q$ | | 消解 | $p\\lor q,\\ \\neg p\\lor r\\ \\therefore q\\lor r$ | 消解法适合自动推理。若把公式化为子句集合，反复使用消解可检查结论是否由前提推出。",
+      "section": "命题逻辑推理规则",
+      "parentTitle": "离散数学讲义"
+    },
+    {
+      "title": "离散数学讲义 · 量词推理规则",
+      "summary": "量词推理规则 | 名称 | 形式 | 说明 | | | | | | 全称实例化 UI | $\\forall xP(x)\\ \\therefore P(c)$ | 从所有对象成立推出某个对象成立 | | 全称推广 UG | $P(c)\\ \\therefore \\forall xP(x)$ | $c$ 必须是任意对象 | | 存在实例化 EI | $\\exists xP(x)\\ \\therefore P(c)$ | $c$ 是新的代表元 | ",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "量词推理规则 | 名称 | 形式 | 说明 | | | | | | 全称实例化 UI | $\\forall xP(x)\\ \\therefore P(c)$ | 从所有对象成立推出某个对象成立 | | 全称推广 UG | $P(c)\\ \\therefore \\forall xP(x)$ | $c$ 必须是任意对象 | | 存在实例化 EI | $\\exists xP(x)\\ \\therefore P(c)$ | $c$ 是新的代表元 | | 存在推广 EG | $P(c)\\ \\therefore \\exists xP(x)$ | 某个对象成立则存在对象成立 | 综合规则： 全称假言推理： $\\forall x(P(x)\\to Q(x)),\\ P(a)\\ \\therefore Q(a)$ 全称拒取式： $\\forall x(P(x)\\to Q(x)),\\ \\neg Q(a)\\ \\therefore \\neg P(a)$",
+      "section": "量词推理规则",
+      "parentTitle": "离散数学讲义"
+    },
+    {
+      "title": "离散数学讲义 · 子集和真子集",
+      "summary": "子集和真子集 $A\\subseteq B$ 表示 $A$ 是 $B$ 的子集： $A\\subseteq B\\iff \\forall x(x\\in A\\to x\\in B)$ 集合相等： $A=B\\iff A\\subseteq B\\land B\\subseteq A$ 真子集： $A\\subset B\\iff A\\subseteq B\\land A\\ne B$ 等价地： $A\\subset B\\iff \\forall x(x\\in A\\t",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "子集和真子集 $A\\subseteq B$ 表示 $A$ 是 $B$ 的子集： $A\\subseteq B\\iff \\forall x(x\\in A\\to x\\in B)$ 集合相等： $A=B\\iff A\\subseteq B\\land B\\subseteq A$ 真子集： $A\\subset B\\iff A\\subseteq B\\land A\\ne B$ 等价地： $A\\subset B\\iff \\forall x(x\\in A\\to x\\in B)\\land \\exists x(x\\in B\\land x\\notin A)$",
+      "section": "子集和真子集",
+      "parentTitle": "离散数学讲义"
+    },
+    {
+      "title": "离散数学讲义 · 基本运算",
+      "summary": "基本运算 | 运算 | 记号 | 定义 | | | | | | 并集 | $A\\cup B$ | $\\{x\\mid x\\in A\\lor x\\in B\\}$ | | 交集 | $A\\cap B$ | $\\{x\\mid x\\in A\\land x\\in B\\}$ | | 差集 | $A B$ | $\\{x\\mid x\\in A\\land x\\notin B\\}$ | | 补集 | $\\overline A$ 或 $A^c$ | $\\{x\\",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "基本运算 | 运算 | 记号 | 定义 | | | | | | 并集 | $A\\cup B$ | $\\{x\\mid x\\in A\\lor x\\in B\\}$ | | 交集 | $A\\cap B$ | $\\{x\\mid x\\in A\\land x\\in B\\}$ | | 差集 | $A B$ | $\\{x\\mid x\\in A\\land x\\notin B\\}$ | | 补集 | $\\overline A$ 或 $A^c$ | $\\{x\\in U\\mid x\\notin A\\}$ | | 对称差 | $A\\oplus B$ | $(A B)\\cup(B A)$ |",
+      "section": "基本运算",
+      "parentTitle": "离散数学讲义"
+    },
+    {
+      "title": "离散数学讲义 · 集合恒等式",
+      "summary": "集合恒等式 集合恒等式与逻辑等价式高度对应。 | 名称 | 恒等式 | | | | | 恒等律 | $A\\cup\\varnothing=A$, $A\\cap U=A$ | | 支配律 | $A\\cup U=U$, $A\\cap\\varnothing=\\varnothing$ | | 幂等律 | $A\\cup A=A$, $A\\cap A=A$ | | 补元律 | $A\\cup A^c=U$, $A\\cap A^c=\\varnothing",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "集合恒等式 集合恒等式与逻辑等价式高度对应。 | 名称 | 恒等式 | | | | | 恒等律 | $A\\cup\\varnothing=A$, $A\\cap U=A$ | | 支配律 | $A\\cup U=U$, $A\\cap\\varnothing=\\varnothing$ | | 幂等律 | $A\\cup A=A$, $A\\cap A=A$ | | 补元律 | $A\\cup A^c=U$, $A\\cap A^c=\\varnothing$ | | 交换律 | $A\\cup B=B\\cup A$, $A\\cap B=B\\cap A$ | | 结合律 | $(A\\cup B)\\cup C=A\\cup(B\\cup C)$ | | 分配律 | $A\\cup(B\\cap C)=(A\\cup B)\\cap(A\\cup C)$ | | 德摩根律 | $(A\\cup B)^c=A^c\\cap B^c$ | | 德摩根律 | $(A\\cap B)^c=A^c\\cup B^c$ | | 吸收律 | $A\\cup(A\\cap B)=A$, $A\\cap(A\\cup B)=A$ |",
+      "section": "集合恒等式",
+      "parentTitle": "离散数学讲义"
+    },
+    {
+      "title": "离散数学讲义 · 取整函数",
+      "summary": "取整函数 下取整： $\\lfloor x\\rfloor$ 是不超过 $x$ 的最大整数。 上取整： $\\lceil x\\rceil$ 是不小于 $x$ 的最小整数。 基本性质： $\\lfloor x\\rfloor=n\\iff n\\le x<n+1$ $\\lceil x\\rceil=n\\iff n 1<x\\le n$ 若 $m$ 为整数： $\\lfloor x+m\\rfloor=\\lfloor x\\rfloor+m$ $\\lceil x+",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "取整函数 下取整： $\\lfloor x\\rfloor$ 是不超过 $x$ 的最大整数。 上取整： $\\lceil x\\rceil$ 是不小于 $x$ 的最小整数。 基本性质： $\\lfloor x\\rfloor=n\\iff n\\le x<n+1$ $\\lceil x\\rceil=n\\iff n 1<x\\le n$ 若 $m$ 为整数： $\\lfloor x+m\\rfloor=\\lfloor x\\rfloor+m$ $\\lceil x+m\\rceil=\\lceil x\\rceil+m$ 常见恒等式： $\\lfloor 2x\\rfloor=\\lfloor x\\rfloor+\\lfloor x+\\frac12\\rfloor$ 证明可令 $x=n+\\varepsilon$，其中 $n$ 为整数且 $0\\le\\varepsilon<1$，再分 $0\\le\\varepsilon<1/2$ 和 $1/2\\le\\varepsilon<1$ 两种情况。",
+      "section": "取整函数",
+      "parentTitle": "离散数学讲义"
+    },
+    {
+      "title": "离散数学讲义 · 例：有限集子集个数",
+      "summary": "例：有限集子集个数 命题：若 $S$ 有 $n$ 个元素，则 $S$ 有 $2^n$ 个子集。 基例：$n=0$ 时，$S=\\varnothing$，只有一个子集，$1=2^0$。 归纳步：假设任意 $k$ 元集合有 $2^k$ 个子集。设 $S$ 有 $k+1$ 个元素，取出一个元素 $a$，令 $T=S \\{a\\}$。$T$ 有 $k$ 个元素。 $S$ 的子集分两类： 不含 $a$：对应 $T$ 的子集，有 $2^k$ 个。 含 ",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "例：有限集子集个数 命题：若 $S$ 有 $n$ 个元素，则 $S$ 有 $2^n$ 个子集。 基例：$n=0$ 时，$S=\\varnothing$，只有一个子集，$1=2^0$。 归纳步：假设任意 $k$ 元集合有 $2^k$ 个子集。设 $S$ 有 $k+1$ 个元素，取出一个元素 $a$，令 $T=S \\{a\\}$。$T$ 有 $k$ 个元素。 $S$ 的子集分两类： 不含 $a$：对应 $T$ 的子集，有 $2^k$ 个。 含 $a$：由 $T$ 的每个子集加上 $a$ 得到，有 $2^k$ 个。 总数为 $2^k+2^k=2^{k+1}$。",
+      "section": "例：有限集子集个数",
+      "parentTitle": "离散数学讲义"
+    },
+    {
+      "title": "离散数学讲义 · 例：除法算法",
+      "summary": "例：除法算法 除法算法：对整数 $a$ 和正整数 $d$，存在唯一整数 $q,r$，使： $a=dq+r,\\quad 0\\le r<d$ 存在性证明可用良序性：考虑集合 $S=\\{a dq\\mid q\\in\\mathbb Z,\\ a dq\\ge0\\}$。该集合非空，有最小元素 $r$。证明 $r<d$，否则 $r d$ 也是非负且更小，矛盾。 唯一性可假设： $a=dq+r=dq'+r'$ 其中 $0\\le r,r'<d$。则 $d(q",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "例：除法算法 除法算法：对整数 $a$ 和正整数 $d$，存在唯一整数 $q,r$，使： $a=dq+r,\\quad 0\\le r<d$ 存在性证明可用良序性：考虑集合 $S=\\{a dq\\mid q\\in\\mathbb Z,\\ a dq\\ge0\\}$。该集合非空，有最小元素 $r$。证明 $r<d$，否则 $r d$ 也是非负且更小，矛盾。 唯一性可假设： $a=dq+r=dq'+r'$ 其中 $0\\le r,r'<d$。则 $d(q q')=r' r$。右边绝对值小于 $d$，而左边是 $d$ 的倍数，只能为 0，所以 $r=r'$ 且 $q=q'$。",
+      "section": "例：除法算法",
+      "parentTitle": "离散数学讲义"
+    },
+    {
+      "title": "离散数学讲义 · 包含重叠时的加法",
+      "summary": "包含重叠时的加法 若两类方式有重叠： $|A\\cup B|=|A|+|B| |A\\cap B|$ 例：不超过 100 且既不被 4 也不被 6 整除的正整数个数： 总数 100。 被 4 整除：$\\lfloor100/4\\rfloor=25$。 被 6 整除：$\\lfloor100/6\\rfloor=16$。 同时被 4 和 6 整除，即被 $\\operatorname{lcm}(4,6)=12$ 整除：$\\lfloor100/12\\r",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "包含重叠时的加法 若两类方式有重叠： $|A\\cup B|=|A|+|B| |A\\cap B|$ 例：不超过 100 且既不被 4 也不被 6 整除的正整数个数： 总数 100。 被 4 整除：$\\lfloor100/4\\rfloor=25$。 被 6 整除：$\\lfloor100/6\\rfloor=16$。 同时被 4 和 6 整除，即被 $\\operatorname{lcm}(4,6)=12$ 整除：$\\lfloor100/12\\rfloor=8$。 被 4 或 6 整除的数有 $25+16 8=33$ 个。 目标为 $100 33=67$。",
+      "section": "包含重叠时的加法",
+      "parentTitle": "离散数学讲义"
+    },
+    {
+      "title": "离散数学讲义 · Master Theorem",
+      "summary": "Master Theorem 对递推： $T(n)=aT(n/b)+f(n)$ 比较 $f(n)$ 与 $n^{\\log b a}$： 若 $f(n)=O(n^{\\log b a \\varepsilon})$，则 $T(n)=\\Theta(n^{\\log b a})$。 若 $f(n)=\\Theta(n^{\\log b a}\\log^k n)$，则 $T(n)=\\Theta(n^{\\log b a}\\log^{k+1} n)$。 若 $",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "Master Theorem 对递推： $T(n)=aT(n/b)+f(n)$ 比较 $f(n)$ 与 $n^{\\log b a}$： 若 $f(n)=O(n^{\\log b a \\varepsilon})$，则 $T(n)=\\Theta(n^{\\log b a})$。 若 $f(n)=\\Theta(n^{\\log b a}\\log^k n)$，则 $T(n)=\\Theta(n^{\\log b a}\\log^{k+1} n)$。 若 $f(n)=\\Omega(n^{\\log b a+\\varepsilon})$ 且满足正则条件，则 $T(n)=\\Theta(f(n))$。 这是分析分治算法复杂度的常用工具。",
+      "section": "Master Theorem",
+      "parentTitle": "离散数学讲义"
+    },
+    {
+      "title": "离散数学讲义 · 常见生成函数",
+      "summary": "常见生成函数 | 序列 | 生成函数 | | | | | $1,1,1,\\ldots$ | $\\frac1{1 x}$ | | $1,r,r^2,\\ldots$ | $\\frac1{1 rx}$ | | $0,1,2,3,\\ldots$ | $\\frac{x}{(1 x)^2}$ | | $\\binom n0,\\binom n1,\\ldots,\\binom nn$ | $(1+x)^n$ | 基本恒等式： $\\frac1{1 x}=1+",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "常见生成函数 | 序列 | 生成函数 | | | | | $1,1,1,\\ldots$ | $\\frac1{1 x}$ | | $1,r,r^2,\\ldots$ | $\\frac1{1 rx}$ | | $0,1,2,3,\\ldots$ | $\\frac{x}{(1 x)^2}$ | | $\\binom n0,\\binom n1,\\ldots,\\binom nn$ | $(1+x)^n$ | 基本恒等式： $\\frac1{1 x}=1+x+x^2+\\cdots,\\quad |x|<1$ 在组合中常作为形式幂级数使用，不一定关注收敛。",
+      "section": "常见生成函数",
+      "parentTitle": "离散数学讲义"
+    },
+    {
+      "title": "离散数学讲义 · 例：不超过 1000 且不被 5、6、8 整除",
+      "summary": "例：不超过 1000 且不被 5、6、8 整除 设： $A 5=\\{x\\le1000:5\\mid x\\}$ $A 6=\\{x\\le1000:6\\mid x\\}$ $A 8=\\{x\\le1000:8\\mid x\\}$ 用容斥计算被至少一个整除的数： $|A 5|+|A 6|+|A 8| |A 5\\cap A 6| |A 5\\cap A 8| |A 6\\cap A 8|+|A 5\\cap A 6\\cap A 8|$ 交集用最小公倍数计数，例",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "例：不超过 1000 且不被 5、6、8 整除 设： $A 5=\\{x\\le1000:5\\mid x\\}$ $A 6=\\{x\\le1000:6\\mid x\\}$ $A 8=\\{x\\le1000:8\\mid x\\}$ 用容斥计算被至少一个整除的数： $|A 5|+|A 6|+|A 8| |A 5\\cap A 6| |A 5\\cap A 8| |A 6\\cap A 8|+|A 5\\cap A 6\\cap A 8|$ 交集用最小公倍数计数，例如： $|A 5\\cap A 6|=\\left\\lfloor\\frac{1000}{\\operatorname{lcm}(5,6)}\\right\\rfloor$ 最后用 1000 减去该数量。",
+      "section": "例：不超过 1000 且不被 5、6、8 整除",
+      "parentTitle": "离散数学讲义"
+    },
+    {
+      "title": "离散数学讲义 · 关系性质",
+      "summary": "关系性质 设 $R$ 是集合 $A$ 上的关系。 自反： $\\forall a\\in A,\\ (a,a)\\in R$ 矩阵主对角线全为 1；有向图每个点都有自环。 反自反： $\\forall a\\in A,\\ (a,a)\\notin R$ 矩阵主对角线全为 0。 对称： $\\forall a,b\\in A,\\ (a,b)\\in R\\to(b,a)\\in R$ 矩阵关于主对角线对称；有向图每条边都有反向边。 反对称： $\\forall a",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "关系性质 设 $R$ 是集合 $A$ 上的关系。 自反： $\\forall a\\in A,\\ (a,a)\\in R$ 矩阵主对角线全为 1；有向图每个点都有自环。 反自反： $\\forall a\\in A,\\ (a,a)\\notin R$ 矩阵主对角线全为 0。 对称： $\\forall a,b\\in A,\\ (a,b)\\in R\\to(b,a)\\in R$ 矩阵关于主对角线对称；有向图每条边都有反向边。 反对称： $\\forall a,b\\in A,\\ ((a,b)\\in R\\land(b,a)\\in R)\\to a=b$ 注意：对称和反对称不是互为否定。一个关系可以既对称又反对称，例如恒等关系。 传递： $\\forall a,b,c\\in A,\\ ((a,b)\\in R\\land(b,c)\\in R)\\to(a,c)\\in R$ 有向图中若存在长度 2 的路径 $a\\to b\\to c$，则必须有边 $a\\to c$。",
+      "section": "关系性质",
+      "parentTitle": "离散数学讲义"
+    },
+    {
+      "title": "离散数学讲义 · 计数具有某性质的关系",
+      "summary": "计数具有某性质的关系 若 $|A|=n$： 自反关系数：主对角线必须选入，其余 $n^2 n$ 个有序对自由，所以： $2^{n^2 n}$ 反自反关系数：主对角线必须不选，其余自由，也是： $2^{n^2 n}$ 对称关系数：对角线 $n$ 个位置自由；非对角线按 unordered pair 成对选择，共 $\\binom n2$ 对，所以： $2^{n+\\binom n2}=2^{n(n+1)/2}$ 反对称关系数：每对不同元素 {",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "计数具有某性质的关系 若 $|A|=n$： 自反关系数：主对角线必须选入，其余 $n^2 n$ 个有序对自由，所以： $2^{n^2 n}$ 反自反关系数：主对角线必须不选，其余自由，也是： $2^{n^2 n}$ 对称关系数：对角线 $n$ 个位置自由；非对角线按 unordered pair 成对选择，共 $\\binom n2$ 对，所以： $2^{n+\\binom n2}=2^{n(n+1)/2}$ 反对称关系数：每对不同元素 {a,b} 中，$(a,b)$、$(b,a)$ 不能同时选，可选三种情况：只选前者、只选后者、都不选。对角线自由，所以： $2^n3^{\\binom n2}$",
+      "section": "计数具有某性质的关系",
+      "parentTitle": "离散数学讲义"
+    },
+    {
+      "title": "离散数学讲义 · 模同余",
+      "summary": "模同余 在整数集上定义： $a\\equiv b\\pmod m\\iff m\\mid(a b)$ 这是等价关系。 证明： 自反：$m\\mid(a a)=0$。 对称：若 $m\\mid(a b)$，则 $m\\mid(b a)$。 传递：若 $m\\mid(a b)$ 且 $m\\mid(b c)$，则 $m\\mid(a c)$。 模 3 的等价类： $[0]=\\{\\ldots, 6, 3,0,3,6,\\ldots\\}$ $[1]=\\{\\ldots",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "模同余 在整数集上定义： $a\\equiv b\\pmod m\\iff m\\mid(a b)$ 这是等价关系。 证明： 自反：$m\\mid(a a)=0$。 对称：若 $m\\mid(a b)$，则 $m\\mid(b a)$。 传递：若 $m\\mid(a b)$ 且 $m\\mid(b c)$，则 $m\\mid(a c)$。 模 3 的等价类： $[0]=\\{\\ldots, 6, 3,0,3,6,\\ldots\\}$ $[1]=\\{\\ldots, 5, 2,1,4,7,\\ldots\\}$ $[2]=\\{\\ldots, 4, 1,2,5,8,\\ldots\\}$",
+      "section": "模同余",
+      "parentTitle": "离散数学讲义"
+    },
+    {
+      "title": "离散数学讲义 · 附录 A：常用符号表",
+      "summary": "附录 A：常用符号表 | 符号 | 含义 | | | | | $\\neg p$ | 非 $p$ | | $p\\land q$ | $p$ 且 $q$ | | $p\\lor q$ | $p$ 或 $q$ | | $p\\to q$ | 若 $p$ 则 $q$ | | $p\\leftrightarrow q$ | $p$ 当且仅当 $q$ | | $\\forall x$ | 对所有 $x$ | | $\\exists x$ | 存在 $x$ |",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "附录 A：常用符号表 | 符号 | 含义 | | | | | $\\neg p$ | 非 $p$ | | $p\\land q$ | $p$ 且 $q$ | | $p\\lor q$ | $p$ 或 $q$ | | $p\\to q$ | 若 $p$ 则 $q$ | | $p\\leftrightarrow q$ | $p$ 当且仅当 $q$ | | $\\forall x$ | 对所有 $x$ | | $\\exists x$ | 存在 $x$ | | $\\exists!x$ | 存在唯一 $x$ | | $A\\subseteq B$ | $A$ 是 $B$ 的子集 | | $A\\cup B$ | 并集 | | $A\\cap B$ | 交集 | | $A B$ | 差集 | | $\\mathcal P(A)$ | 幂集 | | $|A|$ | 集合基数 | | $f:A\\to B$ | 从 $A$ 到 $B$ 的函数 | | $\\lfloor x\\rfloor$ | 下取整 | | $\\lceil x\\rceil$ | 上取整 | | $O(g(n))$ | 渐近上界 | | $\\Omega(g(n))$ | 渐近下界 | | $\\Theta(g(n))$ | 同阶增长 | | $\\binom nr$ | 组合数 | | $P(n,r)$ | r 排列数 | | $S(n,k)$ | 第二类 Stirling 数 | | $R^{ 1}$ | 逆关系 | | $S\\circ R$ | 关系复合 | | $R^n$ | 关系的 n 次幂 | | $[a]$ | 元素 $a$ 的等价类 |",
+      "section": "附录 A：常用符号表",
+      "parentTitle": "离散数学讲义"
     },
     {
       "title": "随笔",
@@ -342,6 +1376,8 @@
       ],
       "url": "/zh/notes/essays/",
       "sourcePath": "docs/zh/notes/essays.md",
+      "locale": "zh",
+      "kind": "page",
       "text": "TOPIC 随笔 以后放想法、复盘和不那么像讲义的记录。"
     },
     {
@@ -354,7 +1390,217 @@
       ],
       "url": "/zh/notes/fds-data-structures-lecture/",
       "sourcePath": "docs/zh/notes/fds-data-structures-lecture.md",
-      "text": "FDS 数据结构基础讲义 版本：2026 05 13 来源：根据 FDS/ 目录下当前 11 份 PPT/PDF 课件整理。 定位：这份讲义不是逐页转写课件，而是把定义、抽象数据类型、算法思想、复杂度分析、实现模板和典型算例整理成可复习、可发布、可继续增补的 Markdown 文档。 维护方式：后续新增课件时，优先补充到对应章节；若出现新主题，则在文末“增量补充区”登记来源并扩展为正式章节。 使用说明 { note sec 001 } 这门课的主线是：用合适的数据组织方式，让算法能在可接受的时间和空间内完成任务。学习时不要只背接口名称，而要追问三件事： 1. 这个结构维护了什么不变量？ 2. 每个操作为什么能保持这个不变量？ 3. 复杂度来自哪里，瓶颈能不能用结构性质消掉？ 本文的代码示例以 C 风格伪代码为主，变量名尽量贴近课件。公式使用 LaTeX 语法，例如 \\(O(N\\log N)\\)。图示主要采用 Mermaid，上传到笔记网站时建议开启 Mermaid 渲染。 资料来源索引 { note sec 002 } | 讲次 | 文件 | 主题 | 页数/幻灯片数 | | | | | :| | DS00 | FDS/DS00 2026.pdf | 课程导论、数据结构的意义、学习方式 | 17 | | DS01 | FDS/DS01 Ch02 Algorithm Analysis(a) 2026.pdf | 算法定义、分析对象、渐进记号、基本分析规则 | 15 | | DS02 a | FDS/DS02 Ch02 Algorithm Analysis(b).ppt | 最大子列和、二分查找、对数复杂度、实验测量 | 9 | | DS02 b | FDS/DS02 Ch03 List.ppt | ADT、线性表、链表、多项式、多重链表、游标实现 | 14 | | DS03 | FDS/DS03 Ch03 Stack and Queue.ppt | 栈、队列、表达式转换、系统栈、循环队列 | 13 | | DS04 | FDS/DS04 Ch04 Binary Trees.ppt | 树、二叉树、表达式树、遍历、线索二叉树 | 16 | | DS05 | FDS/DS05 Ch04 Search Tree.pdf | 二叉树性质、二叉搜索树及其操作 | 14 | | DS06 | FDS/DS06 Ch05 Priority Queues.ppt | 优先队列、二叉堆、建堆、堆应用、d 堆 | 15 | | DS07 a | FDS/DS07 Ch08 Union and Find.ppt | 等价关系、动态等价问题、并查集、路径压缩 | 9 | | DS07 b | FDS/DS07 Segment Tree.pdf | 线段树、区间查询、点更新、区间更新、懒标记 | 16 | | DS08 | FDS/DS08 Ch09 Graph Definition Topological Sort.ppt | 图定义、图存储、AOV 网络、拓扑排序 | 12 | 全课知识结构 { note sec 003 } 0. 课程视角：为什么需要数据结构 { note sec 004 } 数据结构是组织、处理、检索和存储数据的专门格式。程序当然可以“直接写”，但当数据规模变大、操作频率变高、约束变复杂时，朴素写法往往会被时间复杂度击穿。 一个常见例子是区间求和： 如果每次查询 [L, R] 都从 L 加到 R ，一次查询是 \\(O(N)\\)。 如果查询非常频繁，先花时间建立结构，例如前缀和或线段树，就能把查询降低到 \\(O(1)\\) 或 \\(O(\\log N)\\)。 选择哪种结构，取决于是否需要修改数组：静态数组适合前缀和；频繁修改适合线段树。 因此，这门课的重点不是“某个结构长什么样”，而是“结构如何把操作变快”。每一种数据结构都可以从下面四个角度学习： | 角度 | 要问的问题 | 例子 | | | | | | 对象 | 存的是什么 | 表存序列，堆存带优先级的元素，图存顶点和边 | | 操作 | 用户需要什么动作 | 插入、删除、查找、合并、区间查询 | | 不变量 | 结构必须维持什么性质 | BST 左小右大，堆父节点不大于孩子，并查集根节点代表集合 | | 复杂度 | 每个操作要花多少代价 | 链表插入 \\(O(1)\\)，查找第 k 个元素 \\(O(N)\\) | 1. 算法分析 { note sec 005 } 1.1 算法与程序 { note sec 006 } 算法是有限条指令的集合，按照这些指令执行可以完成特定任务。课件给出的五个条件非常重要： | 条件 | 含义 | 通俗解释 | | | | | | Input | 有零个或多个外部输入 | 算法可以没有输入，例如打印固定字符串 | | Output | 至少产生一个输出 | 必须给出结果，否则任务没有完成 | | Definiteness | 每条指令清楚无歧义 | “适当处理一下”不是算法步骤 | | Finiteness | 对所有情况都在有限步后终止 | 死循环程序不是算法 | | Effectiveness | 每条指令足够基本且可执行 | 步骤不能要求无法实际完成的魔法操作 | 程序是某种编程语言写出的实现，它不一定有限，例如操作系统长期运行；算法是解决问题的抽象步骤，必须保证有限终止。 1.2 分析什么 { note sec 007 } 实际运行时间依赖机器、编译器、语言、缓存、输入分布等因素。算法课通常关心与机器无关的增长趋势： 时间复杂度：基本操作执行次数随输入规模 \\(N\\) 如何增长。 空间复杂度：额外内存随 \\(N\\) 如何增长。 最坏情况：所有输入中代价最大的情况，常用于保证上界。 平均情况：在输入分布已知或可假设时的期望代价。 最好情况：一般只作参考，不能代表算法稳健性。 对循环的基本判断： | 代码形态 | 复杂度 | | | :| | 单层循环执行 \\(N\\) 次 | \\(O(N)\\) | | 双层独立嵌套循环 | \\(O(N^2)\\) | | 每轮问题规模减半 | \\(O(\\log N)\\) | | 外层 \\(N\\) 次，内层每轮减半 | \\(O(N\\log N)\\) | | 递归分成两个规模为 \\(N/2\\) 的子问题并线性合并 | \\(O(N\\log N)\\) | 1.3 渐进记号 { note sec 008 } 渐进记号忽略常数和低阶项，保留增长级别。它解决的问题是：当输入规模很大时，哪个算法更能撑住。 | 记号 | 定义直觉 | 常用说法 | | | | | | \\(T(N)=O(f(N))\\) | \\(T\\) 最多按 \\(f\\) 的级别增长 | 上界 | | \\(T(N)=\\Omega(g(N))\\) | \\(T\\) 至少按 \\(g\\) 的级别增长 | 下界 | | \\(T(N)=\\Theta(h(N))\\) | \\(T\\) 与 \\(h\\) 同阶 | 紧确界 | | \\(T(N)=o(p(N))\\) | \\(T\\) 比 \\(p\\) 低一阶 | 严格小阶 | 典型增长顺序： 常用规则： 若 \\(T 1(N)=O(f(N))\\)，\\(T 2(N)=O(g(N))\\)，则 \\(T 1+T 2=O(\\max(f,g))\\)。 若 \\(T 1(N)=O(f(N))\\)，\\(T 2(N)=O(g(N))\\)，则 \\(T 1T 2=O(fg)\\)。 多项式只保留最高次项：\\(3N^2+10N+7=O(N^2)\\)。 对数底数在渐进复杂度中只差常数：\\(\\log a N=\\Theta(\\log b N)\\)。 1.4 最大子列和：同一问题的四种算法 { note sec 009 } 问题：给定可能含负数的整数序列 \\(A 1,A 2,\\ldots,A N\\)，求连续子列的最大和。如果所有数都为负，课件约定最大和为 0。 算法 1：三重循环，枚举所有区间 { note sec 010 } 区间有 \\(O(N^2)\\) 个，每个区间求和又可能是 \\(O(N)\\)，总复杂度 \\(O(N^3)\\)。 算法 2：枚举右端点时累加 { note sec 011 } 内层不再重复求区间和，总复杂度降为 \\(O(N^2)\\)。这个优化的核心是复用前一次区间和。 算法 3：分治 { note sec 012 } 最大子列要么完全在左半边，要么完全在右半边，要么跨过中点。 递推式为 \\(T(N)=2T(N/2)+O(N)\\)，因此复杂度为 \\(O(N\\log N)\\)。 算法 4：在线算法 { note sec 013 } 在线算法只扫描一遍，任何时刻都能给出当前前缀的答案。 关键直觉：如果当前前缀和已经小于 0，那么它只会拖累后面的子列，应该丢弃并从下一个位置重新开始。复杂度 \\(O(N)\\)，额外空间 \\(O(1)\\)。 1.5 二分查找与对数复杂度 { note sec 014 } 二分查找要求数组有序。每次比较后，搜索区间至少减半。 如果问题规模每次变为原来的一半，最多能减半 \\(\\log 2 N\\) 次，所以时间复杂度为 \\(O(\\log N)\\)。 1.6 检查复杂度分析 { note sec 015 } 课件给出一种很实用的实验检验方法：看输入翻倍时运行时间大约乘以多少。 | 假设复杂度 | 输入从 \\(N\\) 到 \\(2N\\) | 理论比值 | | | :| :| | \\(O(N)\\) | \\(T(2N)/T(N)\\) | 约 2 | | \\(O(N^2)\\) | \\(T(2N)/T(N)\\) | 约 4 | | \\(O(N^3)\\) | \\(T(2N)/T(N)\\) | 约 8 | | \\(O(\\log N)\\) | 增长很慢 | 约 \\(\\log(2N)/\\log N\\) | 实验不能证明复杂度，但能发现明显错误。例如你以为算法是 \\(O(N)\\)，测出来翻倍后接近 4 倍，就要检查是否有隐藏的嵌套循环。 2. 抽象数据类型与线性表 { note sec 01"
+      "locale": "zh",
+      "kind": "page",
+      "text": "FDS 数据结构基础讲义 版本：2026 05 13 来源：根据 FDS/ 目录下当前 11 份 PPT/PDF 课件整理。 定位：这份讲义不是逐页转写课件，而是把定义、抽象数据类型、算法思想、复杂度分析、实现模板和典型算例整理成可复习、可发布、可继续增补的 Markdown 文档。 维护方式：后续新增课件时，优先补充到对应章节；若出现新主题，则在文末“增量补充区”登记来源并扩展为正式章节。 使用说明 这门课的主线是：用合适的数据组织方式，让算法能在可接受的时间和空间内完成任务。学习时不要只背接口名称，而要追问三件事： 1. 这个结构维护了什么不变量？ 2. 每个操作为什么能保持这个不变量？ 3. 复杂度来自哪里，瓶颈能不能用结构性质消掉？ 本文的代码示例以 C 风格伪代码为主，变量名尽量贴近课件。公式使用 LaTeX 语法，例如 \\(O(N\\log N)\\)。图示主要采用 Mermaid，上传到笔记网站时建议开启 Mermaid 渲染。 资料来源索引 | 讲次 | 文件 | 主题 | 页数/幻灯片数 | | | | | :| | DS00 | FDS/DS00 2026.pdf | 课程导论、数据结构的意义、学习方式 | 17 | | DS01 | FDS/DS01 Ch02 Algorithm Analysis(a) 2026.pdf | 算法定义、分析对象、渐进记号、基本分析规则 | 15 | | DS02 a | FDS/DS02 Ch02 Algorithm Analysis(b).ppt | 最大子列和、二分查找、对数复杂度、实验测量 | 9 | | DS02 b | FDS/DS02 Ch03 List.ppt | ADT、线性表、链表、多项式、多重链表、游标实现 | 14 | | DS03 | FDS/DS03 Ch03 Stack and Queue.ppt | 栈、队列、表达式转换、系统栈、循环队列 | 13 | | DS04 | FDS/DS04 Ch04 Binary Trees.ppt | 树、二叉树、表达式树、遍历、线索二叉树 | 16 | | DS05 | FDS/DS05 Ch04 Search Tree.pdf | 二叉树性质、二叉搜索树及其操作 | 14 | | DS06 | FDS/DS06 Ch05 Priority Queues.ppt | 优先队列、二叉堆、建堆、堆应用、d 堆 | 15 | | DS07 a | FDS/DS07 Ch08 Union and Find.ppt | 等价关系、动态等价问题、并查集、路径压缩 | 9 | | DS07 b | FDS/DS07 Segment Tree.pdf | 线段树、区间查询、点更新、区间更新、懒标记 | 16 | | DS08 | FDS/DS08 Ch09 Graph Definition Topological Sort.ppt | 图定义、图存储、AOV 网络、拓扑排序 | 12 | 全课知识结构 0. 课程视角：为什么需要数据结构 数据结构是组织、处理、检索和存储数据的专门格式。程序当然可以“直接写”，但当数据规模变大、操作频率变高、约束变复杂时，朴素写法往往会被时间复杂度击穿。 一个常见例子是区间求和： 如果每次查询 [L, R] 都从 L 加到 R ，一次查询是 \\(O(N)\\)。 如果查询非常频繁，先花时间建立结构，例如前缀和或线段树，就能把查询降低到 \\(O(1)\\) 或 \\(O(\\log N)\\)。 选择哪种结构，取决于是否需要修改数组：静态数组适合前缀和；频繁修改适合线段树。 因此，这门课的重点不是“某个结构长什么样”，而是“结构如何把操作变快”。每一种数据结构都可以从下面四个角度学习： | 角度 | 要问的问题 | 例子 | | | | | | 对象 | 存的是什么 | 表存序列，堆存带优先级的元素，图存顶点和边 | | 操作 | 用户需要什么动作 | 插入、删除、查找、合并、区间查询 | | 不变量 | 结构必须维持什么性质 | BST 左小右大，堆父节点不大于孩子，并查集根节点代表集合 | | 复杂度 | 每个操作要花多少代价 | 链表插入 \\(O(1)\\)，查找第 k 个元素 \\(O(N)\\) | 1. 算法分析 1.1 算法与程序 算法是有限条指令的集合，按照这些指令执行可以完成特定任务。课件给出的五个条件非常重要： | 条件 | 含义 | 通俗解释 | | | | | | Input | 有零个或多个外部输入 | 算法可以没有输入，例如打印固定字符串 | | Output | 至少产生一个输出 | 必须给出结果，否则任务没有完成 | | Definiteness | 每条指令清楚无歧义 | “适当处理一下”不是算法步骤 | | Finiteness | 对所有情况都在有限步后终止 | 死循环程序不是算法 | | Effectiveness | 每条指令足够基本且可执行 | 步骤不能要求无法实际完成的魔法操作 | 程序是某种编程语言写出的实现，它不一定有限，例如操作系统长期运行；算法是解决问题的抽象步骤，必须保证有限终止。 1.2 分析什么 实际运行时间依赖机器、编译器、语言、缓存、输入分布等因素。算法课通常关心与机器无关的增长趋势： 时间复杂度：基本操作执行次数随输入规模 \\(N\\) 如何增长。 空间复杂度：额外内存随 \\(N\\) 如何增长。 最坏情况：所有输入中代价最大的情况，常用于保证上界。 平均情况：在输入分布已知或可假设时的期望代价。 最好情况：一般只作参考，不能代表算法稳健性。 对循环的基本判断： | 代码形态 | 复杂度 | | | :| | 单层循环执行 \\(N\\) 次 | \\(O(N)\\) | | 双层独立嵌套循环 | \\(O(N^2)\\) | | 每轮问题规模减半 | \\(O(\\log N)\\) | | 外层 \\(N\\) 次，内层每轮减半 | \\(O(N\\log N)\\) | | 递归分成两个规模为 \\(N/2\\) 的子问题并线性合并 | \\(O(N\\log N)\\) | 1.3 渐进记号 渐进记号忽略常数和低阶项，保留增长级别。它解决的问题是：当输入规模很大时，哪个算法更能撑住。 | 记号 | 定义直觉 | 常用说法 | | | | | | \\(T(N)=O(f(N))\\) | \\(T\\) 最多按 \\(f\\) 的级别增长 | 上界 | | \\(T(N)=\\Omega(g(N))\\) | \\(T\\) 至少按 \\(g\\) 的级别增长 | 下界 | | \\(T(N)=\\Theta(h(N))\\) | \\(T\\) 与 \\(h\\) 同阶 | 紧确界 | | \\(T(N)=o(p(N))\\) | \\(T\\) 比 \\(p\\) 低一阶 | 严格小阶 | 典型增长顺序： 常用规则： 若 \\(T 1(N)=O(f(N))\\)，\\(T 2(N)=O(g(N))\\)，则 \\(T 1+T 2=O(\\max(f,g))\\)。 若 \\(T 1(N)=O(f(N))\\)，\\(T 2(N)=O(g(N))\\)，则 \\(T 1T 2=O(fg)\\)。 多项式只保留最高次项：\\(3N^2+10N+7=O(N^2)\\)。 对数底数在渐进复杂度中只差常数：\\(\\log a N=\\Theta(\\log b N)\\)。 1.4 最大子列和：同一问题的四种算法 问题：给定可能含负数的整数序列 \\(A 1,A 2,\\ldots,A N\\)，求连续子列的最大和。如果所有数都为负，课件约定最大和为 0。 算法 1：三重循环，枚举所有区间 区间有 \\(O(N^2)\\) 个，每个区间求和又可能是 \\(O(N)\\)，总复杂度 \\(O(N^3)\\)。 算法 2：枚举右端点时累加 内层不再重复求区间和，总复杂度降为 \\(O(N^2)\\)。这个优化的核心是复用前一次区间和。 算法 3：分治 最大子列要么完全在左半边，要么完全在右半边，要么跨过中点。 递推式为 \\(T(N)=2T(N/2)+O(N)\\)，因此复杂度为 \\(O(N\\log N)\\)。 算法 4：在线算法 在线算法只扫描一遍，任何时刻都能给出当前前缀的答案。 关键直觉：如果当前前缀和已经小于 0，那么它只会拖累后面的子列，应该丢弃并从下一个位置重新开始。复杂度 \\(O(N)\\)，额外空间 \\(O(1)\\)。 1.5 二分查找与对数复杂度 二分查找要求数组有序。每次比较后，搜索区间至少减半。 如果问题规模每次变为原来的一半，最多能减半 \\(\\log 2 N\\) 次，所以时间复杂度为 \\(O(\\log N)\\)。 1.6 检查复杂度分析 课件给出一种很实用的实验检验方法：看输入翻倍时运行时间大约乘以多少。 | 假设复杂度 | 输入从 \\(N\\) 到 \\(2N\\) | 理论比值 | | | :| :| | \\(O(N)\\) | \\(T(2N)/T(N)\\) | 约 2 | | \\(O(N^2)\\) | \\(T(2N)/T(N)\\) | 约 4 | | \\(O(N^3)\\) | \\(T(2N)/T(N)\\) | 约 8 | | \\(O(\\log N)\\) | 增长很慢 | 约 \\(\\log(2N)/\\log N\\) | 实验不能证明复杂度，但能发现明显错误。例如你以为算法是 \\(O(N)\\)，测出来翻倍后接近 4 倍，就要检查是否有隐藏的嵌套循环。 2. 抽象数据类型与线性表 2.1 ADT：把“是什么”和“怎么做”分开 数据类型可以看成 {对象集合} + {操作集合} 。抽象数据类型 ADT 更强调接口和语义，而不是具体实现。 以线性表为例： 对象：\\((item 0,item 1,\\ldots,item {N 1})\\)。 操作：求长度、打印、查找第 k 个元素、查找某元素位置、插入、删除等。 实现：数组、链表、游标链表都可以实现同一个 List ADT。 这就是抽象的价值：用户只关心 Insert 、 Delete 、 Find 的行为；实现者负责选择结构并控制复杂度。 2.2 数组实现线性表 数"
+    },
+    {
+      "title": "FDS 数据结构基础讲义 · 资料来源索引",
+      "summary": "资料来源索引 | 讲次 | 文件 | 主题 | 页数/幻灯片数 | | | | | :| | DS00 | FDS/DS00 2026.pdf | 课程导论、数据结构的意义、学习方式 | 17 | | DS01 | FDS/DS01 Ch02 Algorithm Analysis(a) 2026.pdf | 算法定义、分析对象、渐进记号、基本分析规则 | 15 | | DS02 a | FDS/DS02 Ch02 Algorithm A",
+      "tags": [
+        "data-structures",
+        "algorithms",
+        "course-note"
+      ],
+      "url": "/zh/notes/fds-data-structures-lecture/",
+      "sourcePath": "docs/zh/notes/fds-data-structures-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "资料来源索引 | 讲次 | 文件 | 主题 | 页数/幻灯片数 | | | | | :| | DS00 | FDS/DS00 2026.pdf | 课程导论、数据结构的意义、学习方式 | 17 | | DS01 | FDS/DS01 Ch02 Algorithm Analysis(a) 2026.pdf | 算法定义、分析对象、渐进记号、基本分析规则 | 15 | | DS02 a | FDS/DS02 Ch02 Algorithm Analysis(b).ppt | 最大子列和、二分查找、对数复杂度、实验测量 | 9 | | DS02 b | FDS/DS02 Ch03 List.ppt | ADT、线性表、链表、多项式、多重链表、游标实现 | 14 | | DS03 | FDS/DS03 Ch03 Stack and Queue.ppt | 栈、队列、表达式转换、系统栈、循环队列 | 13 | | DS04 | FDS/DS04 Ch04 Binary Trees.ppt | 树、二叉树、表达式树、遍历、线索二叉树 | 16 | | DS05 | FDS/DS05 Ch04 Search Tree.pdf | 二叉树性质、二叉搜索树及其操作 | 14 | | DS06 | FDS/DS06 Ch05 Priority Queues.ppt | 优先队列、二叉堆、建堆、堆应用、d 堆 | 15 | | DS07 a | FDS/DS07 Ch08 Union and Find.ppt | 等价关系、动态等价问题、并查集、路径压缩 | 9 | | DS07 b | FDS/DS07 Segment Tree.pdf | 线段树、区间查询、点更新、区间更新、懒标记 | 16 | | DS08 | FDS/DS08 Ch09 Graph Definition Topological Sort.ppt | 图定义、图存储、AOV 网络、拓扑排序 | 12 |",
+      "section": "资料来源索引",
+      "parentTitle": "FDS 数据结构基础讲义"
+    },
+    {
+      "title": "FDS 数据结构基础讲义 · 0. 课程视角：为什么需要数据结构",
+      "summary": "0. 课程视角：为什么需要数据结构 数据结构是组织、处理、检索和存储数据的专门格式。程序当然可以“直接写”，但当数据规模变大、操作频率变高、约束变复杂时，朴素写法往往会被时间复杂度击穿。 一个常见例子是区间求和： 如果每次查询 [L, R] 都从 L 加到 R ，一次查询是 \\(O(N)\\)。 如果查询非常频繁，先花时间建立结构，例如前缀和或线段树，就能把查询降低到 \\(O(1)\\) 或 \\(O(\\log N)\\)。 选择哪种结构，取决",
+      "tags": [
+        "data-structures",
+        "algorithms",
+        "course-note"
+      ],
+      "url": "/zh/notes/fds-data-structures-lecture/",
+      "sourcePath": "docs/zh/notes/fds-data-structures-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "0. 课程视角：为什么需要数据结构 数据结构是组织、处理、检索和存储数据的专门格式。程序当然可以“直接写”，但当数据规模变大、操作频率变高、约束变复杂时，朴素写法往往会被时间复杂度击穿。 一个常见例子是区间求和： 如果每次查询 [L, R] 都从 L 加到 R ，一次查询是 \\(O(N)\\)。 如果查询非常频繁，先花时间建立结构，例如前缀和或线段树，就能把查询降低到 \\(O(1)\\) 或 \\(O(\\log N)\\)。 选择哪种结构，取决于是否需要修改数组：静态数组适合前缀和；频繁修改适合线段树。 因此，这门课的重点不是“某个结构长什么样”，而是“结构如何把操作变快”。每一种数据结构都可以从下面四个角度学习： | 角度 | 要问的问题 | 例子 | | | | | | 对象 | 存的是什么 | 表存序列，堆存带优先级的元素，图存顶点和边 | | 操作 | 用户需要什么动作 | 插入、删除、查找、合并、区间查询 | | 不变量 | 结构必须维持什么性质 | BST 左小右大，堆父节点不大于孩子，并查集根节点代表集合 | | 复杂度 | 每个操作要花多少代价 | 链表插入 \\(O(1)\\)，查找第 k 个元素 \\(O(N)\\) |",
+      "section": "0. 课程视角：为什么需要数据结构",
+      "parentTitle": "FDS 数据结构基础讲义"
+    },
+    {
+      "title": "FDS 数据结构基础讲义 · 1.1 算法与程序",
+      "summary": "1.1 算法与程序 算法是有限条指令的集合，按照这些指令执行可以完成特定任务。课件给出的五个条件非常重要： | 条件 | 含义 | 通俗解释 | | | | | | Input | 有零个或多个外部输入 | 算法可以没有输入，例如打印固定字符串 | | Output | 至少产生一个输出 | 必须给出结果，否则任务没有完成 | | Definiteness | 每条指令清楚无歧义 | “适当处理一下”不是算法步骤 | | Finiten",
+      "tags": [
+        "data-structures",
+        "algorithms",
+        "course-note"
+      ],
+      "url": "/zh/notes/fds-data-structures-lecture/",
+      "sourcePath": "docs/zh/notes/fds-data-structures-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "1.1 算法与程序 算法是有限条指令的集合，按照这些指令执行可以完成特定任务。课件给出的五个条件非常重要： | 条件 | 含义 | 通俗解释 | | | | | | Input | 有零个或多个外部输入 | 算法可以没有输入，例如打印固定字符串 | | Output | 至少产生一个输出 | 必须给出结果，否则任务没有完成 | | Definiteness | 每条指令清楚无歧义 | “适当处理一下”不是算法步骤 | | Finiteness | 对所有情况都在有限步后终止 | 死循环程序不是算法 | | Effectiveness | 每条指令足够基本且可执行 | 步骤不能要求无法实际完成的魔法操作 | 程序是某种编程语言写出的实现，它不一定有限，例如操作系统长期运行；算法是解决问题的抽象步骤，必须保证有限终止。",
+      "section": "1.1 算法与程序",
+      "parentTitle": "FDS 数据结构基础讲义"
+    },
+    {
+      "title": "FDS 数据结构基础讲义 · 1.2 分析什么",
+      "summary": "1.2 分析什么 实际运行时间依赖机器、编译器、语言、缓存、输入分布等因素。算法课通常关心与机器无关的增长趋势： 时间复杂度：基本操作执行次数随输入规模 \\(N\\) 如何增长。 空间复杂度：额外内存随 \\(N\\) 如何增长。 最坏情况：所有输入中代价最大的情况，常用于保证上界。 平均情况：在输入分布已知或可假设时的期望代价。 最好情况：一般只作参考，不能代表算法稳健性。 对循环的基本判断： | 代码形态 | 复杂度 | | | :| |",
+      "tags": [
+        "data-structures",
+        "algorithms",
+        "course-note"
+      ],
+      "url": "/zh/notes/fds-data-structures-lecture/",
+      "sourcePath": "docs/zh/notes/fds-data-structures-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "1.2 分析什么 实际运行时间依赖机器、编译器、语言、缓存、输入分布等因素。算法课通常关心与机器无关的增长趋势： 时间复杂度：基本操作执行次数随输入规模 \\(N\\) 如何增长。 空间复杂度：额外内存随 \\(N\\) 如何增长。 最坏情况：所有输入中代价最大的情况，常用于保证上界。 平均情况：在输入分布已知或可假设时的期望代价。 最好情况：一般只作参考，不能代表算法稳健性。 对循环的基本判断： | 代码形态 | 复杂度 | | | :| | 单层循环执行 \\(N\\) 次 | \\(O(N)\\) | | 双层独立嵌套循环 | \\(O(N^2)\\) | | 每轮问题规模减半 | \\(O(\\log N)\\) | | 外层 \\(N\\) 次，内层每轮减半 | \\(O(N\\log N)\\) | | 递归分成两个规模为 \\(N/2\\) 的子问题并线性合并 | \\(O(N\\log N)\\) |",
+      "section": "1.2 分析什么",
+      "parentTitle": "FDS 数据结构基础讲义"
+    },
+    {
+      "title": "FDS 数据结构基础讲义 · 1.3 渐进记号",
+      "summary": "1.3 渐进记号 渐进记号忽略常数和低阶项，保留增长级别。它解决的问题是：当输入规模很大时，哪个算法更能撑住。 | 记号 | 定义直觉 | 常用说法 | | | | | | \\(T(N)=O(f(N))\\) | \\(T\\) 最多按 \\(f\\) 的级别增长 | 上界 | | \\(T(N)=\\Omega(g(N))\\) | \\(T\\) 至少按 \\(g\\) 的级别增长 | 下界 | | \\(T(N)=\\Theta(h(N))\\) | \\(T\\",
+      "tags": [
+        "data-structures",
+        "algorithms",
+        "course-note"
+      ],
+      "url": "/zh/notes/fds-data-structures-lecture/",
+      "sourcePath": "docs/zh/notes/fds-data-structures-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "1.3 渐进记号 渐进记号忽略常数和低阶项，保留增长级别。它解决的问题是：当输入规模很大时，哪个算法更能撑住。 | 记号 | 定义直觉 | 常用说法 | | | | | | \\(T(N)=O(f(N))\\) | \\(T\\) 最多按 \\(f\\) 的级别增长 | 上界 | | \\(T(N)=\\Omega(g(N))\\) | \\(T\\) 至少按 \\(g\\) 的级别增长 | 下界 | | \\(T(N)=\\Theta(h(N))\\) | \\(T\\) 与 \\(h\\) 同阶 | 紧确界 | | \\(T(N)=o(p(N))\\) | \\(T\\) 比 \\(p\\) 低一阶 | 严格小阶 | 典型增长顺序： 常用规则： 若 \\(T 1(N)=O(f(N))\\)，\\(T 2(N)=O(g(N))\\)，则 \\(T 1+T 2=O(\\max(f,g))\\)。 若 \\(T 1(N)=O(f(N))\\)，\\(T 2(N)=O(g(N))\\)，则 \\(T 1T 2=O(fg)\\)。 多项式只保留最高次项：\\(3N^2+10N+7=O(N^2)\\)。 对数底数在渐进复杂度中只差常数：\\(\\log a N=\\Theta(\\log b N)\\)。",
+      "section": "1.3 渐进记号",
+      "parentTitle": "FDS 数据结构基础讲义"
+    },
+    {
+      "title": "FDS 数据结构基础讲义 · 1.6 检查复杂度分析",
+      "summary": "1.6 检查复杂度分析 课件给出一种很实用的实验检验方法：看输入翻倍时运行时间大约乘以多少。 | 假设复杂度 | 输入从 \\(N\\) 到 \\(2N\\) | 理论比值 | | | :| :| | \\(O(N)\\) | \\(T(2N)/T(N)\\) | 约 2 | | \\(O(N^2)\\) | \\(T(2N)/T(N)\\) | 约 4 | | \\(O(N^3)\\) | \\(T(2N)/T(N)\\) | 约 8 | | \\(O(\\log N)",
+      "tags": [
+        "data-structures",
+        "algorithms",
+        "course-note"
+      ],
+      "url": "/zh/notes/fds-data-structures-lecture/",
+      "sourcePath": "docs/zh/notes/fds-data-structures-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "1.6 检查复杂度分析 课件给出一种很实用的实验检验方法：看输入翻倍时运行时间大约乘以多少。 | 假设复杂度 | 输入从 \\(N\\) 到 \\(2N\\) | 理论比值 | | | :| :| | \\(O(N)\\) | \\(T(2N)/T(N)\\) | 约 2 | | \\(O(N^2)\\) | \\(T(2N)/T(N)\\) | 约 4 | | \\(O(N^3)\\) | \\(T(2N)/T(N)\\) | 约 8 | | \\(O(\\log N)\\) | 增长很慢 | 约 \\(\\log(2N)/\\log N\\) | 实验不能证明复杂度，但能发现明显错误。例如你以为算法是 \\(O(N)\\)，测出来翻倍后接近 4 倍，就要检查是否有隐藏的嵌套循环。",
+      "section": "1.6 检查复杂度分析",
+      "parentTitle": "FDS 数据结构基础讲义"
+    },
+    {
+      "title": "FDS 数据结构基础讲义 · 2.2 数组实现线性表",
+      "summary": "2.2 数组实现线性表 数组实现使用连续内存，天然支持随机访问： | 操作 | 复杂度 | 原因 | | | :| | | Find Kth(k) | \\(O(1)\\) | 地址可直接计算 | | Find(x) | \\(O(N)\\) | 需要顺序扫描 | | 在末尾插入 | 平均可为 \\(O(1)\\) | 若容量足够 | | 在中间插入 | \\(O(N)\\) | 后续元素需要右移 | | 删除中间元素 | \\(O(N)\\) | 后续元",
+      "tags": [
+        "data-structures",
+        "algorithms",
+        "course-note"
+      ],
+      "url": "/zh/notes/fds-data-structures-lecture/",
+      "sourcePath": "docs/zh/notes/fds-data-structures-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "2.2 数组实现线性表 数组实现使用连续内存，天然支持随机访问： | 操作 | 复杂度 | 原因 | | | :| | | Find Kth(k) | \\(O(1)\\) | 地址可直接计算 | | Find(x) | \\(O(N)\\) | 需要顺序扫描 | | 在末尾插入 | 平均可为 \\(O(1)\\) | 若容量足够 | | 在中间插入 | \\(O(N)\\) | 后续元素需要右移 | | 删除中间元素 | \\(O(N)\\) | 后续元素需要左移 | 数组的主要问题是容量需要预估，扩容需要搬迁元素；中间插入删除代价高。",
+      "section": "2.2 数组实现线性表",
+      "parentTitle": "FDS 数据结构基础讲义"
+    },
+    {
+      "title": "FDS 数据结构基础讲义 · 3.6 队列 ADT",
+      "summary": "3.6 队列 ADT 队列是 FIFO 结构：First In First Out，先进先出。插入发生在队尾，删除发生在队头。 | 操作 | 含义 | | | | | IsEmpty(Q) | 判断是否为空 | | CreateQueue() | 创建队列 | | MakeEmpty(Q) | 清空 | | Enqueue(X,Q) | 入队 | | Front(Q) | 读取队头 | | Dequeue(Q) | 出队 | 队列常用于",
+      "tags": [
+        "data-structures",
+        "algorithms",
+        "course-note"
+      ],
+      "url": "/zh/notes/fds-data-structures-lecture/",
+      "sourcePath": "docs/zh/notes/fds-data-structures-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "3.6 队列 ADT 队列是 FIFO 结构：First In First Out，先进先出。插入发生在队尾，删除发生在队头。 | 操作 | 含义 | | | | | IsEmpty(Q) | 判断是否为空 | | CreateQueue() | 创建队列 | | MakeEmpty(Q) | 清空 | | Enqueue(X,Q) | 入队 | | Front(Q) | 读取队头 | | Dequeue(Q) | 出队 | 队列常用于： 广度优先搜索。 操作系统任务排队。 拓扑排序中的零入度顶点集合。 缓冲区和生产者消费者模型。",
+      "section": "3.6 队列 ADT",
+      "parentTitle": "FDS 数据结构基础讲义"
+    },
+    {
+      "title": "FDS 数据结构基础讲义 · 4.1 树的基本术语",
+      "summary": "4.1 树的基本术语 树是节点的集合。空集合是树；非空树由根节点和若干棵互不相交的子树组成。 常用术语： | 术语 | 含义 | | | | | root | 根节点 | | edge/branch | 边，父子节点之间的连接 | | parent/child | 父节点/子节点 | | sibling | 兄弟节点 | | leaf | 叶节点，度为 0 | | degree of node | 节点的子树个数 | | degree ",
+      "tags": [
+        "data-structures",
+        "algorithms",
+        "course-note"
+      ],
+      "url": "/zh/notes/fds-data-structures-lecture/",
+      "sourcePath": "docs/zh/notes/fds-data-structures-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "4.1 树的基本术语 树是节点的集合。空集合是树；非空树由根节点和若干棵互不相交的子树组成。 常用术语： | 术语 | 含义 | | | | | root | 根节点 | | edge/branch | 边，父子节点之间的连接 | | parent/child | 父节点/子节点 | | sibling | 兄弟节点 | | leaf | 叶节点，度为 0 | | degree of node | 节点的子树个数 | | degree of tree | 所有节点度数的最大值 | | ancestors | 从节点到根路径上的所有祖先 | | descendants | 节点子树中的所有后代 | | depth | 从根到该节点的路径长度 | | height | 从该节点到最深叶子的路径长度 | 树的核心特征是层次关系。很多递归问题天然适合树结构，因为每棵子树又是同类问题。",
+      "section": "4.1 树的基本术语",
+      "parentTitle": "FDS 数据结构基础讲义"
+    },
+    {
+      "title": "FDS 数据结构基础讲义 · 4.3 二叉树",
+      "summary": "4.3 二叉树 二叉树中每个节点最多有两个孩子，并且左右孩子有区别。 重要性质： | 性质 | 说明 | | | | | 第 \\(i\\) 层最多有 \\(2^{i 1}\\) 个节点 | 根为第 1 层 | | 深度为 \\(k\\) 的二叉树最多有 \\(2^k 1\\) 个节点 | 满二叉树达到上界 | | 非空二叉树中 \\(n 0=n 2+1\\) | 叶节点数等于度为 2 的节点数加 1 | \\(n 0=n 2+1\\) 的证明思路： 总节点数",
+      "tags": [
+        "data-structures",
+        "algorithms",
+        "course-note"
+      ],
+      "url": "/zh/notes/fds-data-structures-lecture/",
+      "sourcePath": "docs/zh/notes/fds-data-structures-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "4.3 二叉树 二叉树中每个节点最多有两个孩子，并且左右孩子有区别。 重要性质： | 性质 | 说明 | | | | | 第 \\(i\\) 层最多有 \\(2^{i 1}\\) 个节点 | 根为第 1 层 | | 深度为 \\(k\\) 的二叉树最多有 \\(2^k 1\\) 个节点 | 满二叉树达到上界 | | 非空二叉树中 \\(n 0=n 2+1\\) | 叶节点数等于度为 2 的节点数加 1 | \\(n 0=n 2+1\\) 的证明思路： 总节点数 \\(n=n 0+n 1+n 2\\)。 非根节点都有一条来自父节点的边，所以边数 \\(B=n 1\\)。 边也可以按父节点贡献数计算：\\(B=n 1+2n 2\\)。 联立得到 \\(n 0=n 2+1\\)。",
+      "section": "4.3 二叉树",
+      "parentTitle": "FDS 数据结构基础讲义"
+    },
+    {
+      "title": "FDS 数据结构基础讲义 · 9.1 图的基本定义",
+      "summary": "9.1 图的基本定义 图记为 \\(G(V,E)\\)： V(G) 是有限非空顶点集合。 E(G) 是边集合。 无向边通常写作 (v i,v j) ，有向边通常写作 。 常用概念： | 概念 | 含义 | | | | | adjacent | 两个顶点由边相连 | | incident | 边与顶点关联 | | subgraph | 顶点和边都是原图子集的图 | | path | 顶点与边交替组成的可达序列 | | cycle | 起点和终",
+      "tags": [
+        "data-structures",
+        "algorithms",
+        "course-note"
+      ],
+      "url": "/zh/notes/fds-data-structures-lecture/",
+      "sourcePath": "docs/zh/notes/fds-data-structures-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "9.1 图的基本定义 图记为 \\(G(V,E)\\)： V(G) 是有限非空顶点集合。 E(G) 是边集合。 无向边通常写作 (v i,v j) ，有向边通常写作 。 常用概念： | 概念 | 含义 | | | | | adjacent | 两个顶点由边相连 | | incident | 边与顶点关联 | | subgraph | 顶点和边都是原图子集的图 | | path | 顶点与边交替组成的可达序列 | | cycle | 起点和终点相同的路径 | | connected graph | 无向图中任意两点连通 | | component | 无向图的极大连通子图 | | strongly connected | 有向图中任意两点互相可达 | | DAG | 有向无环图 | 树也可以看作特殊图：连通且无环的无向图。",
+      "section": "9.1 图的基本定义",
+      "parentTitle": "FDS 数据结构基础讲义"
+    },
+    {
+      "title": "FDS 数据结构基础讲义 · 10. 全课复杂度速查",
+      "summary": "10. 全课复杂度速查 | 结构/算法 | 关键操作 | 时间复杂度 | 备注 | | | | :| | | 数组表 | 第 k 个元素 | \\(O(1)\\) | 随机访问 | | 数组表 | 中间插入/删除 | \\(O(N)\\) | 需要移动元素 | | 单链表 | 已知位置后插入 | \\(O(1)\\) | 查找位置另算 | | 单链表 | 查找元素 | \\(O(N)\\) | 顺序扫描 | | 栈 | Push/Pop/Top | \\",
+      "tags": [
+        "data-structures",
+        "algorithms",
+        "course-note"
+      ],
+      "url": "/zh/notes/fds-data-structures-lecture/",
+      "sourcePath": "docs/zh/notes/fds-data-structures-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "10. 全课复杂度速查 | 结构/算法 | 关键操作 | 时间复杂度 | 备注 | | | | :| | | 数组表 | 第 k 个元素 | \\(O(1)\\) | 随机访问 | | 数组表 | 中间插入/删除 | \\(O(N)\\) | 需要移动元素 | | 单链表 | 已知位置后插入 | \\(O(1)\\) | 查找位置另算 | | 单链表 | 查找元素 | \\(O(N)\\) | 顺序扫描 | | 栈 | Push/Pop/Top | \\(O(1)\\) | 数组或链表均可 | | 队列 | Enqueue/Dequeue | \\(O(1)\\) | 循环数组或链表 | | 二叉树遍历 | 访问所有节点 | \\(O(N)\\) | 每节点一次 | | BST | 查找/插入/删除 | \\(O(h)\\) | 平衡时 \\(O(\\log N)\\)，退化时 \\(O(N)\\) | | 二叉堆 | FindMin | \\(O(1)\\) | 根节点 | | 二叉堆 | Insert/DeleteMin | \\(O(\\log N)\\) | 上滤/下滤 | | 二叉堆 | BuildHeap | \\(O(N)\\) | 自底向上下滤 | | 并查集 | Union/Find | 近似均摊 \\(O(1)\\) | 按秩合并 + 路径压缩 | | 线段树 | 建树 | \\(O(N)\\) | 节点数线性 | | 线段树 | 区间查询/点更新 | \\(O(\\log N)\\) | 查询可拆成少量节点 | | 线段树 | 区间更新 | \\(O(\\log N)\\) | 需要懒标记 | | 邻接矩阵 | 判断边 | \\(O(1)\\) | 空间 \\(O(V^2)\\) | | 邻接表 | 遍历边 | \\(O(V+E)\\) | 适合稀疏图 | | 拓扑排序 | 输出拓扑序 | \\(O(V+E)\\) | 队列维护零入度点 |",
+      "section": "10. 全课复杂度速查",
+      "parentTitle": "FDS 数据结构基础讲义"
+    },
+    {
+      "title": "FDS 数据结构基础讲义 · 11. 选结构的思考模板",
+      "summary": "11. 选结构的思考模板 面对一道数据结构题，可以按以下顺序拆解： 1. 明确对象：数据是序列、集合、树、图，还是区间？ 2. 明确操作频率：查询多、修改多、插入删除多，还是合并多？ 3. 找不变量：结构要维护有序性、堆序性、连通代表元，还是区间聚合值？ 4. 估复杂度：最频繁操作必须足够快，偶尔操作可以慢一些。 5. 处理边界：空结构、单元素、重复值、越界、负数、环、懒标记下传。 几个典型匹配： | 需求 | 首选结构 | | | |",
+      "tags": [
+        "data-structures",
+        "algorithms",
+        "course-note"
+      ],
+      "url": "/zh/notes/fds-data-structures-lecture/",
+      "sourcePath": "docs/zh/notes/fds-data-structures-lecture.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "11. 选结构的思考模板 面对一道数据结构题，可以按以下顺序拆解： 1. 明确对象：数据是序列、集合、树、图，还是区间？ 2. 明确操作频率：查询多、修改多、插入删除多，还是合并多？ 3. 找不变量：结构要维护有序性、堆序性、连通代表元，还是区间聚合值？ 4. 估复杂度：最频繁操作必须足够快，偶尔操作可以慢一些。 5. 处理边界：空结构、单元素、重复值、越界、负数、环、懒标记下传。 几个典型匹配： | 需求 | 首选结构 | | | | | 频繁按下标访问 | 数组 | | 频繁在已知位置插入删除 | 链表 | | 最近未匹配对象 | 栈 | | 先来先服务 | 队列 | | 动态最小/最大优先级 | 堆 | | 动态连通性/等价类 | 并查集 | | 动态区间聚合查询 | 线段树 | | 依赖顺序安排 | 图 + 拓扑排序 |",
+      "section": "11. 选结构的思考模板",
+      "parentTitle": "FDS 数据结构基础讲义"
     },
     {
       "title": "笔记",
@@ -364,7 +1610,9 @@
       ],
       "url": "/zh/notes/",
       "sourcePath": "docs/zh/notes/index.md",
-      "text": "NOTES 笔记 这里收着我愿意公开留下的笔记。课程讲义、公式测试和公开边界都会在这里慢慢排好位置。 中文主源 可被碧影读取 持续整理 这里的笔记以中文为主源，也会尽量同步英文版本。哪些内容能被碧影读取，由 public 与 avatar readable 共同决定。 想系统学习 从课程笔记开始，顺着章节慢慢读。 想了解本站 先看公开边界，知道哪些内容会进入碧影的回答范围。 想检查公式 进入数学实验，确认 Markdown 里的公式排版是否正常。 主题入口 最近更新 推荐阅读 标签 课程笔记 { course notes} 离散数学讲义 覆盖逻辑与证明、集合与函数、算法、归纳递归、计数、关系等主题。 数学 证明 计数 阅读 计算机系统基础讲义 覆盖信息表示、布尔代数、组合逻辑、运算部件、时序逻辑、ISA 与 RISC V。 系统 逻辑 RISC V 阅读 FDS 数据结构基础讲义 覆盖算法分析、线性表、栈队列、树、堆、并查集、线段树、图与拓扑排序。 算法 数据结构 图 阅读 站点说明 { site notes} 公开边界 说明哪些内容会进入碧影的回答范围，哪些不会。 公开范围 碧影 阅读 数学实验 用来确认 Markdown 里的数学公式能正常显示。 MathJax 公式 阅读 如果你只是第一次来，比较自然的路线是：先看一篇课程讲义，遇到感兴趣的地方再回到这里继续挑下一本。这个页面会随着新笔记一起慢慢长大。"
+      "locale": "zh",
+      "kind": "page",
+      "text": "NOTES 笔记 这里收着我愿意公开留下的笔记。课程讲义、公式测试和公开边界都会在这里慢慢排好位置。 中文主源 可被碧影读取 持续整理 这里的笔记以中文为主源，也会尽量同步英文版本。哪些内容能被碧影读取，由 public 与 avatar readable 共同决定。 想系统学习 从课程笔记开始，顺着章节慢慢读。 想了解本站 先看公开边界，知道哪些内容会进入碧影的回答范围。 想检查公式 进入数学实验，确认 Markdown 里的公式排版是否正常。 主题入口 最近更新 推荐阅读 标签 课程笔记 离散数学讲义 覆盖逻辑与证明、集合与函数、算法、归纳递归、计数、关系等主题。 数学 证明 计数 阅读 计算机系统基础讲义 覆盖信息表示、布尔代数、组合逻辑、运算部件、时序逻辑、ISA 与 RISC V。 系统 逻辑 RISC V 阅读 FDS 数据结构基础讲义 覆盖算法分析、线性表、栈队列、树、堆、并查集、线段树、图与拓扑排序。 算法 数据结构 图 阅读 站点说明 公开边界 说明哪些内容会进入碧影的回答范围，哪些不会。 公开范围 碧影 阅读 数学实验 用来确认 Markdown 里的数学公式能正常显示。 MathJax 公式 阅读 如果你只是第一次来，比较自然的路线是：先看一篇课程讲义，遇到感兴趣的地方再回到这里继续挑下一本。这个页面会随着新笔记一起慢慢长大。"
     },
     {
       "title": "数学实验",
@@ -375,6 +1623,8 @@
       ],
       "url": "/zh/notes/math-lab/",
       "sourcePath": "docs/zh/notes/math-lab.md",
+      "locale": "zh",
+      "kind": "page",
       "text": "MATH LAB 数学实验 一个小型渲染实验室，用来确认行内公式、块级公式和矩阵在网站里都能被稳定排版。 MathJax Markdown 这页用于测试 .md 文件中的数学公式渲染。 行内公式示例：$E = mc^2$，以及 $\\alpha + \\beta = \\gamma$。 块级公式示例： $$ \\nabla \\cdot \\vec{E} = \\frac{\\rho}{\\epsilon 0} $$ 再来一个矩阵： $$ A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix} ,\\quad \\det(A) = 2 $$ 如果你看到的是排版后的公式，而不是原始 LaTeX 文本，说明 mathjax.js 正常工作。"
     },
     {
@@ -386,6 +1636,8 @@
       ],
       "url": "/zh/notes/math/",
       "sourcePath": "docs/zh/notes/math.md",
+      "locale": "zh",
+      "kind": "page",
       "text": "TOPIC 数学 把逻辑、证明、计数和公式放在同一条线索里看。"
     },
     {
@@ -397,6 +1649,8 @@
       ],
       "url": "/zh/notes/public-scope/",
       "sourcePath": "docs/zh/notes/public-scope.md",
+      "locale": "zh",
+      "kind": "page",
       "text": "PUBLIC SCOPE 公开边界 这页只想把一件事说清楚：碧影会读什么，不会读什么。边界清楚，比回答看起来聪明更重要。 公开内容 隐私不进入 碧影的核心规则很简单： 只读取已经公开发布到网站上的内容 。 可读取 首页、关于、现在、项目和公开笔记。 标记为 public: true 且 avatar readable: true 的 Markdown 页面。 页面中的标题、摘要、正文和公开链接。 不读取 未发布草稿。 GitHub 活动记录。 私密笔记、日记、聊天记录。 未公开联系方式或其他私人资料。 本地文件系统中的任何内容。 回答方式 如果公开资料里没有答案，碧影可以温和地说： 这部分在这里公开的内容里还没有写到。 这条规则比“看起来聪明”更重要。"
     },
     {
@@ -408,6 +1662,8 @@
       ],
       "url": "/zh/notes/site/",
       "sourcePath": "docs/zh/notes/site.md",
+      "locale": "zh",
+      "kind": "page",
       "text": "TOPIC 站点 公开边界、公式实验和这个网站自己的说明。"
     },
     {
@@ -419,6 +1675,8 @@
       ],
       "url": "/zh/notes/systems/",
       "sourcePath": "docs/zh/notes/systems.md",
+      "locale": "zh",
+      "kind": "page",
       "text": "TOPIC 系统 从二进制、逻辑电路一路看到指令集与程序运行。"
     },
     {
@@ -430,6 +1688,8 @@
       ],
       "url": "/zh/notes/tags/",
       "sourcePath": "docs/zh/notes/tags.md",
+      "locale": "zh",
+      "kind": "page",
       "text": "TAGS 全部标签 同一篇笔记可以同时落在多个标签下。主题页告诉你“它大致属于哪里”，标签更适合横向找关联。"
     },
     {
@@ -444,6 +1704,8 @@
       ],
       "url": "/zh/now/",
       "sourcePath": "docs/zh/now.md",
+      "locale": "zh",
+      "kind": "page",
       "text": "NOW 现在 这是一张最近的切片：我在忙什么、在学什么，又有哪些东西想慢慢守住。 更新：2026 05 13 公开状态 持续变化 这页用来回答“我最近在做什么”。它不是正式介绍，也不是计划书，只是把最近的注意力放在桌面上：我在学什么、做什么，哪些方向正在慢慢变清楚。 正在推进 数字花园 继续打磨这个基于 MkDocs 的双语数字花园，让公开笔记、项目、留言和碧影真正住进同一个入口里。 笔记同步 继续整理课程笔记和项目记录，尽量让中文主源和英文版本一起往前走。 碧影边界 让碧影更像一个温和的同路人：能从公开内容里帮人找线索，也知道什么时候该坦白“不知道”。 AI 协作 练习和 AI 一起把想法真正做完，从页面和接口一路走到部署、反馈和复盘。 正在学习 AI 协作式全栈构建 把 AI 放进真实开发流程里：搭页面、写接口、整理数据、排错、部署，再用人的判断把作品从“能跑”慢慢推向“好用”。 具身智能 继续理解智能体如何感知环境、规划行动并和现实世界交互。现在还在积累基础，也在收集想动手试试的点子。 写下来 把学习、调试和阶段性的想法留下来。不是为了显得完整，而是为了以后还能看见自己是怎样一点点想明白的。 生活里的状态 最近我在努力把学习、项目和生活放进同一个节奏里：一边补专业基础，一边做一些真的能被打开、能被使用的网站和工具。这个网站也会留下一些不那么模板化的东西，比如阶段性的想法、踩坑记录、读到的好内容，以及一些带着日常温度的笔记。 一些边界 碧影只读取这个网站已经公开的内容，不会碰本地文件、草稿或私人记录。这个站点也不会急着一次性完成，它会跟着我的学习、项目和表达慢慢长出来。"
     },
     {
@@ -454,6 +1716,8 @@
       ],
       "url": "/zh/projects/",
       "sourcePath": "docs/zh/projects/index.md",
+      "locale": "zh",
+      "kind": "page",
       "text": "PROJECTS 项目 这里放我愿意认真讲清楚的作品：为什么开始、怎么做、现在走到哪一步、还有哪里不够好。 作品记录 过程复盘 持续补充 我希望项目页不只是“做过什么”的清单，也能留下思考的纹理。每个项目都会尽量写清它为什么开始、我做过哪些取舍、现在到了哪一步，以及之后还想怎么继续。 为什么做 先说明问题、动机和这个项目想解决什么。 我做了什么 记录真正动手完成的部分，而不是只罗列技术名词。 接下来 把还不够好的地方也写下来，方便继续往前推。 当前状态：静态站点已上线，后端能力继续完善 个人数字花园与碧影 一个双语个人网站，把公开笔记、项目记录、留言和碧影放进同一个会长期生长的入口里。 核心 内容整理、双语切换、公开知识读取。 我负责 信息架构、页面实现、部署和对话流程。 下一步 继续把交互、内容维护和站点细节做得更顺。 MkDocs EdgeOne RAG 双语内容 进入详情 后续新增项目时，我会尽量沿用同一套结构：背景、技术栈、做了什么、成果、不足、下一步。这样既方便自己回看，也方便来访的人很快抓住重点。"
     },
     {
@@ -468,6 +1732,8 @@
       ],
       "url": "/zh/projects/personal-site-avatar/",
       "sourcePath": "docs/zh/projects/personal-site-avatar.md",
+      "locale": "zh",
+      "kind": "page",
       "text": "PROJECT CASE 个人数字花园与碧影 把公开笔记、项目记录、留言和碧影放进同一个长期入口里，让内容、交互和部署一起慢慢长出来。 MkDocs EdgeOne 数字分身 定位 个人数字花园，不是一次性作品集。 核心 公开内容、双语笔记、碧影对话、留言。 状态 静态站点已上线，后端能力继续完善。 这是我为自己搭建的长期个人网站。它不是单独的作品集，也不只是一个聊天 demo，而是把公开笔记、项目记录、当前状态、留言和碧影放进同一个入口里。 我希望它能随着我学习和做项目一起长大：今天也许只是几篇课程笔记和一个能对话的入口，之后会慢慢加入更多真实项目、调试记录、阶段性的想法，以及更稳定的部署。 背景 我想要一个比社交主页更稳定、又比正式介绍更松弛的地方。朋友可以从这里知道我最近在折腾什么；同样对 AI 和工程感兴趣的人，也能顺着笔记和项目看到更具体的过程。 碧影是这个项目里比较特别的一部分。他不是“全知”的替身，只是一个温和的公开内容向导：读取网站里已经发布的内容，帮访客快速找到线索，也在没有资料时坦白说不知道。 我做了什么 站点结构 搭建 MkDocs Material 站点，规划首页、关于、现在、笔记、项目、碧影和留言等页面。 双语内容 设计 /zh/ 与 /en/ 双语结构，让导航、页面和公开知识库成对维护。 笔记导入 导入并整理离散数学、计算机系统基础和 FDS 数据结构基础三篇课程讲义，修复公式渲染和章节目录。 碧影与留言 设计碧影的语气、读取范围和拒答边界，实现聊天前端、留言板前端和 EdgeOne Functions 风格 API 雏形。 技术栈 内容站点 MkDocs Material、Markdown、Pymdown Extensions 和 MathJax，用来维护笔记、页面结构和数学公式。 双语内容 中文作为主源，英文同步维护；导航、页面和公开知识库都按中英文成对组织。 碧影对话 公开知识库构建脚本、对话设定、EdgeOne Functions 风格 API，以及 DeepSeek/OpenAI 兼容模型接口。 交互与部署 原生 JavaScript、赛博风格 CSS、公开留言板、EdgeOne Pages/Functions/KV 部署路线和 GitHub CI。 成果 网站可以本地构建和预览， mkdocs build strict 能通过。 中文和英文页面已经有了清晰结构，后续新增内容知道该往哪里放。 三篇课程讲义已经变成可阅读的网站页面，支持数学公式和章节目录。 碧影可以基于公开知识库回答与网站内容相关的问题。 留言板和 EdgeOne 部署路线已经有了基础实现，可以继续往真实线上环境推进。 不足 英文课程笔记还需要更完整的翻译和人工校对。 碧影后端上线前，还需要配置真实模型密钥、KV 绑定和限流策略。 留言板还需要审核、删除、反垃圾和更顺手的管理界面。 移动端阅读、长笔记体验和视觉细节还可以继续打磨。 下一步 项目页需要持续补充更真实的作品、复盘和阶段性总结。 继续把 EdgeOne Functions、KV、模型密钥和公开来源引用流程接成真实线上能力。 为新增项目保留同样的结构：背景、我做了什么、技术栈、成果、不足、下一步。"
     },
     {
@@ -479,6 +1745,8 @@
       ],
       "url": "/zh/updates/",
       "sourcePath": "docs/zh/updates.md",
+      "locale": "zh",
+      "kind": "page",
       "text": "UPDATES 模块更新 这里不写宏大路线图，只留下每个公开模块最近一次真正发生的变化。以后继续加内容时，优先更新这一页，就能让整个站点的近况更容易被看见。 公开维护记录 更新：2026 05 15 首页 完成第二轮界面整理 强化入口层级、随机笔记封面与模块导览，让第一次进入时更容易找到路。 笔记 持续整理课程内容 正文更偏阅读型，保留章节索引、数学公式与中英文版本。 项目 补足案例展示结构 项目页开始强调背景、做法、技术栈、结果与不足，而不只是一段简介。 碧影 增加公开上下文与对话记忆 能参考更多公开资料，也会保留最近一段对话，让来回交流更自然。 留言 补上轻量治理能力 访客侧有隐私提醒与节流，站主侧可以筛选、隐藏或删除公开留言。 后台 增加账号维护工具 支持未读筛选、联系方式复制、恢复码签发，以及站主注销用户。"
     }
   ]

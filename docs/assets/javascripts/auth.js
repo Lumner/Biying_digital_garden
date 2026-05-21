@@ -1,13 +1,16 @@
 (function () {
   const storageKey = "biying-auth-session";
+  const api = window.BiyingApi;
+  const dom = window.BiyingDom;
+  const i18n = window.BiyingI18n;
   let cachedSession;
 
   function isChinesePage() {
-    return window.location.pathname.includes("/zh/");
+    return i18n.isChinesePage();
   }
 
   function accountUrl() {
-    return isChinesePage() ? "/zh/register/" : "/en/register/";
+    return dom.accountUrl();
   }
 
   function text(key) {
@@ -47,6 +50,7 @@
       invalidRecovery: zh ? "恢复码不正确。" : "The recovery code is incorrect.",
       recoveryExpired: zh ? "恢复码已过期，请重新联系站点主人获取新的恢复码。" : "The recovery code has expired. Ask the site owner for a new one.",
       recoveryMissing: zh ? "站点还没有配置密码恢复码。" : "Password recovery is not configured yet.",
+      tooFrequent: zh ? "操作有点太频繁了，请稍等片刻再试。" : "That was a little too frequent. Please wait a moment and try again.",
       resetSaved: zh ? "密码已重设，并已登录。" : "Password reset complete. You are signed in.",
       privateSaved: zh ? "私信已发送。" : "Private message sent.",
       privateRequired: zh ? "请把称呼、联系方式和私信内容都填写完整。" : "Please complete your name, contact method, and message.",
@@ -90,8 +94,7 @@
   }
 
   function friendlyError(error) {
-    const code = error && error.code;
-    return {
+    return api.friendlyError(error, {
       kv_not_configured: text("kv"),
       invalid_credentials: text("badCredentials"),
       username_taken: text("taken"),
@@ -99,22 +102,16 @@
       invalid_password: text("invalidPassword"),
       invalid_recovery_code: text("invalidRecovery"),
       recovery_expired: text("recoveryExpired"),
-      recovery_not_configured: text("recoveryMissing")
-    }[code] || text("network");
+      recovery_not_configured: text("recoveryMissing"),
+      too_frequent: text("tooFrequent")
+    }, text("network"));
   }
 
   async function requestAuth(payload) {
-    const response = await fetch("/api/auth", {
+    const data = await api.request("/api/auth", {
       method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(payload)
+      json: payload
     });
-    const data = await response.json().catch(() => ({}));
-    if (!response.ok) {
-      const error = new Error(data.error || "auth_failed");
-      error.code = data.error;
-      throw error;
-    }
     saveSession({ token: data.token, user: data.user });
     return data;
   }
@@ -122,24 +119,28 @@
   async function refresh() {
     const token = getToken();
     if (!token) return null;
-    const response = await fetch("/api/auth", {
-      headers: authHeaders(),
-      cache: "no-store"
-    });
-    const data = await response.json().catch(() => ({}));
-    if (!response.ok || !data.user) {
+    try {
+      const data = await api.request("/api/auth", {
+        headers: authHeaders(),
+        cache: "no-store"
+      });
+      if (!data.user) {
+        saveSession(null);
+        return null;
+      }
+      saveSession({ token, user: data.user });
+      return data.user;
+    } catch (error) {
       saveSession(null);
       return null;
     }
-    saveSession({ token, user: data.user });
-    return data.user;
   }
 
   async function logout() {
     const token = getToken();
     saveSession(null);
     if (token) {
-      await fetch("/api/auth", { method: "DELETE", headers: { authorization: `Bearer ${token}` } }).catch(() => {});
+      await api.request("/api/auth", { method: "DELETE", headers: { authorization: `Bearer ${token}` } }).catch(() => {});
     }
   }
 
@@ -161,12 +162,7 @@
   }
 
   function escapeHtml(value) {
-    return String(value)
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
+    return dom.escapeHtml(value);
   }
 
   function mount(root) {
@@ -290,7 +286,7 @@
         contact: String(data.get("contact") || "").trim(),
         content: String(data.get("content") || "").trim(),
         website: String(data.get("website") || ""),
-        locale: isChinesePage() ? "zh" : "en"
+        locale: dom.locale()
       };
       if (!payload.name || !payload.contact || !payload.content) {
         message.textContent = text("privateRequired");
@@ -298,16 +294,14 @@
       }
       if (payload.website) return;
       try {
-        const response = await fetch("/api/private-messages", {
+        await api.request("/api/private-messages", {
           method: "POST",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify(payload)
+          json: payload
         });
-        if (!response.ok) throw new Error("private_message_failed");
         form.reset();
         message.textContent = text("privateSaved");
       } catch (error) {
-        message.textContent = text("network");
+        message.textContent = friendlyError(error);
       }
     });
   }

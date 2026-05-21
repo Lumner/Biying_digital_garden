@@ -1,33 +1,14 @@
-const HEADERS = {
-  "content-type": "application/json; charset=utf-8",
-  "access-control-allow-origin": "*",
-  "access-control-allow-methods": "GET, POST, PUT, DELETE, OPTIONS",
-  "access-control-allow-headers": "content-type, authorization"
-};
+import {
+  cors,
+  getKv,
+  isAdmin,
+  json,
+  normalizeUsername,
+  readJson,
+  serverError
+} from "./_shared.js";
 
 const encoder = new TextEncoder();
-
-function json(data, init = {}) {
-  return new Response(JSON.stringify(data), { ...init, headers: HEADERS });
-}
-
-function getKv(env) {
-  if (env && env.BIYING_KV) return env.BIYING_KV;
-  if (typeof globalThis.BIYING_KV !== "undefined") return globalThis.BIYING_KV;
-  return undefined;
-}
-
-function authorized(request, env) {
-  const token = env && env.BIYING_ADMIN_TOKEN;
-  return Boolean(token && request.headers.get("authorization") === `Bearer ${token}`);
-}
-
-function normalizeUsername(value) {
-  return String(value || "")
-    .normalize("NFKC")
-    .trim()
-    .toLowerCase();
-}
 
 function randomCode() {
   const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
@@ -43,14 +24,6 @@ function bytesToHex(bytes) {
 async function hashText(value) {
   const digest = await crypto.subtle.digest("SHA-256", encoder.encode(value));
   return bytesToHex(new Uint8Array(digest));
-}
-
-async function readJson(request) {
-  try {
-    return await request.json();
-  } catch (error) {
-    return {};
-  }
 }
 
 async function listRecords(kv, prefix, map) {
@@ -123,12 +96,12 @@ async function deleteUserArtifacts(kv, username) {
 }
 
 export function onRequestOptions() {
-  return new Response(null, { status: 204, headers: HEADERS });
+  return cors();
 }
 
 export async function onRequestGet({ request, env }) {
   try {
-    if (!authorized(request, env)) {
+    if (!isAdmin(request, env)) {
       return json({ error: "unauthorized" }, { status: 401 });
     }
     const kv = getKv(env);
@@ -141,13 +114,13 @@ export async function onRequestGet({ request, env }) {
       guestbookMessages: await listGuestbookMessages(kv)
     });
   } catch (error) {
-    return json({ error: "admin_failed", detail: String(error.message || error) }, { status: 500 });
+    return serverError(error, "admin_failed");
   }
 }
 
 export async function onRequestPost({ request, env }) {
   try {
-    if (!authorized(request, env)) {
+    if (!isAdmin(request, env)) {
       return json({ error: "unauthorized" }, { status: 401 });
     }
     const kv = getKv(env);
@@ -184,13 +157,13 @@ export async function onRequestPost({ request, env }) {
       minutes
     });
   } catch (error) {
-    return json({ error: "admin_issue_failed", detail: String(error.message || error) }, { status: 500 });
+    return serverError(error, "admin_issue_failed");
   }
 }
 
 export async function onRequestPut({ request, env }) {
   try {
-    if (!authorized(request, env)) {
+    if (!isAdmin(request, env)) {
       return json({ error: "unauthorized" }, { status: 401 });
     }
     const kv = getKv(env);
@@ -216,13 +189,13 @@ export async function onRequestPut({ request, env }) {
     await kv.put(`${prefix}${id}`, JSON.stringify(message));
     return json({ ok: true });
   } catch (error) {
-    return json({ error: "admin_update_failed", detail: String(error.message || error) }, { status: 500 });
+    return serverError(error, "admin_update_failed");
   }
 }
 
 export async function onRequestDelete({ request, env }) {
   try {
-    if (!authorized(request, env)) {
+    if (!isAdmin(request, env)) {
       return json({ error: "unauthorized" }, { status: 401 });
     }
     const kv = getKv(env);
@@ -244,6 +217,6 @@ export async function onRequestDelete({ request, env }) {
     await kv.delete(`${kind === "guestbook" ? "guestbook_" : "private_message_"}${id}`);
     return json({ ok: true });
   } catch (error) {
-    return json({ error: "admin_delete_failed", detail: String(error.message || error) }, { status: 500 });
+    return serverError(error, "admin_delete_failed");
   }
 }

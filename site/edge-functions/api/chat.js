@@ -1,9 +1,15 @@
-const HEADERS = {
-  "content-type": "application/json; charset=utf-8",
-  "access-control-allow-origin": "*",
-  "access-control-allow-methods": "POST, OPTIONS",
-  "access-control-allow-headers": "content-type, authorization"
-};
+import {
+  codedError,
+  cors,
+  currentSession,
+  enforceRateLimit,
+  envValue,
+  getClientIp,
+  getKv,
+  json,
+  readJson,
+  serverError
+} from "./_shared.js";
 
 const CONTEXT_ITEM_LIMIT = 8;
 const CONTEXT_CHARS_PER_ITEM = 2400;
@@ -25,64 +31,20 @@ const PERSONA = `你是碧影，这个网站里的数字分身。
 回答要清楚、简洁、温和；只有在回答确实基于 PUBLIC_CONTEXT 时，才尽量引用公开页面链接。`;
 
 function looksSiteRelated(message) {
-  return /(碧影|网站|站主|主人|项目|笔记|文章|页面|这里|最近在做什么|现在在忙什么|about|now|project|note|article|page|this site|this project|current work|what are you doing)/i.test(message);
-}
-
-function json(data, init = {}) {
-  return new Response(JSON.stringify(data), { ...init, headers: HEADERS });
-}
-
-function cors() {
-  return new Response(null, { status: 204, headers: HEADERS });
-}
-
-function envValue(env, key, fallback = "") {
-  return env && env[key] ? env[key] : fallback;
-}
-
-function codedError(code, message, status = 500) {
-  const error = new Error(message || code);
-  error.code = code;
-  error.status = status;
-  return error;
-}
-
-function getKv(env) {
-  if (env && env.BIYING_KV) return env.BIYING_KV;
-  if (typeof globalThis.BIYING_KV !== "undefined") return globalThis.BIYING_KV;
-  return undefined;
-}
-
-function sessionKey(token) {
-  return `session_${token}`;
-}
-
-function readBearer(request) {
-  const header = request.headers.get("authorization") || "";
-  const match = header.match(/^Bearer\s+(.+)$/i);
-  return match ? match[1].trim() : "";
-}
-
-async function currentSession(request, kv) {
-  const token = readBearer(request);
-  if (!token || !kv || !kv.get) return undefined;
-  const raw = await kv.get(sessionKey(token), { type: "text" });
-  if (!raw) return undefined;
-  const session = JSON.parse(raw);
-  if (Date.parse(session.expiresAt) <= Date.now()) {
-    await kv.delete(sessionKey(token));
-    return undefined;
-  }
-  return session;
+  return /(碧影|网站|站主|主人|项目|作品|笔记|文章|页面|这里|最近在做什么|现在在忙什么|关于|现在|留言|about|now|project|work|note|article|page|guestbook|this site|this project|current work|what are you doing)/i.test(message);
 }
 
 async function readKnowledge(env, request) {
-  const kv = getKv(env);
-  if (!kv || !kv.get) return [];
-  const raw = await kv.get("public_knowledge", { type: "text" });
-  if (!raw) return [];
-  const parsed = JSON.parse(raw);
-  return Array.isArray(parsed.items) ? parsed.items : [];
+  try {
+    const kv = getKv(env);
+    if (!kv || !kv.get) return [];
+    const raw = await kv.get("public_knowledge", { type: "text" });
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed.items) ? parsed.items : [];
+  } catch (error) {
+    return [];
+  }
 }
 
 async function readStaticKnowledge(request) {
@@ -97,11 +59,28 @@ async function readStaticKnowledge(request) {
   }
 }
 
+function extractTerms(message) {
+  const query = message.toLowerCase();
+  const terms = new Set();
+  for (const token of query.match(/[a-z0-9_-]{2,}/g) || []) {
+    terms.add(token);
+  }
+  for (const token of query.match(/[\p{Script=Han}]{2,}/gu) || []) {
+    terms.add(token);
+    if (token.length <= 12) {
+      for (let index = 0; index < token.length - 1; index += 1) {
+        terms.add(token.slice(index, index + 2));
+      }
+    }
+  }
+  return Array.from(terms);
+}
+
 function score(item, message) {
   const query = message.toLowerCase();
   const haystack = `${item.title || ""} ${item.summary || ""} ${item.text || ""} ${(item.tags || []).join(" ")}`.toLowerCase();
   let points = haystack.includes(query) ? 8 : 0;
-  for (const token of query.split(/\s+/).filter(Boolean)) {
+  for (const token of extractTerms(message)) {
     if (haystack.includes(token)) points += token.length > 2 ? 3 : 1;
   }
   return points;
@@ -115,8 +94,22 @@ function isPageIntent(message) {
   return /(这个项目|这个页面|这一页|这里|this project|this page|on this page)/i.test(message);
 }
 
+function isProjectIntent(message) {
+  return /(项目|作品|做过什么|做了什么|project|projects|work|built|building)/i.test(message);
+}
+
 function normalizePath(value) {
   return String(value || "").replace(/\/+$/, "") || "/";
+}
+
+function itemLocale(item) {
+  if (item.locale === "en" || item.locale === "zh") return item.locale;
+  return normalizePath(item.url).startsWith("/en/") ? "en" : "zh";
+}
+
+function isProjectPage(item) {
+  const path = normalizePath(item.url);
+  return path.includes("/projects");
 }
 
 function sanitizePageContext(pageContext) {
@@ -127,20 +120,40 @@ function sanitizePageContext(pageContext) {
   };
 }
 
-function retrieve(items, message, pageContext) {
-  return items
+function retrieve(items, message, pageContext, locale) {
+  const ranked = items
     .map((item) => {
       let points = score(item, message);
+      if (points > 0 && itemLocale(item) === locale) points += 6;
+      if (points > 0 && itemLocale(item) !== locale) points -= 2;
       if (isNowIntent(message) && normalizePath(item.url).endsWith("/now")) points += 18;
+      if (isProjectIntent(message) && isProjectPage(item)) points += 12;
       if (pageContext && normalizePath(item.url) === pageContext.url) {
-        points += isPageIntent(message) ? 20 : 4;
+        points += isPageIntent(message) ? 28 : 8;
+        if (item.kind === "section") points += 4;
       }
       return { item, score: points };
     })
     .filter((entry) => entry.score > 0)
-    .sort((a, b) => b.score - a.score)
+    .sort((a, b) => b.score - a.score);
+
+  const preferredLocale = ranked.filter((entry) => itemLocale(entry.item) === locale);
+  const selected = preferredLocale.length ? preferredLocale : ranked;
+  return selected
     .slice(0, CONTEXT_ITEM_LIMIT)
     .map((entry) => entry.item);
+}
+
+function uniqueSources(items) {
+  const seen = new Set();
+  const sources = [];
+  for (const item of items) {
+    const url = item.url;
+    if (!url || seen.has(url)) continue;
+    seen.add(url);
+    sources.push({ title: item.parentTitle || item.title || url, url });
+  }
+  return sources;
 }
 
 function sanitizeHistory(history) {
@@ -199,12 +212,12 @@ async function callModel(env, messages) {
 }
 
 export function onRequestOptions() {
-  return cors();
+  return cors("POST, OPTIONS");
 }
 
 export async function onRequestPost(context) {
   try {
-    const { request, env } = context;
+    const { request, env, clientIp } = context;
     const kv = getKv(env);
     if (!kv || !kv.get) {
       return json({ error: "kv_not_configured" }, { status: 503 });
@@ -214,7 +227,7 @@ export async function onRequestPost(context) {
       return json({ error: "auth_required" }, { status: 401 });
     }
 
-    const body = await request.json();
+    const body = await readJson(request);
     const message = String(body.message || "").trim().slice(0, 900);
     const locale = body.locale === "en" ? "en" : "zh";
     const history = sanitizeHistory(body.history);
@@ -223,17 +236,28 @@ export async function onRequestPost(context) {
       return json({ error: "message required" }, { status: 400 });
     }
 
+    const limited = await enforceRateLimit(kv, {
+      action: "chat",
+      identifier: session.userId || getClientIp(request, clientIp),
+      limit: 8,
+      windowMs: 60 * 1000
+    });
+    if (limited) return limited;
+
     let allKnowledge = await readKnowledge(env, request);
     if (!allKnowledge.length) {
       allKnowledge = await readStaticKnowledge(request);
     }
-    const knowledge = retrieve(allKnowledge, message, pageContext);
     const queryScope = looksSiteRelated(message) ? "site_related" : "general_or_unclear";
+    const knowledge = queryScope === "site_related"
+      ? retrieve(allKnowledge, message, pageContext, locale)
+      : [];
     const currentPage = pageContext
       ? allKnowledge.find((item) => normalizePath(item.url) === pageContext.url)
       : null;
     const publicContext = knowledge.map((item) => {
-      return `TITLE: ${item.title}\nURL: ${item.url}\nSUMMARY: ${item.summary}\nTEXT: ${String(item.text || "").slice(0, CONTEXT_CHARS_PER_ITEM)}`;
+      const section = item.section ? `\nSECTION: ${item.section}` : "";
+      return `TITLE: ${item.title}\nURL: ${item.url}${section}\nSUMMARY: ${item.summary}\nTEXT: ${String(item.text || "").slice(0, CONTEXT_CHARS_PER_ITEM)}`;
     }).join("\n\n---\n\n");
 
     const answer = await callModel(env, [
@@ -243,17 +267,20 @@ export async function onRequestPost(context) {
         role: "system",
         content: `CURRENT_PAGE_CONTEXT:\n${currentPage ? `TITLE: ${currentPage.title}\nURL: ${currentPage.url}\nSUMMARY: ${currentPage.summary}\nTEXT: ${String(currentPage.text || "").slice(0, CONTEXT_CHARS_PER_ITEM)}` : pageContext ? `URL: ${pageContext.url}\nTITLE: ${pageContext.title || "Unknown page"}` : "No current page context."}`
       },
-      { role: "system", content: `QUERY_SCOPE: ${queryScope}\nPUBLIC_CONTEXT_STATUS: ${knowledge.length ? "matched" : "none"}` },
+      {
+        role: "system",
+        content: `QUERY_SCOPE: ${queryScope}\nPUBLIC_CONTEXT_STATUS: ${knowledge.length ? "matched" : "none"}\nSOURCE_RULE: 只有 QUERY_SCOPE 为 site_related 且 PUBLIC_CONTEXT_STATUS 为 matched 时，才把回答表述为来自本站公开内容；其他时候必须说明是在用通用知识。`
+      },
       { role: "system", content: `PUBLIC_CONTEXT:\n${publicContext || "No matching public context."}` },
       ...history,
       { role: "user", content: message }
     ]);
 
-    return json({ answer, sources: knowledge.map((item) => ({ title: item.title, url: item.url })) });
+    return json({
+      answer,
+      sources: queryScope === "site_related" ? uniqueSources(knowledge) : []
+    });
   } catch (error) {
-    return json(
-      { error: error.code || "chat_failed", detail: String(error.message || error) },
-      { status: error.status || 500 }
-    );
+    return serverError(error, "chat_failed");
   }
 }

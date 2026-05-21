@@ -125,4 +125,28 @@
     const target = root.querySelector(selector);
     if (target) target.textContent = value;
   });
+
+  if (!cover) return;
+  root.classList.add("note-cover-stage--ready");
+
+  const canTilt = window.matchMedia("(pointer: fine)").matches &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function resetTilt() {
+    cover.style.setProperty("--cover-tilt-x", "0deg");
+    cover.style.setProperty("--cover-tilt-y", "0deg");
+  }
+
+  if (canTilt) {
+    cover.addEventListener("pointermove", (event) => {
+      const rect = cover.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      cover.style.setProperty("--cover-tilt-x", `${(-y * 7).toFixed(2)}deg`);
+      cover.style.setProperty("--cover-tilt-y", `${(x * 8).toFixed(2)}deg`);
+    });
+    cover.addEventListener("pointerleave", resetTilt);
+  }
+
+  resetTilt();
 })();

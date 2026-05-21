@@ -12,8 +12,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
       - run: pip install -r requirements.txt
-      - run: python scripts/validate_public_scope.py
-      - run: python scripts/build_knowledge.py
-      - run: mkdocs build --strict
-
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build:site
+      - run: npm run validate:public
+      - run: npm run check:site-sync
+      - run: npm run test:mobile
