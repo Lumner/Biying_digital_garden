@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-21T03:18:20.296726+00:00",
+  "generatedAt": "2026-05-21T03:26:07.526232+00:00",
   "items": [
     {
       "title": "About",
@@ -240,11 +240,11 @@
       "sourcePath": "docs/en/now.md",
       "locale": "en",
       "kind": "page",
-      "text": "NOW Now A recent slice of what has my attention: what I am building, what I am learning, and what I want to keep clear. Updated: 2026 05 13 Public Status In Motion This page answers: \"What am I working on now?\" It is not a formal profile or a roadmap, just a recent snapshot of what is currently on my desk: what I am learning, building, and slowly figuring out. In Progress Digital Garden Refining this MkDocs based bilingual digital garden so notes, projects, guestbook messages, and Biying can really live behind one clear entrance. Notes in Sync Organizing course notes and project records while keeping the Chinese source and English version moving together. Biying's Boundary Making Biying feel more like a gentle companion: able to help from public content, and honest enough to say \"I do not know.\" AI Collaboration Practicing AI assisted building all the way through: pages, APIs, deployment, feedback, and reflection. Learning AI Assisted Full Stack Building Putting AI into real development work: pages, APIs, data, debugging, deployment, and the human judgment that moves something from merely working to genuinely useful. Embodied Intelligence Exploring how agents perceive environments, plan actions, and interact with the real world. I am still building foundations and collecting ideas I want to try by hand. Writing It Down Keeping records of learning, debugging, and temporary thoughts. Not to look complete, but to see how understanding slowly grows over time. Life Texture Recently I have been trying to put learning, building, and daily life into the same rhythm: strengthening my AI foundations while making websites and tools that can actually be opened and used. This site will keep some less template like material too: temporary thoughts, debugging notes, good things I read, and records with a little everyday warmth. Boundaries Biying only reads content that has already been published on this site. He does not touch local files, drafts, or private records. The site is not meant to be finished all at once; it will grow with my learning, projects, and writing."
+      "text": "NOW Now A recent slice of what has my attention: what I am building, what I am learning, and what I want to keep clear. Updated: 2026 05 21 Public Status In Motion This page answers: \"What am I working on now?\" It is not a formal profile or a roadmap, just a recent snapshot of what is currently on my desk: what I am learning, building, and slowly figuring out. In Progress Digital Garden Refining this MkDocs based bilingual digital garden so notes, projects, guestbook messages, public knowledge, and Biying can really live behind one clear entrance. Notes in Sync Organizing course notes and project records, and updating the project pages with the backend, retrieval, build, and mobile validation work that has now landed. Biying's Boundary Making Biying feel more like a gentle companion: able to help from public content while keeping readable scope, source boundaries, and error handling clear. AI Collaboration Practicing AI assisted building all the way through: pages, APIs, build validation, deployment, feedback, and reflection. Learning AI Assisted Full Stack Building Putting AI into real development work: pages, APIs, data, debugging, deployment, and the human judgment that moves something from merely working to genuinely useful. Embodied Intelligence Exploring how agents perceive environments, plan actions, and interact with the real world. I am still building foundations and collecting ideas I want to try by hand. Writing It Down Keeping records of learning, debugging, and temporary thoughts. Not to look complete, but to see how understanding slowly grows over time. Life Texture Recently I have been trying to put learning, building, and daily life into the same rhythm: strengthening my AI foundations while making websites and tools that can actually be opened and used. This site will keep some less template like material too: temporary thoughts, debugging notes, good things I read, and records with a little everyday warmth. Boundaries Biying only reads content that has already been published on this site. He does not touch local files, drafts, or private records. The site is not meant to be finished all at once; it will grow with my learning, projects, and writing."
     },
     {
       "title": "Projects",
-      "summary": "Project entrance for public work and active builds.",
+      "summary": "Project entrance for public work, shipped stages, and active improvements.",
       "tags": [
         "projects"
       ],
@@ -252,11 +252,11 @@
       "sourcePath": "docs/en/projects/index.md",
       "locale": "en",
       "kind": "page",
-      "text": "PROJECTS Projects A place for work I am willing to explain properly: why it began, how I shaped it, where it stands now, and what still needs care. Build Records Reflection Growing I want project pages to keep more than a list of things I built. Each one tries to leave some trace of the thinking too: why it began, what tradeoffs I made, where it stands now, and what I still want to improve. Why it exists Start with the problem, the motivation, and what the project is trying to solve. What I did Show the work I actually completed instead of only listing technology names. What comes next Keep the rough edges visible so the next step stays clear. Status: static site live, backend abilities still improving Personal Digital Garden + Biying A bilingual personal website that brings public notes, project records, guestbook messages, and Biying into one long term entrance. Core Content structure, language switching, and public knowledge retrieval. My part Information architecture, UI implementation, deployment, and chat flow. Next Keep smoothing the interactions, maintenance flow, and small details. MkDocs EdgeOne RAG Bilingual Open Details Future project pages will keep the same shape when possible: background, stack, what I did, results, limitations, and next steps. That makes them easier for me to revisit, and easier for visitors to understand quickly."
+      "text": "PROJECTS Projects A place for work I am willing to explain properly: why it began, how I shaped it, where it stands now, and what still needs care. Build Records Reflection Updated: 2026 05 21 I want project pages to keep more than a list of things I built. Each one tries to leave some trace of the thinking too: why it began, what tradeoffs I made, what has already landed, and what I still want to improve. Why it exists Start with the problem, the motivation, and what the project is trying to solve. What I did Show the work I actually completed instead of only listing technology names. What comes next Keep the rough edges visible so the next step stays clear. Status: site, Biying APIs, public knowledge, and mobile smoke tests are wired together Personal Digital Garden + Biying A bilingual personal website that brings public notes, project records, guestbook messages, public knowledge, and Biying into one long term entrance. Core Bilingual content, public retrieval, guestbook flow, and Biying's answer boundary. My part Information architecture, frontend interaction, EdgeOne APIs, RAG retrieval, build checks, and deployment flow. Next Add more real project reflections, then handle npm dependency audit and production environment setup separately. MkDocs EdgeOne RAG Playwright Bilingual Open Details Future project pages will keep the same shape when possible: background, stack, what I did, results, limitations, and next steps. That makes them easier for me to revisit, and easier for visitors to understand quickly."
     },
     {
       "title": "Personal Digital Garden + Biying",
-      "summary": "A bilingual personal website project that brings public notes, project records, a guestbook, and the Biying digital persona into one long-term entrance.",
+      "summary": "A bilingual personal website project that brings public notes, project records, a guestbook, public knowledge, and the Biying digital persona into one long-term entrance.",
       "tags": [
         "personal-site",
         "digital-avatar",
@@ -268,7 +268,115 @@
       "sourcePath": "docs/en/projects/personal-site-avatar.md",
       "locale": "en",
       "kind": "page",
-      "text": "PROJECT CASE Personal Digital Garden + Biying A long term entrance where public notes, project records, guestbook messages, and Biying can grow together. MkDocs EdgeOne Digital Persona Positioning A personal digital garden, not a one off portfolio. Core Public content, bilingual notes, Biying chat, and guestbook. Status The static site is live; backend abilities keep improving. This is the long term personal website I am building for myself. It is not just a portfolio, and it is not only a chat demo. It brings public notes, project records, current status, guestbook messages, and Biying into one entrance. I want it to grow with my learning and building. Right now it may only be a few course notes and a conversational entrance; later it can hold more real projects, debugging records, temporary thoughts, and a steadier deployment setup. Background I wanted a place that feels more stable than a social profile and more relaxed than a formal introduction. Friends can see what I have been working on recently. People who are also interested in AI and engineering can follow the notes and projects into the actual process. Biying is the unusual part of this project. He is not an all knowing substitute for me, just a gentle guide to public content: he reads what has already been published on the site, helps visitors find useful signals, and says he does not know when the material is not there. What I Did Site Structure Built the MkDocs Material site structure and planned pages for home, about, now, notes, projects, Biying, and guestbook. Bilingual Content Designed the /zh/ and /en/ structure so navigation, pages, and public knowledge stay paired. Note Import Imported three course notes, then fixed math rendering and chapter navigation for long lecture pages. Biying and Guestbook Designed Biying's tone, readable scope, and refusal boundaries, then implemented the chat frontend, guestbook frontend, and EdgeOne Functions style API skeletons. Tech Stack Content Site MkDocs Material, Markdown, Pymdown Extensions, and MathJax for notes, page structure, and math rendering. Bilingual Content Chinese is the source language, English stays in step, and navigation, pages, and public knowledge are maintained in pairs. Biying Chat Public knowledge generation, dialogue design, EdgeOne Functions style APIs, and DeepSeek/OpenAI compatible model access. Interaction and Deployment Vanilla JavaScript, cyber style CSS, public guestbook, EdgeOne Pages/Functions/KV deployment path, and GitHub CI. Results The site can be built and previewed locally, and mkdocs build strict passes. Chinese and English pages now have a clear structure for future additions. Three course notes have become readable website pages with math rendering and chapter navigation. Biying can answer questions related to site content from the public knowledge base. The guestbook and EdgeOne deployment route now have a working foundation for a real online setup. Limitations English course notes still need fuller translation and human review. Before Biying goes fully online, the backend needs real model keys, KV bindings, and rate limiting. The guestbook needs moderation, deletion, anti spam, and a smoother admin flow. Mobile reading, long note experience, and visual details can still be refined. Next Project pages need more real work, reflections, and progress notes over time. Connect EdgeOne Functions, KV, model keys, and public source citations into real online behavior. Keep future projects on the same structure: background, what I did, stack, results, limitations, and next steps."
+      "text": "PROJECT CASE Personal Digital Garden + Biying A long term entrance where public notes, project records, guestbook messages, public knowledge, and Biying can grow together. MkDocs EdgeOne Updated: 2026 05 21 Positioning A personal digital garden, not a one off portfolio. Core Public content, bilingual notes, RAG retrieval, Biying chat, and guestbook. Status The site is live, with backend APIs, knowledge generation, mobile checks, and deployment validation wired together. This is the long term personal website I am building for myself. It is not just a portfolio, and it is not only a chat demo. It brings public notes, project records, current status, guestbook messages, public knowledge, and Biying into one entrance. I want it to grow with my learning and building. It now has bilingual pages, course notes, public retrieval, guestbook and admin APIs, mobile smoke tests, and self hosted math rendering assets. Later it can hold more real projects, debugging records, temporary thoughts, and steadier production details. Background I wanted a place that feels more stable than a social profile and more relaxed than a formal introduction. Friends can see what I have been working on recently. People who are also interested in AI and engineering can follow the notes and projects into the actual process. Biying is the unusual part of this project. He is not an all knowing substitute for me, just a gentle guide to public content: he reads what has already been published on the site, helps visitors find useful signals, and says he does not know when the material is not there. What I Did Site Structure Built the MkDocs Material site structure and planned pages for home, about, now, notes, projects, Biying, and guestbook. Bilingual Content Designed the /zh/ and /en/ structure so navigation, pages, and public knowledge stay paired. Note Import Imported three course notes, then fixed math rendering and chapter navigation for long lecture pages. Biying and Guestbook Designed Biying's tone, readable scope, and refusal boundaries, then implemented the chat frontend, guestbook frontend, admin entry, and EdgeOne Functions style APIs. Knowledge and Retrieval Built public pages into a readable knowledge base, split content by sections, and gave the current page, Now page, and project pages stronger retrieval weight. Reliability Checks Added shared frontend utilities, API error handling, rate limit responses, public scope validation, site sync checks, and Playwright mobile tests. Tech Stack Content Site MkDocs Material, Markdown, Pymdown Extensions, and MathJax for notes, page structure, and math rendering. Bilingual Content Chinese is the source language, English stays in step, and navigation, pages, and public knowledge are maintained in pairs. Biying Chat Public knowledge generation, section level chunks, source boundaries, dialogue design, EdgeOne Functions style APIs, and DeepSeek/OpenAI compatible model access. Interaction and Deployment Vanilla JavaScript, shared frontend utilities, cyber style CSS, public guestbook, EdgeOne Pages/Functions/KV deployment path, GitHub CI, and Playwright mobile tests. Assets and Math MathJax is self hosted with the repository and generated site, reducing CDN dependency; the build script keeps static output in sync. Results The site can be built and previewed locally, and python scripts/build site.py now handles knowledge generation, MkDocs build, and site sync validation. Chinese and English pages now have a clear structure for future additions. Three course notes have become readable website pages with math rendering and chapter navigation. Biying can answer questions related to site content from the public knowledge base while respecting the public scope boundary. Guestbook, admin message management, authentication helper APIs, and the EdgeOne deployment path now have a basic loop. Public scope validation, mobile smoke tests, site sync checks, and self hosted MathJax are part of the maintenance flow. Limitations English course notes still need fuller translation and human review. The production environment still needs confirmed model keys, KV bindings, and EdgeOne platform configuration. The guestbook still n"
+    },
+    {
+      "title": "Personal Digital Garden + Biying · Background",
+      "summary": "Background I wanted a place that feels more stable than a social profile and more relaxed than a formal introduction. Friends can see what I have been working on recently. People who are also interested in AI and enginee",
+      "tags": [
+        "personal-site",
+        "digital-avatar",
+        "mkdocs",
+        "rag",
+        "edgeone"
+      ],
+      "url": "/en/projects/personal-site-avatar/",
+      "sourcePath": "docs/en/projects/personal-site-avatar.md",
+      "locale": "en",
+      "kind": "section",
+      "text": "Background I wanted a place that feels more stable than a social profile and more relaxed than a formal introduction. Friends can see what I have been working on recently. People who are also interested in AI and engineering can follow the notes and projects into the actual process. Biying is the unusual part of this project. He is not an all knowing substitute for me, just a gentle guide to public content: he reads what has already been published on the site, helps visitors find useful signals, and says he does not know when the material is not there.",
+      "section": "Background",
+      "parentTitle": "Personal Digital Garden + Biying"
+    },
+    {
+      "title": "Personal Digital Garden + Biying · What I Did",
+      "summary": "What I Did Site Structure Built the MkDocs Material site structure and planned pages for home, about, now, notes, projects, Biying, and guestbook. Bilingual Content Designed the /zh/ and /en/ structure so navigation, pag",
+      "tags": [
+        "personal-site",
+        "digital-avatar",
+        "mkdocs",
+        "rag",
+        "edgeone"
+      ],
+      "url": "/en/projects/personal-site-avatar/",
+      "sourcePath": "docs/en/projects/personal-site-avatar.md",
+      "locale": "en",
+      "kind": "section",
+      "text": "What I Did Site Structure Built the MkDocs Material site structure and planned pages for home, about, now, notes, projects, Biying, and guestbook. Bilingual Content Designed the /zh/ and /en/ structure so navigation, pages, and public knowledge stay paired. Note Import Imported three course notes, then fixed math rendering and chapter navigation for long lecture pages. Biying and Guestbook Designed Biying's tone, readable scope, and refusal boundaries, then implemented the chat frontend, guestbook frontend, admin entry, and EdgeOne Functions style APIs. Knowledge and Retrieval Built public pages into a readable knowledge base, split content by sections, and gave the current page, Now page, and project pages stronger retrieval weight. Reliability Checks Added shared frontend utilities, API error handling, rate limit responses, public scope validation, site sync checks, and Playwright mobile tests.",
+      "section": "What I Did",
+      "parentTitle": "Personal Digital Garden + Biying"
+    },
+    {
+      "title": "Personal Digital Garden + Biying · Tech Stack",
+      "summary": "Tech Stack Content Site MkDocs Material, Markdown, Pymdown Extensions, and MathJax for notes, page structure, and math rendering. Bilingual Content Chinese is the source language, English stays in step, and navigation, p",
+      "tags": [
+        "personal-site",
+        "digital-avatar",
+        "mkdocs",
+        "rag",
+        "edgeone"
+      ],
+      "url": "/en/projects/personal-site-avatar/",
+      "sourcePath": "docs/en/projects/personal-site-avatar.md",
+      "locale": "en",
+      "kind": "section",
+      "text": "Tech Stack Content Site MkDocs Material, Markdown, Pymdown Extensions, and MathJax for notes, page structure, and math rendering. Bilingual Content Chinese is the source language, English stays in step, and navigation, pages, and public knowledge are maintained in pairs. Biying Chat Public knowledge generation, section level chunks, source boundaries, dialogue design, EdgeOne Functions style APIs, and DeepSeek/OpenAI compatible model access. Interaction and Deployment Vanilla JavaScript, shared frontend utilities, cyber style CSS, public guestbook, EdgeOne Pages/Functions/KV deployment path, GitHub CI, and Playwright mobile tests. Assets and Math MathJax is self hosted with the repository and generated site, reducing CDN dependency; the build script keeps static output in sync.",
+      "section": "Tech Stack",
+      "parentTitle": "Personal Digital Garden + Biying"
+    },
+    {
+      "title": "Personal Digital Garden + Biying · Results",
+      "summary": "Results The site can be built and previewed locally, and python scripts/build site.py now handles knowledge generation, MkDocs build, and site sync validation. Chinese and English pages now have a clear structure for fut",
+      "tags": [
+        "personal-site",
+        "digital-avatar",
+        "mkdocs",
+        "rag",
+        "edgeone"
+      ],
+      "url": "/en/projects/personal-site-avatar/",
+      "sourcePath": "docs/en/projects/personal-site-avatar.md",
+      "locale": "en",
+      "kind": "section",
+      "text": "Results The site can be built and previewed locally, and python scripts/build site.py now handles knowledge generation, MkDocs build, and site sync validation. Chinese and English pages now have a clear structure for future additions. Three course notes have become readable website pages with math rendering and chapter navigation. Biying can answer questions related to site content from the public knowledge base while respecting the public scope boundary. Guestbook, admin message management, authentication helper APIs, and the EdgeOne deployment path now have a basic loop. Public scope validation, mobile smoke tests, site sync checks, and self hosted MathJax are part of the maintenance flow.",
+      "section": "Results",
+      "parentTitle": "Personal Digital Garden + Biying"
+    },
+    {
+      "title": "Personal Digital Garden + Biying · Limitations",
+      "summary": "Limitations English course notes still need fuller translation and human review. The production environment still needs confirmed model keys, KV bindings, and EdgeOne platform configuration. The guestbook still needs fin",
+      "tags": [
+        "personal-site",
+        "digital-avatar",
+        "mkdocs",
+        "rag",
+        "edgeone"
+      ],
+      "url": "/en/projects/personal-site-avatar/",
+      "sourcePath": "docs/en/projects/personal-site-avatar.md",
+      "locale": "en",
+      "kind": "section",
+      "text": "Limitations English course notes still need fuller translation and human review. The production environment still needs confirmed model keys, KV bindings, and EdgeOne platform configuration. The guestbook still needs finer moderation, deletion, anti spam, and a smoother admin flow. Mobile reading, long note experience, and visual details can still be refined. The edgeone development dependency chain has npm audit findings, so dependency cleanup deserves a separate pass.",
+      "section": "Limitations",
+      "parentTitle": "Personal Digital Garden + Biying"
+    },
+    {
+      "title": "Personal Digital Garden + Biying · Next",
+      "summary": "Next Project pages need more real work, reflections, and progress notes over time. Connect EdgeOne Functions, KV, model keys, and public source citations into steadier production behavior. Handle dependency audit separat",
+      "tags": [
+        "personal-site",
+        "digital-avatar",
+        "mkdocs",
+        "rag",
+        "edgeone"
+      ],
+      "url": "/en/projects/personal-site-avatar/",
+      "sourcePath": "docs/en/projects/personal-site-avatar.md",
+      "locale": "en",
+      "kind": "section",
+      "text": "Next Project pages need more real work, reflections, and progress notes over time. Connect EdgeOne Functions, KV, model keys, and public source citations into steadier production behavior. Handle dependency audit separately instead of mixing toolchain upgrades into content maintenance. Keep future projects on the same structure: background, what I did, stack, results, limitations, and next steps.",
+      "section": "Next",
+      "parentTitle": "Personal Digital Garden + Biying"
     },
     {
       "title": "Updates",
@@ -281,7 +389,7 @@
       "sourcePath": "docs/en/updates.md",
       "locale": "en",
       "kind": "page",
-      "text": "UPDATES Module Updates This is not a grand roadmap. It is a compact record of what actually changed in each public module, so the current shape of the site stays easy to read as it grows. Public maintenance log Updated: 2026 05 15 Home Second UI pass completed Sharper entry hierarchy, a random note cover, and clearer paths for first time visitors. Notes Course material still expanding Reading first pages now keep section indexes, formulas, and bilingual versions together. Projects Case study structure improved Project pages now foreground background, decisions, stack, outcomes, and limitations. Biying More public context and short term memory Biying can reference more published material and keep a recent stretch of conversation in view. Guestbook Light moderation added Visitors get privacy nudges and pacing limits, while the owner can filter, hide, or delete messages. Admin Account tools expanded The dashboard now supports unread filters, contact copying, recovery codes, and owner side user deletion."
+      "text": "UPDATES Module Updates This is not a grand roadmap. It is a compact record of what actually changed in each public module, so the current shape of the site stays easy to read as it grows. Public maintenance log Updated: 2026 05 21 Home Second UI pass completed Sharper entry hierarchy, a random note cover, and clearer paths for first time visitors. Notes Public knowledge regenerated Course pages keep section indexes and formulas, while the public knowledge base is split by page and section for Biying retrieval. Projects Current project status refreshed Project pages now include backend APIs, RAG retrieval, mobile tests, self hosted MathJax, and dependency audit notes. Biying Public scope and error boundaries tightened Shared API helpers, rate limit responses, source boundaries, and public knowledge fallback are now in place. Guestbook Light moderation added Visitors get privacy nudges and pacing limits, while the owner can filter, hide, or delete messages; API errors are steadier too. Admin Build and validation flow tightened Site build, public scope validation, site sync checks, and Playwright mobile tests are part of the maintenance flow."
     },
     {
       "title": "关于",
@@ -1706,11 +1814,11 @@
       "sourcePath": "docs/zh/now.md",
       "locale": "zh",
       "kind": "page",
-      "text": "NOW 现在 这是一张最近的切片：我在忙什么、在学什么，又有哪些东西想慢慢守住。 更新：2026 05 13 公开状态 持续变化 这页用来回答“我最近在做什么”。它不是正式介绍，也不是计划书，只是把最近的注意力放在桌面上：我在学什么、做什么，哪些方向正在慢慢变清楚。 正在推进 数字花园 继续打磨这个基于 MkDocs 的双语数字花园，让公开笔记、项目、留言和碧影真正住进同一个入口里。 笔记同步 继续整理课程笔记和项目记录，尽量让中文主源和英文版本一起往前走。 碧影边界 让碧影更像一个温和的同路人：能从公开内容里帮人找线索，也知道什么时候该坦白“不知道”。 AI 协作 练习和 AI 一起把想法真正做完，从页面和接口一路走到部署、反馈和复盘。 正在学习 AI 协作式全栈构建 把 AI 放进真实开发流程里：搭页面、写接口、整理数据、排错、部署，再用人的判断把作品从“能跑”慢慢推向“好用”。 具身智能 继续理解智能体如何感知环境、规划行动并和现实世界交互。现在还在积累基础，也在收集想动手试试的点子。 写下来 把学习、调试和阶段性的想法留下来。不是为了显得完整，而是为了以后还能看见自己是怎样一点点想明白的。 生活里的状态 最近我在努力把学习、项目和生活放进同一个节奏里：一边补专业基础，一边做一些真的能被打开、能被使用的网站和工具。这个网站也会留下一些不那么模板化的东西，比如阶段性的想法、踩坑记录、读到的好内容，以及一些带着日常温度的笔记。 一些边界 碧影只读取这个网站已经公开的内容，不会碰本地文件、草稿或私人记录。这个站点也不会急着一次性完成，它会跟着我的学习、项目和表达慢慢长出来。"
+      "text": "NOW 现在 这是一张最近的切片：我在忙什么、在学什么，又有哪些东西想慢慢守住。 更新：2026 05 21 公开状态 持续变化 这页用来回答“我最近在做什么”。它不是正式介绍，也不是计划书，只是把最近的注意力放在桌面上：我在学什么、做什么，哪些方向正在慢慢变清楚。 正在推进 数字花园 继续打磨这个基于 MkDocs 的双语数字花园，让公开笔记、项目、留言、公开知识库和碧影真正住进同一个入口里。 笔记同步 继续整理课程笔记和项目记录，更新项目页，把已经完成的后端、检索、构建和移动端验证写进公开记录。 碧影边界 让碧影更像一个温和的同路人：能从公开内容里帮人找线索，也把读取范围、来源边界和错误处理保持清楚。 AI 协作 练习和 AI 一起把想法真正做完，从页面和接口一路走到构建验证、部署、反馈和复盘。 正在学习 AI 协作式全栈构建 把 AI 放进真实开发流程里：搭页面、写接口、整理数据、排错、部署，再用人的判断把作品从“能跑”慢慢推向“好用”。 具身智能 继续理解智能体如何感知环境、规划行动并和现实世界交互。现在还在积累基础，也在收集想动手试试的点子。 写下来 把学习、调试和阶段性的想法留下来。不是为了显得完整，而是为了以后还能看见自己是怎样一点点想明白的。 生活里的状态 最近我在努力把学习、项目和生活放进同一个节奏里：一边补专业基础，一边做一些真的能被打开、能被使用的网站和工具。这个网站也会留下一些不那么模板化的东西，比如阶段性的想法、踩坑记录、读到的好内容，以及一些带着日常温度的笔记。 一些边界 碧影只读取这个网站已经公开的内容，不会碰本地文件、草稿或私人记录。这个站点也不会急着一次性完成，它会跟着我的学习、项目和表达慢慢长出来。"
     },
     {
       "title": "项目",
-      "summary": "项目入口，展示公开作品和正在推进的内容。",
+      "summary": "项目入口，展示公开作品、阶段成果和正在继续打磨的内容。",
       "tags": [
         "projects"
       ],
@@ -1718,11 +1826,11 @@
       "sourcePath": "docs/zh/projects/index.md",
       "locale": "zh",
       "kind": "page",
-      "text": "PROJECTS 项目 这里放我愿意认真讲清楚的作品：为什么开始、怎么做、现在走到哪一步、还有哪里不够好。 作品记录 过程复盘 持续补充 我希望项目页不只是“做过什么”的清单，也能留下思考的纹理。每个项目都会尽量写清它为什么开始、我做过哪些取舍、现在到了哪一步，以及之后还想怎么继续。 为什么做 先说明问题、动机和这个项目想解决什么。 我做了什么 记录真正动手完成的部分，而不是只罗列技术名词。 接下来 把还不够好的地方也写下来，方便继续往前推。 当前状态：静态站点已上线，后端能力继续完善 个人数字花园与碧影 一个双语个人网站，把公开笔记、项目记录、留言和碧影放进同一个会长期生长的入口里。 核心 内容整理、双语切换、公开知识读取。 我负责 信息架构、页面实现、部署和对话流程。 下一步 继续把交互、内容维护和站点细节做得更顺。 MkDocs EdgeOne RAG 双语内容 进入详情 后续新增项目时，我会尽量沿用同一套结构：背景、技术栈、做了什么、成果、不足、下一步。这样既方便自己回看，也方便来访的人很快抓住重点。"
+      "text": "PROJECTS 项目 这里放我愿意认真讲清楚的作品：为什么开始、怎么做、现在走到哪一步、还有哪里不够好。 作品记录 过程复盘 更新：2026 05 21 我希望项目页不只是“做过什么”的清单，也能留下思考的纹理。每个项目都会尽量写清它为什么开始、我做过哪些取舍、已经落地了什么，以及之后还想怎么继续。 为什么做 先说明问题、动机和这个项目想解决什么。 我做了什么 记录真正动手完成的部分，而不是只罗列技术名词。 接下来 把还不够好的地方也写下来，方便继续往前推。 当前状态：站点、碧影 API、公开知识库和移动端基础验证已打通 个人数字花园与碧影 一个双语个人网站，把公开笔记、项目记录、留言、公开知识库和碧影对话放进同一个会长期生长的入口里。 核心 双语内容、公开知识检索、访客留言和碧影对话边界。 我负责 信息架构、前端交互、EdgeOne API、RAG 检索、构建验证和部署流程。 下一步 继续补充真实项目复盘，并单独处理 npm 依赖审计和线上环境配置。 MkDocs EdgeOne RAG Playwright 双语内容 进入详情 后续新增项目时，我会尽量沿用同一套结构：背景、技术栈、做了什么、成果、不足、下一步。这样既方便自己回看，也方便来访的人很快抓住重点。"
     },
     {
       "title": "个人数字花园与碧影",
-      "summary": "一个双语个人网站项目，把公开笔记、项目记录、留言板和数字分身碧影放在同一个长期入口里。",
+      "summary": "一个双语个人网站项目，把公开笔记、项目记录、留言板、公开知识库和数字分身碧影放在同一个长期入口里。",
       "tags": [
         "personal-site",
         "digital-avatar",
@@ -1734,7 +1842,7 @@
       "sourcePath": "docs/zh/projects/personal-site-avatar.md",
       "locale": "zh",
       "kind": "page",
-      "text": "PROJECT CASE 个人数字花园与碧影 把公开笔记、项目记录、留言和碧影放进同一个长期入口里，让内容、交互和部署一起慢慢长出来。 MkDocs EdgeOne 数字分身 定位 个人数字花园，不是一次性作品集。 核心 公开内容、双语笔记、碧影对话、留言。 状态 静态站点已上线，后端能力继续完善。 这是我为自己搭建的长期个人网站。它不是单独的作品集，也不只是一个聊天 demo，而是把公开笔记、项目记录、当前状态、留言和碧影放进同一个入口里。 我希望它能随着我学习和做项目一起长大：今天也许只是几篇课程笔记和一个能对话的入口，之后会慢慢加入更多真实项目、调试记录、阶段性的想法，以及更稳定的部署。 背景 我想要一个比社交主页更稳定、又比正式介绍更松弛的地方。朋友可以从这里知道我最近在折腾什么；同样对 AI 和工程感兴趣的人，也能顺着笔记和项目看到更具体的过程。 碧影是这个项目里比较特别的一部分。他不是“全知”的替身，只是一个温和的公开内容向导：读取网站里已经发布的内容，帮访客快速找到线索，也在没有资料时坦白说不知道。 我做了什么 站点结构 搭建 MkDocs Material 站点，规划首页、关于、现在、笔记、项目、碧影和留言等页面。 双语内容 设计 /zh/ 与 /en/ 双语结构，让导航、页面和公开知识库成对维护。 笔记导入 导入并整理离散数学、计算机系统基础和 FDS 数据结构基础三篇课程讲义，修复公式渲染和章节目录。 碧影与留言 设计碧影的语气、读取范围和拒答边界，实现聊天前端、留言板前端和 EdgeOne Functions 风格 API 雏形。 技术栈 内容站点 MkDocs Material、Markdown、Pymdown Extensions 和 MathJax，用来维护笔记、页面结构和数学公式。 双语内容 中文作为主源，英文同步维护；导航、页面和公开知识库都按中英文成对组织。 碧影对话 公开知识库构建脚本、对话设定、EdgeOne Functions 风格 API，以及 DeepSeek/OpenAI 兼容模型接口。 交互与部署 原生 JavaScript、赛博风格 CSS、公开留言板、EdgeOne Pages/Functions/KV 部署路线和 GitHub CI。 成果 网站可以本地构建和预览， mkdocs build strict 能通过。 中文和英文页面已经有了清晰结构，后续新增内容知道该往哪里放。 三篇课程讲义已经变成可阅读的网站页面，支持数学公式和章节目录。 碧影可以基于公开知识库回答与网站内容相关的问题。 留言板和 EdgeOne 部署路线已经有了基础实现，可以继续往真实线上环境推进。 不足 英文课程笔记还需要更完整的翻译和人工校对。 碧影后端上线前，还需要配置真实模型密钥、KV 绑定和限流策略。 留言板还需要审核、删除、反垃圾和更顺手的管理界面。 移动端阅读、长笔记体验和视觉细节还可以继续打磨。 下一步 项目页需要持续补充更真实的作品、复盘和阶段性总结。 继续把 EdgeOne Functions、KV、模型密钥和公开来源引用流程接成真实线上能力。 为新增项目保留同样的结构：背景、我做了什么、技术栈、成果、不足、下一步。"
+      "text": "PROJECT CASE 个人数字花园与碧影 把公开笔记、项目记录、留言、公开知识库和碧影放进同一个长期入口里，让内容、交互、检索和部署一起慢慢长出来。 MkDocs EdgeOne 更新：2026 05 21 定位 个人数字花园，不是一次性作品集。 核心 公开内容、双语笔记、RAG 检索、碧影对话、留言。 状态 站点已上线，后端 API、知识库构建、移动端验证和部署检查已形成闭环。 这是我为自己搭建的长期个人网站。它不是单独的作品集，也不只是一个聊天 demo，而是把公开笔记、项目记录、当前状态、留言、公开知识库和碧影放进同一个入口里。 我希望它能随着我学习和做项目一起长大：现在它已经有了双语页面、课程笔记、公开知识检索、留言与后台管理接口、移动端基础测试和自托管数学公式资源；之后会继续加入更多真实项目、调试记录、阶段性的想法，以及更稳定的线上运行细节。 背景 我想要一个比社交主页更稳定、又比正式介绍更松弛的地方。朋友可以从这里知道我最近在折腾什么；同样对 AI 和工程感兴趣的人，也能顺着笔记和项目看到更具体的过程。 碧影是这个项目里比较特别的一部分。他不是“全知”的替身，只是一个温和的公开内容向导：读取网站里已经发布的内容，帮访客快速找到线索，也在没有资料时坦白说不知道。 我做了什么 站点结构 搭建 MkDocs Material 站点，规划首页、关于、现在、笔记、项目、碧影和留言等页面。 双语内容 设计 /zh/ 与 /en/ 双语结构，让导航、页面和公开知识库成对维护。 笔记导入 导入并整理离散数学、计算机系统基础和 FDS 数据结构基础三篇课程讲义，修复公式渲染和章节目录。 碧影与留言 设计碧影的语气、读取范围和拒答边界，实现聊天前端、留言板前端、后台入口和 EdgeOne Functions 风格 API。 知识库与检索 把公开页面构建成可读取的知识库，按章节切块，并为当前页、Now 页和项目页设置更高检索权重。 稳定性与验证 补齐共享前端工具、API 错误处理、限流返回、公开范围校验、站点同步检查和移动端 Playwright 测试。 技术栈 内容站点 MkDocs Material、Markdown、Pymdown Extensions 和 MathJax，用来维护笔记、页面结构和数学公式。 双语内容 中文作为主源，英文同步维护；导航、页面和公开知识库都按中英文成对组织。 碧影对话 公开知识库构建脚本、章节级切块、来源边界、对话设定、EdgeOne Functions 风格 API，以及 DeepSeek/OpenAI 兼容模型接口。 交互与部署 原生 JavaScript、共享前端工具、赛博风格 CSS、公开留言板、EdgeOne Pages/Functions/KV 部署路线、GitHub CI 和 Playwright 移动端测试。 资源与公式 MathJax 以本地自托管资源随仓库和站点发布，减少外部 CDN 依赖；构建脚本会同步处理静态站点输出。 成果 网站可以本地构建和预览， python scripts/build site.py 能完成知识库、MkDocs 构建和站点同步。 中文和英文页面已经有了清晰结构，后续新增内容知道该往哪里放。 三篇课程讲义已经变成可阅读的网站页面，支持数学公式和章节目录。 碧影可以基于公开知识库回答与网站内容相关的问题，并在公开范围外保持拒答边界。 留言板、后台消息管理、认证辅助接口和 EdgeOne 部署路线已经有基础闭环。 公开范围校验、移动端 smoke test、站点同步检查和自托管 MathJax 已纳入维护流程。 不足 英文课程笔记还需要更完整的翻译和人工校对。 线上环境仍需要确认真实模型密钥、KV 绑定和 EdgeOne 平台配置。 留言板还需要更细的审核、删除、反垃圾和更顺手的管理界面。 移动端阅读、长笔记体验和视觉细节还可以继续打磨。 edgeone 开发依赖链存在 npm audit 风险，适合后续单独评估升级或替换方案。 下一步 项目页需要持续补充更真实的作品、复盘和阶段性总结。 继续把 EdgeOne Functions、KV、模型密钥和公开来源引用流程接成更稳定的真实线上能力。 单独处理依赖审计，不把工具链升级混进内容维护任务里。 为新增项目保留同样的结构：背景、我做了什么、技术栈、成果、不足、下一步。"
     },
     {
       "title": "模块更新",
@@ -1747,7 +1855,7 @@
       "sourcePath": "docs/zh/updates.md",
       "locale": "zh",
       "kind": "page",
-      "text": "UPDATES 模块更新 这里不写宏大路线图，只留下每个公开模块最近一次真正发生的变化。以后继续加内容时，优先更新这一页，就能让整个站点的近况更容易被看见。 公开维护记录 更新：2026 05 15 首页 完成第二轮界面整理 强化入口层级、随机笔记封面与模块导览，让第一次进入时更容易找到路。 笔记 持续整理课程内容 正文更偏阅读型，保留章节索引、数学公式与中英文版本。 项目 补足案例展示结构 项目页开始强调背景、做法、技术栈、结果与不足，而不只是一段简介。 碧影 增加公开上下文与对话记忆 能参考更多公开资料，也会保留最近一段对话，让来回交流更自然。 留言 补上轻量治理能力 访客侧有隐私提醒与节流，站主侧可以筛选、隐藏或删除公开留言。 后台 增加账号维护工具 支持未读筛选、联系方式复制、恢复码签发，以及站主注销用户。"
+      "text": "UPDATES 模块更新 这里不写宏大路线图，只留下每个公开模块最近一次真正发生的变化。以后继续加内容时，优先更新这一页，就能让整个站点的近况更容易被看见。 公开维护记录 更新：2026 05 21 首页 完成第二轮界面整理 强化入口层级、随机笔记封面与模块导览，让第一次进入时更容易找到路。 笔记 公开知识库重新生成 课程页面继续保留章节索引和公式，公开知识库按页面与章节切块，方便碧影检索。 项目 更新当前项目状态 项目页补充后端 API、RAG 检索、移动端测试、自托管 MathJax 与依赖审计等当前状态。 碧影 强化公开范围与错误边界 共享 API 工具、限流返回、来源边界和公开知识 fallback 已补齐，回答范围更清楚。 留言 补上轻量治理能力 访客侧有隐私提醒与节流，站主侧可以筛选、隐藏或删除公开留言，API 错误返回也更稳定。 后台 构建与验证流程收紧 站点构建、公开范围校验、site 同步检查和 Playwright 移动端测试已经纳入维护流程。"
     }
   ]
 }

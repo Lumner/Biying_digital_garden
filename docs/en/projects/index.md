@@ -1,6 +1,6 @@
 ---
 title: Projects
-summary: Project entrance for public work and active builds.
+summary: Project entrance for public work, shipped stages, and active improvements.
 public: true
 avatar_readable: true
 tags:
@@ -14,11 +14,11 @@ tags:
   <div class="garden-pagehead__meta">
     <span class="status-pill">Build Records</span>
     <span class="status-pill leaf">Reflection</span>
-    <span class="status-pill warm">Growing</span>
+    <span class="status-pill warm">Updated: 2026-05-21</span>
   </div>
 </section>
 
-<p class="section-lede">I want project pages to keep more than a list of things I built. Each one tries to leave some trace of the thinking too: why it began, what tradeoffs I made, where it stands now, and what I still want to improve.</p>
+<p class="section-lede">I want project pages to keep more than a list of things I built. Each one tries to leave some trace of the thinking too: why it began, what tradeoffs I made, what has already landed, and what I still want to improve.</p>
 
 <div class="project-framework" aria-label="How projects are recorded">
   <div>
@@ -38,28 +38,29 @@ tags:
 <div class="project-list">
   <section class="work-card work-card--featured">
     <div class="work-card__top">
-      <span class="work-card__status">Status: static site live, backend abilities still improving</span>
+      <span class="work-card__status">Status: site, Biying APIs, public knowledge, and mobile smoke tests are wired together</span>
       <h3>Personal Digital Garden + Biying</h3>
     </div>
-    <p>A bilingual personal website that brings public notes, project records, guestbook messages, and Biying into one long-term entrance.</p>
+    <p>A bilingual personal website that brings public notes, project records, guestbook messages, public knowledge, and Biying into one long-term entrance.</p>
     <div class="work-card__facts">
       <div>
         <strong>Core</strong>
-        <span>Content structure, language switching, and public knowledge retrieval.</span>
+        <span>Bilingual content, public retrieval, guestbook flow, and Biying's answer boundary.</span>
       </div>
       <div>
         <strong>My part</strong>
-        <span>Information architecture, UI implementation, deployment, and chat flow.</span>
+        <span>Information architecture, frontend interaction, EdgeOne APIs, RAG retrieval, build checks, and deployment flow.</span>
       </div>
       <div>
         <strong>Next</strong>
-        <span>Keep smoothing the interactions, maintenance flow, and small details.</span>
+        <span>Add more real project reflections, then handle npm dependency audit and production environment setup separately.</span>
       </div>
     </div>
     <div class="work-card__tags">
       <span class="cyber-tag">MkDocs</span>
       <span class="cyber-tag">EdgeOne</span>
       <span class="cyber-tag">RAG</span>
+      <span class="cyber-tag">Playwright</span>
       <span class="cyber-tag">Bilingual</span>
     </div>
     <a class="work-card__link" href="./personal-site-avatar/">Open Details</a>
