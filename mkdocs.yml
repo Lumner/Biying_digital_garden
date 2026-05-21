@@ -118,7 +118,7 @@ markdown_extensions:
       alternate_style: true
 
 extra_css:
-  - assets/styles/cyber.css?v=20260521-2
+  - assets/styles/cyber.css?v=20260521-3
 
 extra_javascript:
   - assets/javascripts/mathjax.js?v=20260521-1
@@ -135,7 +135,7 @@ extra_javascript:
   - assets/javascripts/auth.js?v=20260520-2
   - assets/javascripts/biying-chat.js?v=20260521-2
   - assets/javascripts/guestbook.js?v=20260521-1
-  - assets/javascripts/admin-dashboard.js?v=20260520-1
+  - assets/javascripts/admin-dashboard.js?v=20260521-3
 
 extra:
   generator: false

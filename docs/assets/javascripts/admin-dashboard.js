@@ -18,6 +18,11 @@
       users: zh ? "注册用户" : "Registered Users",
       inbox: zh ? "私信收件箱" : "Private Inbox",
       guestbook: zh ? "公开留言管理" : "Guestbook Moderation",
+      dashboardReady: zh ? "后台数据已更新。" : "Dashboard data updated.",
+      tokenForgotten: zh ? "已清除此设备上的管理员 token。" : "Admin token removed from this device.",
+      updated: zh ? "已更新。" : "Updated.",
+      deleted: zh ? "已删除。" : "Deleted.",
+      accountDeleted: zh ? "用户已注销。" : "User deleted.",
       emptyUsers: zh ? "还没有注册用户。" : "No registered users yet.",
       emptyMessages: zh ? "还没有私信。" : "No private messages yet.",
       emptyGuestbook: zh ? "还没有公开留言。" : "No public guestbook messages yet.",
@@ -90,6 +95,13 @@
     }, text("failed"));
   }
 
+  function notify(message, type = "info") {
+    if (window.BiyingToast && window.BiyingToast.show) {
+      window.BiyingToast.show(message, { type });
+    }
+    return message;
+  }
+
   async function loadDashboard() {
     return api.request("/api/admin", {
       cache: "no-store",
@@ -140,7 +152,7 @@
         <span>${text("passwordUpdatedAt")}: ${escapeHtml(formatDate(user.passwordUpdatedAt))}</span>
         <div class="message-actions">
           <button type="button" data-issue-code="${escapeHtml(user.username)}">${text("issueCode")}</button>
-          <button type="button" data-delete-user="${escapeHtml(user.username)}">${text("unregister")}</button>
+          <button type="button" class="danger" data-delete-user="${escapeHtml(user.username)}">${text("unregister")}</button>
         </div>
       </article>
     `).join("");
@@ -166,7 +178,7 @@
             ${text(message.status === "unread" ? "markRead" : "markUnread")}
           </button>
           <button type="button" data-copy-contact="${escapeHtml(message.contact)}">${text("copyContact")}</button>
-          <button type="button" data-delete-private="${escapeHtml(message.id)}">${text("delete")}</button>
+          <button type="button" class="danger" data-delete-private="${escapeHtml(message.id)}">${text("delete")}</button>
         </div>
       </article>
     `).join("");
@@ -189,7 +201,7 @@
           <button type="button" data-toggle-guestbook="${escapeHtml(message.id)}" data-next-status="${message.moderationStatus === "hidden" ? "visible" : "hidden"}">
             ${text(message.moderationStatus === "hidden" ? "show" : "hide")}
           </button>
-          <button type="button" data-delete-guestbook="${escapeHtml(message.id)}">${text("delete")}</button>
+          <button type="button" class="danger" data-delete-guestbook="${escapeHtml(message.id)}">${text("delete")}</button>
         </div>
       </article>
     `).join("");
@@ -207,11 +219,16 @@
       </form>
       <p class="meta-line" data-admin-status></p>
       <div class="admin-recovery" data-admin-recovery hidden></div>
-      <section class="admin-section">
+      <nav class="admin-tabs" aria-label="${isChinesePage() ? "后台模块" : "Dashboard modules"}">
+        <button type="button" class="active" data-admin-tab="users">${text("users")}<span data-admin-count="users">0</span></button>
+        <button type="button" data-admin-tab="inbox">${text("inbox")}<span data-admin-count="inbox">0</span></button>
+        <button type="button" data-admin-tab="guestbook">${text("guestbook")}<span data-admin-count="guestbook">0</span></button>
+      </nav>
+      <section class="admin-section active" data-admin-panel="users">
         <h2>${text("users")}</h2>
         <div class="admin-list" data-admin-users></div>
       </section>
-      <section class="admin-section">
+      <section class="admin-section" data-admin-panel="inbox" hidden>
         <h2>${text("inbox")}</h2>
         <div class="admin-toolbar">
           <input data-admin-private-search placeholder="${text("searchPrivate")}" />
@@ -220,7 +237,7 @@
         </div>
         <div class="admin-list" data-admin-messages></div>
       </section>
-      <section class="admin-section">
+      <section class="admin-section" data-admin-panel="guestbook" hidden>
         <h2>${text("guestbook")}</h2>
         <div class="admin-toolbar">
           <input data-admin-guestbook-search placeholder="${text("searchGuestbook")}" />
@@ -241,11 +258,27 @@
     const guestbookSlot = root.querySelector("[data-admin-guestbook]");
     const privateSearch = root.querySelector("[data-admin-private-search]");
     const guestbookSearch = root.querySelector("[data-admin-guestbook-search]");
+    const tabs = [...root.querySelectorAll("[data-admin-tab]")];
+    const panels = [...root.querySelectorAll("[data-admin-panel]")];
     let privateMessages = [];
     let guestbookMessages = [];
     let privateFilter = "all";
     let guestbookFilter = "all";
     tokenInput.value = readToken();
+
+    function setTab(name) {
+      tabs.forEach((tab) => tab.classList.toggle("active", tab.dataset.adminTab === name));
+      panels.forEach((panel) => {
+        const active = panel.dataset.adminPanel === name;
+        panel.hidden = !active;
+        panel.classList.toggle("active", active);
+      });
+    }
+
+    function setCount(name, value) {
+      const slot = root.querySelector(`[data-admin-count="${name}"]`);
+      if (slot) slot.textContent = String(value || 0);
+    }
 
     function applyPrivateFilters() {
       const query = normalize(privateSearch.value);
@@ -265,25 +298,30 @@
       }));
     }
 
-    async function refresh() {
+    async function refresh(options = {}) {
       if (!readToken()) return;
       try {
         const data = await loadDashboard();
         status.textContent = "";
-        renderUsers(usersSlot, data.users || []);
+        const users = data.users || [];
+        renderUsers(usersSlot, users);
         privateMessages = data.privateMessages || [];
         guestbookMessages = data.guestbookMessages || [];
+        setCount("users", users.length);
+        setCount("inbox", privateMessages.length);
+        setCount("guestbook", guestbookMessages.length);
         applyPrivateFilters();
         applyGuestbookFilters();
+        if (options.announce) notify(text("dashboardReady"), "success");
       } catch (error) {
-        status.textContent = friendlyError(error);
+        status.textContent = notify(friendlyError(error), "error");
       }
     }
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       saveToken(tokenInput.value.trim());
-      await refresh();
+      await refresh({ announce: true });
     });
 
     privateSearch.addEventListener("input", applyPrivateFilters);
@@ -301,9 +339,12 @@
       const toggleGuestbookButton = event.target.closest("[data-toggle-guestbook]");
       const deleteGuestbookButton = event.target.closest("[data-delete-guestbook]");
       const deleteUserButton = event.target.closest("[data-delete-user]");
+      const tabButton = event.target.closest("[data-admin-tab]");
 
-      if (refreshButton) {
-        await refresh();
+      if (tabButton) {
+        setTab(tabButton.dataset.adminTab);
+      } else if (refreshButton) {
+        await refresh({ announce: true });
       } else if (forgetButton) {
         saveToken("");
         tokenInput.value = "";
@@ -311,6 +352,10 @@
         privateSlot.innerHTML = "";
         guestbookSlot.innerHTML = "";
         recovery.hidden = true;
+        setCount("users", 0);
+        setCount("inbox", 0);
+        setCount("guestbook", 0);
+        status.textContent = notify(text("tokenForgotten"), "success");
       } else if (issueButton) {
         const minutes = Number(window.prompt(text("minutesPrompt"), "30"));
         if (!minutes) return;
@@ -322,29 +367,32 @@
             <span>${text("expiresAt")}: ${escapeHtml(formatDate(result.expiresAt))}</span>
             <p>${text("codeHint")}</p>
           `;
+          notify(text("codeReady"), "success");
         } catch (error) {
-          status.textContent = friendlyError(error);
+          status.textContent = notify(friendlyError(error), "error");
         }
       } else if (toggleButton) {
         try {
           await updateMessage(toggleButton.dataset.toggleMessage, toggleButton.dataset.nextStatus);
           await refresh();
+          notify(text("updated"), "success");
         } catch (error) {
-          status.textContent = friendlyError(error);
+          status.textContent = notify(friendlyError(error), "error");
         }
       } else if (copyButton) {
         try {
           await navigator.clipboard.writeText(copyButton.dataset.copyContact || "");
-          status.textContent = text("copied");
+          status.textContent = notify(text("copied"), "success");
         } catch (error) {
-          status.textContent = text("failed");
+          status.textContent = notify(text("failed"), "error");
         }
       } else if (deleteButton && window.confirm(text("deleteConfirm"))) {
         try {
           await deleteMessage(deleteButton.dataset.deletePrivate);
           await refresh();
+          notify(text("deleted"), "success");
         } catch (error) {
-          status.textContent = friendlyError(error);
+          status.textContent = notify(friendlyError(error), "error");
         }
       } else if (privateFilterButton) {
         privateFilter = privateFilterButton.dataset.adminPrivateFilter;
@@ -358,22 +406,25 @@
         try {
           await updateMessage(toggleGuestbookButton.dataset.toggleGuestbook, toggleGuestbookButton.dataset.nextStatus, "guestbook");
           await refresh();
+          notify(text("updated"), "success");
         } catch (error) {
-          status.textContent = friendlyError(error);
+          status.textContent = notify(friendlyError(error), "error");
         }
       } else if (deleteGuestbookButton && window.confirm(text("deleteConfirm"))) {
         try {
           await deleteMessage(deleteGuestbookButton.dataset.deleteGuestbook, "guestbook");
           await refresh();
+          notify(text("deleted"), "success");
         } catch (error) {
-          status.textContent = friendlyError(error);
+          status.textContent = notify(friendlyError(error), "error");
         }
       } else if (deleteUserButton && window.confirm(text("unregisterConfirm"))) {
         try {
           await deleteMessage(deleteUserButton.dataset.deleteUser, "user");
           await refresh();
+          notify(text("accountDeleted"), "success");
         } catch (error) {
-          status.textContent = friendlyError(error);
+          status.textContent = notify(friendlyError(error), "error");
         }
       }
     });
