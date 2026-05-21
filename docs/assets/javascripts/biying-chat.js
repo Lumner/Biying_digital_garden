@@ -550,6 +550,7 @@
       panel.toggleAttribute("hidden", !open);
       toggle.setAttribute("aria-expanded", String(open));
       toggle.classList.toggle("is-open", open);
+      shell.classList.toggle("is-open", open);
       document.body.classList.toggle("biying-companion-open", open);
     }
     toggle.addEventListener("click", () => setOpen(panel.hasAttribute("hidden")));

@@ -12,10 +12,44 @@
     }[key];
   }
 
+  function mountPageProgress(article) {
+    if (document.querySelector("[data-note-page-progress]")) return;
+    const shell = document.createElement("div");
+    shell.className = "note-page-progress";
+    shell.dataset.notePageProgress = "true";
+    shell.innerHTML = "<span></span>";
+    document.body.appendChild(shell);
+    const bar = shell.querySelector("span");
+
+    function update() {
+      const rect = article.getBoundingClientRect();
+      const articleTop = window.scrollY + rect.top;
+      const articleHeight = Math.max(article.scrollHeight - window.innerHeight * 0.68, 1);
+      const progress = Math.max(0, Math.min(1, (window.scrollY - articleTop) / articleHeight));
+      bar.style.width = `${progress * 100}%`;
+    }
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+  }
+
+  function markToc(current) {
+    document.querySelectorAll(".md-nav--secondary .md-nav__link.note-toc-active").forEach((link) => {
+      link.classList.remove("note-toc-active");
+    });
+    if (!current || !current.id) return;
+    const escapedId = window.CSS && CSS.escape ? CSS.escape(current.id) : current.id.replace(/"/g, '\\"');
+    const selector = `.md-nav--secondary .md-nav__link[href="#${escapedId}"]`;
+    const link = document.querySelector(selector);
+    if (link) link.classList.add("note-toc-active");
+  }
+
   function mount() {
     if (!window.location.pathname.includes("/notes/")) return;
     const article = document.querySelector(".md-content__inner");
     if (!article) return;
+    mountPageProgress(article);
     const chapters = [...article.querySelectorAll("h2[id]")];
     if (chapters.length < 4) return;
 
@@ -43,6 +77,8 @@
     function render(index) {
       active = Math.max(0, Math.min(chapters.length - 1, index));
       const current = chapters[active];
+      chapters.forEach((chapter) => chapter.classList.toggle("note-current-heading", chapter === current));
+      markToc(current);
       label.textContent = `${active + 1}/${chapters.length} · ${current.textContent}`;
       bar.style.width = `${((active + 1) / chapters.length) * 100}%`;
       prev.href = `#${chapters[Math.max(0, active - 1)].id}`;
