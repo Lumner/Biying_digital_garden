@@ -3,6 +3,7 @@ title: 项目
 summary: 项目入口，展示公开作品、阶段成果和正在继续打磨的内容。
 public: true
 avatar_readable: true
+updated: 2026-05-21
 tags:
   - projects
 ---

@@ -3,6 +3,7 @@ title: Projects
 summary: Project entrance for public work, shipped stages, and active improvements.
 public: true
 avatar_readable: true
+updated: 2026-05-21
 tags:
   - projects
 ---

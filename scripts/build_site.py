@@ -16,7 +16,15 @@ def trim_shared_script_blank_lines() -> None:
     site = ROOT / "site"
     if not site.exists():
         return
-    markers = ("dom-utils.js", "i18n.js", "api-client.js", "reveal-on-scroll.js", "toast.js")
+    markers = (
+        "dom-utils.js",
+        "i18n.js",
+        "api-client.js",
+        "page-meta.js",
+        "layout-controls.js",
+        "reveal-on-scroll.js",
+        "toast.js",
+    )
     for path in site.rglob("*.html"):
         with path.open("r", encoding="utf-8", newline="") as handle:
             original = handle.read()
@@ -44,6 +52,7 @@ def trim_shared_script_blank_lines() -> None:
 
 def main() -> None:
     run(sys.executable, "scripts/build_note_catalog.py")
+    run(sys.executable, "scripts/build_page_meta.py")
     run(sys.executable, "scripts/build_knowledge.py")
     run("mkdocs", "build", "--strict")
     trim_shared_script_blank_lines()

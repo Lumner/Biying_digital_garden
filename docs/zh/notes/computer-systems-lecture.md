@@ -5,7 +5,7 @@ public: true
 avatar_readable: true
 category: systems
 recommended: true
-updated: 2026-05-13
+updated: 2026-05-21
 reading_order: 20
 tags:
   - computer-systems
@@ -17,21 +17,6 @@ tags:
 
 > 根据 `SYS/` 目录下当前 8 份课件整理。生成日期：2026-05-13。  
 > 当前覆盖：导论、信息表示、布尔代数、组合逻辑、运算部件、时序逻辑、ISA、RISC-V 与程序装载。后续若继续加入新课件，可在本文末尾“增量补充区”继续扩展，不破坏已有章节编号。
-
-## 资料来源 { #note-sec-001 }
-
-| 讲次 | 文件 | 主题 | 页数 |
-|---|---|---:|---:|
-| Lec00 | `SYS/Lec00_Introduction.pptx` | 课程导论、系统分层 | 25 |
-| Lec01 | `SYS/Lec01-Information Representation.pptx` | 信息与数据表示 | 101 |
-| Lec02 | `SYS/Lec02_Boolean Algebra.pptx` | 布尔代数、逻辑门、电路参数 | 139 |
-| Lec03 | `SYS/Lec03_Combinational Logic.pptx` | Verilog、组合逻辑、常用功能块 | 102 |
-| Lec04 | `SYS/Lec04_Arithmetic Unit.pptx` | 加减乘除、ALU、浮点运算 | 143 |
-| Lec05 | `SYS/Lec05_Sequential Logic.pptx` | 锁存器、触发器、FSM、寄存器、计数器 | 154 |
-| Lec06-1 | `SYS/Lec06-1_ISA.pptx` | ISA 设计与分类 | 71 |
-| Lec06-2 | `SYS/Lec06-2_RISCV.pptx` | RISC-V、调用约定、ELF、链接装载 | 130 |
-
----
 
 ## 0. 课程视角：从门电路到系统软件 { #note-sec-002 }
 
@@ -2457,7 +2442,7 @@ J: imm[20|10:1|11|19:12] | rd | opcode
 
 1. 新文件仍放入 `SYS/`。
 2. 新章节不要重排已有编号，直接追加为 `10.x`、`11.x` 等，或在对应主题下增加小节。
-3. 每次更新“资料来源”表，记录文件名、主题、页数和新增日期。
+3. 每次更新时，在维护记录中说明新增主题和新增日期。
 4. 图片统一放入 `sys_notes_assets/`，Markdown 中使用相对路径引用。
 5. 如果新增内容属于已有章节，例如流水线、Cache、虚拟内存，可在当前章节末尾加“扩展：xxx”。
 

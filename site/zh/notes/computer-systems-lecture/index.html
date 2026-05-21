@@ -55,7 +55,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/styles/cyber.css?v=20260521-3">
+      <link rel="stylesheet" href="../../../assets/styles/cyber.css?v=20260521-4">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#note-sec-001" class="md-skip">
+        <a href="#note-sec-002" class="md-skip">
           跳转至
         </a>
       
@@ -1078,17 +1078,6 @@
       目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#note-sec-001" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        资料来源
-      
-    </span>
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#note-sec-002" class="md-nav__link">
@@ -4011,17 +4000,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#note-sec-001" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        资料来源
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#note-sec-002" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5389,68 +5367,6 @@
 <p>根据 <code>SYS/</code> 目录下当前 8 份课件整理。生成日期：2026-05-13。<br />
 当前覆盖：导论、信息表示、布尔代数、组合逻辑、运算部件、时序逻辑、ISA、RISC-V 与程序装载。后续若继续加入新课件，可在本文末尾“增量补充区”继续扩展，不破坏已有章节编号。</p>
 </blockquote>
-<h2 id="note-sec-001">资料来源<a class="headerlink" href="#note-sec-001" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>讲次</th>
-<th>文件</th>
-<th style="text-align: right;">主题</th>
-<th style="text-align: right;">页数</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Lec00</td>
-<td><code>SYS/Lec00_Introduction.pptx</code></td>
-<td style="text-align: right;">课程导论、系统分层</td>
-<td style="text-align: right;">25</td>
-</tr>
-<tr>
-<td>Lec01</td>
-<td><code>SYS/Lec01-Information Representation.pptx</code></td>
-<td style="text-align: right;">信息与数据表示</td>
-<td style="text-align: right;">101</td>
-</tr>
-<tr>
-<td>Lec02</td>
-<td><code>SYS/Lec02_Boolean Algebra.pptx</code></td>
-<td style="text-align: right;">布尔代数、逻辑门、电路参数</td>
-<td style="text-align: right;">139</td>
-</tr>
-<tr>
-<td>Lec03</td>
-<td><code>SYS/Lec03_Combinational Logic.pptx</code></td>
-<td style="text-align: right;">Verilog、组合逻辑、常用功能块</td>
-<td style="text-align: right;">102</td>
-</tr>
-<tr>
-<td>Lec04</td>
-<td><code>SYS/Lec04_Arithmetic Unit.pptx</code></td>
-<td style="text-align: right;">加减乘除、ALU、浮点运算</td>
-<td style="text-align: right;">143</td>
-</tr>
-<tr>
-<td>Lec05</td>
-<td><code>SYS/Lec05_Sequential Logic.pptx</code></td>
-<td style="text-align: right;">锁存器、触发器、FSM、寄存器、计数器</td>
-<td style="text-align: right;">154</td>
-</tr>
-<tr>
-<td>Lec06-1</td>
-<td><code>SYS/Lec06-1_ISA.pptx</code></td>
-<td style="text-align: right;">ISA 设计与分类</td>
-<td style="text-align: right;">71</td>
-</tr>
-<tr>
-<td>Lec06-2</td>
-<td><code>SYS/Lec06-2_RISCV.pptx</code></td>
-<td style="text-align: right;">RISC-V、调用约定、ELF、链接装载</td>
-<td style="text-align: right;">130</td>
-</tr>
-</tbody>
-</table>
-<hr />
 <h2 id="note-sec-002">0. 课程视角：从门电路到系统软件<a class="headerlink" href="#note-sec-002" title="Permanent link">&para;</a></h2>
 <p>计算机系统可以看成一组层次化抽象。越往下越接近物理实现，越往上越接近程序员和用户看到的行为。系统课程的核心价值，是把这些层次之间的接口讲清楚。</p>
 <div class="admonition note">
@@ -8769,7 +8685,7 @@
 <ol>
 <li>新文件仍放入 <code>SYS/</code>。</li>
 <li>新章节不要重排已有编号，直接追加为 <code>10.x</code>、<code>11.x</code> 等，或在对应主题下增加小节。</li>
-<li>每次更新“资料来源”表，记录文件名、主题、页数和新增日期。</li>
+<li>每次更新时，在维护记录中说明新增主题和新增日期。</li>
 <li>图片统一放入 <code>sys_notes_assets/</code>，Markdown 中使用相对路径引用。</li>
 <li>如果新增内容属于已有章节，例如流水线、Cache、虚拟内存，可在当前章节末尾加“扩展：xxx”。</li>
 </ol>
@@ -8881,7 +8797,11 @@
         <script src="../../../assets/vendor/mathjax/es5/tex-mml-chtml.js?v=20260520-1"></script>
       
         <script src="../../../assets/javascripts/language-switch.js?v=20260515-3"></script>
-      
+
+        <script src="../../../assets/javascripts/page-meta.js?v=20260521-1"></script>
+
+        <script src="../../../assets/javascripts/layout-controls.js?v=20260521-1"></script>
+
         <script src="../../../assets/javascripts/random-note-cover.js?v=20260521-1"></script>
 
         <script src="../../../assets/javascripts/reveal-on-scroll.js?v=20260521-1"></script>
@@ -8900,7 +8820,7 @@
 
         <script src="../../../assets/javascripts/auth.js?v=20260520-2"></script>
       
-        <script src="../../../assets/javascripts/biying-chat.js?v=20260521-2"></script>
+        <script src="../../../assets/javascripts/biying-chat.js?v=20260521-3"></script>
       
         <script src="../../../assets/javascripts/guestbook.js?v=20260521-1"></script>
       

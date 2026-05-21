@@ -5,7 +5,7 @@ public: true
 avatar_readable: true
 category: algorithms
 recommended: true
-updated: 2026-05-13
+updated: 2026-05-21
 reading_order: 30
 tags:
   - data-structures
@@ -29,22 +29,6 @@ tags:
 3. 复杂度来自哪里，瓶颈能不能用结构性质消掉？
 
 本文的代码示例以 C 风格伪代码为主，变量名尽量贴近课件。公式使用 LaTeX 语法，例如 \(O(N\log N)\)。图示主要采用 Mermaid，上传到笔记网站时建议开启 Mermaid 渲染。
-
-## 资料来源索引 { #note-sec-002 }
-
-| 讲次 | 文件 | 主题 | 页数/幻灯片数 |
-|---|---|---|---:|
-| DS00 | `FDS/DS00-2026.pdf` | 课程导论、数据结构的意义、学习方式 | 17 |
-| DS01 | `FDS/DS01_Ch02_Algorithm Analysis(a)-2026.pdf` | 算法定义、分析对象、渐进记号、基本分析规则 | 15 |
-| DS02-a | `FDS/DS02_Ch02_Algorithm Analysis(b).ppt` | 最大子列和、二分查找、对数复杂度、实验测量 | 9 |
-| DS02-b | `FDS/DS02_Ch03_List.ppt` | ADT、线性表、链表、多项式、多重链表、游标实现 | 14 |
-| DS03 | `FDS/DS03_Ch03_Stack and Queue.ppt` | 栈、队列、表达式转换、系统栈、循环队列 | 13 |
-| DS04 | `FDS/DS04_Ch04_Binary Trees.ppt` | 树、二叉树、表达式树、遍历、线索二叉树 | 16 |
-| DS05 | `FDS/DS05_Ch04_Search Tree.pdf` | 二叉树性质、二叉搜索树及其操作 | 14 |
-| DS06 | `FDS/DS06_Ch05_Priority Queues.ppt` | 优先队列、二叉堆、建堆、堆应用、d-堆 | 15 |
-| DS07-a | `FDS/DS07_Ch08_Union and Find.ppt` | 等价关系、动态等价问题、并查集、路径压缩 | 9 |
-| DS07-b | `FDS/DS07_Segment Tree.pdf` | 线段树、区间查询、点更新、区间更新、懒标记 | 16 |
-| DS08 | `FDS/DS08_Ch09_Graph Definition_Topological Sort.ppt` | 图定义、图存储、AOV 网络、拓扑排序 | 12 |
 
 ## 全课知识结构 { #note-sec-003 }
 
@@ -1582,7 +1566,7 @@ void Topsort(Graph G) {
 
 后续新增 FDS 课件时，建议按这个流程维护本文：
 
-1. 在“资料来源索引”新增文件、主题和页数。
+1. 在维护记录中说明新增主题和新增日期。
 2. 判断它属于已有章节还是新章节。
 3. 如果属于已有章节，在对应小节中追加“定义、算法、复杂度、例子、易错点”。
 4. 如果是新主题，先在本节登记，再扩展为正式章节。

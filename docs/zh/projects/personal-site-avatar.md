@@ -3,6 +3,7 @@ title: 个人数字花园与碧影
 summary: 一个双语个人网站项目，把公开笔记、项目记录、留言板、公开知识库和数字分身碧影放在同一个长期入口里。
 public: true
 avatar_readable: true
+updated: 2026-05-21
 tags:
   - personal-site
   - digital-avatar

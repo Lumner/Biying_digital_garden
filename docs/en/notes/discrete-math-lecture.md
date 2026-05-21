@@ -5,7 +5,7 @@ public: true
 avatar_readable: true
 category: math
 recommended: true
-updated: 2026-05-13
+updated: 2026-05-21
 reading_order: 10
 tags:
   - math
@@ -17,11 +17,6 @@ tags:
 
 !!! info "Translation status"
     This is an English companion version generated for the bilingual site. It summarizes and translates the structure of the Chinese source while keeping key mathematical and technical notation intact. A full line-by-line translation can be generated later with `scripts/translate.py` after an API key is configured.
-
-## Source
-
-- Chinese source page: [离散数学讲义](../../zh/notes/discrete-math-lecture.md)
-- Original file: `note/离散数学讲义.md`
 
 ## What This Note Covers
 

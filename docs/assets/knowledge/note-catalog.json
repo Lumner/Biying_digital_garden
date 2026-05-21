@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-21T13:30:58.918154+00:00",
+  "generatedAt": "2026-05-21T13:37:36.105382+00:00",
   "categories": {
     "zh": [
       {
@@ -78,10 +78,10 @@
           "risc-v",
           "course-note"
         ],
-        "updated": "2026-05-13",
+        "updated": "2026-05-21",
         "recommended": true,
         "readingOrder": 20,
-        "chapterCount": 11
+        "chapterCount": 10
       },
       {
         "title": "离散数学讲义",
@@ -108,10 +108,10 @@
           "algorithms",
           "course-note"
         ],
-        "updated": "2026-05-13",
+        "updated": "2026-05-21",
         "recommended": true,
         "readingOrder": 30,
-        "chapterCount": 17
+        "chapterCount": 16
       },
       {
         "title": "数学实验",
@@ -153,10 +153,10 @@
           "risc-v",
           "course-note"
         ],
-        "updated": "2026-05-13",
+        "updated": "2026-05-21",
         "recommended": true,
         "readingOrder": 20,
-        "chapterCount": 5
+        "chapterCount": 4
       },
       {
         "title": "Discrete Mathematics Lecture Notes",
@@ -168,10 +168,10 @@
           "discrete-math",
           "course-note"
         ],
-        "updated": "2026-05-13",
+        "updated": "2026-05-21",
         "recommended": true,
         "readingOrder": 10,
-        "chapterCount": 5
+        "chapterCount": 4
       },
       {
         "title": "FDS Data Structures Fundamentals Lecture Notes",
@@ -183,10 +183,10 @@
           "algorithms",
           "course-note"
         ],
-        "updated": "2026-05-13",
+        "updated": "2026-05-21",
         "recommended": true,
         "readingOrder": 30,
-        "chapterCount": 5
+        "chapterCount": 4
       },
       {
         "title": "Math Lab",

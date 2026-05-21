@@ -5,7 +5,7 @@ public: true
 avatar_readable: true
 category: systems
 recommended: true
-updated: 2026-05-13
+updated: 2026-05-21
 reading_order: 20
 tags:
   - computer-systems
@@ -17,11 +17,6 @@ tags:
 
 !!! info "Translation status"
     This is an English companion version generated for the bilingual site. It summarizes and translates the structure of the Chinese source while keeping key mathematical and technical notation intact. A full line-by-line translation can be generated later with `scripts/translate.py` after an API key is configured.
-
-## Source
-
-- Chinese source page: [计算机系统基础讲义](../../zh/notes/computer-systems-lecture.md)
-- Original file: `note/SYS_计算机系统基础讲义.md`
 
 ## What This Note Covers
 

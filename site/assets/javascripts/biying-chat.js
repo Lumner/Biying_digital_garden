@@ -6,7 +6,8 @@
     knowledge: [],
     busy: false,
     history: [],
-    transcript: []
+    transcript: [],
+    missedTopics: new Set()
   };
 
   function isChinesePage() {
@@ -31,6 +32,12 @@
         : "I will answer from the local public knowledge base for now.",
       empty: zh ? "先输入一个问题。" : "Type a question first.",
       error: zh ? "连接失败。你可以部署 EdgeOne Functions 后再试。" : "Connection failed. Try again after deploying EdgeOne Functions.",
+      noPublicFirst: zh
+        ? "这部分我在这里已经公开的内容里还没找到直接线索。可以先把它当成一个普通话题聊，我会尽量说清楚哪些只是通用理解。"
+        : "I do not see a direct thread for this in the public pages here. We can still treat it as a general topic, and I will keep clear about what is only general knowledge.",
+      noPublicAgain: zh
+        ? "这类问题公开页面里还是没有更多材料。我先不重复边界说明了，直接按通用理解陪你往下聊。"
+        : "The public pages still do not add more on this thread, so I will not repeat the boundary note and will continue from general knowledge.",
       loginRequired: zh ? "注册或登录后就可以和碧影对话。" : "Register or sign in to talk to Biying.",
       account: zh ? "注册 / 登录" : "Register / Sign in",
       authExpired: zh ? "未登录，或登录状态已过期。请重新登录后再和碧影对话。" : "You are not signed in, or your session expired. Please sign in again before talking to Biying.",
@@ -326,6 +333,20 @@
     return sources;
   }
 
+  function topicKey(query) {
+    const terms = extractTerms(query)
+      .filter((term) => term.length >= 2)
+      .slice(0, 4);
+    return terms.length ? terms.join("|") : String(query || "").trim().slice(0, 24).toLowerCase();
+  }
+
+  function missedTopicCopy(query) {
+    const key = topicKey(query);
+    const repeated = state.missedTopics.has(key);
+    state.missedTopics.add(key);
+    return text(repeated ? "noPublicAgain" : "noPublicFirst");
+  }
+
   function reasonFromError(error) {
     return api.friendlyError(error, {
       "401": text("authExpired"),
@@ -353,8 +374,8 @@
 
     if (!ranked.length) {
       return isChinesePage()
-        ? { answer: `${reason ? `${text("reason")}${reason}\n\n` : ""}${text("offline")}\n\n公开资料里还没有直接相关内容。你可以试着问：项目、笔记、现在在做什么、数学公式。`, sources: [] }
-        : { answer: `${reason ? `${text("reason")}${reason}\n\n` : ""}${text("offline")}\n\nI did not find a direct match in the public materials. Try asking about projects, notes, current work, or math formulas.`, sources: [] };
+        ? { answer: `${reason ? `${text("reason")}${reason}\n\n` : ""}${text("offline")}\n\n${missedTopicCopy(query)}`, sources: [] }
+        : { answer: `${reason ? `${text("reason")}${reason}\n\n` : ""}${text("offline")}\n\n${missedTopicCopy(query)}`, sources: [] };
     }
 
     const intro = isChinesePage()
