@@ -74,14 +74,13 @@
     }
   }
 
-  function mountSecondaryTouchPeek() {
+  function mountSecondaryDirectPeek() {
     let timer = 0;
     document.addEventListener("pointerdown", (event) => {
       if (window.matchMedia("(max-width: 959px)").matches) return;
-      const fromRight = window.innerWidth - event.clientX;
       const sidebar = document.querySelector(".md-sidebar--secondary");
       if (!sidebar) return;
-      if (fromRight <= 42 || sidebar.contains(event.target)) {
+      if (sidebar.contains(event.target)) {
         document.body.classList.add("sidebar-secondary-peek");
         window.clearTimeout(timer);
         timer = window.setTimeout(() => document.body.classList.remove("sidebar-secondary-peek"), 4200);
@@ -93,6 +92,6 @@
 
   document.addEventListener("DOMContentLoaded", () => {
     mountPrimaryEdgePeek();
-    mountSecondaryTouchPeek();
+    mountSecondaryDirectPeek();
   });
 })();

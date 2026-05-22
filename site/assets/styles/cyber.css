@@ -815,27 +815,17 @@ html:not(.math-ready) .md-typeset .arithmatex {
   .md-sidebar--secondary {
     position: relative;
     opacity: 0.18;
-    transform: translateX(calc(100% - 1.2rem));
-    transition: opacity 180ms ease, transform 180ms ease;
+    transition: opacity 180ms ease;
   }
 
   .md-sidebar--secondary::before {
-    content: "";
-    position: fixed;
-    top: 5.2rem;
-    right: 0.45rem;
-    width: 0.38rem;
-    height: min(42vh, 18rem);
-    border-radius: 999px;
-    background: linear-gradient(180deg, rgba(112, 244, 219, 0.12), rgba(244, 201, 131, 0.16));
-    box-shadow: 0 0 18px rgba(112, 244, 219, 0.14);
+    display: none;
   }
 
   .md-sidebar--secondary:hover,
   .md-sidebar--secondary:focus-within,
   body.sidebar-secondary-peek .md-sidebar--secondary {
     opacity: 1;
-    transform: translateX(0);
   }
 }
 
