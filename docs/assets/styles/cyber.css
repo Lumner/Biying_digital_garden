@@ -813,9 +813,17 @@ html:not(.math-ready) .md-typeset .arithmatex {
   }
 
   .md-sidebar--secondary {
-    position: relative;
+    position: sticky !important;
+    top: 4.8rem;
+    z-index: 12;
+    align-self: flex-start;
+    min-height: calc(100vh - 5rem);
     opacity: 0;
     transition: opacity 180ms ease;
+  }
+
+  .md-sidebar--secondary .md-sidebar__scrollwrap {
+    max-height: calc(100vh - 5rem);
   }
 
   .md-sidebar--secondary::before {
