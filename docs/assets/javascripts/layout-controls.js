@@ -1,46 +1,77 @@
 (function () {
-  const STORAGE_KEY = "biying.sidebar.primaryCollapsed";
+  function mountPrimaryEdgePeek() {
+    let timer = 0;
 
-  function isChinesePage() {
-    return !String(window.location.pathname || "").replace(/\/+$/, "").startsWith("/en");
-  }
-
-  function copy(key) {
-    const zh = isChinesePage();
-    return {
-      collapse: zh ? "隐藏左侧导航" : "Hide navigation",
-      expand: zh ? "显示左侧导航" : "Show navigation"
-    }[key];
-  }
-
-  function setPrimaryCollapsed(button, collapsed) {
-    document.body.classList.toggle("sidebar-primary-collapsed", collapsed);
-    button.setAttribute("aria-pressed", String(collapsed));
-    button.setAttribute("aria-label", collapsed ? copy("expand") : copy("collapse"));
-    button.title = collapsed ? copy("expand") : copy("collapse");
-    try {
-      window.localStorage.setItem(STORAGE_KEY, collapsed ? "1" : "0");
-    } catch (error) {
-      // Persistence is optional.
+    function enabled() {
+      return !window.matchMedia("(max-width: 959px)").matches;
     }
-  }
 
-  function mountPrimaryToggle() {
-    if (!document.querySelector(".md-sidebar--primary") || document.querySelector("[data-sidebar-primary-toggle]")) return;
-    const button = document.createElement("button");
-    button.className = "sidebar-dock-toggle";
-    button.type = "button";
-    button.dataset.sidebarPrimaryToggle = "true";
-    button.innerHTML = '<span aria-hidden="true"></span>';
-    document.body.appendChild(button);
-    let collapsed = false;
-    try {
-      collapsed = window.localStorage.getItem(STORAGE_KEY) === "1";
-    } catch (error) {
-      collapsed = false;
+    function sidebar() {
+      return document.querySelector(".md-sidebar--primary");
     }
-    setPrimaryCollapsed(button, collapsed);
-    button.addEventListener("click", () => setPrimaryCollapsed(button, !document.body.classList.contains("sidebar-primary-collapsed")));
+
+    function openPrimary(target) {
+      if (!target) return;
+      document.body.classList.add("sidebar-primary-peek");
+      target.style.opacity = "1";
+      target.style.transform = "translateX(0)";
+      window.clearTimeout(timer);
+    }
+
+    function closePrimary(target) {
+      if (!target) return;
+      document.body.classList.remove("sidebar-primary-peek");
+      target.style.opacity = "";
+      target.style.transform = "";
+    }
+
+    function closePrimarySoon(target) {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => {
+        if (target.matches(":hover") || target.contains(document.activeElement)) return;
+        closePrimary(target);
+      }, 520);
+    }
+
+    function pointerInsideOpenSidebar(event, target) {
+      if (!document.body.classList.contains("sidebar-primary-peek")) return false;
+      const rect = target.getBoundingClientRect();
+      return (
+        event.clientX >= Math.max(0, rect.left - 8) &&
+        event.clientX <= rect.right + 18 &&
+        event.clientY >= rect.top &&
+        event.clientY <= rect.bottom
+      );
+    }
+
+    document.addEventListener("pointermove", (event) => {
+      if (!enabled()) return;
+      const target = sidebar();
+      if (!target) return;
+      if (event.clientX <= 54 || pointerInsideOpenSidebar(event, target)) {
+        openPrimary(target);
+      } else {
+        closePrimarySoon(target);
+      }
+    }, { passive: true });
+
+    document.addEventListener("pointerdown", (event) => {
+      if (!enabled()) return;
+      const target = sidebar();
+      if (!target) return;
+      if (event.clientX <= 54 || target.contains(event.target)) {
+        openPrimary(target);
+        timer = window.setTimeout(() => closePrimary(target), 4200);
+      } else {
+        closePrimary(target);
+      }
+    }, { passive: true });
+
+    const target = sidebar();
+    if (target) {
+      target.addEventListener("mouseenter", () => openPrimary(target));
+      target.addEventListener("mouseleave", () => closePrimarySoon(target));
+    }
   }
 
   function mountSecondaryTouchPeek() {
@@ -61,7 +92,7 @@
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    mountPrimaryToggle();
+    mountPrimaryEdgePeek();
     mountSecondaryTouchPeek();
   });
 })();
