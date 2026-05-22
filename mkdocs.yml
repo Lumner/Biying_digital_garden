@@ -124,7 +124,7 @@ extra_javascript:
   - assets/javascripts/mathjax.js?v=20260521-1
   - assets/vendor/mathjax/es5/tex-mml-chtml.js?v=20260520-1
   - assets/javascripts/language-switch.js?v=20260515-3
-  - assets/javascripts/page-meta.js?v=20260521-1
+  - assets/javascripts/page-meta.js?v=20260522-1
   - assets/javascripts/layout-controls.js?v=20260522-2
   - assets/javascripts/random-note-cover.js?v=20260521-1
   - assets/javascripts/reveal-on-scroll.js?v=20260521-1

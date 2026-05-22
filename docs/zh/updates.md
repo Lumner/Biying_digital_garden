@@ -14,9 +14,17 @@ tags:
   <p class="garden-pagehead__lead">这里不写宏大路线图，只留下每个公开模块最近一次真正发生的变化。以后继续加内容时，优先更新这一页，就能让整个站点的近况更容易被看见。</p>
   <div class="garden-pagehead__meta">
     <span class="status-pill leaf">公开维护记录</span>
-    <span class="status-pill">更新：2026-05-21</span>
+    <span class="status-pill" data-latest-page-updated>更新：自动同步中</span>
   </div>
 </section>
+
+<h2>最近更新页面</h2>
+
+<div class="module-update-preview" data-recent-page-updates data-limit="8">
+  <p class="meta-line">正在读取最近更新...</p>
+</div>
+
+<h2>模块维护记录</h2>
 
 <div class="module-update-grid">
   <article class="module-update-card">

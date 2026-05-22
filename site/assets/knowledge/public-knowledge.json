@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-22T08:53:44.537955+00:00",
+  "generatedAt": "2026-05-22T09:07:25.834580+00:00",
   "items": [
     {
       "title": "About",
@@ -389,7 +389,7 @@
       "sourcePath": "docs/en/updates.md",
       "locale": "en",
       "kind": "page",
-      "text": "UPDATES Module Updates This is not a grand roadmap. It is a compact record of what actually changed in each public module, so the current shape of the site stays easy to read as it grows. Public maintenance log Updated: 2026 05 21 Home Second UI pass completed Sharper entry hierarchy, a random note cover, and clearer paths for first time visitors. Notes Public knowledge regenerated Course pages keep section indexes and formulas, while the public knowledge base is split by page and section for Biying retrieval. Projects Current project status refreshed Project pages now include backend APIs, RAG retrieval, mobile tests, self hosted MathJax, and dependency audit notes. Biying Public scope and error boundaries tightened Shared API helpers, rate limit responses, source boundaries, and public knowledge fallback are now in place. Guestbook Light moderation added Visitors get privacy nudges and pacing limits, while the owner can filter, hide, or delete messages; API errors are steadier too. Admin Build and validation flow tightened Site build, public scope validation, site sync checks, and Playwright mobile tests are part of the maintenance flow."
+      "text": "UPDATES Module Updates This is not a grand roadmap. It is a compact record of what actually changed in each public module, so the current shape of the site stays easy to read as it grows. Public maintenance log Updated: syncing Recently Updated Pages Loading recent updates... Module Maintenance Home Second UI pass completed Sharper entry hierarchy, a random note cover, and clearer paths for first time visitors. Notes Public knowledge regenerated Course pages keep section indexes and formulas, while the public knowledge base is split by page and section for Biying retrieval. Projects Current project status refreshed Project pages now include backend APIs, RAG retrieval, mobile tests, self hosted MathJax, and dependency audit notes. Biying Public scope and error boundaries tightened Shared API helpers, rate limit responses, source boundaries, and public knowledge fallback are now in place. Guestbook Light moderation added Visitors get privacy nudges and pacing limits, while the owner can filter, hide, or delete messages; API errors are steadier too. Admin Build and validation flow tightened Site build, public scope validation, site sync checks, and Playwright mobile tests are part of the maintenance flow."
     },
     {
       "title": "关于",
@@ -1823,7 +1823,7 @@
       "sourcePath": "docs/zh/updates.md",
       "locale": "zh",
       "kind": "page",
-      "text": "UPDATES 模块更新 这里不写宏大路线图，只留下每个公开模块最近一次真正发生的变化。以后继续加内容时，优先更新这一页，就能让整个站点的近况更容易被看见。 公开维护记录 更新：2026 05 21 首页 完成第二轮界面整理 强化入口层级、随机笔记封面与模块导览，让第一次进入时更容易找到路。 笔记 公开知识库重新生成 课程页面继续保留章节索引和公式，公开知识库按页面与章节切块，方便碧影检索。 项目 更新当前项目状态 项目页补充后端 API、RAG 检索、移动端测试、自托管 MathJax 与依赖审计等当前状态。 碧影 强化公开范围与错误边界 共享 API 工具、限流返回、来源边界和公开知识 fallback 已补齐，回答范围更清楚。 留言 补上轻量治理能力 访客侧有隐私提醒与节流，站主侧可以筛选、隐藏或删除公开留言，API 错误返回也更稳定。 后台 构建与验证流程收紧 站点构建、公开范围校验、site 同步检查和 Playwright 移动端测试已经纳入维护流程。"
+      "text": "UPDATES 模块更新 这里不写宏大路线图，只留下每个公开模块最近一次真正发生的变化。以后继续加内容时，优先更新这一页，就能让整个站点的近况更容易被看见。 公开维护记录 更新：自动同步中 最近更新页面 正在读取最近更新... 模块维护记录 首页 完成第二轮界面整理 强化入口层级、随机笔记封面与模块导览，让第一次进入时更容易找到路。 笔记 公开知识库重新生成 课程页面继续保留章节索引和公式，公开知识库按页面与章节切块，方便碧影检索。 项目 更新当前项目状态 项目页补充后端 API、RAG 检索、移动端测试、自托管 MathJax 与依赖审计等当前状态。 碧影 强化公开范围与错误边界 共享 API 工具、限流返回、来源边界和公开知识 fallback 已补齐，回答范围更清楚。 留言 补上轻量治理能力 访客侧有隐私提醒与节流，站主侧可以筛选、隐藏或删除公开留言，API 错误返回也更稳定。 后台 构建与验证流程收紧 站点构建、公开范围校验、site 同步检查和 Playwright 移动端测试已经纳入维护流程。"
     }
   ]
 }

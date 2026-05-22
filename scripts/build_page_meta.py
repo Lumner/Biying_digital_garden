@@ -46,6 +46,34 @@ def git_modified_date(path: Path) -> str:
     return result.stdout.strip()
 
 
+def worktree_modified_date(path: Path) -> str:
+    try:
+        result = subprocess.run(
+            ["git", "status", "--porcelain", "--", str(path.relative_to(ROOT))],
+            cwd=ROOT,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+    except OSError:
+        return ""
+    return datetime.now().date().isoformat() if result.stdout.strip() else ""
+
+
+def newest_date(*values: object) -> str:
+    dates = sorted(
+        str(value).strip()
+        for value in values
+        if str(value or "").strip()
+    )
+    return dates[-1] if dates else ""
+
+
+def page_locale(path: Path) -> str:
+    rel = path.relative_to(DOCS)
+    return rel.parts[0] if rel.parts and rel.parts[0] in {"zh", "en"} else ""
+
+
 def collect() -> list[dict]:
     items: list[dict] = []
     for path in sorted(DOCS.rglob("*.md")):
@@ -54,7 +82,7 @@ def collect() -> list[dict]:
         meta, _ = split_frontmatter(path.read_text(encoding="utf-8"))
         if meta.get("public") is not True:
             continue
-        updated = str(meta.get("updated") or "").strip() or git_modified_date(path)
+        updated = newest_date(meta.get("updated"), git_modified_date(path), worktree_modified_date(path))
         if not updated:
             continue
         items.append(
@@ -62,9 +90,10 @@ def collect() -> list[dict]:
                 "title": str(meta.get("title") or path.stem),
                 "url": page_url(path),
                 "updated": updated,
+                "locale": page_locale(path),
             }
         )
-    return items
+    return sorted(items, key=lambda item: (item["updated"], item["title"]), reverse=True)
 
 
 def main() -> None:

@@ -14,9 +14,17 @@ tags:
   <p class="garden-pagehead__lead">This is not a grand roadmap. It is a compact record of what actually changed in each public module, so the current shape of the site stays easy to read as it grows.</p>
   <div class="garden-pagehead__meta">
     <span class="status-pill leaf">Public maintenance log</span>
-    <span class="status-pill">Updated: 2026-05-21</span>
+    <span class="status-pill" data-latest-page-updated>Updated: syncing</span>
   </div>
 </section>
+
+<h2>Recently Updated Pages</h2>
+
+<div class="module-update-preview" data-recent-page-updates data-limit="8">
+  <p class="meta-line">Loading recent updates...</p>
+</div>
+
+<h2>Module Maintenance</h2>
 
 <div class="module-update-grid">
   <article class="module-update-card">
