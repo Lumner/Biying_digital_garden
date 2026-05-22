@@ -814,7 +814,7 @@ html:not(.math-ready) .md-typeset .arithmatex {
 
   .md-sidebar--secondary {
     position: relative;
-    opacity: 0.18;
+    opacity: 0;
     transition: opacity 180ms ease;
   }
 
