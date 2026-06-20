@@ -43,9 +43,6 @@ tags:
     <span>PROJECT LOG</span>
     <span>BIYING ONLINE</span>
   </div>
-  <a class="home-scroll-cue" href="#home-content" aria-label="继续浏览">
-    <span aria-hidden="true"></span>
-  </a>
 </section>
 
 <script defer src="../assets/javascripts/home-hero.js?v=20260620-2"></script>
@@ -55,6 +52,11 @@ tags:
     <span class="cyber-kicker">PUBLIC ENTRANCE</span>
     <h2>从这里继续向下走</h2>
     <p>当前动态、随机笔记、项目和碧影入口都放在下面，像一条慢慢展开的路径。</p>
+    <div class="home-below-fold__routes" aria-label="常用入口">
+      <a href="./now/"><span>此刻</span><strong>看近况</strong></a>
+      <a href="./notes/"><span>笔记</span><strong>随机阅读</strong></a>
+      <a href="./avatar/"><span>碧影</span><strong>直接对话</strong></a>
+    </div>
   </div>
   <div class="note-cover-stage home-hero-cover" data-random-note-cover aria-label="随机笔记封面">
     <a class="note-cover" data-cover-link href="./notes/">
