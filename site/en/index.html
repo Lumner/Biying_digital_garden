@@ -55,7 +55,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/styles/cyber.css?v=20260621-1">
+      <link rel="stylesheet" href="../assets/styles/cyber.css?v=20260621-2">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -87,11 +87,6 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#module-updates" class="md-skip">
-          跳转至
-        </a>
       
     </div>
     <div data-md-component="announce">
@@ -1740,24 +1735,6 @@
       
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Home
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1774,56 +1751,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#module-updates" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Module Updates
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#public-signals" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Public Signals
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ways-in" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ways In
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -2857,47 +2784,6 @@
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#module-updates" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Module Updates
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#public-signals" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Public Signals
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ways-in" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ways In
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -3024,8 +2910,12 @@
   <a class="biying-presence__link" href="./avatar/">Talk to Biying</a>
 </section>
 
-<h2 id="module-updates">Module Updates<a class="headerlink" href="#module-updates" title="Permanent link">&para;</a></h2>
-<p class="section-lede">If you want a quick read on what changed recently, start here. The fuller log lives on the <a href="./updates/">Updates</a> page.</p>
+<section class="home-section home-section--updates" aria-labelledby="home-updates-title">
+  <div class="home-section__head">
+    <span class="cyber-kicker">RECENT SIGNALS</span>
+    <h2 id="home-updates-title">Module Updates</h2>
+    <p>If you want a quick read on what changed recently, start here. The fuller log lives on the <a href="./updates/">Updates</a> page.</p>
+  </div>
 
 <div class="module-update-preview">
   <a href="./updates/">
@@ -3042,38 +2932,56 @@
   </a>
 </div>
 
-<h2 id="public-signals">Public Signals<a class="headerlink" href="#public-signals" title="Permanent link">&para;</a></h2>
-<p class="section-lede">This is not a finished portfolio. It is a living entrance that can keep growing through notes, projects, current updates, and conversations with Biying.</p>
+</section>
+
+<section class="home-section home-section--signals" aria-labelledby="home-signals-title">
+  <div class="home-section__head">
+    <span class="cyber-kicker">PUBLIC MAP</span>
+    <h2 id="home-signals-title">Public Signals</h2>
+    <p>This is not a finished portfolio. It is a living entrance that can keep growing through notes, projects, current updates, and conversations with Biying.</p>
+  </div>
 
 <div class="cyber-grid">
   <section class="cyber-card">
+    <span class="cyber-card__label">Learning Map</span>
     <h3>Notes</h3>
     <p>Learning records, math, AI, engineering, and thoughts that are slowly taking shape. Chinese is the source language, and English stays in step as much as possible.</p>
     <a href="./notes/">Read notes</a>
   </section>
   <section class="cyber-card">
+    <span class="cyber-card__label">Build Log</span>
     <h3>Projects</h3>
     <p>Work I am seriously building, along with why it is shaped this way and what still needs care.</p>
     <a href="./projects/">View projects</a>
   </section>
   <section class="cyber-card">
+    <span class="cyber-card__label">Site Guide</span>
     <h3>Biying</h3>
     <p>If you want a lighter way to explore the site, start a conversation with Biying and follow the public threads from there.</p>
     <a href="./avatar/">Start chat</a>
   </section>
   <section class="cyber-card">
+    <span class="cyber-card__label">Visitor Notes</span>
     <h3>Guestbook</h3>
     <p>Visitors can leave public messages. Please do not include private information.</p>
     <a href="./guestbook/">Leave a signal</a>
   </section>
   <section class="cyber-card">
+    <span class="cyber-card__label">Outside Links</span>
     <h3>Friends</h3>
     <p>Friends' sites live here, with automatically detected avatars and short notes from me.</p>
     <a href="./friends/">View friends</a>
   </section>
 </div>
 
-<h2 id="ways-in">Ways In<a class="headerlink" href="#ways-in" title="Permanent link">&para;</a></h2>
+</section>
+
+<section class="home-section home-section--paths" aria-labelledby="home-paths-title">
+  <div class="home-section__head">
+    <span class="cyber-kicker">WAYS IN</span>
+    <h2 id="home-paths-title">Ways In</h2>
+  </div>
+
 <div class="signal-list">
   <div class="signal-item">
     <strong>Meet me</strong>
@@ -3090,6 +2998,8 @@
 </div>
 
 <p class="quiet-panel">Biying only reads content already published on this website. Drafts, private files, and account activity are outside his answer scope.</p>
+
+</section>
 
 
 
