@@ -73,6 +73,23 @@ tags:
   </div>
 </section>
 
+<section class="site-stats-panel site-stats-panel--home" data-site-stats aria-label="Site statistics">
+  <div class="site-stats-panel__intro">
+    <strong>Footprints through this garden</strong>
+    <span>Total visitors and page views update automatically on the live site, so this space can show whether it is actually being seen.</span>
+    <p class="site-stats-panel__status" data-site-stat-status>Loading site statistics</p>
+    <a class="site-stats-panel__action" href="./stats/">Open stats page</a>
+  </div>
+  <div class="site-stats-panel__metric">
+    <span>Total visitors</span>
+    <strong data-site-stat="totalVisitors">--</strong>
+  </div>
+  <div class="site-stats-panel__metric">
+    <span>Page views</span>
+    <strong data-site-stat="pageViews">--</strong>
+  </div>
+</section>
+
 <section class="home-pulse" aria-label="Current signals">
   <div class="home-pulse__item">
     <span>Now</span>

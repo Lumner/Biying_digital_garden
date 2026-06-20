@@ -73,6 +73,23 @@ tags:
   </div>
 </section>
 
+<section class="site-stats-panel site-stats-panel--home" data-site-stats aria-label="站点统计">
+  <div class="site-stats-panel__intro">
+    <strong>这座花园的来访痕迹</strong>
+    <span>访客总数与浏览量会随线上访问自动累计，用来观察这个空间是否真的被人看见。</span>
+    <p class="site-stats-panel__status" data-site-stat-status>正在读取站点统计</p>
+    <a class="site-stats-panel__action" href="./stats/">查看统计页面</a>
+  </div>
+  <div class="site-stats-panel__metric">
+    <span>访客总数</span>
+    <strong data-site-stat="totalVisitors">--</strong>
+  </div>
+  <div class="site-stats-panel__metric">
+    <span>浏览量</span>
+    <strong data-site-stat="pageViews">--</strong>
+  </div>
+</section>
+
 <section class="home-pulse" aria-label="当前动态">
   <div class="home-pulse__item">
     <span>此刻</span>

@@ -1,6 +1,12 @@
 {
-  "generatedAt": "2026-06-20T09:56:55.503123+00:00",
+  "generatedAt": "2026-06-20T10:27:30.900430+00:00",
   "items": [
+    {
+      "title": "站点统计",
+      "url": "/zh/stats/",
+      "updated": "2026-06-20",
+      "locale": "zh"
+    },
     {
       "title": "友链",
       "url": "/zh/friends/",
@@ -12,6 +18,12 @@
       "url": "/zh/",
       "updated": "2026-06-20",
       "locale": "zh"
+    },
+    {
+      "title": "Site Stats",
+      "url": "/en/stats/",
+      "updated": "2026-06-20",
+      "locale": "en"
     },
     {
       "title": "Home",

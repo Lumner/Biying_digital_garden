@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-20T09:57:00.795007+00:00",
+  "generatedAt": "2026-06-20T10:27:37.308392+00:00",
   "items": [
     {
       "title": "About",
@@ -66,7 +66,7 @@
       "sourcePath": "docs/en/index.md",
       "locale": "en",
       "kind": "page",
-      "text": "BIYING DIGITAL GARDEN Biying Digital Garden Root the work, keep moving toward light. Let small honest steps become a visible path. Stay curious. Build gently. Keep going. Make ordinary days bright enough to remember. Root the work, keep moving toward light. A bilingual space for long term learning records, projects, and current notes. Notes are the roots, projects are the branches, and Biying gently connects the public content. AI Undergraduate vibe coding embodied AI full stack Talk to Biying View Projects Read Notes PUBLIC NOTES PROJECT LOG BIYING ONLINE PUBLIC ENTRANCE Keep walking from here Current signals, a random note cover, projects, and Biying all unfold below the first screen. PUBLIC NOTE Random Note A cover generated on refresh NOTE BIYING Now Still refining the digital garden and Biying Recently Course notes, project reflection, and site boundaries Best start Use the Now page for the quickest update Hello, it is nice to meet you. Biying is here if you want a gentler way in. If you want to know what I have been doing, what lives on this site, or simply chat for a moment, you can start with Biying. When something has not been written here yet, he says so plainly. Talk to Biying Module Updates If you want a quick read on what changed recently, start here. The fuller log lives on the Updates page. Biying More public context and recent conversation memory Guestbook Privacy nudges, pacing limits, and owner moderation Admin Recovery codes and account maintenance tools Public Signals This is not a finished portfolio. It is a living entrance that can keep growing through notes, projects, current updates, and conversations with Biying. Notes Learning records, math, AI, engineering, and thoughts that are slowly taking shape. Chinese is the source language, and English stays in step as much as possible. Read notes Projects Work I am seriously building, along with why it is shaped this way and what still needs care. View projects Biying If you want a lighter way to explore the site, start a conversation with Biying and follow the public threads from there. Start chat Guestbook Visitors can leave public messages. Please do not include private information. Leave a signal Friends Friends' sites live here, with automatically detected avatars and short notes from me. View friends Ways In Meet me Start with About and Now if you want the fastest sense of who I am and what currently has my attention. See the work Enter through Projects and Notes to see technical choices, experiments, and longer term accumulation. Say hello Leave a note in the Guestbook , or let Biying guide you through what is already public. Biying only reads content already published on this website. Drafts, private files, and account activity are outside his answer scope."
+      "text": "BIYING DIGITAL GARDEN Biying Digital Garden Root the work, keep moving toward light. Let small honest steps become a visible path. Stay curious. Build gently. Keep going. Make ordinary days bright enough to remember. Root the work, keep moving toward light. A bilingual space for long term learning records, projects, and current notes. Notes are the roots, projects are the branches, and Biying gently connects the public content. AI Undergraduate vibe coding embodied AI full stack Talk to Biying View Projects Read Notes PUBLIC NOTES PROJECT LOG BIYING ONLINE PUBLIC ENTRANCE Keep walking from here Current signals, a random note cover, projects, and Biying all unfold below the first screen. PUBLIC NOTE Random Note A cover generated on refresh NOTE BIYING Footprints through this garden Total visitors and page views update automatically on the live site, so this space can show whether it is actually being seen. Loading site statistics Open stats page Total visitors Page views Now Still refining the digital garden and Biying Recently Course notes, project reflection, and site boundaries Best start Use the Now page for the quickest update Hello, it is nice to meet you. Biying is here if you want a gentler way in. If you want to know what I have been doing, what lives on this site, or simply chat for a moment, you can start with Biying. When something has not been written here yet, he says so plainly. Talk to Biying Module Updates If you want a quick read on what changed recently, start here. The fuller log lives on the Updates page. Biying More public context and recent conversation memory Guestbook Privacy nudges, pacing limits, and owner moderation Admin Recovery codes and account maintenance tools Public Signals This is not a finished portfolio. It is a living entrance that can keep growing through notes, projects, current updates, and conversations with Biying. Notes Learning records, math, AI, engineering, and thoughts that are slowly taking shape. Chinese is the source language, and English stays in step as much as possible. Read notes Projects Work I am seriously building, along with why it is shaped this way and what still needs care. View projects Biying If you want a lighter way to explore the site, start a conversation with Biying and follow the public threads from there. Start chat Guestbook Visitors can leave public messages. Please do not include private information. Leave a signal Friends Friends' sites live here, with automatically detected avatars and short notes from me. View friends Ways In Meet me Start with About and Now if you want the fastest sense of who I am and what currently has my attention. See the work Enter through Projects and Notes to see technical choices, experiments, and longer term accumulation. Say hello Leave a note in the Guestbook , or let Biying guide you through what is already public. Biying only reads content already published on this website. Drafts, private files, and account activity are outside his answer scope."
     },
     {
       "title": "AI Notes",
@@ -392,6 +392,19 @@
       "parentTitle": "Personal Digital Garden + Biying"
     },
     {
+      "title": "Site Stats",
+      "summary": "Visitor and page-view statistics for Biying Digital Garden.",
+      "tags": [
+        "site",
+        "stats"
+      ],
+      "url": "/en/stats/",
+      "sourcePath": "docs/en/stats.md",
+      "locale": "en",
+      "kind": "page",
+      "text": "SITE SIGNALS Site Stats This page records how often the digital garden is seen: a browser's first visit counts as one visitor, and every page load counts as one page view. Visit overview The numbers are written by this site's EdgeOne Function into self hosted KV storage for a simple public traffic signal. Loading site statistics Total visitors Page views Stats use only an anonymous visitor ID generated in the browser and page load events. If BIYING KV is not bound on the live site yet, the page still works, but the numbers will not accumulate."
+    },
+    {
       "title": "Updates",
       "summary": "Recent maintenance notes for each public module of the site.",
       "tags": [
@@ -469,7 +482,7 @@
       "sourcePath": "docs/zh/index.md",
       "locale": "zh",
       "kind": "page",
-      "text": "BIYING DIGITAL GARDEN 碧影数字花园 向下扎根，也向光生长。 把每一次认真，慢慢写成答案。 愿好奇心不熄，愿行动有回声。 在热爱里长期主义，在日常里保持明亮。 向下扎根，也向光生长。 一个用来长期沉淀学习、项目和近况的双语空间。笔记是根系，项目是枝干，碧影负责把公开内容温柔地连接起来。 AI 本科生 vibe coding 具身智能 全栈开发 和碧影对话 查看项目 进入笔记 PUBLIC NOTES PROJECT LOG BIYING ONLINE PUBLIC ENTRANCE 从这里继续向下走 当前动态、随机笔记、项目和碧影入口都放在下面，像一条慢慢展开的路径。 PUBLIC NOTE 随机笔记 刷新生成一枚封面 NOTE BIYING 此刻 正在继续打磨数字花园与碧影 最近整理 课程讲义、项目复盘与站点边界 建议入口 想快速了解近况，可以先看“现在” 你好，很高兴认识你。 碧影在这里，陪你从容地逛一逛。 想知道我最近在做什么、这里有哪些内容，或者只是想随便聊聊，都可以先和碧影说句话。这个网站没有写到的部分，他也会如实告诉你。 和碧影聊聊 模块近况 想先看站点最近哪里有变化，可以从这里扫一眼；更完整的记录放在 模块更新 。 碧影 增加公开上下文与最近对话记忆 留言 补上隐私提醒、节流与站主治理 后台 增加恢复码与账号维护工具 公开信号 这里不是一次性完成的作品集，而是一个会持续更新的入口。你可以从不同路径进入：读笔记、看项目、了解现在，或者直接问碧影。 笔记 记录学习、数学、AI、工程和一些慢慢成形的想法。中文为主源，英文尽量同步维护。 阅读笔记 项目 放正在认真推进的作品，也记录它们为什么这样做、哪里还不够好。 查看项目 碧影 想更轻松地了解这里，可以直接和碧影聊聊。他会从已经公开的内容里陪你找线索。 启动对话 留言 访客可以公开留言。请不要留下隐私信息，所有留言默认面向其他访客可见。 留下信号 友链 朋友们的网站入口会放在这里。卡片会自动尝试识别头像，并保留我对朋友的简短介绍。 查看友链 进入路径 先认识我 从 关于我 和 现在 开始，能最快看见我是谁、最近又在忙什么。 看我怎么做 从 项目 和 笔记 进入，会更容易看见技术、取舍和长期积累。 想交流 可以去 留言 ，也可以直接和 碧影 说句话。 碧影只会读取已经公开到网站上的内容。没有发布出来的草稿、私密文件和账号活动，不会进入他的回答范围。"
+      "text": "BIYING DIGITAL GARDEN 碧影数字花园 向下扎根，也向光生长。 把每一次认真，慢慢写成答案。 愿好奇心不熄，愿行动有回声。 在热爱里长期主义，在日常里保持明亮。 向下扎根，也向光生长。 一个用来长期沉淀学习、项目和近况的双语空间。笔记是根系，项目是枝干，碧影负责把公开内容温柔地连接起来。 AI 本科生 vibe coding 具身智能 全栈开发 和碧影对话 查看项目 进入笔记 PUBLIC NOTES PROJECT LOG BIYING ONLINE PUBLIC ENTRANCE 从这里继续向下走 当前动态、随机笔记、项目和碧影入口都放在下面，像一条慢慢展开的路径。 PUBLIC NOTE 随机笔记 刷新生成一枚封面 NOTE BIYING 这座花园的来访痕迹 访客总数与浏览量会随线上访问自动累计，用来观察这个空间是否真的被人看见。 正在读取站点统计 查看统计页面 访客总数 浏览量 此刻 正在继续打磨数字花园与碧影 最近整理 课程讲义、项目复盘与站点边界 建议入口 想快速了解近况，可以先看“现在” 你好，很高兴认识你。 碧影在这里，陪你从容地逛一逛。 想知道我最近在做什么、这里有哪些内容，或者只是想随便聊聊，都可以先和碧影说句话。这个网站没有写到的部分，他也会如实告诉你。 和碧影聊聊 模块近况 想先看站点最近哪里有变化，可以从这里扫一眼；更完整的记录放在 模块更新 。 碧影 增加公开上下文与最近对话记忆 留言 补上隐私提醒、节流与站主治理 后台 增加恢复码与账号维护工具 公开信号 这里不是一次性完成的作品集，而是一个会持续更新的入口。你可以从不同路径进入：读笔记、看项目、了解现在，或者直接问碧影。 笔记 记录学习、数学、AI、工程和一些慢慢成形的想法。中文为主源，英文尽量同步维护。 阅读笔记 项目 放正在认真推进的作品，也记录它们为什么这样做、哪里还不够好。 查看项目 碧影 想更轻松地了解这里，可以直接和碧影聊聊。他会从已经公开的内容里陪你找线索。 启动对话 留言 访客可以公开留言。请不要留下隐私信息，所有留言默认面向其他访客可见。 留下信号 友链 朋友们的网站入口会放在这里。卡片会自动尝试识别头像，并保留我对朋友的简短介绍。 查看友链 进入路径 先认识我 从 关于我 和 现在 开始，能最快看见我是谁、最近又在忙什么。 看我怎么做 从 项目 和 笔记 进入，会更容易看见技术、取舍和长期积累。 想交流 可以去 留言 ，也可以直接和 碧影 说句话。 碧影只会读取已经公开到网站上的内容。没有发布出来的草稿、私密文件和账号活动，不会进入他的回答范围。"
     },
     {
       "title": "AI 笔记",
@@ -1837,6 +1850,19 @@
       "locale": "zh",
       "kind": "page",
       "text": "PROJECT CASE 个人数字花园与碧影 把公开笔记、项目记录、留言、公开知识库和碧影放进同一个长期入口里，让内容、交互、检索和部署一起慢慢长出来。 MkDocs EdgeOne 更新：2026 05 21 定位 个人数字花园，不是一次性作品集。 核心 公开内容、双语笔记、RAG 检索、碧影对话、留言。 状态 站点已上线，后端 API、知识库构建、移动端验证和部署检查已形成闭环。 这是我为自己搭建的长期个人网站。它不是单独的作品集，也不只是一个聊天 demo，而是把公开笔记、项目记录、当前状态、留言、公开知识库和碧影放进同一个入口里。 我希望它能随着我学习和做项目一起长大：现在它已经有了双语页面、课程笔记、公开知识检索、留言与后台管理接口、移动端基础测试和自托管数学公式资源；之后会继续加入更多真实项目、调试记录、阶段性的想法，以及更稳定的线上运行细节。 背景 我想要一个比社交主页更稳定、又比正式介绍更松弛的地方。朋友可以从这里知道我最近在折腾什么；同样对 AI 和工程感兴趣的人，也能顺着笔记和项目看到更具体的过程。 碧影是这个项目里比较特别的一部分。他不是“全知”的替身，只是一个温和的公开内容向导：读取网站里已经发布的内容，帮访客快速找到线索，也在没有资料时坦白说不知道。 我做了什么 站点结构 搭建 MkDocs Material 站点，规划首页、关于、现在、笔记、项目、碧影和留言等页面。 双语内容 设计 /zh/ 与 /en/ 双语结构，让导航、页面和公开知识库成对维护。 笔记导入 导入并整理离散数学、计算机系统基础和 FDS 数据结构基础三篇课程讲义，修复公式渲染和章节目录。 碧影与留言 设计碧影的语气、读取范围和拒答边界，实现聊天前端、留言板前端、后台入口和 EdgeOne Functions 风格 API。 知识库与检索 把公开页面构建成可读取的知识库，按章节切块，并为当前页、Now 页和项目页设置更高检索权重。 稳定性与验证 补齐共享前端工具、API 错误处理、限流返回、公开范围校验、站点同步检查和移动端 Playwright 测试。 技术栈 内容站点 MkDocs Material、Markdown、Pymdown Extensions 和 MathJax，用来维护笔记、页面结构和数学公式。 双语内容 中文作为主源，英文同步维护；导航、页面和公开知识库都按中英文成对组织。 碧影对话 公开知识库构建脚本、章节级切块、来源边界、对话设定、EdgeOne Functions 风格 API，以及 DeepSeek/OpenAI 兼容模型接口。 交互与部署 原生 JavaScript、共享前端工具、赛博风格 CSS、公开留言板、EdgeOne Pages/Functions/KV 部署路线、GitHub CI 和 Playwright 移动端测试。 资源与公式 MathJax 以本地自托管资源随仓库和站点发布，减少外部 CDN 依赖；构建脚本会同步处理静态站点输出。 成果 网站可以本地构建和预览， python scripts/build site.py 能完成知识库、MkDocs 构建和站点同步。 中文和英文页面已经有了清晰结构，后续新增内容知道该往哪里放。 三篇课程讲义已经变成可阅读的网站页面，支持数学公式和章节目录。 碧影可以基于公开知识库回答与网站内容相关的问题，并在公开范围外保持拒答边界。 留言板、后台消息管理、认证辅助接口和 EdgeOne 部署路线已经有基础闭环。 公开范围校验、移动端 smoke test、站点同步检查和自托管 MathJax 已纳入维护流程。 不足 英文课程笔记还需要更完整的翻译和人工校对。 线上环境仍需要确认真实模型密钥、KV 绑定和 EdgeOne 平台配置。 留言板还需要更细的审核、删除、反垃圾和更顺手的管理界面。 移动端阅读、长笔记体验和视觉细节还可以继续打磨。 edgeone 开发依赖链存在 npm audit 风险，适合后续单独评估升级或替换方案。 下一步 项目页需要持续补充更真实的作品、复盘和阶段性总结。 继续把 EdgeOne Functions、KV、模型密钥和公开来源引用流程接成更稳定的真实线上能力。 单独处理依赖审计，不把工具链升级混进内容维护任务里。 为新增项目保留同样的结构：背景、我做了什么、技术栈、成果、不足、下一步。"
+    },
+    {
+      "title": "站点统计",
+      "summary": "碧影数字花园的访客总数与浏览量统计页。",
+      "tags": [
+        "site",
+        "stats"
+      ],
+      "url": "/zh/stats/",
+      "sourcePath": "docs/zh/stats.md",
+      "locale": "zh",
+      "kind": "page",
+      "text": "SITE SIGNALS 站点统计 这里记录这座数字花园被看见的次数：一个浏览器第一次来访会计入访客总数，每次打开页面都会计入浏览量。 访问概览 统计数据由本站 EdgeOne Function 写入自托管 KV，用来观察公开页面的整体访问情况。 正在读取站点统计 访客总数 浏览量 统计只依赖浏览器本地生成的匿名访客 ID 和页面加载事件。若线上暂未绑定 BIYING KV ，页面会正常显示，但数字不会累计。"
     },
     {
       "title": "模块更新",
