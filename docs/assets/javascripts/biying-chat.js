@@ -9,6 +9,10 @@
     transcript: [],
     missedTopics: new Set()
   };
+  const storageVersion = "biying-chat-v1";
+  const transcriptLimit = 40;
+  const historyLimit = 12;
+  let hydratedStorageKey = "";
 
   function isChinesePage() {
     return i18n.isChinesePage();
@@ -48,6 +52,7 @@
       modelFailed: zh ? "模型服务请求失败。请检查 DEEPSEEK_API_KEY、DEEPSEEK_MODEL、账户余额和模型名称是否正确。" : "The model request failed. Check DEEPSEEK_API_KEY, DEEPSEEK_MODEL, balance, and the model name.",
       chatFailed: zh ? "聊天 API 运行失败。请查看 EdgeOne Functions 日志获取更具体的错误。" : "The chat API failed. Check EdgeOne Functions logs for details.",
       tooFrequent: zh ? "问得有点太快了，请稍等片刻再继续。" : "That was a little too fast. Please wait a moment before continuing.",
+      clear: zh ? "清空记录" : "Clear",
       reason: zh ? "不能直接连接线上碧影的原因：" : "Why the live Biying API cannot be used:"
     };
     return copy[key];
@@ -75,6 +80,81 @@
 
   function accountPrompt() {
     return `${text("loginRequired")} <a href="${escapeHtml(accountUrl())}">${escapeHtml(text("account"))}</a>`;
+  }
+
+  function chatStorageKey() {
+    const user = currentUser()?.username || "guest";
+    return `${storageVersion}:${dom.locale()}:${user}`;
+  }
+
+  function safeStoredMessage(message) {
+    if (!message || typeof message !== "object") return null;
+    const role = message.role === "user" ? "user" : "biying";
+    const content = String(message.content || "").slice(0, 6000);
+    if (!content) return null;
+    return {
+      role,
+      content,
+      html: Boolean(message.html),
+      markdown: Boolean(message.markdown),
+      sources: Array.isArray(message.sources) ? message.sources.slice(0, 4) : []
+    };
+  }
+
+  function trimStoredState() {
+    state.transcript = state.transcript.slice(-transcriptLimit);
+    state.history = state.history
+      .filter((message) => message && (message.role === "user" || message.role === "assistant") && message.content)
+      .slice(-historyLimit);
+  }
+
+  function hydrateChatState() {
+    const key = chatStorageKey();
+    if (hydratedStorageKey === key) return;
+    hydratedStorageKey = key;
+    state.transcript = [];
+    state.history = [];
+    try {
+      const saved = JSON.parse(localStorage.getItem(key) || "null");
+      state.transcript = Array.isArray(saved?.transcript)
+        ? saved.transcript.map(safeStoredMessage).filter(Boolean).slice(-transcriptLimit)
+        : [];
+      state.history = Array.isArray(saved?.history)
+        ? saved.history
+          .filter((message) => message && (message.role === "user" || message.role === "assistant") && message.content)
+          .map((message) => ({ role: message.role, content: String(message.content).slice(0, 3000) }))
+          .slice(-historyLimit)
+        : [];
+    } catch (error) {
+      state.transcript = [];
+      state.history = [];
+    }
+  }
+
+  function persistChatState() {
+    if (!hydratedStorageKey) hydratedStorageKey = chatStorageKey();
+    trimStoredState();
+    try {
+      localStorage.setItem(hydratedStorageKey, JSON.stringify({
+        transcript: state.transcript,
+        history: state.history,
+        savedAt: new Date().toISOString()
+      }));
+    } catch (error) {
+      // Local storage can be disabled or full; chat should still work in memory.
+    }
+  }
+
+  function clearPersistedChat() {
+    try {
+      localStorage.removeItem(chatStorageKey());
+    } catch (error) {
+      // Ignore storage failures and keep the UI responsive.
+    }
+    state.history = [];
+    state.transcript = [];
+    state.missedTopics.clear();
+    hydratedStorageKey = chatStorageKey();
   }
 
   function renderSources(sources) {
@@ -202,6 +282,7 @@
       markdown: Boolean(options.markdown),
       sources: Array.isArray(options.sources) ? options.sources : []
     });
+    persistChatState();
   }
 
   function addMessage(log, role, content, options = {}) {
@@ -415,8 +496,11 @@
 
     root.innerHTML = `
       <div class="biying-chat__header">
-        <strong>${text("headerTitle")}</strong>
-        <span>${text("headerScope")}</span>
+        <div>
+          <strong>${text("headerTitle")}</strong>
+          <span>${text("headerScope")}</span>
+        </div>
+        <button class="biying-chat__clear" type="button">${text("clear")}</button>
       </div>
       <div class="biying-chat__log" aria-live="polite"></div>
       <form class="biying-chat__form">
@@ -429,7 +513,9 @@
     const log = root.querySelector(".biying-chat__log");
     const form = root.querySelector("form");
     const input = root.querySelector("textarea");
+    const clear = root.querySelector(".biying-chat__clear");
     const authNote = root.querySelector("[data-biying-auth-note]");
+    hydrateChatState();
 
     function updateAuthNote() {
       const user = currentUser();
@@ -457,12 +543,17 @@
       auth().refresh().finally(updateAuthNote);
     }
     window.addEventListener("biying-auth-change", updateAuthNote);
+    clear.addEventListener("click", () => {
+      clearPersistedChat();
+      log.innerHTML = "";
+      addMessage(log, "biying", text("initial"));
+    });
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       if (state.busy) return;
       if (!currentUser()) {
-        upsertMessage(log, "auth-required", "biying", accountPrompt(), { html: true });
+        upsertMessage(log, "auth-required", "biying", accountPrompt(), { html: true, remember: false });
         return;
       }
       const query = input.value.trim();
@@ -510,6 +601,7 @@
         if (response.answer) {
           state.history.push({ role: "assistant", content: response.answer });
         }
+        persistChatState();
       } catch (error) {
         pending.classList.remove("is-typing");
         pending.textContent = text("error");

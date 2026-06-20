@@ -24,6 +24,7 @@
   }
 
   function filterLanguageNavigation(lang) {
+    document.documentElement.dataset.biyingLang = lang;
     document.documentElement.lang = lang === "en" ? "en" : "zh-CN";
     document.querySelectorAll(".md-nav__item, .md-tabs__item").forEach((item) => {
       const links = Array.from(item.querySelectorAll("a[href]"));
@@ -45,6 +46,7 @@
   }
 
   function mountSwitcher() {
+    if (document.querySelector(".lang-switcher")) return;
     const switcher = document.createElement("nav");
     switcher.className = "lang-switcher";
     switcher.setAttribute("aria-label", currentLang() === "en" ? "Language" : "语言");

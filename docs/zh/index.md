@@ -45,7 +45,7 @@ tags:
   </div>
 </section>
 
-<script defer src="../assets/javascripts/home-hero.js?v=20260620-2"></script>
+<script defer src="../assets/javascripts/home-hero.js?v=20260621-1"></script>
 
 <section id="home-content" class="home-below-fold" aria-label="首页内容入口">
   <div class="home-below-fold__copy">

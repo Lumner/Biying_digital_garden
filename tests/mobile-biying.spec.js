@@ -64,6 +64,44 @@ test("Biying page chat stays readable on mobile", async ({ page }, testInfo) => 
   });
 });
 
+test("Biying chat restores local transcript and skips transient auth prompts", async ({ page }) => {
+  const storedMessage = "Persisted hello from local storage.";
+  await page.goto(`${site.url}/zh/`);
+  await page.evaluate((message) => {
+    localStorage.setItem("biying-chat-v1:zh:guest", JSON.stringify({
+      transcript: [
+        {
+          role: "biying",
+          content: message,
+          markdown: true,
+          html: false,
+          sources: []
+        }
+      ],
+      history: [
+        { role: "assistant", content: message }
+      ],
+      savedAt: new Date().toISOString()
+    }));
+  }, storedMessage);
+
+  await page.goto(`${site.url}/zh/avatar/`);
+
+  const chat = page.locator(".interaction-shell--page-chat .biying-chat");
+  await expect(chat.locator(".biying-message")).toHaveText(storedMessage);
+
+  await chat.locator("textarea").fill("This should only show the sign-in hint.");
+  await chat.locator(".biying-chat__form button[type='submit']").click();
+  await expect(chat.locator(".biying-message")).toHaveCount(2);
+
+  await page.reload();
+  await expect(chat.locator(".biying-message")).toHaveText(storedMessage);
+
+  await chat.locator(".biying-chat__clear").click();
+  await expect(chat.locator(".biying-message")).toHaveCount(1);
+  await expect(chat.locator(".biying-message")).not.toHaveText(storedMessage);
+});
+
 test("Floating companion opens full-screen and closes on mobile", async ({ page }, testInfo) => {
   await page.goto(`${site.url}/zh/`);
 

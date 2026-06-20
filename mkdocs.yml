@@ -122,12 +122,12 @@ markdown_extensions:
       alternate_style: true
 
 extra_css:
-  - assets/styles/cyber.css?v=20260620-4
+  - assets/styles/cyber.css?v=20260621-1
 
 extra_javascript:
   - assets/javascripts/mathjax.js?v=20260521-1
   - assets/vendor/mathjax/es5/tex-mml-chtml.js?v=20260520-1
-  - assets/javascripts/language-switch.js?v=20260515-3
+  - assets/javascripts/language-switch.js?v=20260621-1
   - assets/javascripts/page-meta.js?v=20260522-1
   - assets/javascripts/site-stats.js?v=20260620-1
   - assets/javascripts/layout-controls.js?v=20260522-2
@@ -141,7 +141,7 @@ extra_javascript:
   - assets/javascripts/i18n.js?v=20260520-1
   - assets/javascripts/api-client.js?v=20260520-1
   - assets/javascripts/auth.js?v=20260520-2
-  - assets/javascripts/biying-chat.js?v=20260521-3
+  - assets/javascripts/biying-chat.js?v=20260621-1
   - assets/javascripts/guestbook.js?v=20260521-1
   - assets/javascripts/admin-dashboard.js?v=20260521-3
 
