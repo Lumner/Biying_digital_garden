@@ -86,7 +86,7 @@
   }
 
   async function loadFriends() {
-    const response = await fetch("/assets/data/friend-links.json", { cache: "no-store" });
+    const response = await fetch(`/assets/data/friend-links.json?ts=${Date.now()}`, { cache: "no-store" });
     if (!response.ok) return [];
     const data = await response.json();
     return Array.isArray(data.items) ? data.items : [];

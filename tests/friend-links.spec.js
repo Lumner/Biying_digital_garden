@@ -13,7 +13,7 @@ test.afterAll(async () => {
 });
 
 test("friend links render clickable cards with auto favicon avatars", async ({ page }) => {
-  await page.route("**/assets/data/friend-links.json", async (route) => {
+  await page.route(/\/assets\/data\/friend-links\.json(?:\?.*)?$/, async (route) => {
     await route.fulfill({
       contentType: "application/json",
       body: JSON.stringify({
@@ -50,7 +50,7 @@ test("friend links render clickable cards with auto favicon avatars", async ({ p
 
 test("friend links support self-hosted avatar paths", async ({ page }) => {
   const avatarPath = "/assets/images/friends/lin.svg";
-  await page.route("**/assets/data/friend-links.json", async (route) => {
+  await page.route(/\/assets\/data\/friend-links\.json(?:\?.*)?$/, async (route) => {
     await route.fulfill({
       contentType: "application/json",
       body: JSON.stringify({
