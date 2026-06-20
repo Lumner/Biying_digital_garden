@@ -112,6 +112,11 @@ tags:
     <p>访客可以公开留言。请不要留下隐私信息，所有留言默认面向其他访客可见。</p>
     <a href="./guestbook/">留下信号</a>
   </section>
+  <section class="cyber-card">
+    <h3>友链</h3>
+    <p>朋友们的网站入口会放在这里。卡片会自动尝试识别头像，并保留我对朋友的简短介绍。</p>
+    <a href="./friends/">查看友链</a>
+  </section>
 </div>
 
 ## 进入路径

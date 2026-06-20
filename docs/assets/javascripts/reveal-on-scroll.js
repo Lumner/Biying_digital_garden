@@ -10,6 +10,7 @@
     ".topic-card",
     ".note-tile",
     ".cyber-card",
+    ".friend-card",
     ".surface-tile",
     ".project-framework div",
     ".project-brief div",

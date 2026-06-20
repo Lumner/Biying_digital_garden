@@ -112,6 +112,11 @@ tags:
     <p>Visitors can leave public messages. Please do not include private information.</p>
     <a href="./guestbook/">Leave a signal</a>
   </section>
+  <section class="cyber-card">
+    <h3>Friends</h3>
+    <p>Friends' sites live here, with automatically detected avatars and short notes from me.</p>
+    <a href="./friends/">View friends</a>
+  </section>
 </div>
 
 ## Ways In

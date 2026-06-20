@@ -24,6 +24,7 @@ def trim_shared_script_blank_lines() -> None:
         "layout-controls.js",
         "reveal-on-scroll.js",
         "toast.js",
+        "friend-links.js",
     )
     for path in site.rglob("*.html"):
         with path.open("r", encoding="utf-8", newline="") as handle:

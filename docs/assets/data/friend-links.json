@@ -1,0 +1,13 @@
+{
+  "_example": {
+    "name": "Friend Name",
+    "url": "https://friend.example/",
+    "intro": {
+      "zh": "我对这位朋友的中文介绍。",
+      "en": "My short English introduction for this friend."
+    },
+    "avatar": "",
+    "tags": ["notes", "maker"]
+  },
+  "items": []
+}

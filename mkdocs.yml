@@ -57,6 +57,7 @@ nav:
   - 注册/登录: zh/register/index.md
   - 碧影: zh/avatar/index.md
   - 留言: zh/guestbook/index.md
+  - 友链: zh/friends.md
   - 模块更新: zh/updates.md
   - Home: en/index.md
   - Now: en/now.md
@@ -85,6 +86,7 @@ nav:
   - Account: en/register/index.md
   - Biying: en/avatar/index.md
   - Guestbook: en/guestbook/index.md
+  - Friends: en/friends.md
   - Updates: en/updates.md
 
 not_in_nav: |
@@ -118,7 +120,7 @@ markdown_extensions:
       alternate_style: true
 
 extra_css:
-  - assets/styles/cyber.css?v=20260522-4
+  - assets/styles/cyber.css?v=20260620-1
 
 extra_javascript:
   - assets/javascripts/mathjax.js?v=20260521-1
@@ -130,6 +132,7 @@ extra_javascript:
   - assets/javascripts/reveal-on-scroll.js?v=20260521-1
   - assets/javascripts/toast.js?v=20260521-1
   - assets/javascripts/notes-hub.js?v=20260521-1
+  - assets/javascripts/friend-links.js?v=20260620-1
   - assets/javascripts/note-reader.js?v=20260521-2
   - assets/javascripts/dom-utils.js?v=20260520-1
   - assets/javascripts/i18n.js?v=20260520-1

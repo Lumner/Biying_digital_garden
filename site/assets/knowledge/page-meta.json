@@ -1,6 +1,30 @@
 {
-  "generatedAt": "2026-05-22T10:59:49.917268+00:00",
+  "generatedAt": "2026-06-20T07:30:11.608487+00:00",
   "items": [
+    {
+      "title": "友链",
+      "url": "/zh/friends/",
+      "updated": "2026-06-20",
+      "locale": "zh"
+    },
+    {
+      "title": "入口",
+      "url": "/zh/",
+      "updated": "2026-06-20",
+      "locale": "zh"
+    },
+    {
+      "title": "Home",
+      "url": "/en/",
+      "updated": "2026-06-20",
+      "locale": "en"
+    },
+    {
+      "title": "Friends",
+      "url": "/en/friends/",
+      "updated": "2026-06-20",
+      "locale": "en"
+    },
     {
       "title": "模块更新",
       "url": "/zh/updates/",
@@ -164,12 +188,6 @@
       "locale": "zh"
     },
     {
-      "title": "入口",
-      "url": "/zh/",
-      "updated": "2026-05-15",
-      "locale": "zh"
-    },
-    {
       "title": "Tags",
       "url": "/en/notes/tags/",
       "updated": "2026-05-15",
@@ -208,12 +226,6 @@
     {
       "title": "Math Lab",
       "url": "/en/notes/math-lab/",
-      "updated": "2026-05-15",
-      "locale": "en"
-    },
-    {
-      "title": "Home",
-      "url": "/en/",
       "updated": "2026-05-15",
       "locale": "en"
     },
