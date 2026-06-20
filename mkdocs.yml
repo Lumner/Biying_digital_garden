@@ -135,7 +135,7 @@ extra_javascript:
   - assets/javascripts/reveal-on-scroll.js?v=20260521-1
   - assets/javascripts/toast.js?v=20260521-1
   - assets/javascripts/notes-hub.js?v=20260521-1
-  - assets/javascripts/friend-links.js?v=20260620-4
+  - assets/javascripts/friend-links-v20260620.js?v=20260620-1
   - assets/javascripts/note-reader.js?v=20260521-2
   - assets/javascripts/dom-utils.js?v=20260520-1
   - assets/javascripts/i18n.js?v=20260520-1
