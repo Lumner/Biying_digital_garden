@@ -1,5 +1,16 @@
 {% extends "base.html" %}
 
+{% block extrahead %}
+{{ super() }}
+<script>
+(function () {
+  var lang = location.pathname.indexOf("/en/") !== -1 ? "en" : "zh";
+  document.documentElement.dataset.biyingLang = lang;
+  document.documentElement.lang = lang === "en" ? "en" : "zh-CN";
+})();
+</script>
+{% endblock %}
+
 {% block announce %}
   <span class="cyber-announce">BIYING ONLINE / 公开内容驱动 / Public knowledge only</span>
 {% endblock %}

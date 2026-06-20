@@ -19,7 +19,7 @@
   let nextX = 0.5;
   let nextY = 0.5;
   let phraseIndex = 0;
-  let letterIndex = 0;
+  let letterIndex = phrases[0]?.length || 0;
   let deleting = false;
 
   function commitPointer() {
@@ -71,7 +71,6 @@
   });
 
   if (phrases.length) {
-    typewriterText.textContent = "";
     window.setTimeout(tickTypewriter, 520);
   }
 })();
