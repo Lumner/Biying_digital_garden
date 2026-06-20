@@ -120,7 +120,7 @@ markdown_extensions:
       alternate_style: true
 
 extra_css:
-  - assets/styles/cyber.css?v=20260620-1
+  - assets/styles/cyber.css?v=20260620-2
 
 extra_javascript:
   - assets/javascripts/mathjax.js?v=20260521-1

@@ -8,8 +8,10 @@ tags:
   - profile
 ---
 
-<section class="cyber-hero">
-  <div>
+<section class="cyber-hero home-immersive-hero" data-home-hero>
+  <span class="home-hero-grid" aria-hidden="true"></span>
+  <span class="home-hero-scan" aria-hidden="true"></span>
+  <div class="home-hero-copy">
     <div class="cyber-kicker">BIYING DIGITAL GARDEN</div>
     <h1 class="cyber-title">Biying Digital Garden</h1>
     <p class="cyber-subtitle">
@@ -27,7 +29,7 @@ tags:
       <a class="cyber-button secondary" href="./notes/">Read Notes</a>
     </div>
   </div>
-  <div class="note-cover-stage" data-random-note-cover aria-label="Random note cover">
+  <div class="note-cover-stage home-hero-cover" data-random-note-cover aria-label="Random note cover">
     <a class="note-cover" data-cover-link href="./notes/">
       <span class="note-cover__spine" aria-hidden="true"></span>
       <span class="note-cover__mark" aria-hidden="true"></span>
@@ -42,7 +44,14 @@ tags:
       </span>
     </a>
   </div>
+  <div class="home-hero-dock" aria-hidden="true">
+    <span>PUBLIC NOTES</span>
+    <span>PROJECT LOG</span>
+    <span>BIYING ONLINE</span>
+  </div>
 </section>
+
+<script defer src="../assets/javascripts/home-hero.js?v=20260620-1"></script>
 
 <section class="home-pulse" aria-label="Current signals">
   <div class="home-pulse__item">
