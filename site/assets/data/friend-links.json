@@ -19,6 +19,16 @@
       },
       "avatar": "/assets/images/friends/yang.png",
       "tags": ["notes", "experiences"]
+    },
+    {
+      "name" : "Fish",
+      "url" : "https://fish-s-website.vercel.app/",
+      "intro" :{
+        "zh" : "这是Fish老师的个人博客欸，里面他的笔记和生活记录~也是要到老师的友链啦~",
+        "en" : "This is Fish's personal blog, which contains his notes and life records~ It's also a must to visit the teacher's friend link~"
+      },
+      "avatar" : "",
+      "tags" : ["note", "AI", "life"]
     }
   ]
 }
