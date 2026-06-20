@@ -53,7 +53,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/styles/cyber.css?v=20260620-2">
+      <link rel="stylesheet" href="../assets/styles/cyber.css?v=20260620-3">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2813,12 +2813,21 @@
   
 
 
-<section class="cyber-hero home-immersive-hero" data-home-hero>
+<section class="cyber-hero home-immersive-hero home-landing" data-home-hero>
+  <span class="home-flow-ribbon home-flow-ribbon--one" aria-hidden="true"></span>
+  <span class="home-flow-ribbon home-flow-ribbon--two" aria-hidden="true"></span>
   <span class="home-hero-grid" aria-hidden="true"></span>
   <span class="home-hero-scan" aria-hidden="true"></span>
   <div class="home-hero-copy">
     <div class="cyber-kicker">BIYING DIGITAL GARDEN</div>
-    <h1 class="cyber-title">碧影数字花园</h1>
+    <h1 class="cyber-title home-title">碧影数字花园</h1>
+    <div class="home-typewriter" data-home-typewriter aria-live="polite">
+      <span data-home-phrase>向下扎根，也向光生长。</span>
+      <span data-home-phrase>把每一次认真，慢慢写成答案。</span>
+      <span data-home-phrase>愿好奇心不熄，愿行动有回声。</span>
+      <span data-home-phrase>在热爱里长期主义，在日常里保持明亮。</span>
+      <span class="home-typewriter__text" data-home-typewriter-text>向下扎根，也向光生长。</span><span class="home-typewriter__caret" aria-hidden="true"></span>
+    </div>
     <p class="cyber-subtitle">
       一个用来长期沉淀学习、项目和近况的双语空间。笔记是根系，项目是枝干，碧影负责把公开内容温柔地连接起来。
     </p>
@@ -2833,6 +2842,24 @@
       <a class="cyber-button secondary" href="./projects/">查看项目</a>
       <a class="cyber-button secondary" href="./notes/">进入笔记</a>
     </div>
+  </div>
+  <div class="home-hero-dock" aria-hidden="true">
+    <span>PUBLIC NOTES</span>
+    <span>PROJECT LOG</span>
+    <span>BIYING ONLINE</span>
+  </div>
+  <a class="home-scroll-cue" href="#home-content" aria-label="继续浏览">
+    <span aria-hidden="true"></span>
+  </a>
+</section>
+
+<script defer src="../assets/javascripts/home-hero.js?v=20260620-2"></script>
+
+<section id="home-content" class="home-below-fold" aria-label="首页内容入口">
+  <div class="home-below-fold__copy">
+    <span class="cyber-kicker">PUBLIC ENTRANCE</span>
+    <h2>从这里继续向下走</h2>
+    <p>当前动态、随机笔记、项目和碧影入口都放在下面，像一条慢慢展开的路径。</p>
   </div>
   <div class="note-cover-stage home-hero-cover" data-random-note-cover aria-label="随机笔记封面">
     <a class="note-cover" data-cover-link href="./notes/">
@@ -2849,14 +2876,7 @@
       </span>
     </a>
   </div>
-  <div class="home-hero-dock" aria-hidden="true">
-    <span>PUBLIC NOTES</span>
-    <span>PROJECT LOG</span>
-    <span>BIYING ONLINE</span>
-  </div>
 </section>
-
-<script defer src="../assets/javascripts/home-hero.js?v=20260620-1"></script>
 
 <section class="home-pulse" aria-label="当前动态">
   <div class="home-pulse__item">
