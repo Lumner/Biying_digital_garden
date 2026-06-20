@@ -116,9 +116,12 @@ tags:
   <a class="biying-presence__link" href="./avatar/">和碧影聊聊</a>
 </section>
 
-## 模块近况
-
-<p class="section-lede">想先看站点最近哪里有变化，可以从这里扫一眼；更完整的记录放在 <a href="./updates/">模块更新</a>。</p>
+<section class="home-section home-section--updates" aria-labelledby="home-updates-title">
+  <div class="home-section__head">
+    <span class="cyber-kicker">RECENT SIGNALS</span>
+    <h2 id="home-updates-title">模块近况</h2>
+    <p>想先看站点最近哪里有变化，可以从这里扫一眼；更完整的记录放在 <a href="./updates/">模块更新</a>。</p>
+  </div>
 
 <div class="module-update-preview">
   <a href="./updates/">
@@ -135,39 +138,55 @@ tags:
   </a>
 </div>
 
-## 公开信号
+</section>
 
-<p class="section-lede">这里不是一次性完成的作品集，而是一个会持续更新的入口。你可以从不同路径进入：读笔记、看项目、了解现在，或者直接问碧影。</p>
+<section class="home-section home-section--signals" aria-labelledby="home-signals-title">
+  <div class="home-section__head">
+    <span class="cyber-kicker">PUBLIC MAP</span>
+    <h2 id="home-signals-title">公开信号</h2>
+    <p>这里不是一次性完成的作品集，而是一个会持续更新的入口。你可以从不同路径进入：读笔记、看项目、了解现在，或者直接问碧影。</p>
+  </div>
 
 <div class="cyber-grid">
   <section class="cyber-card">
+    <span class="cyber-card__label">学习地图</span>
     <h3>笔记</h3>
     <p>记录学习、数学、AI、工程和一些慢慢成形的想法。中文为主源，英文尽量同步维护。</p>
     <a href="./notes/">阅读笔记</a>
   </section>
   <section class="cyber-card">
+    <span class="cyber-card__label">项目记录</span>
     <h3>项目</h3>
     <p>放正在认真推进的作品，也记录它们为什么这样做、哪里还不够好。</p>
     <a href="./projects/">查看项目</a>
   </section>
   <section class="cyber-card">
+    <span class="cyber-card__label">站点向导</span>
     <h3>碧影</h3>
     <p>想更轻松地了解这里，可以直接和碧影聊聊。他会从已经公开的内容里陪你找线索。</p>
     <a href="./avatar/">启动对话</a>
   </section>
   <section class="cyber-card">
+    <span class="cyber-card__label">访客交流</span>
     <h3>留言</h3>
     <p>访客可以公开留言。请不要留下隐私信息，所有留言默认面向其他访客可见。</p>
     <a href="./guestbook/">留下信号</a>
   </section>
   <section class="cyber-card">
+    <span class="cyber-card__label">外部入口</span>
     <h3>友链</h3>
     <p>朋友们的网站入口会放在这里。卡片会自动尝试识别头像，并保留我对朋友的简短介绍。</p>
     <a href="./friends/">查看友链</a>
   </section>
 </div>
 
-## 进入路径
+</section>
+
+<section class="home-section home-section--paths" aria-labelledby="home-paths-title">
+  <div class="home-section__head">
+    <span class="cyber-kicker">WAYS IN</span>
+    <h2 id="home-paths-title">进入路径</h2>
+  </div>
 
 <div class="signal-list">
   <div class="signal-item">
@@ -185,3 +204,5 @@ tags:
 </div>
 
 <p class="quiet-panel">碧影只会读取已经公开到网站上的内容。没有发布出来的草稿、私密文件和账号活动，不会进入他的回答范围。</p>
+
+</section>

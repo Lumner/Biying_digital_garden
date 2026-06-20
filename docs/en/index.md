@@ -116,9 +116,12 @@ tags:
   <a class="biying-presence__link" href="./avatar/">Talk to Biying</a>
 </section>
 
-## Module Updates
-
-<p class="section-lede">If you want a quick read on what changed recently, start here. The fuller log lives on the <a href="./updates/">Updates</a> page.</p>
+<section class="home-section home-section--updates" aria-labelledby="home-updates-title">
+  <div class="home-section__head">
+    <span class="cyber-kicker">RECENT SIGNALS</span>
+    <h2 id="home-updates-title">Module Updates</h2>
+    <p>If you want a quick read on what changed recently, start here. The fuller log lives on the <a href="./updates/">Updates</a> page.</p>
+  </div>
 
 <div class="module-update-preview">
   <a href="./updates/">
@@ -135,39 +138,55 @@ tags:
   </a>
 </div>
 
-## Public Signals
+</section>
 
-<p class="section-lede">This is not a finished portfolio. It is a living entrance that can keep growing through notes, projects, current updates, and conversations with Biying.</p>
+<section class="home-section home-section--signals" aria-labelledby="home-signals-title">
+  <div class="home-section__head">
+    <span class="cyber-kicker">PUBLIC MAP</span>
+    <h2 id="home-signals-title">Public Signals</h2>
+    <p>This is not a finished portfolio. It is a living entrance that can keep growing through notes, projects, current updates, and conversations with Biying.</p>
+  </div>
 
 <div class="cyber-grid">
   <section class="cyber-card">
+    <span class="cyber-card__label">Learning Map</span>
     <h3>Notes</h3>
     <p>Learning records, math, AI, engineering, and thoughts that are slowly taking shape. Chinese is the source language, and English stays in step as much as possible.</p>
     <a href="./notes/">Read notes</a>
   </section>
   <section class="cyber-card">
+    <span class="cyber-card__label">Build Log</span>
     <h3>Projects</h3>
     <p>Work I am seriously building, along with why it is shaped this way and what still needs care.</p>
     <a href="./projects/">View projects</a>
   </section>
   <section class="cyber-card">
+    <span class="cyber-card__label">Site Guide</span>
     <h3>Biying</h3>
     <p>If you want a lighter way to explore the site, start a conversation with Biying and follow the public threads from there.</p>
     <a href="./avatar/">Start chat</a>
   </section>
   <section class="cyber-card">
+    <span class="cyber-card__label">Visitor Notes</span>
     <h3>Guestbook</h3>
     <p>Visitors can leave public messages. Please do not include private information.</p>
     <a href="./guestbook/">Leave a signal</a>
   </section>
   <section class="cyber-card">
+    <span class="cyber-card__label">Outside Links</span>
     <h3>Friends</h3>
     <p>Friends' sites live here, with automatically detected avatars and short notes from me.</p>
     <a href="./friends/">View friends</a>
   </section>
 </div>
 
-## Ways In
+</section>
+
+<section class="home-section home-section--paths" aria-labelledby="home-paths-title">
+  <div class="home-section__head">
+    <span class="cyber-kicker">WAYS IN</span>
+    <h2 id="home-paths-title">Ways In</h2>
+  </div>
 
 <div class="signal-list">
   <div class="signal-item">
@@ -185,3 +204,5 @@ tags:
 </div>
 
 <p class="quiet-panel">Biying only reads content already published on this website. Drafts, private files, and account activity are outside his answer scope.</p>
+
+</section>
