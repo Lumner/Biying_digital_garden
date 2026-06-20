@@ -31,7 +31,7 @@ test("friend links render clickable cards with auto favicon avatars", async ({ p
       })
     });
   });
-  await page.route(/^https:\/\/ada\.example\/(?:favicon\.ico|favicon\.png|apple-touch-icon\.png)$/, async (route) => {
+  await page.route("https://ada.example/favicon/favicon.svg", async (route) => {
     await route.fulfill({
       contentType: "image/svg+xml",
       body: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="#55ffe2"/></svg>'
@@ -45,7 +45,7 @@ test("friend links render clickable cards with auto favicon avatars", async ({ p
   await expect(card).toHaveAttribute("href", "https://ada.example/");
   await expect(card.locator("strong")).toHaveText("Ada Notes");
   await expect(card.locator(".friend-card__intro")).toContainText("工程笔记");
-  await expect(card.locator("[data-friend-avatar]")).toHaveAttribute("src", /^https:\/\/ada\.example\/(?:favicon\.ico|favicon\.png|apple-touch-icon\.png)$/);
+  await expect(card.locator("[data-friend-avatar]")).toHaveAttribute("src", "https://ada.example/favicon/favicon.svg");
 });
 
 test("friend links support self-hosted avatar paths", async ({ page }) => {

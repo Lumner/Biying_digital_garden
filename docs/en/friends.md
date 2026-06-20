@@ -11,7 +11,7 @@ tags:
 <section class="garden-pagehead">
   <div class="garden-pagehead__eyebrow">FRIENDS</div>
   <h1 class="garden-pagehead__title">Friends</h1>
-  <p class="garden-pagehead__lead">A small doorway to friends' websites. Each card tries to recognize the site's avatar automatically, and visitors can click through directly.</p>
+  <p class="garden-pagehead__lead">Here are some websites or blogs of Bi Ying's friends. Welcome to visit them.</p>
   <div class="garden-pagehead__meta">
     <span class="status-pill leaf">Friend sites</span>
     <span class="status-pill">Auto avatar</span>

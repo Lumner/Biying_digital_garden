@@ -62,7 +62,18 @@
     if (explicit) candidates.push(explicit);
     try {
       const origin = new URL(url).origin;
-      candidates.push(`${origin}/favicon.ico`, `${origin}/favicon.png`, `${origin}/apple-touch-icon.png`);
+      candidates.push(
+        `${origin}/favicon.ico`,
+        `${origin}/favicon.png`,
+        `${origin}/favicon.svg`,
+        `${origin}/apple-touch-icon.png`,
+        `${origin}/favicon/favicon.ico`,
+        `${origin}/favicon/favicon.png`,
+        `${origin}/favicon/favicon.svg`,
+        `${origin}/favicon/favicon-32x32.png`,
+        `${origin}/favicon/favicon-16x16.png`,
+        `${origin}/favicon/apple-touch-icon.png`
+      );
     } catch (error) {
       // A friend card without a valid URL falls back to initials.
     }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-20T07:30:16.074565+00:00",
+  "generatedAt": "2026-06-20T08:14:24.609033+00:00",
   "items": [
     {
       "title": "About",
@@ -41,7 +41,7 @@
       "sourcePath": "docs/en/friends.md",
       "locale": "en",
       "kind": "page",
-      "text": "FRIENDS Friends A small doorway to friends' websites. Each card tries to recognize the site's avatar automatically, and visitors can click through directly. Friend sites Auto avatar External links Friend links are being gathered."
+      "text": "FRIENDS Friends Here are some websites or blogs of Bi Ying's friends. Welcome to visit them. Friend sites Auto avatar External links Friend links are being gathered."
     },
     {
       "title": "Guestbook",
@@ -444,7 +444,7 @@
       "sourcePath": "docs/zh/friends.md",
       "locale": "zh",
       "kind": "page",
-      "text": "FRIENDS 友链 这里放朋友们的网站入口。每张卡片会自动尝试识别对方网站的头像，访客可以直接点击跳转。 朋友网站 头像自动识别 外部跳转 友链正在整理中。"
+      "text": "FRIENDS 友链 这里有一些碧影的朋友的网站，欢迎大家前去访问呀~ 朋友网站 头像自动识别 外部跳转 友链正在整理中。"
     },
     {
       "title": "留言",
