@@ -110,7 +110,7 @@
       <a class="friend-card" href="${esc(url)}" target="_blank" rel="noopener noreferrer">
         <span class="friend-card__top">
           <span class="friend-card__avatar${avatars.length ? "" : " is-fallback"}">
-            ${avatars.length ? `<img alt="" loading="lazy" referrerpolicy="no-referrer" data-friend-avatar data-avatar-src="${esc(avatars[0])}" data-avatar-candidates="${esc(JSON.stringify(avatars.slice(1)))}">` : ""}
+            ${avatars.length ? `<img src="${esc(avatars[0])}" alt="" loading="lazy" referrerpolicy="no-referrer" data-friend-avatar data-avatar-candidates="${esc(JSON.stringify(avatars.slice(1)))}">` : ""}
             <span>${esc(initial)}</span>
           </span>
           <span class="friend-card__identity">
@@ -134,7 +134,6 @@
     root.innerHTML = cards.join("");
     root.querySelectorAll("[data-friend-avatar]").forEach((img) => {
       img.addEventListener("error", () => mountAvatarFallback(img));
-      img.src = img.dataset.avatarSrc || "";
     });
   }
 
