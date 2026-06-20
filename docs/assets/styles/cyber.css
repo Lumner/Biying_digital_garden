@@ -60,10 +60,6 @@ body {
     margin-top: 0;
   }
 
-  body:has(.home-landing) .md-sidebar {
-    display: none;
-  }
-
   body:has(.home-landing) .md-content {
     max-width: 100%;
   }
@@ -83,6 +79,10 @@ body {
 
 @supports selector(body:has(.home-landing)) {
   @media (min-width: 76rem) {
+    body:has(.home-landing) .md-sidebar {
+      display: none;
+    }
+
     body:has(.home-landing) .md-header,
     body:has(.home-landing) .md-tabs {
       width: min(90rem, calc(100vw - 6rem));

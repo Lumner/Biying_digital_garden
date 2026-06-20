@@ -12,6 +12,21 @@ test.afterAll(async () => {
   await site?.close();
 });
 
+test("Homepage hamburger opens the mobile navigation drawer", async ({ page }) => {
+  await page.goto(`${site.url}/zh/`);
+
+  const drawerToggle = page.locator("label.md-header__button[for='__drawer']");
+  const drawer = page.locator("#__drawer");
+  const primarySidebar = page.locator(".md-sidebar--primary");
+
+  await expect(drawerToggle).toBeVisible();
+  await drawerToggle.click();
+
+  await expect(drawer).toBeChecked();
+  await expect(primarySidebar).toBeVisible();
+  await expect(primarySidebar.locator(".md-nav__title[for='__drawer']")).toBeVisible();
+});
+
 test("Biying page chat stays readable on mobile", async ({ page }, testInfo) => {
   await page.goto(`${site.url}/zh/avatar/`);
 
