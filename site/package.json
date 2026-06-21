@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "@playwright/test": "1.60.0",
-    "edgeone": "1.5.2"
+    "edgeone": "1.5.2",
+    "esbuild": "0.28.1"
   }
 }
