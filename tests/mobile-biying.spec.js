@@ -46,6 +46,30 @@ test("Theme switcher toggles and persists the light theme", async ({ page }) => 
   await expect(html).toHaveAttribute("data-biying-theme", "light");
 });
 
+test("Account page defaults to sign in and switches account panels", async ({ page }) => {
+  await page.goto(`${site.url}/zh/register/`);
+
+  const login = page.locator("[data-auth-login]");
+  const register = page.locator("[data-auth-register]");
+  const reset = page.locator("[data-auth-reset]");
+  const privateMessage = page.locator("[data-auth-private]");
+
+  await expect(login).toBeVisible();
+  await expect(register).toBeHidden();
+  await expect(reset).toBeHidden();
+  await expect(privateMessage).toBeVisible();
+  await expect(page.getByRole("tab", { name: "登录" })).toHaveAttribute("aria-selected", "true");
+
+  await page.getByRole("tab", { name: "注册" }).click();
+  await expect(register).toBeVisible();
+  await expect(login).toBeHidden();
+
+  await page.getByRole("tab", { name: "忘记密码" }).click();
+  await expect(reset).toBeVisible();
+  await expect(register).toBeHidden();
+  await expect(privateMessage).toBeVisible();
+});
+
 test("Biying page chat stays readable on mobile", async ({ page }, testInfo) => {
   await page.goto(`${site.url}/zh/avatar/`);
 

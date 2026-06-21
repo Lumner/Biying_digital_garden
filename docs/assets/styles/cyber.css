@@ -2717,6 +2717,48 @@ html:not(.math-ready) .md-typeset .arithmatex {
   padding: 1rem;
 }
 
+.auth-shell {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.auth-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  border-bottom: 1px solid rgba(79, 255, 219, 0.16);
+  padding-bottom: 0.65rem;
+}
+
+.auth-tabs button {
+  min-height: 2.15rem;
+  border: 1px solid rgba(79, 255, 219, 0.2);
+  border-radius: 999px;
+  background: rgba(57, 245, 212, 0.045);
+  color: #cceee8;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 800;
+  padding: 0.35rem 0.8rem;
+  transition: background 140ms ease, border-color 140ms ease, color 140ms ease;
+}
+
+.auth-tabs button:hover,
+.auth-tabs button.active {
+  border-color: rgba(79, 255, 219, 0.44);
+  background: rgba(57, 245, 212, 0.12);
+  color: #effffb;
+}
+
+.auth-account-forms {
+  display: grid;
+}
+
+.auth-account-forms .auth-card[hidden] {
+  display: none;
+}
+
 .auth-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
@@ -2736,6 +2778,17 @@ html:not(.math-ready) .md-typeset .arithmatex {
 .auth-card h2 {
   margin: 0;
   font-size: 1.05rem;
+}
+
+.auth-card--primary {
+  max-width: 32rem;
+}
+
+.auth-card--private {
+  border-style: dashed;
+  background:
+    linear-gradient(120deg, rgba(244, 201, 131, 0.06), transparent 42%),
+    rgba(3, 10, 14, 0.46);
 }
 
 .auth-card.signed-in {
@@ -3390,6 +3443,7 @@ html[data-biying-theme="light"] .module-update-card strong,
 html[data-biying-theme="light"] .site-stats-panel__intro strong,
 html[data-biying-theme="light"] .site-stats-panel__metric strong,
 html[data-biying-theme="light"] .friend-card__identity strong,
+html[data-biying-theme="light"] .auth-card h2,
 html[data-biying-theme="light"] .biying-chat__header strong,
 html[data-biying-theme="light"] .guestbook__summary strong {
   color: #102822;
@@ -3462,6 +3516,8 @@ html[data-biying-theme="light"] .timeline-item,
 html[data-biying-theme="light"] .note-entry-grid a,
 html[data-biying-theme="light"] .topic-card,
 html[data-biying-theme="light"] .friend-card,
+html[data-biying-theme="light"] .auth-panel,
+html[data-biying-theme="light"] .auth-card,
 html[data-biying-theme="light"] .biying-chat,
 html[data-biying-theme="light"] .guestbook,
 html[data-biying-theme="light"] .project-brief div,
@@ -3492,6 +3548,30 @@ html[data-biying-theme="light"] .module-update-preview span,
 html[data-biying-theme="light"] .module-update-card span,
 html[data-biying-theme="light"] .site-stats-panel__metric span {
   color: #087f6f;
+}
+
+html[data-biying-theme="light"] .auth-tabs {
+  border-color: rgba(31, 125, 109, 0.16);
+}
+
+html[data-biying-theme="light"] .auth-tabs button {
+  background: rgba(31, 125, 109, 0.08);
+  border-color: rgba(31, 125, 109, 0.16);
+  color: #41665e;
+}
+
+html[data-biying-theme="light"] .auth-tabs button:hover,
+html[data-biying-theme="light"] .auth-tabs button.active {
+  background: rgba(31, 125, 109, 0.14);
+  border-color: rgba(31, 125, 109, 0.32);
+  color: #102822;
+}
+
+html[data-biying-theme="light"] .auth-card input,
+html[data-biying-theme="light"] .auth-card textarea {
+  background: rgba(255, 255, 255, 0.86);
+  border-color: rgba(31, 125, 109, 0.2);
+  color: #102822;
 }
 
 html[data-biying-theme="light"] .home-immersive-hero .cyber-button,
