@@ -27,6 +27,25 @@ test("Homepage hamburger opens the mobile navigation drawer", async ({ page }) =
   await expect(primarySidebar.locator(".md-nav__title[for='__drawer']")).toBeVisible();
 });
 
+test("Theme switcher toggles and persists the light theme", async ({ page }) => {
+  await page.goto(`${site.url}/zh/`);
+  await page.evaluate(() => localStorage.setItem("biying-theme", "dark"));
+  await page.reload();
+
+  const html = page.locator("html");
+  const switcher = page.locator("[data-theme-switcher]");
+
+  await expect(switcher).toBeVisible();
+  await expect(html).toHaveAttribute("data-biying-theme", "dark");
+
+  await switcher.click();
+  await expect(html).toHaveAttribute("data-biying-theme", "light");
+  await expect(switcher).toHaveAttribute("aria-pressed", "true");
+
+  await page.reload();
+  await expect(html).toHaveAttribute("data-biying-theme", "light");
+});
+
 test("Biying page chat stays readable on mobile", async ({ page }, testInfo) => {
   await page.goto(`${site.url}/zh/avatar/`);
 

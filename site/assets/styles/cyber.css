@@ -2273,6 +2273,42 @@ html:not(.math-ready) .md-typeset .arithmatex {
   box-shadow: inset 0 0 0 1px rgba(112, 244, 219, 0.12);
 }
 
+.theme-switcher {
+  position: relative;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  width: 2.55rem;
+  height: 1.55rem;
+  border: 1px solid rgba(112, 244, 219, 0.18);
+  border-radius: 999px;
+  background: rgba(112, 244, 219, 0.06);
+  cursor: pointer;
+  margin-left: auto;
+  padding: 0.15rem;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+
+.theme-switcher span {
+  display: block;
+  width: 1.05rem;
+  height: 1.05rem;
+  border-radius: 50%;
+  background: #70f4db;
+  box-shadow: 0 0 0.9rem rgba(112, 244, 219, 0.35);
+  transform: translateX(0);
+  transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.theme-switcher:hover {
+  border-color: rgba(112, 244, 219, 0.38);
+  background: rgba(112, 244, 219, 0.11);
+}
+
+.theme-switcher + .lang-switcher {
+  margin-left: 0.45rem;
+}
+
 .biying-chat,
 .guestbook {
   border: 1px solid var(--cyber-line);
@@ -3284,6 +3320,211 @@ html:not(.math-ready) .md-typeset .arithmatex {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+html[data-biying-theme="light"] {
+  color-scheme: light;
+  --cyber-bg: #f4faf7;
+  --cyber-panel: rgba(255, 255, 255, 0.86);
+  --cyber-panel-solid: #ffffff;
+  --cyber-line: rgba(31, 125, 109, 0.18);
+  --cyber-line-strong: rgba(31, 125, 109, 0.42);
+  --cyber-text: #172c27;
+  --cyber-muted: #5c746e;
+  --cyber-reader: rgba(255, 255, 255, 0.74);
+  --md-primary-fg-color: #eff8f5;
+  --md-accent-fg-color: #087f6f;
+}
+
+html[data-biying-theme="light"] body {
+  background:
+    linear-gradient(rgba(31, 125, 109, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(31, 125, 109, 0.045) 1px, transparent 1px),
+    radial-gradient(circle at 14% 0%, rgba(112, 244, 219, 0.2), transparent 32rem),
+    radial-gradient(circle at 92% 8%, rgba(244, 201, 131, 0.16), transparent 25rem),
+    var(--cyber-bg);
+  color: var(--cyber-text);
+}
+
+html[data-biying-theme="light"] .md-header,
+html[data-biying-theme="light"] .md-tabs {
+  background: rgba(247, 253, 250, 0.88);
+  border-color: rgba(31, 125, 109, 0.16);
+  color: #17342e;
+  box-shadow: 0 0.65rem 1.5rem rgba(20, 62, 55, 0.08);
+}
+
+@supports selector(body:has(.home-landing)) {
+  html[data-biying-theme="light"] body:has(.home-landing) .md-header,
+  html[data-biying-theme="light"] body:has(.home-landing) .md-tabs {
+    background: rgba(247, 253, 250, 0.72);
+    border-color: rgba(31, 125, 109, 0.16);
+    box-shadow: 0 1rem 2.2rem rgba(20, 62, 55, 0.12);
+  }
+}
+
+html[data-biying-theme="light"] .md-content,
+html[data-biying-theme="light"] .md-typeset,
+html[data-biying-theme="light"] .md-nav__link,
+html[data-biying-theme="light"] .md-tabs__link {
+  color: var(--cyber-text);
+}
+
+html[data-biying-theme="light"] .md-content__inner {
+  background: rgba(255, 255, 255, 0.68);
+  border-color: rgba(31, 125, 109, 0.13);
+}
+
+html[data-biying-theme="light"] .md-typeset h1,
+html[data-biying-theme="light"] .md-typeset h2,
+html[data-biying-theme="light"] .md-typeset h3,
+html[data-biying-theme="light"] .garden-pagehead__title,
+html[data-biying-theme="light"] .home-section__head h2,
+html[data-biying-theme="light"] .cyber-card h3,
+html[data-biying-theme="light"] .surface-tile strong,
+html[data-biying-theme="light"] .timeline-item strong,
+html[data-biying-theme="light"] .note-entry-grid strong,
+html[data-biying-theme="light"] .home-pulse__item strong,
+html[data-biying-theme="light"] .module-update-preview strong,
+html[data-biying-theme="light"] .module-update-card strong,
+html[data-biying-theme="light"] .site-stats-panel__intro strong,
+html[data-biying-theme="light"] .site-stats-panel__metric strong,
+html[data-biying-theme="light"] .friend-card__identity strong,
+html[data-biying-theme="light"] .biying-chat__header strong,
+html[data-biying-theme="light"] .guestbook__summary strong {
+  color: #102822;
+}
+
+html[data-biying-theme="light"] .section-lede,
+html[data-biying-theme="light"] .garden-pagehead__lead,
+html[data-biying-theme="light"] .home-section__head p,
+html[data-biying-theme="light"] .cyber-card p,
+html[data-biying-theme="light"] .surface-tile span,
+html[data-biying-theme="light"] .timeline-item span,
+html[data-biying-theme="light"] .note-entry-grid span,
+html[data-biying-theme="light"] .friend-card__identity span,
+html[data-biying-theme="light"] .friend-card__intro,
+html[data-biying-theme="light"] .site-stats-panel__intro span,
+html[data-biying-theme="light"] .site-stats-panel__status,
+html[data-biying-theme="light"] .biying-chat__header span {
+  color: #526e67;
+}
+
+html[data-biying-theme="light"] .home-immersive-hero {
+  background:
+    linear-gradient(90deg, rgba(248, 254, 251, 0.74), rgba(248, 254, 251, 0.34) 44%, rgba(248, 254, 251, 0.68)),
+    linear-gradient(180deg, rgba(248, 254, 251, 0.42), rgba(248, 254, 251, 0.16) 45%, rgba(244, 250, 247, 0.84) 89%),
+    url("../images/home-hero-rain.png") center / cover no-repeat;
+}
+
+html[data-biying-theme="light"] .home-immersive-hero::before {
+  mix-blend-mode: normal;
+  opacity: 0.16;
+}
+
+html[data-biying-theme="light"] .home-immersive-hero::after {
+  background:
+    linear-gradient(180deg, transparent, rgba(244, 250, 247, 0.9) 52%, #f4faf7),
+    rgba(244, 250, 247, 0.82);
+}
+
+html[data-biying-theme="light"] .home-immersive-hero .cyber-title,
+html[data-biying-theme="light"] .home-immersive-hero .cyber-subtitle,
+html[data-biying-theme="light"] .home-typewriter,
+html[data-biying-theme="light"] .home-immersive-hero .cyber-kicker {
+  color: #102822;
+  text-shadow: 0 0.12rem 0.8rem rgba(255, 255, 255, 0.68);
+}
+
+html[data-biying-theme="light"] .home-typewriter__caret {
+  border-color: rgba(16, 40, 34, 0.82);
+}
+
+html[data-biying-theme="light"] .home-hero-dock span,
+html[data-biying-theme="light"] .home-immersive-hero .status-pill {
+  background: rgba(255, 255, 255, 0.58);
+  border-color: rgba(31, 125, 109, 0.16);
+  color: #17342e;
+}
+
+html[data-biying-theme="light"] .cyber-hero,
+html[data-biying-theme="light"] .home-below-fold,
+html[data-biying-theme="light"] .site-stats-panel,
+html[data-biying-theme="light"] .home-pulse__item,
+html[data-biying-theme="light"] .module-update-preview a,
+html[data-biying-theme="light"] .module-update-card,
+html[data-biying-theme="light"] .cyber-card,
+html[data-biying-theme="light"] .quiet-panel,
+html[data-biying-theme="light"] .signal-item,
+html[data-biying-theme="light"] .garden-pagehead,
+html[data-biying-theme="light"] .surface-tile,
+html[data-biying-theme="light"] .timeline-item,
+html[data-biying-theme="light"] .note-entry-grid a,
+html[data-biying-theme="light"] .topic-card,
+html[data-biying-theme="light"] .friend-card,
+html[data-biying-theme="light"] .biying-chat,
+html[data-biying-theme="light"] .guestbook,
+html[data-biying-theme="light"] .project-brief div,
+html[data-biying-theme="light"] .project-framework div {
+  background:
+    linear-gradient(135deg, rgba(31, 125, 109, 0.08), transparent 46%),
+    rgba(255, 255, 255, 0.74);
+  border-color: rgba(31, 125, 109, 0.16);
+  box-shadow: 0 0.8rem 2rem rgba(20, 62, 55, 0.06);
+}
+
+html[data-biying-theme="light"] .home-below-fold,
+html[data-biying-theme="light"] .home-section {
+  background: linear-gradient(90deg, rgba(31, 125, 109, 0.07), transparent 46%);
+}
+
+html[data-biying-theme="light"] .home-immersive-hero .cyber-button,
+html[data-biying-theme="light"] .cyber-button,
+html[data-biying-theme="light"] .biying-presence__link,
+html[data-biying-theme="light"] .site-stats-panel__action,
+html[data-biying-theme="light"] .cyber-card a,
+html[data-biying-theme="light"] .friend-card__visit,
+html[data-biying-theme="light"] .signal-item strong,
+html[data-biying-theme="light"] .cyber-card__label,
+html[data-biying-theme="light"] .home-section__head .cyber-kicker,
+html[data-biying-theme="light"] .home-pulse__item span,
+html[data-biying-theme="light"] .module-update-preview span,
+html[data-biying-theme="light"] .module-update-card span,
+html[data-biying-theme="light"] .site-stats-panel__metric span {
+  color: #087f6f;
+}
+
+html[data-biying-theme="light"] .home-immersive-hero .cyber-button,
+html[data-biying-theme="light"] .cyber-button {
+  background:
+    linear-gradient(135deg, rgba(31, 125, 109, 0.14), rgba(255, 255, 255, 0.62)),
+    rgba(255, 255, 255, 0.78);
+  border-color: rgba(31, 125, 109, 0.22);
+}
+
+html[data-biying-theme="light"] .theme-switcher {
+  background: rgba(244, 201, 131, 0.18);
+  border-color: rgba(177, 125, 34, 0.22);
+}
+
+html[data-biying-theme="light"] .theme-switcher span {
+  background: #f4c983;
+  box-shadow: 0 0 0.9rem rgba(244, 201, 131, 0.42);
+  transform: translateX(0.95rem);
+}
+
+html[data-biying-theme="light"] .lang-switcher {
+  background: rgba(31, 125, 109, 0.08);
+}
+
+html[data-biying-theme="light"] .lang-switcher a {
+  color: #41665e;
+}
+
+html[data-biying-theme="light"] .lang-switcher a.active {
+  background: rgba(31, 125, 109, 0.12);
+  color: #102822;
+  box-shadow: inset 0 0 0 1px rgba(31, 125, 109, 0.14);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,6 +1,18 @@
 {
-  "generatedAt": "2026-06-20T15:59:26.594488+00:00",
+  "generatedAt": "2026-06-21T05:35:21.458733+00:00",
   "items": [
+    {
+      "title": "入口",
+      "url": "/zh/",
+      "updated": "2026-06-21",
+      "locale": "zh"
+    },
+    {
+      "title": "Home",
+      "url": "/en/",
+      "updated": "2026-06-21",
+      "locale": "en"
+    },
     {
       "title": "站点统计",
       "url": "/zh/stats/",
@@ -14,20 +26,8 @@
       "locale": "zh"
     },
     {
-      "title": "入口",
-      "url": "/zh/",
-      "updated": "2026-06-20",
-      "locale": "zh"
-    },
-    {
       "title": "Site Stats",
       "url": "/en/stats/",
-      "updated": "2026-06-20",
-      "locale": "en"
-    },
-    {
-      "title": "Home",
-      "url": "/en/",
       "updated": "2026-06-20",
       "locale": "en"
     },
