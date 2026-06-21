@@ -4579,7 +4579,7 @@ html[data-biying-theme="light"] .lang-switcher a.active {
   html,
   body,
   body * {
-    cursor: url("../images/cursors/pikachu-cursor.svg") 3 2, auto;
+    cursor: url("../images/cursors/pikachu-cursor.svg") 3 2, auto !important;
   }
 
   a,
@@ -4632,19 +4632,19 @@ html[data-biying-theme="light"] .lang-switcher a.active {
   .site-stats-panel__action *,
   .friend-card__visit,
   .friend-card__visit * {
-    cursor: url("../images/cursors/pikachu-pointer.svg") 15 2, pointer;
+    cursor: url("../images/cursors/pikachu-pointer.svg") 15 2, pointer !important;
   }
 
   input,
   textarea,
   [contenteditable="true"],
   .md-search__input {
-    cursor: url("../images/cursors/pikachu-cursor.svg") 3 2, text;
+    cursor: url("../images/cursors/pikachu-cursor.svg") 3 2, text !important;
   }
 
   button:disabled,
   [aria-disabled="true"],
   .disabled {
-    cursor: url("../images/cursors/pikachu-cursor.svg") 3 2, not-allowed;
+    cursor: url("../images/cursors/pikachu-cursor.svg") 3 2, not-allowed !important;
   }
 }

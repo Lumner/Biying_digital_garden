@@ -146,6 +146,8 @@ test("Custom cursor assets are packaged in site CSS", async ({ page }) => {
   expect(cssText).toContain("button *");
   expect(cssText).toContain("button:active");
   expect(cssText).toContain(".md-search__form");
+  expect(cssText).toContain("pikachu-pointer.svg\") 15 2, pointer !important");
+  expect(cssText).toContain("pikachu-cursor.svg\") 3 2, text !important");
 
   const cursor = await page.request.get(`${site.url}/assets/images/cursors/pikachu-cursor.svg`);
   const pointer = await page.request.get(`${site.url}/assets/images/cursors/pikachu-pointer.svg`);
