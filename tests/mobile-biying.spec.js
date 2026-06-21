@@ -70,6 +70,19 @@ test("Account page defaults to sign in and switches account panels", async ({ pa
   await expect(privateMessage).toBeVisible();
 });
 
+test("Custom cursor assets are packaged in site CSS", async ({ page }) => {
+  const css = await page.request.get(`${site.url}/assets/styles/cyber.css`);
+  expect(css.ok()).toBe(true);
+  const cssText = await css.text();
+  expect(cssText).toContain("pikachu-cursor.svg");
+  expect(cssText).toContain("pikachu-pointer.svg");
+
+  const cursor = await page.request.get(`${site.url}/assets/images/cursors/pikachu-cursor.svg`);
+  const pointer = await page.request.get(`${site.url}/assets/images/cursors/pikachu-pointer.svg`);
+  expect(cursor.ok()).toBe(true);
+  expect(pointer.ok()).toBe(true);
+});
+
 test("Biying page chat stays readable on mobile", async ({ page }, testInfo) => {
   await page.goto(`${site.url}/zh/avatar/`);
 

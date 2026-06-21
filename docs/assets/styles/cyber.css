@@ -30,6 +30,29 @@ body {
   background-size: 44px 44px, 44px 44px, auto, auto, auto;
 }
 
+@media (pointer: fine) {
+  body,
+  .md-content {
+    cursor: url("../images/cursors/pikachu-cursor.svg") 3 2, auto;
+  }
+
+  a,
+  button,
+  summary,
+  label[for],
+  [role="button"],
+  .md-tabs__link,
+  .md-nav__link {
+    cursor: url("../images/cursors/pikachu-pointer.svg") 15 2, pointer;
+  }
+
+  input,
+  textarea,
+  [contenteditable="true"] {
+    cursor: text;
+  }
+}
+
 .md-header,
 .md-tabs {
   background: rgba(4, 12, 17, 0.88);
@@ -965,6 +988,16 @@ html:not(.math-ready) .md-typeset .arithmatex {
 
 .home-section--paths .quiet-panel {
   grid-column: 2;
+}
+
+@supports (content-visibility: auto) {
+  .home-section,
+  .module-update-preview,
+  .cyber-grid,
+  .signal-list {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 26rem;
+  }
 }
 
 .module-update-preview a,
