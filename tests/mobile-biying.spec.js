@@ -182,6 +182,33 @@ test("Light homepage keeps hero artwork and readable companion chat", async ({ p
   expect(styles.textareaColor).toBe("rgb(16, 40, 34)");
 });
 
+test("Light notes page keeps cards readable", async ({ page }) => {
+  await page.goto(`${site.url}/zh/notes/`);
+  await page.evaluate(() => localStorage.setItem("biying-theme", "light"));
+  await page.reload();
+
+  const topic = page.locator(".topic-card").filter({ hasText: "数学" });
+  await expect(topic).toBeVisible();
+  await expect(page.locator(".note-tile--catalog").first()).toBeVisible();
+
+  const styles = await topic.evaluate((node) => {
+    const label = getComputedStyle(node.querySelector("span"));
+    const count = getComputedStyle(node.querySelector("strong"));
+    const description = getComputedStyle(node.querySelector("p"));
+    return {
+      background: getComputedStyle(node).backgroundImage,
+      labelColor: label.color,
+      countColor: count.color,
+      descriptionColor: description.color
+    };
+  });
+
+  expect(styles.background).toContain("rgba(31, 125, 109");
+  expect(styles.labelColor).toBe("rgb(8, 127, 111)");
+  expect(styles.countColor).toBe("rgb(16, 40, 34)");
+  expect(styles.descriptionColor).toBe("rgb(82, 110, 103)");
+});
+
 test("Top navigation puts account between friends and updates", async ({ page }) => {
   await page.goto(`${site.url}/zh/`);
   const nav = page.locator(".md-tabs");

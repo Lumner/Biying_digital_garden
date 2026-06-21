@@ -3618,6 +3618,8 @@ html[data-biying-theme="light"] .cyber-card h3,
 html[data-biying-theme="light"] .surface-tile strong,
 html[data-biying-theme="light"] .timeline-item strong,
 html[data-biying-theme="light"] .note-entry-grid strong,
+html[data-biying-theme="light"] .topic-card strong,
+html[data-biying-theme="light"] .note-tile h3,
 html[data-biying-theme="light"] .home-pulse__item strong,
 html[data-biying-theme="light"] .module-update-preview strong,
 html[data-biying-theme="light"] .module-update-card strong,
@@ -3639,6 +3641,9 @@ html[data-biying-theme="light"] .cyber-card p,
 html[data-biying-theme="light"] .surface-tile span,
 html[data-biying-theme="light"] .timeline-item span,
 html[data-biying-theme="light"] .note-entry-grid span,
+html[data-biying-theme="light"] .topic-card p,
+html[data-biying-theme="light"] .note-tile p,
+html[data-biying-theme="light"] .note-catalog-meta,
 html[data-biying-theme="light"] .friend-card__identity span,
 html[data-biying-theme="light"] .friend-card__intro,
 html[data-biying-theme="light"] .site-stats-panel__intro span,
@@ -3750,6 +3755,61 @@ html[data-biying-theme="light"] .home-immersive-hero .status-pill {
   color: #17342e;
 }
 
+html[data-biying-theme="light"] .home-below-fold__routes a,
+html[data-biying-theme="light"] .note-entry-grid a,
+html[data-biying-theme="light"] .topic-card,
+html[data-biying-theme="light"] .note-tile {
+  background:
+    linear-gradient(135deg, rgba(31, 125, 109, 0.075), rgba(244, 201, 131, 0.055) 58%, transparent),
+    rgba(255, 255, 255, 0.88);
+  border-color: rgba(31, 125, 109, 0.18);
+  box-shadow: 0 0.75rem 1.65rem rgba(20, 62, 55, 0.055);
+}
+
+html[data-biying-theme="light"] .home-below-fold__routes a:hover,
+html[data-biying-theme="light"] .note-entry-grid a:hover,
+html[data-biying-theme="light"] .topic-card:hover,
+html[data-biying-theme="light"] .note-tile:hover {
+  background:
+    linear-gradient(135deg, rgba(31, 125, 109, 0.105), rgba(244, 201, 131, 0.075) 58%, transparent),
+    rgba(255, 255, 255, 0.96);
+  border-color: rgba(31, 125, 109, 0.34);
+  box-shadow: 0 0.9rem 1.9rem rgba(20, 62, 55, 0.075);
+}
+
+html[data-biying-theme="light"] .note-tile {
+  background:
+    linear-gradient(90deg, rgba(31, 125, 109, 0.18) 0 0.55rem, transparent 0.55rem),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(242, 250, 246, 0.92));
+  padding-left: 1.25rem;
+}
+
+html[data-biying-theme="light"] .note-tile::after {
+  border-color: rgba(31, 125, 109, 0.18);
+  opacity: 0.42;
+}
+
+html[data-biying-theme="light"] .home-below-fold__routes span,
+html[data-biying-theme="light"] .topic-card span,
+html[data-biying-theme="light"] .tag-chip,
+html[data-biying-theme="light"] .note-tile > a {
+  color: #087f6f;
+}
+
+html[data-biying-theme="light"] .home-below-fold__routes strong {
+  color: #102822;
+}
+
+html[data-biying-theme="light"] .tag-chip {
+  background: rgba(31, 125, 109, 0.08);
+  border-color: rgba(31, 125, 109, 0.2);
+}
+
+html[data-biying-theme="light"] .tag-chip span {
+  background: rgba(244, 201, 131, 0.16);
+  color: #7a581d;
+}
+
 html[data-biying-theme="light"] .cyber-hero,
 html[data-biying-theme="light"] .home-below-fold,
 html[data-biying-theme="light"] .site-stats-panel,
@@ -3807,6 +3867,31 @@ html[data-biying-theme="light"] .module-update-preview span,
 html[data-biying-theme="light"] .module-update-card span,
 html[data-biying-theme="light"] .site-stats-panel__metric span {
   color: #087f6f;
+}
+
+html[data-biying-theme="light"] .home-pulse__item,
+html[data-biying-theme="light"] .module-update-preview a,
+html[data-biying-theme="light"] .module-update-card,
+html[data-biying-theme="light"] .cyber-card,
+html[data-biying-theme="light"] .surface-tile {
+  background:
+    linear-gradient(135deg, rgba(31, 125, 109, 0.07), rgba(255, 255, 255, 0.72) 55%),
+    rgba(255, 255, 255, 0.86);
+}
+
+html[data-biying-theme="light"] .home-pulse__item::before {
+  background: #087f6f;
+  box-shadow: 0 0 0.8rem rgba(31, 125, 109, 0.22);
+}
+
+html[data-biying-theme="light"] .module-update-preview a::before,
+html[data-biying-theme="light"] .module-update-card::before {
+  background: linear-gradient(180deg, #087f6f, rgba(244, 201, 131, 0.8));
+  opacity: 0.72;
+}
+
+html[data-biying-theme="light"] .module-update-card p {
+  color: #526e67;
 }
 
 html[data-biying-theme="light"] .auth-tabs {
