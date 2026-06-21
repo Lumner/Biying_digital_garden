@@ -46,14 +46,18 @@ test("Theme switcher toggles and persists the light theme", async ({ page }) => 
   await expect(html).toHaveAttribute("data-biying-theme", "light");
 });
 
-test("Account page defaults to sign in and switches account panels", async ({ page }) => {
+test("Account page uses sign in, register, and recovery panels", async ({ page }) => {
   await page.goto(`${site.url}/zh/register/`);
 
+  const access = page.locator("[data-auth-access]");
+  const signedIn = page.locator("[data-auth-signed-in]");
   const login = page.locator("[data-auth-login]");
   const register = page.locator("[data-auth-register]");
   const reset = page.locator("[data-auth-reset]");
   const privateMessage = page.locator("[data-auth-private]");
 
+  await expect(access).toBeVisible();
+  await expect(signedIn).toBeHidden();
   await expect(login).toBeVisible();
   await expect(register).toBeHidden();
   await expect(reset).toBeHidden();
@@ -64,10 +68,60 @@ test("Account page defaults to sign in and switches account panels", async ({ pa
   await expect(register).toBeVisible();
   await expect(login).toBeHidden();
 
-  await page.getByRole("tab", { name: "忘记密码" }).click();
+  await page.getByRole("tab", { name: "登录" }).click();
+  await page.getByRole("button", { name: "忘记密码？" }).click();
   await expect(reset).toBeVisible();
+  await expect(login).toBeHidden();
   await expect(register).toBeHidden();
   await expect(privateMessage).toBeVisible();
+
+  await page.getByRole("button", { name: "返回登录" }).click();
+  await expect(login).toBeVisible();
+  await expect(reset).toBeHidden();
+});
+
+test("Account page hides auth forms after sign in and supports sign out", async ({ page }) => {
+  await page.route(`${site.url}/api/auth`, async (route) => {
+    if (route.request().method() === "GET") {
+      await route.fulfill({
+        contentType: "application/json",
+        body: JSON.stringify({
+          user: {
+            username: "biying",
+            displayName: "biying"
+          }
+        })
+      });
+      return;
+    }
+    await route.fulfill({
+      contentType: "application/json",
+      body: JSON.stringify({ ok: true })
+    });
+  });
+
+  await page.goto(`${site.url}/zh/register/`);
+  await page.evaluate(() => {
+    localStorage.setItem("biying-auth-session", JSON.stringify({
+      token: "test-token",
+      user: {
+        username: "biying",
+        displayName: "biying"
+      }
+    }));
+  });
+  await page.reload();
+
+  await expect(page.locator("[data-auth-signed-in]")).toBeVisible();
+  await expect(page.locator("[data-auth-access]")).toBeHidden();
+  await expect(page.locator("[data-auth-login]")).toBeHidden();
+  await expect(page.locator("[data-auth-register]")).toBeHidden();
+  await expect(page.getByRole("button", { name: "退出登录" })).toBeVisible();
+
+  await page.getByRole("button", { name: "退出登录" }).click();
+  await expect(page.locator("[data-auth-access]")).toBeVisible();
+  await expect(page.locator("[data-auth-login]")).toBeVisible();
+  await expect(page.locator("[data-auth-signed-in]")).toBeHidden();
 });
 
 test("Custom cursor assets are packaged in site CSS", async ({ page }) => {
@@ -76,11 +130,41 @@ test("Custom cursor assets are packaged in site CSS", async ({ page }) => {
   const cssText = await css.text();
   expect(cssText).toContain("pikachu-cursor.svg");
   expect(cssText).toContain("pikachu-pointer.svg");
+  expect(cssText).toContain("body *");
+  expect(cssText).toContain("button *");
 
   const cursor = await page.request.get(`${site.url}/assets/images/cursors/pikachu-cursor.svg`);
   const pointer = await page.request.get(`${site.url}/assets/images/cursors/pikachu-pointer.svg`);
   expect(cursor.ok()).toBe(true);
   expect(pointer.ok()).toBe(true);
+});
+
+test("Light homepage keeps hero artwork and readable companion chat", async ({ page }) => {
+  await page.goto(`${site.url}/zh/`);
+  await page.evaluate(() => localStorage.setItem("biying-theme", "light"));
+  await page.reload();
+
+  const heroBackground = await page.locator(".home-immersive-hero").evaluate((node) => getComputedStyle(node).backgroundImage);
+  expect(heroBackground).toContain("home-hero-rain.png");
+
+  await page.getByRole("button", { name: "和碧影聊聊" }).click();
+  const companion = page.locator(".biying-chat--companion");
+  await expect(companion).toBeVisible();
+
+  const styles = await companion.evaluate((node) => {
+    const panel = getComputedStyle(node);
+    const message = getComputedStyle(node.querySelector(".biying-message"));
+    const textarea = getComputedStyle(node.querySelector("textarea"));
+    return {
+      panelBackground: panel.backgroundImage,
+      messageColor: message.color,
+      textareaColor: textarea.color
+    };
+  });
+
+  expect(styles.panelBackground).toContain("rgba(255, 255, 255");
+  expect(styles.messageColor).toBe("rgb(49, 83, 75)");
+  expect(styles.textareaColor).toBe("rgb(16, 40, 34)");
 });
 
 test("Biying page chat stays readable on mobile", async ({ page }, testInfo) => {

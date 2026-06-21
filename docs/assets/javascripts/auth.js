@@ -13,15 +13,25 @@
     return dom.accountUrl();
   }
 
+  function localizedPath(path) {
+    return `/${isChinesePage() ? "zh" : "en"}/${String(path || "").replace(/^\/+/, "")}`;
+  }
+
   function text(key) {
     const zh = isChinesePage();
     const copy = {
       title: zh ? "账户" : "Account",
+      accessTitle: zh ? "登录到碧影数字花园" : "Sign in to Biying Digital Garden",
+      accessLead: zh
+        ? "登录后可以继续留言、编辑自己的留言，并和碧影进行更完整的对话。"
+        : "Sign in to keep guestbook messages, edit your own notes, and talk with Biying more fully.",
+      signedTitle: zh ? "你已经登录" : "You are signed in",
+      signedLead: zh ? "现在可以继续留言或和碧影对话。" : "You can now leave messages or talk with Biying.",
       registerTitle: zh ? "注册" : "Register",
       loginTitle: zh ? "登录" : "Sign In",
       resetTitle: zh ? "忘记密码" : "Forgot Password",
-      loginHint: zh ? "已有账户时从这里进入。" : "Use this if you already have an account.",
-      registerHint: zh ? "第一次留言或对话时创建账户。" : "Create an account before your first message or chat.",
+      loginHint: zh ? "使用你的用户名和密码登录。" : "Use your username and password.",
+      registerHint: zh ? "创建一个只用于本站互动的轻量账户。" : "Create a lightweight account for this site only.",
       resetHint: zh ? "拿到恢复码后在这里设置新密码。" : "Use this after receiving a recovery code.",
       privateTitle: zh ? "私信站点主人" : "Private message the site owner",
       username: zh ? "用户名（中文、字母、数字、下划线）" : "Username (Chinese, letters, numbers, underscore)",
@@ -41,9 +51,13 @@
       register: zh ? "创建账户" : "Create account",
       login: zh ? "登录" : "Sign in",
       reset: zh ? "重设密码" : "Reset password",
+      forgot: zh ? "忘记密码？" : "Forgot password?",
+      backToLogin: zh ? "返回登录" : "Back to sign in",
       sendPrivate: zh ? "发送私信" : "Send private message",
       logout: zh ? "退出登录" : "Sign out",
       current: zh ? "当前登录" : "Signed in as",
+      goGuestbook: zh ? "去留言" : "Open guestbook",
+      goBiying: zh ? "和碧影对话" : "Talk to Biying",
       required: zh ? "请先注册或登录。" : "Please register or sign in first.",
       kv: zh ? "账户功能需要先在 EdgeOne 中绑定 BIYING_KV。" : "Accounts require BIYING_KV to be bound in EdgeOne.",
       badCredentials: zh ? "用户名或密码不正确。" : "The username or password is incorrect.",
@@ -149,18 +163,34 @@
 
   function renderStatus(root) {
     const current = user();
-    const status = root.querySelector("[data-auth-status]");
-    if (!status) return;
+    const signedInPanel = root.querySelector("[data-auth-signed-in]");
+    const accessPanel = root.querySelector("[data-auth-access]");
+    const privateForm = root.querySelector("[data-auth-private]");
+    if (!signedInPanel || !accessPanel) return;
+    root.dataset.authenticated = current ? "true" : "false";
     if (current) {
-      status.innerHTML = `
-        <div class="auth-card signed-in">
-          <strong>${text("current")}</strong>
-          <span>${escapeHtml(current.displayName)} (@${escapeHtml(current.username)})</span>
-          <button type="button" data-auth-logout>${text("logout")}</button>
+      signedInPanel.hidden = false;
+      accessPanel.hidden = true;
+      if (privateForm) privateForm.hidden = true;
+      signedInPanel.innerHTML = `
+        <div class="auth-avatar-mark" aria-hidden="true">${escapeHtml(String(current.displayName || current.username).slice(0, 1).toUpperCase())}</div>
+        <div class="auth-signed-copy">
+          <span class="cyber-kicker">${text("current")}</span>
+          <h2>${text("signedTitle")}</h2>
+          <p>${escapeHtml(current.displayName)} (@${escapeHtml(current.username)})</p>
+          <p class="meta-line">${text("signedLead")}</p>
+        </div>
+        <div class="auth-account-actions">
+          <a class="cyber-button" href="${localizedPath("guestbook/")}">${text("goGuestbook")}</a>
+          <a class="cyber-button secondary" href="${localizedPath("avatar/")}">${text("goBiying")}</a>
+          <button type="button" class="auth-logout-button" data-auth-logout>${text("logout")}</button>
         </div>
       `;
     } else {
-      status.innerHTML = `<div class="auth-card">${text("required")}</div>`;
+      signedInPanel.hidden = true;
+      signedInPanel.innerHTML = "";
+      accessPanel.hidden = false;
+      if (privateForm) privateForm.hidden = false;
     }
   }
 
@@ -173,6 +203,7 @@
   function switchAccountMode(root, mode) {
     const nextMode = accountModes.includes(mode) ? mode : "login";
     root.dataset.authMode = nextMode;
+    root.querySelector("[data-auth-access]")?.classList.toggle("is-reset", nextMode === "reset");
     root.querySelectorAll("[data-auth-tab]").forEach((tab) => {
       const active = tab.dataset.authTab === nextMode;
       tab.classList.toggle("active", active);
@@ -188,41 +219,49 @@
     if (!root || root.dataset.ready) return;
     root.dataset.ready = "true";
     root.innerHTML = `
-      <div data-auth-status></div>
       <div class="auth-shell">
-        <div class="auth-tabs" role="tablist" aria-label="${text("title")}">
-          <button type="button" role="tab" data-auth-tab="login" aria-controls="auth-panel-login">${text("loginTitle")}</button>
-          <button type="button" role="tab" data-auth-tab="register" aria-controls="auth-panel-register">${text("registerTitle")}</button>
-          <button type="button" role="tab" data-auth-tab="reset" aria-controls="auth-panel-reset">${text("resetTitle")}</button>
-        </div>
-        <div class="auth-account-forms">
-          <form class="auth-card auth-card--primary" data-auth-login data-auth-mode-panel="login" id="auth-panel-login" role="tabpanel">
-            <h2>${text("loginTitle")}</h2>
-            <p class="meta-line">${text("loginHint")}</p>
-            <input name="username" maxlength="24" autocomplete="username" placeholder="${text("username")}" />
-            <input name="password" type="password" maxlength="80" autocomplete="current-password" placeholder="${text("password")}" />
-            <button type="submit">${text("login")}</button>
-            <p class="meta-line" data-auth-login-message></p>
-          </form>
-          <form class="auth-card auth-card--primary" data-auth-register data-auth-mode-panel="register" id="auth-panel-register" role="tabpanel">
-            <h2>${text("registerTitle")}</h2>
-            <p class="meta-line">${text("registerHint")}</p>
-            <input name="username" maxlength="24" autocomplete="username" placeholder="${text("username")}" />
-            <input name="password" type="password" maxlength="80" autocomplete="new-password" placeholder="${text("password")}" />
-            <button type="submit">${text("register")}</button>
-            <p class="meta-line" data-auth-register-message></p>
-          </form>
-          <form class="auth-card auth-card--primary" data-auth-reset data-auth-mode-panel="reset" id="auth-panel-reset" role="tabpanel">
-            <h2>${text("resetTitle")}</h2>
-            <p class="meta-line">${text("resetHint")}</p>
-            <p class="meta-line">${text("recoveryHint")}</p>
-            <input name="username" maxlength="24" autocomplete="username" placeholder="${text("username")}" />
-            <input name="recoveryToken" type="password" maxlength="120" autocomplete="one-time-code" placeholder="${text("recoveryCode")}" />
-            <input name="password" type="password" maxlength="80" autocomplete="new-password" placeholder="${text("newPassword")}" />
-            <button type="submit">${text("reset")}</button>
-            <p class="meta-line" data-auth-reset-message></p>
-          </form>
-        </div>
+        <section class="auth-card auth-card--signed" data-auth-signed-in hidden></section>
+        <section class="auth-access-card" data-auth-access>
+          <div class="auth-access-card__head">
+            <span class="cyber-kicker">${text("title")}</span>
+            <h2>${text("accessTitle")}</h2>
+            <p>${text("accessLead")}</p>
+          </div>
+          <div class="auth-tabs" role="tablist" aria-label="${text("title")}">
+            <button type="button" role="tab" data-auth-tab="login" aria-controls="auth-panel-login">${text("loginTitle")}</button>
+            <button type="button" role="tab" data-auth-tab="register" aria-controls="auth-panel-register">${text("registerTitle")}</button>
+          </div>
+          <div class="auth-account-forms">
+            <form class="auth-card auth-card--primary" data-auth-login data-auth-mode-panel="login" id="auth-panel-login" role="tabpanel">
+              <h2>${text("loginTitle")}</h2>
+              <p class="meta-line">${text("loginHint")}</p>
+              <input name="username" maxlength="24" autocomplete="username" placeholder="${text("username")}" />
+              <input name="password" type="password" maxlength="80" autocomplete="current-password" placeholder="${text("password")}" />
+              <button type="submit">${text("login")}</button>
+              <button class="auth-link-button" type="button" data-auth-switch="reset">${text("forgot")}</button>
+              <p class="meta-line" data-auth-login-message></p>
+            </form>
+            <form class="auth-card auth-card--primary" data-auth-register data-auth-mode-panel="register" id="auth-panel-register" role="tabpanel">
+              <h2>${text("registerTitle")}</h2>
+              <p class="meta-line">${text("registerHint")}</p>
+              <input name="username" maxlength="24" autocomplete="username" placeholder="${text("username")}" />
+              <input name="password" type="password" maxlength="80" autocomplete="new-password" placeholder="${text("password")}" />
+              <button type="submit">${text("register")}</button>
+              <p class="meta-line" data-auth-register-message></p>
+            </form>
+            <form class="auth-card auth-card--primary auth-card--reset" data-auth-reset data-auth-mode-panel="reset" id="auth-panel-reset" role="tabpanel">
+              <h2>${text("resetTitle")}</h2>
+              <p class="meta-line">${text("resetHint")}</p>
+              <p class="meta-line">${text("recoveryHint")}</p>
+              <input name="username" maxlength="24" autocomplete="username" placeholder="${text("username")}" />
+              <input name="recoveryToken" type="password" maxlength="120" autocomplete="one-time-code" placeholder="${text("recoveryCode")}" />
+              <input name="password" type="password" maxlength="80" autocomplete="new-password" placeholder="${text("newPassword")}" />
+              <button type="submit">${text("reset")}</button>
+              <button class="auth-link-button" type="button" data-auth-switch="login">${text("backToLogin")}</button>
+              <p class="meta-line" data-auth-reset-message></p>
+            </form>
+          </div>
+        </section>
         <form class="auth-card auth-card--private" data-auth-private>
           <h2>${text("privateTitle")}</h2>
           <p class="meta-line">${text("privateHint")}</p>
@@ -247,8 +286,14 @@
         switchAccountMode(root, tab.dataset.authTab);
         return;
       }
+      const switcher = event.target.closest("[data-auth-switch]");
+      if (switcher) {
+        switchAccountMode(root, switcher.dataset.authSwitch);
+        return;
+      }
       if (!event.target.closest("[data-auth-logout]")) return;
       await logout();
+      switchAccountMode(root, "login");
       renderStatus(root);
     });
 
