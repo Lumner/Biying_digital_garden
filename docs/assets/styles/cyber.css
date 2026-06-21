@@ -1716,6 +1716,7 @@ html:not(.math-ready) .md-typeset .arithmatex {
   color: #eafffb;
   cursor: pointer;
   font: inherit;
+  font-size: 0.92rem;
   font-weight: 700;
   padding: 0.55rem 0.86rem;
   transition: border-color 140ms ease, box-shadow 140ms ease, transform 140ms ease;
@@ -2435,25 +2436,26 @@ html:not(.math-ready) .md-typeset .arithmatex {
 
 .biying-chat__header strong {
   color: #f1fffb;
+  font-size: 1.04rem;
 }
 
 .biying-chat__header span {
   color: var(--cyber-muted);
-  font-size: 0.78rem;
-  line-height: 1.55;
+  font-size: 0.86rem;
+  line-height: 1.6;
 }
 
 .biying-chat__clear {
-  min-height: 1.8rem;
+  min-height: 2rem;
   border: 1px solid rgba(112, 244, 219, 0.18);
   border-radius: 999px;
   background: rgba(112, 244, 219, 0.06);
   color: #bdeee5;
   cursor: pointer;
   font: inherit;
-  font-size: 0.68rem;
+  font-size: 0.76rem;
   font-weight: 800;
-  padding: 0.2rem 0.58rem;
+  padding: 0.24rem 0.68rem;
 }
 
 .biying-chat__clear:hover {
@@ -2490,7 +2492,7 @@ html:not(.math-ready) .md-typeset .arithmatex {
   width: 100%;
   max-width: 34rem;
   min-width: 0;
-  font-size: 0.96rem;
+  font-size: 1rem;
   writing-mode: horizontal-tb;
   text-orientation: mixed;
   line-height: 1.78;
@@ -2664,7 +2666,7 @@ html:not(.math-ready) .md-typeset .arithmatex {
 }
 
 .biying-companion__panel {
-  width: min(28rem, calc(100vw - 2rem));
+  width: min(31rem, calc(100vw - 2rem));
   border-radius: 0.72rem;
   overflow: hidden;
 }
@@ -2753,8 +2755,18 @@ html:not(.math-ready) .md-typeset .arithmatex {
   background: rgba(2, 7, 10, 0.9);
   color: #edfffb;
   font: inherit;
+  font-size: 0.98rem;
+  line-height: 1.65;
   padding: 0.68rem;
   transition: border-color 140ms ease, box-shadow 140ms ease, background 140ms ease;
+}
+
+.biying-chat__form button[type="submit"],
+.guestbook__form button[type="submit"] {
+  justify-self: stretch;
+  min-height: 2.65rem;
+  font-size: 0.96rem;
+  font-weight: 850;
 }
 
 .biying-chat textarea:focus,
@@ -3922,6 +3934,29 @@ html[data-biying-theme="light"] .guestbook input {
   color: #102822;
 }
 
+html[data-biying-theme="light"] .biying-chat textarea::placeholder,
+html[data-biying-theme="light"] .guestbook textarea::placeholder,
+html[data-biying-theme="light"] .guestbook input::placeholder {
+  color: rgba(49, 83, 75, 0.68);
+}
+
+html[data-biying-theme="light"] .biying-chat button,
+html[data-biying-theme="light"] .guestbook button {
+  background:
+    linear-gradient(135deg, rgba(31, 125, 109, 0.18), rgba(244, 201, 131, 0.1)),
+    rgba(255, 255, 255, 0.9);
+  border-color: rgba(31, 125, 109, 0.28);
+  color: #064e45;
+  box-shadow: 0 0.5rem 1rem rgba(20, 62, 55, 0.055);
+}
+
+html[data-biying-theme="light"] .biying-chat button:hover,
+html[data-biying-theme="light"] .guestbook button:hover {
+  border-color: rgba(31, 125, 109, 0.46);
+  box-shadow: 0 0.75rem 1.35rem rgba(20, 62, 55, 0.085);
+  color: #102822;
+}
+
 html[data-biying-theme="light"] .auth-avatar-mark {
   background:
     radial-gradient(circle at 35% 25%, rgba(155, 226, 143, 0.24), transparent 48%),
@@ -4012,6 +4047,12 @@ html[data-biying-theme="light"] .biying-chat--companion .biying-chat__header {
 
 html[data-biying-theme="light"] .biying-chat--companion .biying-chat__form {
   background: rgba(255, 255, 255, 0.96);
+}
+
+html[data-biying-theme="light"] .biying-companion__close {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(31, 125, 109, 0.22);
+  color: #064e45;
 }
 
 html[data-biying-theme="light"] .home-immersive-hero .cyber-button,
@@ -4301,12 +4342,12 @@ html[data-biying-theme="light"] .lang-switcher a.active {
   }
 
   .biying-chat__header strong {
-    font-size: 0.94rem;
+    font-size: 1rem;
   }
 
   .biying-chat__header span {
-    font-size: 0.74rem;
-    line-height: 1.45;
+    font-size: 0.82rem;
+    line-height: 1.5;
   }
 
   .biying-chat__log {
@@ -4320,8 +4361,8 @@ html[data-biying-theme="light"] .lang-switcher a.active {
     max-width: 100%;
     min-width: 0;
     border-radius: 0.48rem;
-    font-size: 0.92rem;
-    line-height: 1.66;
+    font-size: 0.96rem;
+    line-height: 1.68;
     padding: 0.62rem 0.7rem;
     white-space: normal;
   }
@@ -4342,7 +4383,7 @@ html[data-biying-theme="light"] .lang-switcher a.active {
   }
 
   .biying-chat textarea {
-    min-height: 4.8rem;
+    min-height: 5.2rem;
     padding: 0.58rem;
   }
 

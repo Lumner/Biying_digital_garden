@@ -209,6 +209,36 @@ test("Light notes page keeps cards readable", async ({ page }) => {
   expect(styles.descriptionColor).toBe("rgb(82, 110, 103)");
 });
 
+test("Light Biying page keeps chat controls readable", async ({ page }) => {
+  await page.goto(`${site.url}/zh/avatar/`);
+  await page.evaluate(() => localStorage.setItem("biying-theme", "light"));
+  await page.reload();
+
+  const chat = page.locator(".interaction-shell--page-chat .biying-chat");
+  const send = chat.getByRole("button", { name: "发送" });
+  await expect(chat.locator("textarea")).toBeVisible();
+  await expect(send).toBeVisible();
+
+  const styles = await chat.evaluate((node) => {
+    const textarea = node.querySelector("textarea");
+    const button = node.querySelector("button[type='submit']");
+    const message = node.querySelector(".biying-message");
+    return {
+      textareaFontSize: getComputedStyle(textarea).fontSize,
+      buttonColor: getComputedStyle(button).color,
+      buttonBackground: getComputedStyle(button).backgroundImage,
+      buttonFontSize: getComputedStyle(button).fontSize,
+      messageFontSize: getComputedStyle(message).fontSize
+    };
+  });
+
+  expect(styles.buttonColor).toBe("rgb(6, 78, 69)");
+  expect(styles.buttonBackground).toContain("rgba(31, 125, 109");
+  expect(parseFloat(styles.buttonFontSize)).toBeGreaterThanOrEqual(15);
+  expect(parseFloat(styles.textareaFontSize)).toBeGreaterThanOrEqual(15);
+  expect(parseFloat(styles.messageFontSize)).toBeGreaterThanOrEqual(15);
+});
+
 test("Top navigation puts account between friends and updates", async ({ page }) => {
   await page.goto(`${site.url}/zh/`);
   const nav = page.locator(".md-tabs");
