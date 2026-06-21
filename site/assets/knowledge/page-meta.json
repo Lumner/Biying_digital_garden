@@ -1,11 +1,35 @@
 {
-  "generatedAt": "2026-06-21T07:04:32.967601+00:00",
+  "generatedAt": "2026-06-21T13:33:36.860446+00:00",
   "items": [
+    {
+      "title": "模块更新",
+      "url": "/zh/updates/",
+      "updated": "2026-06-21",
+      "locale": "zh"
+    },
     {
       "title": "入口",
       "url": "/zh/",
       "updated": "2026-06-21",
       "locale": "zh"
+    },
+    {
+      "title": "个人数字花园与碧影",
+      "url": "/zh/projects/personal-site-avatar/",
+      "updated": "2026-06-21",
+      "locale": "zh"
+    },
+    {
+      "title": "Updates",
+      "url": "/en/updates/",
+      "updated": "2026-06-21",
+      "locale": "en"
+    },
+    {
+      "title": "Personal Digital Garden + Biying",
+      "url": "/en/projects/personal-site-avatar/",
+      "updated": "2026-06-21",
+      "locale": "en"
     },
     {
       "title": "Home",
@@ -38,18 +62,6 @@
       "locale": "en"
     },
     {
-      "title": "模块更新",
-      "url": "/zh/updates/",
-      "updated": "2026-05-22",
-      "locale": "zh"
-    },
-    {
-      "title": "Updates",
-      "url": "/en/updates/",
-      "updated": "2026-05-22",
-      "locale": "en"
-    },
-    {
       "title": "项目",
       "url": "/zh/projects/",
       "updated": "2026-05-21",
@@ -68,20 +80,8 @@
       "locale": "zh"
     },
     {
-      "title": "个人数字花园与碧影",
-      "url": "/zh/projects/personal-site-avatar/",
-      "updated": "2026-05-21",
-      "locale": "zh"
-    },
-    {
       "title": "Projects",
       "url": "/en/projects/",
-      "updated": "2026-05-21",
-      "locale": "en"
-    },
-    {
-      "title": "Personal Digital Garden + Biying",
-      "url": "/en/projects/personal-site-avatar/",
       "updated": "2026-05-21",
       "locale": "en"
     },

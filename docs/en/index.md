@@ -51,11 +51,26 @@ tags:
   <div class="home-below-fold__copy">
     <span class="cyber-kicker">PUBLIC ENTRANCE</span>
     <h2>Keep walking from here</h2>
-    <p>Current signals, a random note cover, projects, and Biying all unfold below the first screen.</p>
+    <p>Current work, notes, projects, and Biying all start here. Pick a path and keep walking at your own pace.</p>
     <div class="home-below-fold__routes" aria-label="Common entrances">
       <a href="./now/"><span>Now</span><strong>Current Work</strong></a>
       <a href="./notes/"><span>Notes</span><strong>Read Randomly</strong></a>
       <a href="./avatar/"><span>Biying</span><strong>Start Chat</strong></a>
+    </div>
+    <div class="site-stats-panel site-stats-panel--home" data-site-stats aria-label="Site statistics">
+      <div class="site-stats-panel__intro">
+        <strong>Visits</strong>
+        <span data-site-stat-status>Loading site statistics</span>
+        <a class="site-stats-panel__action" href="./stats/">Details</a>
+      </div>
+      <div class="site-stats-panel__metric">
+        <span>Visitors</span>
+        <strong data-site-stat="totalVisitors">--</strong>
+      </div>
+      <div class="site-stats-panel__metric">
+        <span>Views</span>
+        <strong data-site-stat="pageViews">--</strong>
+      </div>
     </div>
   </div>
   <div class="note-cover-stage home-hero-cover" data-random-note-cover aria-label="Random note cover">
@@ -72,23 +87,6 @@ tags:
         <span>BIYING</span>
       </span>
     </a>
-  </div>
-</section>
-
-<section class="site-stats-panel site-stats-panel--home" data-site-stats aria-label="Site statistics">
-  <div class="site-stats-panel__intro">
-    <strong>Footprints through this garden</strong>
-    <span>Total visitors and page views update automatically on the live site, so this space can show whether it is actually being seen.</span>
-    <p class="site-stats-panel__status" data-site-stat-status>Loading site statistics</p>
-    <a class="site-stats-panel__action" href="./stats/">Open stats page</a>
-  </div>
-  <div class="site-stats-panel__metric">
-    <span>Total visitors</span>
-    <strong data-site-stat="totalVisitors">--</strong>
-  </div>
-  <div class="site-stats-panel__metric">
-    <span>Page views</span>
-    <strong data-site-stat="pageViews">--</strong>
   </div>
 </section>
 

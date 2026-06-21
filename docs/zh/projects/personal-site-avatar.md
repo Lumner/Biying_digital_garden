@@ -3,7 +3,7 @@ title: 个人数字花园与碧影
 summary: 一个双语个人网站项目，把公开笔记、项目记录、留言板、公开知识库和数字分身碧影放在同一个长期入口里。
 public: true
 avatar_readable: true
-updated: 2026-05-21
+updated: 2026-06-21
 tags:
   - personal-site
   - digital-avatar
@@ -15,11 +15,11 @@ tags:
 <section class="garden-pagehead">
   <div class="garden-pagehead__eyebrow">PROJECT CASE</div>
   <h1 class="garden-pagehead__title">个人数字花园与碧影</h1>
-  <p class="garden-pagehead__lead">把公开笔记、项目记录、留言、公开知识库和碧影放进同一个长期入口里，让内容、交互、检索和部署一起慢慢长出来。</p>
+  <p class="garden-pagehead__lead">把公开笔记、项目记录、留言、友链、公开知识库和碧影放进同一个长期入口里，让这个网站能随着学习和项目一起更新。</p>
   <div class="garden-pagehead__meta">
     <span class="status-pill">MkDocs</span>
     <span class="status-pill leaf">EdgeOne</span>
-    <span class="status-pill warm">更新：2026-05-21</span>
+    <span class="status-pill warm">更新：2026-06-21</span>
   </div>
 </section>
 
@@ -34,13 +34,13 @@ tags:
   </div>
   <div>
     <strong>状态</strong>
-    <span>站点已上线，后端 API、知识库构建、移动端验证和部署检查已形成闭环。</span>
+    <span>站点已上线，首页视觉、主题切换、账号入口、友链、统计与 CI 安装流程正在持续收紧。</span>
   </div>
 </div>
 
-这是我为自己搭建的长期个人网站。它不是单独的作品集，也不只是一个聊天 demo，而是把公开笔记、项目记录、当前状态、留言、公开知识库和碧影放进同一个入口里。
+这是我为自己搭建的长期个人网站。它不是单独的作品集，也不只是一个聊天 demo，而是把公开笔记、项目记录、当前状态、留言、友链、公开知识库和碧影放进同一个入口里。
 
-我希望它能随着我学习和做项目一起长大：现在它已经有了双语页面、课程笔记、公开知识检索、留言与后台管理接口、移动端基础测试和自托管数学公式资源；之后会继续加入更多真实项目、调试记录、阶段性的想法，以及更稳定的线上运行细节。
+我希望它能随着我学习和做项目一起长大：现在它已经有了双语页面、课程笔记、公开知识检索、留言与后台管理接口、友链模块、访客统计、移动端基础测试和自托管数学公式资源；之后会继续加入更多真实项目、调试记录、阶段性的想法，以及更稳定的线上运行细节。
 
 ## 背景
 
@@ -65,7 +65,7 @@ tags:
   </div>
   <div class="timeline-item">
     <strong>碧影与留言</strong>
-    <span>设计碧影的语气、读取范围和拒答边界，实现聊天前端、留言板前端、后台入口和 EdgeOne Functions 风格 API。</span>
+    <span>设计碧影的语气、读取范围和拒答边界，实现聊天前端、留言板前端、后台入口和 EdgeOne Functions 风格 API，并保留本地聊天记录。</span>
   </div>
   <div class="timeline-item">
     <strong>知识库与检索</strong>
@@ -73,7 +73,7 @@ tags:
   </div>
   <div class="timeline-item">
     <strong>稳定性与验证</strong>
-    <span>补齐共享前端工具、API 错误处理、限流返回、公开范围校验、站点同步检查和移动端 Playwright 测试。</span>
+    <span>补齐共享前端工具、API 错误处理、限流返回、公开范围校验、站点同步检查、依赖锁定和移动端 Playwright 测试。</span>
   </div>
 </div>
 
@@ -109,6 +109,8 @@ tags:
 - 三篇课程讲义已经变成可阅读的网站页面，支持数学公式和章节目录。
 - 碧影可以基于公开知识库回答与网站内容相关的问题，并在公开范围外保持拒答边界。
 - 留言板、后台消息管理、认证辅助接口和 EdgeOne 部署路线已经有基础闭环。
+- 友链支持头像配置和 favicon 回退，首页能显示访客数与浏览量。
+- 主题切换支持浅色、深色和跟随系统，首次访问默认跟随系统偏好。
 - 公开范围校验、移动端 smoke test、站点同步检查和自托管 MathJax 已纳入维护流程。
 
 ## 不足
@@ -117,11 +119,12 @@ tags:
 - 线上环境仍需要确认真实模型密钥、KV 绑定和 EdgeOne 平台配置。
 - 留言板还需要更细的审核、删除、反垃圾和更顺手的管理界面。
 - 移动端阅读、长笔记体验和视觉细节还可以继续打磨。
-- `edgeone` 开发依赖链存在 npm audit 风险，适合后续单独评估升级或替换方案。
+- `edgeone` 已固定版本以保证 `npm ci` 稳定，但它的开发依赖链仍有 audit 风险，适合后续单独评估升级或替换方案。
 
 ## 下一步
 
 - 项目页需要持续补充更真实的作品、复盘和阶段性总结。
 - 继续把 EdgeOne Functions、KV、模型密钥和公开来源引用流程接成更稳定的真实线上能力。
 - 单独处理依赖审计，不把工具链升级混进内容维护任务里。
+- 继续把首页视觉、移动端阅读和碧影聊天体验打磨到更稳定的日常可用状态。
 - 为新增项目保留同样的结构：背景、我做了什么、技术栈、成果、不足、下一步。

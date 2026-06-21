@@ -34,22 +34,66 @@
     });
   }
 
-  function currentTheme() {
-    const theme = document.documentElement.dataset.biyingTheme;
-    if (theme === "light" || theme === "dark") return theme;
-    try {
-      const storedTheme = localStorage.getItem("biying-theme");
-      if (storedTheme === "light" || storedTheme === "dark") return storedTheme;
-    } catch (error) {
-      return "dark";
-    }
-    return "dark";
+  const themeModes = ["system", "dark", "light"];
+
+  function systemTheme() {
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
   }
 
-  function themeLabel(theme) {
+  function currentThemeMode() {
+    const mode = document.documentElement.dataset.biyingThemeMode;
+    if (themeModes.includes(mode)) return mode;
+    try {
+      const storedTheme = localStorage.getItem("biying-theme");
+      if (themeModes.includes(storedTheme)) return storedTheme;
+    } catch (error) {
+      return "system";
+    }
+    return "system";
+  }
+
+  function currentTheme() {
+    const mode = currentThemeMode();
+    if (mode === "system") return systemTheme();
+    const theme = document.documentElement.dataset.biyingTheme;
+    if (theme === "light" || theme === "dark") return theme;
+    return mode;
+  }
+
+  function themeLabel(mode = currentThemeMode()) {
     const lang = currentLang();
-    if (theme === "light") return lang === "en" ? "Switch to dark mode" : "切换到深色模式";
-    return lang === "en" ? "Switch to light mode" : "切换到浅色模式";
+    if (mode === "system") return lang === "en" ? "Theme follows system; click for dark mode" : "主题跟随系统；点击切换到深色模式";
+    if (mode === "dark") return lang === "en" ? "Dark mode; click for light mode" : "深色模式；点击切换到浅色模式";
+    return lang === "en" ? "Light mode; click to follow system" : "浅色模式；点击跟随系统";
+  }
+
+  function applyThemeMode(mode) {
+    const nextMode = themeModes.includes(mode) ? mode : "system";
+    const resolved = nextMode === "system" ? systemTheme() : nextMode;
+    document.documentElement.dataset.biyingThemeMode = nextMode;
+    document.documentElement.dataset.biyingTheme = resolved;
+    const button = document.querySelector("[data-theme-switcher]");
+    if (button) {
+      button.dataset.themeMode = nextMode;
+      button.dataset.resolvedTheme = resolved;
+      button.setAttribute("aria-label", themeLabel(nextMode));
+      button.setAttribute("title", themeLabel(nextMode));
+      button.setAttribute("aria-pressed", nextMode === "system" ? "mixed" : resolved === "light" ? "true" : "false");
+      const label = button.querySelector("[data-theme-switcher-label]");
+      if (label) {
+        label.textContent = nextMode === "system" ? "SYS" : resolved === "light" ? "LIT" : "DRK";
+      }
+    }
+  }
+
+  function setThemeMode(mode) {
+    const nextMode = themeModes.includes(mode) ? mode : "system";
+    try {
+      localStorage.setItem("biying-theme", nextMode);
+    } catch (error) {
+      // Storage can be blocked in private contexts. The current page still updates.
+    }
+    applyThemeMode(nextMode);
   }
 
   function setTheme(theme) {
@@ -79,18 +123,17 @@
   }
 
   function makeThemeSwitcher() {
-    const activeTheme = currentTheme();
+    const activeMode = currentThemeMode();
     const button = document.createElement("button");
     button.type = "button";
     button.className = "theme-switcher";
     button.dataset.themeSwitcher = "";
-    button.setAttribute("aria-label", themeLabel(activeTheme));
-    button.setAttribute("title", themeLabel(activeTheme));
-    button.setAttribute("aria-pressed", activeTheme === "light" ? "true" : "false");
-    button.innerHTML = '<span aria-hidden="true"></span>';
+    button.innerHTML = '<span aria-hidden="true"></span><b data-theme-switcher-label></b>';
     button.addEventListener("click", () => {
-      setTheme(currentTheme() === "light" ? "dark" : "light");
+      const index = themeModes.indexOf(currentThemeMode());
+      setThemeMode(themeModes[(index + 1) % themeModes.length]);
     });
+    applyThemeMode(activeMode);
     return button;
   }
 
@@ -121,6 +164,12 @@
   document.addEventListener("DOMContentLoaded", () => {
     filterLanguageNavigation(currentLang());
     mountSwitcher();
+    applyThemeMode(currentThemeMode());
+    if (window.matchMedia) {
+      window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", () => {
+        if (currentThemeMode() === "system") applyThemeMode("system");
+      });
+    }
   });
 })();
 

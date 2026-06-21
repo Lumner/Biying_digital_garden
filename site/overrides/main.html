@@ -5,15 +5,19 @@
 <script>
 (function () {
   var lang = location.pathname.indexOf("/en/") !== -1 ? "en" : "zh";
+  var mode = "system";
   var theme = "dark";
   try {
     var storedTheme = localStorage.getItem("biying-theme");
+    mode = storedTheme === "light" || storedTheme === "dark" || storedTheme === "system" ? storedTheme : "system";
     var prefersLight = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
-    theme = storedTheme === "light" || storedTheme === "dark" ? storedTheme : prefersLight ? "light" : "dark";
+    theme = mode === "system" ? prefersLight ? "light" : "dark" : mode;
   } catch (error) {
+    mode = "system";
     theme = "dark";
   }
   document.documentElement.dataset.biyingLang = lang;
+  document.documentElement.dataset.biyingThemeMode = mode;
   document.documentElement.dataset.biyingTheme = theme;
   document.documentElement.lang = lang === "en" ? "en" : "zh-CN";
 })();

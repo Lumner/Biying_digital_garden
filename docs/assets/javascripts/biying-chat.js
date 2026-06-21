@@ -549,6 +549,12 @@
       addMessage(log, "biying", text("initial"));
     });
 
+    input.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" || event.shiftKey || event.ctrlKey || event.altKey || event.metaKey) return;
+      event.preventDefault();
+      form.requestSubmit();
+    });
+
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       if (state.busy) return;

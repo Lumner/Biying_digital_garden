@@ -54,11 +54,10 @@ nav:
   - 项目:
       - 项目首页: zh/projects/index.md
       - 个人数字花园与碧影: zh/projects/personal-site-avatar.md
-  - 注册/登录: zh/register/index.md
   - 碧影: zh/avatar/index.md
   - 留言: zh/guestbook/index.md
   - 友链: zh/friends.md
-  - 站点统计: zh/stats.md
+  - 注册/登录: zh/register/index.md
   - 模块更新: zh/updates.md
   - Home: en/index.md
   - Now: en/now.md
@@ -84,15 +83,16 @@ nav:
   - Projects:
       - Projects Home: en/projects/index.md
       - Personal Digital Garden + Biying: en/projects/personal-site-avatar.md
-  - Account: en/register/index.md
   - Biying: en/avatar/index.md
   - Guestbook: en/guestbook/index.md
   - Friends: en/friends.md
-  - Stats: en/stats.md
+  - Account: en/register/index.md
   - Updates: en/updates.md
 
 not_in_nav: |
   index.md
+  zh/stats.md
+  en/stats.md
   zh/admin/index.md
   en/admin/index.md
 
@@ -122,12 +122,12 @@ markdown_extensions:
       alternate_style: true
 
 extra_css:
-  - assets/styles/cyber.css?v=20260621-7
+  - assets/styles/cyber.css?v=20260621-8
 
 extra_javascript:
   - assets/javascripts/mathjax.js?v=20260521-1
   - assets/vendor/mathjax/es5/tex-mml-chtml.js?v=20260520-1
-  - assets/javascripts/language-switch.js?v=20260621-2
+  - assets/javascripts/language-switch.js?v=20260621-3
   - assets/javascripts/page-meta.js?v=20260522-1
   - assets/javascripts/site-stats.js?v=20260620-1
   - assets/javascripts/layout-controls.js?v=20260522-2
@@ -141,7 +141,7 @@ extra_javascript:
   - assets/javascripts/i18n.js?v=20260520-1
   - assets/javascripts/api-client.js?v=20260520-1
   - assets/javascripts/auth.js?v=20260621-2
-  - assets/javascripts/biying-chat.js?v=20260621-1
+  - assets/javascripts/biying-chat.js?v=20260621-2
   - assets/javascripts/guestbook.js?v=20260521-1
   - assets/javascripts/admin-dashboard.js?v=20260521-3
 

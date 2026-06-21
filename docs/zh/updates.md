@@ -29,8 +29,8 @@ tags:
 <div class="module-update-grid">
   <article class="module-update-card">
     <span>首页</span>
-    <strong>完成第二轮界面整理</strong>
-    <p>强化入口层级、随机笔记封面与模块导览，让第一次进入时更容易找到路。</p>
+    <strong>压缩入口层级并接入亮色封面</strong>
+    <p>统计信息并入首页入口区，亮色模式使用新的书房人物封面，首屏和下方内容之间更紧凑。</p>
   </article>
   <article class="module-update-card">
     <span>笔记</span>
@@ -39,13 +39,13 @@ tags:
   </article>
   <article class="module-update-card">
     <span>项目</span>
-    <strong>更新当前项目状态</strong>
-    <p>项目页补充后端 API、RAG 检索、移动端测试、自托管 MathJax 与依赖审计等当前状态。</p>
+    <strong>刷新项目当前状态</strong>
+    <p>项目页补充主题三态、友链、站点统计、登录入口和 CI 依赖锁等最新维护情况。</p>
   </article>
   <article class="module-update-card">
     <span>碧影</span>
-    <strong>强化公开范围与错误边界</strong>
-    <p>共享 API 工具、限流返回、来源边界和公开知识 fallback 已补齐，回答范围更清楚。</p>
+    <strong>改善聊天阅读与键盘操作</strong>
+    <p>聊天记录继续保存在本地，输入框支持 Enter 发送、Shift+Enter 换行，浮动聊天框的文字层级更清楚。</p>
   </article>
   <article class="module-update-card">
     <span>留言</span>
@@ -54,7 +54,7 @@ tags:
   </article>
   <article class="module-update-card">
     <span>后台</span>
-    <strong>构建与验证流程收紧</strong>
-    <p>站点构建、公开范围校验、site 同步检查和 Playwright 移动端测试已经纳入维护流程。</p>
+    <strong>构建与依赖流程收紧</strong>
+    <p>站点构建、公开范围校验、site 同步检查、Playwright 移动端测试和 `npm ci` 依赖锁已纳入维护流程。</p>
   </article>
 </div>

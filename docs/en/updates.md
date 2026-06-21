@@ -29,8 +29,8 @@ tags:
 <div class="module-update-grid">
   <article class="module-update-card">
     <span>Home</span>
-    <strong>Second UI pass completed</strong>
-    <p>Sharper entry hierarchy, a random note cover, and clearer paths for first-time visitors.</p>
+    <strong>Entry area tightened and light artwork added</strong>
+    <p>Stats now sit inside the homepage entrance area, light mode uses a new study-room character cover, and the fold feels less heavy.</p>
   </article>
   <article class="module-update-card">
     <span>Notes</span>
@@ -40,12 +40,12 @@ tags:
   <article class="module-update-card">
     <span>Projects</span>
     <strong>Current project status refreshed</strong>
-    <p>Project pages now include backend APIs, RAG retrieval, mobile tests, self-hosted MathJax, and dependency audit notes.</p>
+    <p>Project pages now include theme modes, friend links, visitor stats, account access, and CI dependency-lock maintenance.</p>
   </article>
   <article class="module-update-card">
     <span>Biying</span>
-    <strong>Public scope and error boundaries tightened</strong>
-    <p>Shared API helpers, rate-limit responses, source boundaries, and public-knowledge fallback are now in place.</p>
+    <strong>Chat reading and keyboard flow improved</strong>
+    <p>Local transcript restore remains in place, Enter sends, Shift+Enter inserts a line break, and the floating chat panel reads more clearly.</p>
   </article>
   <article class="module-update-card">
     <span>Guestbook</span>
@@ -54,7 +54,7 @@ tags:
   </article>
   <article class="module-update-card">
     <span>Admin</span>
-    <strong>Build and validation flow tightened</strong>
-    <p>Site build, public-scope validation, site-sync checks, and Playwright mobile tests are part of the maintenance flow.</p>
+    <strong>Build and dependency flow tightened</strong>
+    <p>Site build, public-scope validation, site-sync checks, Playwright mobile tests, and `npm ci` dependency locking are part of the maintenance flow.</p>
   </article>
 </div>
