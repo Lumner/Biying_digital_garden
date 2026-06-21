@@ -20,6 +20,9 @@
       registerTitle: zh ? "注册" : "Register",
       loginTitle: zh ? "登录" : "Sign In",
       resetTitle: zh ? "忘记密码" : "Forgot Password",
+      loginHint: zh ? "已有账户时从这里进入。" : "Use this if you already have an account.",
+      registerHint: zh ? "第一次留言或对话时创建账户。" : "Create an account before your first message or chat.",
+      resetHint: zh ? "拿到恢复码后在这里设置新密码。" : "Use this after receiving a recovery code.",
       privateTitle: zh ? "私信站点主人" : "Private message the site owner",
       username: zh ? "用户名（中文、字母、数字、下划线）" : "Username (Chinese, letters, numbers, underscore)",
       password: zh ? "密码（至少 8 位）" : "Password (at least 8 characters)",
@@ -165,36 +168,62 @@
     return dom.escapeHtml(value);
   }
 
+  const accountModes = ["login", "register", "reset"];
+
+  function switchAccountMode(root, mode) {
+    const nextMode = accountModes.includes(mode) ? mode : "login";
+    root.dataset.authMode = nextMode;
+    root.querySelectorAll("[data-auth-tab]").forEach((tab) => {
+      const active = tab.dataset.authTab === nextMode;
+      tab.classList.toggle("active", active);
+      tab.setAttribute("aria-selected", active ? "true" : "false");
+      tab.setAttribute("tabindex", active ? "0" : "-1");
+    });
+    root.querySelectorAll("[data-auth-mode-panel]").forEach((panel) => {
+      panel.hidden = panel.dataset.authModePanel !== nextMode;
+    });
+  }
+
   function mount(root) {
     if (!root || root.dataset.ready) return;
     root.dataset.ready = "true";
     root.innerHTML = `
       <div data-auth-status></div>
-      <div class="auth-grid">
-        <form class="auth-card" data-auth-register>
-          <h2>${text("registerTitle")}</h2>
-          <input name="username" maxlength="24" autocomplete="username" placeholder="${text("username")}" />
-          <input name="password" type="password" maxlength="80" autocomplete="new-password" placeholder="${text("password")}" />
-          <button type="submit">${text("register")}</button>
-          <p class="meta-line" data-auth-register-message></p>
-        </form>
-        <form class="auth-card" data-auth-login>
-          <h2>${text("loginTitle")}</h2>
-          <input name="username" maxlength="24" autocomplete="username" placeholder="${text("username")}" />
-          <input name="password" type="password" maxlength="80" autocomplete="current-password" placeholder="${text("password")}" />
-          <button type="submit">${text("login")}</button>
-          <p class="meta-line" data-auth-login-message></p>
-        </form>
-        <form class="auth-card" data-auth-reset>
-          <h2>${text("resetTitle")}</h2>
-          <p class="meta-line">${text("recoveryHint")}</p>
-          <input name="username" maxlength="24" autocomplete="username" placeholder="${text("username")}" />
-          <input name="recoveryToken" type="password" maxlength="120" autocomplete="one-time-code" placeholder="${text("recoveryCode")}" />
-          <input name="password" type="password" maxlength="80" autocomplete="new-password" placeholder="${text("newPassword")}" />
-          <button type="submit">${text("reset")}</button>
-          <p class="meta-line" data-auth-reset-message></p>
-        </form>
-        <form class="auth-card" data-auth-private>
+      <div class="auth-shell">
+        <div class="auth-tabs" role="tablist" aria-label="${text("title")}">
+          <button type="button" role="tab" data-auth-tab="login" aria-controls="auth-panel-login">${text("loginTitle")}</button>
+          <button type="button" role="tab" data-auth-tab="register" aria-controls="auth-panel-register">${text("registerTitle")}</button>
+          <button type="button" role="tab" data-auth-tab="reset" aria-controls="auth-panel-reset">${text("resetTitle")}</button>
+        </div>
+        <div class="auth-account-forms">
+          <form class="auth-card auth-card--primary" data-auth-login data-auth-mode-panel="login" id="auth-panel-login" role="tabpanel">
+            <h2>${text("loginTitle")}</h2>
+            <p class="meta-line">${text("loginHint")}</p>
+            <input name="username" maxlength="24" autocomplete="username" placeholder="${text("username")}" />
+            <input name="password" type="password" maxlength="80" autocomplete="current-password" placeholder="${text("password")}" />
+            <button type="submit">${text("login")}</button>
+            <p class="meta-line" data-auth-login-message></p>
+          </form>
+          <form class="auth-card auth-card--primary" data-auth-register data-auth-mode-panel="register" id="auth-panel-register" role="tabpanel">
+            <h2>${text("registerTitle")}</h2>
+            <p class="meta-line">${text("registerHint")}</p>
+            <input name="username" maxlength="24" autocomplete="username" placeholder="${text("username")}" />
+            <input name="password" type="password" maxlength="80" autocomplete="new-password" placeholder="${text("password")}" />
+            <button type="submit">${text("register")}</button>
+            <p class="meta-line" data-auth-register-message></p>
+          </form>
+          <form class="auth-card auth-card--primary" data-auth-reset data-auth-mode-panel="reset" id="auth-panel-reset" role="tabpanel">
+            <h2>${text("resetTitle")}</h2>
+            <p class="meta-line">${text("resetHint")}</p>
+            <p class="meta-line">${text("recoveryHint")}</p>
+            <input name="username" maxlength="24" autocomplete="username" placeholder="${text("username")}" />
+            <input name="recoveryToken" type="password" maxlength="120" autocomplete="one-time-code" placeholder="${text("recoveryCode")}" />
+            <input name="password" type="password" maxlength="80" autocomplete="new-password" placeholder="${text("newPassword")}" />
+            <button type="submit">${text("reset")}</button>
+            <p class="meta-line" data-auth-reset-message></p>
+          </form>
+        </div>
+        <form class="auth-card auth-card--private" data-auth-private>
           <h2>${text("privateTitle")}</h2>
           <p class="meta-line">${text("privateHint")}</p>
           <input name="name" maxlength="40" placeholder="${text("privateName")}" />
@@ -209,9 +238,15 @@
     `;
 
     renderStatus(root);
+    switchAccountMode(root, "login");
     refresh().finally(() => renderStatus(root));
 
     root.addEventListener("click", async (event) => {
+      const tab = event.target.closest("[data-auth-tab]");
+      if (tab) {
+        switchAccountMode(root, tab.dataset.authTab);
+        return;
+      }
       if (!event.target.closest("[data-auth-logout]")) return;
       await logout();
       renderStatus(root);
