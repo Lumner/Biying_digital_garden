@@ -3654,6 +3654,36 @@ html[data-biying-theme="light"] .md-sidebar__scrollwrap {
   color: #24453d;
 }
 
+html[data-biying-theme="light"] .md-sidebar .md-nav__title {
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(31, 125, 109, 0.16);
+  border-radius: 0.55rem;
+  box-shadow: 0 0.6rem 1.4rem rgba(20, 62, 55, 0.06);
+  color: #17342e;
+  font-weight: 800;
+}
+
+html[data-biying-theme="light"] .md-sidebar .md-nav__link {
+  border-radius: 0.45rem;
+  color: #31534b;
+}
+
+html[data-biying-theme="light"] .md-sidebar .md-nav__link:hover,
+html[data-biying-theme="light"] .md-sidebar .md-nav__link--active,
+html[data-biying-theme="light"] .md-nav--secondary .md-nav__link.note-toc-active {
+  background: rgba(31, 125, 109, 0.09);
+  color: #087f6f;
+}
+
+html[data-biying-theme="light"] .md-sidebar--primary .md-nav__item .md-nav {
+  border-left-color: rgba(31, 125, 109, 0.14);
+}
+
+html[data-biying-theme="light"] .md-sidebar--primary .md-nav__item--nested > .md-nav__link {
+  background: transparent;
+  color: #24453d;
+}
+
 @media (min-width: 960px) {
   html[data-biying-theme="light"] .md-sidebar--primary,
   html[data-biying-theme="light"] .md-sidebar--secondary {
@@ -3663,17 +3693,17 @@ html[data-biying-theme="light"] .md-sidebar__scrollwrap {
   html[data-biying-theme="light"] .md-sidebar--primary .md-sidebar__scrollwrap,
   html[data-biying-theme="light"] .md-sidebar--secondary .md-sidebar__scrollwrap {
     background:
-      linear-gradient(135deg, rgba(31, 125, 109, 0.08), rgba(255, 255, 255, 0.78)),
-      rgba(250, 254, 251, 0.86);
+      linear-gradient(135deg, rgba(31, 125, 109, 0.07), rgba(255, 255, 255, 0.84)),
+      rgba(250, 254, 251, 0.9);
     border: 1px solid rgba(31, 125, 109, 0.14);
     border-radius: 0.55rem;
-    box-shadow: 0 1rem 2.4rem rgba(20, 62, 55, 0.08);
+    box-shadow: 0 0.8rem 1.8rem rgba(20, 62, 55, 0.07);
     backdrop-filter: blur(18px);
   }
 
   html[data-biying-theme="light"] .md-sidebar--primary::before {
-    background: linear-gradient(180deg, rgba(31, 125, 109, 0.18), rgba(244, 201, 131, 0.18));
-    box-shadow: 0 0 18px rgba(31, 125, 109, 0.1);
+    background: linear-gradient(180deg, rgba(31, 125, 109, 0.16), rgba(155, 226, 143, 0.18));
+    box-shadow: 0 0 14px rgba(31, 125, 109, 0.08);
   }
 
   html[data-biying-theme="light"] .md-sidebar .md-nav__title,
