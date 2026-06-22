@@ -14,7 +14,6 @@
       if (!target) return;
       document.body.classList.add("sidebar-primary-peek");
       target.style.opacity = "1";
-      target.style.transform = "translateX(0)";
       window.clearTimeout(timer);
     }
 
@@ -22,7 +21,6 @@
       if (!target) return;
       document.body.classList.remove("sidebar-primary-peek");
       target.style.opacity = "";
-      target.style.transform = "";
     }
 
     function closePrimarySoon(target) {

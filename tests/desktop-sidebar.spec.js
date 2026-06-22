@@ -45,3 +45,32 @@ test("right table of contents can be revealed after scrolling into an article", 
   await expect(page.locator("body")).toHaveClass(/sidebar-secondary-peek/);
   await expect(sidebar).toHaveCSS("opacity", "1");
 });
+
+test("left navigation reveals on hover and hides after pointer leaves", async ({ page }) => {
+  await page.goto(`${site.url}/zh/notes/computer-systems-lecture/`, { waitUntil: "networkidle" });
+
+  const sidebar = page.locator(".md-sidebar--primary");
+  const before = await sidebar.evaluate((el) => {
+    const rect = el.getBoundingClientRect();
+    const styles = getComputedStyle(el);
+    return {
+      height: rect.height,
+      opacity: styles.opacity,
+      transform: styles.transform,
+      width: rect.width,
+      x: rect.x,
+      y: rect.y
+    };
+  });
+
+  expect(before.height).toBeGreaterThan(600);
+  expect(before.opacity).toBe("0");
+  expect(before.transform).toBe("none");
+
+  await page.mouse.move(before.x + Math.min(36, before.width / 2), before.y + 72);
+  await expect(page.locator("body")).toHaveClass(/sidebar-primary-peek/);
+  await expect(sidebar).toHaveCSS("opacity", "1");
+
+  await page.mouse.move(720, 460);
+  await expect(sidebar).toHaveCSS("opacity", "0", { timeout: 2000 });
+});

@@ -1612,28 +1612,19 @@ html:not(.math-ready) .md-typeset .arithmatex {
     z-index: 12;
     align-self: flex-start;
     height: calc(100vh - 5rem);
-    opacity: 0.18;
-    transform: translateX(calc(-100% + 1.25rem));
-    transition: opacity 180ms ease, transform 180ms ease;
+    opacity: 0;
+    transform: none !important;
+    transition: opacity 180ms ease;
   }
 
   .md-sidebar--primary::before {
-    content: "";
-    position: absolute;
-    top: 0.65rem;
-    right: 0.2rem;
-    width: 0.36rem;
-    height: min(38vh, 16rem);
-    border-radius: 999px;
-    background: linear-gradient(180deg, rgba(112, 244, 219, 0.16), rgba(244, 201, 131, 0.14));
-    box-shadow: 0 0 18px rgba(112, 244, 219, 0.12);
+    display: none;
   }
 
   .md-sidebar--primary:hover,
   .md-sidebar--primary:focus-within,
   body.sidebar-primary-peek .md-sidebar--primary {
     opacity: 1;
-    transform: translateX(0) !important;
   }
 
   .md-sidebar--primary .md-nav__item .md-nav {
@@ -4568,7 +4559,6 @@ html[data-biying-theme="light"] .lang-switcher a.active {
   .md-sidebar--primary:focus-within,
   body.sidebar-primary-peek .md-sidebar--primary {
     opacity: 1 !important;
-    transform: translateX(0) !important;
   }
 }
 

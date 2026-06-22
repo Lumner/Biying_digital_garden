@@ -122,7 +122,7 @@ markdown_extensions:
       alternate_style: true
 
 extra_css:
-  - assets/styles/cyber.css?v=20260622-3
+  - assets/styles/cyber.css?v=20260622-4
 
 extra_javascript:
   - assets/javascripts/mathjax.js?v=20260521-1
@@ -130,7 +130,7 @@ extra_javascript:
   - assets/javascripts/language-switch.js?v=20260621-3
   - assets/javascripts/page-meta.js?v=20260522-1
   - assets/javascripts/site-stats.js?v=20260620-1
-  - assets/javascripts/layout-controls.js?v=20260522-2
+  - assets/javascripts/layout-controls.js?v=20260622-1
   - assets/javascripts/random-note-cover.js?v=20260521-1
   - assets/javascripts/reveal-on-scroll.js?v=20260521-1
   - assets/javascripts/toast.js?v=20260521-1
