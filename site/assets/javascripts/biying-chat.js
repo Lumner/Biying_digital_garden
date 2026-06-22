@@ -363,6 +363,137 @@
     });
   }
 
+  function liveMessage(log, item) {
+    let value = "";
+    item.classList.remove("is-typing", "mathjax-process");
+    item.classList.add("is-streaming");
+    item.textContent = "";
+    return {
+      append(delta) {
+        value += String(delta || "");
+        item.textContent = value;
+        log.scrollTop = log.scrollHeight;
+      },
+      finish(content, options = {}) {
+        const finalContent = String(content || value);
+        finishMessageRender(log, item, finalContent, {
+          ...options,
+          markdown: options.markdown ?? !options.html
+        });
+        return finalContent;
+      },
+      reset() {
+        value = "";
+        item.textContent = "";
+        item.classList.remove("is-streaming");
+      }
+    };
+  }
+
+  function parseSseFrame(frame) {
+    const event = frame.match(/^event:\s*(.+)$/m)?.[1]?.trim() || "message";
+    const data = frame
+      .split(/\r?\n/)
+      .filter((line) => line.startsWith("data:"))
+      .map((line) => line.slice(5).trimStart())
+      .join("\n");
+    if (!data) return { event, data: {} };
+    try {
+      return { event, data: JSON.parse(data) };
+    } catch (error) {
+      return { event, data: {} };
+    }
+  }
+
+  async function responseError(response) {
+    let data = {};
+    try {
+      data = await response.json();
+    } catch (error) {
+      data = {};
+    }
+    return new api.BiyingApiError(data.error || "request_failed", {
+      code: response.status === 404 ? "api_not_found" : data.error,
+      status: response.status,
+      data
+    });
+  }
+
+  async function askApiStream(query, history, onDelta) {
+    const response = await fetch("/api/chat", {
+      method: "POST",
+      headers: {
+        ...authHeaders(),
+        "content-type": "application/json",
+        "accept": "text/event-stream"
+      },
+      body: JSON.stringify({
+        message: query,
+        locale: dom.locale(),
+        history,
+        pageContext: currentPageContext(),
+        stream: true
+      })
+    });
+
+    if (!response.ok) throw await responseError(response);
+
+    const contentType = response.headers.get("content-type") || "";
+    if (!response.body || !contentType.includes("text/event-stream")) {
+      const data = await api.parseResponse(response);
+      return {
+        answer: data.answer || "",
+        sources: Array.isArray(data.sources) ? data.sources : [],
+        streamed: false
+      };
+    }
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = "";
+    let answer = "";
+    let sources = [];
+
+    function consume(frame) {
+      const { event, data } = parseSseFrame(frame);
+      if (event === "meta") {
+        sources = Array.isArray(data.sources) ? data.sources : [];
+        return;
+      }
+      if (event === "delta") {
+        const delta = String(data.delta || "");
+        if (!delta) return;
+        answer += delta;
+        onDelta(delta);
+        return;
+      }
+      if (event === "done") {
+        answer = String(data.answer || answer);
+        return;
+      }
+      if (event === "error") {
+        throw new api.BiyingApiError(data.error || "chat_failed", {
+          code: data.error || "chat_failed",
+          status: data.status || 500,
+          data
+        });
+      }
+    }
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+      const frames = buffer.split(/\r?\n\r?\n/);
+      buffer = frames.pop() || "";
+      frames.filter(Boolean).forEach(consume);
+    }
+    buffer += decoder.decode();
+    if (buffer.trim()) consume(buffer);
+
+    return { answer, sources, streamed: true };
+  }
+
   async function loadKnowledge() {
     if (state.knowledge.length) return state.knowledge;
     try {
@@ -516,23 +647,6 @@
     };
   }
 
-  async function askApi(query, history) {
-    const data = await api.request("/api/chat", {
-      method: "POST",
-      headers: authHeaders(),
-      json: {
-        message: query,
-        locale: dom.locale(),
-        history,
-        pageContext: currentPageContext()
-      }
-    });
-    return {
-      answer: data.answer || "",
-      sources: Array.isArray(data.sources) ? data.sources : []
-    };
-  }
-
   function mount(root) {
     if (!root || root.dataset.ready) return;
     root.dataset.ready = "true";
@@ -617,10 +731,13 @@
       state.busy = true;
       try {
         let response;
+        let live;
         const previousHistory = state.history.slice(-12);
         try {
-          response = await askApi(query, previousHistory);
+          live = liveMessage(log, pending);
+          response = await askApiStream(query, previousHistory, (delta) => live.append(delta));
         } catch (error) {
+          if (live) live.reset();
           if (error.status === 401 || error.code === "auth_required") {
             response = { answer: `${text("authExpired")} <a href="${escapeHtml(accountUrl())}">${escapeHtml(text("account"))}</a>`, html: true, sources: [] };
           } else if (error.code === "kv_not_configured") {
@@ -633,11 +750,19 @@
             response = await localAnswer(query, reasonFromError(error));
           }
         }
-        await streamMessage(log, pending, response.answer || "", {
-          html: response.html,
-          markdown: !response.html,
-          sources: response.sources
-        });
+        if (response.streamed && live) {
+          live.finish(response.answer || "", {
+            html: response.html,
+            markdown: !response.html,
+            sources: response.sources
+          });
+        } else {
+          await streamMessage(log, pending, response.answer || "", {
+            html: response.html,
+            markdown: !response.html,
+            sources: response.sources
+          });
+        }
         rememberMessage("biying", response.answer || "", {
           html: response.html,
           markdown: !response.html,

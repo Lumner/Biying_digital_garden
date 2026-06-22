@@ -168,7 +168,7 @@ function sanitizeHistory(history) {
     .filter((entry) => entry.content);
 }
 
-async function callModel(env, messages) {
+function modelSettings(env) {
   const provider = envValue(env, "AI_PROVIDER", "deepseek");
   const baseUrl = provider === "openai"
     ? envValue(env, "OPENAI_BASE_URL", "https://api.openai.com")
@@ -188,6 +188,11 @@ async function callModel(env, messages) {
     );
   }
 
+  return { apiKey, baseUrl, model };
+}
+
+async function callModel(env, messages) {
+  const { apiKey, baseUrl, model } = modelSettings(env);
   const response = await fetch(`${baseUrl.replace(/\/$/, "")}/v1/chat/completions`, {
     method: "POST",
     headers: {
@@ -209,6 +214,121 @@ async function callModel(env, messages) {
 
   const data = await response.json();
   return data.choices?.[0]?.message?.content || "";
+}
+
+function sseHeaders() {
+  return {
+    "content-type": "text/event-stream; charset=utf-8",
+    "cache-control": "no-cache, no-transform",
+    "x-accel-buffering": "no",
+    "access-control-allow-origin": "*",
+    "access-control-allow-headers": "content-type, authorization",
+    "access-control-allow-methods": "POST, OPTIONS"
+  };
+}
+
+function enqueueSse(controller, encoder, event, data = {}) {
+  controller.enqueue(encoder.encode(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`));
+}
+
+function readSsePayloads(buffer, onPayload) {
+  const frames = buffer.split(/\r?\n\r?\n/);
+  const rest = frames.pop() || "";
+  for (const frame of frames) {
+    const data = frame
+      .split(/\r?\n/)
+      .filter((line) => line.startsWith("data:"))
+      .map((line) => line.slice(5).trimStart())
+      .join("\n");
+    if (data) onPayload(data);
+  }
+  return rest;
+}
+
+async function callModelStream(env, messages, onDelta) {
+  const { apiKey, baseUrl, model } = modelSettings(env);
+  const response = await fetch(`${baseUrl.replace(/\/$/, "")}/v1/chat/completions`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      "authorization": `Bearer ${apiKey}`
+    },
+    body: JSON.stringify({
+      model,
+      messages,
+      temperature: 0.45,
+      max_tokens: 900,
+      stream: true
+    })
+  });
+
+  if (!response.ok) {
+    const detail = await response.text();
+    throw codedError("model_request_failed", detail || `model request failed with status ${response.status}`, 502);
+  }
+
+  if (!response.body || !response.body.getReader) {
+    const data = await response.json();
+    const answer = data.choices?.[0]?.message?.content || "";
+    if (answer) onDelta(answer);
+    return answer;
+  }
+
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = "";
+  let answer = "";
+
+  function onPayload(payload) {
+    if (payload === "[DONE]") return;
+    let parsed;
+    try {
+      parsed = JSON.parse(payload);
+    } catch (error) {
+      return;
+    }
+    const delta = parsed.choices?.[0]?.delta?.content
+      ?? parsed.choices?.[0]?.message?.content
+      ?? parsed.choices?.[0]?.text
+      ?? "";
+    if (!delta) return;
+    answer += delta;
+    onDelta(delta);
+  }
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buffer += decoder.decode(value, { stream: true });
+    buffer = readSsePayloads(buffer, onPayload);
+  }
+  buffer += decoder.decode();
+  if (buffer.trim()) readSsePayloads(`${buffer}\n\n`, onPayload);
+  return answer;
+}
+
+function streamModelResponse(env, messages, sources) {
+  const encoder = new TextEncoder();
+  const stream = new ReadableStream({
+    async start(controller) {
+      let answer = "";
+      enqueueSse(controller, encoder, "meta", { sources });
+      try {
+        answer = await callModelStream(env, messages, (delta) => {
+          enqueueSse(controller, encoder, "delta", { delta });
+        });
+        enqueueSse(controller, encoder, "done", { answer });
+      } catch (error) {
+        enqueueSse(controller, encoder, "error", {
+          error: error?.code || "chat_failed",
+          status: Number.isFinite(error?.status) ? error.status : 500
+        });
+      } finally {
+        controller.close();
+      }
+    }
+  });
+  return new Response(stream, { headers: sseHeaders() });
 }
 
 export function onRequestOptions() {
@@ -260,7 +380,7 @@ export async function onRequestPost(context) {
       return `TITLE: ${item.title}\nURL: ${item.url}${section}\nSUMMARY: ${item.summary}\nTEXT: ${String(item.text || "").slice(0, CONTEXT_CHARS_PER_ITEM)}`;
     }).join("\n\n---\n\n");
 
-    const answer = await callModel(env, [
+    const messages = [
       { role: "system", content: `${PERSONA}\n回答语言：${locale === "en" ? "English" : "中文"}` },
       { role: "system", content: `当前登录访客显示名：${session.displayName || session.username}。不要透露他的账户信息。` },
       {
@@ -274,11 +394,18 @@ export async function onRequestPost(context) {
       { role: "system", content: `PUBLIC_CONTEXT:\n${publicContext || "No matching public context."}` },
       ...history,
       { role: "user", content: message }
-    ]);
+    ];
+
+    const sources = queryScope === "site_related" ? uniqueSources(knowledge) : [];
+    if (body.stream === true) {
+      return streamModelResponse(env, messages, sources);
+    }
+
+    const answer = await callModel(env, messages);
 
     return json({
       answer,
-      sources: queryScope === "site_related" ? uniqueSources(knowledge) : []
+      sources
     });
   } catch (error) {
     return serverError(error, "chat_failed");

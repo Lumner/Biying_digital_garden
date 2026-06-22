@@ -13,14 +13,12 @@
     function openPrimary(target) {
       if (!target) return;
       document.body.classList.add("sidebar-primary-peek");
-      target.style.opacity = "1";
       window.clearTimeout(timer);
     }
 
     function closePrimary(target) {
       if (!target) return;
       document.body.classList.remove("sidebar-primary-peek");
-      target.style.opacity = "";
     }
 
     function closePrimarySoon(target) {
@@ -28,7 +26,7 @@
       timer = window.setTimeout(() => {
         if (target.matches(":hover") || target.contains(document.activeElement)) return;
         closePrimary(target);
-      }, 520);
+      }, 220);
     }
 
     function pointerInsideOpenSidebar(event, target) {

@@ -49,8 +49,8 @@ test("Light mobile sidebars use light navigation surfaces", async ({ page }) => 
     };
   });
 
-  expect(styles.background).toContain("rgba(31, 125, 109");
-  expect(styles.color).toBe("rgb(23, 52, 46)");
+  expect(styles.background).toContain("rgba(255, 255, 255");
+  expect(styles.color).toBe("rgb(31, 102, 90)");
   expect(styles.boxShadow).not.toContain("0px 8px 24px");
 });
 
@@ -188,7 +188,7 @@ test("Light homepage keeps hero artwork and readable companion chat", async ({ p
   await page.reload();
 
   const heroBackground = await page.locator(".home-immersive-hero").evaluate((node) => getComputedStyle(node).backgroundImage);
-  expect(heroBackground).toContain("home-hero-light-20260622.png");
+  expect(heroBackground).toContain("home-hero-light-20260622-large.png");
   await expect(page.locator(".home-below-fold [data-site-stats]")).toBeVisible();
 
   await page.getByRole("button", { name: "和碧影聊聊" }).click();
@@ -368,6 +368,65 @@ test("Biying chat reveals answers progressively", async ({ page }) => {
 
   await expect(streaming).toBeHidden({ timeout: 6000 });
   await expect(chat.locator(".biying-message.biying").last()).toContainText("complete response");
+});
+
+test("Biying chat requests and parses event-stream answers", async ({ page }) => {
+  let requestedStreaming = false;
+  const answer = "First streamed piece, second streamed piece.";
+
+  await page.route(`${site.url}/api/auth`, async (route) => {
+    await route.fulfill({
+      contentType: "application/json",
+      body: JSON.stringify({
+        user: {
+          username: "biying",
+          displayName: "biying"
+        }
+      })
+    });
+  });
+
+  await page.route(`${site.url}/api/chat`, async (route) => {
+    requestedStreaming = route.request().postDataJSON().stream === true;
+    await route.fulfill({
+      contentType: "text/event-stream; charset=utf-8",
+      body: [
+        "event: meta",
+        "data: {\"sources\":[{\"title\":\"Source note\",\"url\":\"/zh/notes/\"}]}",
+        "",
+        "event: delta",
+        "data: {\"delta\":\"First streamed piece, \"}",
+        "",
+        "event: delta",
+        "data: {\"delta\":\"second streamed piece.\"}",
+        "",
+        "event: done",
+        `data: ${JSON.stringify({ answer })}`,
+        "",
+        ""
+      ].join("\n")
+    });
+  });
+
+  await page.goto(`${site.url}/zh/avatar/`);
+  await page.evaluate(() => {
+    localStorage.setItem("biying-auth-session", JSON.stringify({
+      token: "test-token",
+      user: {
+        username: "biying",
+        displayName: "biying"
+      }
+    }));
+  });
+  await page.reload();
+
+  const chat = page.locator(".interaction-shell--page-chat .biying-chat");
+  await chat.locator("textarea").fill("Use real stream mode.");
+  await chat.locator("button[type='submit']").click();
+
+  await expect(chat.locator(".biying-message.biying").last()).toContainText("second streamed piece");
+  await expect(chat.locator(".biying-sources a")).toHaveAttribute("href", "/zh/notes/");
+  expect(requestedStreaming).toBe(true);
 });
 
 test("Biying chat restores local transcript and skips transient auth prompts", async ({ page }) => {
