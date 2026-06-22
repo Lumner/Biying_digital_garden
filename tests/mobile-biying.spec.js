@@ -161,7 +161,7 @@ test("Light homepage keeps hero artwork and readable companion chat", async ({ p
   await page.reload();
 
   const heroBackground = await page.locator(".home-immersive-hero").evaluate((node) => getComputedStyle(node).backgroundImage);
-  expect(heroBackground).toContain("home-hero-light.png");
+  expect(heroBackground).toContain("home-hero-light-20260622.png");
   await expect(page.locator(".home-below-fold [data-site-stats]")).toBeVisible();
 
   await page.getByRole("button", { name: "和碧影聊聊" }).click();

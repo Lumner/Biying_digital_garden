@@ -3860,7 +3860,7 @@ html[data-biying-theme="light"] .home-immersive-hero {
     radial-gradient(circle at 70% 44%, rgba(255, 255, 255, 0.2), transparent 18rem),
     linear-gradient(90deg, rgba(248, 254, 251, 0.52), rgba(248, 254, 251, 0.12) 42%, rgba(248, 254, 251, 0.08)),
     linear-gradient(180deg, rgba(248, 254, 251, 0.16), rgba(248, 254, 251, 0.04) 45%, rgba(244, 250, 247, 0.78) 89%),
-    url("../images/home-hero-light.png") center / cover no-repeat;
+    url("../images/home-hero-light-20260622.png") center / cover no-repeat;
   border-color: transparent;
   box-shadow: none;
 }
