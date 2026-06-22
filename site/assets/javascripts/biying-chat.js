@@ -714,6 +714,11 @@
     }
     toggle.addEventListener("click", () => setOpen(panel.hasAttribute("hidden")));
     close.addEventListener("click", () => setOpen(false));
+    document.addEventListener("pointerdown", (event) => {
+      if (panel.hasAttribute("hidden")) return;
+      if (shell.contains(event.target)) return;
+      setOpen(false);
+    });
   }
 
   document.addEventListener("DOMContentLoaded", () => {
