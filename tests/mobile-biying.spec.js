@@ -27,6 +27,33 @@ test("Homepage hamburger opens the mobile navigation drawer", async ({ page }) =
   await expect(primarySidebar.locator(".md-nav__title[for='__drawer']")).toBeVisible();
 });
 
+test("Light mobile sidebars use light navigation surfaces", async ({ page }) => {
+  await page.goto(`${site.url}/zh/now/`);
+  await page.evaluate(() => localStorage.setItem("biying-theme", "light"));
+  await page.reload();
+
+  const drawerToggle = page.locator("label.md-header__button[for='__drawer']");
+  await expect(drawerToggle).toBeVisible();
+  await drawerToggle.click();
+
+  const primarySidebar = page.locator(".md-sidebar--primary");
+  const drawerTitle = primarySidebar.locator(".md-nav__title[for='__drawer']");
+  await expect(drawerTitle).toBeVisible();
+
+  const styles = await drawerTitle.evaluate((node) => {
+    const computed = getComputedStyle(node);
+    return {
+      background: computed.backgroundImage,
+      color: computed.color,
+      boxShadow: computed.boxShadow
+    };
+  });
+
+  expect(styles.background).toContain("rgba(31, 125, 109");
+  expect(styles.color).toBe("rgb(23, 52, 46)");
+  expect(styles.boxShadow).not.toContain("0px 8px 24px");
+});
+
 test("Theme switcher supports system, dark, and light modes", async ({ page }) => {
   await page.emulateMedia({ colorScheme: "dark" });
   await page.goto(`${site.url}/zh/`);
