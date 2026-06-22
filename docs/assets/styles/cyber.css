@@ -3373,6 +3373,19 @@ html:not(.math-ready) .md-typeset .arithmatex {
   min-width: 5.2rem;
 }
 
+.biying-message.is-streaming::after {
+  content: "";
+  display: inline-block;
+  width: 0.48rem;
+  height: 1.05em;
+  margin-left: 0.16rem;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0.58;
+  transform: translateY(0.16em);
+  animation: typing-caret 820ms ease-in-out infinite;
+}
+
 .typing-dots {
   display: inline-flex;
   align-items: center;
@@ -3532,6 +3545,15 @@ html:not(.math-ready) .md-typeset .arithmatex {
   40% {
     opacity: 1;
     transform: translateY(-0.18rem);
+  }
+}
+
+@keyframes typing-caret {
+  0%, 45% {
+    opacity: 0.6;
+  }
+  46%, 100% {
+    opacity: 0.16;
   }
 }
 

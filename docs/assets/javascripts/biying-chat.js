@@ -320,6 +320,49 @@
     return addMessage(log, role, content, { ...options, key });
   }
 
+  function finishMessageRender(log, item, content, options = {}) {
+    item.classList.remove("is-typing", "is-streaming");
+    item.classList.toggle("mathjax-process", Boolean(options.markdown));
+    item.innerHTML = renderMessageContent(content, options);
+    log.scrollTop = log.scrollHeight;
+    typesetMath(item);
+  }
+
+  function streamMessage(log, item, content, options = {}) {
+    const value = String(content || "");
+    const renderOptions = {
+      ...options,
+      markdown: options.markdown ?? !options.html
+    };
+    if (!value || renderOptions.html) {
+      finishMessageRender(log, item, value, renderOptions);
+      return Promise.resolve();
+    }
+
+    item.classList.remove("is-typing", "mathjax-process");
+    item.classList.add("is-streaming");
+    item.textContent = "";
+
+    const step = Math.max(2, Math.ceil(value.length / 90));
+    const frameDelay = value.length > 240 ? 14 : 22;
+    let index = 0;
+
+    return new Promise((resolve) => {
+      const tick = () => {
+        index = Math.min(value.length, index + step);
+        item.textContent = value.slice(0, index);
+        log.scrollTop = log.scrollHeight;
+        if (index < value.length) {
+          window.setTimeout(tick, frameDelay);
+          return;
+        }
+        finishMessageRender(log, item, value, renderOptions);
+        resolve();
+      };
+      window.setTimeout(tick, 18);
+    });
+  }
+
   async function loadKnowledge() {
     if (state.knowledge.length) return state.knowledge;
     try {
@@ -590,14 +633,11 @@
             response = await localAnswer(query, reasonFromError(error));
           }
         }
-        pending.innerHTML = renderMessageContent(response.answer || "", {
+        await streamMessage(log, pending, response.answer || "", {
           html: response.html,
           markdown: !response.html,
           sources: response.sources
         });
-        pending.classList.remove("is-typing");
-        pending.classList.toggle("mathjax-process", !response.html);
-        typesetMath(pending);
         rememberMessage("biying", response.answer || "", {
           html: response.html,
           markdown: !response.html,

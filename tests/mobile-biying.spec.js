@@ -317,6 +317,59 @@ test("Biying page chat stays readable on mobile", async ({ page }, testInfo) => 
   });
 });
 
+test("Biying chat reveals answers progressively", async ({ page }) => {
+  const answer = [
+    "This answer is intentionally long enough to verify the visible streaming state.",
+    "Biying should reveal it in a steady rhythm before the final markdown render happens.",
+    "The saved transcript should still receive the complete response after the animation."
+  ].join(" ").repeat(4);
+
+  await page.route(`${site.url}/api/auth`, async (route) => {
+    await route.fulfill({
+      contentType: "application/json",
+      body: JSON.stringify({
+        user: {
+          username: "biying",
+          displayName: "biying"
+        }
+      })
+    });
+  });
+
+  await page.route(`${site.url}/api/chat`, async (route) => {
+    await route.fulfill({
+      contentType: "application/json",
+      body: JSON.stringify({ answer, sources: [] })
+    });
+  });
+
+  await page.goto(`${site.url}/zh/avatar/`);
+  await page.evaluate(() => {
+    localStorage.setItem("biying-auth-session", JSON.stringify({
+      token: "test-token",
+      user: {
+        username: "biying",
+        displayName: "biying"
+      }
+    }));
+  });
+  await page.reload();
+
+  const chat = page.locator(".interaction-shell--page-chat .biying-chat");
+  await chat.locator("textarea").fill("Please stream the response.");
+  await chat.locator("button[type='submit']").click();
+
+  const streaming = chat.locator(".biying-message.biying.is-streaming");
+  await expect(streaming).toBeVisible();
+  await page.waitForTimeout(90);
+  const partialText = await streaming.textContent();
+  expect(partialText || "").not.toHaveLength(0);
+  expect((partialText || "").length).toBeLessThan(answer.length);
+
+  await expect(streaming).toBeHidden({ timeout: 6000 });
+  await expect(chat.locator(".biying-message.biying").last()).toContainText("complete response");
+});
+
 test("Biying chat restores local transcript and skips transient auth prompts", async ({ page }) => {
   const storedMessage = "Persisted hello from local storage.";
   await page.goto(`${site.url}/zh/`);
