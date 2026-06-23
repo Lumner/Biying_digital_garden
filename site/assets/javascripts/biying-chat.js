@@ -183,6 +183,7 @@
     let paragraph = [];
     let listType = "";
     let listItems = [];
+    let listStart = 1;
     let codeLines = null;
 
     function flushParagraph() {
@@ -193,9 +194,11 @@
 
     function flushList() {
       if (!listItems.length) return;
-      blocks.push(`<${listType}>${listItems.map((item) => `<li>${renderInlineMarkdown(item)}</li>`).join("")}</${listType}>`);
+      const start = listType === "ol" ? ` start="${listStart}"` : "";
+      blocks.push(`<${listType}${start}>${listItems.map((item) => `<li>${renderInlineMarkdown(item)}</li>`).join("")}</${listType}>`);
       listType = "";
       listItems = [];
+      listStart = 1;
     }
 
     function flushCode() {
@@ -224,7 +227,7 @@
 
       const heading = line.match(/^\s{0,3}(#{1,6})\s+(.+)$/);
       const unordered = line.match(/^\s*[-*]\s+(.+)$/);
-      const ordered = line.match(/^\s*\d+\.\s+(.+)$/);
+      const ordered = line.match(/^\s*(\d+)\.\s+(.+)$/);
       const quote = line.match(/^\s*>\s?(.+)$/);
 
       if (heading) {
@@ -239,7 +242,8 @@
         const nextType = unordered ? "ul" : "ol";
         if (listType && listType !== nextType) flushList();
         listType = nextType;
-        listItems.push((unordered || ordered)[1]);
+        if (ordered && !listItems.length) listStart = Number.parseInt(ordered[1], 10) || 1;
+        listItems.push(unordered ? unordered[1] : ordered[2]);
         return;
       }
       if (quote) {

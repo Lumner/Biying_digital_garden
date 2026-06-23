@@ -426,6 +426,58 @@ test("Biying chat reveals answers progressively", async ({ page }) => {
   await expect(chat.locator(".biying-message.biying").last()).toContainText("complete response");
 });
 
+test("Biying markdown keeps ordered list numbering across blank lines", async ({ page }) => {
+  const answer = [
+    "1. First step",
+    "",
+    "2. Second step",
+    "",
+    "3. Third step"
+  ].join("\n");
+
+  await page.route(`${site.url}/api/auth`, async (route) => {
+    await route.fulfill({
+      contentType: "application/json",
+      body: JSON.stringify({
+        user: {
+          username: "biying",
+          displayName: "biying"
+        }
+      })
+    });
+  });
+
+  await page.route(`${site.url}/api/chat`, async (route) => {
+    await route.fulfill({
+      contentType: "application/json",
+      body: JSON.stringify({ answer, sources: [] })
+    });
+  });
+
+  await page.goto(`${site.url}/zh/avatar/`);
+  await page.evaluate(() => {
+    localStorage.setItem("biying-auth-session", JSON.stringify({
+      token: "test-token",
+      user: {
+        username: "biying",
+        displayName: "biying"
+      }
+    }));
+  });
+  await page.reload();
+
+  const chat = page.locator(".interaction-shell--page-chat .biying-chat");
+  await chat.locator("textarea").fill("Please return a numbered list.");
+  await chat.locator("button[type='submit']").click();
+  await expect(chat.locator(".biying-message.biying").last()).toContainText("Third step");
+
+  const starts = await chat.locator(".biying-message.biying").last().evaluate((node) =>
+    Array.from(node.querySelectorAll("ol"), (list) => list.getAttribute("start"))
+  );
+
+  expect(starts).toEqual(["1", "2", "3"]);
+});
+
 test("Biying chat requests and parses event-stream answers", async ({ page }) => {
   let requestedStreaming = false;
   let resolveChatRequest;
