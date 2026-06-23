@@ -1,6 +1,6 @@
 ---
 title: 笔记
-summary: 公开笔记入口，包含公开边界和数学公式测试。
+summary: 公开笔记入口，放着课程讲义、站点说明和一些慢慢整理出来的内容。
 public: true
 avatar_readable: true
 tags:
@@ -10,7 +10,7 @@ tags:
 <section class="garden-pagehead">
   <div class="garden-pagehead__eyebrow">NOTES</div>
   <h1 class="garden-pagehead__title">笔记</h1>
-  <p class="garden-pagehead__lead">这里收着我愿意公开留下的笔记。课程讲义、公式测试和公开边界都会在这里慢慢排好位置。</p>
+  <p class="garden-pagehead__lead">这里收着我愿意公开留下的笔记。课程讲义、公式测试和这个网站自己的说明，都会在这里慢慢排好位置。</p>
   <div class="garden-pagehead__meta">
     <span class="status-pill">中文主源</span>
     <span class="status-pill leaf">可被碧影读取</span>
@@ -18,7 +18,7 @@ tags:
   </div>
 </section>
 
-这里的笔记以中文为主源，也会尽量同步英文版本。哪些内容能被碧影读取，由 `public` 与 `avatar_readable` 共同决定。
+这里的笔记以中文为主源，也会尽量同步英文版本。能不能被碧影读到，会由页面里的 `public` 和 `avatar_readable` 一起决定。
 
 <div class="note-entry-grid" aria-label="阅读入口">
   <a href="#course-notes">
@@ -27,7 +27,7 @@ tags:
   </a>
   <a href="#site-notes">
     <strong>想了解本站</strong>
-    <span>先看公开边界，知道哪些内容会进入碧影的回答范围。</span>
+    <span>先看公开边界，知道碧影能读什么、不能读什么。</span>
   </a>
   <a href="./math-lab/">
     <strong>想检查公式</strong>
@@ -86,12 +86,12 @@ tags:
   </section>
 </div>
 
-## 站点说明 {#site-notes}
+## 关于这个站 {#site-notes}
 
 <div class="note-library note-library--compact">
   <section class="note-tile">
     <h3>公开边界</h3>
-    <p>说明哪些内容会进入碧影的回答范围，哪些不会。</p>
+    <p>把碧影能读什么、不能读什么摊开说清楚。</p>
     <div class="note-tile__meta">
       <span class="cyber-tag">公开范围</span>
       <span class="cyber-tag">碧影</span>

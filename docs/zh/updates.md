@@ -11,9 +11,9 @@ tags:
 <section class="garden-pagehead">
   <div class="garden-pagehead__eyebrow">UPDATES</div>
   <h1 class="garden-pagehead__title">模块更新</h1>
-  <p class="garden-pagehead__lead">这里不写宏大路线图，只留下每个公开模块最近一次真正发生的变化。以后继续加内容时，优先更新这一页，就能让整个站点的近况更容易被看见。</p>
+  <p class="garden-pagehead__lead">这里不写宏大的路线图，只记下每个公开模块最近真正动过哪里。以后继续加内容时，我会先更新这一页，让近况不至于散在角落里。</p>
   <div class="garden-pagehead__meta">
-    <span class="status-pill leaf">公开维护记录</span>
+    <span class="status-pill leaf">维护小记</span>
     <span class="status-pill" data-latest-page-updated>更新：自动同步中</span>
   </div>
 </section>
@@ -50,11 +50,11 @@ tags:
   <article class="module-update-card">
     <span>留言</span>
     <strong>补上轻量治理能力</strong>
-    <p>访客侧有隐私提醒与节流，站主侧可以筛选、隐藏或删除公开留言，API 错误返回也更稳定。</p>
+    <p>留言前会提醒隐私信息，发得太快会稍微拦一下；站主侧也能筛选、隐藏或删除公开留言。</p>
   </article>
   <article class="module-update-card">
     <span>后台</span>
     <strong>构建与依赖流程收紧</strong>
-    <p>站点构建、公开范围校验、site 同步检查、Playwright 移动端测试和 `npm ci` 依赖锁已纳入维护流程。</p>
+    <p>构建、公开范围校验、site 同步检查、移动端测试和 `npm ci` 依赖锁都已经放进日常检查里。</p>
   </article>
 </div>

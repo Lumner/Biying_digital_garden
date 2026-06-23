@@ -1,6 +1,6 @@
 ---
 title: 入口
-summary: 碧影数字花园的中文入口，展示公开笔记、项目、当前状态和数字分身。
+summary: 碧影数字花园的中文入口，放着我的公开笔记、项目、近况和碧影。
 public: true
 avatar_readable: true
 tags:
@@ -24,7 +24,7 @@ tags:
       <span class="home-typewriter__text" data-home-typewriter-text>向下扎根，也向光生长。</span><span class="home-typewriter__caret" aria-hidden="true"></span>
     </div>
     <p class="cyber-subtitle">
-      一个用来长期沉淀学习、项目和近况的双语空间。笔记是根系，项目是枝干，碧影负责把公开内容温柔地连接起来。
+      这里慢慢收着我的学习、项目和近况。笔记像根，项目像枝，碧影负责把已经公开的内容串起来，陪你少绕一点路。
     </p>
     <div class="cyber-hero-meta">
       <span class="status-pill leaf">AI 本科生</span>
@@ -51,7 +51,7 @@ tags:
   <div class="home-below-fold__copy">
     <span class="cyber-kicker">PUBLIC ENTRANCE</span>
     <h2>从这里继续向下走</h2>
-    <p>这里放着近况、笔记、项目和碧影入口。你可以随便选一条路，慢慢往里走。</p>
+    <p>近况、笔记、项目和碧影都在这里。想认真读也行，随手逛一圈也行。</p>
     <div class="home-below-fold__routes" aria-label="常用入口">
       <a href="./now/"><span>此刻</span><strong>看近况</strong></a>
       <a href="./notes/"><span>笔记</span><strong>随机阅读</strong></a>
@@ -59,7 +59,7 @@ tags:
     </div>
     <div class="site-stats-panel site-stats-panel--home" data-site-stats aria-label="站点统计">
       <div class="site-stats-panel__intro">
-        <strong>来访痕迹</strong>
+        <strong>来访脚印</strong>
         <span data-site-stat-status>正在读取站点统计</span>
         <a class="site-stats-panel__action" href="./stats/">详情</a>
       </div>
@@ -117,8 +117,8 @@ tags:
 <section class="home-section home-section--updates" aria-labelledby="home-updates-title">
   <div class="home-section__head">
     <span class="cyber-kicker">RECENT SIGNALS</span>
-    <h2 id="home-updates-title">模块近况</h2>
-    <p>想先看站点最近哪里有变化，可以从这里扫一眼；更完整的记录放在 <a href="./updates/">模块更新</a>。</p>
+    <h2 id="home-updates-title">最近动过的地方</h2>
+    <p>想知道我最近修了哪里，可以先扫一眼这里；更细的记录放在 <a href="./updates/">模块更新</a>。</p>
   </div>
 
 <div class="module-update-preview">
@@ -141,8 +141,8 @@ tags:
 <section class="home-section home-section--signals" aria-labelledby="home-signals-title">
   <div class="home-section__head">
     <span class="cyber-kicker">PUBLIC MAP</span>
-    <h2 id="home-signals-title">公开信号</h2>
-    <p>这里不是一次性完成的作品集，而是一个会持续更新的入口。你可以从不同路径进入：读笔记、看项目、了解现在，或者直接问碧影。</p>
+    <h2 id="home-signals-title">可以从哪里逛起</h2>
+    <p>这个网站不会一次性完工，它会跟着我的学习和项目继续长大。你可以读笔记、看项目、了解近况，或者直接问碧影。</p>
   </div>
 
 <div class="cyber-grid">
@@ -167,8 +167,8 @@ tags:
   <section class="cyber-card">
     <span class="cyber-card__label">访客交流</span>
     <h3>留言</h3>
-    <p>访客可以公开留言。请不要留下隐私信息，所有留言默认面向其他访客可见。</p>
-    <a href="./guestbook/">留下信号</a>
+    <p>可以公开留一句话，打招呼、提建议都可以。只是别把隐私信息写在这里，因为别人也能看到。</p>
+    <a href="./guestbook/">去留言</a>
   </section>
   <section class="cyber-card">
     <span class="cyber-card__label">外部入口</span>
@@ -183,7 +183,7 @@ tags:
 <section class="home-section home-section--paths" aria-labelledby="home-paths-title">
   <div class="home-section__head">
     <span class="cyber-kicker">WAYS IN</span>
-    <h2 id="home-paths-title">进入路径</h2>
+    <h2 id="home-paths-title">从哪里开始</h2>
   </div>
 
 <div class="signal-list">
@@ -201,6 +201,6 @@ tags:
   </div>
 </div>
 
-<p class="quiet-panel">碧影只会读取已经公开到网站上的内容。没有发布出来的草稿、私密文件和账号活动，不会进入他的回答范围。</p>
+<p class="quiet-panel">碧影只会读取这个网站已经公开的内容。草稿、私密文件和账号活动不会进入他的回答范围。</p>
 
 </section>

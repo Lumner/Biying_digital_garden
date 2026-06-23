@@ -1,6 +1,6 @@
 ---
 title: 碧影
-summary: 和碧影聊聊，他会从网站已经公开的内容里陪你慢慢找到线索。
+summary: 和碧影聊聊，他会从网站已经公开的内容里帮你慢慢找到线索。
 public: true
 avatar_readable: true
 tags:
@@ -23,7 +23,7 @@ tags:
 他会从这个网站已经公开的内容里回答你；如果这里还没有写到，他也会坦白告诉你。
 
 !!! info "当前模式"
-    登录后，碧影会优先连接线上 API。只有当网络或接口异常时，下面的对话框才会退回本地公开知识库。
+    登录后，碧影会先尝试连接线上对话能力；如果网络或服务暂时没接上，对话框会先用本地公开知识库兜底。
 
 <div class="interaction-shell interaction-shell--page-chat">
   <div class="biying-chat" data-biying-chat></div>

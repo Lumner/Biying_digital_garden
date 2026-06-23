@@ -35,25 +35,25 @@
         ? "我先用本地公开知识库回答。"
         : "I will answer from the local public knowledge base for now.",
       empty: zh ? "先输入一个问题。" : "Type a question first.",
-      error: zh ? "连接失败。你可以部署 EdgeOne Functions 后再试。" : "Connection failed. Try again after deploying EdgeOne Functions.",
+      error: zh ? "暂时没连上线上碧影，可以稍后再试。" : "Connection failed. Try again after deploying EdgeOne Functions.",
       noPublicFirst: zh
         ? "这部分我在这里已经公开的内容里还没找到直接线索。可以先把它当成一个普通话题聊，我会尽量说清楚哪些只是通用理解。"
         : "I do not see a direct thread for this in the public pages here. We can still treat it as a general topic, and I will keep clear about what is only general knowledge.",
       noPublicAgain: zh
         ? "这类问题公开页面里还是没有更多材料。我先不重复边界说明了，直接按通用理解陪你往下聊。"
         : "The public pages still do not add more on this thread, so I will not repeat the boundary note and will continue from general knowledge.",
-      loginRequired: zh ? "注册或登录后就可以和碧影对话。" : "Register or sign in to talk to Biying.",
+      loginRequired: zh ? "注册或登录后，就可以继续和碧影聊。" : "Register or sign in to talk to Biying.",
       account: zh ? "注册 / 登录" : "Register / Sign in",
-      authExpired: zh ? "未登录，或登录状态已过期。请重新登录后再和碧影对话。" : "You are not signed in, or your session expired. Please sign in again before talking to Biying.",
-      kv: zh ? "聊天需要先在 EdgeOne 中绑定 BIYING_KV。" : "Chat requires BIYING_KV to be bound in EdgeOne.",
-      apiNotFound: zh ? "没有找到 /api/chat。通常是 EdgeOne Functions 没有部署成功，或当前项目只发布了静态 site 目录。" : "/api/chat was not found. EdgeOne Functions may not be deployed, or the project is only serving the static site directory.",
-      apiUnavailable: zh ? "聊天 API 没有返回可用响应。请检查 EdgeOne Functions 是否已经随本次部署生效。" : "The chat API did not return a usable response. Please check whether EdgeOne Functions are active for this deployment.",
-      modelKeyMissing: zh ? "模型密钥未配置。请在 EdgeOne 环境变量中设置 DEEPSEEK_API_KEY，并重新部署。" : "The model API key is missing. Set DEEPSEEK_API_KEY in EdgeOne environment variables and redeploy.",
-      modelFailed: zh ? "模型服务请求失败。请检查 DEEPSEEK_API_KEY、DEEPSEEK_MODEL、账户余额和模型名称是否正确。" : "The model request failed. Check DEEPSEEK_API_KEY, DEEPSEEK_MODEL, balance, and the model name.",
-      chatFailed: zh ? "聊天 API 运行失败。请查看 EdgeOne Functions 日志获取更具体的错误。" : "The chat API failed. Check EdgeOne Functions logs for details.",
+      authExpired: zh ? "登录状态好像过期了，请重新登录后再和碧影对话。" : "You are not signed in, or your session expired. Please sign in again before talking to Biying.",
+      kv: zh ? "线上聊天存储还没接好，等站点配置完成后就能正常使用。" : "Chat requires BIYING_KV to be bound in EdgeOne.",
+      apiNotFound: zh ? "暂时没有找到线上聊天入口，可能是这次只发布了静态页面。" : "/api/chat was not found. EdgeOne Functions may not be deployed, or the project is only serving the static site directory.",
+      apiUnavailable: zh ? "线上聊天暂时没有可用响应，请稍后再试。" : "The chat API did not return a usable response. Please check whether EdgeOne Functions are active for this deployment.",
+      modelKeyMissing: zh ? "模型密钥还没有配置好，线上碧影暂时不能回答。" : "The model API key is missing. Set DEEPSEEK_API_KEY in EdgeOne environment variables and redeploy.",
+      modelFailed: zh ? "模型服务这次没有成功返回，请稍后再试，或检查模型配置。" : "The model request failed. Check DEEPSEEK_API_KEY, DEEPSEEK_MODEL, balance, and the model name.",
+      chatFailed: zh ? "线上聊天这次运行失败了，请稍后再试。" : "The chat API failed. Check EdgeOne Functions logs for details.",
       tooFrequent: zh ? "问得有点太快了，请稍等片刻再继续。" : "That was a little too fast. Please wait a moment before continuing.",
       clear: zh ? "清空记录" : "Clear",
-      reason: zh ? "不能直接连接线上碧影的原因：" : "Why the live Biying API cannot be used:"
+      reason: zh ? "这次没连上线上碧影的原因：" : "Why the live Biying API cannot be used:"
     };
     return copy[key];
   }

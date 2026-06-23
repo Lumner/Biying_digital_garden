@@ -26,20 +26,20 @@
         ? "登录后可以继续留言、编辑自己的留言，并和碧影进行更完整的对话。"
         : "Sign in to keep guestbook messages, edit your own notes, and talk with Biying more fully.",
       signedTitle: zh ? "你已经登录" : "You are signed in",
-      signedLead: zh ? "现在可以继续留言或和碧影对话。" : "You can now leave messages or talk with Biying.",
+      signedLead: zh ? "现在可以继续留言，也可以和碧影慢慢聊。" : "You can now leave messages or talk with Biying.",
       registerTitle: zh ? "注册" : "Register",
       loginTitle: zh ? "登录" : "Sign In",
       resetTitle: zh ? "忘记密码" : "Forgot Password",
       loginHint: zh ? "使用你的用户名和密码登录。" : "Use your username and password.",
       registerHint: zh ? "创建一个只用于本站互动的轻量账户。" : "Create a lightweight account for this site only.",
       resetHint: zh ? "拿到恢复码后在这里设置新密码。" : "Use this after receiving a recovery code.",
-      privateTitle: zh ? "私信站点主人" : "Private message the site owner",
+      privateTitle: zh ? "给我发一条私信" : "Private message the site owner",
       username: zh ? "用户名（中文、字母、数字、下划线）" : "Username (Chinese, letters, numbers, underscore)",
       password: zh ? "密码（至少 8 位）" : "Password (at least 8 characters)",
       newPassword: zh ? "新密码（至少 8 位）" : "New password (at least 8 characters)",
       recoveryCode: zh ? "恢复码" : "Recovery code",
       recoveryHint: zh
-        ? "如果忘记密码，请先通过下方私信联系站点主人，再使用收到的恢复码重设密码。"
+        ? "如果忘记密码，请先用下方私信联系我，再用收到的恢复码重设密码。"
         : "If you forgot your password, contact the site owner below first, then use the recovery code you receive here.",
       privateHint: zh
         ? "这条消息不会公开展示。若用于找回密码，请写清注册用户名和你希望收到回复的联系方式。"
@@ -47,7 +47,7 @@
       privateName: zh ? "你的称呼" : "Your name",
       privateAccount: zh ? "注册用户名（找回密码时填写）" : "Account username (for password recovery)",
       privateContact: zh ? "联系方式（邮箱、QQ、微信等）" : "Contact method (email, chat handle, etc.)",
-      privateMessage: zh ? "想私下告诉站点主人的内容" : "What you want to tell the site owner privately",
+      privateMessage: zh ? "想私下告诉我的内容" : "What you want to tell the site owner privately",
       register: zh ? "创建账户" : "Create account",
       login: zh ? "登录" : "Sign in",
       reset: zh ? "重设密码" : "Reset password",
@@ -59,13 +59,13 @@
       goGuestbook: zh ? "去留言" : "Open guestbook",
       goBiying: zh ? "和碧影对话" : "Talk to Biying",
       required: zh ? "请先注册或登录。" : "Please register or sign in first.",
-      kv: zh ? "账户功能需要先在 EdgeOne 中绑定 BIYING_KV。" : "Accounts require BIYING_KV to be bound in EdgeOne.",
+      kv: zh ? "账户存储还没接好，等站点配置完成后就能正常使用。" : "Accounts require BIYING_KV to be bound in EdgeOne.",
       badCredentials: zh ? "用户名或密码不正确。" : "The username or password is incorrect.",
       taken: zh ? "这个用户名已经被使用。" : "This username is already taken.",
       invalidUsername: zh ? "用户名只能使用 2-24 位中文、字母、数字和下划线。" : "Use 2-24 Chinese characters, letters, numbers, or underscores.",
       invalidPassword: zh ? "密码至少需要 8 位。" : "Password must be at least 8 characters.",
       invalidRecovery: zh ? "恢复码不正确。" : "The recovery code is incorrect.",
-      recoveryExpired: zh ? "恢复码已过期，请重新联系站点主人获取新的恢复码。" : "The recovery code has expired. Ask the site owner for a new one.",
+      recoveryExpired: zh ? "恢复码已过期，请重新联系我获取新的恢复码。" : "The recovery code has expired. Ask the site owner for a new one.",
       recoveryMissing: zh ? "站点还没有配置密码恢复码。" : "Password recovery is not configured yet.",
       tooFrequent: zh ? "操作有点太频繁了，请稍等片刻再试。" : "That was a little too frequent. Please wait a moment and try again.",
       resetSaved: zh ? "密码已重设，并已登录。" : "Password reset complete. You are signed in.",

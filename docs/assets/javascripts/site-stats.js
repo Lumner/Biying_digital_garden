@@ -9,9 +9,9 @@
   function copy(key) {
     const zh = locale() === "zh";
     return {
-      loading: zh ? "正在读取站点统计" : "Loading site statistics",
-      ready: zh ? "统计已更新" : "Stats updated",
-      unavailable: zh ? "统计服务暂不可用，线上绑定 KV 后会自动生效。" : "Stats are unavailable until KV is configured on the live site."
+      loading: zh ? "正在看看来访脚印" : "Loading site statistics",
+      ready: zh ? "来访脚印已更新" : "Stats updated",
+      unavailable: zh ? "统计暂时还没接上，页面本身可以正常访问。" : "Stats are unavailable until KV is configured on the live site."
     }[key];
   }
 

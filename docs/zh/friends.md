@@ -1,6 +1,6 @@
 ---
 title: 友链
-summary: 放朋友们的网站入口、头像和简短介绍。
+summary: 放朋友们的网站入口、头像和我对他们的简短介绍。
 public: true
 avatar_readable: true
 tags:
@@ -11,7 +11,7 @@ tags:
 <section class="garden-pagehead">
   <div class="garden-pagehead__eyebrow">FRIENDS</div>
   <h1 class="garden-pagehead__title">友链</h1>
-  <p class="garden-pagehead__lead">这里有一些碧影的朋友的网站，欢迎大家前去访问呀~</p>
+  <p class="garden-pagehead__lead">这里放一些朋友的网站和博客。每张卡片都是一个小入口，点进去就能看看他们正在写什么、做什么。</p>
   <div class="garden-pagehead__meta">
     <span class="status-pill leaf">朋友网站</span>
     <span class="status-pill">头像自动识别</span>

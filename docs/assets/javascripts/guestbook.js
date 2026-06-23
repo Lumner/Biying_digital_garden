@@ -13,11 +13,11 @@
   function copy(key) {
     const zh = isChinesePage();
     return {
-      message: zh ? "想留下什么？" : "Leave a message",
-      submit: zh ? "公开留言" : "Post publicly",
+      message: zh ? "想留下一句什么？" : "Leave a message",
+      submit: zh ? "留下这句话" : "Post publicly",
       empty: zh ? "请填写留言内容。" : "Please enter a message.",
       intro: zh ? "留言会公开展示，请不要填写隐私信息。" : "Messages are public. Please do not include private information.",
-      loginRequired: zh ? "注册或登录后可以留言、编辑自己的留言，也可以和碧影对话。" : "Register or sign in to post messages, edit your own messages, and talk to Biying.",
+      loginRequired: zh ? "注册或登录后，就可以留言、修改自己的留言，也可以继续和碧影聊。" : "Register or sign in to post messages, edit your own messages, and talk to Biying.",
       account: zh ? "注册 / 登录" : "Register / Sign in",
       signedIn: zh ? "当前以" : "Signed in as",
       edit: zh ? "编辑" : "Edit",
@@ -33,10 +33,10 @@
       privacyHint: zh ? "这段内容像是带有联系方式或隐私信息。若你仍想公开，请再确认一次。" : "This looks like it may contain contact details or private information. Please double-check before posting publicly.",
       tooFrequent: zh ? "留言有点太快了，请稍等片刻再试。" : "You are posting a little too quickly. Please wait a moment and try again.",
       authExpired: zh ? "登录状态已过期，请重新登录。" : "Your session expired. Please sign in again.",
-      kv: zh ? "留言需要先在 EdgeOne 中绑定 BIYING_KV。" : "Guestbook requires BIYING_KV to be bound in EdgeOne.",
-      apiNotFound: zh ? "没有找到 /api/messages。通常是 EdgeOne Functions 没有部署成功，或当前项目只发布了静态 site 目录。" : "/api/messages was not found. EdgeOne Functions may not be deployed, or the project is only serving the static site directory.",
-      apiUnavailable: zh ? "留言 API 没有返回可用响应。请检查 EdgeOne Functions 是否已经随本次部署生效。" : "The guestbook API did not return a usable response. Please check whether EdgeOne Functions are active for this deployment.",
-      error: zh ? "操作失败，请稍后再试。" : "The action failed. Please try again later."
+      kv: zh ? "留言存储还没接好，等站点配置完成后就能正常使用。" : "Guestbook requires BIYING_KV to be bound in EdgeOne.",
+      apiNotFound: zh ? "暂时没有找到留言入口，可能是这次只发布了静态页面。" : "/api/messages was not found. EdgeOne Functions may not be deployed, or the project is only serving the static site directory.",
+      apiUnavailable: zh ? "留言服务暂时没有回应，请稍后再试。" : "The guestbook API did not return a usable response. Please check whether EdgeOne Functions are active for this deployment.",
+      error: zh ? "这次没有成功，请稍后再试。" : "The action failed. Please try again later."
     }[key];
   }
 

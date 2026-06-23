@@ -1,6 +1,6 @@
 ---
 title: 站点统计
-summary: 碧影数字花园的访客总数与浏览量统计页。
+summary: 记录这座数字花园被看见的次数。
 public: true
 avatar_readable: true
 tags:
@@ -12,14 +12,14 @@ tags:
   <div>
     <span class="garden-pagehead__eyebrow">SITE SIGNALS</span>
     <h1 class="garden-pagehead__title">站点统计</h1>
-    <p class="garden-pagehead__lead">这里记录这座数字花园被看见的次数：一个浏览器第一次来访会计入访客总数，每次打开页面都会计入浏览量。</p>
+    <p class="garden-pagehead__lead">这里记录这座数字花园被看见的次数：第一次来会留下一个访客脚印，每次打开页面都会多一笔浏览。</p>
   </div>
 </section>
 
 <section class="site-stats-panel site-stats-panel--page" data-site-stats aria-label="站点统计">
   <div class="site-stats-panel__intro">
     <strong>访问概览</strong>
-    <span>统计数据由本站 EdgeOne Function 写入自托管 KV，用来观察公开页面的整体访问情况。</span>
+    <span>这些数字只用来看看这座花园有没有被人路过，不会展示任何个人身份信息。</span>
     <p class="site-stats-panel__status" data-site-stat-status>正在读取站点统计</p>
   </div>
   <div class="site-stats-panel__metric">
@@ -32,4 +32,4 @@ tags:
   </div>
 </section>
 
-<p class="quiet-panel">统计只依赖浏览器本地生成的匿名访客 ID 和页面加载事件。若线上暂未绑定 `BIYING_KV`，页面会正常显示，但数字不会累计。</p>
+<p class="quiet-panel">统计只依赖浏览器本地生成的匿名访客 ID 和页面加载事件。若线上暂时没有接好统计存储，页面仍会正常显示，只是数字不会继续累计。</p>
