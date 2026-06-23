@@ -97,20 +97,25 @@ test("light left navigation uses the same soft surface as the right sidebar", as
   const styles = await sidebar.evaluate((el) => {
     const title = el.querySelector(".md-nav__title");
     const wrap = el.querySelector(".md-sidebar__scrollwrap");
+    const nested = el.querySelector(".md-nav__item .md-nav");
     const titleStyle = getComputedStyle(title);
     const wrapStyle = getComputedStyle(wrap);
+    const headerStyle = getComputedStyle(wrap, "::before");
+    const nestedStyle = getComputedStyle(nested);
     return {
-      titleBackground: titleStyle.backgroundColor,
-      titleBoxShadow: titleStyle.boxShadow,
-      titleColor: titleStyle.color,
+      headerColor: headerStyle.color,
+      headerContent: headerStyle.content,
+      nestedBorderLeft: nestedStyle.borderLeftWidth,
+      titleDisplay: titleStyle.display,
       wrapBackground: wrapStyle.backgroundColor,
       wrapBoxShadow: wrapStyle.boxShadow
     };
   });
 
-  expect(styles.titleBackground).toBe("rgba(0, 0, 0, 0)");
-  expect(styles.titleBoxShadow).toBe("none");
-  expect(styles.titleColor).toBe("rgb(31, 102, 90)");
+  expect(styles.headerContent).not.toBe("none");
+  expect(styles.headerColor).toBe("rgb(31, 102, 90)");
+  expect(styles.nestedBorderLeft).toBe("0px");
+  expect(styles.titleDisplay).toBe("none");
   expect(styles.wrapBackground).toContain("rgba(250, 254, 251");
   expect(styles.wrapBoxShadow).not.toContain("0.35rem");
 });
