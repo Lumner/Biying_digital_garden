@@ -238,6 +238,62 @@ test("Light notes page keeps cards readable", async ({ page }) => {
   expect(styles.descriptionColor).toBe("rgb(82, 110, 103)");
 });
 
+test("Light article code and Biying code blocks stay readable", async ({ page }) => {
+  await page.goto(`${site.url}/zh/notes/discrete-math-lecture/`);
+  await page.evaluate(() => localStorage.setItem("biying-theme", "light"));
+  await page.reload();
+
+  const table = page.locator(".md-typeset table:not([class])").first();
+  const inlineCode = page.locator(".md-typeset code").first();
+  await expect(table).toBeVisible();
+  await expect(inlineCode).toBeVisible();
+
+  const articleStyles = await page.evaluate(() => {
+    const tableNode = document.querySelector(".md-typeset table:not([class])");
+    const th = tableNode?.querySelector("th");
+    const td = tableNode?.querySelector("td");
+    const code = document.querySelector(".md-typeset code");
+    return {
+      tableBackground: getComputedStyle(tableNode).backgroundColor,
+      thBackground: getComputedStyle(th).backgroundColor,
+      thColor: getComputedStyle(th).color,
+      tdColor: getComputedStyle(td).color,
+      codeBackground: getComputedStyle(code).backgroundColor,
+      codeColor: getComputedStyle(code).color
+    };
+  });
+
+  expect(articleStyles.tableBackground).toContain("rgba(250, 254, 251");
+  expect(articleStyles.thBackground).toContain("rgba(31, 125, 109");
+  expect(articleStyles.thColor).toBe("rgb(23, 58, 51)");
+  expect(articleStyles.tdColor).toBe("rgb(36, 69, 61)");
+  expect(articleStyles.codeBackground).toContain("rgba(229, 246, 240");
+  expect(articleStyles.codeColor).toBe("rgb(23, 58, 51)");
+
+  await page.goto(`${site.url}/zh/avatar/`);
+  await page.evaluate(() => localStorage.setItem("biying-theme", "light"));
+  await page.reload();
+
+  const chatStyles = await page.evaluate(() => {
+    const log = document.querySelector(".interaction-shell--page-chat .biying-chat__log");
+    const injected = document.createElement("div");
+    injected.className = "biying-message biying";
+    injected.innerHTML = "<pre><code>const answer = 42;</code></pre>";
+    log.appendChild(injected);
+    const pre = injected.querySelector("pre");
+    const code = injected.querySelector("code");
+    return {
+      preBackground: getComputedStyle(pre).backgroundImage,
+      preColor: getComputedStyle(pre).color,
+      codeColor: getComputedStyle(code).color
+    };
+  });
+
+  expect(chatStyles.preBackground).toContain("rgba(31, 125, 109");
+  expect(chatStyles.preColor).toBe("rgb(23, 58, 51)");
+  expect(chatStyles.codeColor).toBe("rgb(23, 58, 51)");
+});
+
 test("Light Biying page keeps chat controls readable", async ({ page }) => {
   await page.goto(`${site.url}/zh/avatar/`);
   await page.evaluate(() => localStorage.setItem("biying-theme", "light"));

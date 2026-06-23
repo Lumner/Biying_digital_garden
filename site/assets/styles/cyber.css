@@ -4037,6 +4037,51 @@ html[data-biying-theme="light"] .guestbook input::placeholder {
   color: rgba(49, 83, 75, 0.68);
 }
 
+html[data-biying-theme="light"] .md-typeset code,
+html[data-biying-theme="light"] .biying-message code {
+  background: rgba(229, 246, 240, 0.88);
+  border-color: rgba(31, 125, 109, 0.2);
+  color: #173a33;
+}
+
+html[data-biying-theme="light"] .md-typeset pre,
+html[data-biying-theme="light"] .md-typeset .highlight,
+html[data-biying-theme="light"] .biying-message pre {
+  background:
+    linear-gradient(135deg, rgba(31, 125, 109, 0.06), rgba(255, 255, 255, 0.86)),
+    rgba(246, 252, 249, 0.96);
+  border: 1px solid rgba(31, 125, 109, 0.16);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.68);
+  color: #173a33;
+}
+
+html[data-biying-theme="light"] .md-typeset pre code,
+html[data-biying-theme="light"] .biying-message pre code {
+  background: transparent;
+  border-color: transparent;
+  color: #173a33;
+}
+
+html[data-biying-theme="light"] .md-typeset table:not([class]) {
+  background: rgba(250, 254, 251, 0.96);
+  border-color: rgba(31, 125, 109, 0.16);
+  color: #24453d;
+}
+
+html[data-biying-theme="light"] .md-typeset table:not([class]) th {
+  background: rgba(31, 125, 109, 0.12);
+  color: #173a33;
+}
+
+html[data-biying-theme="light"] .md-typeset table:not([class]) td {
+  border-color: rgba(31, 125, 109, 0.12);
+  color: #24453d;
+}
+
+html[data-biying-theme="light"] .md-typeset table:not([class]) tr:nth-child(even) td {
+  background: rgba(31, 125, 109, 0.045);
+}
+
 html[data-biying-theme="light"] .biying-chat button,
 html[data-biying-theme="light"] .guestbook button {
   background:
