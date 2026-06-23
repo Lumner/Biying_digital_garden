@@ -372,6 +372,10 @@ test("Biying chat reveals answers progressively", async ({ page }) => {
 
 test("Biying chat requests and parses event-stream answers", async ({ page }) => {
   let requestedStreaming = false;
+  let resolveChatRequest;
+  const chatRequested = new Promise((resolve) => {
+    resolveChatRequest = resolve;
+  });
   const answer = "First streamed piece, second streamed piece.";
 
   await page.route(`${site.url}/api/auth`, async (route) => {
@@ -388,6 +392,8 @@ test("Biying chat requests and parses event-stream answers", async ({ page }) =>
 
   await page.route(`${site.url}/api/chat`, async (route) => {
     requestedStreaming = route.request().postDataJSON().stream === true;
+    resolveChatRequest();
+    await new Promise((resolve) => setTimeout(resolve, 180));
     await route.fulfill({
       contentType: "text/event-stream; charset=utf-8",
       body: [
@@ -423,6 +429,10 @@ test("Biying chat requests and parses event-stream answers", async ({ page }) =>
   const chat = page.locator(".interaction-shell--page-chat .biying-chat");
   await chat.locator("textarea").fill("Use real stream mode.");
   await chat.locator("button[type='submit']").click();
+
+  await chatRequested;
+  const pending = chat.locator(".biying-message.biying.is-typing").last();
+  await expect(pending.locator(".typing-dots")).toBeVisible();
 
   await expect(chat.locator(".biying-message.biying").last()).toContainText("second streamed piece");
   await expect(chat.locator(".biying-sources a")).toHaveAttribute("href", "/zh/notes/");

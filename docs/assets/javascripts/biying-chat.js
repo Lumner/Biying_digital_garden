@@ -343,8 +343,8 @@
     item.classList.add("is-streaming");
     item.textContent = "";
 
-    const step = Math.max(2, Math.ceil(value.length / 90));
-    const frameDelay = value.length > 240 ? 14 : 22;
+    const step = Math.max(8, Math.ceil(value.length / 34));
+    const frameDelay = 8;
     let index = 0;
 
     return new Promise((resolve) => {
@@ -365,17 +365,44 @@
 
   function liveMessage(log, item) {
     let value = "";
-    item.classList.remove("is-typing", "mathjax-process");
-    item.classList.add("is-streaming");
-    item.textContent = "";
+    let active = false;
+    let textNode = null;
+    let scrollQueued = false;
+
+    function queueScroll() {
+      if (scrollQueued) return;
+      scrollQueued = true;
+      window.requestAnimationFrame(() => {
+        scrollQueued = false;
+        log.scrollTop = log.scrollHeight;
+      });
+    }
+
+    function activate() {
+      if (active) return;
+      active = true;
+      item.classList.remove("is-typing", "mathjax-process");
+      item.classList.add("is-streaming");
+      item.textContent = "";
+      textNode = document.createTextNode("");
+      item.appendChild(textNode);
+    }
+
     return {
       append(delta) {
-        value += String(delta || "");
-        item.textContent = value;
-        log.scrollTop = log.scrollHeight;
+        const chunk = String(delta || "");
+        if (!chunk) return;
+        activate();
+        value += chunk;
+        textNode.appendData(chunk);
+        queueScroll();
       },
       finish(content, options = {}) {
         const finalContent = String(content || value);
+        if (!active && !finalContent) {
+          item.classList.remove("is-typing", "is-streaming");
+          return finalContent;
+        }
         finishMessageRender(log, item, finalContent, {
           ...options,
           markdown: options.markdown ?? !options.html
@@ -384,8 +411,10 @@
       },
       reset() {
         value = "";
+        active = false;
+        textNode = null;
         item.textContent = "";
-        item.classList.remove("is-streaming");
+        item.classList.remove("is-typing", "is-streaming");
       }
     };
   }

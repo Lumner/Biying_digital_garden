@@ -364,11 +364,14 @@ export async function onRequestPost(context) {
     });
     if (limited) return limited;
 
-    let allKnowledge = await readKnowledge(env, request);
-    if (!allKnowledge.length) {
-      allKnowledge = await readStaticKnowledge(request);
-    }
     const queryScope = looksSiteRelated(message) ? "site_related" : "general_or_unclear";
+    let allKnowledge = [];
+    if (queryScope === "site_related") {
+      allKnowledge = await readKnowledge(env, request);
+      if (!allKnowledge.length) {
+        allKnowledge = await readStaticKnowledge(request);
+      }
+    }
     const knowledge = queryScope === "site_related"
       ? retrieve(allKnowledge, message, pageContext, locale)
       : [];

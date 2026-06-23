@@ -26,7 +26,7 @@
       timer = window.setTimeout(() => {
         if (target.matches(":hover") || target.contains(document.activeElement)) return;
         closePrimary(target);
-      }, 220);
+      }, 140);
     }
 
     function pointerInsideOpenSidebar(event, target) {
@@ -44,7 +44,7 @@
       if (!enabled()) return;
       const target = sidebar();
       if (!target) return;
-      if (event.clientX <= 54 || pointerInsideOpenSidebar(event, target)) {
+      if (event.clientX <= 34 || pointerInsideOpenSidebar(event, target)) {
         openPrimary(target);
       } else {
         closePrimarySoon(target);
@@ -55,7 +55,7 @@
       if (!enabled()) return;
       const target = sidebar();
       if (!target) return;
-      if (event.clientX <= 54 || target.contains(event.target)) {
+      if (event.clientX <= 34 || target.contains(event.target)) {
         openPrimary(target);
         timer = window.setTimeout(() => closePrimary(target), 4200);
       } else {
