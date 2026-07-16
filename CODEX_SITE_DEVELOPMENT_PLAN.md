@@ -597,7 +597,7 @@ Codex 每完成一个阶段后更新本表。
 
 | 阶段 | 优先级 | 状态 | 提交 | 说明 |
 |---|---:|---|---|---|
-| 0. 锁定可复现基线 | P0 | Pending |  |  |
+| 0. 锁定可复现基线 | P0 | Completed | 本阶段提交 | 依赖已锁定，生成时间改为可复现来源日期 |
 | 1. 建立统一自动测试与 CI 质量门 | P0 | Pending |  |  |
 | 2A. 低风险安全与隐私修复 | P0 | Pending |  |  |
 | 2B. 用户会话迁移到安全 Cookie | P0 | Pending |  |  |
@@ -631,6 +631,11 @@ Codex 每完成一个阶段后更新本表。
 ### 修改范围
 
 - `requirements.txt`
+- `scripts/build_site.py`
+- `scripts/build_note_catalog.py`
+- `scripts/build_page_meta.py`
+- `scripts/build_knowledge.py`
+- `.gitignore`
 - 可选新增 `.quality/site-budget.json`
 - 本文件状态表
 

@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import json
 import re
-from datetime import datetime, timezone
 from pathlib import Path
 
 import yaml
@@ -189,7 +188,6 @@ def collect() -> list[dict]:
 def main() -> None:
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     payload = {
-        "generatedAt": datetime.now(timezone.utc).isoformat(),
         "items": collect(),
     }
     OUTPUT.write_text(

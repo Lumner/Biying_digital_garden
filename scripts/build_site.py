@@ -1,15 +1,63 @@
 from __future__ import annotations
 
+import os
 import subprocess
 import sys
+from datetime import date, datetime, time, timezone
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+REPRODUCIBLE_SOURCE_PATHS = (
+    "docs",
+    "data",
+    "edge-functions",
+    "scripts",
+    "mkdocs.yml",
+    "package.json",
+    "requirements.txt",
+)
 
 
 def run(*args: str) -> None:
     subprocess.run(args, cwd=ROOT, check=True)
+
+
+def utc_midnight_epoch(value: date) -> str:
+    timestamp = datetime.combine(value, time.min, tzinfo=timezone.utc)
+    return str(int(timestamp.timestamp()))
+
+
+def reproducible_source_date_epoch() -> str:
+    configured = os.environ.get("SOURCE_DATE_EPOCH", "").strip()
+    if configured:
+        int(configured)
+        return configured
+
+    try:
+        dirty = subprocess.run(
+            ["git", "status", "--porcelain", "--", *REPRODUCIBLE_SOURCE_PATHS],
+            cwd=ROOT,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        if dirty.stdout.strip():
+            return utc_midnight_epoch(datetime.now().astimezone().date())
+
+        latest = subprocess.run(
+            ["git", "log", "-1", "--format=%cs", "--", *REPRODUCIBLE_SOURCE_PATHS],
+            cwd=ROOT,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        if latest.stdout.strip():
+            return utc_midnight_epoch(date.fromisoformat(latest.stdout.strip()))
+    except (OSError, ValueError):
+        pass
+
+    return utc_midnight_epoch(datetime.now().astimezone().date())
 
 
 def trim_shared_script_blank_lines() -> None:
@@ -53,6 +101,8 @@ def trim_shared_script_blank_lines() -> None:
 
 
 def main() -> None:
+    os.environ["SOURCE_DATE_EPOCH"] = reproducible_source_date_epoch()
+    print(f"Using SOURCE_DATE_EPOCH={os.environ['SOURCE_DATE_EPOCH']}.")
     run(sys.executable, "scripts/build_note_catalog.py")
     run(sys.executable, "scripts/build_page_meta.py")
     run(sys.executable, "scripts/build_knowledge.py")
