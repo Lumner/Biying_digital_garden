@@ -82,17 +82,19 @@ def collect() -> list[dict]:
         meta, _ = split_frontmatter(path.read_text(encoding="utf-8"))
         if meta.get("public") is not True:
             continue
-        updated = newest_date(meta.get("updated"), git_modified_date(path), worktree_modified_date(path))
+        declared_updated = str(meta.get("updated") or "").strip()
+        updated = newest_date(declared_updated, git_modified_date(path), worktree_modified_date(path))
         if not updated:
             continue
-        items.append(
-            {
-                "title": str(meta.get("title") or path.stem),
-                "url": page_url(path),
-                "updated": updated,
-                "locale": page_locale(path),
-            }
-        )
+        item = {
+            "title": str(meta.get("title") or path.stem),
+            "url": page_url(path),
+            "updated": updated,
+            "locale": page_locale(path),
+        }
+        if declared_updated:
+            item["declaredUpdated"] = declared_updated
+        items.append(item)
     return sorted(items, key=lambda item: (item["updated"], item["title"]), reverse=True)
 
 

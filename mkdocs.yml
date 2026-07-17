@@ -126,13 +126,13 @@ markdown_extensions:
       alternate_style: true
 
 extra_css:
-  - assets/styles/cyber.css?v=20260717-3
+  - assets/styles/cyber.css?v=20260717-4
 
 extra_javascript:
   - assets/javascripts/mathjax.js?v=20260521-1
   - assets/vendor/mathjax/es5/tex-mml-chtml.js?v=20260520-1
   - assets/javascripts/language-switch.js?v=20260717-1
-  - assets/javascripts/page-meta.js?v=20260522-1
+  - assets/javascripts/page-meta.js?v=20260717-1
   - assets/javascripts/site-stats.js?v=20260717-1
   - assets/javascripts/layout-controls.js?v=20260717-2
   - assets/javascripts/random-note-cover.js?v=20260521-1

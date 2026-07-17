@@ -19,8 +19,21 @@
       "locale": "zh"
     },
     {
+      "title": "现在",
+      "url": "/zh/now/",
+      "updated": "2026-07-17",
+      "locale": "zh",
+      "declaredUpdated": "2026-05-21"
+    },
+    {
       "title": "注册/登录",
       "url": "/zh/register/",
+      "updated": "2026-07-17",
+      "locale": "zh"
+    },
+    {
+      "title": "关于",
+      "url": "/zh/about/",
       "updated": "2026-07-17",
       "locale": "zh"
     },
@@ -35,6 +48,13 @@
       "url": "/en/privacy/",
       "updated": "2026-07-17",
       "locale": "en"
+    },
+    {
+      "title": "Now",
+      "url": "/en/now/",
+      "updated": "2026-07-17",
+      "locale": "en",
+      "declaredUpdated": "2026-05-21"
     },
     {
       "title": "Home",
@@ -61,10 +81,17 @@
       "locale": "en"
     },
     {
+      "title": "About",
+      "url": "/en/about/",
+      "updated": "2026-07-17",
+      "locale": "en"
+    },
+    {
       "title": "项目",
       "url": "/zh/projects/",
       "updated": "2026-06-23",
-      "locale": "zh"
+      "locale": "zh",
+      "declaredUpdated": "2026-05-21"
     },
     {
       "title": "笔记",
@@ -94,7 +121,8 @@
       "title": "个人数字花园与碧影",
       "url": "/zh/projects/personal-site-avatar/",
       "updated": "2026-06-23",
-      "locale": "zh"
+      "locale": "zh",
+      "declaredUpdated": "2026-06-21"
     },
     {
       "title": "Updates",
@@ -106,7 +134,8 @@
       "title": "Personal Digital Garden + Biying",
       "url": "/en/projects/personal-site-avatar/",
       "updated": "2026-06-21",
-      "locale": "en"
+      "locale": "en",
+      "declaredUpdated": "2026-06-21"
     },
     {
       "title": "Site Stats",
@@ -124,133 +153,134 @@
       "title": "计算机系统基础讲义",
       "url": "/zh/notes/computer-systems-lecture/",
       "updated": "2026-05-21",
-      "locale": "zh"
-    },
-    {
-      "title": "现在",
-      "url": "/zh/now/",
-      "updated": "2026-05-21",
-      "locale": "zh"
+      "locale": "zh",
+      "declaredUpdated": "2026-05-21"
     },
     {
       "title": "Projects",
       "url": "/en/projects/",
       "updated": "2026-05-21",
-      "locale": "en"
-    },
-    {
-      "title": "Now",
-      "url": "/en/now/",
-      "updated": "2026-05-21",
-      "locale": "en"
+      "locale": "en",
+      "declaredUpdated": "2026-05-21"
     },
     {
       "title": "FDS 数据结构基础讲义",
       "url": "/zh/notes/fds-data-structures-lecture/",
       "updated": "2026-05-21",
-      "locale": "zh"
+      "locale": "zh",
+      "declaredUpdated": "2026-05-21"
     },
     {
       "title": "FDS Data Structures Fundamentals Lecture Notes",
       "url": "/en/notes/fds-data-structures-lecture/",
       "updated": "2026-05-21",
-      "locale": "en"
+      "locale": "en",
+      "declaredUpdated": "2026-05-21"
     },
     {
       "title": "Discrete Mathematics Lecture Notes",
       "url": "/en/notes/discrete-math-lecture/",
       "updated": "2026-05-21",
-      "locale": "en"
+      "locale": "en",
+      "declaredUpdated": "2026-05-21"
     },
     {
       "title": "Computer Systems Fundamentals Lecture Notes",
       "url": "/en/notes/computer-systems-lecture/",
       "updated": "2026-05-21",
-      "locale": "en"
+      "locale": "en",
+      "declaredUpdated": "2026-05-21"
     },
     {
       "title": "随笔",
       "url": "/zh/notes/essays/",
       "updated": "2026-05-15",
-      "locale": "zh"
+      "locale": "zh",
+      "declaredUpdated": "2026-05-15"
     },
     {
       "title": "系统笔记",
       "url": "/zh/notes/systems/",
       "updated": "2026-05-15",
-      "locale": "zh"
+      "locale": "zh",
+      "declaredUpdated": "2026-05-15"
     },
     {
       "title": "算法笔记",
       "url": "/zh/notes/algorithms/",
       "updated": "2026-05-15",
-      "locale": "zh"
+      "locale": "zh",
+      "declaredUpdated": "2026-05-15"
     },
     {
       "title": "站点笔记",
       "url": "/zh/notes/site/",
       "updated": "2026-05-15",
-      "locale": "zh"
+      "locale": "zh",
+      "declaredUpdated": "2026-05-15"
     },
     {
       "title": "离散数学讲义",
       "url": "/zh/notes/discrete-math-lecture/",
       "updated": "2026-05-15",
-      "locale": "zh"
+      "locale": "zh",
+      "declaredUpdated": "2026-05-13"
     },
     {
       "title": "标签",
       "url": "/zh/notes/tags/",
       "updated": "2026-05-15",
-      "locale": "zh"
+      "locale": "zh",
+      "declaredUpdated": "2026-05-15"
     },
     {
       "title": "数学笔记",
       "url": "/zh/notes/math/",
       "updated": "2026-05-15",
-      "locale": "zh"
+      "locale": "zh",
+      "declaredUpdated": "2026-05-15"
     },
     {
       "title": "数学实验",
       "url": "/zh/notes/math-lab/",
       "updated": "2026-05-15",
-      "locale": "zh"
-    },
-    {
-      "title": "关于",
-      "url": "/zh/about/",
-      "updated": "2026-05-15",
-      "locale": "zh"
+      "locale": "zh",
+      "declaredUpdated": "2026-05-13"
     },
     {
       "title": "公开边界",
       "url": "/zh/notes/public-scope/",
       "updated": "2026-05-15",
-      "locale": "zh"
+      "locale": "zh",
+      "declaredUpdated": "2026-05-13"
     },
     {
       "title": "Tags",
       "url": "/en/notes/tags/",
       "updated": "2026-05-15",
-      "locale": "en"
+      "locale": "en",
+      "declaredUpdated": "2026-05-15"
     },
     {
       "title": "Systems Notes",
       "url": "/en/notes/systems/",
       "updated": "2026-05-15",
-      "locale": "en"
+      "locale": "en",
+      "declaredUpdated": "2026-05-15"
     },
     {
       "title": "Site Notes",
       "url": "/en/notes/site/",
       "updated": "2026-05-15",
-      "locale": "en"
+      "locale": "en",
+      "declaredUpdated": "2026-05-15"
     },
     {
       "title": "Public Scope",
       "url": "/en/notes/public-scope/",
       "updated": "2026-05-15",
-      "locale": "en"
+      "locale": "en",
+      "declaredUpdated": "2026-05-13"
     },
     {
       "title": "Notes",
@@ -262,43 +292,43 @@
       "title": "Math Notes",
       "url": "/en/notes/math/",
       "updated": "2026-05-15",
-      "locale": "en"
+      "locale": "en",
+      "declaredUpdated": "2026-05-15"
     },
     {
       "title": "Math Lab",
       "url": "/en/notes/math-lab/",
       "updated": "2026-05-15",
-      "locale": "en"
+      "locale": "en",
+      "declaredUpdated": "2026-05-13"
     },
     {
       "title": "Essays",
       "url": "/en/notes/essays/",
       "updated": "2026-05-15",
-      "locale": "en"
+      "locale": "en",
+      "declaredUpdated": "2026-05-15"
     },
     {
       "title": "Algorithms Notes",
       "url": "/en/notes/algorithms/",
       "updated": "2026-05-15",
-      "locale": "en"
-    },
-    {
-      "title": "About",
-      "url": "/en/about/",
-      "updated": "2026-05-15",
-      "locale": "en"
+      "locale": "en",
+      "declaredUpdated": "2026-05-15"
     },
     {
       "title": "AI 笔记",
       "url": "/zh/notes/ai/",
       "updated": "2026-05-15",
-      "locale": "zh"
+      "locale": "zh",
+      "declaredUpdated": "2026-05-15"
     },
     {
       "title": "AI Notes",
       "url": "/en/notes/ai/",
       "updated": "2026-05-15",
-      "locale": "en"
+      "locale": "en",
+      "declaredUpdated": "2026-05-15"
     }
   ]
 }

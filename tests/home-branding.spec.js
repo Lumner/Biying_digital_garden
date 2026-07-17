@@ -80,3 +80,11 @@ for (const locale of locales) {
     }
   });
 }
+
+test("English public identity uses 2025 cohort wording", async ({ page }) => {
+  await page.goto(`${site.url}/en/about/`, { waitUntil: "networkidle" });
+
+  const mainText = await page.locator("main").textContent();
+  expect(mainText).toContain("2025 cohort");
+  expect(mainText).not.toContain("Class of 2025");
+});

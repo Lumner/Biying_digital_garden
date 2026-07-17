@@ -1,6 +1,6 @@
 ---
 title: 关于
-summary: 浙江大学 25 级人工智能专业本科生，关注 AI 协作式全栈构建、具身智能和长期记录。
+summary: 浙江大学 2025 级人工智能专业本科生，关注 AI 协作式全栈构建、具身智能和长期记录。
 public: true
 avatar_readable: true
 tags:
@@ -16,13 +16,13 @@ tags:
   <h1 class="garden-pagehead__title">关于我</h1>
   <p class="garden-pagehead__lead">我在学人工智能，也在练习把想法做成真正能打开、能使用的东西。这里留着我的学习、项目和一点日常。</p>
   <div class="garden-pagehead__meta">
-    <span class="status-pill leaf">浙江大学 25 级</span>
+    <span class="status-pill leaf">浙江大学 2025 级</span>
     <span class="status-pill">人工智能</span>
     <span class="status-pill warm">长期记录</span>
   </div>
 </section>
 
-我是 **浙江大学 25 级人工智能专业本科生**。这个网站像我给自己留的一间小房间：放学习记录、项目过程、最近在想什么，也放着碧影，方便来访的人用聊天的方式逛一逛这些公开内容。
+我是 **浙江大学 2025 级人工智能专业本科生**。这个网站像我给自己留的一间小房间：放学习记录、项目过程、最近在想什么，也放着碧影，方便来访的人用聊天的方式逛一逛这些公开内容。
 
 我不太想把它做成一份板正的个人简介。比起只列结论，我更希望这里能看见过程：我在学什么、为什么会对某件事感兴趣、一个想法是怎样一点点长成作品的。
 
@@ -54,7 +54,7 @@ tags:
 <div class="surface-grid">
   <div class="surface-tile">
     <strong>身份</strong>
-    <span>浙江大学 25 级人工智能专业本科生。</span>
+    <span>浙江大学 2025 级人工智能专业本科生。</span>
   </div>
   <div class="surface-tile">
     <strong>兴趣</strong>

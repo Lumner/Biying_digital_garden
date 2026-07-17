@@ -255,6 +255,37 @@ html[data-biying-lang="en"] .md-nav__item:has(> .md-nav__container a[href*="/zh/
   color: #f4c983;
 }
 
+.now-stale-notice {
+  display: grid;
+  gap: 0.18rem;
+  max-width: 48rem;
+  border: 1px solid rgba(244, 201, 131, 0.22);
+  border-left: 2px solid rgba(244, 201, 131, 0.62);
+  border-radius: 0.45rem;
+  background:
+    linear-gradient(90deg, rgba(244, 201, 131, 0.085), transparent 54%),
+    rgba(5, 14, 17, 0.56);
+  color: #d8eee8;
+  margin: -0.85rem 0 1.45rem;
+  padding: 0.72rem 0.85rem;
+}
+
+.now-stale-notice strong {
+  color: #ffe5b0;
+  font-size: 0.9rem;
+}
+
+.now-stale-notice span {
+  color: #bfd9d4;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.now-stale-notice time {
+  color: #f4c983;
+  font-weight: 800;
+}
+
 .md-typeset code {
   border: 1px solid rgba(79, 255, 219, 0.16);
 }
@@ -3940,6 +3971,7 @@ html[data-biying-theme="light"] .module-update-preview a,
 html[data-biying-theme="light"] .module-update-card,
 html[data-biying-theme="light"] .cyber-card,
 html[data-biying-theme="light"] .quiet-panel,
+html[data-biying-theme="light"] .now-stale-notice,
 html[data-biying-theme="light"] .signal-item,
 html[data-biying-theme="light"] .garden-pagehead,
 html[data-biying-theme="light"] .surface-tile,
@@ -4013,6 +4045,15 @@ html[data-biying-theme="light"] .module-update-card::before {
 }
 
 html[data-biying-theme="light"] .module-update-card p {
+  color: #526e67;
+}
+
+html[data-biying-theme="light"] .now-stale-notice strong,
+html[data-biying-theme="light"] .now-stale-notice time {
+  color: #7a581d;
+}
+
+html[data-biying-theme="light"] .now-stale-notice span {
   color: #526e67;
 }
 
