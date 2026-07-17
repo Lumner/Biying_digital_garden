@@ -31,8 +31,6 @@ theme:
 
 nav:
   - 首页: zh/index.md
-  - 现在: zh/now.md
-  - 关于: zh/about.md
   - 笔记:
       - 笔记首页: zh/notes/index.md
       - 数学:
@@ -54,15 +52,16 @@ nav:
   - 项目:
       - 项目首页: zh/projects/index.md
       - 个人数字花园与碧影: zh/projects/personal-site-avatar.md
+  - 关于: zh/about.md
   - 碧影: zh/avatar/index.md
-  - 留言: zh/guestbook/index.md
-  - 友链: zh/friends.md
-  - 注册/登录: zh/register/index.md
-  - 隐私: zh/privacy.md
-  - 模块更新: zh/updates.md
+  - 更多:
+      - 现在: zh/now.md
+      - 留言: zh/guestbook/index.md
+      - 友链: zh/friends.md
+      - 注册/登录: zh/register/index.md
+      - 隐私: zh/privacy.md
+      - 模块更新: zh/updates.md
   - Home: en/index.md
-  - Now: en/now.md
-  - About: en/about.md
   - Notes:
       - Notes Home: en/notes/index.md
       - Math:
@@ -84,12 +83,15 @@ nav:
   - Projects:
       - Projects Home: en/projects/index.md
       - Personal Digital Garden + Biying: en/projects/personal-site-avatar.md
+  - About: en/about.md
   - Biying: en/avatar/index.md
-  - Guestbook: en/guestbook/index.md
-  - Friends: en/friends.md
-  - Account: en/register/index.md
-  - Privacy: en/privacy.md
-  - Updates: en/updates.md
+  - More:
+      - Now: en/now.md
+      - Guestbook: en/guestbook/index.md
+      - Friends: en/friends.md
+      - Account: en/register/index.md
+      - Privacy: en/privacy.md
+      - Updates: en/updates.md
 
 not_in_nav: |
   index.md

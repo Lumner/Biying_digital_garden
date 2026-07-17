@@ -1,6 +1,6 @@
 ---
 title: 入口
-summary: 碧影数字花园的中文入口，放着我的公开笔记、项目、近况和碧影。
+summary: Lumner 的碧影数字花园中文入口，放着公开笔记、项目、近况和碧影。
 public: true
 avatar_readable: true
 tags:
@@ -15,27 +15,26 @@ tags:
   <span class="home-hero-scan" aria-hidden="true"></span>
   <div class="home-hero-copy">
     <div class="cyber-kicker">BIYING DIGITAL GARDEN</div>
-    <h1 class="cyber-title home-title">碧影数字花园</h1>
+    <h1 class="cyber-title home-title">Lumner 的碧影数字花园</h1>
     <div class="home-typewriter" data-home-typewriter>
-      <span data-home-phrase>向下扎根，也向光生长。</span>
-      <span data-home-phrase>把每一次认真，慢慢写成答案。</span>
-      <span data-home-phrase>愿好奇心不熄，愿行动有回声。</span>
-      <span data-home-phrase>在热爱里长期主义，在日常里保持明亮。</span>
-      <span class="home-typewriter__text" data-home-typewriter-text>向下扎根，也向光生长。</span><span class="home-typewriter__caret" aria-hidden="true"></span>
+      <span data-home-phrase>把学习、项目和表达慢慢写成一座花园。</span>
+      <span data-home-phrase>用 AI 协作建造，也用人的判断把它修好。</span>
+      <span data-home-phrase>笔记是根，项目是枝，碧影负责把公开线索串起来。</span>
+      <span data-home-phrase>长期记录，持续生长。</span>
+      <span class="home-typewriter__text" data-home-typewriter-text>把学习、项目和表达慢慢写成一座花园。</span><span class="home-typewriter__caret" aria-hidden="true"></span>
     </div>
     <p class="cyber-subtitle">
-      这里慢慢收着我的学习、项目和近况。笔记像根，项目像枝，碧影负责把已经公开的内容串起来，陪你少绕一点路。
+      我是 Lumner，浙江大学 2025 级人工智能专业本科生。这里公开记录 AI 协作式全栈构建、具身智能、长期学习笔记，以及正在打磨的个人数字花园与碧影。
     </p>
     <div class="cyber-hero-meta">
-      <span class="status-pill leaf">AI 本科生</span>
-      <span class="status-pill">vibe coding</span>
-      <span class="status-pill warm">具身智能</span>
-      <span class="status-pill">全栈开发</span>
+      <span class="status-pill leaf">站点主人：Lumner</span>
+      <span class="status-pill">网站：碧影数字花园</span>
+      <span class="status-pill warm">数字助手：碧影</span>
+      <span class="status-pill">方向：AI 协作式全栈构建</span>
     </div>
     <div class="cyber-actions">
-      <a class="cyber-button" href="./avatar/">和碧影对话</a>
-      <a class="cyber-button secondary" href="./projects/">查看项目</a>
-      <a class="cyber-button secondary" href="./notes/">进入笔记</a>
+      <a class="cyber-button" href="./projects/">查看项目</a>
+      <a class="cyber-button secondary" href="./avatar/">和碧影对话</a>
     </div>
   </div>
   <div class="home-hero-dock" aria-hidden="true">
@@ -47,15 +46,24 @@ tags:
 
 <script defer src="../assets/javascripts/home-hero.js?v=20260621-2"></script>
 
-<section id="home-content" class="home-below-fold" aria-label="首页内容入口">
+<section id="home-content" class="home-below-fold" aria-label="首页身份概览">
   <div class="home-below-fold__copy">
-    <span class="cyber-kicker">PUBLIC ENTRANCE</span>
-    <h2>从这里继续向下走</h2>
-    <p>近况、笔记、项目和碧影都在这里。想认真读也行，随手逛一圈也行。</p>
-    <div class="home-below-fold__routes" aria-label="常用入口">
-      <a href="./now/"><span>此刻</span><strong>看近况</strong></a>
-      <a href="./notes/"><span>笔记</span><strong>随机阅读</strong></a>
-      <a href="./avatar/"><span>碧影</span><strong>直接对话</strong></a>
+    <span class="cyber-kicker">PUBLIC PROFILE</span>
+    <h2>10 秒看懂这里</h2>
+    <p>这里有三层名字：Lumner 是站点主人，碧影数字花园是网站，碧影是只读取公开内容的数字助手。</p>
+    <div class="surface-grid" aria-label="公开身份与方向">
+      <div class="surface-tile">
+        <strong>身份</strong>
+        <span>浙江大学 2025 级人工智能专业本科生。</span>
+      </div>
+      <div class="surface-tile">
+        <strong>关注方向</strong>
+        <span>AI 协作式全栈构建、具身智能和长期记录。</span>
+      </div>
+      <div class="surface-tile">
+        <strong>可验证入口</strong>
+        <span>项目页、公开笔记、站点边界说明和模块更新记录。</span>
+      </div>
     </div>
     <div class="site-stats-panel site-stats-panel--home" data-site-stats aria-label="站点统计">
       <div class="site-stats-panel__intro">
@@ -92,115 +100,104 @@ tags:
 
 <section class="home-pulse" aria-label="当前动态">
   <div class="home-pulse__item">
-    <span>此刻</span>
-    <strong>正在继续打磨数字花园与碧影</strong>
+    <span>当前项目</span>
+    <strong>继续打磨个人数字花园与碧影</strong>
   </div>
   <div class="home-pulse__item">
-    <span>最近整理</span>
-    <strong>课程讲义、项目复盘与站点边界</strong>
+    <span>学习方向</span>
+    <strong>AI 协作式全栈构建与具身智能</strong>
   </div>
   <div class="home-pulse__item">
-    <span>建议入口</span>
-    <strong>想快速了解近况，可以先看“现在”</strong>
+    <span>内容方式</span>
+    <strong>把笔记、项目复盘和站点边界写清楚</strong>
   </div>
+</section>
+
+<section class="home-section home-section--evidence" aria-labelledby="home-evidence-title">
+  <div class="home-section__head">
+    <span class="cyber-kicker">EVIDENCE</span>
+    <h2 id="home-evidence-title">先看已经公开的证据</h2>
+    <p>这里不把空目录包装成成果。当前最清楚的证据，是这个网站本身、公开笔记、以及碧影的公开知识边界。</p>
+  </div>
+
+<div class="cyber-grid">
+  <section class="cyber-card featured">
+    <span class="cyber-card__label">PROJECT</span>
+    <h3>个人数字花园与碧影</h3>
+    <p>一个双语个人网站，把公开笔记、项目记录、留言、公开知识库和碧影对话放进同一个长期入口。</p>
+    <a href="./projects/personal-site-avatar/">查看项目详情</a>
+  </section>
+  <section class="cyber-card">
+    <span class="cyber-card__label">NOTES</span>
+    <h3>课程讲义与学习记录</h3>
+    <p>数学、系统、算法和站点工程相关内容会继续沉淀，中文为主源，英文尽量同步维护。</p>
+    <a href="./notes/">阅读公开笔记</a>
+  </section>
+  <section class="cyber-card">
+    <span class="cyber-card__label">BOUNDARY</span>
+    <h3>公开知识与回答边界</h3>
+    <p>碧影只读取网站已经公开的内容。草稿、私密文件和账号活动不会进入回答范围。</p>
+    <a href="./notes/public-scope/">查看公开边界</a>
+  </section>
+</div>
+
 </section>
 
 <section class="biying-presence" aria-label="碧影介绍">
   <div>
-    <span class="biying-presence__hello">你好，很高兴认识你。</span>
-    <h2>碧影在这里，陪你从容地逛一逛。</h2>
-    <p>想知道我最近在做什么、这里有哪些内容，或者只是想随便聊聊，都可以先和碧影说句话。这个网站没有写到的部分，他也会如实告诉你。</p>
+    <span class="biying-presence__hello">数字助手：碧影</span>
+    <h2>想轻一点逛，可以让碧影带路。</h2>
+    <p>碧影是这个网站的公开内容向导。他能从已经发布的页面里帮你找线索；如果某件事没有写出来，他也会如实说明。</p>
   </div>
-  <a class="biying-presence__link" href="./avatar/">和碧影聊聊</a>
+  <a class="biying-presence__link" href="./avatar/">启动对话</a>
 </section>
 
-<section class="home-section home-section--updates" aria-labelledby="home-updates-title">
+<section class="home-section home-section--recommended" aria-labelledby="home-recommended-title">
   <div class="home-section__head">
-    <span class="cyber-kicker">RECENT SIGNALS</span>
-    <h2 id="home-updates-title">最近动过的地方</h2>
-    <p>想知道我最近修了哪里，可以先扫一眼这里；更细的记录放在 <a href="./updates/">模块更新</a>。</p>
+    <span class="cyber-kicker">RECOMMENDED</span>
+    <h2 id="home-recommended-title">推荐先读的三处内容</h2>
+    <p>如果你想快速了解这个站点的主人、作品和边界，从这三处开始最稳。</p>
   </div>
 
 <div class="module-update-preview">
-  <a href="./updates/">
-    <span>碧影</span>
-    <strong>增加公开上下文与最近对话记忆</strong>
+  <a href="./projects/personal-site-avatar/">
+    <span>项目</span>
+    <strong>个人数字花园与碧影</strong>
   </a>
-  <a href="./updates/">
-    <span>留言</span>
-    <strong>补上隐私提醒、节流与站主治理</strong>
+  <a href="./notes/public-scope/">
+    <span>边界</span>
+    <strong>公开知识库与碧影读取范围</strong>
   </a>
-  <a href="./updates/">
-    <span>后台</span>
-    <strong>增加恢复码与账号维护工具</strong>
+  <a href="./now/">
+    <span>现在</span>
+    <strong>最近正在推进的事情</strong>
   </a>
 </div>
 
 </section>
 
-<section class="home-section home-section--signals" aria-labelledby="home-signals-title">
+<section class="home-section home-section--status" aria-labelledby="home-status-title">
   <div class="home-section__head">
-    <span class="cyber-kicker">PUBLIC MAP</span>
-    <h2 id="home-signals-title">可以从哪里逛起</h2>
-    <p>这个网站不会一次性完工，它会跟着我的学习和项目继续长大。你可以读笔记、看项目、了解近况，或者直接问碧影。</p>
-  </div>
-
-<div class="cyber-grid">
-  <section class="cyber-card">
-    <span class="cyber-card__label">学习地图</span>
-    <h3>笔记</h3>
-    <p>记录学习、数学、AI、工程和一些慢慢成形的想法。中文为主源，英文尽量同步维护。</p>
-    <a href="./notes/">阅读笔记</a>
-  </section>
-  <section class="cyber-card">
-    <span class="cyber-card__label">项目记录</span>
-    <h3>项目</h3>
-    <p>放正在认真推进的作品，也记录它们为什么这样做、哪里还不够好。</p>
-    <a href="./projects/">查看项目</a>
-  </section>
-  <section class="cyber-card">
-    <span class="cyber-card__label">站点向导</span>
-    <h3>碧影</h3>
-    <p>想更轻松地了解这里，可以直接和碧影聊聊。他会从已经公开的内容里陪你找线索。</p>
-    <a href="./avatar/">启动对话</a>
-  </section>
-  <section class="cyber-card">
-    <span class="cyber-card__label">访客交流</span>
-    <h3>留言</h3>
-    <p>可以公开留一句话，打招呼、提建议都可以。只是别把隐私信息写在这里，因为别人也能看到。</p>
-    <a href="./guestbook/">去留言</a>
-  </section>
-  <section class="cyber-card">
-    <span class="cyber-card__label">外部入口</span>
-    <h3>友链</h3>
-    <p>朋友们的网站入口会放在这里。卡片会自动尝试识别头像，并保留我对朋友的简短介绍。</p>
-    <a href="./friends/">查看友链</a>
-  </section>
-</div>
-
-</section>
-
-<section class="home-section home-section--paths" aria-labelledby="home-paths-title">
-  <div class="home-section__head">
-    <span class="cyber-kicker">WAYS IN</span>
-    <h2 id="home-paths-title">从哪里开始</h2>
+    <span class="cyber-kicker">STATUS & CONTACT</span>
+    <h2 id="home-status-title">当前状态与联系入口</h2>
+    <p>想看近期注意力，去“现在”；想打个招呼，可以用公开留言板；想看代码来源，可以从 GitHub 进入。</p>
   </div>
 
 <div class="signal-list">
   <div class="signal-item">
-    <strong>先认识我</strong>
-    <span>从 <a href="./about/">关于我</a> 和 <a href="./now/">现在</a> 开始，能最快看见我是谁、最近又在忙什么。</span>
+    <strong>近况</strong>
+    <span><a href="./now/">现在</a> 页面记录最近的学习、项目和站点打磨状态。</span>
   </div>
   <div class="signal-item">
-    <strong>看我怎么做</strong>
-    <span>从 <a href="./projects/">项目</a> 和 <a href="./notes/">笔记</a> 进入，会更容易看见技术、取舍和长期积累。</span>
+    <strong>交流</strong>
+    <span><a href="./guestbook/">留言板</a> 是公开区域，适合打招呼、提建议，不适合留下隐私信息。</span>
   </div>
   <div class="signal-item">
-    <strong>想交流</strong>
-    <span>可以去 <a href="./guestbook/">留言</a>，也可以直接和 <a href="./avatar/">碧影</a> 说句话。</span>
+    <strong>代码</strong>
+    <span>这个站点的仓库入口在 <a href="https://github.com/Lumner/Biying_digital_garden">GitHub</a>。</span>
   </div>
 </div>
 
-<p class="quiet-panel">碧影只会读取这个网站已经公开的内容。草稿、私密文件和账号活动不会进入他的回答范围。</p>
+<p class="quiet-panel">首页只展示已经公开且可追溯的信息。真实项目、身份细节和最新状态会继续以项目页、Now 页和模块更新记录为准。</p>
 
 </section>

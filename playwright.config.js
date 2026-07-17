@@ -51,6 +51,7 @@ export default defineConfig({
         /companion\.spec\.js$/,
         /desktop-sidebar\.spec\.js$/,
         /friend-links\.spec\.js$/,
+        /home-branding\.spec\.js$/,
         /no-js\.spec\.js$/,
         /page-meta\.spec\.js$/,
         /responsive\.spec\.js$/,
