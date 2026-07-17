@@ -1,9 +1,9 @@
 ---
 title: Personal Digital Garden + Biying
-summary: A bilingual personal website project that brings public notes, project records, a guestbook, public knowledge, and the Biying digital persona into one long-term entrance.
+summary: A bilingual personal website project that brings public notes, project records, a guestbook, public knowledge, and the Biying digital assistant into one long-term entrance.
 public: true
 avatar_readable: true
-updated: 2026-06-21
+updated: 2026-07-18
 tags:
   - personal-site
   - digital-avatar
@@ -15,116 +15,129 @@ tags:
 <section class="garden-pagehead">
   <div class="garden-pagehead__eyebrow">PROJECT CASE</div>
   <h1 class="garden-pagehead__title">Personal Digital Garden + Biying</h1>
-  <p class="garden-pagehead__lead">A long-term entrance where public notes, project records, friends, guestbook messages, public knowledge, and Biying can keep growing with the work.</p>
+  <p class="garden-pagehead__lead">A long-term bilingual personal site for public notes, project records, current status, guestbook messages, and Biying, so visitors can enter the public content through pages or chat.</p>
   <div class="garden-pagehead__meta">
     <span class="status-pill">MkDocs</span>
     <span class="status-pill leaf">EdgeOne</span>
-    <span class="status-pill warm">Updated: 2026-06-21</span>
+    <span class="status-pill warm">Updated: 2026-07-18</span>
   </div>
 </section>
 
+## Project Summary
+
 <div class="project-brief">
   <div>
-    <strong>Positioning</strong>
-    <span>A personal digital garden, not a one-off portfolio.</span>
+    <strong>Type</strong>
+    <span>A long-term personal website and public-content guide, not a one-off portfolio.</span>
   </div>
   <div>
-    <strong>Core</strong>
-    <span>Public content, bilingual notes, RAG retrieval, Biying chat, and guestbook.</span>
+    <strong>Current Status</strong>
+    <span>The site, bilingual content, public knowledge, Biying entry, guestbook, admin flow, and automated checks have a working baseline.</span>
   </div>
   <div>
-    <strong>Status</strong>
-    <span>The site is live, with homepage polish, theme modes, account access, friend links, stats, and CI install stability being tightened.</span>
+    <strong>Evidence</strong>
+    <span>Source pages, scripts, tests, and generated site output are in the repository; production configuration still needs separate confirmation.</span>
   </div>
 </div>
 
-This is the long-term personal website I am building for myself. It is not just a portfolio, and it is not only a chat demo. It brings public notes, project records, current status, friend links, guestbook messages, public knowledge, and Biying into one entrance.
+## Background and Problem
 
-I want it to grow with my learning and building. It now has bilingual pages, course notes, public retrieval, friend links, visitor stats, guestbook and admin APIs, mobile smoke tests, and self-hosted math rendering assets. Later it can hold more real projects, debugging records, temporary thoughts, and steadier production details.
+I needed an entrance that is more stable than a social profile and better at preserving process than a formal resume. It has to hold learning notes, project reflection, current status, visitor messages, and public boundary notes without scattering them across unrelated tools.
 
-## Background
+The second problem is navigation. Visitors may not know whether to start from notes, projects, or current status, so Biying acts as a guide to the public content. He is not an all-knowing substitute for me; he only reads what has already been published on this site and says so when the material is missing.
 
-I wanted a place that feels more stable than a social profile and more relaxed than a formal introduction. Friends can see what I have been working on recently. People who are also interested in AI and engineering can follow the notes and projects into the actual process.
-
-Biying is the unusual part of this project. He is not an all-knowing substitute for me, just a gentle guide to public content: he reads what has already been published on the site, helps visitors find useful signals, and says he does not know when the material is not there.
-
-## What I Did
+## My Role
 
 <div class="timeline-list">
   <div class="timeline-item">
-    <strong>Site Structure</strong>
-    <span>Built the MkDocs Material site structure and planned pages for home, about, now, notes, projects, Biying, and guestbook.</span>
+    <strong>Information Architecture</strong>
+    <span>Planned the home, about, now, notes, projects, Biying, guestbook, privacy, and update pages while keeping Chinese and English routes paired.</span>
   </div>
   <div class="timeline-item">
-    <strong>Bilingual Content</strong>
-    <span>Designed the `/zh/` and `/en/` structure so navigation, pages, and public knowledge stay paired.</span>
+    <strong>Frontend Experience</strong>
+    <span>Implemented the homepage, theme modes, language switcher, mobile header, sidebar handles, chat UI, guestbook, and basic admin surfaces.</span>
   </div>
   <div class="timeline-item">
-    <strong>Note Import</strong>
-    <span>Imported three course notes, then fixed math rendering and chapter navigation for long lecture pages.</span>
+    <strong>Public Knowledge and Chat</strong>
+    <span>Built the public knowledge flow and designed Biying's readable scope, source boundaries, refusal boundaries, and chat states.</span>
   </div>
   <div class="timeline-item">
-    <strong>Biying and Guestbook</strong>
-    <span>Designed Biying's tone, readable scope, and refusal boundaries, then implemented the chat frontend, guestbook frontend, admin entry, EdgeOne Functions style APIs, and local transcript restore.</span>
-  </div>
-  <div class="timeline-item">
-    <strong>Knowledge and Retrieval</strong>
-    <span>Built public pages into a readable knowledge base, split content by sections, and gave the current page, Now page, and project pages stronger retrieval weight.</span>
-  </div>
-  <div class="timeline-item">
-    <strong>Reliability Checks</strong>
-    <span>Added shared frontend utilities, API error handling, rate-limit responses, public-scope validation, site-sync checks, dependency pinning, and Playwright mobile tests.</span>
+    <strong>Validation and Release Preparation</strong>
+    <span>Added public-scope validation, site-sync checks, API tests, responsive tests, accessibility tests, site budget checks, and release verification scripts.</span>
   </div>
 </div>
 
-## Tech Stack
+## Constraints
+
+- Biying can only read public, verifiable content. Drafts, local files, account activity, and private information stay outside the answer scope.
+- Chinese and English pages need paired structure, but English course notes are currently overviews and must not be presented as full translations.
+- The site needs to keep its visual character while staying readable and operable at 320px, 393px, 768px, and 1440px viewports.
+- Online KV bindings, model keys, and platform configuration belong to deployment and cannot be described as fully stable production capability here.
+- Dependency audit, asset slimming, and long-note splitting need separate passes so they do not get mixed into project storytelling.
+
+## Key Decisions
 
 <div class="cyber-grid">
   <section class="cyber-card">
-    <h3>Content Site</h3>
-    <p>MkDocs Material, Markdown, Pymdown Extensions, and MathJax for notes, page structure, and math rendering.</p>
+    <h3>Chinese as the Source</h3>
+    <p>Chinese pages carry the fuller content. English pages prioritize clear entrances, overviews, and boundaries until full translation is available.</p>
   </section>
   <section class="cyber-card">
-    <h3>Bilingual Content</h3>
-    <p>Chinese is the source language, English stays in step, and navigation, pages, and public knowledge are maintained in pairs.</p>
+    <h3>Public Boundary First</h3>
+    <p>Biying's answers depend on the public knowledge base. The `public` and `avatar_readable` frontmatter fields decide what can enter that source.</p>
   </section>
   <section class="cyber-card">
-    <h3>Biying Chat</h3>
-    <p>Public knowledge generation, section-level chunks, source boundaries, dialogue design, EdgeOne Functions style APIs, and DeepSeek/OpenAI-compatible model access.</p>
+    <h3>Progressive Enhancement</h3>
+    <p>Content must stay readable without JavaScript, in print, with reduced motion, and on mobile. Interaction effects are enhancement, not the foundation.</p>
   </section>
   <section class="cyber-card">
-    <h3>Interaction and Deployment</h3>
-    <p>Vanilla JavaScript, shared frontend utilities, cyber-style CSS, public guestbook, EdgeOne Pages/Functions/KV deployment path, GitHub CI, and Playwright mobile tests.</p>
-  </section>
-  <section class="cyber-card">
-    <h3>Assets and Math</h3>
-    <p>MathJax is self-hosted with the repository and generated site, reducing CDN dependency; the build script keeps static output in sync.</p>
+    <h3>Tests as Rollback Anchors</h3>
+    <p>Each phase gets automated checks and separate commits, so a broken phase can be reverted without unpacking one large mixed change.</p>
   </section>
 </div>
 
-## Results
+## Implementation Process
 
-- The site can be built and previewed locally, and `python scripts/build_site.py` now handles knowledge generation, MkDocs build, and site-sync validation.
-- Chinese and English pages now have a clear structure for future additions.
-- Three course notes have become readable website pages with math rendering and chapter navigation.
-- Biying can answer questions related to site content from the public knowledge base while respecting the public-scope boundary.
-- Guestbook, admin message management, authentication helper APIs, and the EdgeOne deployment path now have a basic loop.
-- Friend links support configured avatars and favicon fallback, and the homepage can show visitor and page-view totals.
-- Theme switching supports light, dark, and system mode, with system mode as the first-visit default.
-- Public-scope validation, mobile smoke tests, site-sync checks, and self-hosted MathJax are part of the maintenance flow.
+1. Created the MkDocs Material bilingual site structure with `/zh/` and `/en/` routes.
+2. Imported and organized public course notes, project pages, Now pages, privacy notes, and public boundary pages.
+3. Built the public knowledge generation scripts, splitting allowed pages into retrievable entries with source paths.
+4. Implemented Biying chat, guestbook, admin message handling, authentication helper APIs, stats APIs, and local transcript restore.
+5. Added automated tests for mobile layout, forms, sidebars, no-JS behavior, SEO, APIs, public scope, and site budget.
+6. Refactored homepage, navigation, brand positioning, and Now staleness in separate phases so the homepage only shows confirmed facts.
 
-## Limitations
+## Results and Evidence
 
-- English course notes still need fuller translation and human review.
-- The production environment still needs confirmed model keys, KV bindings, and EdgeOne platform configuration.
-- The guestbook still needs finer moderation, deletion, anti-spam, and a smoother admin flow.
-- Mobile reading, long-note experience, and visual details can still be refined.
-- `edgeone` is now pinned for stable `npm ci`, but its development dependency chain still has audit findings, so dependency cleanup deserves a separate pass.
+- `npm run verify:release` now runs site build, public-scope validation, JS syntax checks, API tests, metadata validation, site budget checks, and browser regression in one release gate.
+- The project includes 21 API tests and browser checks across mobile, tablet, and desktop viewports.
+- Home, project, public boundary, Now, privacy, and Biying pages now form a bilingual public entrance.
+- The public knowledge base is generated from marked pages, and Biying only reads pages that are public and avatar-readable.
+- The site includes privacy notes, guestbook privacy nudges, public-scope notes, and a Now staleness notice.
 
-## Next
+This evidence comes from repository pages, scripts, and tests. No private traffic metrics or unverified production claims are included.
 
-- Project pages need more real work, reflections, and progress notes over time.
-- Connect EdgeOne Functions, KV, model keys, and public source citations into steadier production behavior.
-- Handle dependency audit separately instead of mixing toolchain upgrades into content maintenance.
-- Keep refining homepage visuals, mobile reading, and Biying chat until they feel stable for everyday use.
-- Keep future projects on the same structure: background, what I did, stack, results, limitations, and next steps.
+## Limitations and Next Steps
+
+- This is currently the only real public project case; at least 1–2 more confirmed projects are needed before the projects page can become a fuller portfolio.
+- English course notes are still overviews and need human review or full translation before being labeled as complete.
+- Production model keys, KV bindings, EdgeOne configuration, and read-only online smoke tests still need release-stage confirmation.
+- Long lecture notes still need course-by-course splitting into stable subpaths while keeping old URLs and chapter entrances.
+- Asset weight, source maps, fonts, and page-level script loading belong to the later performance phase.
+
+## Links and Screenshots
+
+<div class="project-framework" aria-label="Project links">
+  <div>
+    <strong>Source Repository</strong>
+    <span><a href="https://github.com/Lumner/Biying_digital_garden">GitHub repository</a></span>
+  </div>
+  <div>
+    <strong>Public Boundary</strong>
+    <span><a href="../../notes/public-scope/">Biying readable content and public scope</a></span>
+  </div>
+  <div>
+    <strong>Current Status</strong>
+    <span>The <a href="../../now/">Now page</a> records current attention and site status.</span>
+  </div>
+</div>
+
+<p class="quiet-panel">No formal project screenshot is included yet. Future screenshots should come from real pages or deployments, not invented interfaces.</p>

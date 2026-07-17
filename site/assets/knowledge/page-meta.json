@@ -1,6 +1,34 @@
 {
   "items": [
     {
+      "title": "项目",
+      "url": "/zh/projects/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-07-18"
+    },
+    {
+      "title": "个人数字花园与碧影",
+      "url": "/zh/projects/personal-site-avatar/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-07-18"
+    },
+    {
+      "title": "Projects",
+      "url": "/en/projects/",
+      "updated": "2026-07-18",
+      "locale": "en",
+      "declaredUpdated": "2026-07-18"
+    },
+    {
+      "title": "Personal Digital Garden + Biying",
+      "url": "/en/projects/personal-site-avatar/",
+      "updated": "2026-07-18",
+      "locale": "en",
+      "declaredUpdated": "2026-07-18"
+    },
+    {
       "title": "隐私说明",
       "url": "/zh/privacy/",
       "updated": "2026-07-17",
@@ -87,13 +115,6 @@
       "locale": "en"
     },
     {
-      "title": "项目",
-      "url": "/zh/projects/",
-      "updated": "2026-06-23",
-      "locale": "zh",
-      "declaredUpdated": "2026-05-21"
-    },
-    {
       "title": "笔记",
       "url": "/zh/notes/",
       "updated": "2026-06-23",
@@ -118,24 +139,10 @@
       "locale": "zh"
     },
     {
-      "title": "个人数字花园与碧影",
-      "url": "/zh/projects/personal-site-avatar/",
-      "updated": "2026-06-23",
-      "locale": "zh",
-      "declaredUpdated": "2026-06-21"
-    },
-    {
       "title": "Updates",
       "url": "/en/updates/",
       "updated": "2026-06-21",
       "locale": "en"
-    },
-    {
-      "title": "Personal Digital Garden + Biying",
-      "url": "/en/projects/personal-site-avatar/",
-      "updated": "2026-06-21",
-      "locale": "en",
-      "declaredUpdated": "2026-06-21"
     },
     {
       "title": "Site Stats",
@@ -154,13 +161,6 @@
       "url": "/zh/notes/computer-systems-lecture/",
       "updated": "2026-05-21",
       "locale": "zh",
-      "declaredUpdated": "2026-05-21"
-    },
-    {
-      "title": "Projects",
-      "url": "/en/projects/",
-      "updated": "2026-05-21",
-      "locale": "en",
       "declaredUpdated": "2026-05-21"
     },
     {

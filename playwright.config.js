@@ -49,6 +49,7 @@ export default defineConfig({
       testMatch: [
         /accessibility\.spec\.js$/,
         /companion\.spec\.js$/,
+        /content-system\.spec\.js$/,
         /desktop-sidebar\.spec\.js$/,
         /friend-links\.spec\.js$/,
         /home-branding\.spec\.js$/,
