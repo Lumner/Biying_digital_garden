@@ -599,10 +599,10 @@ Codex 每完成一个阶段后更新本表。
 |---|---:|---|---|---|
 | 0. 锁定可复现基线 | P0 | Completed | `5261f77` | 依赖已锁定，生成时间改为可复现来源日期 |
 | 1. 建立统一自动测试与 CI 质量门 | P0 | Completed | `e1e14c9` | 84 项 Chromium E2E 与 10 项 API 测试纳入统一门禁；Firefox 由 CI 验证 |
-| 2A. 低风险安全与隐私修复 | P0 | Completed | 本阶段提交 | CORS、恢复、会话失效、写入限流、统计最小化、隐私页和后台分页已完成 |
+| 2A. 低风险安全与隐私修复 | P0 | Completed | `c4b2237` | CORS、恢复、会话失效、写入限流、统计最小化、隐私页和后台分页已完成 |
 | 2B. 用户会话迁移到安全 Cookie | P0 | Pending |  |  |
 | 2C. 管理后台与密码哈希强化 | P1 | Pending |  |  |
-| 3A. 移动端与响应式修复 | P0 | Pending |  |  |
+| 3A. 移动端与响应式修复 | P0 | Completed | 本阶段提交 | 窄屏标题、合并头部工具、触控尺寸、安全区和聊天首屏已完成 |
 | 3B. 表单、弹层与读屏无障碍 | P0 | Pending |  |  |
 | 3C. 渐进增强、侧栏和动效收敛 | P1 | Pending |  |  |
 | 4. 首页、导航和品牌定位重构 | P1 | Pending |  | 需要内容/视觉确认 |
@@ -1025,11 +1025,15 @@ git revert <服务端双读提交号>
 
 - `docs/assets/styles/cyber.css`
 - `docs/assets/javascripts/language-switch.js`
+- `docs/assets/javascripts/biying-chat.js`
 - `docs/overrides/main.html`
 - `docs/zh/index.md`
 - `docs/en/index.md`
+- `docs/zh/avatar/index.md`
+- `docs/en/avatar/index.md`
+- `mkdocs.yml`
 - `tests/responsive.spec.js`
-- 相关现有 Playwright 测试
+- `tests/mobile-biying.spec.js`
 
 ### 实施任务
 
@@ -1082,6 +1086,15 @@ fix: remove mobile overflow and simplify header
 ```powershell
 git revert <阶段3A提交号>
 ```
+
+### 完成记录
+
+- 320px 与 393px 首页标题使用 `clamp()` 自适应，并以实际边界断言防止再次裁切。
+- 896px 以下头部收敛为菜单、短站点名和单一站点工具入口；搜索、主题与语言切换均可从工具菜单访问。
+- 移动端公告只显示当前语言说明，关键按钮和导航触控高度不低于 44 CSS px。
+- 固定进度条、聊天浮层、关闭按钮和悬浮入口均加入安全区偏移。
+- 中英文聊天页移除重复介绍，将回答范围折叠到输入区之后，输入框在 320、393、768 与 1440 四种视口首屏可见。
+- 响应式测试覆盖中英文首页、笔记、长文、项目、聊天、账户和隐私页，并验证横向溢出、标题边界、头部控件、公告高度、主题模式与聊天首屏。
 
 ---
 

@@ -23,14 +23,14 @@
     const copy = {
       placeholder: zh ? "和碧影说点什么..." : "Say something to Biying...",
       send: zh ? "发送" : "Send",
-      headerTitle: zh ? "你好，很高兴认识你。" : "Hello, it is nice to meet you.",
+      headerTitle: zh ? "碧影" : "Biying",
       headerScope: zh
-        ? "我会从这个网站已经公开的内容里陪你慢慢聊。"
-        : "I answer from what has already been shared on this site.",
+        ? "从本站公开内容里找线索。"
+        : "Guided by this site's public content.",
       sources: zh ? "想继续往下看，可以从这些页接着走" : "You can keep reading from",
       initial: zh
-        ? "你好，很高兴认识你。我是碧影。你可以和我聊聊这里已经写下的内容，也可以只是随便说说话。"
-        : "Hello, it is nice to meet you. I am Biying. You can ask about what has already been shared here, or simply stay for a chat.",
+        ? "你好，我是碧影。想从近况、笔记还是项目开始？"
+        : "Hello, I am Biying. Shall we start with current work, notes, or projects?",
       offline: zh
         ? "我先用本地公开知识库回答。"
         : "I will answer from the local public knowledge base for now.",
@@ -695,7 +695,7 @@
       <div class="biying-chat__log" aria-live="polite"></div>
       <form class="biying-chat__form">
         <p class="meta-line" data-biying-auth-note></p>
-        <textarea rows="3" maxlength="900" placeholder="${text("placeholder")}"></textarea>
+        <textarea rows="2" maxlength="900" placeholder="${text("placeholder")}"></textarea>
         <button type="submit">${text("send")}</button>
       </form>
     `;

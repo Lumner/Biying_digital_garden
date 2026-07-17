@@ -55,7 +55,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/styles/cyber.css?v=20260622-6">
+      <link rel="stylesheet" href="../../assets/styles/cyber.css?v=20260717-1">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -108,7 +108,11 @@
           <div class="md-banner__inner md-grid md-typeset">
             
             
-  <span class="cyber-announce">BIYING ONLINE / 公开内容驱动 / Public knowledge only</span>
+  <span class="cyber-announce">
+    <span class="cyber-announce__status">BIYING ONLINE</span>
+    <span class="cyber-announce__locale cyber-announce__locale--zh">公开内容驱动</span>
+    <span class="cyber-announce__locale cyber-announce__locale--en">Public knowledge only</span>
+  </span>
 
           </div>
           
@@ -2815,26 +2819,20 @@
   
 
 
-<section class="garden-pagehead">
+<section class="garden-pagehead garden-pagehead--chat">
   <div class="garden-pagehead__eyebrow">BIYING</div>
   <h1 class="garden-pagehead__title">Biying</h1>
-  <p class="garden-pagehead__lead">Biying lives quietly inside this site: gentle, unhurried, and happy to help you make sense of what has already been shared here.</p>
-  <div class="garden-pagehead__meta">
-    <span class="status-pill leaf">Public Guide</span>
-    <span class="status-pill">Open to Chat</span>
-    <span class="status-pill warm">Gentle Tone</span>
-  </div>
+  <p class="garden-pagehead__lead">Start with current work, notes, or projects—or simply stay for a chat.</p>
 </section>
 
-<p>If you want to know what I have been working on, what notes are here, or simply exchange a few words, you can start with Biying.<br />
-He answers from content already published on this site, and when something has not been written down yet, he says so plainly.</p>
-<div class="admonition info">
-<p class="admonition-title">Current mode</p>
-<p>After sign-in, Biying first uses the live API. The chat box only falls back to the local public knowledge base when the network or endpoint is unavailable.</p>
-</div>
 <div class="interaction-shell interaction-shell--page-chat">
   <div class="biying-chat" data-biying-chat></div>
 </div>
+
+<details class="chat-page-details">
+  <summary>Answer scope and connection mode</summary>
+  <p>Biying prioritizes content already published on this site and says plainly when something is not covered. After sign-in, the live chat service is tried first; the local public knowledge base is used when the network or endpoint is unavailable.</p>
+</details>
 
 
 
@@ -2914,7 +2912,7 @@ He answers from content already published on this site, and when something has n
       
         <script src="../../assets/vendor/mathjax/es5/tex-mml-chtml.js?v=20260520-1"></script>
       
-        <script src="../../assets/javascripts/language-switch.js?v=20260621-3"></script>
+        <script src="../../assets/javascripts/language-switch.js?v=20260717-1"></script>
 
         <script src="../../assets/javascripts/page-meta.js?v=20260522-1"></script>
 
@@ -2942,7 +2940,7 @@ He answers from content already published on this site, and when something has n
 
         <script src="../../assets/javascripts/auth.js?v=20260621-2"></script>
       
-        <script src="../../assets/javascripts/biying-chat.js?v=20260622-4"></script>
+        <script src="../../assets/javascripts/biying-chat.js?v=20260717-1"></script>
       
         <script src="../../assets/javascripts/guestbook.js?v=20260521-1"></script>
       
