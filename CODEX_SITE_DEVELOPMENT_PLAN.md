@@ -338,7 +338,7 @@ refactor: split site styles without visual changes
 ```text
 .quality/
   site-budget.json
-  accessibility-baseline.json
+  accessibility-baseline.json（仅在存在已批准例外时使用；例外清零后删除）
 
 scripts/
   check_javascript_syntax.py
@@ -1163,6 +1163,16 @@ fix: make forms chat and navigation accessible
 ```powershell
 git revert <阶段3B提交号>
 ```
+
+### 完成记录
+
+- 账户、聊天、留言和后台的自定义输入均改用真实 `<label>`；占位符只保留示例用途。
+- 加载、成功和错误状态分别使用 `role="status"`、`role="alert"`、`aria-live`、`aria-busy` 与字段级 `aria-describedby` / `aria-invalid`。
+- 账户页签支持左右方向键、Home 和 End；移动聊天实现 Dialog 语义、焦点进入、Tab 环绕、Escape 关闭与触发按钮焦点恢复。
+- 新增跳转正文链接和统一 `:focus-visible`，蜜罐字段同时退出视觉、键盘和读屏访问路径。
+- 首页打字机与聊天消息日志不再作为逐字符 Live Region；聊天只播报思考状态和最终完整回答。
+- 长讲义的横向表格与代码滚动区可由键盘聚焦，原有 Axe serious 例外已清零并删除基线文件。
+- 无障碍测试覆盖表单命名、Skip Link、页签、Dialog、登录错误关联、留言键盘提交与聊天播报；完整发布门禁通过。
 
 ---
 

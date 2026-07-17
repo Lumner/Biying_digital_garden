@@ -86,8 +86,22 @@
     }, { passive: true });
   }
 
+  function mountKeyboardScrollableRegions() {
+    const candidates = document.querySelectorAll(
+      ".md-typeset__scrollwrap, .highlight code, pre > code"
+    );
+    candidates.forEach((element) => {
+      const horizontallyScrollable = element.scrollWidth > element.clientWidth + 1;
+      const verticallyScrollable = element.scrollHeight > element.clientHeight + 1;
+      if (!horizontallyScrollable && !verticallyScrollable) return;
+      if (!element.hasAttribute("tabindex")) element.setAttribute("tabindex", "0");
+      element.dataset.keyboardScroll = "true";
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     mountPrimaryEdgePeek();
     mountSecondaryDirectPeek();
+    mountKeyboardScrollableRegions();
   });
 })();

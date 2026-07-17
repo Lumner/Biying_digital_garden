@@ -14,6 +14,7 @@
     const zh = isChinesePage();
     return {
       message: zh ? "想留下一句什么？" : "Leave a message",
+      messageExample: zh ? "例如：很喜欢这篇笔记里的思路。" : "For example: I enjoyed the way this note explains the idea.",
       submit: zh ? "留下这句话" : "Post publicly",
       empty: zh ? "请填写留言内容。" : "Please enter a message.",
       intro: zh ? "留言会公开展示，请不要填写隐私信息。" : "Messages are public. Please do not include private information.",
@@ -36,6 +37,8 @@
       kv: zh ? "留言存储还没接好，等站点配置完成后就能正常使用。" : "Guestbook requires BIYING_KV to be bound in EdgeOne.",
       apiNotFound: zh ? "暂时没有找到留言入口，可能是这次只发布了静态页面。" : "/api/messages was not found. EdgeOne Functions may not be deployed, or the project is only serving the static site directory.",
       apiUnavailable: zh ? "留言服务暂时没有回应，请稍后再试。" : "The guestbook API did not return a usable response. Please check whether EdgeOne Functions are active for this deployment.",
+      loading: zh ? "正在加载留言……" : "Loading messages…",
+      saving: zh ? "正在保存留言……" : "Saving message…",
       error: zh ? "这次没有成功，请稍后再试。" : "The action failed. Please try again later."
     }[key];
   }
@@ -81,6 +84,22 @@
       window.BiyingToast.show(message, { type });
     }
     return message;
+  }
+
+  function setStatus(element, message, state = "idle") {
+    if (!element) return;
+    element.textContent = message || "";
+    element.dataset.state = state;
+    const isError = state === "error";
+    element.setAttribute("role", isError ? "alert" : "status");
+    element.setAttribute("aria-live", isError ? "assertive" : "polite");
+  }
+
+  function setBusy(root, busy) {
+    root.setAttribute("aria-busy", String(busy));
+    root.querySelectorAll(".guestbook__form button[type='submit']").forEach((button) => {
+      button.disabled = busy;
+    });
   }
 
   async function fetchMessages() {
@@ -162,14 +181,18 @@
       return;
     }
     slot.innerHTML = `
-      <form class="guestbook__form">
+      <form class="guestbook__form" novalidate>
         <div class="guestbook__composer-meta">
           <p class="meta-line">${copy("writingAs")} ${escapeHtml(user.displayName)} (@${escapeHtml(user.username)})</p>
-          <span data-guestbook-counter>0 / 800 ${copy("characters")}</span>
+          <span id="guestbook-counter" data-guestbook-counter>0 / 800 ${copy("characters")}</span>
         </div>
-        <textarea name="content" rows="4" maxlength="800" placeholder="${copy("message")}"></textarea>
-        <p class="meta-line guestbook__privacy-hint" data-guestbook-privacy hidden>${copy("privacyHint")}</p>
-        <input class="hp-field" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <p class="meta-line" id="guestbook-public-hint">${copy("intro")}</p>
+        <label class="form-field" for="guestbook-content">
+          <span class="form-field__label">${copy("message")}</span>
+          <textarea id="guestbook-content" name="content" rows="4" maxlength="800" placeholder="${copy("messageExample")}" aria-describedby="guestbook-public-hint guestbook-counter guestbook-privacy-hint guestbook-status"></textarea>
+        </label>
+        <p class="meta-line guestbook__privacy-hint" id="guestbook-privacy-hint" data-guestbook-privacy role="status" aria-live="polite" aria-atomic="true" hidden>${copy("privacyHint")}</p>
+        <input class="hp-field" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" hidden />
         <button type="submit">${copy("submit")}</button>
       </form>
     `;
@@ -185,7 +208,7 @@
       </div>
       <div class="guestbook__list"></div>
       <div data-guestbook-form></div>
-      <p class="meta-line" data-guestbook-message></p>
+      <p class="meta-line form-status" id="guestbook-status" data-guestbook-message role="status" aria-live="polite" aria-atomic="true"></p>
     `;
 
     const list = root.querySelector(".guestbook__list");
@@ -193,23 +216,31 @@
     const status = root.querySelector("[data-guestbook-message]");
     const count = root.querySelector("[data-guestbook-count]");
 
-    async function refresh(highlightId = "") {
+    async function refresh(highlightId = "", options = {}) {
       renderForm(formSlot);
+      if (options.announceLoading !== false) setStatus(status, copy("loading"), "loading");
+      setBusy(root, true);
+      let loaded = true;
       try {
         state.messages = await fetchMessages();
+        if (options.announceLoading !== false) setStatus(status, "", "idle");
       } catch (error) {
-        status.textContent = notify(friendlyError(error), "error");
+        setStatus(status, notify(friendlyError(error), "error"), "error");
         state.messages = [];
+        loaded = false;
+      } finally {
+        setBusy(root, false);
       }
       renderList(list, state.messages, highlightId);
       count.textContent = String(state.messages.length);
+      return loaded;
     }
 
     refresh();
     if (auth()) {
       auth().refresh().finally(refresh);
     }
-    window.addEventListener("biying-auth-change", refresh);
+    window.addEventListener("biying-auth-change", () => refresh());
 
     formSlot.addEventListener("submit", async (event) => {
       event.preventDefault();
@@ -222,17 +253,27 @@
         locale: dom.locale()
       };
       if (!message.content) {
-        status.textContent = notify(copy("empty"), "warning");
+        const textarea = form.querySelector("textarea[name='content']");
+        textarea?.setAttribute("aria-invalid", "true");
+        setStatus(status, notify(copy("empty"), "warning"), "error");
+        textarea?.focus();
         return;
       }
       if (message.website) return;
+      setStatus(status, copy("saving"), "loading");
+      setBusy(root, true);
       try {
         const result = await postMessage(message);
         form.reset();
-        status.textContent = notify(copy("saved"), "success");
-        await refresh(result && result.message ? result.message.id : "");
+        const loaded = await refresh(result && result.message ? result.message.id : "", {
+          announceLoading: false
+        });
+        if (loaded) setStatus(status, notify(copy("saved"), "success"), "success");
       } catch (error) {
-        status.textContent = notify(friendlyError(error), "error");
+        setStatus(status, notify(friendlyError(error), "error"), "error");
+        form.querySelector("textarea[name='content']")?.setAttribute("aria-invalid", "true");
+      } finally {
+        setBusy(root, false);
       }
     });
 
@@ -241,6 +282,10 @@
       if (!textarea) return;
       const counter = formSlot.querySelector("[data-guestbook-counter]");
       const hint = formSlot.querySelector("[data-guestbook-privacy]");
+      textarea.removeAttribute("aria-invalid");
+      if (status.dataset.state === "error" && status.textContent === copy("empty")) {
+        setStatus(status, "", "idle");
+      }
       if (counter) counter.textContent = `${textarea.value.length} / 800 ${copy("characters")}`;
       if (hint) {
         const looksPrivate = /(?:1[3-9]\d{9}|[\w.+-]+@[\w-]+\.[\w.-]+|微信|QQ|手机号|邮箱|wechat)/i.test(textarea.value);
@@ -257,25 +302,30 @@
       if (!message) return;
 
       try {
+        let successMessage = "";
         if (editButton) {
           const next = window.prompt(copy("editPrompt"), message.content);
           if (next === null) return;
           const content = next.trim();
           if (!content) {
-            status.textContent = notify(copy("empty"), "warning");
+            setStatus(status, notify(copy("empty"), "warning"), "error");
             return;
           }
+          setStatus(status, copy("saving"), "loading");
           await editMessage(id, content);
-          status.textContent = notify(copy("saved"), "success");
-        } else if (window.confirm(copy("deleteConfirm"))) {
+          successMessage = copy("saved");
+        } else {
+          if (!window.confirm(copy("deleteConfirm"))) return;
+          setStatus(status, copy("saving"), "loading");
           const card = list.querySelector(`[data-id="${CSS.escape(id)}"]`);
           if (card) card.classList.add("is-removing");
           await deleteMessage(id);
-          status.textContent = notify(copy("deleted"), "success");
+          successMessage = copy("deleted");
         }
-        await refresh();
+        const loaded = await refresh("", { announceLoading: false });
+        if (loaded) setStatus(status, notify(successMessage, "success"), "success");
       } catch (error) {
-        status.textContent = notify(friendlyError(error), "error");
+        setStatus(status, notify(friendlyError(error), "error"), "error");
       }
     });
   }

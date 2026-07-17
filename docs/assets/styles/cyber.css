@@ -5158,3 +5158,178 @@ html[data-biying-theme="light"] .mobile-tools__item:focus-visible {
   background: rgba(31, 125, 109, 0.1);
   color: #102822;
 }
+
+/* Phase 3B: keyboard and assistive-technology foundations */
+.biying-skip-link {
+  position: fixed;
+  top: max(0.5rem, env(safe-area-inset-top));
+  left: max(0.5rem, env(safe-area-inset-left));
+  z-index: 100;
+  border: 2px solid #f4c983;
+  border-radius: 0.4rem;
+  background: #071216;
+  color: #fff7e8;
+  font-size: 0.86rem;
+  font-weight: 850;
+  padding: 0.58rem 0.82rem;
+  opacity: 0;
+  transform: translateY(calc(-100% - 1rem));
+  transition: opacity 120ms ease, transform 120ms ease;
+}
+
+.biying-skip-link:focus,
+.biying-skip-link:focus-visible {
+  color: #fff7e8;
+  opacity: 1;
+  transform: translateY(0);
+  transition: none;
+}
+
+.biying-main-target {
+  display: block;
+  height: 0;
+  scroll-margin-top: 5rem;
+}
+
+.biying-main-target:focus {
+  outline: none;
+}
+
+.form-field {
+  display: grid;
+  gap: 0.34rem;
+  min-width: 0;
+}
+
+.form-field__label {
+  color: #d9f7f0;
+  font-size: 0.78rem;
+  font-weight: 780;
+  line-height: 1.45;
+}
+
+.form-status {
+  min-height: 1.2em;
+  margin: 0;
+  line-height: 1.55;
+}
+
+.form-status:empty,
+.sr-only.form-status {
+  min-height: 0;
+}
+
+.form-status[data-state="loading"] {
+  color: #bceee4;
+}
+
+.form-status[data-state="success"] {
+  color: #dfffd8;
+  font-weight: 750;
+}
+
+.form-status[data-state="error"] {
+  color: #ffe3ad;
+  font-weight: 800;
+}
+
+[aria-invalid="true"] {
+  border-color: #f4c983 !important;
+  box-shadow: 0 0 0 2px rgba(244, 201, 131, 0.2) !important;
+}
+
+button[disabled] {
+  opacity: 0.62;
+}
+
+[aria-busy="true"] button[disabled] {
+  cursor: wait;
+}
+
+.hp-field[hidden] {
+  display: none !important;
+}
+
+.admin-token-field {
+  flex: 1 1 14rem;
+}
+
+.admin-token-field input,
+.admin-search-field input {
+  width: 100%;
+}
+
+.admin-toolbar .admin-search-field {
+  flex: 1 1 14rem;
+}
+
+:where(
+  a[href],
+  button,
+  input:not([type="hidden"]),
+  textarea,
+  select,
+  summary,
+  [role="tab"],
+  [tabindex]:not([tabindex="-1"])
+):focus-visible {
+  outline: 3px solid #f4c983 !important;
+  outline-offset: 3px;
+}
+
+.biying-chat__log:focus-visible {
+  outline-offset: -3px;
+}
+
+[data-keyboard-scroll="true"]:focus-visible {
+  outline-offset: -3px;
+}
+
+html[data-biying-theme="light"] .biying-skip-link {
+  border-color: #135f52;
+  background: #f8fff9;
+  color: #102822;
+}
+
+html[data-biying-theme="light"] .form-field__label {
+  color: #173d35;
+}
+
+html[data-biying-theme="light"] .form-status[data-state="loading"] {
+  color: #355f57;
+}
+
+html[data-biying-theme="light"] .form-status[data-state="success"] {
+  color: #245b2d;
+}
+
+html[data-biying-theme="light"] .form-status[data-state="error"] {
+  color: #7b4800;
+}
+
+html[data-biying-theme="light"] :where(
+  a[href],
+  button,
+  input:not([type="hidden"]),
+  textarea,
+  select,
+  summary,
+  [role="tab"],
+  [tabindex]:not([tabindex="-1"])
+):focus-visible {
+  outline-color: #135f52 !important;
+}
+
+@media (max-width: 22rem) {
+  .interaction-shell--page-chat .biying-chat__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}

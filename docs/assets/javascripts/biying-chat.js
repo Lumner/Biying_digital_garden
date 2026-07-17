@@ -13,6 +13,7 @@
   const transcriptLimit = 40;
   const historyLimit = 12;
   let hydratedStorageKey = "";
+  let chatMountCount = 0;
 
   function isChinesePage() {
     return i18n.isChinesePage();
@@ -21,7 +22,8 @@
   function text(key) {
     const zh = isChinesePage();
     const copy = {
-      placeholder: zh ? "和碧影说点什么..." : "Say something to Biying...",
+      messageLabel: zh ? "想和碧影聊什么？" : "Message to Biying",
+      placeholder: zh ? "例如：我可以从哪篇笔记开始？" : "For example: Which note should I read first?",
       send: zh ? "发送" : "Send",
       headerTitle: zh ? "碧影" : "Biying",
       headerScope: zh
@@ -53,6 +55,9 @@
       chatFailed: zh ? "线上聊天这次运行失败了，请稍后再试。" : "The chat API failed. Check EdgeOne Functions logs for details.",
       tooFrequent: zh ? "问得有点太快了，请稍等片刻再继续。" : "That was a little too fast. Please wait a moment before continuing.",
       clear: zh ? "清空记录" : "Clear",
+      cleared: zh ? "聊天记录已清空。" : "Conversation cleared.",
+      thinking: zh ? "碧影正在思考。" : "Biying is thinking.",
+      conversation: zh ? "与碧影的对话记录" : "Conversation with Biying",
       reason: zh ? "这次没连上线上碧影的原因：" : "Why the live Biying API cannot be used:"
     };
     return copy[key];
@@ -78,8 +83,23 @@
     return dom.escapeHtml(value);
   }
 
+  function plainText(value) {
+    const template = document.createElement("template");
+    template.innerHTML = String(value || "");
+    return template.content.textContent || "";
+  }
+
   function accountPrompt() {
     return `${text("loginRequired")} <a href="${escapeHtml(accountUrl())}">${escapeHtml(text("account"))}</a>`;
+  }
+
+  function setChatStatus(element, message, state = "idle") {
+    if (!element) return;
+    element.textContent = message || "";
+    element.dataset.state = state;
+    const isError = state === "error";
+    element.setAttribute("role", isError ? "alert" : "status");
+    element.setAttribute("aria-live", isError ? "assertive" : "polite");
   }
 
   function chatStorageKey() {
@@ -683,20 +703,30 @@
   function mount(root) {
     if (!root || root.dataset.ready) return;
     root.dataset.ready = "true";
+    chatMountCount += 1;
+    const instanceId = `biying-chat-${chatMountCount}`;
+    const inputId = `${instanceId}-message`;
+    const authNoteId = `${instanceId}-auth-note`;
+    const statusId = `${instanceId}-status`;
+    const titleId = root.dataset.chatTitleId || `${instanceId}-title`;
 
     root.innerHTML = `
       <div class="biying-chat__header">
         <div>
-          <strong>${text("headerTitle")}</strong>
+          <strong id="${titleId}">${text("headerTitle")}</strong>
           <span>${text("headerScope")}</span>
         </div>
         <button class="biying-chat__clear" type="button">${text("clear")}</button>
       </div>
-      <div class="biying-chat__log" aria-live="polite"></div>
-      <form class="biying-chat__form">
-        <p class="meta-line" data-biying-auth-note></p>
-        <textarea rows="2" maxlength="900" placeholder="${text("placeholder")}"></textarea>
+      <div class="biying-chat__log" tabindex="0" aria-label="${text("conversation")}"></div>
+      <form class="biying-chat__form" novalidate>
+        <p class="meta-line" id="${authNoteId}" data-biying-auth-note role="status" aria-live="polite" aria-atomic="true"></p>
+        <label class="form-field" for="${inputId}">
+          <span class="form-field__label biying-chat__label">${text("messageLabel")}</span>
+          <textarea id="${inputId}" name="message" rows="2" maxlength="900" autocomplete="off" placeholder="${text("placeholder")}" aria-describedby="${authNoteId} ${statusId}"></textarea>
+        </label>
         <button type="submit">${text("send")}</button>
+        <p class="sr-only form-status" id="${statusId}" data-biying-chat-status role="status" aria-live="polite" aria-atomic="true"></p>
       </form>
     `;
 
@@ -705,6 +735,8 @@
     const input = root.querySelector("textarea");
     const clear = root.querySelector(".biying-chat__clear");
     const authNote = root.querySelector("[data-biying-auth-note]");
+    const status = root.querySelector("[data-biying-chat-status]");
+    const submit = form.querySelector("button[type='submit']");
     hydrateChatState();
 
     function updateAuthNote() {
@@ -737,6 +769,12 @@
       clearPersistedChat();
       log.innerHTML = "";
       addMessage(log, "biying", text("initial"));
+      setChatStatus(status, text("cleared"), "success");
+    });
+
+    input.addEventListener("input", () => {
+      input.removeAttribute("aria-invalid");
+      if (status.dataset.state === "error") setChatStatus(status, "", "idle");
     });
 
     input.addEventListener("keydown", (event) => {
@@ -750,18 +788,26 @@
       if (state.busy) return;
       if (!currentUser()) {
         upsertMessage(log, "auth-required", "biying", accountPrompt(), { html: true, remember: false });
+        setChatStatus(status, text("loginRequired"), "error");
         return;
       }
       const query = input.value.trim();
       if (!query) {
         addMessage(log, "biying", text("empty"));
+        input.setAttribute("aria-invalid", "true");
+        setChatStatus(status, text("empty"), "error");
+        input.focus();
         return;
       }
+      input.removeAttribute("aria-invalid");
       input.value = "";
       addMessage(log, "user", query);
-      const pending = addMessage(log, "biying", '<span class="typing-dots" aria-label="Biying is thinking"><i></i><i></i><i></i></span>', { remember: false, html: true });
+      const pending = addMessage(log, "biying", '<span class="typing-dots" aria-hidden="true"><i></i><i></i><i></i></span>', { remember: false, html: true });
       pending.classList.add("is-typing");
       state.busy = true;
+      form.setAttribute("aria-busy", "true");
+      submit.disabled = true;
+      setChatStatus(status, text("thinking"), "loading");
       try {
         let response;
         let live;
@@ -806,11 +852,19 @@
           state.history.push({ role: "assistant", content: response.answer });
         }
         persistChatState();
+        setChatStatus(
+          status,
+          response.html ? plainText(response.answer).trim() : String(response.answer || "").trim(),
+          "success"
+        );
       } catch (error) {
         pending.classList.remove("is-typing");
         pending.textContent = text("error");
+        setChatStatus(status, text("error"), "error");
       } finally {
         state.busy = false;
+        form.setAttribute("aria-busy", "false");
+        submit.disabled = false;
       }
     });
   }
@@ -827,11 +881,21 @@
 
   function mountCompanion() {
     if (!shouldMountCompanion() || document.querySelector("[data-biying-companion]")) return;
+    const panelId = "biying-companion-dialog";
+    const titleId = "biying-companion-title";
     const shell = document.createElement("aside");
     shell.className = "biying-companion";
     shell.dataset.biyingCompanion = "true";
     shell.innerHTML = `
-      <section class="biying-chat biying-chat--companion biying-companion__panel" hidden>
+      <section
+        class="biying-chat biying-chat--companion biying-companion__panel"
+        id="${panelId}"
+        role="dialog"
+        aria-modal="false"
+        aria-labelledby="${titleId}"
+        tabindex="-1"
+        hidden
+      >
         <button
           class="biying-companion__close"
           type="button"
@@ -846,6 +910,7 @@
         class="biying-companion__toggle"
         type="button"
         aria-expanded="false"
+        aria-controls="${panelId}"
         aria-label="${isChinesePage() ? "和碧影聊聊" : "Talk with Biying"}"
         title="${isChinesePage() ? "和碧影聊聊" : "Talk with Biying"}"
       >
@@ -862,21 +927,79 @@
     const toggle = shell.querySelector(".biying-companion__toggle");
     const close = shell.querySelector(".biying-companion__close");
     const root = shell.querySelector("[data-biying-chat]");
+    root.dataset.chatTitleId = titleId;
     mount(root);
-    function setOpen(open) {
-      panel.toggleAttribute("hidden", !open);
+    const mobileDialog = window.matchMedia("(max-width: 48rem)");
+    let returnFocus = toggle;
+
+    function syncDialogMode() {
+      panel.setAttribute("aria-modal", String(mobileDialog.matches));
+    }
+
+    function focusableElements() {
+      return [...panel.querySelectorAll(
+        'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]):not([type="hidden"]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )].filter((element) => element.getClientRects().length > 0 && !element.hidden);
+    }
+
+    function setOpen(open, options = {}) {
+      if (open) {
+        returnFocus = document.activeElement instanceof HTMLElement ? document.activeElement : toggle;
+        panel.hidden = false;
+      }
       toggle.setAttribute("aria-expanded", String(open));
       toggle.classList.toggle("is-open", open);
       shell.classList.toggle("is-open", open);
       document.body.classList.toggle("biying-companion-open", open);
+      syncDialogMode();
+      if (open) {
+        window.requestAnimationFrame(() => {
+          const preferred = root.querySelector("textarea");
+          (preferred || focusableElements()[0] || panel).focus();
+        });
+        return;
+      }
+      panel.hidden = true;
+      if (options.restoreFocus !== false && returnFocus?.isConnected) returnFocus.focus();
     }
+
+    syncDialogMode();
     toggle.addEventListener("click", () => setOpen(panel.hasAttribute("hidden")));
     close.addEventListener("click", () => setOpen(false));
+    document.addEventListener("keydown", (event) => {
+      if (panel.hidden) return;
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setOpen(false);
+        return;
+      }
+      if (event.key !== "Tab" || !mobileDialog.matches) return;
+      const focusable = focusableElements();
+      if (!focusable.length) {
+        event.preventDefault();
+        panel.focus();
+        return;
+      }
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (!panel.contains(document.activeElement)) {
+        event.preventDefault();
+        first.focus();
+      } else if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
     document.addEventListener("pointerdown", (event) => {
       if (panel.hasAttribute("hidden")) return;
       if (shell.contains(event.target)) return;
       setOpen(false);
     });
+    if (mobileDialog.addEventListener) mobileDialog.addEventListener("change", syncDialogMode);
+    else mobileDialog.addListener?.(syncDialogMode);
   }
 
   document.addEventListener("DOMContentLoaded", () => {

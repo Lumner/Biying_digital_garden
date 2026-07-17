@@ -72,6 +72,11 @@
       privateSaved: zh ? "私信已发送。" : "Private message sent.",
       privateRequired: zh ? "请把称呼、联系方式和私信内容都填写完整。" : "Please complete your name, contact method, and message.",
       saved: zh ? "已登录。" : "Signed in.",
+      signedOut: zh ? "已退出登录。" : "Signed out.",
+      signingIn: zh ? "正在登录……" : "Signing in…",
+      registering: zh ? "正在创建账户……" : "Creating account…",
+      resetting: zh ? "正在重设密码……" : "Resetting password…",
+      sendingPrivate: zh ? "正在发送私信……" : "Sending private message…",
       network: zh ? "连接失败，请稍后再试。" : "Connection failed. Please try again later."
     };
     return copy[key];
@@ -198,6 +203,62 @@
     return dom.escapeHtml(value);
   }
 
+  function setLiveStatus(element, message, state = "idle") {
+    if (!element) return;
+    element.textContent = message || "";
+    element.dataset.state = state;
+    const isError = state === "error";
+    element.setAttribute("role", isError ? "alert" : "status");
+    element.setAttribute("aria-live", isError ? "assertive" : "polite");
+  }
+
+  function setDescriptionReference(field, id, enabled) {
+    if (!field || !id) return;
+    const references = new Set(
+      String(field.getAttribute("aria-describedby") || "")
+        .split(/\s+/)
+        .filter(Boolean)
+    );
+    if (enabled) references.add(id);
+    else references.delete(id);
+    if (references.size) field.setAttribute("aria-describedby", Array.from(references).join(" "));
+    else field.removeAttribute("aria-describedby");
+  }
+
+  function setFormStatus(form, message, state = "idle", fieldNames = []) {
+    if (!form) return;
+    const status = form.querySelector("[data-form-message]");
+    const controls = [...form.querySelectorAll("input:not([hidden]), textarea, select")];
+    controls.forEach((field) => {
+      field.removeAttribute("aria-invalid");
+      setDescriptionReference(field, status?.id, false);
+    });
+    if (state === "error") {
+      const targets = fieldNames.length
+        ? controls.filter((field) => fieldNames.includes(field.name))
+        : controls;
+      targets.forEach((field) => {
+        field.setAttribute("aria-invalid", "true");
+        setDescriptionReference(field, status?.id, true);
+      });
+    }
+    const busy = state === "loading";
+    form.setAttribute("aria-busy", String(busy));
+    form.querySelectorAll("button[type='submit']").forEach((button) => {
+      button.disabled = busy;
+    });
+    setLiveStatus(status, message, state);
+  }
+
+  function errorFields(error, mode) {
+    const code = api.errorCode(error);
+    if (code === "invalid_username" || code === "username_taken") return ["username"];
+    if (code === "invalid_password") return ["password"];
+    if (code === "invalid_recovery_code" || code === "recovery_expired") return ["recoveryToken"];
+    if (code === "invalid_credentials" && mode === "login") return ["username", "password"];
+    return [];
+  }
+
   const accountModes = ["login", "register", "reset"];
 
   function switchAccountMode(root, mode) {
@@ -208,7 +269,7 @@
       const active = tab.dataset.authTab === nextMode;
       tab.classList.toggle("active", active);
       tab.setAttribute("aria-selected", active ? "true" : "false");
-      tab.setAttribute("tabindex", active ? "0" : "-1");
+      tab.setAttribute("tabindex", active || (nextMode === "reset" && tab.dataset.authTab === "login") ? "0" : "-1");
     });
     root.querySelectorAll("[data-auth-mode-panel]").forEach((panel) => {
       panel.hidden = panel.dataset.authModePanel !== nextMode;
@@ -220,58 +281,92 @@
     root.dataset.ready = "true";
     root.innerHTML = `
       <div class="auth-shell">
-        <section class="auth-card auth-card--signed" data-auth-signed-in hidden></section>
+        <p class="form-status" id="auth-global-status" data-auth-global-status role="status" aria-live="polite" aria-atomic="true"></p>
+        <section class="auth-card auth-card--signed" data-auth-signed-in aria-live="polite" aria-atomic="true" hidden></section>
         <section class="auth-access-card" data-auth-access>
           <div class="auth-access-card__head">
             <span class="cyber-kicker">${text("title")}</span>
             <h2>${text("accessTitle")}</h2>
             <p>${text("accessLead")}</p>
           </div>
-          <div class="auth-tabs" role="tablist" aria-label="${text("title")}">
-            <button type="button" role="tab" data-auth-tab="login" aria-controls="auth-panel-login">${text("loginTitle")}</button>
-            <button type="button" role="tab" data-auth-tab="register" aria-controls="auth-panel-register">${text("registerTitle")}</button>
+          <div class="auth-tabs" role="tablist" aria-label="${text("title")}" aria-orientation="horizontal">
+            <button id="auth-tab-login" type="button" role="tab" data-auth-tab="login" aria-controls="auth-panel-login" aria-selected="true" tabindex="0">${text("loginTitle")}</button>
+            <button id="auth-tab-register" type="button" role="tab" data-auth-tab="register" aria-controls="auth-panel-register" aria-selected="false" tabindex="-1">${text("registerTitle")}</button>
           </div>
           <div class="auth-account-forms">
-            <form class="auth-card auth-card--primary" data-auth-login data-auth-mode-panel="login" id="auth-panel-login" role="tabpanel">
-              <h2>${text("loginTitle")}</h2>
-              <p class="meta-line">${text("loginHint")}</p>
-              <input name="username" maxlength="24" autocomplete="username" placeholder="${text("username")}" />
-              <input name="password" type="password" maxlength="80" autocomplete="current-password" placeholder="${text("password")}" />
+            <form class="auth-card auth-card--primary" data-auth-login data-auth-mode-panel="login" id="auth-panel-login" role="tabpanel" aria-labelledby="auth-tab-login" novalidate>
+              <h2 id="auth-login-heading">${text("loginTitle")}</h2>
+              <p class="meta-line" id="auth-login-hint">${text("loginHint")}</p>
+              <label class="form-field" for="auth-login-username">
+                <span class="form-field__label">${text("username")}</span>
+                <input id="auth-login-username" name="username" maxlength="24" autocomplete="username" aria-describedby="auth-login-hint" />
+              </label>
+              <label class="form-field" for="auth-login-password">
+                <span class="form-field__label">${text("password")}</span>
+                <input id="auth-login-password" name="password" type="password" maxlength="80" autocomplete="current-password" aria-describedby="auth-login-hint" />
+              </label>
               <button type="submit">${text("login")}</button>
               <button class="auth-link-button" type="button" data-auth-switch="reset">${text("forgot")}</button>
-              <p class="meta-line" data-auth-login-message></p>
+              <p class="meta-line form-status" id="auth-login-message" data-auth-login-message data-form-message role="status" aria-live="polite" aria-atomic="true"></p>
             </form>
-            <form class="auth-card auth-card--primary" data-auth-register data-auth-mode-panel="register" id="auth-panel-register" role="tabpanel">
-              <h2>${text("registerTitle")}</h2>
-              <p class="meta-line">${text("registerHint")}</p>
-              <input name="username" maxlength="24" autocomplete="username" placeholder="${text("username")}" />
-              <input name="password" type="password" maxlength="80" autocomplete="new-password" placeholder="${text("password")}" />
+            <form class="auth-card auth-card--primary" data-auth-register data-auth-mode-panel="register" id="auth-panel-register" role="tabpanel" aria-labelledby="auth-tab-register" novalidate>
+              <h2 id="auth-register-heading">${text("registerTitle")}</h2>
+              <p class="meta-line" id="auth-register-hint">${text("registerHint")}</p>
+              <label class="form-field" for="auth-register-username">
+                <span class="form-field__label">${text("username")}</span>
+                <input id="auth-register-username" name="username" maxlength="24" autocomplete="username" aria-describedby="auth-register-hint" />
+              </label>
+              <label class="form-field" for="auth-register-password">
+                <span class="form-field__label">${text("password")}</span>
+                <input id="auth-register-password" name="password" type="password" maxlength="80" autocomplete="new-password" aria-describedby="auth-register-hint" />
+              </label>
               <button type="submit">${text("register")}</button>
-              <p class="meta-line" data-auth-register-message></p>
+              <p class="meta-line form-status" id="auth-register-message" data-auth-register-message data-form-message role="status" aria-live="polite" aria-atomic="true"></p>
             </form>
-            <form class="auth-card auth-card--primary auth-card--reset" data-auth-reset data-auth-mode-panel="reset" id="auth-panel-reset" role="tabpanel">
-              <h2>${text("resetTitle")}</h2>
-              <p class="meta-line">${text("resetHint")}</p>
-              <p class="meta-line">${text("recoveryHint")}</p>
-              <input name="username" maxlength="24" autocomplete="username" placeholder="${text("username")}" />
-              <input name="recoveryToken" type="password" maxlength="120" autocomplete="one-time-code" placeholder="${text("recoveryCode")}" />
-              <input name="password" type="password" maxlength="80" autocomplete="new-password" placeholder="${text("newPassword")}" />
+            <form class="auth-card auth-card--primary auth-card--reset" data-auth-reset data-auth-mode-panel="reset" id="auth-panel-reset" aria-labelledby="auth-reset-heading" novalidate>
+              <h2 id="auth-reset-heading">${text("resetTitle")}</h2>
+              <p class="meta-line" id="auth-reset-hint">${text("resetHint")}</p>
+              <p class="meta-line" id="auth-recovery-hint">${text("recoveryHint")}</p>
+              <label class="form-field" for="auth-reset-username">
+                <span class="form-field__label">${text("username")}</span>
+                <input id="auth-reset-username" name="username" maxlength="24" autocomplete="username" aria-describedby="auth-reset-hint auth-recovery-hint" />
+              </label>
+              <label class="form-field" for="auth-reset-token">
+                <span class="form-field__label">${text("recoveryCode")}</span>
+                <input id="auth-reset-token" name="recoveryToken" type="password" maxlength="120" autocomplete="one-time-code" aria-describedby="auth-reset-hint auth-recovery-hint" />
+              </label>
+              <label class="form-field" for="auth-reset-password">
+                <span class="form-field__label">${text("newPassword")}</span>
+                <input id="auth-reset-password" name="password" type="password" maxlength="80" autocomplete="new-password" aria-describedby="auth-reset-hint auth-recovery-hint" />
+              </label>
               <button type="submit">${text("reset")}</button>
               <button class="auth-link-button" type="button" data-auth-switch="login">${text("backToLogin")}</button>
-              <p class="meta-line" data-auth-reset-message></p>
+              <p class="meta-line form-status" id="auth-reset-message" data-auth-reset-message data-form-message role="status" aria-live="polite" aria-atomic="true"></p>
             </form>
           </div>
         </section>
-        <form class="auth-card auth-card--private" data-auth-private>
-          <h2>${text("privateTitle")}</h2>
-          <p class="meta-line">${text("privateHint")}</p>
-          <input name="name" maxlength="40" placeholder="${text("privateName")}" />
-          <input name="accountUsername" maxlength="40" placeholder="${text("privateAccount")}" />
-          <input name="contact" maxlength="120" placeholder="${text("privateContact")}" />
-          <textarea name="content" rows="4" maxlength="800" placeholder="${text("privateMessage")}"></textarea>
-          <input class="hp-field" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <form class="auth-card auth-card--private" data-auth-private novalidate>
+          <h2 id="auth-private-heading">${text("privateTitle")}</h2>
+          <p class="meta-line" id="auth-private-hint">${text("privateHint")}</p>
+          <label class="form-field" for="auth-private-name">
+            <span class="form-field__label">${text("privateName")}</span>
+            <input id="auth-private-name" name="name" maxlength="40" autocomplete="name" aria-describedby="auth-private-hint" />
+          </label>
+          <label class="form-field" for="auth-private-account">
+            <span class="form-field__label">${text("privateAccount")}</span>
+            <input id="auth-private-account" name="accountUsername" maxlength="40" autocomplete="username" aria-describedby="auth-private-hint" />
+          </label>
+          <label class="form-field" for="auth-private-contact">
+            <span class="form-field__label">${text("privateContact")}</span>
+            <input id="auth-private-contact" name="contact" maxlength="120" autocomplete="off" aria-describedby="auth-private-hint" />
+          </label>
+          <label class="form-field" for="auth-private-content">
+            <span class="form-field__label">${text("privateMessage")}</span>
+            <textarea id="auth-private-content" name="content" rows="4" maxlength="800" aria-describedby="auth-private-hint"></textarea>
+          </label>
+          <input class="hp-field" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" hidden />
           <button type="submit">${text("sendPrivate")}</button>
-          <p class="meta-line" data-auth-private-message></p>
+          <p class="meta-line form-status" id="auth-private-message" data-auth-private-message data-form-message role="status" aria-live="polite" aria-atomic="true"></p>
         </form>
       </div>
     `;
@@ -279,6 +374,23 @@
     renderStatus(root);
     switchAccountMode(root, "login");
     refresh().finally(() => renderStatus(root));
+    const globalStatus = root.querySelector("[data-auth-global-status]");
+    const tabList = root.querySelector(".auth-tabs");
+
+    tabList.addEventListener("keydown", (event) => {
+      if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+      const tabs = [...tabList.querySelectorAll("[data-auth-tab]")];
+      const currentIndex = Math.max(0, tabs.indexOf(document.activeElement));
+      let nextIndex = currentIndex;
+      if (event.key === "Home") nextIndex = 0;
+      if (event.key === "End") nextIndex = tabs.length - 1;
+      if (event.key === "ArrowRight") nextIndex = (currentIndex + 1) % tabs.length;
+      if (event.key === "ArrowLeft") nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+      event.preventDefault();
+      const nextTab = tabs[nextIndex];
+      switchAccountMode(root, nextTab.dataset.authTab);
+      nextTab.focus();
+    });
 
     root.addEventListener("click", async (event) => {
       const tab = event.target.closest("[data-auth-tab]");
@@ -289,19 +401,22 @@
       const switcher = event.target.closest("[data-auth-switch]");
       if (switcher) {
         switchAccountMode(root, switcher.dataset.authSwitch);
+        const nextField = root.querySelector(`[data-auth-mode-panel="${switcher.dataset.authSwitch}"] input`);
+        window.requestAnimationFrame(() => nextField?.focus());
         return;
       }
       if (!event.target.closest("[data-auth-logout]")) return;
       await logout();
       switchAccountMode(root, "login");
       renderStatus(root);
+      setLiveStatus(globalStatus, text("signedOut"), "success");
     });
 
     root.querySelector("[data-auth-register]").addEventListener("submit", async (event) => {
       event.preventDefault();
       const form = event.currentTarget;
-      const message = root.querySelector("[data-auth-register-message]");
       const data = new FormData(form);
+      setFormStatus(form, text("registering"), "loading");
       try {
         await requestAuth({
           action: "register",
@@ -309,9 +424,10 @@
           password: data.get("password")
         });
         form.reset();
-        message.textContent = text("saved");
+        setFormStatus(form, text("saved"), "success");
+        setLiveStatus(globalStatus, text("saved"), "success");
       } catch (error) {
-        message.textContent = friendlyError(error);
+        setFormStatus(form, friendlyError(error), "error", errorFields(error, "register"));
       }
       renderStatus(root);
     });
@@ -319,8 +435,8 @@
     root.querySelector("[data-auth-login]").addEventListener("submit", async (event) => {
       event.preventDefault();
       const form = event.currentTarget;
-      const message = root.querySelector("[data-auth-login-message]");
       const data = new FormData(form);
+      setFormStatus(form, text("signingIn"), "loading");
       try {
         await requestAuth({
           action: "login",
@@ -328,9 +444,10 @@
           password: data.get("password")
         });
         form.reset();
-        message.textContent = text("saved");
+        setFormStatus(form, text("saved"), "success");
+        setLiveStatus(globalStatus, text("saved"), "success");
       } catch (error) {
-        message.textContent = friendlyError(error);
+        setFormStatus(form, friendlyError(error), "error", errorFields(error, "login"));
       }
       renderStatus(root);
     });
@@ -338,8 +455,8 @@
     root.querySelector("[data-auth-reset]").addEventListener("submit", async (event) => {
       event.preventDefault();
       const form = event.currentTarget;
-      const message = root.querySelector("[data-auth-reset-message]");
       const data = new FormData(form);
+      setFormStatus(form, text("resetting"), "loading");
       try {
         await requestAuth({
           action: "reset_password",
@@ -348,9 +465,10 @@
           password: data.get("password")
         });
         form.reset();
-        message.textContent = text("resetSaved");
+        setFormStatus(form, text("resetSaved"), "success");
+        setLiveStatus(globalStatus, text("resetSaved"), "success");
       } catch (error) {
-        message.textContent = friendlyError(error);
+        setFormStatus(form, friendlyError(error), "error", errorFields(error, "reset"));
       }
       renderStatus(root);
     });
@@ -358,7 +476,6 @@
     root.querySelector("[data-auth-private]").addEventListener("submit", async (event) => {
       event.preventDefault();
       const form = event.currentTarget;
-      const message = root.querySelector("[data-auth-private-message]");
       const data = new FormData(form);
       const payload = {
         name: String(data.get("name") || "").trim(),
@@ -368,20 +485,22 @@
         website: String(data.get("website") || ""),
         locale: dom.locale()
       };
+      if (payload.website) return;
       if (!payload.name || !payload.contact || !payload.content) {
-        message.textContent = text("privateRequired");
+        const missing = ["name", "contact", "content"].filter((name) => !payload[name]);
+        setFormStatus(form, text("privateRequired"), "error", missing);
         return;
       }
-      if (payload.website) return;
+      setFormStatus(form, text("sendingPrivate"), "loading");
       try {
         await api.request("/api/private-messages", {
           method: "POST",
           json: payload
         });
         form.reset();
-        message.textContent = text("privateSaved");
+        setFormStatus(form, text("privateSaved"), "success");
       } catch (error) {
-        message.textContent = friendlyError(error);
+        setFormStatus(form, friendlyError(error), "error", ["name", "contact", "content"]);
       }
     });
   }

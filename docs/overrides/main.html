@@ -32,3 +32,13 @@
   </span>
 {% endblock %}
 
+{% block header %}
+<a class="biying-skip-link" href="#main-content">{% if page and page.url and page.url.startswith("en/") %}Skip to main content{% else %}跳转到正文{% endif %}</a>
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<span id="main-content" class="biying-main-target" tabindex="-1"></span>
+{{ super() }}
+{% endblock %}
+

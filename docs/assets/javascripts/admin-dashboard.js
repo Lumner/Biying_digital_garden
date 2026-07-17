@@ -49,6 +49,8 @@
       filterHidden: zh ? "只看已隐藏" : "Hidden only",
       searchPrivate: zh ? "搜索私信、用户名或联系方式" : "Search messages, usernames, or contacts",
       searchGuestbook: zh ? "搜索留言、用户名或内容" : "Search names, usernames, or content",
+      searchPrivateExample: zh ? "例如：用户名或联系方式" : "For example: a username or contact",
+      searchGuestbookExample: zh ? "例如：用户名或留言关键词" : "For example: a username or message keyword",
       copyContact: zh ? "复制联系方式" : "Copy contact",
       copied: zh ? "已复制联系方式。" : "Contact copied.",
       codeReady: zh ? "恢复码已生成" : "Recovery code ready",
@@ -56,7 +58,9 @@
       codeHint: zh ? "把它私下发给用户；过期后或使用一次后就会失效。" : "Send it privately; it expires or becomes invalid after one use.",
       minutesPrompt: zh ? "恢复码有效分钟数（5-1440）" : "Recovery-code validity in minutes (5-1440)",
       unauthorized: zh ? "管理员 token 不正确。" : "The admin token is incorrect.",
+      tokenRequired: zh ? "请填写管理员 token。" : "Enter the admin token.",
       kv: zh ? "后台需要先绑定 BIYING_KV。" : "The dashboard requires BIYING_KV.",
+      loading: zh ? "正在加载后台数据……" : "Loading dashboard data…",
       failed: zh ? "后台请求失败，请稍后再试。" : "Dashboard request failed. Please try again later.",
       userNotFound: zh ? "找不到这个用户。" : "User not found."
     }[key];
@@ -100,6 +104,22 @@
       window.BiyingToast.show(message, { type });
     }
     return message;
+  }
+
+  function setStatus(element, message, state = "idle") {
+    if (!element) return;
+    element.textContent = message || "";
+    element.dataset.state = state;
+    const isError = state === "error";
+    element.setAttribute("role", isError ? "alert" : "status");
+    element.setAttribute("aria-live", isError ? "assertive" : "polite");
+  }
+
+  function setDashboardBusy(root, busy) {
+    root.setAttribute("aria-busy", String(busy));
+    root.querySelectorAll(".admin-token-form button[type='submit'], [data-admin-refresh]").forEach((button) => {
+      button.disabled = busy;
+    });
   }
 
   async function loadDashboard() {
@@ -211,39 +231,48 @@
     if (!root || root.dataset.ready) return;
     root.dataset.ready = "true";
     root.innerHTML = `
-      <form class="admin-token-form">
-        <input name="token" type="password" autocomplete="one-time-code" placeholder="${text("token")}" />
+      <form class="admin-token-form" novalidate>
+        <label class="form-field admin-token-field" for="admin-token">
+          <span class="form-field__label">${text("token")}</span>
+          <input id="admin-token" name="token" type="password" autocomplete="one-time-code" aria-describedby="admin-status" />
+        </label>
         <button type="submit">${text("connect")}</button>
         <button type="button" data-admin-refresh>${text("refresh")}</button>
         <button type="button" data-admin-forget>${text("forget")}</button>
       </form>
-      <p class="meta-line" data-admin-status></p>
-      <div class="admin-recovery" data-admin-recovery hidden></div>
-      <nav class="admin-tabs" aria-label="${isChinesePage() ? "后台模块" : "Dashboard modules"}">
-        <button type="button" class="active" data-admin-tab="users">${text("users")}<span data-admin-count="users">0</span></button>
-        <button type="button" data-admin-tab="inbox">${text("inbox")}<span data-admin-count="inbox">0</span></button>
-        <button type="button" data-admin-tab="guestbook">${text("guestbook")}<span data-admin-count="guestbook">0</span></button>
-      </nav>
-      <section class="admin-section active" data-admin-panel="users">
+      <p class="meta-line form-status" id="admin-status" data-admin-status role="status" aria-live="polite" aria-atomic="true"></p>
+      <div class="admin-recovery" data-admin-recovery role="status" aria-live="polite" aria-atomic="true" hidden></div>
+      <div class="admin-tabs" role="tablist" aria-label="${isChinesePage() ? "后台模块" : "Dashboard modules"}" aria-orientation="horizontal">
+        <button id="admin-tab-users" type="button" role="tab" class="active" data-admin-tab="users" aria-controls="admin-panel-users" aria-selected="true" tabindex="0">${text("users")}<span data-admin-count="users">0</span></button>
+        <button id="admin-tab-inbox" type="button" role="tab" data-admin-tab="inbox" aria-controls="admin-panel-inbox" aria-selected="false" tabindex="-1">${text("inbox")}<span data-admin-count="inbox">0</span></button>
+        <button id="admin-tab-guestbook" type="button" role="tab" data-admin-tab="guestbook" aria-controls="admin-panel-guestbook" aria-selected="false" tabindex="-1">${text("guestbook")}<span data-admin-count="guestbook">0</span></button>
+      </div>
+      <section class="admin-section active" id="admin-panel-users" data-admin-panel="users" role="tabpanel" aria-labelledby="admin-tab-users">
         <h2>${text("users")}</h2>
         <div class="admin-list" data-admin-users></div>
       </section>
-      <section class="admin-section" data-admin-panel="inbox" hidden>
+      <section class="admin-section" id="admin-panel-inbox" data-admin-panel="inbox" role="tabpanel" aria-labelledby="admin-tab-inbox" hidden>
         <h2>${text("inbox")}</h2>
         <div class="admin-toolbar">
-          <input data-admin-private-search placeholder="${text("searchPrivate")}" />
-          <button type="button" class="active" data-admin-private-filter="all">${text("filterAll")}</button>
-          <button type="button" data-admin-private-filter="unread">${text("filterUnread")}</button>
+          <label class="form-field admin-search-field" for="admin-private-search">
+            <span class="sr-only">${text("searchPrivate")}</span>
+            <input id="admin-private-search" type="search" data-admin-private-search placeholder="${text("searchPrivateExample")}" />
+          </label>
+          <button type="button" class="active" data-admin-private-filter="all" aria-pressed="true">${text("filterAll")}</button>
+          <button type="button" data-admin-private-filter="unread" aria-pressed="false">${text("filterUnread")}</button>
         </div>
         <div class="admin-list" data-admin-messages></div>
       </section>
-      <section class="admin-section" data-admin-panel="guestbook" hidden>
+      <section class="admin-section" id="admin-panel-guestbook" data-admin-panel="guestbook" role="tabpanel" aria-labelledby="admin-tab-guestbook" hidden>
         <h2>${text("guestbook")}</h2>
         <div class="admin-toolbar">
-          <input data-admin-guestbook-search placeholder="${text("searchGuestbook")}" />
-          <button type="button" class="active" data-admin-guestbook-filter="all">${text("filterAll")}</button>
-          <button type="button" data-admin-guestbook-filter="visible">${text("filterVisible")}</button>
-          <button type="button" data-admin-guestbook-filter="hidden">${text("filterHidden")}</button>
+          <label class="form-field admin-search-field" for="admin-guestbook-search">
+            <span class="sr-only">${text("searchGuestbook")}</span>
+            <input id="admin-guestbook-search" type="search" data-admin-guestbook-search placeholder="${text("searchGuestbookExample")}" />
+          </label>
+          <button type="button" class="active" data-admin-guestbook-filter="all" aria-pressed="true">${text("filterAll")}</button>
+          <button type="button" data-admin-guestbook-filter="visible" aria-pressed="false">${text("filterVisible")}</button>
+          <button type="button" data-admin-guestbook-filter="hidden" aria-pressed="false">${text("filterHidden")}</button>
         </div>
         <div class="admin-list" data-admin-guestbook></div>
       </section>
@@ -267,7 +296,12 @@
     tokenInput.value = readToken();
 
     function setTab(name) {
-      tabs.forEach((tab) => tab.classList.toggle("active", tab.dataset.adminTab === name));
+      tabs.forEach((tab) => {
+        const active = tab.dataset.adminTab === name;
+        tab.classList.toggle("active", active);
+        tab.setAttribute("aria-selected", String(active));
+        tab.setAttribute("tabindex", active ? "0" : "-1");
+      });
       panels.forEach((panel) => {
         const active = panel.dataset.adminPanel === name;
         panel.hidden = !active;
@@ -300,9 +334,10 @@
 
     async function refresh(options = {}) {
       if (!readToken()) return;
+      setDashboardBusy(root, true);
+      if (options.announce !== false) setStatus(status, text("loading"), "loading");
       try {
         const data = await loadDashboard();
-        status.textContent = "";
         const users = data.users || [];
         renderUsers(usersSlot, users);
         privateMessages = data.privateMessages || [];
@@ -312,20 +347,48 @@
         setCount("guestbook", guestbookMessages.length);
         applyPrivateFilters();
         applyGuestbookFilters();
-        if (options.announce) notify(text("dashboardReady"), "success");
+        if (options.announce) {
+          setStatus(status, notify(text("dashboardReady"), "success"), "success");
+        } else {
+          setStatus(status, "", "idle");
+        }
       } catch (error) {
-        status.textContent = notify(friendlyError(error), "error");
+        setStatus(status, notify(friendlyError(error), "error"), "error");
+      } finally {
+        setDashboardBusy(root, false);
       }
     }
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
-      saveToken(tokenInput.value.trim());
+      const token = tokenInput.value.trim();
+      if (!token) {
+        tokenInput.setAttribute("aria-invalid", "true");
+        setStatus(status, text("tokenRequired"), "error");
+        tokenInput.focus();
+        return;
+      }
+      tokenInput.removeAttribute("aria-invalid");
+      saveToken(token);
       await refresh({ announce: true });
     });
 
+    tokenInput.addEventListener("input", () => tokenInput.removeAttribute("aria-invalid"));
     privateSearch.addEventListener("input", applyPrivateFilters);
     guestbookSearch.addEventListener("input", applyGuestbookFilters);
+    root.querySelector(".admin-tabs").addEventListener("keydown", (event) => {
+      if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+      const currentIndex = Math.max(0, tabs.indexOf(document.activeElement));
+      let nextIndex = currentIndex;
+      if (event.key === "Home") nextIndex = 0;
+      if (event.key === "End") nextIndex = tabs.length - 1;
+      if (event.key === "ArrowRight") nextIndex = (currentIndex + 1) % tabs.length;
+      if (event.key === "ArrowLeft") nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+      event.preventDefault();
+      const nextTab = tabs[nextIndex];
+      setTab(nextTab.dataset.adminTab);
+      nextTab.focus();
+    });
 
     root.addEventListener("click", async (event) => {
       const refreshButton = event.target.closest("[data-admin-refresh]");
@@ -355,7 +418,7 @@
         setCount("users", 0);
         setCount("inbox", 0);
         setCount("guestbook", 0);
-        status.textContent = notify(text("tokenForgotten"), "success");
+        setStatus(status, notify(text("tokenForgotten"), "success"), "success");
       } else if (issueButton) {
         const minutes = Number(window.prompt(text("minutesPrompt"), "30"));
         if (!minutes) return;
@@ -367,64 +430,72 @@
             <span>${text("expiresAt")}: ${escapeHtml(formatDate(result.expiresAt))}</span>
             <p>${text("codeHint")}</p>
           `;
-          notify(text("codeReady"), "success");
+          setStatus(status, notify(text("codeReady"), "success"), "success");
         } catch (error) {
-          status.textContent = notify(friendlyError(error), "error");
+          setStatus(status, notify(friendlyError(error), "error"), "error");
         }
       } else if (toggleButton) {
         try {
           await updateMessage(toggleButton.dataset.toggleMessage, toggleButton.dataset.nextStatus);
           await refresh();
-          notify(text("updated"), "success");
+          setStatus(status, notify(text("updated"), "success"), "success");
         } catch (error) {
-          status.textContent = notify(friendlyError(error), "error");
+          setStatus(status, notify(friendlyError(error), "error"), "error");
         }
       } else if (copyButton) {
         try {
           await navigator.clipboard.writeText(copyButton.dataset.copyContact || "");
-          status.textContent = notify(text("copied"), "success");
+          setStatus(status, notify(text("copied"), "success"), "success");
         } catch (error) {
-          status.textContent = notify(text("failed"), "error");
+          setStatus(status, notify(text("failed"), "error"), "error");
         }
       } else if (deleteButton && window.confirm(text("deleteConfirm"))) {
         try {
           await deleteMessage(deleteButton.dataset.deletePrivate);
           await refresh();
-          notify(text("deleted"), "success");
+          setStatus(status, notify(text("deleted"), "success"), "success");
         } catch (error) {
-          status.textContent = notify(friendlyError(error), "error");
+          setStatus(status, notify(friendlyError(error), "error"), "error");
         }
       } else if (privateFilterButton) {
         privateFilter = privateFilterButton.dataset.adminPrivateFilter;
-        root.querySelectorAll("[data-admin-private-filter]").forEach((button) => button.classList.toggle("active", button === privateFilterButton));
+        root.querySelectorAll("[data-admin-private-filter]").forEach((button) => {
+          const active = button === privateFilterButton;
+          button.classList.toggle("active", active);
+          button.setAttribute("aria-pressed", String(active));
+        });
         applyPrivateFilters();
       } else if (guestbookFilterButton) {
         guestbookFilter = guestbookFilterButton.dataset.adminGuestbookFilter;
-        root.querySelectorAll("[data-admin-guestbook-filter]").forEach((button) => button.classList.toggle("active", button === guestbookFilterButton));
+        root.querySelectorAll("[data-admin-guestbook-filter]").forEach((button) => {
+          const active = button === guestbookFilterButton;
+          button.classList.toggle("active", active);
+          button.setAttribute("aria-pressed", String(active));
+        });
         applyGuestbookFilters();
       } else if (toggleGuestbookButton) {
         try {
           await updateMessage(toggleGuestbookButton.dataset.toggleGuestbook, toggleGuestbookButton.dataset.nextStatus, "guestbook");
           await refresh();
-          notify(text("updated"), "success");
+          setStatus(status, notify(text("updated"), "success"), "success");
         } catch (error) {
-          status.textContent = notify(friendlyError(error), "error");
+          setStatus(status, notify(friendlyError(error), "error"), "error");
         }
       } else if (deleteGuestbookButton && window.confirm(text("deleteConfirm"))) {
         try {
           await deleteMessage(deleteGuestbookButton.dataset.deleteGuestbook, "guestbook");
           await refresh();
-          notify(text("deleted"), "success");
+          setStatus(status, notify(text("deleted"), "success"), "success");
         } catch (error) {
-          status.textContent = notify(friendlyError(error), "error");
+          setStatus(status, notify(friendlyError(error), "error"), "error");
         }
       } else if (deleteUserButton && window.confirm(text("unregisterConfirm"))) {
         try {
           await deleteMessage(deleteUserButton.dataset.deleteUser, "user");
           await refresh();
-          notify(text("accountDeleted"), "success");
+          setStatus(status, notify(text("accountDeleted"), "success"), "success");
         } catch (error) {
-          status.textContent = notify(friendlyError(error), "error");
+          setStatus(status, notify(friendlyError(error), "error"), "error");
         }
       }
     });
