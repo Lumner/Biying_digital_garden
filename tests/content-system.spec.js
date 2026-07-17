@@ -201,3 +201,48 @@ test("computer systems Chinese note keeps old URL and replaces image placeholder
   await page.goto(`${site.url}/zh/notes/computer-systems-lecture/chapter-00-system-view/`, { waitUntil: "networkidle" });
   await expect(page.locator("main")).toContainText("图像说明");
 });
+
+test("FDS Chinese note keeps old URL while real chapters move to stable subpaths", async ({ page }) => {
+  const overviewResponse = await page.goto(`${site.url}/zh/notes/fds-data-structures-lecture/`, { waitUntil: "networkidle" });
+  expect(overviewResponse?.status()).toBe(200);
+
+  const overview = page.locator("main");
+  await expect(overview).toContainText("章节正文已经拆分到稳定子路径");
+  await expect(overview).toContainText("课程来源与引用边界");
+  await expect(overview).not.toContainText("待补充登记表");
+  await expect(overview).not.toContainText("新章节模板");
+
+  expect(await page.locator("#note-sec-004").count()).toBeGreaterThanOrEqual(1);
+  expect(await page.locator('main a[href*="chapter-00-course-view"][href*="note-sec-004"]').count()).toBeGreaterThanOrEqual(1);
+  expect(await page.locator('main a[href*="chapter-09-graphs-toposort"][href*="note-sec-081"]').count()).toBeGreaterThanOrEqual(1);
+
+  const chapters = [
+    { slug: "chapter-00-course-view", title: "0. 课程视角：为什么需要数据结构" },
+    { slug: "chapter-01-algorithm-analysis", title: "1. 算法分析" },
+    { slug: "chapter-02-lists", title: "2. 抽象数据类型与线性表" },
+    { slug: "chapter-03-stacks-queues", title: "3. 栈与队列" },
+    { slug: "chapter-04-trees", title: "4. 树与二叉树" },
+    { slug: "chapter-05-binary-search-trees", title: "5. 二叉搜索树" },
+    { slug: "chapter-06-heaps", title: "6. 优先队列与二叉堆" },
+    { slug: "chapter-07-union-find", title: "7. 并查集" },
+    { slug: "chapter-08-segment-trees", title: "8. 线段树" },
+    { slug: "chapter-09-graphs-toposort", title: "9. 图与拓扑排序" }
+  ];
+
+  for (const chapter of chapters) {
+    const response = await page.goto(`${site.url}/zh/notes/fds-data-structures-lecture/${chapter.slug}/`, { waitUntil: "networkidle" });
+    expect(response?.status()).toBe(200);
+    const main = page.locator("main");
+    await expect(page.locator("article h1")).toContainText(chapter.title);
+    await expect(main).toContainText("学习目标");
+    await expect(main).toContainText("前置知识");
+    await expect(main).toContainText("建议用时");
+    await expect(main).toContainText("练习建议");
+    await expect(main).toContainText("参考资料与引用边界");
+    await expect(main).toContainText("原始讲义文件");
+  }
+
+  await page.goto(`${site.url}/zh/notes/fds-data-structures-lecture/appendix-reference/`, { waitUntil: "networkidle" });
+  await expect(page.locator("main")).toContainText("后续扩展登记表");
+  await expect(page.locator("main")).not.toContainText("待新增");
+});

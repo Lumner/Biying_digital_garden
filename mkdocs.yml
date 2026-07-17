@@ -61,7 +61,19 @@ nav:
               - 附录: zh/notes/computer-systems-lecture/appendix-reference.md
       - 算法:
           - 分类首页: zh/notes/algorithms.md
-          - FDS 数据结构基础讲义: zh/notes/fds-data-structures-lecture.md
+          - FDS 数据结构基础讲义:
+              - 讲义总览: zh/notes/fds-data-structures-lecture.md
+              - 0. 课程视角: zh/notes/fds-data-structures-lecture/chapter-00-course-view.md
+              - 1. 算法分析: zh/notes/fds-data-structures-lecture/chapter-01-algorithm-analysis.md
+              - 2. 线性表: zh/notes/fds-data-structures-lecture/chapter-02-lists.md
+              - 3. 栈与队列: zh/notes/fds-data-structures-lecture/chapter-03-stacks-queues.md
+              - 4. 树与二叉树: zh/notes/fds-data-structures-lecture/chapter-04-trees.md
+              - 5. 二叉搜索树: zh/notes/fds-data-structures-lecture/chapter-05-binary-search-trees.md
+              - 6. 优先队列与堆: zh/notes/fds-data-structures-lecture/chapter-06-heaps.md
+              - 7. 并查集: zh/notes/fds-data-structures-lecture/chapter-07-union-find.md
+              - 8. 线段树: zh/notes/fds-data-structures-lecture/chapter-08-segment-trees.md
+              - 9. 图与拓扑排序: zh/notes/fds-data-structures-lecture/chapter-09-graphs-toposort.md
+              - 附录: zh/notes/fds-data-structures-lecture/appendix-reference.md
       - AI: zh/notes/ai.md
       - 随笔: zh/notes/essays.md
       - 站点:

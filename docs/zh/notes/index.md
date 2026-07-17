@@ -76,13 +76,13 @@ tags:
   </section>
   <section class="note-tile">
     <h3>FDS 数据结构基础讲义</h3>
-    <p>覆盖算法分析、线性表、栈队列、树、堆、并查集、线段树、图与拓扑排序。</p>
+    <p>已拆分为章节页，覆盖算法分析、线性表、栈队列、树、堆、并查集、线段树、图与拓扑排序。</p>
     <div class="note-tile__meta">
       <span class="cyber-tag">算法</span>
       <span class="cyber-tag">数据结构</span>
       <span class="cyber-tag">图</span>
     </div>
-    <a href="./fds-data-structures-lecture/">阅读</a>
+    <a href="./fds-data-structures-lecture/">进入总览</a>
   </section>
 </div>
 

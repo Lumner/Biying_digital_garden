@@ -99,7 +99,7 @@
       },
       {
         "title": "FDS 数据结构基础讲义",
-        "summary": "数据结构基础讲义，覆盖算法分析、线性表、栈队列、树、堆、并查集、线段树、图与拓扑排序。",
+        "summary": "FDS 数据结构基础中文讲义总览；正文已按章节拆分，并保留旧 URL 与旧锚点跳转入口。",
         "url": "/zh/notes/fds-data-structures-lecture/",
         "category": "algorithms",
         "tags": [
@@ -107,10 +107,10 @@
           "algorithms",
           "course-note"
         ],
-        "updated": "2026-05-21",
+        "updated": "2026-07-18",
         "recommended": true,
         "readingOrder": 30,
-        "chapterCount": 16
+        "chapterCount": 9
       },
       {
         "title": "数学实验",

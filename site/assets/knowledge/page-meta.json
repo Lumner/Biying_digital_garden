@@ -118,6 +118,20 @@
       "locale": "en"
     },
     {
+      "title": "FDS 数据结构基础讲义附录",
+      "url": "/zh/notes/fds-data-structures-lecture/appendix-reference/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-07-18"
+    },
+    {
+      "title": "FDS 数据结构基础讲义",
+      "url": "/zh/notes/fds-data-structures-lecture/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-07-18"
+    },
+    {
       "title": "FDS Data Structures English Overview",
       "url": "/en/notes/fds-data-structures-lecture/",
       "updated": "2026-07-18",
@@ -139,6 +153,27 @@
       "declaredUpdated": "2026-07-18"
     },
     {
+      "title": "9. 图与拓扑排序",
+      "url": "/zh/notes/fds-data-structures-lecture/chapter-09-graphs-toposort/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-07-18"
+    },
+    {
+      "title": "8. 线段树",
+      "url": "/zh/notes/fds-data-structures-lecture/chapter-08-segment-trees/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-07-18"
+    },
+    {
+      "title": "7. 并查集",
+      "url": "/zh/notes/fds-data-structures-lecture/chapter-07-union-find/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-07-18"
+    },
+    {
       "title": "7. RISC-V ISA、汇编与程序运行",
       "url": "/zh/notes/computer-systems-lecture/chapter-07-riscv-programs/",
       "updated": "2026-07-18",
@@ -153,8 +188,22 @@
       "declaredUpdated": "2026-07-18"
     },
     {
+      "title": "6. 优先队列与二叉堆",
+      "url": "/zh/notes/fds-data-structures-lecture/chapter-06-heaps/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-07-18"
+    },
+    {
       "title": "5. 时序逻辑设计",
       "url": "/zh/notes/computer-systems-lecture/chapter-05-sequential-logic/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-07-18"
+    },
+    {
+      "title": "5. 二叉搜索树",
+      "url": "/zh/notes/fds-data-structures-lecture/chapter-05-binary-search-trees/",
       "updated": "2026-07-18",
       "locale": "zh",
       "declaredUpdated": "2026-07-18"
@@ -167,6 +216,13 @@
       "declaredUpdated": "2026-07-18"
     },
     {
+      "title": "4. 树与二叉树",
+      "url": "/zh/notes/fds-data-structures-lecture/chapter-04-trees/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-07-18"
+    },
+    {
       "title": "3. 组合逻辑设计与 Verilog HDL",
       "url": "/zh/notes/computer-systems-lecture/chapter-03-combinational-logic/",
       "updated": "2026-07-18",
@@ -174,8 +230,29 @@
       "declaredUpdated": "2026-07-18"
     },
     {
+      "title": "3. 栈与队列",
+      "url": "/zh/notes/fds-data-structures-lecture/chapter-03-stacks-queues/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-07-18"
+    },
+    {
+      "title": "2. 抽象数据类型与线性表",
+      "url": "/zh/notes/fds-data-structures-lecture/chapter-02-lists/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-07-18"
+    },
+    {
       "title": "2. 布尔代数与数字逻辑基础",
       "url": "/zh/notes/computer-systems-lecture/chapter-02-boolean-logic/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-07-18"
+    },
+    {
+      "title": "1. 算法分析",
+      "url": "/zh/notes/fds-data-structures-lecture/chapter-01-algorithm-analysis/",
       "updated": "2026-07-18",
       "locale": "zh",
       "declaredUpdated": "2026-07-18"
@@ -190,6 +267,13 @@
     {
       "title": "0. 课程视角：从门电路到系统软件",
       "url": "/zh/notes/computer-systems-lecture/chapter-00-system-view/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-07-18"
+    },
+    {
+      "title": "0. 课程视角：为什么需要数据结构",
+      "url": "/zh/notes/fds-data-structures-lecture/chapter-00-course-view/",
       "updated": "2026-07-18",
       "locale": "zh",
       "declaredUpdated": "2026-07-18"
@@ -315,13 +399,6 @@
       "url": "/en/friends/",
       "updated": "2026-06-20",
       "locale": "en"
-    },
-    {
-      "title": "FDS 数据结构基础讲义",
-      "url": "/zh/notes/fds-data-structures-lecture/",
-      "updated": "2026-05-21",
-      "locale": "zh",
-      "declaredUpdated": "2026-05-21"
     },
     {
       "title": "随笔",
