@@ -29,6 +29,33 @@
       "declaredUpdated": "2026-07-18"
     },
     {
+      "title": "Notes",
+      "url": "/en/notes/",
+      "updated": "2026-07-18",
+      "locale": "en"
+    },
+    {
+      "title": "FDS Data Structures English Overview",
+      "url": "/en/notes/fds-data-structures-lecture/",
+      "updated": "2026-07-18",
+      "locale": "en",
+      "declaredUpdated": "2026-07-18"
+    },
+    {
+      "title": "Discrete Mathematics English Overview",
+      "url": "/en/notes/discrete-math-lecture/",
+      "updated": "2026-07-18",
+      "locale": "en",
+      "declaredUpdated": "2026-07-18"
+    },
+    {
+      "title": "Computer Systems English Overview",
+      "url": "/en/notes/computer-systems-lecture/",
+      "updated": "2026-07-18",
+      "locale": "en",
+      "declaredUpdated": "2026-07-18"
+    },
+    {
       "title": "隐私说明",
       "url": "/zh/privacy/",
       "updated": "2026-07-17",
@@ -171,27 +198,6 @@
       "declaredUpdated": "2026-05-21"
     },
     {
-      "title": "FDS Data Structures Fundamentals Lecture Notes",
-      "url": "/en/notes/fds-data-structures-lecture/",
-      "updated": "2026-05-21",
-      "locale": "en",
-      "declaredUpdated": "2026-05-21"
-    },
-    {
-      "title": "Discrete Mathematics Lecture Notes",
-      "url": "/en/notes/discrete-math-lecture/",
-      "updated": "2026-05-21",
-      "locale": "en",
-      "declaredUpdated": "2026-05-21"
-    },
-    {
-      "title": "Computer Systems Fundamentals Lecture Notes",
-      "url": "/en/notes/computer-systems-lecture/",
-      "updated": "2026-05-21",
-      "locale": "en",
-      "declaredUpdated": "2026-05-21"
-    },
-    {
       "title": "随笔",
       "url": "/zh/notes/essays/",
       "updated": "2026-05-15",
@@ -281,12 +287,6 @@
       "updated": "2026-05-15",
       "locale": "en",
       "declaredUpdated": "2026-05-13"
-    },
-    {
-      "title": "Notes",
-      "url": "/en/notes/",
-      "updated": "2026-05-15",
-      "locale": "en"
     },
     {
       "title": "Math Notes",

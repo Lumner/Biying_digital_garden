@@ -66,14 +66,14 @@ nav:
       - Notes Home: en/notes/index.md
       - Math:
           - Category Home: en/notes/math.md
-          - Discrete Mathematics Lecture Notes: en/notes/discrete-math-lecture.md
+          - Discrete Mathematics English Overview: en/notes/discrete-math-lecture.md
           - Math Lab: en/notes/math-lab.md
       - Systems:
           - Category Home: en/notes/systems.md
-          - Computer Systems Fundamentals Lecture Notes: en/notes/computer-systems-lecture.md
+          - Computer Systems English Overview: en/notes/computer-systems-lecture.md
       - Algorithms:
           - Category Home: en/notes/algorithms.md
-          - FDS Data Structures Fundamentals Lecture Notes: en/notes/fds-data-structures-lecture.md
+          - FDS Data Structures English Overview: en/notes/fds-data-structures-lecture.md
       - AI: en/notes/ai.md
       - Essays: en/notes/essays.md
       - Site:

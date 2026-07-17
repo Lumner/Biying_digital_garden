@@ -77,3 +77,45 @@ test("public project case uses the required case-study structure", async ({ page
     await expect(page.locator("main")).not.toContainText(/虚构指标|invented metrics/i);
   }
 });
+
+test("english course pages are labeled as overviews and link back to Chinese full notes", async ({ page }) => {
+  const courses = [
+    {
+      slug: "discrete-math-lecture",
+      title: "Discrete Mathematics English Overview"
+    },
+    {
+      slug: "computer-systems-lecture",
+      title: "Computer Systems English Overview"
+    },
+    {
+      slug: "fds-data-structures-lecture",
+      title: "FDS Data Structures English Overview"
+    }
+  ];
+
+  for (const course of courses) {
+    const response = await page.goto(`${site.url}/en/notes/${course.slug}/`, { waitUntil: "networkidle" });
+    expect(response?.status()).toBe(200);
+    await expect(page.locator("article h1")).toContainText(course.title);
+    await expect(page.locator("main")).toContainText("English overview");
+    await expect(page.locator("main")).toContainText("not a full line-by-line translation");
+    await expect(page.locator("main")).toContainText("Chinese full version");
+    const chineseLinks = await page.locator(`main a[href*="zh/notes/${course.slug}"]`).count();
+    expect(chineseLinks).toBeGreaterThanOrEqual(1);
+  }
+});
+
+test("english notes index presents course entries as overviews", async ({ page }) => {
+  const response = await page.goto(`${site.url}/en/notes/`, { waitUntil: "networkidle" });
+  expect(response?.status()).toBe(200);
+  const main = page.locator("main");
+
+  await expect(main).toContainText("The English course pages are overview entrances");
+  await expect(main).toContainText("Discrete Mathematics English Overview");
+  await expect(main).toContainText("Computer Systems English Overview");
+  await expect(main).toContainText("FDS Data Structures English Overview");
+  await expect(main).not.toContainText("Discrete Mathematics Lecture Notes");
+  await expect(main).not.toContainText("Computer Systems Fundamentals Lecture Notes");
+  await expect(main).not.toContainText("FDS Data Structures Fundamentals Lecture Notes");
+});

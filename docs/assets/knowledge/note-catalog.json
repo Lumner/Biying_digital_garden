@@ -143,8 +143,8 @@
     ],
     "en": [
       {
-        "title": "Computer Systems Fundamentals Lecture Notes",
-        "summary": "Lecture notes for computer systems fundamentals, covering information representation, Boolean algebra, combinational logic, arithmetic units, sequential logic, ISA, and RISC-V.",
+        "title": "Computer Systems English Overview",
+        "summary": "English overview for the Chinese computer systems fundamentals lecture note; not a full line-by-line translation.",
         "url": "/en/notes/computer-systems-lecture/",
         "category": "systems",
         "tags": [
@@ -152,14 +152,14 @@
           "risc-v",
           "course-note"
         ],
-        "updated": "2026-05-21",
+        "updated": "2026-07-18",
         "recommended": true,
         "readingOrder": 20,
-        "chapterCount": 4
+        "chapterCount": 5
       },
       {
-        "title": "Discrete Mathematics Lecture Notes",
-        "summary": "Lecture notes for discrete mathematics, covering logic and proofs, sets and functions, algorithms, induction and recursion, counting, and relations.",
+        "title": "Discrete Mathematics English Overview",
+        "summary": "English overview for the Chinese discrete mathematics lecture note; not a full line-by-line translation.",
         "url": "/en/notes/discrete-math-lecture/",
         "category": "math",
         "tags": [
@@ -167,14 +167,14 @@
           "discrete-math",
           "course-note"
         ],
-        "updated": "2026-05-21",
+        "updated": "2026-07-18",
         "recommended": true,
         "readingOrder": 10,
-        "chapterCount": 4
+        "chapterCount": 5
       },
       {
-        "title": "FDS Data Structures Fundamentals Lecture Notes",
-        "summary": "Lecture notes for data structures, covering algorithm analysis, lists, stacks and queues, trees, heaps, union-find, segment trees, graphs, and topological sorting.",
+        "title": "FDS Data Structures English Overview",
+        "summary": "English overview for the Chinese FDS data structures lecture note; not a full line-by-line translation.",
         "url": "/en/notes/fds-data-structures-lecture/",
         "category": "algorithms",
         "tags": [
@@ -182,10 +182,10 @@
           "algorithms",
           "course-note"
         ],
-        "updated": "2026-05-21",
+        "updated": "2026-07-18",
         "recommended": true,
         "readingOrder": 30,
-        "chapterCount": 4
+        "chapterCount": 5
       },
       {
         "title": "Math Lab",

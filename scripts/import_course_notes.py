@@ -12,9 +12,9 @@ COURSES = [
         "source": "离散数学讲义.md",
         "slug": "discrete-math-lecture",
         "zh_title": "离散数学讲义",
-        "en_title": "Discrete Mathematics Lecture Notes",
+        "en_title": "Discrete Mathematics English Overview",
         "summary_zh": "离散数学课程讲义，覆盖逻辑与证明、集合与函数、算法、归纳递归、计数、关系等主题。",
-        "summary_en": "Lecture notes for discrete mathematics, covering logic and proofs, sets and functions, algorithms, induction and recursion, counting, and relations.",
+        "summary_en": "English overview for the Chinese discrete mathematics lecture note, covering logic and proofs, sets and functions, algorithms, induction and recursion, counting, and relations.",
         "tags": ["math", "discrete-math", "course-note"],
         "category": "math",
         "recommended": True,
@@ -33,9 +33,9 @@ COURSES = [
         "source": "SYS_计算机系统基础讲义.md",
         "slug": "computer-systems-lecture",
         "zh_title": "计算机系统基础讲义",
-        "en_title": "Computer Systems Fundamentals Lecture Notes",
+        "en_title": "Computer Systems English Overview",
         "summary_zh": "计算机系统基础讲义，覆盖信息表示、布尔代数、组合逻辑、运算部件、时序逻辑、ISA 与 RISC-V。",
-        "summary_en": "Lecture notes for computer systems fundamentals, covering information representation, Boolean algebra, combinational logic, arithmetic units, sequential logic, ISA, and RISC-V.",
+        "summary_en": "English overview for the Chinese computer systems fundamentals lecture note, covering information representation, Boolean algebra, combinational logic, arithmetic units, sequential logic, ISA, and RISC-V.",
         "tags": ["computer-systems", "risc-v", "course-note"],
         "category": "systems",
         "recommended": True,
@@ -54,9 +54,9 @@ COURSES = [
         "source": "FDS_数据结构基础讲义.md",
         "slug": "fds-data-structures-lecture",
         "zh_title": "FDS 数据结构基础讲义",
-        "en_title": "FDS Data Structures Fundamentals Lecture Notes",
+        "en_title": "FDS Data Structures English Overview",
         "summary_zh": "数据结构基础讲义，覆盖算法分析、线性表、栈队列、树、堆、并查集、线段树、图与拓扑排序。",
-        "summary_en": "Lecture notes for data structures, covering algorithm analysis, lists, stacks and queues, trees, heaps, union-find, segment trees, graphs, and topological sorting.",
+        "summary_en": "English overview for the Chinese FDS data structures lecture note, covering algorithm analysis, lists, stacks and queues, trees, heaps, union-find, segment trees, graphs, and topological sorting.",
         "tags": ["data-structures", "algorithms", "course-note"],
         "category": "algorithms",
         "recommended": True,
@@ -223,17 +223,18 @@ def write_english(course: dict) -> None:
     zh_url = f"../../zh/notes/{course['slug']}.md"
     body = f"""# {course['en_title']}
 
-!!! info "Translation status"
-    This is an English companion version generated for the bilingual site. It summarizes and translates the structure of the Chinese source while keeping key mathematical and technical notation intact. A full line-by-line translation can be generated later with `scripts/translate.py` after an API key is configured.
+!!! info "English overview status"
+    This page is an English overview, not a full line-by-line translation. The Chinese full note remains the source of record for complete formulas, examples, tables, exercises, diagrams, and chapter structure.
 
-## Source
+## Source and Language Boundary
 
-- Chinese source page: [{course['zh_title']}]({zh_url})
+- Chinese full version: [{course['zh_title']}]({zh_url})
 - Original file: `note/{course['source']}`
+- Language status: overview only; use the Chinese full version for detailed study.
 
 ## What This Note Covers
 
-{course['summary_en']}
+This overview maps the Chinese source: {course['summary_en']}
 
 ## Study Outline
 
@@ -247,7 +248,7 @@ The Chinese source contains mathematical notation and technical symbols. Example
 
 ## How to Use This Page
 
-Use this English page as a quick map before reading the Chinese lecture note. The Chinese page contains the complete detailed content, formulas, examples, tables, and course structure. This companion page makes the topic discoverable to English visitors and gives Biying enough English context to explain what the note is about.
+Use this English overview as a quick map before reading the Chinese full note. The Chinese page contains the complete detailed content, formulas, examples, tables, exercises, diagrams, and course structure. This overview makes the topic discoverable to English visitors and gives Biying enough English context to explain what the note is about without overstating the translation status.
 """
     target = DOCS / "en" / "notes" / f"{course['slug']}.md"
     target.write_text(
