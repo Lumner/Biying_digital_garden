@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "allowedSerious": {
+    "mobile-chromium:/zh/notes/computer-systems-lecture/": {
+      "scrollable-region-focusable": 25
+    }
+  }
+}

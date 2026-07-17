@@ -269,7 +269,7 @@
           <input name="accountUsername" maxlength="40" placeholder="${text("privateAccount")}" />
           <input name="contact" maxlength="120" placeholder="${text("privateContact")}" />
           <textarea name="content" rows="4" maxlength="800" placeholder="${text("privateMessage")}"></textarea>
-          <input class="hp-field" name="website" tabindex="-1" autocomplete="off" />
+          <input class="hp-field" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <button type="submit">${text("sendPrivate")}</button>
           <p class="meta-line" data-auth-private-message></p>
         </form>

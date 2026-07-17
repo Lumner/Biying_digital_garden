@@ -5,13 +5,23 @@
   "type": "module",
   "scripts": {
     "build:site": "python scripts/build_site.py",
+    "check:budget": "python scripts/check_site_budget.py",
+    "check:js": "python scripts/check_javascript_syntax.py",
+    "check:metadata": "python scripts/check_page_metadata.py",
     "check:site-sync": "python scripts/check_site_sync.py",
     "edgeone:dev": "edgeone pages dev",
     "knowledge": "python scripts/build_knowledge.py",
-    "test:mobile": "playwright test",
-    "validate:public": "python scripts/validate_public_scope.py"
+    "test:api": "node --test tests/api/auth.test.js tests/api/security.test.js tests/api/stats.test.js",
+    "test:e2e": "playwright test --project=mobile-small --project=mobile-chromium --project=tablet-chromium --project=desktop-chromium",
+    "test:e2e:cross-browser": "playwright test --project=desktop-firefox",
+    "test:mobile": "playwright test --project=mobile-chromium",
+    "validate:public": "python scripts/validate_public_scope.py",
+    "verify:ci": "python scripts/verify_release.py --ci",
+    "verify:quick": "python scripts/verify_release.py --quick",
+    "verify:release": "python scripts/verify_release.py --full"
   },
   "devDependencies": {
+    "@axe-core/playwright": "4.12.1",
     "@playwright/test": "1.60.0",
     "edgeone": "1.5.2",
     "esbuild": "0.28.1"

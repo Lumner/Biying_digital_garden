@@ -106,7 +106,7 @@ def main() -> None:
     run(sys.executable, "scripts/build_note_catalog.py")
     run(sys.executable, "scripts/build_page_meta.py")
     run(sys.executable, "scripts/build_knowledge.py")
-    run("mkdocs", "build", "--strict")
+    run(sys.executable, "-m", "mkdocs", "build", "--strict")
     trim_shared_script_blank_lines()
     run(sys.executable, "scripts/package_site.py")
 

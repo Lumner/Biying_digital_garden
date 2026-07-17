@@ -169,7 +169,7 @@
         </div>
         <textarea name="content" rows="4" maxlength="800" placeholder="${copy("message")}"></textarea>
         <p class="meta-line guestbook__privacy-hint" data-guestbook-privacy hidden>${copy("privacyHint")}</p>
-        <input class="hp-field" name="website" tabindex="-1" autocomplete="off" />
+        <input class="hp-field" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
         <button type="submit">${copy("submit")}</button>
       </form>
     `;

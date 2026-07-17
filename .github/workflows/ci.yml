@@ -17,8 +17,15 @@ jobs:
           node-version: "22"
       - run: pip install -r requirements.txt
       - run: npm ci
-      - run: npx playwright install --with-deps chromium
-      - run: npm run build:site
-      - run: npm run validate:public
-      - run: npm run check:site-sync
-      - run: npm run test:mobile
+      - run: npx playwright install --with-deps chromium firefox
+      - run: npm run verify:ci
+      - name: Upload Playwright diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-diagnostics
+          path: |
+            playwright-report/
+            test-results/
+          if-no-files-found: ignore
+          retention-days: 7

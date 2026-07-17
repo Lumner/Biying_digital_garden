@@ -597,8 +597,8 @@ Codex 每完成一个阶段后更新本表。
 
 | 阶段 | 优先级 | 状态 | 提交 | 说明 |
 |---|---:|---|---|---|
-| 0. 锁定可复现基线 | P0 | Completed | 本阶段提交 | 依赖已锁定，生成时间改为可复现来源日期 |
-| 1. 建立统一自动测试与 CI 质量门 | P0 | Pending |  |  |
+| 0. 锁定可复现基线 | P0 | Completed | `5261f77` | 依赖已锁定，生成时间改为可复现来源日期 |
+| 1. 建立统一自动测试与 CI 质量门 | P0 | Completed | 本阶段提交 | 84 项 Chromium E2E 与 10 项 API 测试纳入统一门禁；Firefox 由 CI 验证 |
 | 2A. 低风险安全与隐私修复 | P0 | Pending |  |  |
 | 2B. 用户会话迁移到安全 Cookie | P0 | Pending |  |  |
 | 2C. 管理后台与密码哈希强化 | P1 | Pending |  |  |
@@ -734,6 +734,8 @@ npm ci
 npx playwright install --with-deps chromium firefox
 npm run verify:ci
 ```
+
+本地完整验证默认运行 Chromium 四档视口；Firefox 二次浏览器回归由 CI 单独执行，避免本地缺少浏览器二进制时阻断常规开发。
 
 ### 验收标准
 
