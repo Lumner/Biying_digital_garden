@@ -8,6 +8,75 @@
       "declaredUpdated": "2026-07-18"
     },
     {
+      "title": "第 9 章 关系",
+      "url": "/zh/notes/discrete-math-lecture/chapter-09-relations/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-07-18"
+    },
+    {
+      "title": "第 8 章 高级计数技术",
+      "url": "/zh/notes/discrete-math-lecture/chapter-08-advanced-counting/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-07-18"
+    },
+    {
+      "title": "第 6 章 计数",
+      "url": "/zh/notes/discrete-math-lecture/chapter-06-counting/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-07-18"
+    },
+    {
+      "title": "第 5 章 归纳与递归",
+      "url": "/zh/notes/discrete-math-lecture/chapter-05-induction-recursion/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-07-18"
+    },
+    {
+      "title": "第 3 章 算法",
+      "url": "/zh/notes/discrete-math-lecture/chapter-03-algorithms/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-07-18"
+    },
+    {
+      "title": "第 2 章 基本结构：集合、函数、序列、基数和矩阵",
+      "url": "/zh/notes/discrete-math-lecture/chapter-02-basic-structures/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-07-18"
+    },
+    {
+      "title": "第 1 章 逻辑与证明",
+      "url": "/zh/notes/discrete-math-lecture/chapter-01-logic-proofs/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-07-18"
+    },
+    {
+      "title": "笔记",
+      "url": "/zh/notes/",
+      "updated": "2026-07-18",
+      "locale": "zh"
+    },
+    {
+      "title": "离散数学讲义附录",
+      "url": "/zh/notes/discrete-math-lecture/appendix-reference/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-07-18"
+    },
+    {
+      "title": "离散数学讲义",
+      "url": "/zh/notes/discrete-math-lecture/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-07-18"
+    },
+    {
       "title": "个人数字花园与碧影",
       "url": "/zh/projects/personal-site-avatar/",
       "updated": "2026-07-18",
@@ -142,12 +211,6 @@
       "locale": "en"
     },
     {
-      "title": "笔记",
-      "url": "/zh/notes/",
-      "updated": "2026-06-23",
-      "locale": "zh"
-    },
-    {
       "title": "站点统计",
       "url": "/zh/stats/",
       "updated": "2026-06-23",
@@ -224,13 +287,6 @@
       "updated": "2026-05-15",
       "locale": "zh",
       "declaredUpdated": "2026-05-15"
-    },
-    {
-      "title": "离散数学讲义",
-      "url": "/zh/notes/discrete-math-lecture/",
-      "updated": "2026-05-15",
-      "locale": "zh",
-      "declaredUpdated": "2026-05-13"
     },
     {
       "title": "标签",

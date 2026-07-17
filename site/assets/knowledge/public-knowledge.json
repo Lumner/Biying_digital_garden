@@ -1170,8 +1170,434 @@
       "parentTitle": "计算机系统基础讲义"
     },
     {
+      "title": "离散数学讲义附录",
+      "summary": "离散数学讲义的符号表、证明模板和后续扩展记录。",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note",
+        "appendix"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/appendix-reference/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture/appendix-reference.md",
+      "locale": "zh",
+      "kind": "page",
+      "text": "附录 A：常用符号表 !!! info \"附录导引\" 本页保留原讲义附录锚点，集中放置符号、证明模板、更新记录和后续扩展边界。 参考资料与引用边界 整理者：Lumner。 课程来源：根据 DM/ 目录下现有离散数学课件整理。 原始讲义文件： note/离散数学讲义.md 。 引用边界：附录用于辅助复习，不替代课程正式教材、教师课件或考试要求。 | 符号 | 含义 | | | | | $\\neg p$ | 非 $p$ | | $p\\land q$ | $p$ 且 $q$ | | $p\\lor q$ | $p$ 或 $q$ | | $p\\to q$ | 若 $p$ 则 $q$ | | $p\\leftrightarrow q$ | $p$ 当且仅当 $q$ | | $\\forall x$ | 对所有 $x$ | | $\\exists x$ | 存在 $x$ | | $\\exists!x$ | 存在唯一 $x$ | | $A\\subseteq B$ | $A$ 是 $B$ 的子集 | | $A\\cup B$ | 并集 | | $A\\cap B$ | 交集 | | $A B$ | 差集 | | $\\mathcal P(A)$ | 幂集 | | $|A|$ | 集合基数 | | $f:A\\to B$ | 从 $A$ 到 $B$ 的函数 | | $\\lfloor x\\rfloor$ | 下取整 | | $\\lceil x\\rceil$ | 上取整 | | $O(g(n))$ | 渐近上界 | | $\\Omega(g(n))$ | 渐近下界 | | $\\Theta(g(n))$ | 同阶增长 | | $\\binom nr$ | 组合数 | | $P(n,r)$ | r 排列数 | | $S(n,k)$ | 第二类 Stirling 数 | | $R^{ 1}$ | 逆关系 | | $S\\circ R$ | 关系复合 | | $R^n$ | 关系的 n 次幂 | | $[a]$ | 元素 $a$ 的等价类 | 附录 B：常用证明模板 直接证明模板 要证 $p\\to q$。 假设 $p$ 成立。根据定义、已知定理和代数变形推出 $q$ 成立。因此 $p\\to q$ 成立。 逆否证明模板 要证 $p\\to q$。 改证 $\\neg q\\to\\neg p$。假设 $\\neg q$ 成立，推出 $\\neg p$ 成立。由于原命题与逆否命题等价，故 $p\\to q$ 成立。 反证法模板 要证 $p$。 假设 $\\neg p$ 成立。由此推出矛盾，例如 $r\\land\\neg r$，或与已知定理矛盾。因此假设错误，$p$ 成立。 分情况证明模板 要证 $(p 1\\lor p 2\\lor\\cdots\\lor p n)\\to q$。 分别证明 $p 1\\to q$、$p 2\\to q$、...、$p n\\to q$。由于这些情况覆盖全部可能，所以结论成立。 数学归纳法模板 要证对所有 $n\\ge b$，$P(n)$ 成立。 基础步：证明 $P(b)$ 成立。 归纳步：任取 $k\\ge b$，假设 $P(k)$ 成立，证明 $P(k+1)$ 成立。 结论：由数学归纳法，$P(n)$ 对所有 $n\\ge b$ 成立。 强归纳模板 要证对所有 $n\\ge b$，$P(n)$ 成立。 基础步：证明初始情形成立。 归纳步：任取 $k\\ge b$，假设 $P(b),P(b+1),\\ldots,P(k)$ 全部成立，证明 $P(k+1)$ 成立。 结论：由强归纳法，命题成立。 结构归纳模板 对递归定义的对象证明性质 $P$。 基础步：证明所有基础对象满足 $P$。 递归步：假设构造新对象所用的已有对象满足 $P$，证明新对象也满足 $P$。 结论：所有递归生成的对象都满足 $P$。 附录 C：后续更新记录 | 日期 | 更新内容 | | | | | 2026 05 13 | 根据 DM/ 目录现有课件生成初版讲义，覆盖第 1、2、3、5、6、8、9 章，并为第 4、7 章和矩阵细节保留后续扩展。 | 附录 D：后续扩展清单 第 2.6 节矩阵：补充矩阵运算、0 1 矩阵、布尔积例题。 第 4 章：等待新课件后确定主题。 第 7 章：等待新课件后确定主题。 第 9 章：若后续出现偏序关系、Hasse 图、格论或图论内容，可在第 9 章后扩展。 课后题详解：当前只整理知识点，未展开课件中所有作业题。"
+    },
+    {
+      "title": "第 1 章 逻辑与证明",
+      "summary": "命题逻辑、谓词逻辑、推理规则和证明策略。",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note",
+        "chapter"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/chapter-01-logic-proofs/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture/chapter-01-logic-proofs.md",
+      "locale": "zh",
+      "kind": "page",
+      "text": "第 1 章 逻辑与证明 !!! info \"章节导引\" 本页从《离散数学讲义》拆分而来，保留原章节锚点，方便从旧总览页和旧链接跳转。 学习目标 建立离散数学的形式语言，能把自然语言、系统规格和基础证明转成可检查的逻辑结构。 前置知识 高中集合语言、基础代数表达，以及能区分定义、命题和推理步骤。 建议用时 建议 4–6 小时：命题逻辑 2 小时，谓词与量词 2 小时，证明方法 1–2 小时。 练习建议 用真值表验证 3 个等价式；把 5 句自然语言翻译成谓词逻辑；各写 1 个直接证明、逆否证明和反证法。 参考资料与引用边界 整理者：Lumner。 课程来源：根据 DM/ 目录下的课件整理；本章对应课件： DM1.1(8).pdf, DM1.2 1.3(5).pdf, DM1.4(6).pdf, DM1.5(5).pdf, DM1.6(6).pdf, DM1.7 1.8(6).pdf 。 原始讲义文件： note/离散数学讲义.md 。 引用边界：这是公开学习笔记，不替代课程正式教材、教师课件或考试要求；外部引用时请注明来自本网站整理版。 1.0 核心目标 本章要建立离散数学的语言基础。命题逻辑用于刻画“真或假”的陈述，谓词逻辑用于刻画带变量的数学语句，推理规则和证明方法用于把前提严谨地推到结论。 学完本章应能做到： 判断一句话是否为命题，并写出复合命题的形式。 使用真值表、逻辑等价式、范式分析命题。 把自然语言翻译成谓词逻辑表达式。 正确使用全称量词、存在量词和嵌套量词。 使用推理规则构造有效论证。 区分直接证明、逆否证明、反证法、分情况证明、存在性证明和反例证明。 1.1 命题逻辑 命题 命题是一个具有确定真值的陈述句。它要么为真，要么为假，不能二者同时成立。 常见判断： | 句子 | 是否为命题 | 原因 | | | | | | “2022 年冬奥会在北京举行。” | 是 | 有确定真值 | | “9 是素数。” | 是 | 有确定真值，且为假 | | “请打开书。” | 否 | 命令句，没有真假 | | “现在几点？” | 否 | 疑问句，没有真假 | | $x+1=4$ | 通常不是 | 未指定 $x$ 时没有确定真值 | 通常用 $p,q,r,\\ldots$ 表示命题变量。真值可记为 T/F ，也可记为 1/0 。 复合命题和联结词 复合命题由命题变量和逻辑联结词构成。 | 名称 | 符号 | 读法 | 为真的条件 | | | | | | | 否定 | $\\neg p$ | 非 $p$ | $p$ 为假 | | 合取 | $p \\land q$ | $p$ 且 $q$ | $p,q$ 都真 | | 析取 | $p \\lor q$ | $p$ 或 $q$ | 至少一个真 | | 异或 | $p \\oplus q$ | 要么 $p$ 要么 $q$ | 恰好一个真 | | 条件 | $p \\to q$ | 若 $p$ 则 $q$ | 只有 $p$ 真、$q$ 假时为假 | | 双条件 | $p \\leftrightarrow q$ | $p$ 当且仅当 $q$ | $p,q$ 真值相同 | 条件命题 $p \\to q$ 中，$p$ 称为前件，$q$ 称为后件。它的真假只由前件和后件的真值决定，不要求二者存在因果关系。课件中把它类比为“承诺”：只有承诺条件发生而结果没有发生时，承诺才被违反。 条件命题的相关形式 从 $p \\to q$ 可构造： | 名称 | 形式 | 与原命题的关系 | | | | | | 逆命题 | $q \\to p$ | 不一定等价 | | 否命题 | $\\neg p \\to \\neg q$ | 不一定等价 | | 逆否命题 | $\\neg q \\to \\neg p$ | 与原命题等价 | 因此证明 $p \\to q$ 时，经常改证 $\\neg q \\to \\neg p$。 真值表 真值表列出命题变量的全部可能赋值。若有 $n$ 个命题变量，则真值表有 $2^n$ 行。 例：证明 $p \\to q$ 与 $\\neg p \\lor q$ 等价。 | $p$ | $q$ | $p \\to q$ | $\\neg p \\lor q$ | | | | | | | T | T | T | T | | T | F | F | F | | F | T | T | T | | F | F | T | T | 两列完全相同，所以 $p \\to q \\equiv \\neg p \\lor q$。 运算优先级 常用优先级从高到低为： 1. 括号。 2. 否定 $\\neg$。 3. 合取 $\\land$。 4. 析取 $\\lor$。 5. 条件 $\\to$。 6. 双条件 $\\leftrightarrow$。 表达复杂公式时应尽量加括号，避免歧义。 位运算 计算机中比特 0/1 可看作假/真。位串上的按位运算是把逻辑运算逐位推广。 例：设两个位串为 0110110110 与 1100011101 。 按位 OR：对应位至少一个为 1 时为 1 。 按位 AND：对应位都为 1 时为 1 。 按位 XOR：对应位恰好一个为 1 时为 1 。 这说明命题逻辑不仅是证明语言，也是数字系统和程序判断的基础。 1.2 命题逻辑的应用 自然语言翻译 把自然语言翻译成命题逻辑的目的，是消除自然语言中的歧义，使推理可以形式化。 步骤： 1. 找出原子命题。 2. 给每个原子命题命名。 3. 判断关键词对应的联结词。 4. 注意“only if”“unless”“necessary”“sufficient”等短语。 例：“You can access the Internet from campus only if you are a computer science major or you are not a freshman.” 设： $a$：你可以从校园访问互联网。 $c$：你是计算机科学专业学生。 $f$：你是一年级学生。 “$p$ only if $q$” 表示 $p \\to q$。所以原句翻译为： $a \\to (c \\lor \\neg f)$ 系统规格说明 软件和系统工程中，经常把自然语言需求翻译成逻辑公式。 若一组规格说明可以同时为真，则称其一致；若不存在任何赋值能让所有公式同时为真，则不一致。 例： $p \\to q$、$p$、$\\neg q$ 三条规格不一致，因为由前两条可推出 $q$，与第三条矛盾。 逻辑谜题 骑士与骗子问题、宝箱问题等都可以通过命题变量建模。基本套路： 1. 用命题变量描述“某人说真话”“某箱有宝物”等事实。 2. 把每句话翻译为逻辑表达式。 3. 加入题目约束，例如“骑士总说真话，骗子总说假话”。 4. 用真值表、等价变形或反证排除不可能情况。 1.3 命题等价式与范式 重言式、矛盾式、可满足式 | 名称 | 定义 | 例子 | | | | | | 重言式 | 在所有赋值下都为真 | $p \\lor \\neg p$ | | 矛盾式 | 在所有赋值下都为假 | $p \\land \\neg p$ | | 偶然式 | 有时真、有时假 | $p \\to q$ | | 可满足式 | 至少存在一个赋值使其为真 | $p \\lor q$ | | 不可满足式 | 没有赋值使其为真 | $p \\land \\neg p$ | 两个命题公式 $P,Q$ 逻辑等价，当且仅当 $P \\leftrightarrow Q$ 是重言式，记作 $P \\equiv Q$。 常用逻辑等价式 | 名称 | 等价式 | | | | | 恒等律 | $p \\land T \\equiv p$, $p \\lor F \\equiv p$ | | 支配律 | $p \\lor T \\equiv T$, $p \\land F \\equiv F$ | | 幂等律 | $p \\lor p \\equiv p$, $p \\land p \\equiv p$ | | 双重否定律 | $\\neg(\\neg p) \\equiv p$ | | 交换律 | $p \\lor q \\equiv q \\lor p$, $p \\land q \\equiv q \\land p$ | | 结合律 | $(p\\lor q)\\lor r \\equiv p\\lor(q\\lor r)$, $(p\\land q)\\land r \\equiv p\\land(q\\land r)$ | | 分配律 | $p\\lor(q\\land r)\\equiv(p\\lor q)\\land(p\\lor r)$ | | 分配律 | $p\\land(q\\lor r)\\equiv(p\\land q)\\lor(p\\land r)$ | | 德摩根律 | $\\neg(p\\land q)\\equiv \\neg p\\lor \\neg q$ | | 德摩根律 | $\\neg(p\\lor q)\\equiv \\neg p\\land \\neg q$ | | 吸收律 | $p\\lor(p\\land q)\\equiv p$, $p\\land(p\\lor q)\\equiv p$ | | 条件等价 | $p\\to q\\equiv \\neg p\\lor q$ | | 双条件等价 | $p\\leftrightarrow q\\equiv(p\\to q)\\land(q\\to p)$ | 扩展德摩根律： $\\neg(p 1\\lor p 2\\lor\\cdots\\lor p n)\\equiv \\neg p 1\\land\\neg p 2\\land\\cdots\\land\\neg p n$ $\\neg(p 1\\land p 2\\land\\cdots\\land p n)\\equiv \\neg p 1\\lor\\neg p 2\\lor\\cdots\\lor\\neg p n$ 用等价式化简 例：证明 $\\neg(p\\lor(\\neg p\\land q))\\equiv \\neg p\\land\\neg q$。 推导： $p\\lor(\\neg p\\land q)$ $\\equiv (p\\lor\\neg "
+    },
+    {
+      "title": "第 1 章 逻辑与证明 · 命题",
+      "summary": "命题 命题是一个具有确定真值的陈述句。它要么为真，要么为假，不能二者同时成立。 常见判断： | 句子 | 是否为命题 | 原因 | | | | | | “2022 年冬奥会在北京举行。” | 是 | 有确定真值 | | “9 是素数。” | 是 | 有确定真值，且为假 | | “请打开书。” | 否 | 命令句，没有真假 | | “现在几点？” | 否 | 疑问句，没有真假 | | $x+1=4$ | 通常不是 | 未指定 $x$ 时没",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note",
+        "chapter"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/chapter-01-logic-proofs/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture/chapter-01-logic-proofs.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "命题 命题是一个具有确定真值的陈述句。它要么为真，要么为假，不能二者同时成立。 常见判断： | 句子 | 是否为命题 | 原因 | | | | | | “2022 年冬奥会在北京举行。” | 是 | 有确定真值 | | “9 是素数。” | 是 | 有确定真值，且为假 | | “请打开书。” | 否 | 命令句，没有真假 | | “现在几点？” | 否 | 疑问句，没有真假 | | $x+1=4$ | 通常不是 | 未指定 $x$ 时没有确定真值 | 通常用 $p,q,r,\\ldots$ 表示命题变量。真值可记为 T/F ，也可记为 1/0 。",
+      "section": "命题",
+      "parentTitle": "第 1 章 逻辑与证明"
+    },
+    {
+      "title": "第 1 章 逻辑与证明 · 复合命题和联结词",
+      "summary": "复合命题和联结词 复合命题由命题变量和逻辑联结词构成。 | 名称 | 符号 | 读法 | 为真的条件 | | | | | | | 否定 | $\\neg p$ | 非 $p$ | $p$ 为假 | | 合取 | $p \\land q$ | $p$ 且 $q$ | $p,q$ 都真 | | 析取 | $p \\lor q$ | $p$ 或 $q$ | 至少一个真 | | 异或 | $p \\oplus q$ | 要么 $p$ 要么 $q$ | ",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note",
+        "chapter"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/chapter-01-logic-proofs/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture/chapter-01-logic-proofs.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "复合命题和联结词 复合命题由命题变量和逻辑联结词构成。 | 名称 | 符号 | 读法 | 为真的条件 | | | | | | | 否定 | $\\neg p$ | 非 $p$ | $p$ 为假 | | 合取 | $p \\land q$ | $p$ 且 $q$ | $p,q$ 都真 | | 析取 | $p \\lor q$ | $p$ 或 $q$ | 至少一个真 | | 异或 | $p \\oplus q$ | 要么 $p$ 要么 $q$ | 恰好一个真 | | 条件 | $p \\to q$ | 若 $p$ 则 $q$ | 只有 $p$ 真、$q$ 假时为假 | | 双条件 | $p \\leftrightarrow q$ | $p$ 当且仅当 $q$ | $p,q$ 真值相同 | 条件命题 $p \\to q$ 中，$p$ 称为前件，$q$ 称为后件。它的真假只由前件和后件的真值决定，不要求二者存在因果关系。课件中把它类比为“承诺”：只有承诺条件发生而结果没有发生时，承诺才被违反。",
+      "section": "复合命题和联结词",
+      "parentTitle": "第 1 章 逻辑与证明"
+    },
+    {
+      "title": "第 1 章 逻辑与证明 · 自然语言翻译",
+      "summary": "自然语言翻译 把自然语言翻译成命题逻辑的目的，是消除自然语言中的歧义，使推理可以形式化。 步骤： 1. 找出原子命题。 2. 给每个原子命题命名。 3. 判断关键词对应的联结词。 4. 注意“only if”“unless”“necessary”“sufficient”等短语。 例：“You can access the Internet from campus only if you are a computer science ma",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note",
+        "chapter"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/chapter-01-logic-proofs/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture/chapter-01-logic-proofs.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "自然语言翻译 把自然语言翻译成命题逻辑的目的，是消除自然语言中的歧义，使推理可以形式化。 步骤： 1. 找出原子命题。 2. 给每个原子命题命名。 3. 判断关键词对应的联结词。 4. 注意“only if”“unless”“necessary”“sufficient”等短语。 例：“You can access the Internet from campus only if you are a computer science major or you are not a freshman.” 设： $a$：你可以从校园访问互联网。 $c$：你是计算机科学专业学生。 $f$：你是一年级学生。 “$p$ only if $q$” 表示 $p \\to q$。所以原句翻译为： $a \\to (c \\lor \\neg f)$",
+      "section": "自然语言翻译",
+      "parentTitle": "第 1 章 逻辑与证明"
+    },
+    {
+      "title": "第 1 章 逻辑与证明 · 重言式、矛盾式、可满足式",
+      "summary": "重言式、矛盾式、可满足式 | 名称 | 定义 | 例子 | | | | | | 重言式 | 在所有赋值下都为真 | $p \\lor \\neg p$ | | 矛盾式 | 在所有赋值下都为假 | $p \\land \\neg p$ | | 偶然式 | 有时真、有时假 | $p \\to q$ | | 可满足式 | 至少存在一个赋值使其为真 | $p \\lor q$ | | 不可满足式 | 没有赋值使其为真 | $p \\land \\neg p$ ",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note",
+        "chapter"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/chapter-01-logic-proofs/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture/chapter-01-logic-proofs.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "重言式、矛盾式、可满足式 | 名称 | 定义 | 例子 | | | | | | 重言式 | 在所有赋值下都为真 | $p \\lor \\neg p$ | | 矛盾式 | 在所有赋值下都为假 | $p \\land \\neg p$ | | 偶然式 | 有时真、有时假 | $p \\to q$ | | 可满足式 | 至少存在一个赋值使其为真 | $p \\lor q$ | | 不可满足式 | 没有赋值使其为真 | $p \\land \\neg p$ | 两个命题公式 $P,Q$ 逻辑等价，当且仅当 $P \\leftrightarrow Q$ 是重言式，记作 $P \\equiv Q$。",
+      "section": "重言式、矛盾式、可满足式",
+      "parentTitle": "第 1 章 逻辑与证明"
+    },
+    {
+      "title": "第 1 章 逻辑与证明 · 常用逻辑等价式",
+      "summary": "常用逻辑等价式 | 名称 | 等价式 | | | | | 恒等律 | $p \\land T \\equiv p$, $p \\lor F \\equiv p$ | | 支配律 | $p \\lor T \\equiv T$, $p \\land F \\equiv F$ | | 幂等律 | $p \\lor p \\equiv p$, $p \\land p \\equiv p$ | | 双重否定律 | $\\neg(\\neg p) \\equiv p$ | |",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note",
+        "chapter"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/chapter-01-logic-proofs/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture/chapter-01-logic-proofs.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "常用逻辑等价式 | 名称 | 等价式 | | | | | 恒等律 | $p \\land T \\equiv p$, $p \\lor F \\equiv p$ | | 支配律 | $p \\lor T \\equiv T$, $p \\land F \\equiv F$ | | 幂等律 | $p \\lor p \\equiv p$, $p \\land p \\equiv p$ | | 双重否定律 | $\\neg(\\neg p) \\equiv p$ | | 交换律 | $p \\lor q \\equiv q \\lor p$, $p \\land q \\equiv q \\land p$ | | 结合律 | $(p\\lor q)\\lor r \\equiv p\\lor(q\\lor r)$, $(p\\land q)\\land r \\equiv p\\land(q\\land r)$ | | 分配律 | $p\\lor(q\\land r)\\equiv(p\\lor q)\\land(p\\lor r)$ | | 分配律 | $p\\land(q\\lor r)\\equiv(p\\land q)\\lor(p\\land r)$ | | 德摩根律 | $\\neg(p\\land q)\\equiv \\neg p\\lor \\neg q$ | | 德摩根律 | $\\neg(p\\lor q)\\equiv \\neg p\\land \\neg q$ | | 吸收律 | $p\\lor(p\\land q)\\equiv p$, $p\\land(p\\lor q)\\equiv p$ | | 条件等价 | $p\\to q\\equiv \\neg p\\lor q$ | | 双条件等价 | $p\\leftrightarrow q\\equiv(p\\to q)\\land(q\\to p)$ | 扩展德摩根律： $\\neg(p 1\\lor p 2\\lor\\cdots\\lor p n)\\equiv \\neg p 1\\land\\neg p 2\\land\\cdots\\land\\neg p n$ $\\neg(p 1\\land p 2\\land\\cdots\\land p n)\\equiv \\neg p 1\\lor\\neg p 2\\lor\\cdots\\lor\\neg p n$",
+      "section": "常用逻辑等价式",
+      "parentTitle": "第 1 章 逻辑与证明"
+    },
+    {
+      "title": "第 1 章 逻辑与证明 · 命题逻辑推理规则",
+      "summary": "命题逻辑推理规则 | 名称 | 形式 | | | | | 假言推理 Modus Ponens | $p,\\ p\\to q\\ \\therefore q$ | | 拒取式 Modus Tollens | $\\neg q,\\ p\\to q\\ \\therefore \\neg p$ | | 假言三段论 | $p\\to q,\\ q\\to r\\ \\therefore p\\to r$ | | 析取三段论 | $p\\lor q,\\ \\neg p\\ \\th",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note",
+        "chapter"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/chapter-01-logic-proofs/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture/chapter-01-logic-proofs.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "命题逻辑推理规则 | 名称 | 形式 | | | | | 假言推理 Modus Ponens | $p,\\ p\\to q\\ \\therefore q$ | | 拒取式 Modus Tollens | $\\neg q,\\ p\\to q\\ \\therefore \\neg p$ | | 假言三段论 | $p\\to q,\\ q\\to r\\ \\therefore p\\to r$ | | 析取三段论 | $p\\lor q,\\ \\neg p\\ \\therefore q$ | | 合取引入 | $p,\\ q\\ \\therefore p\\land q$ | | 简化 | $p\\land q\\ \\therefore p$ | | 附加 | $p\\ \\therefore p\\lor q$ | | 消解 | $p\\lor q,\\ \\neg p\\lor r\\ \\therefore q\\lor r$ | 消解法适合自动推理。若把公式化为子句集合，反复使用消解可检查结论是否由前提推出。",
+      "section": "命题逻辑推理规则",
+      "parentTitle": "第 1 章 逻辑与证明"
+    },
+    {
+      "title": "第 1 章 逻辑与证明 · 量词推理规则",
+      "summary": "量词推理规则 | 名称 | 形式 | 说明 | | | | | | 全称实例化 UI | $\\forall xP(x)\\ \\therefore P(c)$ | 从所有对象成立推出某个对象成立 | | 全称推广 UG | $P(c)\\ \\therefore \\forall xP(x)$ | $c$ 必须是任意对象 | | 存在实例化 EI | $\\exists xP(x)\\ \\therefore P(c)$ | $c$ 是新的代表元 | ",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note",
+        "chapter"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/chapter-01-logic-proofs/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture/chapter-01-logic-proofs.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "量词推理规则 | 名称 | 形式 | 说明 | | | | | | 全称实例化 UI | $\\forall xP(x)\\ \\therefore P(c)$ | 从所有对象成立推出某个对象成立 | | 全称推广 UG | $P(c)\\ \\therefore \\forall xP(x)$ | $c$ 必须是任意对象 | | 存在实例化 EI | $\\exists xP(x)\\ \\therefore P(c)$ | $c$ 是新的代表元 | | 存在推广 EG | $P(c)\\ \\therefore \\exists xP(x)$ | 某个对象成立则存在对象成立 | 综合规则： 全称假言推理： $\\forall x(P(x)\\to Q(x)),\\ P(a)\\ \\therefore Q(a)$ 全称拒取式： $\\forall x(P(x)\\to Q(x)),\\ \\neg Q(a)\\ \\therefore \\neg P(a)$",
+      "section": "量词推理规则",
+      "parentTitle": "第 1 章 逻辑与证明"
+    },
+    {
+      "title": "第 2 章 基本结构：集合、函数、序列、基数和矩阵",
+      "summary": "集合、函数、序列、基数和矩阵的基础语言。",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note",
+        "chapter"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/chapter-02-basic-structures/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture/chapter-02-basic-structures.md",
+      "locale": "zh",
+      "kind": "page",
+      "text": "第 2 章 基本结构：集合、函数、序列、基数和矩阵 !!! info \"章节导引\" 本页从《离散数学讲义》拆分而来，保留原章节锚点，方便从旧总览页和旧链接跳转。 学习目标 掌握集合与函数的基本定义，把序列、递推、基数和矩阵视为后续算法与关系内容的共同工具。 前置知识 第 1 章的逻辑表达、基本代数运算和对函数符号的熟悉度。 建议用时 建议 5–7 小时：集合 2 小时，函数 2 小时，序列/基数/矩阵 1–3 小时。 练习建议 证明 2 个集合恒等式；判断 5 个函数是否为单射/满射/双射；写出 2 个递推关系的前几项。 参考资料与引用边界 整理者：Lumner。 课程来源：根据 DM/ 目录下的课件整理；本章对应课件： DM2.1.pdf, DM2.2.pdf, DM2.3.pdf, DM2.4.pdf, DM2.5 2.6(5).pdf 。 原始讲义文件： note/离散数学讲义.md 。 引用边界：这是公开学习笔记，不替代课程正式教材、教师课件或考试要求；外部引用时请注明来自本网站整理版。 2.0 核心目标 本章提供离散结构的基本对象：集合描述对象范围，函数描述映射关系，序列描述有序对象，矩阵可表示关系和计算结构，基数用于比较集合大小。 2.1 集合 集合和元素 集合是对象的无序汇集。对象称为元素或成员。 常用记号： $x\\in A$：$x$ 是集合 $A$ 的元素。 $x\\notin A$：$x$ 不是集合 $A$ 的元素。 $\\varnothing$ 或 {} ：空集。 $U$：全集，即当前讨论范围内所有对象的集合。 集合可用列举法： $A=\\{1,2,3,4\\}$ 也可用描述法： $A=\\{x\\mid x\\text{ 是小于 }10\\text{ 的正奇数}\\}$ 常见数集 | 记号 | 含义 | | | | | $\\mathbb N$ | 自然数集，课件中采用 $\\{0,1,2,\\ldots\\}$ | | $\\mathbb Z$ | 整数集 | | $\\mathbb Z^+$ | 正整数集 | | $\\mathbb Q$ | 有理数集 | | $\\mathbb R$ | 实数集 | 注意：不同教材对 $\\mathbb N$ 是否包含 0 可能不同，使用时应说明。 子集和真子集 $A\\subseteq B$ 表示 $A$ 是 $B$ 的子集： $A\\subseteq B\\iff \\forall x(x\\in A\\to x\\in B)$ 集合相等： $A=B\\iff A\\subseteq B\\land B\\subseteq A$ 真子集： $A\\subset B\\iff A\\subseteq B\\land A\\ne B$ 等价地： $A\\subset B\\iff \\forall x(x\\in A\\to x\\in B)\\land \\exists x(x\\in B\\land x\\notin A)$ 有限集和基数 若集合 $S$ 恰有 $n$ 个不同元素，称 $S$ 为有限集，记： $|S|=n$ 例：$A=\\{1,3,5,7,9\\}$，则 $|A|=5$。 幂集 集合 $S$ 的幂集是 $S$ 所有子集构成的集合，记为 $\\mathcal P(S)$。 若 $|S|=n$，则： $|\\mathcal P(S)|=2^n$ 例：若 $S=\\{a,b\\}$，则： $\\mathcal P(S)=\\{\\varnothing,\\{a\\},\\{b\\},\\{a,b\\}\\}$ 有序 n 元组和笛卡尔积 有序 n 元组： $(a 1,a 2,\\ldots,a n)$ 顺序重要。 笛卡尔积： $A\\times B=\\{(a,b)\\mid a\\in A,\\ b\\in B\\}$ 若 $|A|=m$、$|B|=n$，则： $|A\\times B|=mn$ 2.2 集合运算 基本运算 | 运算 | 记号 | 定义 | | | | | | 并集 | $A\\cup B$ | $\\{x\\mid x\\in A\\lor x\\in B\\}$ | | 交集 | $A\\cap B$ | $\\{x\\mid x\\in A\\land x\\in B\\}$ | | 差集 | $A B$ | $\\{x\\mid x\\in A\\land x\\notin B\\}$ | | 补集 | $\\overline A$ 或 $A^c$ | $\\{x\\in U\\mid x\\notin A\\}$ | | 对称差 | $A\\oplus B$ | $(A B)\\cup(B A)$ | 集合恒等式 集合恒等式与逻辑等价式高度对应。 | 名称 | 恒等式 | | | | | 恒等律 | $A\\cup\\varnothing=A$, $A\\cap U=A$ | | 支配律 | $A\\cup U=U$, $A\\cap\\varnothing=\\varnothing$ | | 幂等律 | $A\\cup A=A$, $A\\cap A=A$ | | 补元律 | $A\\cup A^c=U$, $A\\cap A^c=\\varnothing$ | | 交换律 | $A\\cup B=B\\cup A$, $A\\cap B=B\\cap A$ | | 结合律 | $(A\\cup B)\\cup C=A\\cup(B\\cup C)$ | | 分配律 | $A\\cup(B\\cap C)=(A\\cup B)\\cap(A\\cup C)$ | | 德摩根律 | $(A\\cup B)^c=A^c\\cap B^c$ | | 德摩根律 | $(A\\cap B)^c=A^c\\cup B^c$ | | 吸收律 | $A\\cup(A\\cap B)=A$, $A\\cap(A\\cup B)=A$ | 证明集合恒等式的方法 子集法： 1. 证明左边是右边的子集。 2. 证明右边是左边的子集。 成员法： 对任意 $x$，把 $x\\in$ 左边逐步等价变形为 $x\\in$ 右边。 成员表： 类似真值表，用 0/1 表示元素是否属于各集合。 容斥思想的初步形式 两个有限集合： $|A\\cup B|=|A|+|B| |A\\cap B|$ 三个有限集合： $|A\\cup B\\cup C|=|A|+|B|+|C| |A\\cap B| |A\\cap C| |B\\cap C|+|A\\cap B\\cap C|$ 容斥原理会在第 8 章进一步系统展开。 广义并与广义交 对集合族 $A 1,A 2,\\ldots,A n$： $\\bigcup {i=1}^nA i=\\{x\\mid \\exists i,\\ x\\in A i\\}$ $\\bigcap {i=1}^nA i=\\{x\\mid \\forall i,\\ x\\in A i\\}$ 无限集合族也可类似定义。 用位串表示集合 若全集有限，例如 $U=\\{u 1,u 2,\\ldots,u n\\}$，集合 $A$ 可用长度 $n$ 的位串表示： 第 $i$ 位为 1 当且仅当 $u i\\in A$。 这样： 并集对应按位 OR。 交集对应按位 AND。 补集对应按位 NOT。 2.3 函数 函数定义 设 $A,B$ 为非空集合。函数 $f:A\\to B$ 是把 $A$ 中每个元素都指定到 $B$ 中唯一一个元素的规则。 其中： $A$ 是定义域。 $B$ 是陪域。 $f(a)$ 是 $a$ 的像。 值域或像集为 $f(A)=\\{f(a)\\mid a\\in A\\}$。 $b$ 的原像集合为 $f^{ 1}(b)=\\{a\\in A\\mid f(a)=b\\}$。 函数也可看作关系，但必须满足：每个定义域元素恰好对应一个陪域元素。 单射、满射、双射 单射 injective： $f(a 1)=f(a 2)\\to a 1=a 2$ 不同输入不会有相同输出。 满射 surjective： $\\forall b\\in B\\,\\exists a\\in A(f(a)=b)$ 陪域中每个元素都被命中。 双射 bijective： 既单射又满射。 双射用于说明两个集合“大小相同”，在无限集合的基数比较中尤其重要。 判断技巧 证明单射：从 $f(x 1)=f(x 2)$ 出发，推出 $x 1=x 2$。 证明非单射：找 $x 1\\ne x 2$，但 $f(x 1)=f(x 2)$。 证明满射：任取 $y\\in B$，构造 $x\\in A$ 使 $f(x)=y$。 证明非满射：找一个 $y\\in B$ 不可能作为函数值。 反函数 若 $f:A\\to B$ 是双射，则存在反函数 $f^{ 1}:B\\to A$，满足： $f^{ 1}(b)=a\\iff f(a)=b$ 只有双射一定有双侧意义上的反函数。 函数组合 若 $f:A\\to B$，$g:B\\to C$，则组合函数： $(g\\circ f)(a)=g(f(a))$ 组合顺序很重要，通常 $g\\circ f\\ne f\\circ g$。 函数图像 函数 $f:A\\to B$ 的图像是： $\\{(a,b)\\mid a\\in A,\\ b=f(a)\\}$ 这是 $A\\times B$ 的一个子集。 取整函数 下取整： $\\lfloor x\\rfloor$ 是不超过 $x$ 的最大整数。 上取整： $\\lceil x\\rceil$ 是不小于 $x$ 的最小整数。 基本性质： $\\lfloor x\\rfloor=n\\iff n\\le x<n+1$ $\\lceil x\\rceil=n\\iff n 1<x\\le n$ 若 $m$ 为整数： $\\lfloor x+m\\rfloor=\\lfloor x\\rfloor+m$ $\\lceil x+m\\rceil=\\lceil x\\rceil+m$ 常见恒等式： $\\lfloor 2x\\rfloor=\\lfloor x\\rfloor+\\lfloor x+\\frac12\\rfloor$ 证明可令 $x=n+\\varepsilon$，其中 $n$ 为整数且 $0\\le\\varepsilon<1$，再分 $0\\le\\varepsilon<1/2$ 和 $1/2\\le\\varepsilon<1$ 两种情况。 2.4 序"
+    },
+    {
+      "title": "第 2 章 基本结构：集合、函数、序列、基数和矩阵 · 子集和真子集",
+      "summary": "子集和真子集 $A\\subseteq B$ 表示 $A$ 是 $B$ 的子集： $A\\subseteq B\\iff \\forall x(x\\in A\\to x\\in B)$ 集合相等： $A=B\\iff A\\subseteq B\\land B\\subseteq A$ 真子集： $A\\subset B\\iff A\\subseteq B\\land A\\ne B$ 等价地： $A\\subset B\\iff \\forall x(x\\in A\\t",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note",
+        "chapter"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/chapter-02-basic-structures/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture/chapter-02-basic-structures.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "子集和真子集 $A\\subseteq B$ 表示 $A$ 是 $B$ 的子集： $A\\subseteq B\\iff \\forall x(x\\in A\\to x\\in B)$ 集合相等： $A=B\\iff A\\subseteq B\\land B\\subseteq A$ 真子集： $A\\subset B\\iff A\\subseteq B\\land A\\ne B$ 等价地： $A\\subset B\\iff \\forall x(x\\in A\\to x\\in B)\\land \\exists x(x\\in B\\land x\\notin A)$",
+      "section": "子集和真子集",
+      "parentTitle": "第 2 章 基本结构：集合、函数、序列、基数和矩阵"
+    },
+    {
+      "title": "第 2 章 基本结构：集合、函数、序列、基数和矩阵 · 基本运算",
+      "summary": "基本运算 | 运算 | 记号 | 定义 | | | | | | 并集 | $A\\cup B$ | $\\{x\\mid x\\in A\\lor x\\in B\\}$ | | 交集 | $A\\cap B$ | $\\{x\\mid x\\in A\\land x\\in B\\}$ | | 差集 | $A B$ | $\\{x\\mid x\\in A\\land x\\notin B\\}$ | | 补集 | $\\overline A$ 或 $A^c$ | $\\{x\\",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note",
+        "chapter"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/chapter-02-basic-structures/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture/chapter-02-basic-structures.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "基本运算 | 运算 | 记号 | 定义 | | | | | | 并集 | $A\\cup B$ | $\\{x\\mid x\\in A\\lor x\\in B\\}$ | | 交集 | $A\\cap B$ | $\\{x\\mid x\\in A\\land x\\in B\\}$ | | 差集 | $A B$ | $\\{x\\mid x\\in A\\land x\\notin B\\}$ | | 补集 | $\\overline A$ 或 $A^c$ | $\\{x\\in U\\mid x\\notin A\\}$ | | 对称差 | $A\\oplus B$ | $(A B)\\cup(B A)$ |",
+      "section": "基本运算",
+      "parentTitle": "第 2 章 基本结构：集合、函数、序列、基数和矩阵"
+    },
+    {
+      "title": "第 2 章 基本结构：集合、函数、序列、基数和矩阵 · 集合恒等式",
+      "summary": "集合恒等式 集合恒等式与逻辑等价式高度对应。 | 名称 | 恒等式 | | | | | 恒等律 | $A\\cup\\varnothing=A$, $A\\cap U=A$ | | 支配律 | $A\\cup U=U$, $A\\cap\\varnothing=\\varnothing$ | | 幂等律 | $A\\cup A=A$, $A\\cap A=A$ | | 补元律 | $A\\cup A^c=U$, $A\\cap A^c=\\varnothing",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note",
+        "chapter"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/chapter-02-basic-structures/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture/chapter-02-basic-structures.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "集合恒等式 集合恒等式与逻辑等价式高度对应。 | 名称 | 恒等式 | | | | | 恒等律 | $A\\cup\\varnothing=A$, $A\\cap U=A$ | | 支配律 | $A\\cup U=U$, $A\\cap\\varnothing=\\varnothing$ | | 幂等律 | $A\\cup A=A$, $A\\cap A=A$ | | 补元律 | $A\\cup A^c=U$, $A\\cap A^c=\\varnothing$ | | 交换律 | $A\\cup B=B\\cup A$, $A\\cap B=B\\cap A$ | | 结合律 | $(A\\cup B)\\cup C=A\\cup(B\\cup C)$ | | 分配律 | $A\\cup(B\\cap C)=(A\\cup B)\\cap(A\\cup C)$ | | 德摩根律 | $(A\\cup B)^c=A^c\\cap B^c$ | | 德摩根律 | $(A\\cap B)^c=A^c\\cup B^c$ | | 吸收律 | $A\\cup(A\\cap B)=A$, $A\\cap(A\\cup B)=A$ |",
+      "section": "集合恒等式",
+      "parentTitle": "第 2 章 基本结构：集合、函数、序列、基数和矩阵"
+    },
+    {
+      "title": "第 2 章 基本结构：集合、函数、序列、基数和矩阵 · 取整函数",
+      "summary": "取整函数 下取整： $\\lfloor x\\rfloor$ 是不超过 $x$ 的最大整数。 上取整： $\\lceil x\\rceil$ 是不小于 $x$ 的最小整数。 基本性质： $\\lfloor x\\rfloor=n\\iff n\\le x<n+1$ $\\lceil x\\rceil=n\\iff n 1<x\\le n$ 若 $m$ 为整数： $\\lfloor x+m\\rfloor=\\lfloor x\\rfloor+m$ $\\lceil x+",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note",
+        "chapter"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/chapter-02-basic-structures/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture/chapter-02-basic-structures.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "取整函数 下取整： $\\lfloor x\\rfloor$ 是不超过 $x$ 的最大整数。 上取整： $\\lceil x\\rceil$ 是不小于 $x$ 的最小整数。 基本性质： $\\lfloor x\\rfloor=n\\iff n\\le x<n+1$ $\\lceil x\\rceil=n\\iff n 1<x\\le n$ 若 $m$ 为整数： $\\lfloor x+m\\rfloor=\\lfloor x\\rfloor+m$ $\\lceil x+m\\rceil=\\lceil x\\rceil+m$ 常见恒等式： $\\lfloor 2x\\rfloor=\\lfloor x\\rfloor+\\lfloor x+\\frac12\\rfloor$ 证明可令 $x=n+\\varepsilon$，其中 $n$ 为整数且 $0\\le\\varepsilon<1$，再分 $0\\le\\varepsilon<1/2$ 和 $1/2\\le\\varepsilon<1$ 两种情况。",
+      "section": "取整函数",
+      "parentTitle": "第 2 章 基本结构：集合、函数、序列、基数和矩阵"
+    },
+    {
+      "title": "第 3 章 算法",
+      "summary": "算法定义、伪代码、搜索排序和函数增长。",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note",
+        "chapter"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/chapter-03-algorithms/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture/chapter-03-algorithms.md",
+      "locale": "zh",
+      "kind": "page",
+      "text": "第 3 章 算法 !!! info \"章节导引\" 本页从《离散数学讲义》拆分而来，保留原章节锚点，方便从旧总览页和旧链接跳转。 学习目标 把问题描述成算法步骤，并能用渐近记号比较算法规模增长。 前置知识 第 2 章的函数和序列，基础程序流程，以及对循环/递归的直观理解。 建议用时 建议 3–4 小时：算法表达 1 小时，搜索排序 1 小时，复杂度比较 1–2 小时。 练习建议 为搜索或排序写一段伪代码；估算 3 段循环的 Big O；比较两组函数增长顺序。 参考资料与引用边界 整理者：Lumner。 课程来源：根据 DM/ 目录下的课件整理；本章对应课件： DM3.1 3.3(4).pdf 。 原始讲义文件： note/离散数学讲义.md 。 引用边界：这是公开学习笔记，不替代课程正式教材、教师课件或考试要求；外部引用时请注明来自本网站整理版。 3.0 核心目标 算法章节关注三个问题： 如何精确定义一个算法。 如何描述常见算法范式。 如何分析算法效率，尤其是时间复杂度。 3.1 算法 算法定义 算法是用于执行计算或解决问题的一组有限、精确指令。 算法应满足： | 性质 | 含义 | | | | | 输入 | 从指定集合获得输入值 | | 输出 | 产生问题所需的输出 | | 确定性 | 每一步必须清楚明确 | | 正确性 | 对合法输入产生正确输出 | | 有限性 | 对任意合法输入都在有限步后停止 | | 有效性 | 每一步都能实际执行 | | 通用性 | 能处理一类问题，而非单个样例 | 伪代码 伪代码介于自然语言和程序语言之间，用于清晰描述算法而不依赖具体语言。 求有限整数序列最大值： 搜索问题 一般搜索问题：给定列表 $a 1,a 2,\\ldots,a n$ 和目标 $x$，找出 $x$ 在列表中的位置；若不存在则返回 0 或其他失败标记。 线性搜索： 适用于无序列表，最坏情况下要检查 $n$ 个元素。 二分搜索适用于递增有序列表： 每次将搜索区间约减为约一半，效率远高于线性搜索。 排序问题 排序是把列表元素按升序、字典序等规则排列。排序重要，因为大量计算任务依赖有序数据，例如搜索、数据库索引和数据展示。 课件当前主要提到排序问题本身，具体排序算法可在后续补充。 贪心算法 贪心算法每一步都选择当前看起来最优的局部选择。它不一定总能得到全局最优，但在某些问题上可以证明正确。 找零问题：对于美国硬币面值 25、10、5、1 美分，贪心策略每次选择不超过剩余金额的最大硬币。该策略能得到最少硬币数。 证明贪心正确通常需要： 1. 找出最优解的结构性质。 2. 证明存在一个最优解包含贪心第一步选择。 3. 把问题缩小为子问题。 3.2 函数增长 为什么关心增长率 算法实际运行时间不仅取决于机器速度，也取决于输入规模。增长率描述输入变大时，运行时间如何变化。 例如： $30n+8$ 在小规模时可能比 $n^2+1$ 大，但当 $n$ 足够大时，二次函数会超过线性函数。 Big O 设 $f,g$ 是从整数或实数到实数的函数。若存在常数 $C 0$ 和 $k$，使得当 $x k$ 时： $|f(x)|\\le C|g(x)|$ 则称 $f(x)$ 是 $O(g(x))$。 Big O 给出渐近上界。 例：$x^2+2x+1$ 是 $O(x^2)$。 当 $x 1$ 时： $x^2+2x+1\\le x^2+2x^2+x^2=4x^2$ 可取 $C=4,k=1$。 多项式增长 若： $f(x)=a nx^n+a {n 1}x^{n 1}+\\cdots+a 1x+a 0$ 且 $a n\\ne0$，则： $f(x)=O(x^n)$ 事实上 $f(x)=\\Theta(x^n)$。 常见增长顺序 从慢到快大致为： $1,\\ \\log n,\\ n,\\ n\\log n,\\ n^2,\\ n^3,\\ 2^n,\\ n!$ 重要关系： 任意正幂的对数都比任意正幂的多项式慢。 任意固定次数多项式都比指数函数慢。 指数函数通常比阶乘慢。 Big Omega 和 Big Theta 若存在 $C 0,k$，当 $x k$ 时： $|f(x)|\\ge C|g(x)|$ 则 $f(x)=\\Omega(g(x))$。Big Omega 给出渐近下界。 若： $f(x)=O(g(x))$ 且 $f(x)=\\Omega(g(x))$ 则： $f(x)=\\Theta(g(x))$ Big Theta 表示同阶增长。 例：$3x^2+8x\\log x=\\Theta(x^2)$，因为 $x\\log x=O(x^2)$，且主导项为 $x^2$。 组合函数的增长 若 $f 1=O(g 1)$ 且 $f 2=O(g 2)$，则： $f 1+f 2=O(\\max(g 1,g 2))$ $f 1f 2=O(g 1g 2)$ 例：$n^2+\\log(n!)$。 由于 $\\log(n!)=O(n\\log n)$，所以整体为 $O(n^2)$，因为 $n\\log n=O(n^2)$。 3.3 算法复杂度 时间复杂度 时间复杂度估计算法所需基本操作次数随输入规模增长的情况。本课程主要关注时间复杂度。 类型： 最坏情况复杂度：所有输入中最多需要多少操作。 最好情况复杂度：最有利输入下需要多少操作。 平均情况复杂度：按某种输入分布的平均操作次数。 最大值算法复杂度 求 $n$ 个数最大值需要比较 $n 1$ 次，因此时间复杂度为： $\\Theta(n)$ 线性搜索复杂度 最坏情况：目标在最后一个位置或不存在，需要 $n$ 次比较，所以为： $\\Theta(n)$ 若目标一定在列表中且位置等可能，则平均比较次数： $\\frac{1+2+\\cdots+n}{n}=\\frac{n+1}{2}$ 仍为 $\\Theta(n)$。 二分搜索复杂度 每次比较后，候选区间约减半。最坏情况下比较次数约为： $\\lceil\\log 2 n\\rceil+1$ 所以二分搜索为： $\\Theta(\\log n)$ 可处理、不可处理、不可解 课件提到算法问题的更高层次分类： tractable：通常指多项式时间可解。 intractable：可能可解，但没有已知高效算法。 unsolvable：不存在算法能解决所有实例。 P 与 NP：计算复杂性理论的核心问题。 这些内容当前只作引入，后续若有复杂性理论课件可继续补充。 本章小结与后续扩展 本章已覆盖算法定义、搜索、贪心、渐近记号和复杂度分析。后续可补充： 常见排序算法。 图算法中的 BFS、DFS、最短路。 贪心算法正确性证明模板。 P、NP、NP complete 基础。"
+    },
+    {
+      "title": "第 5 章 归纳与递归",
+      "summary": "数学归纳法、强归纳、递归定义和递归算法。",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note",
+        "chapter"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/chapter-05-induction-recursion/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture/chapter-05-induction-recursion.md",
+      "locale": "zh",
+      "kind": "page",
+      "text": "第 5 章 归纳与递归 !!! info \"章节导引\" 本页从《离散数学讲义》拆分而来，保留原章节锚点，方便从旧总览页和旧链接跳转。 学习目标 能用归纳证明处理整数命题、递归结构和递归算法正确性。 前置知识 第 1 章证明方法、第 2 章序列与递推，以及基本函数/算法语言。 建议用时 建议 4–6 小时：普通归纳 2 小时，强归纳 1–2 小时，递归结构与算法 1–2 小时。 练习建议 完成 2 个数学归纳证明；用强归纳证明一个分解类命题；为一个递归定义写出前几项。 参考资料与引用边界 整理者：Lumner。 课程来源：根据 DM/ 目录下的课件整理；本章对应课件： DM5.1 5.4(7).pdf 。 原始讲义文件： note/离散数学讲义.md 。 引用边界：这是公开学习笔记，不替代课程正式教材、教师课件或考试要求；外部引用时请注明来自本网站整理版。 5.0 核心目标 归纳法用于证明关于整数的无限命题；递归用于定义对象、函数和算法。二者相互支撑：递归结构通常用归纳证明性质，递归算法常用归纳证明正确性。 5.1 数学归纳法 第一数学归纳原理 若： 1. $P(1)$ 为真。 2. 对任意 $k\\ge1$，$P(k)\\to P(k+1)$ 为真。 则： $\\forall n\\in\\mathbb Z^+\\,P(n)$ 更一般地，若从 $n 0$ 开始证明，则基例为 $P(n 0)$，归纳步证明 $P(k)\\to P(k+1)$ 对所有 $k\\ge n 0$ 成立。 归纳证明模板 要证明对所有 $n\\ge b$，$P(n)$ 成立： 1. 明确写出命题 $P(n)$。 2. 基础步：证明 $P(b)$。 3. 归纳假设：假设 $P(k)$ 对某个任意 $k\\ge b$ 成立。 4. 归纳步：在归纳假设下证明 $P(k+1)$。 5. 结论：由数学归纳法，命题对所有 $n\\ge b$ 成立。 为什么归纳法有效 归纳法基于良序性质：每个非空正整数集合都有最小元素。 若存在反例，则反例集合非空，设最小反例为 $m$。由于基例成立，$m b$。则 $m 1$ 不是反例，$P(m 1)$ 成立。由归纳步推出 $P(m)$ 成立，矛盾。 例：有限集子集个数 命题：若 $S$ 有 $n$ 个元素，则 $S$ 有 $2^n$ 个子集。 基例：$n=0$ 时，$S=\\varnothing$，只有一个子集，$1=2^0$。 归纳步：假设任意 $k$ 元集合有 $2^k$ 个子集。设 $S$ 有 $k+1$ 个元素，取出一个元素 $a$，令 $T=S \\{a\\}$。$T$ 有 $k$ 个元素。 $S$ 的子集分两类： 不含 $a$：对应 $T$ 的子集，有 $2^k$ 个。 含 $a$：由 $T$ 的每个子集加上 $a$ 得到，有 $2^k$ 个。 总数为 $2^k+2^k=2^{k+1}$。 5.2 强归纳与良序性 强归纳原理 若： 1. $P(n 0)$ 为真。 2. 对任意 $k\\ge n 0$，若 $P(n 0),P(n 0+1),\\ldots,P(k)$ 全部为真，则 $P(k+1)$ 为真。 则 $P(n)$ 对所有 $n\\ge n 0$ 成立。 强归纳适用于当前结论依赖多个较小情形的证明。 例：整数的素因子分解存在性 命题：每个大于 1 的整数都可写为素数或若干素数的乘积。 用强归纳。对 $n=2$ 成立。假设 $2,3,\\ldots,k$ 都可分解。考虑 $k+1$： 若 $k+1$ 是素数，结论成立。 若 $k+1$ 是合数，则 $k+1=ab$，其中 $2\\le a,b\\le k$。由强归纳假设，$a,b$ 都可分解为素数乘积，所以 $k+1$ 也可。 良序性 良序性质：每个非空的非负整数集合都有最小元素。 数学归纳、强归纳和良序性在逻辑上等价，常根据问题选择最方便的形式。 例：除法算法 除法算法：对整数 $a$ 和正整数 $d$，存在唯一整数 $q,r$，使： $a=dq+r,\\quad 0\\le r<d$ 存在性证明可用良序性：考虑集合 $S=\\{a dq\\mid q\\in\\mathbb Z,\\ a dq\\ge0\\}$。该集合非空，有最小元素 $r$。证明 $r<d$，否则 $r d$ 也是非负且更小，矛盾。 唯一性可假设： $a=dq+r=dq'+r'$ 其中 $0\\le r,r'<d$。则 $d(q q')=r' r$。右边绝对值小于 $d$，而左边是 $d$ 的倍数，只能为 0，所以 $r=r'$ 且 $q=q'$。 5.3 递归定义与结构归纳 递归定义函数 递归定义通常包括： 基础步：给出初始值。 递归步：用较小输入的值定义当前值。 阶乘： $0!=1$ $n!=n(n 1)!$，$n\\ge1$ 斐波那契数： $f 0=0,\\ f 1=1$ $f n=f {n 1}+f {n 2}$，$n\\ge2$ 欧几里得算法的递归思想 若 $a=bq+r$，则： $\\gcd(a,b)=\\gcd(b,r)$ 反复把较大问题转化为较小问题，直到余数为 0。 例： $662=414\\cdot1+248$ $414=248\\cdot1+166$ $248=166\\cdot1+82$ $166=82\\cdot2+2$ $82=2\\cdot41+0$ 所以 $\\gcd(662,414)=2$。 递归定义集合 递归定义集合也包含基础步和递归步。 例：集合 $S$： 基础步：$3\\in S$。 递归步：若 $x\\in S$ 且 $y\\in S$，则 $x+y\\in S$。 可以证明 $S$ 是所有 3 的正倍数集合。 字符串集合 设字母表为 $\\Sigma$。所有有限字符串集合 $\\Sigma^ $ 可递归定义： 基础步：空串 $\\lambda\\in\\Sigma^ $。 递归步：若 $w\\in\\Sigma^ $ 且 $x\\in\\Sigma$，则 $wx\\in\\Sigma^ $。 字符串连接也可递归定义。 合式公式 命题逻辑合式公式可递归定义： 基础步：$T,F$ 和命题变量是合式公式。 递归步：若 $A,B$ 是合式公式，则 $\\neg A$、$(A\\land B)$、$(A\\lor B)$、$(A\\to B)$、$(A\\leftrightarrow B)$ 是合式公式。 由此可用结构归纳证明：每个合式公式左右括号数量相等。 结构归纳 对递归定义的对象集合证明性质： 1. 基础步：证明初始对象满足性质。 2. 递归步：假设用于构造新对象的已有对象满足性质，证明新对象也满足性质。 结构归纳是数学归纳在递归结构上的推广。 树的递归定义 有根树可递归定义： 基础步：单个顶点是一棵有根树。 递归步：把若干棵互不相交的有根树接到一个新根下，得到新有根树。 满二叉树可递归定义： 基础步：单个顶点是一棵满二叉树。 递归步：若 $T 1,T 2$ 是互不相交的满二叉树，则以新根连接 $T 1,T 2$ 得到满二叉树。 树的高度、顶点数等性质常用结构归纳证明。 5.4 递归算法 递归算法定义 递归算法通过把问题化为更小规模的同类问题来求解。为了终止，必须最终到达已知解的基础情形。 阶乘递归算法： 最大公约数递归算法： 递归算法正确性 证明递归算法正确常用归纳法： 1. 证明基础输入上算法正确。 2. 假设较小输入上算法正确。 3. 证明当前输入调用较小输入后也正确。 递归与迭代 递归：不断把计算约化为较小实例。 迭代：通过循环重复更新状态。 递归表达更贴近数学定义，但可能有额外调用栈开销；迭代通常更直接控制资源。 递归斐波那契算法 该算法形式简单，但会重复计算大量子问题。后续算法课程可用动态规划优化。 本章小结与后续扩展 本章已覆盖数学归纳、强归纳、良序性、递归定义、结构归纳和递归算法。后续可补充更多递归算法复杂度分析，以及动态规划与递归的联系。"
+    },
+    {
+      "title": "第 6 章 计数",
+      "summary": "加法/乘法原则、排列组合、二项式系数和广义排列组合。",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note",
+        "chapter"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/chapter-06-counting/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture/chapter-06-counting.md",
+      "locale": "zh",
+      "kind": "page",
+      "text": "第 6 章 计数 !!! info \"章节导引\" 本页从《离散数学讲义》拆分而来，保留原章节锚点，方便从旧总览页和旧链接跳转。 学习目标 识别计数问题的对象、限制和是否允许重复，选择合适的排列组合模型。 前置知识 集合运算、函数概念、基础代数展开，以及能按条件拆分问题。 建议用时 建议 5–7 小时：基本原则 1 小时，排列组合 2–3 小时，二项式与广义模型 2–3 小时。 练习建议 各做 3 道加法/乘法原则、排列、组合题；解释每题为什么允许或不允许重复。 参考资料与引用边界 整理者：Lumner。 课程来源：根据 DM/ 目录下的课件整理；本章对应课件： DM6.1(3).pdf, DM6.2(3).pdf, DM6.3 6.4(6).pdf, DM6.5(3).pdf 。 原始讲义文件： note/离散数学讲义.md 。 引用边界：这是公开学习笔记，不替代课程正式教材、教师课件或考试要求；外部引用时请注明来自本网站整理版。 6.0 核心目标 计数研究“有多少种可能”。它是概率、算法分析、组合优化和离散结构枚举的基础。 本章重点： 乘法法则、加法法则、减法法则、除法法则。 鸽巢原理。 排列、组合和二项式系数。 允许重复、不可区分对象、盒子模型。 6.1 计数基础 乘法法则 若一个过程分为两个任务： 第一个任务有 $n 1$ 种方式。 对每种第一任务的完成方式，第二个任务有 $n 2$ 种方式。 则整个过程有 $n 1n 2$ 种方式。 推广到 $m$ 个阶段： $n 1n 2\\cdots n m$ 例：从 $m$ 元集合到 $n$ 元集合的函数数目为： $n^m$ 因为定义域中每个元素都有 $n$ 种像的选择。 单射函数计数 从 $m$ 元集合到 $n$ 元集合的单射数目： $n(n 1)(n 2)\\cdots(n m+1)$ 前提是 $m\\le n$。若 $m n$，单射不存在。 幂集大小 若 $|A|=n$，则 $|\\mathcal P(A)|=2^n$。 计数解释：每个元素都有“选入子集”和“不选入子集”两种选择，总共 $2^n$ 种。 加法法则 若一个任务可以通过互不重叠的方式 A 或方式 B 完成，A 有 $n 1$ 种，B 有 $n 2$ 种，则总数为： $n 1+n 2$ 集合形式：若 $A\\cap B=\\varnothing$，则： $|A\\cup B|=|A|+|B|$ 减法法则 若直接计数一个大集合容易，而坏情况也容易计数，则： 目标数 = 总数 不合法数。 例：长度 6 到 8 的密码，每位为大写字母或数字，且至少包含一个数字。 可按长度分别计数。长度为 $k$ 时： 总数：$36^k$ 全为字母：$26^k$ 至少一个数字：$36^k 26^k$ 所以总数： $\\sum {k=6}^8(36^k 26^k)$ 包含重叠时的加法 若两类方式有重叠： $|A\\cup B|=|A|+|B| |A\\cap B|$ 例：不超过 100 且既不被 4 也不被 6 整除的正整数个数： 总数 100。 被 4 整除：$\\lfloor100/4\\rfloor=25$。 被 6 整除：$\\lfloor100/6\\rfloor=16$。 同时被 4 和 6 整除，即被 $\\operatorname{lcm}(4,6)=12$ 整除：$\\lfloor100/12\\rfloor=8$。 被 4 或 6 整除的数有 $25+16 8=33$ 个。 目标为 $100 33=67$。 除法法则 若某个过程有 $n$ 种执行方式，但每个最终结果都被重复计数了恰好 $d$ 次，则不同结果数为： $n/d$ 除法法则常用于从排列推导组合。 树图 树图把每一步选择画成分支，叶子对应最终结果。它适合小规模分类计数，也能帮助检查分类是否遗漏或重叠。 6.2 鸽巢原理 基本鸽巢原理 若把 $n+1$ 个对象放入 $n$ 个盒子，则至少有一个盒子包含至少两个对象。 函数形式：若 $|A| |B|$，则任意函数 $f:A\\to B$ 都不是单射。 例：同余 任取 11 个整数。它们除以 10 的余数只有 10 种。由鸽巢原理，至少有两个整数余数相同，所以它们的差能被 10 整除。 广义鸽巢原理 若 $N$ 个对象放入 $k$ 个盒子，则至少有一个盒子包含不少于： $\\left\\lceil\\frac Nk\\right\\rceil$ 个对象。 等价地，若想保证某个盒子至少有 $r$ 个对象，需要至少： $k(r 1)+1$ 个对象。 例：抽球 盒中有 10 个红球和 10 个蓝球。要保证至少抽到 3 个同色球，最多可先抽到 2 红 2 蓝而没有 3 个同色。再抽 1 个必然出现 3 个同色。 答案为 5。 整除链例题 在任意 $n+1$ 个不超过 $2n$ 的正整数中，必有一个数整除另一个数。 证明思路：每个正整数可写为 $2^kq$，其中 $q$ 是奇数。$1$ 到 $2n$ 中奇数只有 $n$ 个。把 $n+1$ 个数按其奇数部分放入 $n$ 个盒子，必有两个数奇数部分相同。它们形如 $2^aq$ 和 $2^bq$，其中一个整除另一个。 单调子序列定理 任意 $n^2+1$ 个不同整数构成的序列，必含有长度 $n+1$ 的严格递增子序列或严格递减子序列。 证明常用鸽巢原理：对每个位置记录从该位置开始的最长递增子序列长度和最长递减子序列长度。若二者都不超过 $n$，则只有 $n^2$ 种有序对，但有 $n^2+1$ 个位置，产生矛盾。 六人朋友敌人问题 任意 6 个人中，若任意两人要么互为朋友要么互为敌人，则必存在 3 个互为朋友的人或 3 个互为敌人的人。 选定一人 A。A 与其他 5 人之间有朋友/敌人两种关系。由鸽巢原理，至少有 3 人与 A 同为朋友或同为敌人。若这 3 人之间存在一对关系与 A 同类，则与 A 组成三人同类；否则这 3 人彼此都是另一类，也组成三人同类。 6.3 排列与组合 排列 排列是对对象的有序安排。 从 $n$ 个不同元素中取 $r$ 个进行排列，数目为： $P(n,r)=n(n 1)\\cdots(n r+1)=\\frac{n!}{(n r)!}$ 特别地，$P(n,n)=n!$。 例：8 个城市，起点固定，剩下 7 个城市任意访问，路线顺序数为 $7!$。 含指定字符串的排列 例：字母 ABCDEFGH 的排列中包含连续字符串 ABC 的有多少个？ 把 ABC 看作一个整体，与 D,E,F,G,H 共 6 个对象排列，因此有 $6!$ 种。 组合 组合是不考虑顺序的选择。 从 $n$ 个元素中取 $r$ 个，数目为： $C(n,r)=\\binom nr=\\frac{n!}{r!(n r)!}$ 因为每个 $r$ 元集合对应 $r!$ 个排列，所以组合数等于排列数除以 $r!$。 对称性 $\\binom nr=\\binom n{n r}$ 组合解释：选择 $r$ 个留下，等价于选择 $n r$ 个不留下。 组合证明 组合证明是通过“同一对象用两种方式计数”证明恒等式。 例如 $\\binom nr=\\binom n{n r}$： 左边数 $n$ 个元素中选 $r$ 个的方式，右边数选出被排除的 $n r$ 个的方式，二者一一对应。 6.4 二项式系数 二项式定理 对非负整数 $n$： $(x+y)^n=\\sum {k=0}^n\\binom nk x^{n k}y^k$ 系数 $\\binom nk$ 来自选择 $n$ 个因子中哪些提供 $y$。 例：求 $(2x 3y)^{25}$ 中 $x^{12}y^{13}$ 的系数。 需要选 13 个因子提供 3y ，12 个因子提供 2x ： 系数为： $\\binom{25}{13}2^{12}( 3)^{13}$ 帕斯卡恒等式 $\\binom nk=\\binom{n 1}{k 1}+\\binom{n 1}{k}$ 组合解释：从 $n$ 个元素中选 $k$ 个，固定一个特殊元素 $a$。 选 $a$：还需从剩下 $n 1$ 个中选 $k 1$ 个。 不选 $a$：从剩下 $n 1$ 个中选 $k$ 个。 Vandermonde 恒等式 若 $m,n,r$ 为非负整数，且 $r\\le m+n$，则： $\\sum {k=0}^r\\binom mk\\binom n{r k}=\\binom{m+n}r$ 组合解释：从两个不相交集合 $A,B$ 中总共选 $r$ 个，按从 $A$ 中选 $k$ 个分类。 常见二项式恒等式 令 $x=y=1$： $\\sum {k=0}^n\\binom nk=2^n$ 令 $x=1,y= 1$： $\\sum {k=0}^n( 1)^k\\binom nk=0$ 所以偶数项组合数和等于奇数项组合数和： $\\sum {k\\text{ even}}\\binom nk=\\sum {k\\text{ odd}}\\binom nk=2^{n 1}$ 6.5 广义排列与组合 允许重复的排列 从 $n$ 个对象中取 $r$ 个，允许重复且考虑顺序，则有： $n^r$ 每个位置都有 $n$ 种选择。 允许重复的组合 从 $n$ 类对象中选 $r$ 个，允许重复且不考虑顺序，数目为： $\\binom{n+r 1}{r}=\\binom{n+r 1}{n 1}$ 这就是 stars and bars 方法。 等价于非负整数解个数： $x 1+x 2+\\cdots+x n=r,\\quad x i\\ge0$ 其解数为 $\\binom{n+r 1}{n 1}$。 带下界的整数解 若： $x 1+x 2+\\cdots+x n=r,\\quad x i\\ge a i$ 令 $y i=x i a i\\ge0$，则： $y 1+\\cdots+y n=r \\sum a i$ 解数为： $\\binom{r \\sum a i+n 1}{n 1}$ 前提是 $r \\sum a i\\ge0$。 不可区分对象的排列 若共有 $n$ 个对象，其中第 1 类有 $n 1$ 个相同，第 2 类有 $n 2$ 个相同，..., 第 $"
+    },
+    {
+      "title": "第 6 章 计数 · 包含重叠时的加法",
+      "summary": "包含重叠时的加法 若两类方式有重叠： $|A\\cup B|=|A|+|B| |A\\cap B|$ 例：不超过 100 且既不被 4 也不被 6 整除的正整数个数： 总数 100。 被 4 整除：$\\lfloor100/4\\rfloor=25$。 被 6 整除：$\\lfloor100/6\\rfloor=16$。 同时被 4 和 6 整除，即被 $\\operatorname{lcm}(4,6)=12$ 整除：$\\lfloor100/12\\r",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note",
+        "chapter"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/chapter-06-counting/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture/chapter-06-counting.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "包含重叠时的加法 若两类方式有重叠： $|A\\cup B|=|A|+|B| |A\\cap B|$ 例：不超过 100 且既不被 4 也不被 6 整除的正整数个数： 总数 100。 被 4 整除：$\\lfloor100/4\\rfloor=25$。 被 6 整除：$\\lfloor100/6\\rfloor=16$。 同时被 4 和 6 整除，即被 $\\operatorname{lcm}(4,6)=12$ 整除：$\\lfloor100/12\\rfloor=8$。 被 4 或 6 整除的数有 $25+16 8=33$ 个。 目标为 $100 33=67$。",
+      "section": "包含重叠时的加法",
+      "parentTitle": "第 6 章 计数"
+    },
+    {
+      "title": "第 8 章 高级计数技术",
+      "summary": "递推关系、分治递推、生成函数、容斥和错排。",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note",
+        "chapter"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/chapter-08-advanced-counting/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture/chapter-08-advanced-counting.md",
+      "locale": "zh",
+      "kind": "page",
+      "text": "第 8 章 高级计数技术 !!! info \"章节导引\" 本页从《离散数学讲义》拆分而来，保留原章节锚点，方便从旧总览页和旧链接跳转。 学习目标 能在直接计数困难时，转向递推、生成函数或容斥模型。 前置知识 第 3 章函数增长、第 5 章递归、第 6 章排列组合与二项式系数。 建议用时 建议 6–8 小时：递推 2 小时，分治递推 1–2 小时，生成函数 2 小时，容斥/错排 1–2 小时。 练习建议 解 2 个线性递推；用生成函数解释一个组合模型；用容斥解决一个带禁位的计数题。 参考资料与引用边界 整理者：Lumner。 课程来源：根据 DM/ 目录下的课件整理；本章对应课件： DM8.1 8.2(6).pdf, DM8.3.pdf, DM8.4(6).pdf, DM8.5 8.6(9).pdf 。 原始讲义文件： note/离散数学讲义.md 。 引用边界：这是公开学习笔记，不替代课程正式教材、教师课件或考试要求；外部引用时请注明来自本网站整理版。 8.0 核心目标 本章把计数问题推进到递推关系、分治递推、生成函数和容斥原理。重点是从问题结构中建立方程，再用代数工具求解。 8.1 递推关系的应用 递推关系回顾 递推关系用先前项定义当前项。一个完整递推问题通常需要： 递推公式。 初始条件。 例如细菌每小时数量翻倍，初始 5 个： $a 0=5,\\quad a n=2a {n 1}$ 解为： $a n=5\\cdot2^n$ 兔子问题和 Fibonacci 数 理想化兔子繁殖模型可得到： $f n=f {n 1}+f {n 2}$ 这类递推出现于许多“当前状态由前两种状态合并而来”的计数问题。 汉诺塔 设 $H n$ 为移动 $n$ 个盘子所需最少步数。 移动步骤： 1. 将上面 $n 1$ 个盘子从源柱移动到辅助柱。 2. 将最大盘子移动到目标柱。 3. 将 $n 1$ 个盘子从辅助柱移动到目标柱。 所以： $H n=2H {n 1}+1,\\quad H 1=1$ 解得： $H n=2^n 1$ 不含连续 0 的位串 设 $a n$ 为长度 $n$ 且不含两个连续 0 的位串数。 按最后一位分类： 以 1 结尾：前 $n 1$ 位任意合法，有 $a {n 1}$ 种。 以 0 结尾：倒数第二位必须为 1，前 $n 2$ 位任意合法，有 $a {n 2}$ 种。 递推： $a n=a {n 1}+a {n 2}$ 初始： $a 1=2,\\quad a 2=3$ 所以 $a n$ 与 Fibonacci 数密切相关。 算法与递推 递归算法的时间复杂度常由递推关系表示。例如二分搜索： $T(n)=T(n/2)+c$ 解得 $T(n)=O(\\log n)$。 8.2 线性递推关系 线性齐次常系数递推 k 阶线性齐次常系数递推形如： $a n=c 1a {n 1}+c 2a {n 2}+\\cdots+c ka {n k}$ 其中 $c i$ 为常数，$c k\\ne0$。 尝试形如 $a n=r^n$ 的解，代入得到特征方程： $r^k c 1r^{k 1} c 2r^{k 2} \\cdots c k=0$ 二阶不同根 若： $a n=c 1a {n 1}+c 2a {n 2}$ 特征方程： $r^2 c 1r c 2=0$ 有两个不同根 $r 1,r 2$，则通解为： $a n=\\alpha 1r 1^n+\\alpha 2r 2^n$ 常数由初始条件确定。 Fibonacci 闭式 Fibonacci 递推： $f n=f {n 1}+f {n 2},\\quad f 0=0,\\ f 1=1$ 特征方程： $r^2 r 1=0$ 根为： $\\phi=\\frac{1+\\sqrt5}{2},\\quad \\psi=\\frac{1 \\sqrt5}{2}$ 所以： $f n=\\frac{\\phi^n \\psi^n}{\\sqrt5}$ 重根情形 若二阶特征方程只有一个根 $r$，则通解为： $a n=(\\alpha 1+\\alpha 2n)r^n$ 更一般地，若根 $r$ 的重数为 $m$，对应项为： $(\\alpha 0+\\alpha 1n+\\cdots+\\alpha {m 1}n^{m 1})r^n$ 非齐次线性递推 非齐次形式： $a n=c 1a {n 1}+\\cdots+c ka {n k}+F(n)$ 通解： $a n=a n^{(h)}+a n^{(p)}$ 其中 $a n^{(h)}$ 是对应齐次方程通解，$a n^{(p)}$ 是一个特解。 例：求前 $n$ 个正整数和。设 $a n=a {n 1}+n,\\ a 0=0$。可得： $a n=\\frac{n(n+1)}2$ 8.3 分治算法与递推 分治思想 分治算法通常包括： 1. Divide：把规模 $n$ 的问题分成若干更小的同类问题。 2. Conquer：递归解决子问题。 3. Combine：合并子问题答案。 若分成 $a$ 个子问题，每个规模为 $n/b$，额外处理代价为 $g(n)$，常得到： $T(n)=aT(n/b)+g(n)$ 二分搜索 二分搜索递推： $T(n)=T(n/2)+O(1)$ 所以： $T(n)=O(\\log n)$ 快速整数乘法 课件提到快速乘法：把两个 $2n$ 位整数拆成两半，减少乘法次数。典型例子是 Karatsuba 思想，其复杂度优于普通乘法。 Master Theorem 对递推： $T(n)=aT(n/b)+f(n)$ 比较 $f(n)$ 与 $n^{\\log b a}$： 若 $f(n)=O(n^{\\log b a \\varepsilon})$，则 $T(n)=\\Theta(n^{\\log b a})$。 若 $f(n)=\\Theta(n^{\\log b a}\\log^k n)$，则 $T(n)=\\Theta(n^{\\log b a}\\log^{k+1} n)$。 若 $f(n)=\\Omega(n^{\\log b a+\\varepsilon})$ 且满足正则条件，则 $T(n)=\\Theta(f(n))$。 这是分析分治算法复杂度的常用工具。 8.4 生成函数 定义 序列 $a 0,a 1,a 2,\\ldots$ 的普通生成函数为： $G(x)=a 0+a 1x+a 2x^2+\\cdots=\\sum {n=0}^{\\infty}a nx^n$ 生成函数把序列转化为形式幂级数，便于用代数方式处理计数问题和递推关系。 常见生成函数 | 序列 | 生成函数 | | | | | $1,1,1,\\ldots$ | $\\frac1{1 x}$ | | $1,r,r^2,\\ldots$ | $\\frac1{1 rx}$ | | $0,1,2,3,\\ldots$ | $\\frac{x}{(1 x)^2}$ | | $\\binom n0,\\binom n1,\\ldots,\\binom nn$ | $(1+x)^n$ | 基本恒等式： $\\frac1{1 x}=1+x+x^2+\\cdots,\\quad |x|<1$ 在组合中常作为形式幂级数使用，不一定关注收敛。 扩展二项式定理 对实数 $u$： $(1+x)^u=\\sum {k=0}^{\\infty}\\binom ukx^k$ 其中： $\\binom uk=\\frac{u(u 1)\\cdots(u k+1)}{k!}$ 这可用于处理无限级数和带重复组合。 用生成函数计数 例：求非负整数解： $x 1+x 2+x 3=r$ 每个变量贡献生成函数： $1+x+x^2+\\cdots=\\frac1{1 x}$ 总生成函数： $\\frac1{(1 x)^3}$ $x^r$ 的系数为： $\\binom{r+2}{2}$ 这与 stars and bars 结果一致。 有限制的选择 若红、蓝、白三种球各最多 $2r$ 个，要选 $3r$ 个，生成函数为： $(1+x+x^2+\\cdots+x^{2r})^3$ 答案是 $x^{3r}$ 的系数。 生成函数的优势是能自然处理“每类对象可选数量有限制”的问题。 用生成函数解递推 步骤： 1. 设 $G(x)=\\sum {n\\ge0}a nx^n$。 2. 将递推两边乘以 $x^n$ 并对 $n$ 求和。 3. 用初始条件处理低阶项。 4. 解出 $G(x)$。 5. 展开生成函数，读取 $a n$。 8.5 容斥原理 两个和三个集合 两个集合： $|A\\cup B|=|A|+|B| |A\\cap B|$ 三个集合： $|A\\cup B\\cup C|=|A|+|B|+|C| |A\\cap B| |A\\cap C| |B\\cap C|+|A\\cap B\\cap C|$ 一般容斥公式 对有限集合 $A 1,A 2,\\ldots,A n$： $\\left|\\bigcup {i=1}^nA i\\right|=\\sum i|A i| \\sum {i<j}|A i\\cap A j|+\\sum {i<j<k}|A i\\cap A j\\cap A k| \\cdots+( 1)^{n+1}|A 1\\cap\\cdots\\cap A n|$ 思想：单个集合先加，两个集合交集被多加所以减，三个集合交集被减多所以再加，依此交替。 反向计数 很多问题问“没有任何坏性质”的对象数。设全集为 $U$，$A i$ 为具有第 $i$ 个坏性质的对象集合，则目标为： $|U| |A 1\\cup A 2\\cup\\cdots\\cup A n|$ 再用容斥计算并集大小。 例：不超过 1000 且不被 5、6、8 整除 设： $A 5=\\{x\\le1000:5\\mid x\\}$ $A 6=\\{x\\le1000:6\\mid x\\}$ $A 8=\\{x\\le1000:8\\mid x\\}$ 用容斥计算被至少一个整除的数： $|A 5|+|A 6|+|A 8| |A 5\\cap A 6| |A 5\\cap A 8| |A 6\\cap A 8|+|A 5\\cap A 6\\cap A 8|$ 交集用最小公倍数计数，例如： $|A 5\\cap "
+    },
+    {
+      "title": "第 8 章 高级计数技术 · Master Theorem",
+      "summary": "Master Theorem 对递推： $T(n)=aT(n/b)+f(n)$ 比较 $f(n)$ 与 $n^{\\log b a}$： 若 $f(n)=O(n^{\\log b a \\varepsilon})$，则 $T(n)=\\Theta(n^{\\log b a})$。 若 $f(n)=\\Theta(n^{\\log b a}\\log^k n)$，则 $T(n)=\\Theta(n^{\\log b a}\\log^{k+1} n)$。 若 $",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note",
+        "chapter"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/chapter-08-advanced-counting/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture/chapter-08-advanced-counting.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "Master Theorem 对递推： $T(n)=aT(n/b)+f(n)$ 比较 $f(n)$ 与 $n^{\\log b a}$： 若 $f(n)=O(n^{\\log b a \\varepsilon})$，则 $T(n)=\\Theta(n^{\\log b a})$。 若 $f(n)=\\Theta(n^{\\log b a}\\log^k n)$，则 $T(n)=\\Theta(n^{\\log b a}\\log^{k+1} n)$。 若 $f(n)=\\Omega(n^{\\log b a+\\varepsilon})$ 且满足正则条件，则 $T(n)=\\Theta(f(n))$。 这是分析分治算法复杂度的常用工具。",
+      "section": "Master Theorem",
+      "parentTitle": "第 8 章 高级计数技术"
+    },
+    {
+      "title": "第 8 章 高级计数技术 · 常见生成函数",
+      "summary": "常见生成函数 | 序列 | 生成函数 | | | | | $1,1,1,\\ldots$ | $\\frac1{1 x}$ | | $1,r,r^2,\\ldots$ | $\\frac1{1 rx}$ | | $0,1,2,3,\\ldots$ | $\\frac{x}{(1 x)^2}$ | | $\\binom n0,\\binom n1,\\ldots,\\binom nn$ | $(1+x)^n$ | 基本恒等式： $\\frac1{1 x}=1+",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note",
+        "chapter"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/chapter-08-advanced-counting/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture/chapter-08-advanced-counting.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "常见生成函数 | 序列 | 生成函数 | | | | | $1,1,1,\\ldots$ | $\\frac1{1 x}$ | | $1,r,r^2,\\ldots$ | $\\frac1{1 rx}$ | | $0,1,2,3,\\ldots$ | $\\frac{x}{(1 x)^2}$ | | $\\binom n0,\\binom n1,\\ldots,\\binom nn$ | $(1+x)^n$ | 基本恒等式： $\\frac1{1 x}=1+x+x^2+\\cdots,\\quad |x|<1$ 在组合中常作为形式幂级数使用，不一定关注收敛。",
+      "section": "常见生成函数",
+      "parentTitle": "第 8 章 高级计数技术"
+    },
+    {
+      "title": "第 8 章 高级计数技术 · 例：不超过 1000 且不被 5、6、8 整除",
+      "summary": "例：不超过 1000 且不被 5、6、8 整除 设： $A 5=\\{x\\le1000:5\\mid x\\}$ $A 6=\\{x\\le1000:6\\mid x\\}$ $A 8=\\{x\\le1000:8\\mid x\\}$ 用容斥计算被至少一个整除的数： $|A 5|+|A 6|+|A 8| |A 5\\cap A 6| |A 5\\cap A 8| |A 6\\cap A 8|+|A 5\\cap A 6\\cap A 8|$ 交集用最小公倍数计数，例",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note",
+        "chapter"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/chapter-08-advanced-counting/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture/chapter-08-advanced-counting.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "例：不超过 1000 且不被 5、6、8 整除 设： $A 5=\\{x\\le1000:5\\mid x\\}$ $A 6=\\{x\\le1000:6\\mid x\\}$ $A 8=\\{x\\le1000:8\\mid x\\}$ 用容斥计算被至少一个整除的数： $|A 5|+|A 6|+|A 8| |A 5\\cap A 6| |A 5\\cap A 8| |A 6\\cap A 8|+|A 5\\cap A 6\\cap A 8|$ 交集用最小公倍数计数，例如： $|A 5\\cap A 6|=\\left\\lfloor\\frac{1000}{\\operatorname{lcm}(5,6)}\\right\\rfloor$ 最后用 1000 减去该数量。",
+      "section": "例：不超过 1000 且不被 5、6、8 整除",
+      "parentTitle": "第 8 章 高级计数技术"
+    },
+    {
+      "title": "第 9 章 关系",
+      "summary": "关系定义、性质、矩阵/有向图表示、闭包和等价关系。",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note",
+        "chapter"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/chapter-09-relations/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture/chapter-09-relations.md",
+      "locale": "zh",
+      "kind": "page",
+      "text": "第 9 章 关系 !!! info \"章节导引\" 本页从《离散数学讲义》拆分而来，保留原章节锚点，方便从旧总览页和旧链接跳转。 学习目标 把二元关系看作集合、矩阵和图之间可以互相转换的结构，并掌握闭包与等价类。 前置知识 第 2 章集合与矩阵，第 3 章算法思想，以及第 1 章的证明语言。 建议用时 建议 5–6 小时：关系性质 2 小时，表示与运算 1–2 小时，闭包与等价关系 2 小时。 练习建议 判断 5 个关系是否自反/对称/传递；画 2 个关系的有向图；求一个小关系的传递闭包。 参考资料与引用边界 整理者：Lumner。 课程来源：根据 DM/ 目录下的课件整理；本章对应课件： DM9.1 9.3(8).pdf, DM9.4(6).pdf, DM9.5(3).pdf 。 原始讲义文件： note/离散数学讲义.md 。 引用边界：这是公开学习笔记，不替代课程正式教材、教师课件或考试要求；外部引用时请注明来自本网站整理版。 9.0 核心目标 关系用于描述对象之间的连接。函数是特殊关系；数据库表、图的边、等价分类和偏序结构都可以用关系建模。 本章重点： 二元关系和 n 元关系。 关系的表示：有序对、表、矩阵、有向图。 自反、对称、反对称、传递等性质。 关系运算、复合和幂。 闭包，尤其是传递闭包和 Warshall 算法。 等价关系、等价类和划分。 9.1 关系及其性质 二元关系 从集合 $A$ 到集合 $B$ 的二元关系 $R$ 是笛卡尔积 $A\\times B$ 的子集： $R\\subseteq A\\times B$ 若 $(a,b)\\in R$，也写作 $aRb$。 集合 $A$ 上的关系是从 $A$ 到 $A$ 的关系，即： $R\\subseteq A\\times A$ 若 $|A|=n$，则 $A\\times A$ 有 $n^2$ 个元素。因为每个有序对可选入或不选入关系，所以 $A$ 上二元关系总数为： $2^{n^2}$ n 元关系 设 $A 1,A 2,\\ldots,A n$ 为集合。一个 n 元关系是： $A 1\\times A 2\\times\\cdots\\times A n$ 的子集。 数据库中的表可视为 n 元关系：每一行是一个 n 元组。 函数作为关系 函数 $f:A\\to B$ 可看作关系： $\\{(a,f(a))\\mid a\\in A\\}$ 但它必须满足每个 $a\\in A$ 恰好出现一次作为第一分量。 一般关系允许一对多、多对一或没有对应。 关系的表示 有限关系可通过： 列出有序对。 用谓词描述。 用二维表。 用 0 1 矩阵。 用有向图。 连接矩阵 若 $A=\\{a 1,\\ldots,a m\\}$，$B=\\{b 1,\\ldots,b n\\}$，关系 $R$ 从 $A$ 到 $B$。其矩阵 $M R=[m {ij}]$ 定义为： $m {ij}=1\\iff (a i,b j)\\in R$ 否则 $m {ij}=0$。 有向图表示 集合 $A$ 上的关系可用有向图表示： 顶点为 $A$ 的元素。 若 $(a,b)\\in R$，则画从 $a$ 到 $b$ 的有向边。 若 $(a,a)\\in R$，则是自环。 关系性质 设 $R$ 是集合 $A$ 上的关系。 自反： $\\forall a\\in A,\\ (a,a)\\in R$ 矩阵主对角线全为 1；有向图每个点都有自环。 反自反： $\\forall a\\in A,\\ (a,a)\\notin R$ 矩阵主对角线全为 0。 对称： $\\forall a,b\\in A,\\ (a,b)\\in R\\to(b,a)\\in R$ 矩阵关于主对角线对称；有向图每条边都有反向边。 反对称： $\\forall a,b\\in A,\\ ((a,b)\\in R\\land(b,a)\\in R)\\to a=b$ 注意：对称和反对称不是互为否定。一个关系可以既对称又反对称，例如恒等关系。 传递： $\\forall a,b,c\\in A,\\ ((a,b)\\in R\\land(b,c)\\in R)\\to(a,c)\\in R$ 有向图中若存在长度 2 的路径 $a\\to b\\to c$，则必须有边 $a\\to c$。 例：整除关系 在正整数集合上定义 $aRb$ 当且仅当 $a\\mid b$。 自反：$a\\mid a$。 反对称：若 $a\\mid b$ 且 $b\\mid a$，则 $a=b$。 传递：若 $a\\mid b$ 且 $b\\mid c$，则 $a\\mid c$。 不对称：例如 $2\\mid4$，但 $4\\nmid2$。 计数具有某性质的关系 若 $|A|=n$： 自反关系数：主对角线必须选入，其余 $n^2 n$ 个有序对自由，所以： $2^{n^2 n}$ 反自反关系数：主对角线必须不选，其余自由，也是： $2^{n^2 n}$ 对称关系数：对角线 $n$ 个位置自由；非对角线按 unordered pair 成对选择，共 $\\binom n2$ 对，所以： $2^{n+\\binom n2}=2^{n(n+1)/2}$ 反对称关系数：每对不同元素 {a,b} 中，$(a,b)$、$(b,a)$ 不能同时选，可选三种情况：只选前者、只选后者、都不选。对角线自由，所以： $2^n3^{\\binom n2}$ 9.2 关系运算与复合 集合运算 关系是集合，因此可做并、交、差、补等运算。 若 $R 1,R 2\\subseteq A\\times B$，则： $R 1\\cup R 2$、$R 1\\cap R 2$、$R 1 R 2$ 仍为从 $A$ 到 $B$ 的关系。 逆关系 若 $R$ 是从 $A$ 到 $B$ 的关系，其逆关系 $R^{ 1}$ 是从 $B$ 到 $A$ 的关系： $R^{ 1}=\\{(b,a)\\mid(a,b)\\in R\\}$ 矩阵上对应转置： $M {R^{ 1}}=M R^T$ 关系复合 若 $R$ 是从 $A$ 到 $B$ 的关系，$S$ 是从 $B$ 到 $C$ 的关系，则复合 $S\\circ R$ 是从 $A$ 到 $C$ 的关系： $S\\circ R=\\{(a,c)\\mid \\exists b\\in B,\\ (a,b)\\in R\\land(b,c)\\in S\\}$ 注意顺序：先走 $R$，再走 $S$。 关系的幂 若 $R$ 是 $A$ 上的关系，定义： $R^1=R$ $R^{n+1}=R^n\\circ R$ $(a,b)\\in R^n$ 当且仅当在关系图中存在从 $a$ 到 $b$ 的长度为 $n$ 的有向路径。 传递性与关系幂 关系 $R$ 传递，当且仅当： $R^n\\subseteq R,\\quad n=1,2,3,\\ldots$ 通常只需理解：如果所有长度 2 的路径都能被一条边“补上”，则更长路径也能不断压缩。 9.3 关系的表示 矩阵运算 关系矩阵使用布尔运算： 矩阵交：按位 AND。 矩阵并：按位 OR。 关系复合：布尔矩阵乘法。 若 $M R$ 是 $R$ 的矩阵，$M S$ 是 $S$ 的矩阵，则 $S\\circ R$ 的矩阵为布尔积： $M R\\odot M S$ 其中加法用 OR，乘法用 AND。 有向图和路径 有向图表示使关系幂、传递闭包等概念更直观。 边表示一步可达。 $R^2$ 表示两步可达。 $R^n$ 表示 n 步可达。 传递闭包表示至少一步可达。 9.4 关系闭包 闭包定义 设 $P$ 是关系的某种性质。包含 $R$ 且具有性质 $P$ 的最小关系，称为 $R$ 关于性质 $P$ 的闭包。 本节关注： 自反闭包。 对称闭包。 传递闭包。 自反闭包 设 $\\Delta A=\\{(a,a)\\mid a\\in A\\}$ 是恒等关系。$R$ 的自反闭包为： $r(R)=R\\cup\\Delta A$ 即补上所有缺失的自环。 对称闭包 $R$ 的对称闭包为： $s(R)=R\\cup R^{ 1}$ 即对每条边补上反向边。 传递闭包 $R$ 的传递闭包 $t(R)$ 是包含 $R$ 的最小传递关系。 连通关系 $R^ $ 定义为： $R^ =\\{(a,b)\\mid \\text{存在从 }a\\text{ 到 }b\\text{ 的长度至少为 }1\\text{ 的路径}\\}$ 定理： $t(R)=R^ $ 也就是说，传递闭包包含所有“可达”的有序对。 有限集合上的路径长度 若 $A$ 有 $n$ 个元素，且从 $a$ 到 $b$ 存在长度至少 1 的路径，则存在长度不超过 $n$ 的路径；当 $a\\ne b$ 时，可取长度不超过 $n 1$ 的路径。 因此： $t(R)=R\\cup R^2\\cup\\cdots\\cup R^n$ Warshall 算法 Warshall 算法用于计算传递闭包矩阵。 设初始矩阵 $W 0=M R$。逐步允许编号不超过 $k$ 的点作为中间点，得到 $W k$。更新规则： $W k[i,j]=W {k 1}[i,j]\\lor(W {k 1}[i,k]\\land W {k 1}[k,j])$ 伪代码： 时间复杂度为 $\\Theta(n^3)$。 多性质闭包 若要求同时满足自反和传递，可先加自反边，再求传递闭包。具体顺序应根据性质检查，但常见做法是对 $R\\cup\\Delta A$ 求传递闭包。 9.5 等价关系 定义 集合 $A$ 上的关系 $R$ 若同时满足： 自反。 对称。 传递。 则称为等价关系。 直观上，等价关系刻画“在某种标准下相同”。 等价类 若 $R$ 是 $A$ 上的等价关系，元素 $a$ 的等价类为： $[a] R=\\{x\\in A\\mid xRa\\}$ 常简写为 $[a]$。 模同余 在整数集上定义： $a\\equiv b\\pmod m\\iff m\\mid(a b)$ 这是等价关系。 证明： 自反：$m\\mid(a a)=0$。 对称：若 $m\\mid(a b)$，则 $m\\mid(b a)$。 传递：若 $m\\mid(a b)$ 且 $m\\mid(b c)$，则 $m\\mid(a c)$。 模 3 的等"
+    },
+    {
+      "title": "第 9 章 关系 · 关系性质",
+      "summary": "关系性质 设 $R$ 是集合 $A$ 上的关系。 自反： $\\forall a\\in A,\\ (a,a)\\in R$ 矩阵主对角线全为 1；有向图每个点都有自环。 反自反： $\\forall a\\in A,\\ (a,a)\\notin R$ 矩阵主对角线全为 0。 对称： $\\forall a,b\\in A,\\ (a,b)\\in R\\to(b,a)\\in R$ 矩阵关于主对角线对称；有向图每条边都有反向边。 反对称： $\\forall a",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note",
+        "chapter"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/chapter-09-relations/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture/chapter-09-relations.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "关系性质 设 $R$ 是集合 $A$ 上的关系。 自反： $\\forall a\\in A,\\ (a,a)\\in R$ 矩阵主对角线全为 1；有向图每个点都有自环。 反自反： $\\forall a\\in A,\\ (a,a)\\notin R$ 矩阵主对角线全为 0。 对称： $\\forall a,b\\in A,\\ (a,b)\\in R\\to(b,a)\\in R$ 矩阵关于主对角线对称；有向图每条边都有反向边。 反对称： $\\forall a,b\\in A,\\ ((a,b)\\in R\\land(b,a)\\in R)\\to a=b$ 注意：对称和反对称不是互为否定。一个关系可以既对称又反对称，例如恒等关系。 传递： $\\forall a,b,c\\in A,\\ ((a,b)\\in R\\land(b,c)\\in R)\\to(a,c)\\in R$ 有向图中若存在长度 2 的路径 $a\\to b\\to c$，则必须有边 $a\\to c$。",
+      "section": "关系性质",
+      "parentTitle": "第 9 章 关系"
+    },
+    {
+      "title": "第 9 章 关系 · 计数具有某性质的关系",
+      "summary": "计数具有某性质的关系 若 $|A|=n$： 自反关系数：主对角线必须选入，其余 $n^2 n$ 个有序对自由，所以： $2^{n^2 n}$ 反自反关系数：主对角线必须不选，其余自由，也是： $2^{n^2 n}$ 对称关系数：对角线 $n$ 个位置自由；非对角线按 unordered pair 成对选择，共 $\\binom n2$ 对，所以： $2^{n+\\binom n2}=2^{n(n+1)/2}$ 反对称关系数：每对不同元素 {",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note",
+        "chapter"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/chapter-09-relations/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture/chapter-09-relations.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "计数具有某性质的关系 若 $|A|=n$： 自反关系数：主对角线必须选入，其余 $n^2 n$ 个有序对自由，所以： $2^{n^2 n}$ 反自反关系数：主对角线必须不选，其余自由，也是： $2^{n^2 n}$ 对称关系数：对角线 $n$ 个位置自由；非对角线按 unordered pair 成对选择，共 $\\binom n2$ 对，所以： $2^{n+\\binom n2}=2^{n(n+1)/2}$ 反对称关系数：每对不同元素 {a,b} 中，$(a,b)$、$(b,a)$ 不能同时选，可选三种情况：只选前者、只选后者、都不选。对角线自由，所以： $2^n3^{\\binom n2}$",
+      "section": "计数具有某性质的关系",
+      "parentTitle": "第 9 章 关系"
+    },
+    {
+      "title": "第 9 章 关系 · 模同余",
+      "summary": "模同余 在整数集上定义： $a\\equiv b\\pmod m\\iff m\\mid(a b)$ 这是等价关系。 证明： 自反：$m\\mid(a a)=0$。 对称：若 $m\\mid(a b)$，则 $m\\mid(b a)$。 传递：若 $m\\mid(a b)$ 且 $m\\mid(b c)$，则 $m\\mid(a c)$。 模 3 的等价类： $[0]=\\{\\ldots, 6, 3,0,3,6,\\ldots\\}$ $[1]=\\{\\ldots",
+      "tags": [
+        "math",
+        "discrete-math",
+        "course-note",
+        "chapter"
+      ],
+      "url": "/zh/notes/discrete-math-lecture/chapter-09-relations/",
+      "sourcePath": "docs/zh/notes/discrete-math-lecture/chapter-09-relations.md",
+      "locale": "zh",
+      "kind": "section",
+      "text": "模同余 在整数集上定义： $a\\equiv b\\pmod m\\iff m\\mid(a b)$ 这是等价关系。 证明： 自反：$m\\mid(a a)=0$。 对称：若 $m\\mid(a b)$，则 $m\\mid(b a)$。 传递：若 $m\\mid(a b)$ 且 $m\\mid(b c)$，则 $m\\mid(a c)$。 模 3 的等价类： $[0]=\\{\\ldots, 6, 3,0,3,6,\\ldots\\}$ $[1]=\\{\\ldots, 5, 2,1,4,7,\\ldots\\}$ $[2]=\\{\\ldots, 4, 1,2,5,8,\\ldots\\}$",
+      "section": "模同余",
+      "parentTitle": "第 9 章 关系"
+    },
+    {
       "title": "离散数学讲义",
-      "summary": "离散数学课程讲义，覆盖逻辑与证明、集合与函数、算法、归纳递归、计数、关系等主题。",
+      "summary": "离散数学中文讲义总览；正文已按章节拆分，并保留旧 URL 与旧锚点跳转入口。",
       "tags": [
         "math",
         "discrete-math",
@@ -1181,11 +1607,11 @@
       "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
       "locale": "zh",
       "kind": "page",
-      "text": "离散数学讲义 版本：2026 05 13 来源：根据 DM/ 目录下现有离散数学课件整理。 维护方式：后续新增 PPT/PDF 时，优先补充到对应章节；若新增内容属于未覆盖章节，则在“待补充章节”中扩展为正式章节。 使用说明 这份讲义按章节组织，目标不是逐页复述课件，而是把课件中的定义、定理、方法、例题类型和解题套路整理成可复习、可发布到笔记网站的 Markdown 文档。 每一章建议按以下顺序学习： 1. 先看“核心目标”，明确本章要解决的问题。 2. 再看定义和定理，注意每个符号的含义。 3. 通过例题类型掌握建模和证明套路。 4. 最后用“小结与补充位”检查是否还有新课件需要补充。 本文使用 LaTeX 公式语法，例如 $p \\to q$、$\\forall x P(x)$、$O(n\\log n)$。上传到笔记网站时，请确认网站支持 Markdown 数学公式渲染。 现有课件索引 | 讲义章节 | 对应课件 | | | | | 第 1 章 逻辑与证明 | DM1.1(8).pdf , DM1.2 1.3(5).pdf , DM1.4(6).pdf , DM1.5(5).pdf , DM1.6(6).pdf , DM1.7 1.8(6).pdf | | 第 2 章 基本结构 | DM2.1.pdf , DM2.2.pdf , DM2.3.pdf , DM2.4.pdf , DM2.5 2.6(5).pdf | | 第 3 章 算法 | DM3.1 3.3(4).pdf | | 第 4 章 待补充 | 当前未提供对应课件 | | 第 5 章 归纳与递归 | DM5.1 5.4(7).pdf | | 第 6 章 计数 | DM6.1(3).pdf , DM6.2(3).pdf , DM6.3 6.4(6).pdf , DM6.5(3).pdf | | 第 7 章 待补充 | 当前未提供对应课件 | | 第 8 章 高级计数技术 | DM8.1 8.2(6).pdf , DM8.3.pdf , DM8.4(6).pdf , DM8.5 8.6(9).pdf | | 第 9 章 关系 | DM9.1 9.3(8).pdf , DM9.4(6).pdf , DM9.5(3).pdf | 全书知识结构 第 1 章 逻辑与证明 1.0 核心目标 本章要建立离散数学的语言基础。命题逻辑用于刻画“真或假”的陈述，谓词逻辑用于刻画带变量的数学语句，推理规则和证明方法用于把前提严谨地推到结论。 学完本章应能做到： 判断一句话是否为命题，并写出复合命题的形式。 使用真值表、逻辑等价式、范式分析命题。 把自然语言翻译成谓词逻辑表达式。 正确使用全称量词、存在量词和嵌套量词。 使用推理规则构造有效论证。 区分直接证明、逆否证明、反证法、分情况证明、存在性证明和反例证明。 1.1 命题逻辑 命题 命题是一个具有确定真值的陈述句。它要么为真，要么为假，不能二者同时成立。 常见判断： | 句子 | 是否为命题 | 原因 | | | | | | “2022 年冬奥会在北京举行。” | 是 | 有确定真值 | | “9 是素数。” | 是 | 有确定真值，且为假 | | “请打开书。” | 否 | 命令句，没有真假 | | “现在几点？” | 否 | 疑问句，没有真假 | | $x+1=4$ | 通常不是 | 未指定 $x$ 时没有确定真值 | 通常用 $p,q,r,\\ldots$ 表示命题变量。真值可记为 T/F ，也可记为 1/0 。 复合命题和联结词 复合命题由命题变量和逻辑联结词构成。 | 名称 | 符号 | 读法 | 为真的条件 | | | | | | | 否定 | $\\neg p$ | 非 $p$ | $p$ 为假 | | 合取 | $p \\land q$ | $p$ 且 $q$ | $p,q$ 都真 | | 析取 | $p \\lor q$ | $p$ 或 $q$ | 至少一个真 | | 异或 | $p \\oplus q$ | 要么 $p$ 要么 $q$ | 恰好一个真 | | 条件 | $p \\to q$ | 若 $p$ 则 $q$ | 只有 $p$ 真、$q$ 假时为假 | | 双条件 | $p \\leftrightarrow q$ | $p$ 当且仅当 $q$ | $p,q$ 真值相同 | 条件命题 $p \\to q$ 中，$p$ 称为前件，$q$ 称为后件。它的真假只由前件和后件的真值决定，不要求二者存在因果关系。课件中把它类比为“承诺”：只有承诺条件发生而结果没有发生时，承诺才被违反。 条件命题的相关形式 从 $p \\to q$ 可构造： | 名称 | 形式 | 与原命题的关系 | | | | | | 逆命题 | $q \\to p$ | 不一定等价 | | 否命题 | $\\neg p \\to \\neg q$ | 不一定等价 | | 逆否命题 | $\\neg q \\to \\neg p$ | 与原命题等价 | 因此证明 $p \\to q$ 时，经常改证 $\\neg q \\to \\neg p$。 真值表 真值表列出命题变量的全部可能赋值。若有 $n$ 个命题变量，则真值表有 $2^n$ 行。 例：证明 $p \\to q$ 与 $\\neg p \\lor q$ 等价。 | $p$ | $q$ | $p \\to q$ | $\\neg p \\lor q$ | | | | | | | T | T | T | T | | T | F | F | F | | F | T | T | T | | F | F | T | T | 两列完全相同，所以 $p \\to q \\equiv \\neg p \\lor q$。 运算优先级 常用优先级从高到低为： 1. 括号。 2. 否定 $\\neg$。 3. 合取 $\\land$。 4. 析取 $\\lor$。 5. 条件 $\\to$。 6. 双条件 $\\leftrightarrow$。 表达复杂公式时应尽量加括号，避免歧义。 位运算 计算机中比特 0/1 可看作假/真。位串上的按位运算是把逻辑运算逐位推广。 例：设两个位串为 0110110110 与 1100011101 。 按位 OR：对应位至少一个为 1 时为 1 。 按位 AND：对应位都为 1 时为 1 。 按位 XOR：对应位恰好一个为 1 时为 1 。 这说明命题逻辑不仅是证明语言，也是数字系统和程序判断的基础。 1.2 命题逻辑的应用 自然语言翻译 把自然语言翻译成命题逻辑的目的，是消除自然语言中的歧义，使推理可以形式化。 步骤： 1. 找出原子命题。 2. 给每个原子命题命名。 3. 判断关键词对应的联结词。 4. 注意“only if”“unless”“necessary”“sufficient”等短语。 例：“You can access the Internet from campus only if you are a computer science major or you are not a freshman.” 设： $a$：你可以从校园访问互联网。 $c$：你是计算机科学专业学生。 $f$：你是一年级学生。 “$p$ only if $q$” 表示 $p \\to q$。所以原句翻译为： $a \\to (c \\lor \\neg f)$ 系统规格说明 软件和系统工程中，经常把自然语言需求翻译成逻辑公式。 若一组规格说明可以同时为真，则称其一致；若不存在任何赋值能让所有公式同时为真，则不一致。 例： $p \\to q$、$p$、$\\neg q$ 三条规格不一致，因为由前两条可推出 $q$，与第三条矛盾。 逻辑谜题 骑士与骗子问题、宝箱问题等都可以通过命题变量建模。基本套路： 1. 用命题变量描述“某人说真话”“某箱有宝物”等事实。 2. 把每句话翻译为逻辑表达式。 3. 加入题目约束，例如“骑士总说真话，骗子总说假话”。 4. 用真值表、等价变形或反证排除不可能情况。 1.3 命题等价式与范式 重言式、矛盾式、可满足式 | 名称 | 定义 | 例子 | | | | | | 重言式 | 在所有赋值下都为真 | $p \\lor \\neg p$ | | 矛盾式 | 在所有赋值下都为假 | $p \\land \\neg p$ | | 偶然式 | 有时真、有时假 | $p \\to q$ | | 可满足式 | 至少存在一个赋值使其为真 | $p \\lor q$ | | 不可满足式 | 没有赋值使其为真 | $p \\land \\neg p$ | 两个命题公式 $P,Q$ 逻辑等价，当且仅当 $P \\leftrightarrow Q$ 是重言式，记作 $P \\equiv Q$。 常用逻辑等价式 | 名称 | 等价式 | | | | | 恒等律 | $p \\land T \\equiv p$, $p \\lor F \\equiv p$ | | 支配律 | $p \\lor T \\equiv T$, $p \\land F \\equiv F$ | | 幂等律 | $p \\lor p \\equiv p$, $p \\land p \\equiv p$ | | 双重否定律 | $\\neg(\\neg p) \\equiv p$ | | 交换律 | $p \\lor q \\equiv q \\lor p$, $p \\land q \\equiv q \\land p$ | | 结合律 | $(p\\lor q)\\lor r \\equiv p\\lor(q\\lor r)$, $(p\\land q)\\land r \\equiv p\\land(q\\land r)$ | | 分配律 | $p\\lor(q\\land r)\\equiv(p\\lor q)\\land(p\\lor r)$ | | 分配律 | $p\\land(q\\lor r)\\equiv(p\\land q)\\lor(p\\land r)$ | | 德摩根律 | $\\neg(p\\land q)\\equiv \\neg p\\lor \\neg q$ | | 德摩根律 | $\\neg"
+      "text": "离散数学讲义 !!! info \"拆分状态\" 这页保留原来的 /zh/notes/discrete math lecture/ 地址，作为离散数学讲义总览和旧链接兼容层。章节正文已经拆分到稳定子路径；如果旧链接带有 note sec ... 锚点，可在本页的“旧锚点跳转表”找到对应新位置。 阅读导引 这份讲义按章节组织，目标不是逐页复述课件，而是把课件中的定义、定理、方法、例题类型和解题套路整理成可复习、可发布到笔记网站的 Markdown 文档。 建议阅读顺序： 1. 先从本页确认章节、资料来源和学习路线。 2. 进入具体章节页，先读“学习目标、前置知识、建议用时、练习建议”。 3. 章节内按原讲义结构学习定义、定理、例题和小结。 4. 需要查旧链接时，回到本页使用“旧锚点跳转表”。 课程目标 建立命题逻辑、谓词逻辑和证明方法的基础语言。 掌握集合、函数、序列、算法、归纳递归、计数和关系等离散结构。 能把定义、证明、复杂度和计数模型整理成可复习的知识网络。 前置知识 高中集合、函数和基础代数表达。 基本程序流程概念，例如条件、循环、递归和伪代码。 能阅读 Markdown 数学公式，例如 $p \\to q$ 、 $\\forall x P(x)$ 、 $O(n\\log n)$ 。 总体建议用时 建议按 7 个真实章节分 4–6 周学习；每章 3–8 小时不等。若只是复习，可先读第 1、2、6、9 章，再回看算法、归纳和高级计数。 总体练习建议 每章至少整理一张概念表，记录定义、符号、典型题型和易错点。 对证明类章节，保留完整推理链，不只写结论。 对计数与关系类章节，优先写清对象、限制条件和建模方式。 课程来源与引用边界 整理者：Lumner。 内容来源：根据 DM/ 目录下现有离散数学课件与 note/离散数学讲义.md 整理。 站内用途：作为公开学习笔记和碧影可读取的公共知识来源。 引用边界：这不是课程官方教材，也不替代教师课件、课堂说明或考试要求；外部引用时请注明来自本网站整理版。 章节入口 第 1 章 逻辑与证明：命题逻辑、谓词逻辑、推理规则和证明策略。（建议 4–6 小时） 第 2 章 基本结构：集合、函数、序列、基数和矩阵：集合、函数、序列、基数和矩阵的基础语言。（建议 5–7 小时） 第 3 章 算法：算法定义、伪代码、搜索排序和函数增长。（建议 3–4 小时） 第 5 章 归纳与递归：数学归纳法、强归纳、递归定义和递归算法。（建议 4–6 小时） 第 6 章 计数：加法/乘法原则、排列组合、二项式系数和广义排列组合。（建议 5–7 小时） 第 8 章 高级计数技术：递推关系、分治递推、生成函数、容斥和错排。（建议 6–8 小时） 第 9 章 关系：关系定义、性质、矩阵/有向图表示、闭包和等价关系。（建议 5–6 小时） 附录：符号与证明模板：常用符号、证明模板、更新记录和后续扩展边界。 章节与课件对应表 | 章节 | 覆盖内容 | 对应课件 | | | | | | 第 1 章 逻辑与证明 | 命题逻辑、谓词逻辑、推理规则和证明策略。 | DM1.1(8).pdf, DM1.2 1.3(5).pdf, DM1.4(6).pdf, DM1.5(5).pdf, DM1.6(6).pdf, DM1.7 1.8(6).pdf | | 第 2 章 基本结构：集合、函数、序列、基数和矩阵 | 集合、函数、序列、基数和矩阵的基础语言。 | DM2.1.pdf, DM2.2.pdf, DM2.3.pdf, DM2.4.pdf, DM2.5 2.6(5).pdf | | 第 3 章 算法 | 算法定义、伪代码、搜索排序和函数增长。 | DM3.1 3.3(4).pdf | | 第 5 章 归纳与递归 | 数学归纳法、强归纳、递归定义和递归算法。 | DM5.1 5.4(7).pdf | | 第 6 章 计数 | 加法/乘法原则、排列组合、二项式系数和广义排列组合。 | DM6.1(3).pdf, DM6.2(3).pdf, DM6.3 6.4(6).pdf, DM6.5(3).pdf | | 第 8 章 高级计数技术 | 递推关系、分治递推、生成函数、容斥和错排。 | DM8.1 8.2(6).pdf, DM8.3.pdf, DM8.4(6).pdf, DM8.5 8.6(9).pdf | | 第 9 章 关系 | 关系定义、性质、矩阵/有向图表示、闭包和等价关系。 | DM9.1 9.3(8).pdf, DM9.4(6).pdf, DM9.5(3).pdf | 资料状态说明 | 章节 | 当前处理 | | | | | 第 4 章 资料未提供章节 | 当前仓库没有对应课件，因此不生成空章节页；后续拿到资料后再补独立页面。 | | 第 7 章 资料未提供章节 | 当前仓库没有对应课件，因此不生成空章节页；后续拿到资料后再补独立页面。 | 旧锚点跳转表 下面的条目用于兼容旧版长页面的 note sec ... 锚点。锚点本身保留在本页；点击条目会进入新的章节子页面或资料状态说明。 使用说明 现有课件索引 全书知识结构 第 1 章 逻辑与证明 1.0 核心目标 1.1 命题逻辑 命题 复合命题和联结词 条件命题的相关形式 真值表 运算优先级 位运算 1.2 命题逻辑的应用 自然语言翻译 系统规格说明 逻辑谜题 1.3 命题等价式与范式 重言式、矛盾式、可满足式 常用逻辑等价式 用等价式化简 其他逻辑算子和函数完备性 对偶 析取范式和合取范式 主析取范式和主合取范式 SAT 和 n 皇后建模 1.4 谓词与量词 为什么需要谓词逻辑 谓词和命题函数 量词 论域的重要性 限制量词 自然语言翻译 量词否定 程序正确性中的前置条件和后置条件 1.5 嵌套量词与前束范式 嵌套量词 同类量词可交换 例：实数乘积 唯一性表达 极限定义的逻辑结构 前束范式 1.6 推理规则 论证和有效性 命题逻辑推理规则 常见谬误 量词推理规则 苏格拉底论证 1.7 证明导论 定理、命题、引理和推论 直接证明 逆否证明 空证明和显然证明 反证法 充要条件证明 1.8 证明方法与策略 分情况证明 存在性证明 唯一性证明 反例证明 前向推理和后向推理 本章小结与补充位 第 2 章 基本结构：集合、函数、序列、基数和矩阵 2.0 核心目标 2.1 集合 集合和元素 常见数集 子集和真子集 有限集和基数 幂集 有序 n 元组和笛卡尔积 2.2 集合运算 基本运算 集合恒等式 证明集合恒等式的方法 容斥思想的初步形式 广义并与广义交 用位串表示集合 2.3 函数 函数定义 单射、满射、双射 判断技巧 反函数 函数组合 函数图像 取整函数 2.4 序列与递推 序列 字符串 递推关系 解递推关系 2.5 集合的基数 有限集合的基数 相同基数 可数集 整数集可数 正有理数可数 有限字母表上的有限字符串可数 不可数集 不可计算函数的存在 幂集基数 2.6 矩阵 矩阵定义 常见运算 与离散数学的关系 本章小结与补充位 第 3 章 算法 3.0 核心目标 3.1 算法 算法定义 伪代码 搜索问题 排序问题 贪心算法 3.2 函数增长 为什么关心增长率 Big O 多项式增长 常见增长顺序 Big Omega 和 Big Theta 组合函数的增长 3.3 算法复杂度 时间复杂度 最大值算法复杂度 线性搜索复杂度 二分搜索复杂度 可处理、不可处理、不可解 本章小结与补充位 第 4 章 资料未提供章节 4.1 整除与模运算 4.2 整数表示和算法 4.3 素数与最大公约数 4.4 同余 4.5 密码学应用 第 5 章 归纳与递归 5.0 核心目标 5.1 数学归纳法 第一数学归纳原理 归纳证明模板 为什么归纳法有效 例：有限集子集个数 5.2 强归纳与良序性 强归纳原理 例：整数的素因子分解存在性 良序性 例：除法算法 5.3 递归定义与结构归纳 递归定义函数 欧几里得算法的递归思想 递归定义集合 字符串集合 合式公式 结构归纳 树的递归定义 5.4 递归算法 递归算法定义 递归算法正确性 递归与迭代 递归斐波那契算法 本章小结与补充位 第 6 章 计数 6.0 核心目标 6.1 计数基础 乘法法则 单射函数计数 幂集大小 加法法则 减法法则 包含重叠时的加法 除法法则 树图 6.2 鸽巢原理 基本鸽巢原理 例：同余 广义鸽巢原理 例：抽球 整除链例题 单调子序列定理 六人朋友敌人问题 6.3 排列与组合 排列 含指定字符串的排列 组合 对称性 组合证明 6.4 二项式系数 二项式定理 帕斯卡恒等式 Vandermonde 恒等式 常见二项式恒等式 6.5 广义排列与组合 允许重复的排列 允许重复的组合 带下界的整数解 不可区分对象的排列 盒子模型 Stirling 数 本章小结与补充位 第 7 章 资料未提供章节 7.1 有限概率 7.2 概率论基础 7.3 Bayes 定理 7.4 期望与方差 第 8 章 高级计数技术 8.0 核心目标 8.1 递推关系的应用 递推关系回顾 兔子问题和 Fibonacci 数 汉诺塔 不含连续 0 的位串 算法与递推 8.2 线性递推关系 线性齐次常系数递推 二阶不同根 Fibonacci 闭式 重根情形 非齐次线性递推 8.3 分治算法与递推 分治思想 二分搜索 快速整数乘法 Master Theorem 8.4 生成函数 定义 常见生成函数 扩展二项式定理 用生成函数计数 有限制的选择 用生成函数解递推 8.5 容斥原理 两个和三个集合 一般容斥公式 反向计数 例：不超过 1000 且不被 5、6、8 整除 8.6 容斥的应用 满射函数计数 错排 帽子问题 本章小结与补充位 第 9 章 关系 9.0 核心目标 9.1 关系及其性质 二元关系 n 元关系 函数作为关系 关系的表示 连接矩阵 有向图表示 关系性质 例：整除关系 计数具有某性质的关系 9.2 关系运算与复合 集合运算 逆关系 关系复合 关系的幂 传递性与关系幂 9.3 关系的表示 矩阵运算 有向图和路径 9."
     },
     {
-      "title": "离散数学讲义 · 使用说明",
-      "summary": "使用说明 这份讲义按章节组织，目标不是逐页复述课件，而是把课件中的定义、定理、方法、例题类型和解题套路整理成可复习、可发布到笔记网站的 Markdown 文档。 每一章建议按以下顺序学习： 1. 先看“核心目标”，明确本章要解决的问题。 2. 再看定义和定理，注意每个符号的含义。 3. 通过例题类型掌握建模和证明套路。 4. 最后用“小结与补充位”检查是否还有新课件需要补充。 本文使用 LaTeX 公式语法，例如 $p \\to q$、$",
+      "title": "离散数学讲义 · 章节入口",
+      "summary": "章节入口 第 1 章 逻辑与证明：命题逻辑、谓词逻辑、推理规则和证明策略。（建议 4–6 小时） 第 2 章 基本结构：集合、函数、序列、基数和矩阵：集合、函数、序列、基数和矩阵的基础语言。（建议 5–7 小时） 第 3 章 算法：算法定义、伪代码、搜索排序和函数增长。（建议 3–4 小时） 第 5 章 归纳与递归：数学归纳法、强归纳、递归定义和递归算法。（建议 4–6 小时） 第 6 章 计数：加法/乘法原则、排列组合、二项式系数和广",
       "tags": [
         "math",
         "discrete-math",
@@ -1195,13 +1621,13 @@
       "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
       "locale": "zh",
       "kind": "section",
-      "text": "使用说明 这份讲义按章节组织，目标不是逐页复述课件，而是把课件中的定义、定理、方法、例题类型和解题套路整理成可复习、可发布到笔记网站的 Markdown 文档。 每一章建议按以下顺序学习： 1. 先看“核心目标”，明确本章要解决的问题。 2. 再看定义和定理，注意每个符号的含义。 3. 通过例题类型掌握建模和证明套路。 4. 最后用“小结与补充位”检查是否还有新课件需要补充。 本文使用 LaTeX 公式语法，例如 $p \\to q$、$\\forall x P(x)$、$O(n\\log n)$。上传到笔记网站时，请确认网站支持 Markdown 数学公式渲染。",
-      "section": "使用说明",
+      "text": "章节入口 第 1 章 逻辑与证明：命题逻辑、谓词逻辑、推理规则和证明策略。（建议 4–6 小时） 第 2 章 基本结构：集合、函数、序列、基数和矩阵：集合、函数、序列、基数和矩阵的基础语言。（建议 5–7 小时） 第 3 章 算法：算法定义、伪代码、搜索排序和函数增长。（建议 3–4 小时） 第 5 章 归纳与递归：数学归纳法、强归纳、递归定义和递归算法。（建议 4–6 小时） 第 6 章 计数：加法/乘法原则、排列组合、二项式系数和广义排列组合。（建议 5–7 小时） 第 8 章 高级计数技术：递推关系、分治递推、生成函数、容斥和错排。（建议 6–8 小时） 第 9 章 关系：关系定义、性质、矩阵/有向图表示、闭包和等价关系。（建议 5–6 小时） 附录：符号与证明模板：常用符号、证明模板、更新记录和后续扩展边界。",
+      "section": "章节入口",
       "parentTitle": "离散数学讲义"
     },
     {
-      "title": "离散数学讲义 · 现有课件索引",
-      "summary": "现有课件索引 | 讲义章节 | 对应课件 | | | | | 第 1 章 逻辑与证明 | DM1.1(8).pdf , DM1.2 1.3(5).pdf , DM1.4(6).pdf , DM1.5(5).pdf , DM1.6(6).pdf , DM1.7 1.8(6).pdf | | 第 2 章 基本结构 | DM2.1.pdf , DM2.2.pdf , DM2.3.pdf , DM2.4.pdf , DM2.5 2.6(5).p",
+      "title": "离散数学讲义 · 章节与课件对应表",
+      "summary": "章节与课件对应表 | 章节 | 覆盖内容 | 对应课件 | | | | | | 第 1 章 逻辑与证明 | 命题逻辑、谓词逻辑、推理规则和证明策略。 | DM1.1(8).pdf, DM1.2 1.3(5).pdf, DM1.4(6).pdf, DM1.5(5).pdf, DM1.6(6).pdf, DM1.7 1.8(6).pdf | | 第 2 章 基本结构：集合、函数、序列、基数和矩阵 | 集合、函数、序列、基数和矩阵的基础语言。",
       "tags": [
         "math",
         "discrete-math",
@@ -1211,13 +1637,13 @@
       "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
       "locale": "zh",
       "kind": "section",
-      "text": "现有课件索引 | 讲义章节 | 对应课件 | | | | | 第 1 章 逻辑与证明 | DM1.1(8).pdf , DM1.2 1.3(5).pdf , DM1.4(6).pdf , DM1.5(5).pdf , DM1.6(6).pdf , DM1.7 1.8(6).pdf | | 第 2 章 基本结构 | DM2.1.pdf , DM2.2.pdf , DM2.3.pdf , DM2.4.pdf , DM2.5 2.6(5).pdf | | 第 3 章 算法 | DM3.1 3.3(4).pdf | | 第 4 章 待补充 | 当前未提供对应课件 | | 第 5 章 归纳与递归 | DM5.1 5.4(7).pdf | | 第 6 章 计数 | DM6.1(3).pdf , DM6.2(3).pdf , DM6.3 6.4(6).pdf , DM6.5(3).pdf | | 第 7 章 待补充 | 当前未提供对应课件 | | 第 8 章 高级计数技术 | DM8.1 8.2(6).pdf , DM8.3.pdf , DM8.4(6).pdf , DM8.5 8.6(9).pdf | | 第 9 章 关系 | DM9.1 9.3(8).pdf , DM9.4(6).pdf , DM9.5(3).pdf |",
-      "section": "现有课件索引",
+      "text": "章节与课件对应表 | 章节 | 覆盖内容 | 对应课件 | | | | | | 第 1 章 逻辑与证明 | 命题逻辑、谓词逻辑、推理规则和证明策略。 | DM1.1(8).pdf, DM1.2 1.3(5).pdf, DM1.4(6).pdf, DM1.5(5).pdf, DM1.6(6).pdf, DM1.7 1.8(6).pdf | | 第 2 章 基本结构：集合、函数、序列、基数和矩阵 | 集合、函数、序列、基数和矩阵的基础语言。 | DM2.1.pdf, DM2.2.pdf, DM2.3.pdf, DM2.4.pdf, DM2.5 2.6(5).pdf | | 第 3 章 算法 | 算法定义、伪代码、搜索排序和函数增长。 | DM3.1 3.3(4).pdf | | 第 5 章 归纳与递归 | 数学归纳法、强归纳、递归定义和递归算法。 | DM5.1 5.4(7).pdf | | 第 6 章 计数 | 加法/乘法原则、排列组合、二项式系数和广义排列组合。 | DM6.1(3).pdf, DM6.2(3).pdf, DM6.3 6.4(6).pdf, DM6.5(3).pdf | | 第 8 章 高级计数技术 | 递推关系、分治递推、生成函数、容斥和错排。 | DM8.1 8.2(6).pdf, DM8.3.pdf, DM8.4(6).pdf, DM8.5 8.6(9).pdf | | 第 9 章 关系 | 关系定义、性质、矩阵/有向图表示、闭包和等价关系。 | DM9.1 9.3(8).pdf, DM9.4(6).pdf, DM9.5(3).pdf |",
+      "section": "章节与课件对应表",
       "parentTitle": "离散数学讲义"
     },
     {
-      "title": "离散数学讲义 · 命题",
-      "summary": "命题 命题是一个具有确定真值的陈述句。它要么为真，要么为假，不能二者同时成立。 常见判断： | 句子 | 是否为命题 | 原因 | | | | | | “2022 年冬奥会在北京举行。” | 是 | 有确定真值 | | “9 是素数。” | 是 | 有确定真值，且为假 | | “请打开书。” | 否 | 命令句，没有真假 | | “现在几点？” | 否 | 疑问句，没有真假 | | $x+1=4$ | 通常不是 | 未指定 $x$ 时没",
+      "title": "离散数学讲义 · 旧锚点跳转表",
+      "summary": "旧锚点跳转表 下面的条目用于兼容旧版长页面的 note sec ... 锚点。锚点本身保留在本页；点击条目会进入新的章节子页面或资料状态说明。 使用说明 现有课件索引 全书知识结构 第 1 章 逻辑与证明 1.0 核心目标 1.1 命题逻辑 命题 复合命题和联结词 条件命题的相关形式 真值表 运算优先级 位运算 1.2 命题逻辑的应用 自然语言翻译 系统规格说明 逻辑谜题 1.3 命题等价式与范式 重言式、矛盾式、可满足式 常用逻辑等价",
       "tags": [
         "math",
         "discrete-math",
@@ -1227,328 +1653,8 @@
       "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
       "locale": "zh",
       "kind": "section",
-      "text": "命题 命题是一个具有确定真值的陈述句。它要么为真，要么为假，不能二者同时成立。 常见判断： | 句子 | 是否为命题 | 原因 | | | | | | “2022 年冬奥会在北京举行。” | 是 | 有确定真值 | | “9 是素数。” | 是 | 有确定真值，且为假 | | “请打开书。” | 否 | 命令句，没有真假 | | “现在几点？” | 否 | 疑问句，没有真假 | | $x+1=4$ | 通常不是 | 未指定 $x$ 时没有确定真值 | 通常用 $p,q,r,\\ldots$ 表示命题变量。真值可记为 T/F ，也可记为 1/0 。",
-      "section": "命题",
-      "parentTitle": "离散数学讲义"
-    },
-    {
-      "title": "离散数学讲义 · 复合命题和联结词",
-      "summary": "复合命题和联结词 复合命题由命题变量和逻辑联结词构成。 | 名称 | 符号 | 读法 | 为真的条件 | | | | | | | 否定 | $\\neg p$ | 非 $p$ | $p$ 为假 | | 合取 | $p \\land q$ | $p$ 且 $q$ | $p,q$ 都真 | | 析取 | $p \\lor q$ | $p$ 或 $q$ | 至少一个真 | | 异或 | $p \\oplus q$ | 要么 $p$ 要么 $q$ | ",
-      "tags": [
-        "math",
-        "discrete-math",
-        "course-note"
-      ],
-      "url": "/zh/notes/discrete-math-lecture/",
-      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
-      "locale": "zh",
-      "kind": "section",
-      "text": "复合命题和联结词 复合命题由命题变量和逻辑联结词构成。 | 名称 | 符号 | 读法 | 为真的条件 | | | | | | | 否定 | $\\neg p$ | 非 $p$ | $p$ 为假 | | 合取 | $p \\land q$ | $p$ 且 $q$ | $p,q$ 都真 | | 析取 | $p \\lor q$ | $p$ 或 $q$ | 至少一个真 | | 异或 | $p \\oplus q$ | 要么 $p$ 要么 $q$ | 恰好一个真 | | 条件 | $p \\to q$ | 若 $p$ 则 $q$ | 只有 $p$ 真、$q$ 假时为假 | | 双条件 | $p \\leftrightarrow q$ | $p$ 当且仅当 $q$ | $p,q$ 真值相同 | 条件命题 $p \\to q$ 中，$p$ 称为前件，$q$ 称为后件。它的真假只由前件和后件的真值决定，不要求二者存在因果关系。课件中把它类比为“承诺”：只有承诺条件发生而结果没有发生时，承诺才被违反。",
-      "section": "复合命题和联结词",
-      "parentTitle": "离散数学讲义"
-    },
-    {
-      "title": "离散数学讲义 · 自然语言翻译",
-      "summary": "自然语言翻译 把自然语言翻译成命题逻辑的目的，是消除自然语言中的歧义，使推理可以形式化。 步骤： 1. 找出原子命题。 2. 给每个原子命题命名。 3. 判断关键词对应的联结词。 4. 注意“only if”“unless”“necessary”“sufficient”等短语。 例：“You can access the Internet from campus only if you are a computer science ma",
-      "tags": [
-        "math",
-        "discrete-math",
-        "course-note"
-      ],
-      "url": "/zh/notes/discrete-math-lecture/",
-      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
-      "locale": "zh",
-      "kind": "section",
-      "text": "自然语言翻译 把自然语言翻译成命题逻辑的目的，是消除自然语言中的歧义，使推理可以形式化。 步骤： 1. 找出原子命题。 2. 给每个原子命题命名。 3. 判断关键词对应的联结词。 4. 注意“only if”“unless”“necessary”“sufficient”等短语。 例：“You can access the Internet from campus only if you are a computer science major or you are not a freshman.” 设： $a$：你可以从校园访问互联网。 $c$：你是计算机科学专业学生。 $f$：你是一年级学生。 “$p$ only if $q$” 表示 $p \\to q$。所以原句翻译为： $a \\to (c \\lor \\neg f)$",
-      "section": "自然语言翻译",
-      "parentTitle": "离散数学讲义"
-    },
-    {
-      "title": "离散数学讲义 · 重言式、矛盾式、可满足式",
-      "summary": "重言式、矛盾式、可满足式 | 名称 | 定义 | 例子 | | | | | | 重言式 | 在所有赋值下都为真 | $p \\lor \\neg p$ | | 矛盾式 | 在所有赋值下都为假 | $p \\land \\neg p$ | | 偶然式 | 有时真、有时假 | $p \\to q$ | | 可满足式 | 至少存在一个赋值使其为真 | $p \\lor q$ | | 不可满足式 | 没有赋值使其为真 | $p \\land \\neg p$ ",
-      "tags": [
-        "math",
-        "discrete-math",
-        "course-note"
-      ],
-      "url": "/zh/notes/discrete-math-lecture/",
-      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
-      "locale": "zh",
-      "kind": "section",
-      "text": "重言式、矛盾式、可满足式 | 名称 | 定义 | 例子 | | | | | | 重言式 | 在所有赋值下都为真 | $p \\lor \\neg p$ | | 矛盾式 | 在所有赋值下都为假 | $p \\land \\neg p$ | | 偶然式 | 有时真、有时假 | $p \\to q$ | | 可满足式 | 至少存在一个赋值使其为真 | $p \\lor q$ | | 不可满足式 | 没有赋值使其为真 | $p \\land \\neg p$ | 两个命题公式 $P,Q$ 逻辑等价，当且仅当 $P \\leftrightarrow Q$ 是重言式，记作 $P \\equiv Q$。",
-      "section": "重言式、矛盾式、可满足式",
-      "parentTitle": "离散数学讲义"
-    },
-    {
-      "title": "离散数学讲义 · 常用逻辑等价式",
-      "summary": "常用逻辑等价式 | 名称 | 等价式 | | | | | 恒等律 | $p \\land T \\equiv p$, $p \\lor F \\equiv p$ | | 支配律 | $p \\lor T \\equiv T$, $p \\land F \\equiv F$ | | 幂等律 | $p \\lor p \\equiv p$, $p \\land p \\equiv p$ | | 双重否定律 | $\\neg(\\neg p) \\equiv p$ | |",
-      "tags": [
-        "math",
-        "discrete-math",
-        "course-note"
-      ],
-      "url": "/zh/notes/discrete-math-lecture/",
-      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
-      "locale": "zh",
-      "kind": "section",
-      "text": "常用逻辑等价式 | 名称 | 等价式 | | | | | 恒等律 | $p \\land T \\equiv p$, $p \\lor F \\equiv p$ | | 支配律 | $p \\lor T \\equiv T$, $p \\land F \\equiv F$ | | 幂等律 | $p \\lor p \\equiv p$, $p \\land p \\equiv p$ | | 双重否定律 | $\\neg(\\neg p) \\equiv p$ | | 交换律 | $p \\lor q \\equiv q \\lor p$, $p \\land q \\equiv q \\land p$ | | 结合律 | $(p\\lor q)\\lor r \\equiv p\\lor(q\\lor r)$, $(p\\land q)\\land r \\equiv p\\land(q\\land r)$ | | 分配律 | $p\\lor(q\\land r)\\equiv(p\\lor q)\\land(p\\lor r)$ | | 分配律 | $p\\land(q\\lor r)\\equiv(p\\land q)\\lor(p\\land r)$ | | 德摩根律 | $\\neg(p\\land q)\\equiv \\neg p\\lor \\neg q$ | | 德摩根律 | $\\neg(p\\lor q)\\equiv \\neg p\\land \\neg q$ | | 吸收律 | $p\\lor(p\\land q)\\equiv p$, $p\\land(p\\lor q)\\equiv p$ | | 条件等价 | $p\\to q\\equiv \\neg p\\lor q$ | | 双条件等价 | $p\\leftrightarrow q\\equiv(p\\to q)\\land(q\\to p)$ | 扩展德摩根律： $\\neg(p 1\\lor p 2\\lor\\cdots\\lor p n)\\equiv \\neg p 1\\land\\neg p 2\\land\\cdots\\land\\neg p n$ $\\neg(p 1\\land p 2\\land\\cdots\\land p n)\\equiv \\neg p 1\\lor\\neg p 2\\lor\\cdots\\lor\\neg p n$",
-      "section": "常用逻辑等价式",
-      "parentTitle": "离散数学讲义"
-    },
-    {
-      "title": "离散数学讲义 · 命题逻辑推理规则",
-      "summary": "命题逻辑推理规则 | 名称 | 形式 | | | | | 假言推理 Modus Ponens | $p,\\ p\\to q\\ \\therefore q$ | | 拒取式 Modus Tollens | $\\neg q,\\ p\\to q\\ \\therefore \\neg p$ | | 假言三段论 | $p\\to q,\\ q\\to r\\ \\therefore p\\to r$ | | 析取三段论 | $p\\lor q,\\ \\neg p\\ \\th",
-      "tags": [
-        "math",
-        "discrete-math",
-        "course-note"
-      ],
-      "url": "/zh/notes/discrete-math-lecture/",
-      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
-      "locale": "zh",
-      "kind": "section",
-      "text": "命题逻辑推理规则 | 名称 | 形式 | | | | | 假言推理 Modus Ponens | $p,\\ p\\to q\\ \\therefore q$ | | 拒取式 Modus Tollens | $\\neg q,\\ p\\to q\\ \\therefore \\neg p$ | | 假言三段论 | $p\\to q,\\ q\\to r\\ \\therefore p\\to r$ | | 析取三段论 | $p\\lor q,\\ \\neg p\\ \\therefore q$ | | 合取引入 | $p,\\ q\\ \\therefore p\\land q$ | | 简化 | $p\\land q\\ \\therefore p$ | | 附加 | $p\\ \\therefore p\\lor q$ | | 消解 | $p\\lor q,\\ \\neg p\\lor r\\ \\therefore q\\lor r$ | 消解法适合自动推理。若把公式化为子句集合，反复使用消解可检查结论是否由前提推出。",
-      "section": "命题逻辑推理规则",
-      "parentTitle": "离散数学讲义"
-    },
-    {
-      "title": "离散数学讲义 · 量词推理规则",
-      "summary": "量词推理规则 | 名称 | 形式 | 说明 | | | | | | 全称实例化 UI | $\\forall xP(x)\\ \\therefore P(c)$ | 从所有对象成立推出某个对象成立 | | 全称推广 UG | $P(c)\\ \\therefore \\forall xP(x)$ | $c$ 必须是任意对象 | | 存在实例化 EI | $\\exists xP(x)\\ \\therefore P(c)$ | $c$ 是新的代表元 | ",
-      "tags": [
-        "math",
-        "discrete-math",
-        "course-note"
-      ],
-      "url": "/zh/notes/discrete-math-lecture/",
-      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
-      "locale": "zh",
-      "kind": "section",
-      "text": "量词推理规则 | 名称 | 形式 | 说明 | | | | | | 全称实例化 UI | $\\forall xP(x)\\ \\therefore P(c)$ | 从所有对象成立推出某个对象成立 | | 全称推广 UG | $P(c)\\ \\therefore \\forall xP(x)$ | $c$ 必须是任意对象 | | 存在实例化 EI | $\\exists xP(x)\\ \\therefore P(c)$ | $c$ 是新的代表元 | | 存在推广 EG | $P(c)\\ \\therefore \\exists xP(x)$ | 某个对象成立则存在对象成立 | 综合规则： 全称假言推理： $\\forall x(P(x)\\to Q(x)),\\ P(a)\\ \\therefore Q(a)$ 全称拒取式： $\\forall x(P(x)\\to Q(x)),\\ \\neg Q(a)\\ \\therefore \\neg P(a)$",
-      "section": "量词推理规则",
-      "parentTitle": "离散数学讲义"
-    },
-    {
-      "title": "离散数学讲义 · 子集和真子集",
-      "summary": "子集和真子集 $A\\subseteq B$ 表示 $A$ 是 $B$ 的子集： $A\\subseteq B\\iff \\forall x(x\\in A\\to x\\in B)$ 集合相等： $A=B\\iff A\\subseteq B\\land B\\subseteq A$ 真子集： $A\\subset B\\iff A\\subseteq B\\land A\\ne B$ 等价地： $A\\subset B\\iff \\forall x(x\\in A\\t",
-      "tags": [
-        "math",
-        "discrete-math",
-        "course-note"
-      ],
-      "url": "/zh/notes/discrete-math-lecture/",
-      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
-      "locale": "zh",
-      "kind": "section",
-      "text": "子集和真子集 $A\\subseteq B$ 表示 $A$ 是 $B$ 的子集： $A\\subseteq B\\iff \\forall x(x\\in A\\to x\\in B)$ 集合相等： $A=B\\iff A\\subseteq B\\land B\\subseteq A$ 真子集： $A\\subset B\\iff A\\subseteq B\\land A\\ne B$ 等价地： $A\\subset B\\iff \\forall x(x\\in A\\to x\\in B)\\land \\exists x(x\\in B\\land x\\notin A)$",
-      "section": "子集和真子集",
-      "parentTitle": "离散数学讲义"
-    },
-    {
-      "title": "离散数学讲义 · 基本运算",
-      "summary": "基本运算 | 运算 | 记号 | 定义 | | | | | | 并集 | $A\\cup B$ | $\\{x\\mid x\\in A\\lor x\\in B\\}$ | | 交集 | $A\\cap B$ | $\\{x\\mid x\\in A\\land x\\in B\\}$ | | 差集 | $A B$ | $\\{x\\mid x\\in A\\land x\\notin B\\}$ | | 补集 | $\\overline A$ 或 $A^c$ | $\\{x\\",
-      "tags": [
-        "math",
-        "discrete-math",
-        "course-note"
-      ],
-      "url": "/zh/notes/discrete-math-lecture/",
-      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
-      "locale": "zh",
-      "kind": "section",
-      "text": "基本运算 | 运算 | 记号 | 定义 | | | | | | 并集 | $A\\cup B$ | $\\{x\\mid x\\in A\\lor x\\in B\\}$ | | 交集 | $A\\cap B$ | $\\{x\\mid x\\in A\\land x\\in B\\}$ | | 差集 | $A B$ | $\\{x\\mid x\\in A\\land x\\notin B\\}$ | | 补集 | $\\overline A$ 或 $A^c$ | $\\{x\\in U\\mid x\\notin A\\}$ | | 对称差 | $A\\oplus B$ | $(A B)\\cup(B A)$ |",
-      "section": "基本运算",
-      "parentTitle": "离散数学讲义"
-    },
-    {
-      "title": "离散数学讲义 · 集合恒等式",
-      "summary": "集合恒等式 集合恒等式与逻辑等价式高度对应。 | 名称 | 恒等式 | | | | | 恒等律 | $A\\cup\\varnothing=A$, $A\\cap U=A$ | | 支配律 | $A\\cup U=U$, $A\\cap\\varnothing=\\varnothing$ | | 幂等律 | $A\\cup A=A$, $A\\cap A=A$ | | 补元律 | $A\\cup A^c=U$, $A\\cap A^c=\\varnothing",
-      "tags": [
-        "math",
-        "discrete-math",
-        "course-note"
-      ],
-      "url": "/zh/notes/discrete-math-lecture/",
-      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
-      "locale": "zh",
-      "kind": "section",
-      "text": "集合恒等式 集合恒等式与逻辑等价式高度对应。 | 名称 | 恒等式 | | | | | 恒等律 | $A\\cup\\varnothing=A$, $A\\cap U=A$ | | 支配律 | $A\\cup U=U$, $A\\cap\\varnothing=\\varnothing$ | | 幂等律 | $A\\cup A=A$, $A\\cap A=A$ | | 补元律 | $A\\cup A^c=U$, $A\\cap A^c=\\varnothing$ | | 交换律 | $A\\cup B=B\\cup A$, $A\\cap B=B\\cap A$ | | 结合律 | $(A\\cup B)\\cup C=A\\cup(B\\cup C)$ | | 分配律 | $A\\cup(B\\cap C)=(A\\cup B)\\cap(A\\cup C)$ | | 德摩根律 | $(A\\cup B)^c=A^c\\cap B^c$ | | 德摩根律 | $(A\\cap B)^c=A^c\\cup B^c$ | | 吸收律 | $A\\cup(A\\cap B)=A$, $A\\cap(A\\cup B)=A$ |",
-      "section": "集合恒等式",
-      "parentTitle": "离散数学讲义"
-    },
-    {
-      "title": "离散数学讲义 · 取整函数",
-      "summary": "取整函数 下取整： $\\lfloor x\\rfloor$ 是不超过 $x$ 的最大整数。 上取整： $\\lceil x\\rceil$ 是不小于 $x$ 的最小整数。 基本性质： $\\lfloor x\\rfloor=n\\iff n\\le x<n+1$ $\\lceil x\\rceil=n\\iff n 1<x\\le n$ 若 $m$ 为整数： $\\lfloor x+m\\rfloor=\\lfloor x\\rfloor+m$ $\\lceil x+",
-      "tags": [
-        "math",
-        "discrete-math",
-        "course-note"
-      ],
-      "url": "/zh/notes/discrete-math-lecture/",
-      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
-      "locale": "zh",
-      "kind": "section",
-      "text": "取整函数 下取整： $\\lfloor x\\rfloor$ 是不超过 $x$ 的最大整数。 上取整： $\\lceil x\\rceil$ 是不小于 $x$ 的最小整数。 基本性质： $\\lfloor x\\rfloor=n\\iff n\\le x<n+1$ $\\lceil x\\rceil=n\\iff n 1<x\\le n$ 若 $m$ 为整数： $\\lfloor x+m\\rfloor=\\lfloor x\\rfloor+m$ $\\lceil x+m\\rceil=\\lceil x\\rceil+m$ 常见恒等式： $\\lfloor 2x\\rfloor=\\lfloor x\\rfloor+\\lfloor x+\\frac12\\rfloor$ 证明可令 $x=n+\\varepsilon$，其中 $n$ 为整数且 $0\\le\\varepsilon<1$，再分 $0\\le\\varepsilon<1/2$ 和 $1/2\\le\\varepsilon<1$ 两种情况。",
-      "section": "取整函数",
-      "parentTitle": "离散数学讲义"
-    },
-    {
-      "title": "离散数学讲义 · 例：有限集子集个数",
-      "summary": "例：有限集子集个数 命题：若 $S$ 有 $n$ 个元素，则 $S$ 有 $2^n$ 个子集。 基例：$n=0$ 时，$S=\\varnothing$，只有一个子集，$1=2^0$。 归纳步：假设任意 $k$ 元集合有 $2^k$ 个子集。设 $S$ 有 $k+1$ 个元素，取出一个元素 $a$，令 $T=S \\{a\\}$。$T$ 有 $k$ 个元素。 $S$ 的子集分两类： 不含 $a$：对应 $T$ 的子集，有 $2^k$ 个。 含 ",
-      "tags": [
-        "math",
-        "discrete-math",
-        "course-note"
-      ],
-      "url": "/zh/notes/discrete-math-lecture/",
-      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
-      "locale": "zh",
-      "kind": "section",
-      "text": "例：有限集子集个数 命题：若 $S$ 有 $n$ 个元素，则 $S$ 有 $2^n$ 个子集。 基例：$n=0$ 时，$S=\\varnothing$，只有一个子集，$1=2^0$。 归纳步：假设任意 $k$ 元集合有 $2^k$ 个子集。设 $S$ 有 $k+1$ 个元素，取出一个元素 $a$，令 $T=S \\{a\\}$。$T$ 有 $k$ 个元素。 $S$ 的子集分两类： 不含 $a$：对应 $T$ 的子集，有 $2^k$ 个。 含 $a$：由 $T$ 的每个子集加上 $a$ 得到，有 $2^k$ 个。 总数为 $2^k+2^k=2^{k+1}$。",
-      "section": "例：有限集子集个数",
-      "parentTitle": "离散数学讲义"
-    },
-    {
-      "title": "离散数学讲义 · 例：除法算法",
-      "summary": "例：除法算法 除法算法：对整数 $a$ 和正整数 $d$，存在唯一整数 $q,r$，使： $a=dq+r,\\quad 0\\le r<d$ 存在性证明可用良序性：考虑集合 $S=\\{a dq\\mid q\\in\\mathbb Z,\\ a dq\\ge0\\}$。该集合非空，有最小元素 $r$。证明 $r<d$，否则 $r d$ 也是非负且更小，矛盾。 唯一性可假设： $a=dq+r=dq'+r'$ 其中 $0\\le r,r'<d$。则 $d(q",
-      "tags": [
-        "math",
-        "discrete-math",
-        "course-note"
-      ],
-      "url": "/zh/notes/discrete-math-lecture/",
-      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
-      "locale": "zh",
-      "kind": "section",
-      "text": "例：除法算法 除法算法：对整数 $a$ 和正整数 $d$，存在唯一整数 $q,r$，使： $a=dq+r,\\quad 0\\le r<d$ 存在性证明可用良序性：考虑集合 $S=\\{a dq\\mid q\\in\\mathbb Z,\\ a dq\\ge0\\}$。该集合非空，有最小元素 $r$。证明 $r<d$，否则 $r d$ 也是非负且更小，矛盾。 唯一性可假设： $a=dq+r=dq'+r'$ 其中 $0\\le r,r'<d$。则 $d(q q')=r' r$。右边绝对值小于 $d$，而左边是 $d$ 的倍数，只能为 0，所以 $r=r'$ 且 $q=q'$。",
-      "section": "例：除法算法",
-      "parentTitle": "离散数学讲义"
-    },
-    {
-      "title": "离散数学讲义 · 包含重叠时的加法",
-      "summary": "包含重叠时的加法 若两类方式有重叠： $|A\\cup B|=|A|+|B| |A\\cap B|$ 例：不超过 100 且既不被 4 也不被 6 整除的正整数个数： 总数 100。 被 4 整除：$\\lfloor100/4\\rfloor=25$。 被 6 整除：$\\lfloor100/6\\rfloor=16$。 同时被 4 和 6 整除，即被 $\\operatorname{lcm}(4,6)=12$ 整除：$\\lfloor100/12\\r",
-      "tags": [
-        "math",
-        "discrete-math",
-        "course-note"
-      ],
-      "url": "/zh/notes/discrete-math-lecture/",
-      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
-      "locale": "zh",
-      "kind": "section",
-      "text": "包含重叠时的加法 若两类方式有重叠： $|A\\cup B|=|A|+|B| |A\\cap B|$ 例：不超过 100 且既不被 4 也不被 6 整除的正整数个数： 总数 100。 被 4 整除：$\\lfloor100/4\\rfloor=25$。 被 6 整除：$\\lfloor100/6\\rfloor=16$。 同时被 4 和 6 整除，即被 $\\operatorname{lcm}(4,6)=12$ 整除：$\\lfloor100/12\\rfloor=8$。 被 4 或 6 整除的数有 $25+16 8=33$ 个。 目标为 $100 33=67$。",
-      "section": "包含重叠时的加法",
-      "parentTitle": "离散数学讲义"
-    },
-    {
-      "title": "离散数学讲义 · Master Theorem",
-      "summary": "Master Theorem 对递推： $T(n)=aT(n/b)+f(n)$ 比较 $f(n)$ 与 $n^{\\log b a}$： 若 $f(n)=O(n^{\\log b a \\varepsilon})$，则 $T(n)=\\Theta(n^{\\log b a})$。 若 $f(n)=\\Theta(n^{\\log b a}\\log^k n)$，则 $T(n)=\\Theta(n^{\\log b a}\\log^{k+1} n)$。 若 $",
-      "tags": [
-        "math",
-        "discrete-math",
-        "course-note"
-      ],
-      "url": "/zh/notes/discrete-math-lecture/",
-      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
-      "locale": "zh",
-      "kind": "section",
-      "text": "Master Theorem 对递推： $T(n)=aT(n/b)+f(n)$ 比较 $f(n)$ 与 $n^{\\log b a}$： 若 $f(n)=O(n^{\\log b a \\varepsilon})$，则 $T(n)=\\Theta(n^{\\log b a})$。 若 $f(n)=\\Theta(n^{\\log b a}\\log^k n)$，则 $T(n)=\\Theta(n^{\\log b a}\\log^{k+1} n)$。 若 $f(n)=\\Omega(n^{\\log b a+\\varepsilon})$ 且满足正则条件，则 $T(n)=\\Theta(f(n))$。 这是分析分治算法复杂度的常用工具。",
-      "section": "Master Theorem",
-      "parentTitle": "离散数学讲义"
-    },
-    {
-      "title": "离散数学讲义 · 常见生成函数",
-      "summary": "常见生成函数 | 序列 | 生成函数 | | | | | $1,1,1,\\ldots$ | $\\frac1{1 x}$ | | $1,r,r^2,\\ldots$ | $\\frac1{1 rx}$ | | $0,1,2,3,\\ldots$ | $\\frac{x}{(1 x)^2}$ | | $\\binom n0,\\binom n1,\\ldots,\\binom nn$ | $(1+x)^n$ | 基本恒等式： $\\frac1{1 x}=1+",
-      "tags": [
-        "math",
-        "discrete-math",
-        "course-note"
-      ],
-      "url": "/zh/notes/discrete-math-lecture/",
-      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
-      "locale": "zh",
-      "kind": "section",
-      "text": "常见生成函数 | 序列 | 生成函数 | | | | | $1,1,1,\\ldots$ | $\\frac1{1 x}$ | | $1,r,r^2,\\ldots$ | $\\frac1{1 rx}$ | | $0,1,2,3,\\ldots$ | $\\frac{x}{(1 x)^2}$ | | $\\binom n0,\\binom n1,\\ldots,\\binom nn$ | $(1+x)^n$ | 基本恒等式： $\\frac1{1 x}=1+x+x^2+\\cdots,\\quad |x|<1$ 在组合中常作为形式幂级数使用，不一定关注收敛。",
-      "section": "常见生成函数",
-      "parentTitle": "离散数学讲义"
-    },
-    {
-      "title": "离散数学讲义 · 例：不超过 1000 且不被 5、6、8 整除",
-      "summary": "例：不超过 1000 且不被 5、6、8 整除 设： $A 5=\\{x\\le1000:5\\mid x\\}$ $A 6=\\{x\\le1000:6\\mid x\\}$ $A 8=\\{x\\le1000:8\\mid x\\}$ 用容斥计算被至少一个整除的数： $|A 5|+|A 6|+|A 8| |A 5\\cap A 6| |A 5\\cap A 8| |A 6\\cap A 8|+|A 5\\cap A 6\\cap A 8|$ 交集用最小公倍数计数，例",
-      "tags": [
-        "math",
-        "discrete-math",
-        "course-note"
-      ],
-      "url": "/zh/notes/discrete-math-lecture/",
-      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
-      "locale": "zh",
-      "kind": "section",
-      "text": "例：不超过 1000 且不被 5、6、8 整除 设： $A 5=\\{x\\le1000:5\\mid x\\}$ $A 6=\\{x\\le1000:6\\mid x\\}$ $A 8=\\{x\\le1000:8\\mid x\\}$ 用容斥计算被至少一个整除的数： $|A 5|+|A 6|+|A 8| |A 5\\cap A 6| |A 5\\cap A 8| |A 6\\cap A 8|+|A 5\\cap A 6\\cap A 8|$ 交集用最小公倍数计数，例如： $|A 5\\cap A 6|=\\left\\lfloor\\frac{1000}{\\operatorname{lcm}(5,6)}\\right\\rfloor$ 最后用 1000 减去该数量。",
-      "section": "例：不超过 1000 且不被 5、6、8 整除",
-      "parentTitle": "离散数学讲义"
-    },
-    {
-      "title": "离散数学讲义 · 关系性质",
-      "summary": "关系性质 设 $R$ 是集合 $A$ 上的关系。 自反： $\\forall a\\in A,\\ (a,a)\\in R$ 矩阵主对角线全为 1；有向图每个点都有自环。 反自反： $\\forall a\\in A,\\ (a,a)\\notin R$ 矩阵主对角线全为 0。 对称： $\\forall a,b\\in A,\\ (a,b)\\in R\\to(b,a)\\in R$ 矩阵关于主对角线对称；有向图每条边都有反向边。 反对称： $\\forall a",
-      "tags": [
-        "math",
-        "discrete-math",
-        "course-note"
-      ],
-      "url": "/zh/notes/discrete-math-lecture/",
-      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
-      "locale": "zh",
-      "kind": "section",
-      "text": "关系性质 设 $R$ 是集合 $A$ 上的关系。 自反： $\\forall a\\in A,\\ (a,a)\\in R$ 矩阵主对角线全为 1；有向图每个点都有自环。 反自反： $\\forall a\\in A,\\ (a,a)\\notin R$ 矩阵主对角线全为 0。 对称： $\\forall a,b\\in A,\\ (a,b)\\in R\\to(b,a)\\in R$ 矩阵关于主对角线对称；有向图每条边都有反向边。 反对称： $\\forall a,b\\in A,\\ ((a,b)\\in R\\land(b,a)\\in R)\\to a=b$ 注意：对称和反对称不是互为否定。一个关系可以既对称又反对称，例如恒等关系。 传递： $\\forall a,b,c\\in A,\\ ((a,b)\\in R\\land(b,c)\\in R)\\to(a,c)\\in R$ 有向图中若存在长度 2 的路径 $a\\to b\\to c$，则必须有边 $a\\to c$。",
-      "section": "关系性质",
-      "parentTitle": "离散数学讲义"
-    },
-    {
-      "title": "离散数学讲义 · 计数具有某性质的关系",
-      "summary": "计数具有某性质的关系 若 $|A|=n$： 自反关系数：主对角线必须选入，其余 $n^2 n$ 个有序对自由，所以： $2^{n^2 n}$ 反自反关系数：主对角线必须不选，其余自由，也是： $2^{n^2 n}$ 对称关系数：对角线 $n$ 个位置自由；非对角线按 unordered pair 成对选择，共 $\\binom n2$ 对，所以： $2^{n+\\binom n2}=2^{n(n+1)/2}$ 反对称关系数：每对不同元素 {",
-      "tags": [
-        "math",
-        "discrete-math",
-        "course-note"
-      ],
-      "url": "/zh/notes/discrete-math-lecture/",
-      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
-      "locale": "zh",
-      "kind": "section",
-      "text": "计数具有某性质的关系 若 $|A|=n$： 自反关系数：主对角线必须选入，其余 $n^2 n$ 个有序对自由，所以： $2^{n^2 n}$ 反自反关系数：主对角线必须不选，其余自由，也是： $2^{n^2 n}$ 对称关系数：对角线 $n$ 个位置自由；非对角线按 unordered pair 成对选择，共 $\\binom n2$ 对，所以： $2^{n+\\binom n2}=2^{n(n+1)/2}$ 反对称关系数：每对不同元素 {a,b} 中，$(a,b)$、$(b,a)$ 不能同时选，可选三种情况：只选前者、只选后者、都不选。对角线自由，所以： $2^n3^{\\binom n2}$",
-      "section": "计数具有某性质的关系",
-      "parentTitle": "离散数学讲义"
-    },
-    {
-      "title": "离散数学讲义 · 模同余",
-      "summary": "模同余 在整数集上定义： $a\\equiv b\\pmod m\\iff m\\mid(a b)$ 这是等价关系。 证明： 自反：$m\\mid(a a)=0$。 对称：若 $m\\mid(a b)$，则 $m\\mid(b a)$。 传递：若 $m\\mid(a b)$ 且 $m\\mid(b c)$，则 $m\\mid(a c)$。 模 3 的等价类： $[0]=\\{\\ldots, 6, 3,0,3,6,\\ldots\\}$ $[1]=\\{\\ldots",
-      "tags": [
-        "math",
-        "discrete-math",
-        "course-note"
-      ],
-      "url": "/zh/notes/discrete-math-lecture/",
-      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
-      "locale": "zh",
-      "kind": "section",
-      "text": "模同余 在整数集上定义： $a\\equiv b\\pmod m\\iff m\\mid(a b)$ 这是等价关系。 证明： 自反：$m\\mid(a a)=0$。 对称：若 $m\\mid(a b)$，则 $m\\mid(b a)$。 传递：若 $m\\mid(a b)$ 且 $m\\mid(b c)$，则 $m\\mid(a c)$。 模 3 的等价类： $[0]=\\{\\ldots, 6, 3,0,3,6,\\ldots\\}$ $[1]=\\{\\ldots, 5, 2,1,4,7,\\ldots\\}$ $[2]=\\{\\ldots, 4, 1,2,5,8,\\ldots\\}$",
-      "section": "模同余",
-      "parentTitle": "离散数学讲义"
-    },
-    {
-      "title": "离散数学讲义 · 附录 A：常用符号表",
-      "summary": "附录 A：常用符号表 | 符号 | 含义 | | | | | $\\neg p$ | 非 $p$ | | $p\\land q$ | $p$ 且 $q$ | | $p\\lor q$ | $p$ 或 $q$ | | $p\\to q$ | 若 $p$ 则 $q$ | | $p\\leftrightarrow q$ | $p$ 当且仅当 $q$ | | $\\forall x$ | 对所有 $x$ | | $\\exists x$ | 存在 $x$ |",
-      "tags": [
-        "math",
-        "discrete-math",
-        "course-note"
-      ],
-      "url": "/zh/notes/discrete-math-lecture/",
-      "sourcePath": "docs/zh/notes/discrete-math-lecture.md",
-      "locale": "zh",
-      "kind": "section",
-      "text": "附录 A：常用符号表 | 符号 | 含义 | | | | | $\\neg p$ | 非 $p$ | | $p\\land q$ | $p$ 且 $q$ | | $p\\lor q$ | $p$ 或 $q$ | | $p\\to q$ | 若 $p$ 则 $q$ | | $p\\leftrightarrow q$ | $p$ 当且仅当 $q$ | | $\\forall x$ | 对所有 $x$ | | $\\exists x$ | 存在 $x$ | | $\\exists!x$ | 存在唯一 $x$ | | $A\\subseteq B$ | $A$ 是 $B$ 的子集 | | $A\\cup B$ | 并集 | | $A\\cap B$ | 交集 | | $A B$ | 差集 | | $\\mathcal P(A)$ | 幂集 | | $|A|$ | 集合基数 | | $f:A\\to B$ | 从 $A$ 到 $B$ 的函数 | | $\\lfloor x\\rfloor$ | 下取整 | | $\\lceil x\\rceil$ | 上取整 | | $O(g(n))$ | 渐近上界 | | $\\Omega(g(n))$ | 渐近下界 | | $\\Theta(g(n))$ | 同阶增长 | | $\\binom nr$ | 组合数 | | $P(n,r)$ | r 排列数 | | $S(n,k)$ | 第二类 Stirling 数 | | $R^{ 1}$ | 逆关系 | | $S\\circ R$ | 关系复合 | | $R^n$ | 关系的 n 次幂 | | $[a]$ | 元素 $a$ 的等价类 |",
-      "section": "附录 A：常用符号表",
+      "text": "旧锚点跳转表 下面的条目用于兼容旧版长页面的 note sec ... 锚点。锚点本身保留在本页；点击条目会进入新的章节子页面或资料状态说明。 使用说明 现有课件索引 全书知识结构 第 1 章 逻辑与证明 1.0 核心目标 1.1 命题逻辑 命题 复合命题和联结词 条件命题的相关形式 真值表 运算优先级 位运算 1.2 命题逻辑的应用 自然语言翻译 系统规格说明 逻辑谜题 1.3 命题等价式与范式 重言式、矛盾式、可满足式 常用逻辑等价式 用等价式化简 其他逻辑算子和函数完备性 对偶 析取范式和合取范式 主析取范式和主合取范式 SAT 和 n 皇后建模 1.4 谓词与量词 为什么需要谓词逻辑 谓词和命题函数 量词 论域的重要性 限制量词 自然语言翻译 量词否定 程序正确性中的前置条件和后置条件 1.5 嵌套量词与前束范式 嵌套量词 同类量词可交换 例：实数乘积 唯一性表达 极限定义的逻辑结构 前束范式 1.6 推理规则 论证和有效性 命题逻辑推理规则 常见谬误 量词推理规则 苏格拉底论证 1.7 证明导论 定理、命题、引理和推论 直接证明 逆否证明 空证明和显然证明 反证法 充要条件证明 1.8 证明方法与策略 分情况证明 存在性证明 唯一性证明 反例证明 前向推理和后向推理 本章小结与补充位 第 2 章 基本结构：集合、函数、序列、基数和矩阵 2.0 核心目标 2.1 集合 集合和元素 常见数集 子集和真子集 有限集和基数 幂集 有序 n 元组和笛卡尔积 2.2 集合运算 基本运算 集合恒等式 证明集合恒等式的方法 容斥思想的初步形式 广义并与广义交 用位串表示集合 2.3 函数 函数定义 单射、满射、双射 判断技巧 反函数 函数组合 函数图像 取整函数 2.4 序列与递推 序列 字符串 递推关系 解递推关系 2.5 集合的基数 有限集合的基数 相同基数 可数集 整数集可数 正有理数可数 有限字母表上的有限字符串可数 不可数集 不可计算函数的存在 幂集基数 2.6 矩阵 矩阵定义 常见运算 与离散数学的关系 本章小结与补充位 第 3 章 算法 3.0 核心目标 3.1 算法 算法定义 伪代码 搜索问题 排序问题 贪心算法 3.2 函数增长 为什么关心增长率 Big O 多项式增长 常见增长顺序 Big Omega 和 Big Theta 组合函数的增长 3.3 算法复杂度 时间复杂度 最大值算法复杂度 线性搜索复杂度 二分搜索复杂度 可处理、不可处理、不可解 本章小结与补充位 第 4 章 资料未提供章节 4.1 整除与模运算 4.2 整数表示和算法 4.3 素数与最大公约数 4.4 同余 4.5 密码学应用 第 5 章 归纳与递归 5.0 核心目标 5.1 数学归纳法 第一数学归纳原理 归纳证明模板 为什么归纳法有效 例：有限集子集个数 5.2 强归纳与良序性 强归纳原理 例：整数的素因子分解存在性 良序性 例：除法算法 5.3 递归定义与结构归纳 递归定义函数 欧几里得算法的递归思想 递归定义集合 字符串集合 合式公式 结构归纳 树的递归定义 5.4 递归算法 递归算法定义 递归算法正确性 递归与迭代 递归斐波那契算法 本章小结与补充位 第 6 章 计数 6.0 核心目标 6.1 计数基础 乘法法则 单射函数计数 幂集大小 加法法则 减法法则 包含重叠时的加法 除法法则 树图 6.2 鸽巢原理 基本鸽巢原理 例：同余 广义鸽巢原理 例：抽球 整除链例题 单调子序列定理 六人朋友敌人问题 6.3 排列与组合 排列 含指定字符串的排列 组合 对称性 组合证明 6.4 二项式系数 二项式定理 帕斯卡恒等式 Vandermonde 恒等式 常见二项式恒等式 6.5 广义排列与组合 允许重复的排列 允许重复的组合 带下界的整数解 不可区分对象的排列 盒子模型 Stirling 数 本章小结与补充位 第 7 章 资料未提供章节 7.1 有限概率 7.2 概率论基础 7.3 Bayes 定理 7.4 期望与方差 第 8 章 高级计数技术 8.0 核心目标 8.1 递推关系的应用 递推关系回顾 兔子问题和 Fibonacci 数 汉诺塔 不含连续 0 的位串 算法与递推 8.2 线性递推关系 线性齐次常系数递推 二阶不同根 Fibonacci 闭式 重根情形 非齐次线性递推 8.3 分治算法与递推 分治思想 二分搜索 快速整数乘法 Master Theorem 8.4 生成函数 定义 常见生成函数 扩展二项式定理 用生成函数计数 有限制的选择 用生成函数解递推 8.5 容斥原理 两个和三个集合 一般容斥公式 反向计数 例：不超过 1000 且不被 5、6、8 整除 8.6 容斥的应用 满射函数计数 错排 帽子问题 本章小结与补充位 第 9 章 关系 9.0 核心目标 9.1 关系及其性质 二元关系 n 元关系 函数作为关系 关系的表示 连接矩阵 有向图表示 关系性质 例：整除关系 计数具有某性质的关系 9.2 关系运算与复合 集合运算 逆关系 关系复合 关系的幂 传递性与关系幂 9.3 关系的表示 矩阵运算 有向图和路径 9.4 关系闭包 闭包定义 自反闭包 对称闭包 传递闭包 有限集合上的路径长度 Warshall 算法 多性质闭包 9.5 等价关系 定义 等价类 模同余 由函数诱导的等价关系 字符串前缀等价 划分 等价关系与划分 等价类的基本性质 等价关系的组合 本章小结与补充位 附录 A：常用符号表 附录 B：常用证明模板 直接证明模板 逆否证明模板 反证法模板 分情况证明模板 数学归纳法模板 强归纳模板 结构归纳模板 附录 C：后续更新记录 附录 D：待补充清单",
+      "section": "旧锚点跳转表",
       "parentTitle": "离散数学讲义"
     },
     {
@@ -1780,7 +1886,7 @@
       "sourcePath": "docs/zh/notes/index.md",
       "locale": "zh",
       "kind": "page",
-      "text": "NOTES 笔记 这里收着我愿意公开留下的笔记。课程讲义、公式测试和这个网站自己的说明，都会在这里慢慢排好位置。 中文主源 可被碧影读取 持续整理 这里的笔记以中文为主源，也会尽量同步英文版本。能不能被碧影读到，会由页面里的 public 和 avatar readable 一起决定。 想系统学习 从课程笔记开始，顺着章节慢慢读。 想了解本站 先看公开边界，知道碧影能读什么、不能读什么。 想检查公式 进入数学实验，确认 Markdown 里的公式排版是否正常。 主题入口 最近更新 推荐阅读 标签 课程笔记 离散数学讲义 覆盖逻辑与证明、集合与函数、算法、归纳递归、计数、关系等主题。 数学 证明 计数 阅读 计算机系统基础讲义 覆盖信息表示、布尔代数、组合逻辑、运算部件、时序逻辑、ISA 与 RISC V。 系统 逻辑 RISC V 阅读 FDS 数据结构基础讲义 覆盖算法分析、线性表、栈队列、树、堆、并查集、线段树、图与拓扑排序。 算法 数据结构 图 阅读 关于这个站 公开边界 把碧影能读什么、不能读什么摊开说清楚。 公开范围 碧影 阅读 数学实验 用来确认 Markdown 里的数学公式能正常显示。 MathJax 公式 阅读 如果你只是第一次来，比较自然的路线是：先看一篇课程讲义，遇到感兴趣的地方再回到这里继续挑下一本。这个页面会随着新笔记一起慢慢长大。"
+      "text": "NOTES 笔记 这里收着我愿意公开留下的笔记。课程讲义、公式测试和这个网站自己的说明，都会在这里慢慢排好位置。 中文主源 可被碧影读取 持续整理 这里的笔记以中文为主源，也会尽量同步英文版本。能不能被碧影读到，会由页面里的 public 和 avatar readable 一起决定。 想系统学习 从课程笔记开始，顺着章节慢慢读。 想了解本站 先看公开边界，知道碧影能读什么、不能读什么。 想检查公式 进入数学实验，确认 Markdown 里的公式排版是否正常。 主题入口 最近更新 推荐阅读 标签 课程笔记 离散数学讲义 已拆分为章节页，覆盖逻辑与证明、集合与函数、算法、归纳递归、计数、关系等主题。 数学 证明 计数 进入总览 计算机系统基础讲义 覆盖信息表示、布尔代数、组合逻辑、运算部件、时序逻辑、ISA 与 RISC V。 系统 逻辑 RISC V 阅读 FDS 数据结构基础讲义 覆盖算法分析、线性表、栈队列、树、堆、并查集、线段树、图与拓扑排序。 算法 数据结构 图 阅读 关于这个站 公开边界 把碧影能读什么、不能读什么摊开说清楚。 公开范围 碧影 阅读 数学实验 用来确认 Markdown 里的数学公式能正常显示。 MathJax 公式 阅读 如果你只是第一次来，比较自然的路线是：先看一篇课程讲义，遇到感兴趣的地方再回到这里继续挑下一本。这个页面会随着新笔记一起慢慢长大。"
     },
     {
       "title": "数学实验",

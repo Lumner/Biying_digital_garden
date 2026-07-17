@@ -84,7 +84,7 @@
       },
       {
         "title": "离散数学讲义",
-        "summary": "离散数学课程讲义，覆盖逻辑与证明、集合与函数、算法、归纳递归、计数、关系等主题。",
+        "summary": "离散数学中文讲义总览；正文已按章节拆分，并保留旧 URL 与旧锚点跳转入口。",
         "url": "/zh/notes/discrete-math-lecture/",
         "category": "math",
         "tags": [
@@ -92,10 +92,10 @@
           "discrete-math",
           "course-note"
         ],
-        "updated": "2026-05-13",
+        "updated": "2026-07-18",
         "recommended": true,
         "readingOrder": 10,
-        "chapterCount": 82
+        "chapterCount": 10
       },
       {
         "title": "FDS 数据结构基础讲义",

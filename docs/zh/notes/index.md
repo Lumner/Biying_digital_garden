@@ -56,13 +56,13 @@ tags:
 <div class="note-library">
   <section class="note-tile">
     <h3>离散数学讲义</h3>
-    <p>覆盖逻辑与证明、集合与函数、算法、归纳递归、计数、关系等主题。</p>
+    <p>已拆分为章节页，覆盖逻辑与证明、集合与函数、算法、归纳递归、计数、关系等主题。</p>
     <div class="note-tile__meta">
       <span class="cyber-tag">数学</span>
       <span class="cyber-tag">证明</span>
       <span class="cyber-tag">计数</span>
     </div>
-    <a href="./discrete-math-lecture/">阅读</a>
+    <a href="./discrete-math-lecture/">进入总览</a>
   </section>
   <section class="note-tile">
     <h3>计算机系统基础讲义</h3>

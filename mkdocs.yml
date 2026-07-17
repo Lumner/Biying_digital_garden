@@ -35,7 +35,16 @@ nav:
       - 笔记首页: zh/notes/index.md
       - 数学:
           - 分类首页: zh/notes/math.md
-          - 离散数学讲义: zh/notes/discrete-math-lecture.md
+          - 离散数学讲义:
+              - 讲义总览: zh/notes/discrete-math-lecture.md
+              - 第 1 章 逻辑与证明: zh/notes/discrete-math-lecture/chapter-01-logic-proofs.md
+              - 第 2 章 基本结构: zh/notes/discrete-math-lecture/chapter-02-basic-structures.md
+              - 第 3 章 算法: zh/notes/discrete-math-lecture/chapter-03-algorithms.md
+              - 第 5 章 归纳与递归: zh/notes/discrete-math-lecture/chapter-05-induction-recursion.md
+              - 第 6 章 计数: zh/notes/discrete-math-lecture/chapter-06-counting.md
+              - 第 8 章 高级计数技术: zh/notes/discrete-math-lecture/chapter-08-advanced-counting.md
+              - 第 9 章 关系: zh/notes/discrete-math-lecture/chapter-09-relations.md
+              - 附录: zh/notes/discrete-math-lecture/appendix-reference.md
           - 数学实验: zh/notes/math-lab.md
       - 系统:
           - 分类首页: zh/notes/systems.md

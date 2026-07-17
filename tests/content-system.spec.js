@@ -119,3 +119,42 @@ test("english notes index presents course entries as overviews", async ({ page }
   await expect(main).not.toContainText("Computer Systems Fundamentals Lecture Notes");
   await expect(main).not.toContainText("FDS Data Structures Fundamentals Lecture Notes");
 });
+
+test("discrete math Chinese note keeps old URL while chapters move to stable subpaths", async ({ page }) => {
+  const overviewResponse = await page.goto(`${site.url}/zh/notes/discrete-math-lecture/`, { waitUntil: "networkidle" });
+  expect(overviewResponse?.status()).toBe(200);
+
+  const overview = page.locator("main");
+  await expect(overview).toContainText("章节正文已经拆分到稳定子路径");
+  await expect(overview).toContainText("课程来源与引用边界");
+  await expect(overview).toContainText("资料状态说明");
+  await expect(overview).not.toContainText("待补充章节");
+  await expect(overview).not.toContainText("图像资源待补充");
+
+  expect(await page.locator("#note-sec-004").count()).toBeGreaterThanOrEqual(1);
+  expect(await page.locator('main a[href*="chapter-01-logic-proofs"][href*="note-sec-004"]').count()).toBeGreaterThanOrEqual(1);
+  expect(await page.locator('main a[href*="chapter-05-induction-recursion"][href*="note-sec-134"]').count()).toBeGreaterThanOrEqual(1);
+
+  const chapters = [
+    { slug: "chapter-01-logic-proofs", title: "第 1 章 逻辑与证明" },
+    { slug: "chapter-02-basic-structures", title: "第 2 章 基本结构" },
+    { slug: "chapter-03-algorithms", title: "第 3 章 算法" },
+    { slug: "chapter-05-induction-recursion", title: "第 5 章 归纳与递归" },
+    { slug: "chapter-06-counting", title: "第 6 章 计数" },
+    { slug: "chapter-08-advanced-counting", title: "第 8 章 高级计数技术" },
+    { slug: "chapter-09-relations", title: "第 9 章 关系" }
+  ];
+
+  for (const chapter of chapters) {
+    const response = await page.goto(`${site.url}/zh/notes/discrete-math-lecture/${chapter.slug}/`, { waitUntil: "networkidle" });
+    expect(response?.status()).toBe(200);
+    const main = page.locator("main");
+    await expect(page.locator("article h1")).toContainText(chapter.title);
+    await expect(main).toContainText("学习目标");
+    await expect(main).toContainText("前置知识");
+    await expect(main).toContainText("建议用时");
+    await expect(main).toContainText("练习建议");
+    await expect(main).toContainText("参考资料与引用边界");
+    await expect(main).toContainText("原始讲义文件");
+  }
+});
