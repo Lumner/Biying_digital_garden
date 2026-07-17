@@ -69,7 +69,7 @@
     "zh": [
       {
         "title": "计算机系统基础讲义",
-        "summary": "计算机系统基础讲义，覆盖信息表示、布尔代数、组合逻辑、运算部件、时序逻辑、ISA 与 RISC-V。",
+        "summary": "计算机系统基础中文讲义总览；正文已按章节拆分，并保留旧 URL 与旧锚点跳转入口。",
         "url": "/zh/notes/computer-systems-lecture/",
         "category": "systems",
         "tags": [
@@ -77,10 +77,10 @@
           "risc-v",
           "course-note"
         ],
-        "updated": "2026-05-21",
+        "updated": "2026-07-18",
         "recommended": true,
         "readingOrder": 20,
-        "chapterCount": 10
+        "chapterCount": 9
       },
       {
         "title": "离散数学讲义",

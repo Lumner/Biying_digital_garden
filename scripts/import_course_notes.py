@@ -269,8 +269,8 @@ Use this English overview as a quick map before reading the Chinese full note. T
 
 def main() -> None:
     for course in COURSES:
-        if course["slug"] == "discrete-math-lecture":
-            print("Skipped docs/zh/notes/discrete-math-lecture.md; run scripts/split_discrete_math_note.py for the split Chinese chapter pages.")
+        if course["slug"] in {"discrete-math-lecture", "computer-systems-lecture"}:
+            print(f"Skipped docs/zh/notes/{course['slug']}.md; run the matching split script for the split Chinese chapter pages.")
         else:
             write_chinese(course)
         write_english(course)

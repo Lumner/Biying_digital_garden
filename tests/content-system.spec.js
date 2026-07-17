@@ -158,3 +158,46 @@ test("discrete math Chinese note keeps old URL while chapters move to stable sub
     await expect(main).toContainText("原始讲义文件");
   }
 });
+
+test("computer systems Chinese note keeps old URL and replaces image placeholders", async ({ page }) => {
+  const overviewResponse = await page.goto(`${site.url}/zh/notes/computer-systems-lecture/`, { waitUntil: "networkidle" });
+  expect(overviewResponse?.status()).toBe(200);
+
+  const overview = page.locator("main");
+  await expect(overview).toContainText("章节正文已经拆分到稳定子路径");
+  await expect(overview).toContainText("图片边界");
+  await expect(overview).toContainText("课程来源与引用边界");
+  await expect(overview).not.toContainText("图像资源待补充");
+
+  expect(await page.locator("#note-sec-002").count()).toBeGreaterThanOrEqual(1);
+  expect(await page.locator('main a[href*="chapter-00-system-view"][href*="note-sec-002"]').count()).toBeGreaterThanOrEqual(1);
+  expect(await page.locator('main a[href*="chapter-07-riscv-programs"][href*="note-sec-084"]').count()).toBeGreaterThanOrEqual(1);
+
+  const chapters = [
+    { slug: "chapter-00-system-view", title: "0. 课程视角：从门电路到系统软件" },
+    { slug: "chapter-01-information-representation", title: "1. 信息表示" },
+    { slug: "chapter-02-boolean-logic", title: "2. 布尔代数与数字逻辑基础" },
+    { slug: "chapter-03-combinational-logic", title: "3. 组合逻辑设计与 Verilog HDL" },
+    { slug: "chapter-04-arithmetic-alu", title: "4. 运算部件与 ALU" },
+    { slug: "chapter-05-sequential-logic", title: "5. 时序逻辑设计" },
+    { slug: "chapter-06-isa", title: "6. 指令集体系结构 ISA" },
+    { slug: "chapter-07-riscv-programs", title: "7. RISC-V ISA、汇编与程序运行" }
+  ];
+
+  for (const chapter of chapters) {
+    const response = await page.goto(`${site.url}/zh/notes/computer-systems-lecture/${chapter.slug}/`, { waitUntil: "networkidle" });
+    expect(response?.status()).toBe(200);
+    const main = page.locator("main");
+    await expect(page.locator("article h1")).toContainText(chapter.title);
+    await expect(main).toContainText("学习目标");
+    await expect(main).toContainText("前置知识");
+    await expect(main).toContainText("建议用时");
+    await expect(main).toContainText("练习建议");
+    await expect(main).toContainText("参考资料与引用边界");
+    await expect(main).toContainText("原始讲义文件");
+    await expect(main).not.toContainText("图像资源待补充");
+  }
+
+  await page.goto(`${site.url}/zh/notes/computer-systems-lecture/chapter-00-system-view/`, { waitUntil: "networkidle" });
+  await expect(page.locator("main")).toContainText("图像说明");
+});

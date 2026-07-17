@@ -66,13 +66,13 @@ tags:
   </section>
   <section class="note-tile">
     <h3>计算机系统基础讲义</h3>
-    <p>覆盖信息表示、布尔代数、组合逻辑、运算部件、时序逻辑、ISA 与 RISC-V。</p>
+    <p>已拆分为章节页，覆盖信息表示、布尔代数、组合逻辑、运算部件、时序逻辑、ISA 与 RISC-V。</p>
     <div class="note-tile__meta">
       <span class="cyber-tag">系统</span>
       <span class="cyber-tag">逻辑</span>
       <span class="cyber-tag">RISC-V</span>
     </div>
-    <a href="./computer-systems-lecture/">阅读</a>
+    <a href="./computer-systems-lecture/">进入总览</a>
   </section>
   <section class="note-tile">
     <h3>FDS 数据结构基础讲义</h3>

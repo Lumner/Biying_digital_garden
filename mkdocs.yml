@@ -48,7 +48,17 @@ nav:
           - 数学实验: zh/notes/math-lab.md
       - 系统:
           - 分类首页: zh/notes/systems.md
-          - 计算机系统基础讲义: zh/notes/computer-systems-lecture.md
+          - 计算机系统基础讲义:
+              - 讲义总览: zh/notes/computer-systems-lecture.md
+              - 0. 课程视角: zh/notes/computer-systems-lecture/chapter-00-system-view.md
+              - 1. 信息表示: zh/notes/computer-systems-lecture/chapter-01-information-representation.md
+              - 2. 布尔代数与数字逻辑: zh/notes/computer-systems-lecture/chapter-02-boolean-logic.md
+              - 3. 组合逻辑与 Verilog: zh/notes/computer-systems-lecture/chapter-03-combinational-logic.md
+              - 4. 运算部件与 ALU: zh/notes/computer-systems-lecture/chapter-04-arithmetic-alu.md
+              - 5. 时序逻辑: zh/notes/computer-systems-lecture/chapter-05-sequential-logic.md
+              - 6. ISA: zh/notes/computer-systems-lecture/chapter-06-isa.md
+              - 7. RISC-V 与程序运行: zh/notes/computer-systems-lecture/chapter-07-riscv-programs.md
+              - 附录: zh/notes/computer-systems-lecture/appendix-reference.md
       - 算法:
           - 分类首页: zh/notes/algorithms.md
           - FDS 数据结构基础讲义: zh/notes/fds-data-structures-lecture.md
