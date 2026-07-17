@@ -52,7 +52,7 @@
       "sourcePath": "docs/en/guestbook/index.md",
       "locale": "en",
       "kind": "page",
-      "text": "GUESTBOOK Guestbook If you have passed through here, you are welcome to leave a line: say hello, exchange an idea, point out a problem, or tell me what you hope this site grows into. Public by Default No Private Info This is a public guestbook. After registering or signing in, you can leave a note and edit or delete what you wrote later. Other visitors can read these messages, so please do not include phone numbers, addresses, private emails, or other sensitive information. The form adds a gentle reminder when something looks private and slows down overly frequent posting. This space is for words other visitors may also read. If something should stay private, please keep it out of the guestbook."
+      "text": "GUESTBOOK Guestbook If you have passed through here, you are welcome to leave a line: say hello, exchange an idea, point out a problem, or tell me what you hope this site grows into. Public by Default No Private Info This is a public guestbook. After registering or signing in, you can leave a note and edit or delete what you wrote later. Other visitors can read these messages, so please do not include phone numbers, addresses, private emails, or other sensitive information. The form adds a gentle reminder when something looks private and slows down overly frequent posting. Read the site's privacy notice. This space is for words other visitors may also read. If something should stay private, please keep it out of the guestbook."
     },
     {
       "title": "Home",
@@ -468,7 +468,7 @@
       "sourcePath": "docs/zh/guestbook/index.md",
       "locale": "zh",
       "kind": "page",
-      "text": "GUESTBOOK 留言 如果你来过这里，也欢迎留下一句话：打个招呼、交换想法、指出问题，或者告诉我你希望它以后长成什么样。 公开展示 请勿填写隐私 这里是公开留言板。注册或登录后，你可以留下几句话，也可以修改或删除自己写过的内容。留言会被其他人看到，所以请不要写手机号、住址、私人邮箱之类的隐私信息。如果内容看起来像隐私信息，页面会提醒一下；发得太快时，也会请你稍等一会儿。 这里更适合留给别人也能看到的话。想私下说的内容，请不要写在这里。"
+      "text": "GUESTBOOK 留言 如果你来过这里，也欢迎留下一句话：打个招呼、交换想法、指出问题，或者告诉我你希望它以后长成什么样。 公开展示 请勿填写隐私 这里是公开留言板。注册或登录后，你可以留下几句话，也可以修改或删除自己写过的内容。留言会被其他人看到，所以请不要写手机号、住址、私人邮箱之类的隐私信息。如果内容看起来像隐私信息，页面会提醒一下；发得太快时，也会请你稍等一会儿。 阅读本站隐私说明。 这里更适合留给别人也能看到的话。想私下说的内容，请不要写在这里。"
     },
     {
       "title": "入口",

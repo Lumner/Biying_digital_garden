@@ -1,13 +1,12 @@
 import {
+  apiResponder,
   cleanText,
-  cors,
   currentSession,
   enforceRateLimit,
+  getClientIp,
   getKv,
   isAdmin,
-  json,
-  readJson,
-  serverError
+  readJson
 } from "./_shared.js";
 
 function key(id) {
@@ -62,41 +61,51 @@ async function listMessages(kv, session, admin) {
   return messages.sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)));
 }
 
-export function onRequestOptions() {
-  return cors();
+export function onRequestOptions(context = {}) {
+  return apiResponder(context.request, context.env).cors();
 }
 
-export async function onRequestGet({ request, env }) {
+export async function onRequestGet(context) {
+  const { request, env } = context;
+  const reply = apiResponder(request, env);
+  const waitUntil = typeof context.waitUntil === "function"
+    ? (promise) => context.waitUntil(promise)
+    : undefined;
   try {
     const kv = getKv(env);
     const admin = isAdmin(request, env);
-    const session = await currentSession(request, kv);
-    return json({ messages: await listMessages(kv, session, admin) });
+    const session = await currentSession(request, kv, { waitUntil });
+    return reply.json({ messages: await listMessages(kv, session, admin) });
   } catch (error) {
-    return serverError(error, "messages_failed");
+    return reply.error(error, "messages_failed");
   }
 }
 
-export async function onRequestPost({ request, env, clientIp }) {
+export async function onRequestPost(context) {
+  const { request, env } = context;
+  const reply = apiResponder(request, env);
+  const waitUntil = typeof context.waitUntil === "function"
+    ? (promise) => context.waitUntil(promise)
+    : undefined;
   try {
     const kv = getKv(env);
     if (!kv || !kv.put) {
-      return json({ error: "kv_not_configured" }, { status: 503 });
+      return reply.json({ error: "kv_not_configured" }, { status: 503 });
     }
 
-    const session = await currentSession(request, kv);
+    const session = await currentSession(request, kv, { waitUntil });
     if (!session) {
-      return json({ error: "auth_required" }, { status: 401 });
+      return reply.json({ error: "auth_required" }, { status: 401 });
     }
 
     const body = await readJson(request);
     if (body.website) {
-      return json({ ok: true, ignored: true });
+      return reply.json({ ok: true, ignored: true });
     }
 
     const content = clean(body.content, 800);
     if (!content) {
-      return json({ error: "content_required" }, { status: 400 });
+      return reply.json({ error: "content_required" }, { status: 400 });
     }
 
     const limited = await enforceRateLimit(kv, {
@@ -105,7 +114,7 @@ export async function onRequestPost({ request, env, clientIp }) {
       identifier: session.userId,
       limit: 1,
       windowMs: 20 * 1000
-    });
+    }, reply);
     if (limited) return limited;
 
     const now = new Date().toISOString();
@@ -119,81 +128,109 @@ export async function onRequestPost({ request, env, clientIp }) {
       locale: body.locale === "en" ? "en" : "zh",
       createdAt: now,
       updatedAt: "",
-      moderationStatus: "visible",
-      ipHint: clientIp ? String(clientIp).split(".").slice(0, 2).join(".") : ""
+      moderationStatus: "visible"
     };
 
     await kv.put(key(id), JSON.stringify(message));
-    return json({ ok: true, message: publicMessage(message, session, false) }, { status: 201 });
+    return reply.json(
+      { ok: true, message: publicMessage(message, session, false) },
+      { status: 201 }
+    );
   } catch (error) {
-    return serverError(error, "post_failed");
+    return reply.error(error, "post_failed");
   }
 }
 
-export async function onRequestPut({ request, env }) {
+export async function onRequestPut(context) {
+  const { request, env, clientIp } = context;
+  const reply = apiResponder(request, env);
+  const waitUntil = typeof context.waitUntil === "function"
+    ? (promise) => context.waitUntil(promise)
+    : undefined;
   try {
     const kv = getKv(env);
     if (!kv || !kv.get || !kv.put) {
-      return json({ error: "kv_not_configured" }, { status: 503 });
+      return reply.json({ error: "kv_not_configured" }, { status: 503 });
     }
 
     const admin = isAdmin(request, env);
-    const session = await currentSession(request, kv);
+    const session = await currentSession(request, kv, { waitUntil });
     if (!admin && !session) {
-      return json({ error: "auth_required" }, { status: 401 });
+      return reply.json({ error: "auth_required" }, { status: 401 });
     }
 
     const url = new URL(request.url);
     const id = url.searchParams.get("id");
-    if (!id) return json({ error: "id_required" }, { status: 400 });
+    if (!id) return reply.json({ error: "id_required" }, { status: 400 });
 
     const raw = await kv.get(key(id), { type: "text" });
-    if (!raw) return json({ error: "not_found" }, { status: 404 });
+    if (!raw) return reply.json({ error: "not_found" }, { status: 404 });
     const message = JSON.parse(raw);
     if (!canEdit(message, session, admin)) {
-      return json({ error: "forbidden" }, { status: 403 });
+      return reply.json({ error: "forbidden" }, { status: 403 });
     }
 
     const body = await readJson(request);
     const content = clean(body.content, 800);
-    if (!content) return json({ error: "content_required" }, { status: 400 });
+    if (!content) return reply.json({ error: "content_required" }, { status: 400 });
+
+    const limited = await enforceRateLimit(kv, {
+      action: "guestbook_edit",
+      identifier: session?.userId || getClientIp(request, clientIp),
+      limit: 20,
+      windowMs: 60 * 1000
+    }, reply);
+    if (limited) return limited;
 
     message.content = content;
     message.updatedAt = new Date().toISOString();
     await kv.put(key(id), JSON.stringify(message));
-    return json({ ok: true, message: publicMessage(message, session, admin) });
+    return reply.json({ ok: true, message: publicMessage(message, session, admin) });
   } catch (error) {
-    return serverError(error, "edit_failed");
+    return reply.error(error, "edit_failed");
   }
 }
 
-export async function onRequestDelete({ request, env }) {
+export async function onRequestDelete(context) {
+  const { request, env, clientIp } = context;
+  const reply = apiResponder(request, env);
+  const waitUntil = typeof context.waitUntil === "function"
+    ? (promise) => context.waitUntil(promise)
+    : undefined;
   try {
     const kv = getKv(env);
     if (!kv || !kv.get || !kv.delete) {
-      return json({ error: "kv_not_configured" }, { status: 503 });
+      return reply.json({ error: "kv_not_configured" }, { status: 503 });
     }
 
     const admin = isAdmin(request, env);
-    const session = await currentSession(request, kv);
+    const session = await currentSession(request, kv, { waitUntil });
     if (!admin && !session) {
-      return json({ error: "auth_required" }, { status: 401 });
+      return reply.json({ error: "auth_required" }, { status: 401 });
     }
 
     const url = new URL(request.url);
     const id = url.searchParams.get("id");
-    if (!id) return json({ error: "id_required" }, { status: 400 });
+    if (!id) return reply.json({ error: "id_required" }, { status: 400 });
 
     const raw = await kv.get(key(id), { type: "text" });
-    if (!raw) return json({ error: "not_found" }, { status: 404 });
+    if (!raw) return reply.json({ error: "not_found" }, { status: 404 });
     const message = JSON.parse(raw);
     if (!canEdit(message, session, admin)) {
-      return json({ error: "forbidden" }, { status: 403 });
+      return reply.json({ error: "forbidden" }, { status: 403 });
     }
 
+    const limited = await enforceRateLimit(kv, {
+      action: "guestbook_delete",
+      identifier: session?.userId || getClientIp(request, clientIp),
+      limit: 20,
+      windowMs: 60 * 1000
+    }, reply);
+    if (limited) return limited;
+
     await kv.delete(key(id));
-    return json({ ok: true });
+    return reply.json({ ok: true });
   } catch (error) {
-    return serverError(error, "delete_failed");
+    return reply.error(error, "delete_failed");
   }
 }

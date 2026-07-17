@@ -1,15 +1,14 @@
 import {
-  cors,
+  apiResponder,
   currentSession,
+  deleteKvKey,
   enforceRateLimit,
   envValue,
   getClientIp,
   getKv,
-  json,
   normalizeUsername,
   readBearer,
   readJson,
-  serverError,
   sessionKey
 } from "./_shared.js";
 
@@ -84,14 +83,20 @@ function publicUser(user) {
   };
 }
 
+function sessionVersion(user) {
+  const value = Number(user?.sessionVersion);
+  return Number.isSafeInteger(value) && value >= 0 ? value : 0;
+}
+
 async function createSession(kv, user) {
   const token = randomHex(32);
   const now = Date.now();
   const session = {
     token,
-    userId: user.id,
+    userId: user.id || user.userId,
     username: user.username,
     displayName: user.displayName,
+    sessionVersion: sessionVersion(user),
     createdAt: new Date(now).toISOString(),
     expiresAt: new Date(now + SESSION_DAYS * 24 * 60 * 60 * 1000).toISOString()
   };
@@ -99,24 +104,24 @@ async function createSession(kv, user) {
   return session;
 }
 
-async function register(kv, body) {
+async function register(kv, body, reply) {
   const username = normalizeUsername(body.username);
   const displayName = cleanDisplayName(username);
   const password = String(body.password || "");
 
   if (!isValidUsername(username)) {
-    return json({ error: "invalid_username" }, { status: 400 });
+    return reply.json({ error: "invalid_username" }, { status: 400 });
   }
   if (displayName.length < 2) {
-    return json({ error: "invalid_display_name" }, { status: 400 });
+    return reply.json({ error: "invalid_display_name" }, { status: 400 });
   }
   if (password.length < 8 || password.length > 80) {
-    return json({ error: "invalid_password" }, { status: 400 });
+    return reply.json({ error: "invalid_password" }, { status: 400 });
   }
 
   const existing = await kv.get(userKey(username), { type: "text" });
   if (existing) {
-    return json({ error: "username_taken" }, { status: 409 });
+    return reply.json({ error: "username_taken" }, { status: 409 });
   }
 
   const salt = randomHex(16);
@@ -127,47 +132,65 @@ async function register(kv, body) {
     displayName,
     salt,
     passwordHash,
+    sessionVersion: 0,
     createdAt: new Date().toISOString()
   };
   await kv.put(userKey(username), JSON.stringify(user));
   const session = await createSession(kv, user);
-  return json({ ok: true, token: session.token, user: publicUser(user) }, { status: 201 });
+  return reply.json(
+    { ok: true, token: session.token, user: publicUser(user) },
+    { status: 201 }
+  );
 }
 
-async function resetPassword(kv, body, env) {
+async function resetPassword(kv, body, env, reply, waitUntil) {
   const username = normalizeUsername(body.username);
   const password = String(body.password || "");
   if (!isValidUsername(username)) {
-    return json({ error: "invalid_username" }, { status: 400 });
+    return reply.json({ error: "invalid_username" }, { status: 400 });
   }
   if (password.length < 8 || password.length > 80) {
-    return json({ error: "invalid_password" }, { status: 400 });
+    return reply.json({ error: "invalid_password" }, { status: 400 });
   }
 
   const raw = await kv.get(userKey(username), { type: "text" });
   if (!raw) {
-    return json({ error: "invalid_credentials" }, { status: 404 });
+    return reply.json({ error: "invalid_credentials" }, { status: 404 });
   }
 
   const submittedCode = String(body.recoveryToken || "").trim();
-  const rawRecovery = await kv.get(recoveryKey(username), { type: "text" });
+  const recoveryStorageKey = recoveryKey(username);
+  const rawRecovery = await kv.get(recoveryStorageKey, { type: "text" });
   let matchedTimedCode = false;
+  let timedCodeAvailable = false;
+  let timedCodeExpired = false;
   if (rawRecovery) {
-    const recovery = JSON.parse(rawRecovery);
-    if (Date.parse(recovery.expiresAt) <= Date.now()) {
-      await kv.delete(recoveryKey(username));
-      return json({ error: "recovery_expired" }, { status: 410 });
+    let recovery;
+    try {
+      recovery = JSON.parse(rawRecovery);
+    } catch (error) {
+      await deleteKvKey(kv, recoveryStorageKey, waitUntil);
     }
-    matchedTimedCode = await hashText(submittedCode) === recovery.codeHash;
+    const expiresAt = Date.parse(recovery?.expiresAt);
+    if (!Number.isFinite(expiresAt) || expiresAt <= Date.now()) {
+      timedCodeExpired = Boolean(recovery);
+      await deleteKvKey(kv, recoveryStorageKey, waitUntil);
+    } else if (recovery?.codeHash) {
+      timedCodeAvailable = true;
+      matchedTimedCode = await hashText(submittedCode) === recovery.codeHash;
+    }
   }
 
-  const fallbackRecoveryToken = envValue(env, "BIYING_RECOVERY_TOKEN", envValue(env, "BIYING_ADMIN_TOKEN"));
+  const fallbackRecoveryToken = envValue(env, "BIYING_RECOVERY_TOKEN");
   const matchedFallbackCode = Boolean(fallbackRecoveryToken && submittedCode === fallbackRecoveryToken);
-  if (!rawRecovery && !fallbackRecoveryToken) {
-    return json({ error: "recovery_not_configured" }, { status: 503 });
+  if (!timedCodeAvailable && !fallbackRecoveryToken) {
+    return reply.json(
+      { error: timedCodeExpired ? "recovery_expired" : "recovery_not_configured" },
+      { status: timedCodeExpired ? 410 : 503 }
+    );
   }
   if (!matchedTimedCode && !matchedFallbackCode) {
-    return json({ error: "invalid_recovery_code" }, { status: 401 });
+    return reply.json({ error: "invalid_recovery_code" }, { status: 401 });
   }
 
   const user = JSON.parse(raw);
@@ -177,33 +200,34 @@ async function resetPassword(kv, body, env) {
     ...user,
     salt,
     passwordHash,
+    sessionVersion: sessionVersion(user) + 1,
     passwordUpdatedAt: new Date().toISOString()
   };
   await kv.put(userKey(username), JSON.stringify(updatedUser));
   if (matchedTimedCode) {
-    await kv.delete(recoveryKey(username));
+    await deleteKvKey(kv, recoveryStorageKey, waitUntil);
   }
   const session = await createSession(kv, updatedUser);
-  return json({ ok: true, token: session.token, user: publicUser(updatedUser) });
+  return reply.json({ ok: true, token: session.token, user: publicUser(updatedUser) });
 }
 
-async function login(kv, body) {
+async function login(kv, body, reply) {
   const username = normalizeUsername(body.username);
   const password = String(body.password || "");
   const raw = await kv.get(userKey(username), { type: "text" });
   if (!raw) {
-    return json({ error: "invalid_credentials" }, { status: 401 });
+    return reply.json({ error: "invalid_credentials" }, { status: 401 });
   }
   const user = JSON.parse(raw);
   const passwordHash = await hashPassword(password, user.salt);
   if (passwordHash !== user.passwordHash) {
-    return json({ error: "invalid_credentials" }, { status: 401 });
+    return reply.json({ error: "invalid_credentials" }, { status: 401 });
   }
   const session = await createSession(kv, user);
-  return json({ ok: true, token: session.token, user: publicUser(user) });
+  return reply.json({ ok: true, token: session.token, user: publicUser(user) });
 }
 
-async function limitAuthRequest(kv, request, clientIp, body) {
+async function limitAuthRequest(kv, request, clientIp, body, reply) {
   const action = body.action === "login"
     ? "login"
     : body.action === "reset_password"
@@ -220,50 +244,65 @@ async function limitAuthRequest(kv, request, clientIp, body) {
   return enforceRateLimit(kv, {
     action: `auth_${action}`,
     ...settings
-  });
+  }, reply);
 }
 
-export function onRequestOptions() {
-  return cors();
+export function onRequestOptions(context = {}) {
+  return apiResponder(context.request, context.env).cors();
 }
 
-export async function onRequestGet({ request, env }) {
+export async function onRequestGet(context) {
+  const { request, env } = context;
+  const reply = apiResponder(request, env);
+  const waitUntil = typeof context.waitUntil === "function"
+    ? (promise) => context.waitUntil(promise)
+    : undefined;
   try {
     const kv = getKv(env);
-    if (!kv || !kv.get) return json({ error: "kv_not_configured" }, { status: 503 });
-    const session = await currentSession(request, kv);
-    if (!session) return json({ user: null }, { status: 401 });
-    return json({ user: publicUser(session) });
+    if (!kv || !kv.get) {
+      return reply.json({ error: "kv_not_configured" }, { status: 503 });
+    }
+    const session = await currentSession(request, kv, { waitUntil });
+    if (!session) return reply.json({ user: null }, { status: 401 });
+    return reply.json({ user: publicUser(session) });
   } catch (error) {
-    return serverError(error, "auth_failed");
+    return reply.error(error, "auth_failed");
   }
 }
 
-export async function onRequestPost({ request, env, clientIp }) {
+export async function onRequestPost(context) {
+  const { request, env, clientIp } = context;
+  const reply = apiResponder(request, env);
+  const waitUntil = typeof context.waitUntil === "function"
+    ? (promise) => context.waitUntil(promise)
+    : undefined;
   try {
     const kv = getKv(env);
     if (!kv || !kv.put || !kv.get) {
-      return json({ error: "kv_not_configured" }, { status: 503 });
+      return reply.json({ error: "kv_not_configured" }, { status: 503 });
     }
     const body = await readJson(request);
-    const limited = await limitAuthRequest(kv, request, clientIp, body);
+    const limited = await limitAuthRequest(kv, request, clientIp, body, reply);
     if (limited) return limited;
-    if (body.action === "login") return login(kv, body);
-    if (body.action === "reset_password") return resetPassword(kv, body, env);
-    return register(kv, body);
+    if (body.action === "login") return login(kv, body, reply);
+    if (body.action === "reset_password") {
+      return resetPassword(kv, body, env, reply, waitUntil);
+    }
+    return register(kv, body, reply);
   } catch (error) {
-    return serverError(error, "auth_failed");
+    return reply.error(error, "auth_failed");
   }
 }
 
 export async function onRequestDelete({ request, env }) {
+  const reply = apiResponder(request, env);
   try {
     const kv = getKv(env);
-    if (!kv || !kv.delete) return json({ ok: true });
+    if (!kv || !kv.delete) return reply.json({ ok: true });
     const token = readBearer(request);
     if (token) await kv.delete(sessionKey(token));
-    return json({ ok: true });
+    return reply.json({ ok: true });
   } catch (error) {
-    return serverError(error, "logout_failed");
+    return reply.error(error, "logout_failed");
   }
 }

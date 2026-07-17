@@ -75,7 +75,6 @@
     try {
       const data = await requestStats("POST", {
         visitorId: visitorId(),
-        path: window.location.pathname,
         locale: locale()
       });
       render(data);

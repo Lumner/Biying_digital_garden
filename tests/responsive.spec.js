@@ -10,7 +10,8 @@ const routes = [
   "/zh/notes/computer-systems-lecture/",
   "/zh/projects/",
   "/zh/avatar/",
-  "/zh/register/"
+  "/zh/register/",
+  "/zh/privacy/"
 ];
 let site;
 

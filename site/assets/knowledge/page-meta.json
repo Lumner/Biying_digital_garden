@@ -1,6 +1,42 @@
 {
   "items": [
     {
+      "title": "隐私说明",
+      "url": "/zh/privacy/",
+      "updated": "2026-07-17",
+      "locale": "zh"
+    },
+    {
+      "title": "留言",
+      "url": "/zh/guestbook/",
+      "updated": "2026-07-17",
+      "locale": "zh"
+    },
+    {
+      "title": "注册/登录",
+      "url": "/zh/register/",
+      "updated": "2026-07-17",
+      "locale": "zh"
+    },
+    {
+      "title": "Privacy Notice",
+      "url": "/en/privacy/",
+      "updated": "2026-07-17",
+      "locale": "en"
+    },
+    {
+      "title": "Guestbook",
+      "url": "/en/guestbook/",
+      "updated": "2026-07-17",
+      "locale": "en"
+    },
+    {
+      "title": "Account",
+      "url": "/en/register/",
+      "updated": "2026-07-17",
+      "locale": "en"
+    },
+    {
       "title": "项目",
       "url": "/zh/projects/",
       "updated": "2026-06-23",
@@ -21,18 +57,6 @@
     {
       "title": "碧影",
       "url": "/zh/avatar/",
-      "updated": "2026-06-23",
-      "locale": "zh"
-    },
-    {
-      "title": "留言",
-      "url": "/zh/guestbook/",
-      "updated": "2026-06-23",
-      "locale": "zh"
-    },
-    {
-      "title": "注册/登录",
-      "url": "/zh/register/",
       "updated": "2026-06-23",
       "locale": "zh"
     },
@@ -241,12 +265,6 @@
       "locale": "en"
     },
     {
-      "title": "Guestbook",
-      "url": "/en/guestbook/",
-      "updated": "2026-05-15",
-      "locale": "en"
-    },
-    {
       "title": "Essays",
       "url": "/en/notes/essays/",
       "updated": "2026-05-15",
@@ -261,12 +279,6 @@
     {
       "title": "Algorithms Notes",
       "url": "/en/notes/algorithms/",
-      "updated": "2026-05-15",
-      "locale": "en"
-    },
-    {
-      "title": "Account",
-      "url": "/en/register/",
       "updated": "2026-05-15",
       "locale": "en"
     },

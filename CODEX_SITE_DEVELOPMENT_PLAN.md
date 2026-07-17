@@ -598,8 +598,8 @@ Codex 每完成一个阶段后更新本表。
 | 阶段 | 优先级 | 状态 | 提交 | 说明 |
 |---|---:|---|---|---|
 | 0. 锁定可复现基线 | P0 | Completed | `5261f77` | 依赖已锁定，生成时间改为可复现来源日期 |
-| 1. 建立统一自动测试与 CI 质量门 | P0 | Completed | 本阶段提交 | 84 项 Chromium E2E 与 10 项 API 测试纳入统一门禁；Firefox 由 CI 验证 |
-| 2A. 低风险安全与隐私修复 | P0 | Pending |  |  |
+| 1. 建立统一自动测试与 CI 质量门 | P0 | Completed | `e1e14c9` | 84 项 Chromium E2E 与 10 项 API 测试纳入统一门禁；Firefox 由 CI 验证 |
+| 2A. 低风险安全与隐私修复 | P0 | Completed | 本阶段提交 | CORS、恢复、会话失效、写入限流、统计最小化、隐私页和后台分页已完成 |
 | 2B. 用户会话迁移到安全 Cookie | P0 | Pending |  |  |
 | 2C. 管理后台与密码哈希强化 | P1 | Pending |  |  |
 | 3A. 移动端与响应式修复 | P0 | Pending |  |  |
@@ -775,10 +775,18 @@ git revert <阶段1提交号>
 - `edge-functions/api/messages.js`
 - `edge-functions/api/private-messages.js`
 - `edge-functions/api/admin.js`
+- `edge-functions/api/admin-messages.js`
+- `edge-functions/api/chat.js`
+- `docs/assets/javascripts/site-stats.js`
 - `docs/zh/privacy.md`
 - `docs/en/privacy.md`
+- `docs/zh/register/index.md`
+- `docs/en/register/index.md`
+- `docs/zh/guestbook/index.md`
+- `docs/en/guestbook/index.md`
 - `mkdocs.yml`
 - `DEPLOYMENT.md`
+- `package.json`
 - `tests/api/`
 
 ### 实施任务

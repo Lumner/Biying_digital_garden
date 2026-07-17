@@ -12,6 +12,7 @@ const routes = [
   "/zh/avatar/",
   "/zh/register/",
   "/zh/guestbook/",
+  "/zh/privacy/",
   "/zh/admin/"
 ];
 let site;

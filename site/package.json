@@ -11,7 +11,7 @@
     "check:site-sync": "python scripts/check_site_sync.py",
     "edgeone:dev": "edgeone pages dev",
     "knowledge": "python scripts/build_knowledge.py",
-    "test:api": "node --test tests/api/auth.test.js tests/api/security.test.js tests/api/stats.test.js",
+    "test:api": "node --test tests/api/admin.test.js tests/api/auth.test.js tests/api/messages.test.js tests/api/security.test.js tests/api/stats.test.js",
     "test:e2e": "playwright test --project=mobile-small --project=mobile-chromium --project=tablet-chromium --project=desktop-chromium",
     "test:e2e:cross-browser": "playwright test --project=desktop-firefox",
     "test:mobile": "playwright test --project=mobile-chromium",

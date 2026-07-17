@@ -1,26 +1,42 @@
-import { cors, getKv, isAdmin, json, serverError } from "./_shared.js";
+import {
+  apiResponder,
+  enforceRateLimit,
+  getClientIp,
+  getKv,
+  isAdmin
+} from "./_shared.js";
 
-export function onRequestOptions() {
-  return cors("DELETE, OPTIONS");
+export function onRequestOptions(context = {}) {
+  return apiResponder(context.request, context.env, "DELETE, OPTIONS").cors();
 }
 
-export async function onRequestDelete({ request, env }) {
+export async function onRequestDelete({ request, env, clientIp }) {
+  const reply = apiResponder(request, env, "DELETE, OPTIONS");
   try {
     if (!isAdmin(request, env)) {
-      return json({ error: "unauthorized" }, { status: 401 });
+      return reply.json({ error: "unauthorized" }, { status: 401 });
     }
     const url = new URL(request.url);
     const id = url.searchParams.get("id");
     if (!id) {
-      return json({ error: "id_required" }, { status: 400 });
+      return reply.json({ error: "id_required" }, { status: 400 });
     }
     const kv = getKv(env);
     if (!kv || !kv.delete) {
-      return json({ error: "kv_not_configured" }, { status: 503 });
+      return reply.json({ error: "kv_not_configured" }, { status: 503 });
     }
+
+    const limited = await enforceRateLimit(kv, {
+      action: "admin_message_delete",
+      identifier: getClientIp(request, clientIp),
+      limit: 30,
+      windowMs: 60 * 1000
+    }, reply);
+    if (limited) return limited;
+
     await kv.delete(`guestbook_${id}`);
-    return json({ ok: true });
+    return reply.json({ ok: true });
   } catch (error) {
-    return serverError(error, "admin_message_delete_failed");
+    return reply.error(error, "admin_message_delete_failed");
   }
 }

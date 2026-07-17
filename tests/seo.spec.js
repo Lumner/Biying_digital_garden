@@ -9,7 +9,9 @@ const routes = [
   "/en/",
   "/zh/notes/",
   "/zh/projects/",
-  "/zh/avatar/"
+  "/zh/avatar/",
+  "/zh/privacy/",
+  "/en/privacy/"
 ];
 let site;
 

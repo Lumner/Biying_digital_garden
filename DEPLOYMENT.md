@@ -108,6 +108,8 @@ DEEPSEEK_API_KEY=你的 DeepSeek Key
 DEEPSEEK_MODEL=deepseek-v4-flash
 BIYING_ADMIN_TOKEN=自定义管理 token
 BIYING_RECOVERY_TOKEN=全局应急恢复码（可选，不建议日常使用）
+BIYING_ALLOWED_ORIGINS=额外允许的精确来源，多个值用逗号分隔（可选）
+BIYING_STATS_WRITE_ENABLED=1
 ```
 
 如果使用 OpenAI：
@@ -118,7 +120,11 @@ OPENAI_API_KEY=你的 OpenAI Key
 OPENAI_MODEL=gpt-4.1-mini
 BIYING_ADMIN_TOKEN=自定义管理 token
 BIYING_RECOVERY_TOKEN=全局应急恢复码（可选，不建议日常使用）
+BIYING_ALLOWED_ORIGINS=额外允许的精确来源，多个值用逗号分隔（可选）
+BIYING_STATS_WRITE_ENABLED=1
 ```
+
+正式来源 `https://www.biying.site` 始终在 API 跨域白名单中。只有在本地页面需要跨域调用 Functions 时，才把完整来源（例如 `http://127.0.0.1:8000`）显式加入 `BIYING_ALLOWED_ORIGINS`；不要配置 `*`。把 `BIYING_STATS_WRITE_ENABLED` 设为 `0` 可以临时停止统计写入，同时保留统计读取。
 
 ## 6. KV
 
@@ -180,7 +186,18 @@ https://www.biying.site/zh/admin/
 5. 用户在 `/zh/register/` 的“忘记密码”表单中使用恢复码重设密码。
 6. 恢复码使用一次后立即失效；如果过期，也会失效。
 
-`BIYING_RECOVERY_TOKEN` 只建议作为应急兜底使用，因为它是长期固定值，没有天然时效。日常优先使用后台签发的临时恢复码。
+`BIYING_RECOVERY_TOKEN` 只建议作为应急兜底使用，因为它是长期固定值，没有天然时效。日常优先使用后台签发的临时恢复码。`BIYING_ADMIN_TOKEN` 不能用于用户密码恢复；未签发一次性恢复码且未配置专用恢复 Token 时，重置请求会被拒绝。
+
+后台列表接口支持分页参数：
+
+```txt
+/api/admin?limit=50
+  &usersCursor=<cursor>
+  &privateMessagesCursor=<cursor>
+  &guestbookMessagesCursor=<cursor>
+```
+
+响应中的 `pageInfo` 分别返回三类列表的下一页 `cursor` 和 `complete` 状态。游标是不透明值，客户端应原样传回，不要自行解析。
 
 ## 8. 当前部署顺序
 
