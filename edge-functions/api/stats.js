@@ -1,14 +1,15 @@
 import {
-  cleanText,
-  cors,
+  apiResponder,
+  enforceRateLimit,
+  envValue,
+  getClientIp,
   getKv,
-  json,
-  readJson,
-  serverError
+  readJson
 } from "./_shared.js";
 
 const STATS_KEY = "site_stats_global";
 const VISITOR_PREFIX = "site_visitor_";
+const METHODS = "GET, POST, OPTIONS";
 
 function emptyStats() {
   return {
@@ -28,17 +29,11 @@ function publicStats(stats, available = true) {
 }
 
 function cleanVisitorId(value) {
-  return String(value || "")
+  const visitorId = String(value || "")
     .normalize("NFKC")
-    .trim()
-    .replace(/[^\w.-]+/g, "")
-    .slice(0, 80);
-}
-
-function cleanPath(value) {
-  const cleaned = cleanText(value, 180);
-  if (!cleaned || cleaned.includes("://")) return "/";
-  return cleaned.startsWith("/") ? cleaned : `/${cleaned}`;
+    .trim();
+  if (visitorId.length < 8 || visitorId.length > 80) return "";
+  return /^[A-Za-z0-9._-]+$/.test(visitorId) ? visitorId : "";
 }
 
 function cleanLocale(value) {
@@ -64,42 +59,71 @@ function readVisitor(raw) {
   }
 }
 
-export function onRequestOptions() {
-  return cors("GET, POST, OPTIONS");
+function statsWriteEnabled(env) {
+  return String(envValue(env, "BIYING_STATS_WRITE_ENABLED", "1")).trim() !== "0";
 }
 
-export async function onRequestGet({ env }) {
+export function onRequestOptions(context = {}) {
+  return apiResponder(context.request, context.env, METHODS).cors();
+}
+
+export async function onRequestGet({ request, env }) {
+  const reply = apiResponder(request, env, METHODS);
   try {
     const kv = getKv(env);
     if (!kv || !kv.get) {
-      return json(publicStats(emptyStats(), false), {
+      return reply.json(publicStats(emptyStats(), false), {
         headers: { "cache-control": "no-store" }
-      }, "GET, POST, OPTIONS");
+      });
     }
 
-    return json(publicStats(await readStats(kv)), {
+    return reply.json(publicStats(await readStats(kv)), {
       headers: { "cache-control": "no-store" }
-    }, "GET, POST, OPTIONS");
+    });
   } catch (error) {
-    return serverError(error, "stats_failed");
+    return reply.error(error, "stats_failed");
   }
 }
 
-export async function onRequestPost({ request, env }) {
+export async function onRequestPost({ request, env, clientIp }) {
+  const reply = apiResponder(request, env, METHODS);
   try {
     const kv = getKv(env);
     if (!kv || !kv.get || !kv.put) {
-      return json({ error: "kv_not_configured", ...publicStats(emptyStats(), false) }, {
+      return reply.json({ error: "kv_not_configured", ...publicStats(emptyStats(), false) }, {
         status: 503,
         headers: { "cache-control": "no-store" }
-      }, "GET, POST, OPTIONS");
+      });
+    }
+
+    if (!statsWriteEnabled(env)) {
+      return reply.json(publicStats(await readStats(kv)), {
+        headers: { "cache-control": "no-store" }
+      });
     }
 
     const body = await readJson(request);
     const visitorId = cleanVisitorId(body.visitorId);
     if (!visitorId) {
-      return json({ error: "visitor_id_required" }, { status: 400 }, "GET, POST, OPTIONS");
+      return reply.json({ error: "visitor_id_required" }, { status: 400 });
     }
+
+    const ip = getClientIp(request, clientIp);
+    const ipLimited = await enforceRateLimit(kv, {
+      action: "stats_write_ip",
+      identifier: ip,
+      limit: 60,
+      windowMs: 60 * 1000
+    }, reply);
+    if (ipLimited) return ipLimited;
+
+    const visitorLimited = await enforceRateLimit(kv, {
+      action: "stats_write_visitor",
+      identifier: visitorId,
+      limit: 30,
+      windowMs: 60 * 1000
+    }, reply);
+    if (visitorLimited) return visitorLimited;
 
     const now = new Date().toISOString();
     const visitorKey = `${VISITOR_PREFIX}${visitorId}`;
@@ -117,14 +141,13 @@ export async function onRequestPost({ request, env }) {
     await kv.put(visitorKey, JSON.stringify({
       firstSeenAt: previousVisitor.firstSeenAt || now,
       lastSeenAt: now,
-      lastPath: cleanPath(body.path),
       locale: cleanLocale(body.locale)
     }));
 
-    return json(publicStats(stats), {
+    return reply.json(publicStats(stats), {
       headers: { "cache-control": "no-store" }
-    }, "GET, POST, OPTIONS");
+    });
   } catch (error) {
-    return serverError(error, "stats_update_failed");
+    return reply.error(error, "stats_update_failed");
   }
 }

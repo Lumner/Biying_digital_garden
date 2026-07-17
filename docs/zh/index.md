@@ -16,7 +16,7 @@ tags:
   <div class="home-hero-copy">
     <div class="cyber-kicker">BIYING DIGITAL GARDEN</div>
     <h1 class="cyber-title home-title">碧影数字花园</h1>
-    <div class="home-typewriter" data-home-typewriter aria-live="polite">
+    <div class="home-typewriter" data-home-typewriter>
       <span data-home-phrase>向下扎根，也向光生长。</span>
       <span data-home-phrase>把每一次认真，慢慢写成答案。</span>
       <span data-home-phrase>愿好奇心不熄，愿行动有回声。</span>

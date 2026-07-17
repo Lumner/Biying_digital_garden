@@ -1,30 +1,108 @@
 const DEFAULT_METHODS = "GET, POST, PUT, DELETE, OPTIONS";
+const OFFICIAL_ORIGIN = "https://www.biying.site";
 const DEFAULT_HEADERS = {
   "content-type": "application/json; charset=utf-8",
-  "access-control-allow-origin": "*",
   "access-control-allow-headers": "content-type, authorization"
 };
 
-function apiHeaders(methods = DEFAULT_METHODS) {
-  return {
-    ...DEFAULT_HEADERS,
-    "access-control-allow-methods": methods
-  };
+function normalizeOrigin(value) {
+  try {
+    const parsed = new URL(String(value || "").trim());
+    if (!["http:", "https:"].includes(parsed.protocol)) return "";
+    return parsed.origin;
+  } catch (error) {
+    return "";
+  }
 }
 
-export function json(data, init = {}, methods = DEFAULT_METHODS) {
-  const headers = {
-    ...apiHeaders(methods),
-    ...(init.headers || {})
-  };
+function configuredOrigins(env) {
+  const configured = String(envValue(env, "BIYING_ALLOWED_ORIGINS", ""))
+    .split(/[,\s]+/)
+    .map(normalizeOrigin)
+    .filter(Boolean);
+  return new Set([OFFICIAL_ORIGIN, ...configured]);
+}
+
+function appendVary(headers, value) {
+  const existing = String(headers.get("vary") || "")
+    .split(",")
+    .map((part) => part.trim())
+    .filter(Boolean);
+  if (!existing.some((part) => part.toLowerCase() === value.toLowerCase())) {
+    existing.push(value);
+  }
+  headers.set("vary", existing.join(", "));
+}
+
+function allowedOrigin(request, env) {
+  const origin = normalizeOrigin(request?.headers?.get("origin"));
+  if (!origin) return "";
+
+  const ownOrigin = normalizeOrigin(request?.url);
+  if (origin === ownOrigin || configuredOrigins(env).has(origin)) {
+    return origin;
+  }
+  return "";
+}
+
+export function responseHeaders(
+  request,
+  env,
+  methods = DEFAULT_METHODS,
+  extraHeaders = {}
+) {
+  const headers = new Headers(DEFAULT_HEADERS);
+  new Headers(extraHeaders).forEach((value, key) => {
+    headers.set(key, value);
+  });
+  headers.set("access-control-allow-methods", methods);
+  appendVary(headers, "Origin");
+
+  const origin = allowedOrigin(request, env);
+  if (origin) {
+    headers.set("access-control-allow-origin", origin);
+  } else {
+    headers.delete("access-control-allow-origin");
+  }
+  return headers;
+}
+
+export function json(data, init = {}, methods = DEFAULT_METHODS, context = {}) {
+  const headers = responseHeaders(
+    context.request,
+    context.env,
+    methods,
+    init.headers || {}
+  );
   return new Response(JSON.stringify(data), {
     ...init,
     headers
   });
 }
 
-export function cors(methods = DEFAULT_METHODS) {
-  return new Response(null, { status: 204, headers: apiHeaders(methods) });
+export function cors(methods = DEFAULT_METHODS, context = {}) {
+  return new Response(null, {
+    status: 204,
+    headers: responseHeaders(context.request, context.env, methods)
+  });
+}
+
+export function apiResponder(request, env, methods = DEFAULT_METHODS) {
+  const context = { request, env };
+  return {
+    cors: () => cors(methods, context),
+    error: (error, fallbackCode = "server_error") => (
+      serverError(error, fallbackCode, undefined, context, methods)
+    ),
+    headers: (extraHeaders = {}) => responseHeaders(
+      request,
+      env,
+      methods,
+      extraHeaders
+    ),
+    json: (data, init = {}) => json(data, init, methods, context),
+    rateLimited: (result) => rateLimitResponse(result, undefined, context, methods)
+  };
 }
 
 export function getKv(env) {
@@ -54,25 +132,75 @@ export function sessionKey(token) {
   return `session_${token}`;
 }
 
-export async function currentSession(request, kv) {
+export async function deleteKvKey(kv, key, waitUntil) {
+  if (!kv || !kv.delete || !key) return;
+  const deletion = Promise.resolve()
+    .then(() => kv.delete(key))
+    .catch(() => undefined);
+  if (typeof waitUntil === "function") {
+    waitUntil(deletion);
+    return;
+  }
+  await deletion;
+}
+
+function recordVersion(value) {
+  const version = Number(value);
+  return Number.isSafeInteger(version) && version >= 0 ? version : 0;
+}
+
+export async function currentSession(request, kv, options = {}) {
   const token = readBearer(request);
   if (!token || !kv || !kv.get) return undefined;
-  const raw = await kv.get(sessionKey(token), { type: "text" });
+  const key = sessionKey(token);
+  const raw = await kv.get(key, { type: "text" });
   if (!raw) return undefined;
   let session;
   try {
     session = JSON.parse(raw);
   } catch (error) {
-    if (kv.delete) await kv.delete(sessionKey(token));
+    await deleteKvKey(kv, key, options.waitUntil);
     return undefined;
   }
-  if (!session || !session.userId || !session.username || !session.expiresAt) return undefined;
+  if (!session || !session.userId || !session.username || !session.expiresAt) {
+    await deleteKvKey(kv, key, options.waitUntil);
+    return undefined;
+  }
   const expiresAt = Date.parse(session.expiresAt);
   if (!Number.isFinite(expiresAt) || expiresAt <= Date.now()) {
-    if (kv.delete) await kv.delete(sessionKey(token));
+    await deleteKvKey(kv, key, options.waitUntil);
     return undefined;
   }
-  return session;
+
+  const rawUser = await kv.get(`user_${normalizeUsername(session.username)}`, { type: "text" });
+  if (!rawUser) {
+    await deleteKvKey(kv, key, options.waitUntil);
+    return undefined;
+  }
+
+  let user;
+  try {
+    user = JSON.parse(rawUser);
+  } catch (error) {
+    await deleteKvKey(kv, key, options.waitUntil);
+    return undefined;
+  }
+
+  const userId = user.id || user.userId;
+  if (
+    !userId
+    || userId !== session.userId
+    || recordVersion(user.sessionVersion) !== recordVersion(session.sessionVersion)
+  ) {
+    await deleteKvKey(kv, key, options.waitUntil);
+    return undefined;
+  }
+
+  return {
+    ...session,
+    displayName: user.displayName || session.displayName,
+    sessionVersion: recordVersion(user.sessionVersion)
+  };
 }
 
 export async function readJson(request) {
@@ -118,20 +246,26 @@ function safeRateKeyPart(value) {
 }
 
 function parseRateState(raw, now) {
-  if (!raw) return { windowStart: now, count: 0 };
+  if (!raw) return { state: { windowStart: now, count: 0 }, stale: false };
   try {
     const parsed = JSON.parse(raw);
     if (typeof parsed === "number" && Number.isFinite(parsed)) {
-      return { windowStart: parsed, count: 1 };
+      return { state: { windowStart: parsed, count: 1 }, stale: false };
     }
     if (parsed && Number.isFinite(parsed.windowStart) && Number.isFinite(parsed.count)) {
-      return { windowStart: parsed.windowStart, count: parsed.count };
+      const expiresAt = Date.parse(parsed.expiresAt);
+      return {
+        state: { windowStart: parsed.windowStart, count: parsed.count },
+        stale: Number.isFinite(expiresAt) && expiresAt <= now
+      };
     }
   } catch (error) {
     const timestamp = Number(raw);
-    if (Number.isFinite(timestamp)) return { windowStart: timestamp, count: 1 };
+    if (Number.isFinite(timestamp)) {
+      return { state: { windowStart: timestamp, count: 1 }, stale: false };
+    }
   }
-  return { windowStart: now, count: 0 };
+  return { state: { windowStart: now, count: 0 }, stale: true };
 }
 
 export async function rateLimit(kv, options = {}) {
@@ -150,9 +284,11 @@ export async function rateLimit(kv, options = {}) {
   const now = Date.now();
   const rateKey = key || `rate_${safeRateKeyPart(action)}_${safeRateKeyPart(identifier)}`;
   const raw = await kv.get(rateKey, { type: "text" });
-  let state = parseRateState(raw, now);
+  const parsed = parseRateState(raw, now);
+  let state = parsed.state;
 
-  if (now - state.windowStart >= windowMs) {
+  if (parsed.stale || now - state.windowStart >= windowMs) {
+    await deleteKvKey(kv, rateKey);
     state = { windowStart: now, count: 0 };
   }
 
@@ -171,27 +307,44 @@ export async function rateLimit(kv, options = {}) {
   };
 }
 
-export function rateLimitResponse(result) {
+export function rateLimitResponse(
+  result,
+  init = {},
+  context = {},
+  methods = DEFAULT_METHODS
+) {
   return json({
     error: "too_frequent",
     retryAfterMs: result.retryAfterMs
   }, {
+    ...init,
     status: 429,
     headers: {
+      ...(init.headers || {}),
       "retry-after": String(Math.max(1, Math.ceil((result.retryAfterMs || 0) / 1000)))
     }
-  });
+  }, methods, context);
 }
 
-export async function enforceRateLimit(kv, options = {}) {
+export async function enforceRateLimit(kv, options = {}, response) {
   const result = await rateLimit(kv, options);
-  return result.limited ? rateLimitResponse(result) : undefined;
+  return result.limited
+    ? response?.rateLimited?.(result) || rateLimitResponse(result)
+    : undefined;
 }
 
-export function serverError(error, fallbackCode = "server_error") {
+export function serverError(
+  error,
+  fallbackCode = "server_error",
+  init = {},
+  context = {},
+  methods = DEFAULT_METHODS
+) {
   const status = Number.isFinite(error?.status) ? error.status : 500;
   return json(
     { error: error && error.code ? error.code : fallbackCode },
-    { status }
+    { ...init, status },
+    methods,
+    context
   );
 }

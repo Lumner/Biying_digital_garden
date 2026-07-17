@@ -1,14 +1,16 @@
 import {
-  cors,
+  apiResponder,
+  enforceRateLimit,
+  getClientIp,
   getKv,
   isAdmin,
-  json,
   normalizeUsername,
-  readJson,
-  serverError
+  readJson
 } from "./_shared.js";
 
 const encoder = new TextEncoder();
+const DEFAULT_PAGE_SIZE = 200;
+const MAX_PAGE_SIZE = 200;
 
 function randomCode() {
   const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
@@ -26,9 +28,20 @@ async function hashText(value) {
   return bytesToHex(new Uint8Array(digest));
 }
 
-async function listRecords(kv, prefix, map) {
-  if (!kv || !kv.list || !kv.get) return [];
-  const result = await kv.list({ prefix, limit: 200 });
+async function listRecords(kv, prefix, map, options = {}) {
+  if (!kv || !kv.list || !kv.get) {
+    return { records: [], cursor: "", complete: true };
+  }
+  const request = {
+    prefix,
+    limit: Math.min(
+      MAX_PAGE_SIZE,
+      Math.max(1, Number(options.limit) || DEFAULT_PAGE_SIZE)
+    )
+  };
+  if (options.cursor) request.cursor = options.cursor;
+
+  const result = await kv.list(request);
   const records = [];
   for (const entry of result.keys || []) {
     const raw = await kv.get(entry.key, { type: "text" });
@@ -39,22 +52,28 @@ async function listRecords(kv, prefix, map) {
       // Ignore malformed records so one bad entry does not block the admin view.
     }
   }
-  return records;
+  const cursor = String(result.cursor || "");
+  return {
+    records,
+    cursor,
+    complete: result.complete === true || result.list_complete === true || !cursor
+  };
 }
 
-async function listUsers(kv) {
-  const users = await listRecords(kv, "user_", (user) => ({
+async function listUsers(kv, options) {
+  const page = await listRecords(kv, "user_", (user) => ({
     id: user.id,
     username: user.username,
     displayName: user.displayName,
     createdAt: user.createdAt || "",
     passwordUpdatedAt: user.passwordUpdatedAt || ""
-  }));
-  return users.sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)));
+  }), options);
+  page.records.sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)));
+  return page;
 }
 
-async function listPrivateMessages(kv) {
-  const messages = await listRecords(kv, "private_message_", (message) => ({
+async function listPrivateMessages(kv, options) {
+  const page = await listRecords(kv, "private_message_", (message) => ({
     id: message.id,
     name: message.name,
     contact: message.contact,
@@ -64,12 +83,13 @@ async function listPrivateMessages(kv) {
     status: message.status || "unread",
     createdAt: message.createdAt,
     updatedAt: message.updatedAt || ""
-  }));
-  return messages.sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)));
+  }), options);
+  page.records.sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)));
+  return page;
 }
 
-async function listGuestbookMessages(kv) {
-  const messages = await listRecords(kv, "guestbook_", (message) => ({
+async function listGuestbookMessages(kv, options) {
+  const page = await listRecords(kv, "guestbook_", (message) => ({
     id: message.id,
     userId: message.userId || "",
     username: message.username || "",
@@ -79,14 +99,54 @@ async function listGuestbookMessages(kv) {
     moderationStatus: message.moderationStatus || "visible",
     createdAt: message.createdAt,
     updatedAt: message.updatedAt || ""
-  }));
-  return messages
+  }), options);
+  page.records = page.records
     .filter((message) => message.id && message.name && typeof message.content === "string")
     .sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)));
+  return page;
+}
+
+function pageOptions(request) {
+  const url = new URL(request.url);
+  const limit = Math.min(
+    MAX_PAGE_SIZE,
+    Math.max(1, Number(url.searchParams.get("limit")) || DEFAULT_PAGE_SIZE)
+  );
+  const cursor = (name) => String(url.searchParams.get(name) || "").slice(0, 512);
+  return {
+    users: { limit, cursor: cursor("usersCursor") },
+    privateMessages: { limit, cursor: cursor("privateMessagesCursor") },
+    guestbookMessages: { limit, cursor: cursor("guestbookMessagesCursor") }
+  };
+}
+
+function pageInfo(page) {
+  return {
+    cursor: page.cursor,
+    complete: page.complete
+  };
+}
+
+async function allRecords(kv, prefix, map) {
+  const records = [];
+  let cursor = "";
+  const seenCursors = new Set();
+  do {
+    if (cursor && seenCursors.has(cursor)) break;
+    if (cursor) seenCursors.add(cursor);
+    const page = await listRecords(kv, prefix, map, {
+      cursor,
+      limit: MAX_PAGE_SIZE
+    });
+    records.push(...page.records);
+    if (page.complete || !page.cursor) break;
+    cursor = page.cursor;
+  } while (true);
+  return records;
 }
 
 async function deleteUserArtifacts(kv, username) {
-  const sessions = await listRecords(kv, "session_", (session) => session);
+  const sessions = await allRecords(kv, "session_", (session) => session);
   for (const session of sessions) {
     if (session.username === username && session.token) {
       await kv.delete(`session_${session.token}`);
@@ -95,47 +155,72 @@ async function deleteUserArtifacts(kv, username) {
   await kv.delete(`recovery_${username}`);
 }
 
-export function onRequestOptions() {
-  return cors();
+async function limitAdminWrite(kv, request, clientIp, action, reply) {
+  return enforceRateLimit(kv, {
+    action: `admin_${action}`,
+    identifier: getClientIp(request, clientIp),
+    limit: 30,
+    windowMs: 60 * 1000
+  }, reply);
+}
+
+export function onRequestOptions(context = {}) {
+  return apiResponder(context.request, context.env).cors();
 }
 
 export async function onRequestGet({ request, env }) {
+  const reply = apiResponder(request, env);
   try {
     if (!isAdmin(request, env)) {
-      return json({ error: "unauthorized" }, { status: 401 });
+      return reply.json({ error: "unauthorized" }, { status: 401 });
     }
     const kv = getKv(env);
     if (!kv || !kv.get || !kv.list) {
-      return json({ error: "kv_not_configured" }, { status: 503 });
+      return reply.json({ error: "kv_not_configured" }, { status: 503 });
     }
-    return json({
-      users: await listUsers(kv),
-      privateMessages: await listPrivateMessages(kv),
-      guestbookMessages: await listGuestbookMessages(kv)
+    const options = pageOptions(request);
+    const [users, privateMessages, guestbookMessages] = await Promise.all([
+      listUsers(kv, options.users),
+      listPrivateMessages(kv, options.privateMessages),
+      listGuestbookMessages(kv, options.guestbookMessages)
+    ]);
+    return reply.json({
+      users: users.records,
+      privateMessages: privateMessages.records,
+      guestbookMessages: guestbookMessages.records,
+      pageInfo: {
+        users: pageInfo(users),
+        privateMessages: pageInfo(privateMessages),
+        guestbookMessages: pageInfo(guestbookMessages)
+      }
     });
   } catch (error) {
-    return serverError(error, "admin_failed");
+    return reply.error(error, "admin_failed");
   }
 }
 
-export async function onRequestPost({ request, env }) {
+export async function onRequestPost({ request, env, clientIp }) {
+  const reply = apiResponder(request, env);
   try {
     if (!isAdmin(request, env)) {
-      return json({ error: "unauthorized" }, { status: 401 });
+      return reply.json({ error: "unauthorized" }, { status: 401 });
     }
     const kv = getKv(env);
     if (!kv || !kv.get || !kv.put) {
-      return json({ error: "kv_not_configured" }, { status: 503 });
+      return reply.json({ error: "kv_not_configured" }, { status: 503 });
     }
     const body = await readJson(request);
     if (body.action !== "issue_recovery_code") {
-      return json({ error: "unsupported_action" }, { status: 400 });
+      return reply.json({ error: "unsupported_action" }, { status: 400 });
     }
+
+    const limited = await limitAdminWrite(kv, request, clientIp, "recovery", reply);
+    if (limited) return limited;
 
     const username = normalizeUsername(body.username);
     const rawUser = await kv.get(`user_${username}`, { type: "text" });
     if (!rawUser) {
-      return json({ error: "user_not_found" }, { status: 404 });
+      return reply.json({ error: "user_not_found" }, { status: 404 });
     }
 
     const minutes = Math.min(1440, Math.max(5, Number(body.minutes) || 30));
@@ -149,7 +234,7 @@ export async function onRequestPost({ request, env }) {
       expiresAt: expiresAt.toISOString()
     }));
 
-    return json({
+    return reply.json({
       ok: true,
       username,
       code,
@@ -157,27 +242,32 @@ export async function onRequestPost({ request, env }) {
       minutes
     });
   } catch (error) {
-    return serverError(error, "admin_issue_failed");
+    return reply.error(error, "admin_issue_failed");
   }
 }
 
-export async function onRequestPut({ request, env }) {
+export async function onRequestPut({ request, env, clientIp }) {
+  const reply = apiResponder(request, env);
   try {
     if (!isAdmin(request, env)) {
-      return json({ error: "unauthorized" }, { status: 401 });
+      return reply.json({ error: "unauthorized" }, { status: 401 });
     }
     const kv = getKv(env);
     if (!kv || !kv.get || !kv.put) {
-      return json({ error: "kv_not_configured" }, { status: 503 });
+      return reply.json({ error: "kv_not_configured" }, { status: 503 });
     }
     const url = new URL(request.url);
     const id = url.searchParams.get("id");
     const kind = url.searchParams.get("kind") || "private";
-    if (!id) return json({ error: "id_required" }, { status: 400 });
+    if (!id) return reply.json({ error: "id_required" }, { status: 400 });
 
     const prefix = kind === "guestbook" ? "guestbook_" : "private_message_";
     const raw = await kv.get(`${prefix}${id}`, { type: "text" });
-    if (!raw) return json({ error: "not_found" }, { status: 404 });
+    if (!raw) return reply.json({ error: "not_found" }, { status: 404 });
+
+    const limited = await limitAdminWrite(kv, request, clientIp, "update", reply);
+    if (limited) return limited;
+
     const message = JSON.parse(raw);
     const body = await readJson(request);
     if (kind === "guestbook") {
@@ -187,36 +277,41 @@ export async function onRequestPut({ request, env }) {
     }
     message.updatedAt = new Date().toISOString();
     await kv.put(`${prefix}${id}`, JSON.stringify(message));
-    return json({ ok: true });
+    return reply.json({ ok: true });
   } catch (error) {
-    return serverError(error, "admin_update_failed");
+    return reply.error(error, "admin_update_failed");
   }
 }
 
-export async function onRequestDelete({ request, env }) {
+export async function onRequestDelete({ request, env, clientIp }) {
+  const reply = apiResponder(request, env);
   try {
     if (!isAdmin(request, env)) {
-      return json({ error: "unauthorized" }, { status: 401 });
+      return reply.json({ error: "unauthorized" }, { status: 401 });
     }
     const kv = getKv(env);
-    if (!kv || !kv.delete) {
-      return json({ error: "kv_not_configured" }, { status: 503 });
+    if (!kv || !kv.get || !kv.delete) {
+      return reply.json({ error: "kv_not_configured" }, { status: 503 });
     }
     const url = new URL(request.url);
     const id = url.searchParams.get("id");
     const kind = url.searchParams.get("kind") || "private";
-    if (!id) return json({ error: "id_required" }, { status: 400 });
+    if (!id) return reply.json({ error: "id_required" }, { status: 400 });
+
+    const limited = await limitAdminWrite(kv, request, clientIp, "delete", reply);
+    if (limited) return limited;
+
     if (kind === "user") {
       const username = normalizeUsername(id);
       const rawUser = await kv.get(`user_${username}`, { type: "text" });
-      if (!rawUser) return json({ error: "user_not_found" }, { status: 404 });
+      if (!rawUser) return reply.json({ error: "user_not_found" }, { status: 404 });
       await kv.delete(`user_${username}`);
       await deleteUserArtifacts(kv, username);
-      return json({ ok: true });
+      return reply.json({ ok: true });
     }
     await kv.delete(`${kind === "guestbook" ? "guestbook_" : "private_message_"}${id}`);
-    return json({ ok: true });
+    return reply.json({ ok: true });
   } catch (error) {
-    return serverError(error, "admin_delete_failed");
+    return reply.error(error, "admin_delete_failed");
   }
 }

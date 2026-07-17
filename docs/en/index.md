@@ -16,7 +16,7 @@ tags:
   <div class="home-hero-copy">
     <div class="cyber-kicker">BIYING DIGITAL GARDEN</div>
     <h1 class="cyber-title home-title">Biying Digital Garden</h1>
-    <div class="home-typewriter" data-home-typewriter aria-live="polite">
+    <div class="home-typewriter" data-home-typewriter>
       <span data-home-phrase>Root the work, keep moving toward light.</span>
       <span data-home-phrase>Let small honest steps become a visible path.</span>
       <span data-home-phrase>Stay curious. Build gently. Keep going.</span>

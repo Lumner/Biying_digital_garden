@@ -58,6 +58,7 @@ nav:
   - 留言: zh/guestbook/index.md
   - 友链: zh/friends.md
   - 注册/登录: zh/register/index.md
+  - 隐私: zh/privacy.md
   - 模块更新: zh/updates.md
   - Home: en/index.md
   - Now: en/now.md
@@ -87,6 +88,7 @@ nav:
   - Guestbook: en/guestbook/index.md
   - Friends: en/friends.md
   - Account: en/register/index.md
+  - Privacy: en/privacy.md
   - Updates: en/updates.md
 
 not_in_nav: |
@@ -122,17 +124,17 @@ markdown_extensions:
       alternate_style: true
 
 extra_css:
-  - assets/styles/cyber.css?v=20260622-6
+  - assets/styles/cyber.css?v=20260717-3
 
 extra_javascript:
   - assets/javascripts/mathjax.js?v=20260521-1
   - assets/vendor/mathjax/es5/tex-mml-chtml.js?v=20260520-1
-  - assets/javascripts/language-switch.js?v=20260621-3
+  - assets/javascripts/language-switch.js?v=20260717-1
   - assets/javascripts/page-meta.js?v=20260522-1
-  - assets/javascripts/site-stats.js?v=20260620-1
-  - assets/javascripts/layout-controls.js?v=20260622-3
+  - assets/javascripts/site-stats.js?v=20260717-1
+  - assets/javascripts/layout-controls.js?v=20260717-2
   - assets/javascripts/random-note-cover.js?v=20260521-1
-  - assets/javascripts/reveal-on-scroll.js?v=20260521-1
+  - assets/javascripts/reveal-on-scroll.js?v=20260717-1
   - assets/javascripts/toast.js?v=20260521-1
   - assets/javascripts/notes-hub.js?v=20260521-1
   - assets/javascripts/friend-links-v20260620.js?v=20260620-1
@@ -140,10 +142,10 @@ extra_javascript:
   - assets/javascripts/dom-utils.js?v=20260520-1
   - assets/javascripts/i18n.js?v=20260520-1
   - assets/javascripts/api-client.js?v=20260520-1
-  - assets/javascripts/auth.js?v=20260621-2
-  - assets/javascripts/biying-chat.js?v=20260622-4
-  - assets/javascripts/guestbook.js?v=20260521-1
-  - assets/javascripts/admin-dashboard.js?v=20260521-3
+  - assets/javascripts/auth.js?v=20260717-1
+  - assets/javascripts/biying-chat.js?v=20260717-2
+  - assets/javascripts/guestbook.js?v=20260717-1
+  - assets/javascripts/admin-dashboard.js?v=20260717-1
 
 extra:
   generator: false

@@ -1,14 +1,12 @@
 import {
+  apiResponder,
   codedError,
-  cors,
   currentSession,
   enforceRateLimit,
   envValue,
   getClientIp,
   getKv,
-  json,
-  readJson,
-  serverError
+  readJson
 } from "./_shared.js";
 
 const CONTEXT_ITEM_LIMIT = 8;
@@ -216,15 +214,12 @@ async function callModel(env, messages) {
   return data.choices?.[0]?.message?.content || "";
 }
 
-function sseHeaders() {
-  return {
+function sseHeaders(reply) {
+  return reply.headers({
     "content-type": "text/event-stream; charset=utf-8",
     "cache-control": "no-cache, no-transform",
-    "x-accel-buffering": "no",
-    "access-control-allow-origin": "*",
-    "access-control-allow-headers": "content-type, authorization",
-    "access-control-allow-methods": "POST, OPTIONS"
-  };
+    "x-accel-buffering": "no"
+  });
 }
 
 function enqueueSse(controller, encoder, event, data = {}) {
@@ -307,7 +302,7 @@ async function callModelStream(env, messages, onDelta) {
   return answer;
 }
 
-function streamModelResponse(env, messages, sources) {
+function streamModelResponse(env, messages, sources, reply) {
   const encoder = new TextEncoder();
   const stream = new ReadableStream({
     async start(controller) {
@@ -328,23 +323,27 @@ function streamModelResponse(env, messages, sources) {
       }
     }
   });
-  return new Response(stream, { headers: sseHeaders() });
+  return new Response(stream, { headers: sseHeaders(reply) });
 }
 
-export function onRequestOptions() {
-  return cors("POST, OPTIONS");
+export function onRequestOptions(context = {}) {
+  return apiResponder(context.request, context.env, "POST, OPTIONS").cors();
 }
 
 export async function onRequestPost(context) {
+  const { request, env, clientIp } = context;
+  const reply = apiResponder(request, env, "POST, OPTIONS");
+  const waitUntil = typeof context.waitUntil === "function"
+    ? (promise) => context.waitUntil(promise)
+    : undefined;
   try {
-    const { request, env, clientIp } = context;
     const kv = getKv(env);
     if (!kv || !kv.get) {
-      return json({ error: "kv_not_configured" }, { status: 503 });
+      return reply.json({ error: "kv_not_configured" }, { status: 503 });
     }
-    const session = await currentSession(request, kv);
+    const session = await currentSession(request, kv, { waitUntil });
     if (!session) {
-      return json({ error: "auth_required" }, { status: 401 });
+      return reply.json({ error: "auth_required" }, { status: 401 });
     }
 
     const body = await readJson(request);
@@ -353,7 +352,7 @@ export async function onRequestPost(context) {
     const history = sanitizeHistory(body.history);
     const pageContext = sanitizePageContext(body.pageContext);
     if (!message) {
-      return json({ error: "message required" }, { status: 400 });
+      return reply.json({ error: "message required" }, { status: 400 });
     }
 
     const limited = await enforceRateLimit(kv, {
@@ -361,7 +360,7 @@ export async function onRequestPost(context) {
       identifier: session.userId || getClientIp(request, clientIp),
       limit: 8,
       windowMs: 60 * 1000
-    });
+    }, reply);
     if (limited) return limited;
 
     const queryScope = looksSiteRelated(message) ? "site_related" : "general_or_unclear";
@@ -401,16 +400,16 @@ export async function onRequestPost(context) {
 
     const sources = queryScope === "site_related" ? uniqueSources(knowledge) : [];
     if (body.stream === true) {
-      return streamModelResponse(env, messages, sources);
+      return streamModelResponse(env, messages, sources, reply);
     }
 
     const answer = await callModel(env, messages);
 
-    return json({
+    return reply.json({
       answer,
       sources
     });
   } catch (error) {
-    return serverError(error, "chat_failed");
+    return reply.error(error, "chat_failed");
   }
 }

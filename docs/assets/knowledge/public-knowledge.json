@@ -1,5 +1,4 @@
 {
-  "generatedAt": "2026-06-23T03:03:15.206613+00:00",
   "items": [
     {
       "title": "About",
@@ -28,7 +27,7 @@
       "sourcePath": "docs/en/avatar/index.md",
       "locale": "en",
       "kind": "page",
-      "text": "BIYING Biying Biying lives quietly inside this site: gentle, unhurried, and happy to help you make sense of what has already been shared here. Public Guide Open to Chat Gentle Tone If you want to know what I have been working on, what notes are here, or simply exchange a few words, you can start with Biying. He answers from content already published on this site, and when something has not been written down yet, he says so plainly. !!! info \"Current mode\" After sign in, Biying first uses the live API. The chat box only falls back to the local public knowledge base when the network or endpoint is unavailable."
+      "text": "BIYING Biying Start with current work, notes, or projects—or simply stay for a chat. Answer scope and connection mode Biying prioritizes content already published on this site and says plainly when something is not covered. After sign in, the live chat service is tried first; the local public knowledge base is used when the network or endpoint is unavailable."
     },
     {
       "title": "Friends",
@@ -53,7 +52,7 @@
       "sourcePath": "docs/en/guestbook/index.md",
       "locale": "en",
       "kind": "page",
-      "text": "GUESTBOOK Guestbook If you have passed through here, you are welcome to leave a line: say hello, exchange an idea, point out a problem, or tell me what you hope this site grows into. Public by Default No Private Info This is a public guestbook. After registering or signing in, you can leave a note and edit or delete what you wrote later. Other visitors can read these messages, so please do not include phone numbers, addresses, private emails, or other sensitive information. The form adds a gentle reminder when something looks private and slows down overly frequent posting. This space is for words other visitors may also read. If something should stay private, please keep it out of the guestbook."
+      "text": "GUESTBOOK Guestbook If you have passed through here, you are welcome to leave a line: say hello, exchange an idea, point out a problem, or tell me what you hope this site grows into. Public by Default No Private Info This is a public guestbook. After registering or signing in, you can leave a note and edit or delete what you wrote later. Other visitors can read these messages, so please do not include phone numbers, addresses, private emails, or other sensitive information. The form adds a gentle reminder when something looks private and slows down overly frequent posting. Read the site's privacy notice. This space is for words other visitors may also read. If something should stay private, please keep it out of the guestbook."
     },
     {
       "title": "Home",
@@ -444,7 +443,7 @@
       "sourcePath": "docs/zh/avatar/index.md",
       "locale": "zh",
       "kind": "page",
-      "text": "BIYING 碧影 碧影待在这个网站里，安静、温和，也愿意陪你把这里已经写下的内容慢慢聊清楚。 公开内容向导 可以闲聊 温和语气 如果你想知道我最近在做什么、这里有哪些笔记和项目，或者只是想随便聊几句，都可以来找碧影。 他会从这个网站已经公开的内容里回答你；如果这里还没有写到，他也会坦白告诉你。 !!! info \"当前模式\" 登录后，碧影会先尝试连接线上对话能力；如果网络或服务暂时没接上，对话框会先用本地公开知识库兜底。"
+      "text": "BIYING 碧影 从近况、笔记或项目开始，也可以只是和碧影聊几句。 回答范围与连接方式 碧影会优先依据本站已经公开的内容回答；没有写到的部分会明确说明。登录后会先尝试线上对话能力，网络或服务不可用时再使用本地公开知识库。"
     },
     {
       "title": "友链",
@@ -469,7 +468,7 @@
       "sourcePath": "docs/zh/guestbook/index.md",
       "locale": "zh",
       "kind": "page",
-      "text": "GUESTBOOK 留言 如果你来过这里，也欢迎留下一句话：打个招呼、交换想法、指出问题，或者告诉我你希望它以后长成什么样。 公开展示 请勿填写隐私 这里是公开留言板。注册或登录后，你可以留下几句话，也可以修改或删除自己写过的内容。留言会被其他人看到，所以请不要写手机号、住址、私人邮箱之类的隐私信息。如果内容看起来像隐私信息，页面会提醒一下；发得太快时，也会请你稍等一会儿。 这里更适合留给别人也能看到的话。想私下说的内容，请不要写在这里。"
+      "text": "GUESTBOOK 留言 如果你来过这里，也欢迎留下一句话：打个招呼、交换想法、指出问题，或者告诉我你希望它以后长成什么样。 公开展示 请勿填写隐私 这里是公开留言板。注册或登录后，你可以留下几句话，也可以修改或删除自己写过的内容。留言会被其他人看到，所以请不要写手机号、住址、私人邮箱之类的隐私信息。如果内容看起来像隐私信息，页面会提醒一下；发得太快时，也会请你稍等一会儿。 阅读本站隐私说明。 这里更适合留给别人也能看到的话。想私下说的内容，请不要写在这里。"
     },
     {
       "title": "入口",

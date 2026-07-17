@@ -19,4 +19,6 @@ tags:
 
 This account is only for guestbook messages and Biying chat on this site. Please do not reuse an important password from another service, and do not put private information into public messages. If you forget your password, contact the site owner through the private form on this page, then reset it with the recovery code you receive.
 
+[Read how this site handles accounts, messages, private contact details, and visit statistics.](../privacy.md)
+
 <div class="auth-panel" data-auth></div>

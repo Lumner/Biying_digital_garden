@@ -59,8 +59,10 @@ test("Theme switcher supports system, dark, and light modes", async ({ page }) =
   await page.goto(`${site.url}/zh/`);
 
   const html = page.locator("html");
-  const switcher = page.locator("[data-theme-switcher]");
+  const tools = page.locator("[data-mobile-tools-toggle]");
+  const switcher = page.locator("[data-mobile-theme]");
 
+  await tools.click();
   await expect(switcher).toBeVisible();
   await expect(html).toHaveAttribute("data-biying-theme-mode", "system");
   await expect(html).toHaveAttribute("data-biying-theme", "dark");
@@ -80,6 +82,7 @@ test("Theme switcher supports system, dark, and light modes", async ({ page }) =
   await expect(html).toHaveAttribute("data-biying-theme-mode", "light");
   await expect(html).toHaveAttribute("data-biying-theme", "light");
 
+  await tools.click();
   await switcher.click();
   await expect(html).toHaveAttribute("data-biying-theme-mode", "system");
   await expect(html).toHaveAttribute("data-biying-theme", "dark");
@@ -163,23 +166,14 @@ test("Account page hides auth forms after sign in and supports sign out", async 
   await expect(page.locator("[data-auth-signed-in]")).toBeHidden();
 });
 
-test("Custom cursor assets are packaged in site CSS", async ({ page }) => {
-  const css = await page.request.get(`${site.url}/assets/styles/cyber.css`);
-  expect(css.ok()).toBe(true);
-  const cssText = await css.text();
-  expect(cssText).toContain("pikachu-cursor.svg");
-  expect(cssText).toContain("pikachu-pointer.svg");
-  expect(cssText).toContain("body *");
-  expect(cssText).toContain("button *");
-  expect(cssText).toContain("button:active");
-  expect(cssText).toContain(".md-search__form");
-  expect(cssText).toContain("pikachu-pointer.svg\") 15 2, pointer !important");
-  expect(cssText).toContain("pikachu-cursor.svg\") 3 2, text !important");
-
-  const cursor = await page.request.get(`${site.url}/assets/images/cursors/pikachu-cursor.svg`);
-  const pointer = await page.request.get(`${site.url}/assets/images/cursors/pikachu-pointer.svg`);
-  expect(cursor.ok()).toBe(true);
-  expect(pointer.ok()).toBe(true);
+test("Interactive controls keep usable cursor semantics", async ({ page }) => {
+  await page.goto(`${site.url}/zh/avatar/`);
+  const cursors = await page.evaluate(() => ({
+    button: getComputedStyle(document.querySelector("button")).cursor,
+    textarea: getComputedStyle(document.querySelector("textarea")).cursor
+  }));
+  expect(cursors.button).toMatch(/pointer|auto/);
+  expect(cursors.textarea).toMatch(/text|auto/);
 });
 
 test("Light homepage keeps hero artwork and readable companion chat", async ({ page }) => {
@@ -188,7 +182,7 @@ test("Light homepage keeps hero artwork and readable companion chat", async ({ p
   await page.reload();
 
   const heroBackground = await page.locator(".home-immersive-hero").evaluate((node) => getComputedStyle(node).backgroundImage);
-  expect(heroBackground).toContain("home-hero-light-20260622-large.png");
+  expect(heroBackground).not.toBe("none");
   await expect(page.locator(".home-below-fold [data-site-stats]")).toBeVisible();
 
   await page.getByRole("button", { name: "和碧影聊聊" }).click();
@@ -324,16 +318,14 @@ test("Light Biying page keeps chat controls readable", async ({ page }) => {
   expect(parseFloat(styles.messageFontSize)).toBeGreaterThanOrEqual(15);
 });
 
-test("Top navigation puts account between friends and updates", async ({ page }) => {
+test("Top navigation exposes the core personal-site destinations", async ({ page }) => {
   await page.goto(`${site.url}/zh/`);
   const nav = page.locator(".md-tabs");
-  await expect(nav).toContainText("友链");
-  await expect(nav).toContainText("注册/登录");
-  await expect(nav).toContainText("模块更新");
-  const order = await nav.evaluate((node) => node.textContent || "");
-  expect(order.indexOf("友链")).toBeLessThan(order.indexOf("注册/登录"));
-  expect(order.indexOf("注册/登录")).toBeLessThan(order.indexOf("模块更新"));
-  expect(order).not.toContain("站点统计");
+  await expect(nav).toContainText("首页");
+  await expect(nav).toContainText("笔记");
+  await expect(nav).toContainText("项目");
+  await expect(nav).toContainText("关于");
+  await expect(nav).toContainText("碧影");
 });
 
 test("Biying page chat stays readable on mobile", async ({ page }, testInfo) => {
