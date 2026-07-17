@@ -124,7 +124,7 @@ markdown_extensions:
       alternate_style: true
 
 extra_css:
-  - assets/styles/cyber.css?v=20260717-2
+  - assets/styles/cyber.css?v=20260717-3
 
 extra_javascript:
   - assets/javascripts/mathjax.js?v=20260521-1
@@ -132,9 +132,9 @@ extra_javascript:
   - assets/javascripts/language-switch.js?v=20260717-1
   - assets/javascripts/page-meta.js?v=20260522-1
   - assets/javascripts/site-stats.js?v=20260717-1
-  - assets/javascripts/layout-controls.js?v=20260717-1
+  - assets/javascripts/layout-controls.js?v=20260717-2
   - assets/javascripts/random-note-cover.js?v=20260521-1
-  - assets/javascripts/reveal-on-scroll.js?v=20260521-1
+  - assets/javascripts/reveal-on-scroll.js?v=20260717-1
   - assets/javascripts/toast.js?v=20260521-1
   - assets/javascripts/notes-hub.js?v=20260521-1
   - assets/javascripts/friend-links-v20260620.js?v=20260620-1
