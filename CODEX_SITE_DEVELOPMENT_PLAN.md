@@ -610,7 +610,7 @@ Codex 每完成一个阶段后更新本表。
 | 6. 资源与加载性能优化 | P1 | Completed | `0e2af1f` | Hero 与 favicon 改用轻量发布资产；脚本按页面加载；移除 Google Fonts、source maps 与未请求大文件；预算收紧并通过完整发布验证 |
 | 7. SEO、分享卡片与多语言发现 | P1 | Completed | `5eb2dee`, `02c3095`, `f3f5570` | 81 页独立描述与双语元数据、原创分享图、无 JS 语言入口和当前语言搜索过滤已完成 |
 | 8. CSS/JavaScript 可维护性重构 | P2 | Completed | `0e189eb`, `146225f`, `6a569e0`, `ba32046` | 单体样式机械拆分为固定顺序的 13 个文件；共享前端工具、资源图门禁、控制台门禁和过时资源清理已完成 |
-| 9. 发布、线上冒烟与回滚演练 | P0 | Pending |  | 需要发布批准 |
+| 9. 发布、线上冒烟与回滚演练 | P0 | Completed | `94f84a6`, `8c56b78`, `0f16d28`, `de2783a` | 已发布到正式站点；13 项线上只读冒烟与 GitHub Actions #105 全部通过；已完成隔离 worktree 回滚演练 |
 
 状态只使用：
 
@@ -1815,6 +1815,16 @@ BIYING_STATS_WRITE_ENABLED=0
 3. 重新构建。
 4. 完整测试。
 5. 确认站点恢复且工作区干净。
+
+### 完成记录
+
+- 发布候选分支 `codex/release-phase9-20260718` 在完整发布门禁通过后，以合并提交 `94f84a6` 进入 `main` 并推送；其第一父提交 `0170f5d` 是本轮阶段 4—9 的整体代码回滚点。
+- 新增 `scripts/smoke_deployed.py`、`tests/test_smoke_deployed.py` 与 `npm run test:deployment`，对正式站点执行 13 项纯 GET 检查，覆盖 7 个关键页面、4 个阶段 8 静态资源、Functions/KV 统计读取和未登录认证状态；不自动执行登录、留言、后台或 AI 等有写入或凭据依赖的生产流程。
+- 首次线上冒烟发现英文生成页的文档语言仍为中文；`8c56b78` 将文档语言写入构建后处理，并把 81 页语言契约纳入元数据门禁。修复发布后，`https://www.biying.site` 的 13 项线上冒烟全部通过。
+- `0f16d28` 将原本捆绑的 CI 拆为具名门禁；Firefox 暴露了测试夹具给 sitemap 返回空 XML 的问题，`de2783a` 改为返回合法 XML，不忽略浏览器错误。GitHub Actions [#105](https://github.com/Lumner/Biying_digital_garden/actions/runs/29641580526) 中发布候选、Firefox、生成文件同步和可复现构建四步全部成功。
+- 最终本地验证通过：API 21 项、部署冒烟单元测试 3 项、Chromium 192 项通过且 7 项按设备条件跳过、Firefox 33 项通过；81 页元数据、13 个样式文件、49 个 JavaScript 文件与 20 个一方脚本资源图均通过。发布目录 8.47 MiB，距总量预算 1.07 MiB。
+- 在隔离 worktree 中按新到旧顺序回滚阶段 8 的 `6a569e0`、`146225f`、`0e189eb`，保留独立的测试稳定化提交 `ba32046`；重新构建后全部非浏览器门禁通过，单 worker Playwright 190 项通过、7 项按设备条件跳过，演练 worktree 随后移除，主工作区未被修改。
+- 如需完整撤销本轮已经发布的阶段 4—9，应先按新到旧顺序回滚发布后的 `de2783a`、`0f16d28`、`8c56b78`，再执行 `git revert -m 1 94f84a6`，重新构建并运行 `npm run verify:release` 后才可推送。阶段完成记录属于文档证据；若与合并回滚发生冲突，只保留本条回滚记录，不保留“Completed”状态。
 
 ---
 
