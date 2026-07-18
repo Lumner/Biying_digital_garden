@@ -38,9 +38,24 @@ for (const route of routes) {
     });
     const siteOrigin = new URL(site.url).origin;
     await page.route(/^https?:\/\//, (externalRoute) => {
-      const requestOrigin = new URL(externalRoute.request().url()).origin;
+      const requestUrl = new URL(externalRoute.request().url());
+      const requestOrigin = requestUrl.origin;
       if (requestOrigin === siteOrigin) return externalRoute.continue();
-      return externalRoute.fulfill({ status: 204, body: "" });
+      if (
+        requestUrl.hostname === "www.biying.site"
+        && requestUrl.pathname.endsWith("/sitemap.xml")
+      ) {
+        return externalRoute.fulfill({
+          status: 200,
+          contentType: "application/xml",
+          body: '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"></urlset>'
+        });
+      }
+      return externalRoute.fulfill({
+        status: 204,
+        contentType: "text/plain",
+        body: ""
+      });
     });
     await page.route("**/api/**", (apiRoute) => apiRoute.fulfill({
       status: 200,
