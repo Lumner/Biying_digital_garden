@@ -5443,6 +5443,18 @@ html[data-biying-theme="light"] :where(
   }
 }
 
+.biying-search-locale-note {
+  display: block;
+  border-bottom: 1px solid var(--cyber-line);
+  color: var(--cyber-muted);
+  font-size: 0.66rem;
+  padding: 0.4rem 0.8rem;
+}
+
+.biying-search-locale-note[hidden] {
+  display: none;
+}
+
 .language-gateway {
   position: relative;
   display: grid;

@@ -153,6 +153,38 @@ test("root language entry never forces a JavaScript redirect", async ({ page, re
 });
 
 
+for (const [route, locale, otherLocale] of [
+  ["/zh/", "zh", "en"],
+  ["/en/", "en", "zh"]
+]) {
+  test(`${route} search only shows ${locale} results`, async ({ page }) => {
+    await page.goto(`${site.url}${route}`, { waitUntil: "domcontentloaded" });
+    await page.locator("#__search").evaluate((toggle) => {
+      toggle.checked = true;
+      toggle.dispatchEvent(new Event("change", { bubbles: true }));
+    });
+    const query = page.locator('[data-md-component="search-query"]');
+    await expect(query).toBeVisible();
+    await query.fill("AI");
+
+    const result = page.locator('[data-md-component="search-result"]');
+    await expect(result).toHaveAttribute("data-biying-search-locale", locale);
+    await expect.poll(async () =>
+      result.locator(`.md-search-result__item[data-biying-search-locale="${locale}"]`).count()
+    ).toBeGreaterThan(0);
+    await expect(result.locator('.md-search-result__item[data-biying-search-locale="other"]')).toHaveCount(0);
+
+    const visiblePaths = await result
+      .locator('.md-search-result__item:not([hidden]) a[href]')
+      .evaluateAll((links) => links.map((link) => new URL(link.href).pathname));
+    expect(visiblePaths.length).toBeGreaterThan(0);
+    expect(visiblePaths.every((path) => path.startsWith(`/${locale}/`))).toBe(true);
+    expect(visiblePaths.some((path) => path.startsWith(`/${otherLocale}/`))).toBe(false);
+    await expect(result.locator(".biying-search-locale-note")).toBeVisible();
+  });
+}
+
+
 test("sitemap includes both language roots", async ({ request }) => {
   const response = await request.get(`${site.url}/sitemap.xml`);
   expect(response.ok()).toBe(true);
