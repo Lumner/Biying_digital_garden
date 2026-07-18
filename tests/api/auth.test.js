@@ -32,6 +32,12 @@ function adminRequest(body, token) {
   });
 }
 
+function sessionCookie(response) {
+  const header = response.headers.get("set-cookie") || "";
+  const pair = header.split(";")[0];
+  return { header, pair };
+}
+
 
 test("registration creates a user session that can be read and logged out", async () => {
   const kv = new MemoryKV();
@@ -274,4 +280,221 @@ test("the dedicated recovery token remains an explicit emergency fallback", asyn
     clientIp: "203.0.113.27"
   });
   assert.equal(login.status, 200);
+});
+
+
+test("dual mode creates a secure cookie while preserving bearer clients", async () => {
+  const kv = new MemoryKV();
+  const env = {
+    BIYING_AUTH_MODE: "dual",
+    BIYING_KV: kv
+  };
+  const registered = await onRequestPost({
+    request: request({
+      username: "dual_reader",
+      password: "a secure password"
+    }, {
+      headers: { origin: "https://www.biying.site" }
+    }),
+    env,
+    clientIp: "203.0.113.30"
+  });
+
+  assert.equal(registered.status, 201);
+  const payload = await registered.json();
+  assert.match(payload.token, /^[a-f0-9]{64}$/);
+  const cookie = sessionCookie(registered);
+  assert.match(cookie.header, /^biying_session=[a-f0-9]{64};/);
+  assert.match(cookie.header, /Path=\//);
+  assert.match(cookie.header, /HttpOnly/);
+  assert.match(cookie.header, /Secure/);
+  assert.match(cookie.header, /SameSite=Lax/);
+  assert.match(cookie.header, /Max-Age=2592000/);
+
+  const bearerSession = await onRequestGet({
+    request: request(undefined, {
+      method: "GET",
+      headers: { authorization: `Bearer ${payload.token}` }
+    }),
+    env
+  });
+  assert.equal(bearerSession.status, 200);
+
+  const cookieSession = await onRequestGet({
+    request: request(undefined, {
+      method: "GET",
+      headers: { cookie: cookie.pair }
+    }),
+    env
+  });
+  assert.equal(cookieSession.status, 200);
+  assert.equal((await cookieSession.json()).user.username, "dual_reader");
+});
+
+
+test("cookie mode rejects bearer-only requests and does not expose a token", async () => {
+  const kv = new MemoryKV();
+  const env = {
+    BIYING_AUTH_MODE: "cookie",
+    BIYING_KV: kv
+  };
+  const registered = await onRequestPost({
+    request: request({
+      username: "cookie_reader",
+      password: "a secure password"
+    }, {
+      headers: { origin: "https://www.biying.site" }
+    }),
+    env,
+    clientIp: "203.0.113.31"
+  });
+
+  assert.equal(registered.status, 201);
+  const payload = await registered.json();
+  assert.equal("token" in payload, false);
+  const cookie = sessionCookie(registered);
+  const storedToken = kv.keys("session_")[0].slice("session_".length);
+
+  const missingCookie = await onRequestGet({
+    request: request(undefined, { method: "GET" }),
+    env
+  });
+  assert.equal(missingCookie.status, 401);
+
+  const bearerOnly = await onRequestGet({
+    request: request(undefined, {
+      method: "GET",
+      headers: { authorization: `Bearer ${storedToken}` }
+    }),
+    env
+  });
+  assert.equal(bearerOnly.status, 401);
+
+  const cookieOnly = await onRequestGet({
+    request: request(undefined, {
+      method: "GET",
+      headers: { cookie: cookie.pair }
+    }),
+    env
+  });
+  assert.equal(cookieOnly.status, 200);
+});
+
+
+test("dual mode migrates a legacy bearer session into a cookie once", async () => {
+  const kv = new MemoryKV();
+  const bearerEnv = { BIYING_KV: kv };
+  const registered = await onRequestPost({
+    request: request({
+      username: "legacy_reader",
+      password: "a secure password"
+    }),
+    env: bearerEnv,
+    clientIp: "203.0.113.32"
+  });
+  const legacy = await registered.json();
+  const dualEnv = {
+    BIYING_AUTH_MODE: "dual",
+    BIYING_KV: kv
+  };
+
+  const migrated = await onRequestPost({
+    request: request({
+      action: "migrate_session"
+    }, {
+      headers: {
+        authorization: `Bearer ${legacy.token}`,
+        origin: "https://www.biying.site"
+      }
+    }),
+    env: dualEnv,
+    clientIp: "203.0.113.33"
+  });
+
+  assert.equal(migrated.status, 200);
+  const payload = await migrated.json();
+  assert.equal(payload.migrated, true);
+  assert.equal(payload.user.username, "legacy_reader");
+  assert.equal("token" in payload, false);
+  assert.equal(sessionCookie(migrated).pair, `biying_session=${legacy.token}`);
+
+  const unavailable = await onRequestPost({
+    request: request({
+      action: "migrate_session"
+    }, {
+      headers: {
+        authorization: `Bearer ${legacy.token}`
+      }
+    }),
+    env: bearerEnv,
+    clientIp: "203.0.113.34"
+  });
+  assert.equal(unavailable.status, 409);
+});
+
+
+test("cookie logout clears the browser cookie and invalidates the KV session", async () => {
+  const kv = new MemoryKV();
+  const env = {
+    BIYING_AUTH_MODE: "cookie",
+    BIYING_KV: kv
+  };
+  const registered = await onRequestPost({
+    request: request({
+      username: "logout_reader",
+      password: "a secure password"
+    }, {
+      headers: { origin: "https://www.biying.site" }
+    }),
+    env,
+    clientIp: "203.0.113.35"
+  });
+  const cookie = sessionCookie(registered);
+
+  const loggedOut = await onRequestDelete({
+    request: request(undefined, {
+      method: "DELETE",
+      headers: {
+        cookie: cookie.pair,
+        origin: "https://www.biying.site"
+      }
+    }),
+    env
+  });
+  assert.equal(loggedOut.status, 200);
+  assert.match(loggedOut.headers.get("set-cookie") || "", /^biying_session=;/);
+  assert.match(loggedOut.headers.get("set-cookie") || "", /Max-Age=0/);
+  assert.equal(kv.keys("session_").length, 0);
+
+  const afterLogout = await onRequestGet({
+    request: request(undefined, {
+      method: "GET",
+      headers: { cookie: cookie.pair }
+    }),
+    env
+  });
+  assert.equal(afterLogout.status, 401);
+});
+
+
+test("cookie-setting auth requests reject cross-site origins", async () => {
+  const kv = new MemoryKV();
+  const env = {
+    BIYING_AUTH_MODE: "dual",
+    BIYING_KV: kv
+  };
+  const rejected = await onRequestPost({
+    request: request({
+      username: "csrf_reader",
+      password: "a secure password"
+    }, {
+      headers: { origin: "https://attacker.example" }
+    }),
+    env,
+    clientIp: "203.0.113.36"
+  });
+
+  assert.equal(rejected.status, 403);
+  assert.equal((await rejected.json()).error, "origin_not_allowed");
+  assert.equal(kv.keys("user_").length, 0);
 });

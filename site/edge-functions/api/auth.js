@@ -1,18 +1,22 @@
 import {
   apiResponder,
+  authenticationMode,
   currentSession,
   deleteKvKey,
   enforceRateLimit,
   envValue,
   getClientIp,
   getKv,
+  mutationOriginAllowed,
   normalizeUsername,
-  readBearer,
   readJson,
+  SESSION_COOKIE_NAME,
+  sessionCredentials,
   sessionKey
 } from "./_shared.js";
 
 const SESSION_DAYS = 30;
+const SESSION_SECONDS = SESSION_DAYS * 24 * 60 * 60;
 const encoder = new TextEncoder();
 
 function userKey(username) {
@@ -104,7 +108,36 @@ async function createSession(kv, user) {
   return session;
 }
 
-async function register(kv, body, reply) {
+function sessionCookie(token, maxAge = SESSION_SECONDS) {
+  const value = token ? encodeURIComponent(token) : "";
+  const expires = maxAge === 0 ? "; Expires=Thu, 01 Jan 1970 00:00:00 GMT" : "";
+  return `${SESSION_COOKIE_NAME}=${value}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${maxAge}${expires}`;
+}
+
+function sessionResponse(reply, session, user, env, init = {}) {
+  const mode = authenticationMode(env);
+  const payload = {
+    ok: true,
+    user: publicUser(user)
+  };
+  if (mode !== "cookie") payload.token = session.token;
+  const headers = {
+    "cache-control": "no-store",
+    ...(init.headers || {})
+  };
+  if (mode !== "bearer") headers["set-cookie"] = sessionCookie(session.token);
+  return reply.json(payload, { ...init, headers });
+}
+
+function clearedSessionHeaders(env) {
+  const headers = { "cache-control": "no-store" };
+  if (authenticationMode(env) !== "bearer") {
+    headers["set-cookie"] = sessionCookie("", 0);
+  }
+  return headers;
+}
+
+async function register(kv, body, env, reply) {
   const username = normalizeUsername(body.username);
   const displayName = cleanDisplayName(username);
   const password = String(body.password || "");
@@ -137,10 +170,7 @@ async function register(kv, body, reply) {
   };
   await kv.put(userKey(username), JSON.stringify(user));
   const session = await createSession(kv, user);
-  return reply.json(
-    { ok: true, token: session.token, user: publicUser(user) },
-    { status: 201 }
-  );
+  return sessionResponse(reply, session, user, env, { status: 201 });
 }
 
 async function resetPassword(kv, body, env, reply, waitUntil) {
@@ -208,10 +238,10 @@ async function resetPassword(kv, body, env, reply, waitUntil) {
     await deleteKvKey(kv, recoveryStorageKey, waitUntil);
   }
   const session = await createSession(kv, updatedUser);
-  return reply.json({ ok: true, token: session.token, user: publicUser(updatedUser) });
+  return sessionResponse(reply, session, updatedUser, env);
 }
 
-async function login(kv, body, reply) {
+async function login(kv, body, env, reply) {
   const username = normalizeUsername(body.username);
   const password = String(body.password || "");
   const raw = await kv.get(userKey(username), { type: "text" });
@@ -224,7 +254,31 @@ async function login(kv, body, reply) {
     return reply.json({ error: "invalid_credentials" }, { status: 401 });
   }
   const session = await createSession(kv, user);
-  return reply.json({ ok: true, token: session.token, user: publicUser(user) });
+  return sessionResponse(reply, session, user, env);
+}
+
+async function migrateSession(kv, request, env, reply, waitUntil) {
+  if (authenticationMode(env) !== "dual") {
+    return reply.json({ error: "migration_unavailable" }, { status: 409 });
+  }
+  const session = await currentSession(request, kv, {
+    env,
+    mode: "bearer",
+    waitUntil
+  });
+  if (!session) {
+    return reply.json({ error: "auth_required" }, { status: 401 });
+  }
+  return reply.json({
+    ok: true,
+    migrated: true,
+    user: publicUser(session)
+  }, {
+    headers: {
+      "cache-control": "no-store",
+      "set-cookie": sessionCookie(session.token)
+    }
+  });
 }
 
 async function limitAuthRequest(kv, request, clientIp, body, reply) {
@@ -262,9 +316,12 @@ export async function onRequestGet(context) {
     if (!kv || !kv.get) {
       return reply.json({ error: "kv_not_configured" }, { status: 503 });
     }
-    const session = await currentSession(request, kv, { waitUntil });
+    const session = await currentSession(request, kv, { env, waitUntil });
     if (!session) return reply.json({ user: null }, { status: 401 });
-    return reply.json({ user: publicUser(session) });
+    return reply.json(
+      { user: publicUser(session) },
+      { headers: { "cache-control": "no-store" } }
+    );
   } catch (error) {
     return reply.error(error, "auth_failed");
   }
@@ -282,13 +339,19 @@ export async function onRequestPost(context) {
       return reply.json({ error: "kv_not_configured" }, { status: 503 });
     }
     const body = await readJson(request);
+    if (!mutationOriginAllowed(request, env, { setsSessionCookie: true })) {
+      return reply.json({ error: "origin_not_allowed" }, { status: 403 });
+    }
+    if (body.action === "migrate_session") {
+      return migrateSession(kv, request, env, reply, waitUntil);
+    }
     const limited = await limitAuthRequest(kv, request, clientIp, body, reply);
     if (limited) return limited;
-    if (body.action === "login") return login(kv, body, reply);
+    if (body.action === "login") return login(kv, body, env, reply);
     if (body.action === "reset_password") {
       return resetPassword(kv, body, env, reply, waitUntil);
     }
-    return register(kv, body, reply);
+    return register(kv, body, env, reply);
   } catch (error) {
     return reply.error(error, "auth_failed");
   }
@@ -298,10 +361,22 @@ export async function onRequestDelete({ request, env }) {
   const reply = apiResponder(request, env);
   try {
     const kv = getKv(env);
-    if (!kv || !kv.delete) return reply.json({ ok: true });
-    const token = readBearer(request);
-    if (token) await kv.delete(sessionKey(token));
-    return reply.json({ ok: true });
+    const credentials = sessionCredentials(request, env);
+    const authSource = credentials.some(({ source }) => source === "cookie")
+      ? "cookie"
+      : credentials[0]?.source || "";
+    if (!mutationOriginAllowed(request, env, {
+      authSource,
+      setsSessionCookie: true
+    })) {
+      return reply.json({ error: "origin_not_allowed" }, { status: 403 });
+    }
+    if (kv && kv.delete) {
+      await Promise.all(
+        credentials.map(({ token }) => kv.delete(sessionKey(token)))
+      );
+    }
+    return reply.json({ ok: true }, { headers: clearedSessionHeaders(env) });
   } catch (error) {
     return reply.error(error, "logout_failed");
   }

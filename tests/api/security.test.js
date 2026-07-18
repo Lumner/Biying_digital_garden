@@ -4,6 +4,7 @@ import test from "node:test";
 import {
   cleanText,
   currentSession,
+  mutationOriginAllowed,
   rateLimit,
   serverError,
   sessionKey
@@ -51,6 +52,35 @@ test("legacy users and sessions without a version remain valid", async () => {
   const session = await currentSession(request, kv);
   assert.equal(session.username, "reader");
   assert.equal(session.sessionVersion, 0);
+});
+
+test("dual mode falls back to a valid bearer when the preferred cookie is stale", async () => {
+  const token = "legacy-token";
+  const kv = new MemoryKV({
+    user_reader: {
+      id: "user-1",
+      username: "reader",
+      displayName: "Reader"
+    },
+    [sessionKey(token)]: {
+      userId: "user-1",
+      username: "reader",
+      displayName: "Reader",
+      expiresAt: "2099-01-01T00:00:00.000Z"
+    }
+  });
+  const request = new Request("https://www.biying.site/api/auth", {
+    headers: {
+      authorization: `Bearer ${token}`,
+      cookie: "biying_session=stale-token"
+    }
+  });
+
+  const session = await currentSession(request, kv, {
+    env: { BIYING_AUTH_MODE: "dual" }
+  });
+  assert.equal(session.username, "reader");
+  assert.equal(session.authSource, "bearer");
 });
 
 
@@ -122,6 +152,7 @@ test("CORS reflects only official or explicitly configured origins", () => {
     official.headers.get("access-control-allow-origin"),
     "https://www.biying.site"
   );
+  assert.equal(official.headers.get("access-control-allow-credentials"), "true");
   assert.match(official.headers.get("vary") || "", /Origin/i);
 
   const unknown = authOptions({
@@ -129,6 +160,7 @@ test("CORS reflects only official or explicitly configured origins", () => {
     env: {}
   });
   assert.equal(unknown.headers.get("access-control-allow-origin"), null);
+  assert.equal(unknown.headers.get("access-control-allow-credentials"), null);
   assert.match(unknown.headers.get("vary") || "", /Origin/i);
 
   const local = authOptions({
@@ -138,5 +170,39 @@ test("CORS reflects only official or explicitly configured origins", () => {
   assert.equal(
     local.headers.get("access-control-allow-origin"),
     "http://127.0.0.1:8000"
+  );
+  assert.equal(local.headers.get("access-control-allow-credentials"), "true");
+});
+
+
+test("mutation origin checks are staged for bearer and mandatory for cookies", () => {
+  const mutation = (origin = "") => new Request("https://www.biying.site/api/messages", {
+    method: "POST",
+    headers: origin ? { origin } : {}
+  });
+
+  assert.equal(
+    mutationOriginAllowed(mutation(), {}, { authSource: "bearer" }),
+    true
+  );
+  assert.equal(
+    mutationOriginAllowed(
+      mutation("https://attacker.example"),
+      { BIYING_STRICT_ORIGIN_CHECK: "1" },
+      { authSource: "bearer" }
+    ),
+    false
+  );
+  assert.equal(
+    mutationOriginAllowed(
+      mutation("https://www.biying.site"),
+      { BIYING_STRICT_ORIGIN_CHECK: "1" },
+      { authSource: "bearer" }
+    ),
+    true
+  );
+  assert.equal(
+    mutationOriginAllowed(mutation(), {}, { authSource: "cookie" }),
+    false
   );
 });

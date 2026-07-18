@@ -1,9 +1,12 @@
 const DEFAULT_METHODS = "GET, POST, PUT, DELETE, OPTIONS";
 const OFFICIAL_ORIGIN = "https://www.biying.site";
+export const SESSION_COOKIE_NAME = "biying_session";
 const DEFAULT_HEADERS = {
   "content-type": "application/json; charset=utf-8",
   "access-control-allow-headers": "content-type, authorization"
 };
+const AUTH_MODES = new Set(["bearer", "dual", "cookie"]);
+const SAFE_METHODS = new Set(["GET", "HEAD", "OPTIONS"]);
 
 function normalizeOrigin(value) {
   try {
@@ -61,8 +64,10 @@ export function responseHeaders(
   const origin = allowedOrigin(request, env);
   if (origin) {
     headers.set("access-control-allow-origin", origin);
+    headers.set("access-control-allow-credentials", "true");
   } else {
     headers.delete("access-control-allow-origin");
+    headers.delete("access-control-allow-credentials");
   }
   return headers;
 }
@@ -128,6 +133,60 @@ export function readBearer(request) {
   return match ? match[1].trim().slice(0, 256) : "";
 }
 
+export function readCookie(request, name = SESSION_COOKIE_NAME) {
+  const header = request?.headers?.get("cookie") || "";
+  for (const part of header.split(";")) {
+    const separator = part.indexOf("=");
+    if (separator < 0) continue;
+    const key = part.slice(0, separator).trim();
+    if (key !== name) continue;
+    const value = part.slice(separator + 1).trim();
+    try {
+      return decodeURIComponent(value).slice(0, 256);
+    } catch (error) {
+      return value.slice(0, 256);
+    }
+  }
+  return "";
+}
+
+export function authenticationMode(env) {
+  const configured = String(envValue(env, "BIYING_AUTH_MODE", "bearer"))
+    .trim()
+    .toLowerCase();
+  return AUTH_MODES.has(configured) ? configured : "bearer";
+}
+
+export function sessionCredentials(request, env, mode = authenticationMode(env)) {
+  const bearer = readBearer(request);
+  const cookie = readCookie(request);
+  const credentials = mode === "cookie"
+    ? [{ source: "cookie", token: cookie }]
+    : mode === "dual"
+      ? [
+          { source: "cookie", token: cookie },
+          { source: "bearer", token: bearer }
+        ]
+      : [{ source: "bearer", token: bearer }];
+  const seen = new Set();
+  return credentials.filter((credential) => {
+    if (!credential.token || seen.has(credential.token)) return false;
+    seen.add(credential.token);
+    return true;
+  });
+}
+
+export function mutationOriginAllowed(request, env, options = {}) {
+  const method = String(request?.method || "GET").toUpperCase();
+  if (SAFE_METHODS.has(method)) return true;
+  const required = (
+    envValue(env, "BIYING_STRICT_ORIGIN_CHECK", "0") === "1"
+    || options.authSource === "cookie"
+    || (options.setsSessionCookie && authenticationMode(env) !== "bearer")
+  );
+  return !required || Boolean(allowedOrigin(request, env));
+}
+
 export function sessionKey(token) {
   return `session_${token}`;
 }
@@ -149,9 +208,8 @@ function recordVersion(value) {
   return Number.isSafeInteger(version) && version >= 0 ? version : 0;
 }
 
-export async function currentSession(request, kv, options = {}) {
-  const token = readBearer(request);
-  if (!token || !kv || !kv.get) return undefined;
+async function sessionForCredential(credential, kv, options) {
+  const { source, token } = credential;
   const key = sessionKey(token);
   const raw = await kv.get(key, { type: "text" });
   if (!raw) return undefined;
@@ -198,9 +256,24 @@ export async function currentSession(request, kv, options = {}) {
 
   return {
     ...session,
+    authSource: source,
     displayName: user.displayName || session.displayName,
     sessionVersion: recordVersion(user.sessionVersion)
   };
+}
+
+export async function currentSession(request, kv, options = {}) {
+  if (!kv || !kv.get) return undefined;
+  const credentials = sessionCredentials(
+    request,
+    options.env,
+    options.mode || authenticationMode(options.env)
+  );
+  for (const credential of credentials) {
+    const session = await sessionForCredential(credential, kv, options);
+    if (session) return session;
+  }
+  return undefined;
 }
 
 export async function readJson(request) {

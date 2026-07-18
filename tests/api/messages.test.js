@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { onRequestPost as onAuthPost } from "../../edge-functions/api/auth.js";
+import { onRequestPost as onChatPost } from "../../edge-functions/api/chat.js";
 import { onRequestPost as onMessagePost } from "../../edge-functions/api/messages.js";
 import { onRequestPost as onPrivateMessagePost } from "../../edge-functions/api/private-messages.js";
 import { MemoryKV } from "./mock-kv.js";
@@ -75,4 +76,76 @@ test("private message writes are rate limited by client address", async () => {
 
   assert.equal(response.status, 429);
   assert.equal(kv.keys("private_message_").length, 3);
+});
+
+
+test("cookie-authenticated guestbook and chat writes require an allowed origin", async () => {
+  const kv = new MemoryKV();
+  const env = {
+    BIYING_AUTH_MODE: "cookie",
+    BIYING_KV: kv
+  };
+  const registered = await onAuthPost({
+    request: jsonRequest(
+      "https://www.biying.site/api/auth",
+      {
+        username: "cookie_writer",
+        password: "a secure password"
+      },
+      { headers: { origin: "https://www.biying.site" } }
+    ),
+    env,
+    clientIp: "203.0.113.43"
+  });
+  const cookie = (registered.headers.get("set-cookie") || "").split(";")[0];
+
+  const rejectedMessage = await onMessagePost({
+    request: jsonRequest(
+      "https://www.biying.site/api/messages",
+      { content: "Cross-site message", locale: "en" },
+      {
+        headers: {
+          cookie,
+          origin: "https://attacker.example"
+        }
+      }
+    ),
+    env,
+    clientIp: "203.0.113.44"
+  });
+  assert.equal(rejectedMessage.status, 403);
+  assert.equal((await rejectedMessage.json()).error, "origin_not_allowed");
+
+  const rejectedChat = await onChatPost({
+    request: jsonRequest(
+      "https://www.biying.site/api/chat",
+      { message: "Cross-site chat", locale: "en" },
+      {
+        headers: {
+          cookie,
+          origin: "https://attacker.example"
+        }
+      }
+    ),
+    env,
+    clientIp: "203.0.113.45"
+  });
+  assert.equal(rejectedChat.status, 403);
+  assert.equal((await rejectedChat.json()).error, "origin_not_allowed");
+
+  const acceptedMessage = await onMessagePost({
+    request: jsonRequest(
+      "https://www.biying.site/api/messages",
+      { content: "Same-site message", locale: "en" },
+      {
+        headers: {
+          cookie,
+          origin: "https://www.biying.site"
+        }
+      }
+    ),
+    env,
+    clientIp: "203.0.113.46"
+  });
+  assert.equal(acceptedMessage.status, 201);
 });

@@ -6,6 +6,7 @@ import {
   getClientIp,
   getKv,
   isAdmin,
+  mutationOriginAllowed,
   readJson
 } from "./_shared.js";
 
@@ -74,7 +75,7 @@ export async function onRequestGet(context) {
   try {
     const kv = getKv(env);
     const admin = isAdmin(request, env);
-    const session = await currentSession(request, kv, { waitUntil });
+    const session = await currentSession(request, kv, { env, waitUntil });
     return reply.json({ messages: await listMessages(kv, session, admin) });
   } catch (error) {
     return reply.error(error, "messages_failed");
@@ -93,9 +94,12 @@ export async function onRequestPost(context) {
       return reply.json({ error: "kv_not_configured" }, { status: 503 });
     }
 
-    const session = await currentSession(request, kv, { waitUntil });
+    const session = await currentSession(request, kv, { env, waitUntil });
     if (!session) {
       return reply.json({ error: "auth_required" }, { status: 401 });
+    }
+    if (!mutationOriginAllowed(request, env, { authSource: session.authSource })) {
+      return reply.json({ error: "origin_not_allowed" }, { status: 403 });
     }
 
     const body = await readJson(request);
@@ -154,9 +158,12 @@ export async function onRequestPut(context) {
     }
 
     const admin = isAdmin(request, env);
-    const session = await currentSession(request, kv, { waitUntil });
+    const session = await currentSession(request, kv, { env, waitUntil });
     if (!admin && !session) {
       return reply.json({ error: "auth_required" }, { status: 401 });
+    }
+    if (!mutationOriginAllowed(request, env, { authSource: session?.authSource })) {
+      return reply.json({ error: "origin_not_allowed" }, { status: 403 });
     }
 
     const url = new URL(request.url);
@@ -204,9 +211,12 @@ export async function onRequestDelete(context) {
     }
 
     const admin = isAdmin(request, env);
-    const session = await currentSession(request, kv, { waitUntil });
+    const session = await currentSession(request, kv, { env, waitUntil });
     if (!admin && !session) {
       return reply.json({ error: "auth_required" }, { status: 401 });
+    }
+    if (!mutationOriginAllowed(request, env, { authSource: session?.authSource })) {
+      return reply.json({ error: "origin_not_allowed" }, { status: 403 });
     }
 
     const url = new URL(request.url);
