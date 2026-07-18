@@ -1,6 +1,7 @@
 ---
 title: FDS 数据结构基础讲义
 summary: FDS 数据结构基础中文讲义总览；正文已按章节拆分，并保留旧 URL 与旧锚点跳转入口。
+description: FDS 数据结构基础中文讲义总览；正文已按章节拆分，并保留旧 URL 与旧锚点跳转入口。
 public: true
 avatar_readable: true
 author: Lumner

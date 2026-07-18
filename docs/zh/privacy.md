@@ -1,6 +1,7 @@
 ---
 title: 隐私说明
 summary: 说明本站账户、留言、私信和匿名访问统计所处理的数据，以及访问者可采取的删除方式。
+description: 说明本站账户、留言、私信和匿名访问统计所处理的数据，以及访问者可采取的删除方式。
 public: true
 avatar_readable: false
 tags:

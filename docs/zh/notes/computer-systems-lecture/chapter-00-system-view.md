@@ -1,6 +1,7 @@
 ---
 title: 0. 课程视角：从门电路到系统软件
 summary: 从物理信号、逻辑门、RTL、ISA 到程序运行的整体抽象链路。
+description: 从物理信号、逻辑门、RTL、ISA 到程序运行的整体抽象链路。
 public: true
 avatar_readable: true
 author: Lumner

@@ -1,6 +1,8 @@
 ---
 title: 站点后台
 summary: 只有站主本人使用的后台入口。
+description: 只有站主本人使用的后台入口。
+robots: noindex, nofollow
 public: false
 avatar_readable: false
 tags:

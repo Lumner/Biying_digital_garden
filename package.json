@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build:social-card": "node scripts/render_social_card.mjs",
     "build:site": "python scripts/build_site.py",
     "check:budget": "python scripts/check_site_budget.py",
     "check:js": "python scripts/check_javascript_syntax.py",

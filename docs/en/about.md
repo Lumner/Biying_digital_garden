@@ -1,6 +1,7 @@
 ---
 title: About
 summary: An undergraduate AI student at Zhejiang University, interested in AI-assisted full-stack building, embodied intelligence, and long-term notes.
+description: An undergraduate AI student at Zhejiang University, interested in AI-assisted full-stack building, embodied intelligence, and long-term notes.
 public: true
 avatar_readable: true
 tags:

@@ -1,6 +1,7 @@
 ---
 title: 7. 并查集
 summary: 等价关系、动态等价问题、基本表示、按大小/高度合并、路径压缩和典型应用。
+description: 等价关系、动态等价问题、基本表示、按大小/高度合并、路径压缩和典型应用。
 public: true
 avatar_readable: true
 author: Lumner

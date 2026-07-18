@@ -1,6 +1,7 @@
 ---
 title: 6. 优先队列与二叉堆
 summary: 优先队列 ADT、实现对比、堆序性、插入、删除最小值、建堆、应用和 d-堆。
+description: 优先队列 ADT、实现对比、堆序性、插入、删除最小值、建堆、应用和 d-堆。
 public: true
 avatar_readable: true
 author: Lumner

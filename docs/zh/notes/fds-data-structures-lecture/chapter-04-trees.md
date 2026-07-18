@@ -1,6 +1,7 @@
 ---
 title: 4. 树与二叉树
 summary: 树术语、树的表示、二叉树、表达式树、遍历、非递归遍历和线索二叉树。
+description: 树术语、树的表示、二叉树、表达式树、遍历、非递归遍历和线索二叉树。
 public: true
 avatar_readable: true
 author: Lumner

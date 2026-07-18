@@ -1,6 +1,7 @@
 ---
 title: Math Lab
 summary: A page for verifying inline and block math rendering in MkDocs.
+description: A page for verifying inline and block math rendering in MkDocs.
 public: true
 avatar_readable: true
 category: math

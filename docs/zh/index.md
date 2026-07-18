@@ -1,6 +1,7 @@
 ---
 title: 入口
 summary: Lumner 的碧影数字花园中文入口，放着公开笔记、项目、近况和碧影。
+description: Lumner 的碧影数字花园中文入口，放着公开笔记、项目、近况和碧影。
 public: true
 avatar_readable: true
 tags:

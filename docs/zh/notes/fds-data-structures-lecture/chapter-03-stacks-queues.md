@@ -1,6 +1,7 @@
 ---
 title: 3. 栈与队列
 summary: 栈 ADT、括号匹配、表达式求值、中缀转后缀、系统栈、队列和循环队列。
+description: 栈 ADT、括号匹配、表达式求值、中缀转后缀、系统栈、队列和循环队列。
 public: true
 avatar_readable: true
 author: Lumner

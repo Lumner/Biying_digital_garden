@@ -1,6 +1,7 @@
 ---
 title: 项目
 summary: 项目入口，展示已经公开的真实案例、阶段状态和后续待补的项目记录。
+description: 项目入口，展示已经公开的真实案例、阶段状态和后续待补的项目记录。
 public: true
 avatar_readable: true
 updated: 2026-07-18

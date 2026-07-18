@@ -1,6 +1,7 @@
 ---
 title: 6. 指令集体系结构 ISA
 summary: ISA 概念、指令组成、寻址方式、编码方式、CISC/RISC 和 ISA 分类。
+description: ISA 概念、指令组成、寻址方式、编码方式、CISC/RISC 和 ISA 分类。
 public: true
 avatar_readable: true
 author: Lumner

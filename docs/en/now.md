@@ -1,6 +1,7 @@
 ---
 title: Now
 summary: Current work around the personal digital site, AI-assisted full-stack building, embodied intelligence, and long-term notes.
+description: Current work around the personal digital site, AI-assisted full-stack building, embodied intelligence, and long-term notes.
 public: true
 avatar_readable: true
 updated: 2026-05-21

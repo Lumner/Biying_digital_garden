@@ -1,6 +1,7 @@
 ---
 title: Discrete Mathematics English Overview
 summary: English overview for the Chinese discrete mathematics lecture note; not a full line-by-line translation.
+description: English overview for the Chinese discrete mathematics lecture note; not a full line-by-line translation.
 public: true
 avatar_readable: true
 category: math

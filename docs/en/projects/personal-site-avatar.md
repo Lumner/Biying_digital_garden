@@ -1,6 +1,7 @@
 ---
 title: Personal Digital Garden + Biying
 summary: A bilingual personal website project that brings public notes, project records, a guestbook, public knowledge, and the Biying digital assistant into one long-term entrance.
+description: A bilingual personal website project that brings public notes, project records, a guestbook, public knowledge, and the Biying digital assistant into one long-term entrance.
 public: true
 avatar_readable: true
 updated: 2026-07-18

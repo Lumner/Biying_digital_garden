@@ -1,6 +1,7 @@
 ---
 title: Account
 summary: Register or sign in to post public messages, edit your own messages, and talk to Biying.
+description: Register or sign in to post public messages, edit your own messages, and talk to Biying.
 public: true
 avatar_readable: false
 tags:

@@ -1,6 +1,7 @@
 ---
 title: 9. 图与拓扑排序
 summary: 图定义、图存储、AOV 网络、拓扑序、朴素拓扑排序和队列优化拓扑排序。
+description: 图定义、图存储、AOV 网络、拓扑序、朴素拓扑排序和队列优化拓扑排序。
 public: true
 avatar_readable: true
 author: Lumner

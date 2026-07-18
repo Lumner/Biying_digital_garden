@@ -1,6 +1,7 @@
 ---
 title: 第 9 章 关系
 summary: 关系定义、性质、矩阵/有向图表示、闭包和等价关系。
+description: 关系定义、性质、矩阵/有向图表示、闭包和等价关系。
 public: true
 avatar_readable: true
 author: Lumner

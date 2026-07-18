@@ -1,6 +1,7 @@
 ---
 title: 4. 运算部件与 ALU
 summary: 加减乘除、进位加法器、溢出、移位器、Booth 算法、浮点运算和 ALU。
+description: 加减乘除、进位加法器、溢出、移位器、Booth 算法、浮点运算和 ALU。
 public: true
 avatar_readable: true
 author: Lumner

@@ -1,6 +1,7 @@
 ---
 title: 1. 算法分析
 summary: 算法与程序、分析对象、渐进记号、最大子列和、二分查找和复杂度检查。
+description: 算法与程序、分析对象、渐进记号、最大子列和、二分查找和复杂度检查。
 public: true
 avatar_readable: true
 author: Lumner

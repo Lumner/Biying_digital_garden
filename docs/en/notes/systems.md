@@ -1,6 +1,7 @@
 ---
 title: Systems Notes
 summary: Entrance for systems-related notes.
+description: Entrance for systems-related notes.
 public: true
 avatar_readable: true
 category: site

@@ -1,6 +1,7 @@
 ---
 title: Notes
 summary: Public notes entrance, including public scope and math rendering tests.
+description: Public notes entrance, including public scope and math rendering tests.
 public: true
 avatar_readable: true
 tags:

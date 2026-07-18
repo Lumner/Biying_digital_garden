@@ -1,6 +1,7 @@
 ---
 title: 7. RISC-V ISA、汇编与程序运行
 summary: RISC-V 状态、指令格式、基础整数指令、控制流、调用约定、ELF、链接和装载。
+description: RISC-V 状态、指令格式、基础整数指令、控制流、调用约定、ELF、链接和装载。
 public: true
 avatar_readable: true
 author: Lumner

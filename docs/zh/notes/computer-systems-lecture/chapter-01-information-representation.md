@@ -1,6 +1,7 @@
 ---
 title: 1. 信息表示
 summary: 二进制、进制转换、整数、补码、浮点数、字符和数据宽度。
+description: 二进制、进制转换、整数、补码、浮点数、字符和数据宽度。
 public: true
 avatar_readable: true
 author: Lumner

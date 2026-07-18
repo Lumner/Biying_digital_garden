@@ -1,6 +1,7 @@
 ---
 title: FDS 数据结构基础讲义附录
 summary: FDS 数据结构基础讲义的复杂度速查、结构选择模板和后续扩展记录。
+description: FDS 数据结构基础讲义的复杂度速查、结构选择模板和后续扩展记录。
 public: true
 avatar_readable: true
 author: Lumner

@@ -1,6 +1,7 @@
 ---
 title: 笔记
 summary: 公开笔记入口，放着课程讲义、站点说明和一些慢慢整理出来的内容。
+description: 公开笔记入口，放着课程讲义、站点说明和一些慢慢整理出来的内容。
 public: true
 avatar_readable: true
 tags:

@@ -1,6 +1,7 @@
 ---
 title: 碧影
 summary: 和碧影聊聊，他会从网站已经公开的内容里帮你慢慢找到线索。
+description: 和碧影聊聊，他会从网站已经公开的内容里帮你慢慢找到线索。
 public: true
 avatar_readable: true
 tags:

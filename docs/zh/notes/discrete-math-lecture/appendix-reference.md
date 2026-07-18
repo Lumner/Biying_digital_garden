@@ -1,6 +1,7 @@
 ---
 title: 离散数学讲义附录
 summary: 离散数学讲义的符号表、证明模板和后续扩展记录。
+description: 离散数学讲义的符号表、证明模板和后续扩展记录。
 public: true
 avatar_readable: true
 author: Lumner

@@ -1,6 +1,7 @@
 ---
 title: 0. 课程视角：为什么需要数据结构
 summary: 数据组织方式、操作频率、规模增长和结构选择的基本问题。
+description: 数据组织方式、操作频率、规模增长和结构选择的基本问题。
 public: true
 avatar_readable: true
 author: Lumner

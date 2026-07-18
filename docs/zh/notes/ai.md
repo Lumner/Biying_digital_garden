@@ -1,6 +1,7 @@
 ---
 title: AI 笔记
 summary: AI 相关笔记入口。
+description: AI 相关笔记入口。
 public: true
 avatar_readable: true
 category: site

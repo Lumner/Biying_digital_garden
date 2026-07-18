@@ -1,6 +1,7 @@
 ---
 title: 8. 线段树
 summary: 区间结构动机、适用算子、建树、区间查询、点更新、区间更新和懒标记。
+description: 区间结构动机、适用算子、建树、区间查询、点更新、区间更新和懒标记。
 public: true
 avatar_readable: true
 author: Lumner

@@ -1,6 +1,7 @@
 ---
 title: 第 3 章 算法
 summary: 算法定义、伪代码、搜索排序和函数增长。
+description: 算法定义、伪代码、搜索排序和函数增长。
 public: true
 avatar_readable: true
 author: Lumner

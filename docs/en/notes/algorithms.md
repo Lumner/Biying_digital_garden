@@ -1,6 +1,7 @@
 ---
 title: Algorithms Notes
 summary: Entrance for algorithms and data-structure notes.
+description: Entrance for algorithms and data-structure notes.
 public: true
 avatar_readable: true
 category: site

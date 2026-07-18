@@ -1,6 +1,7 @@
 ---
 title: 友链
 summary: 放朋友们的网站入口、头像和我对他们的简短介绍。
+description: 放朋友们的网站入口、头像和我对他们的简短介绍。
 public: true
 avatar_readable: true
 tags:

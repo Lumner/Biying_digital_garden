@@ -1,6 +1,7 @@
 ---
 title: FDS Data Structures English Overview
 summary: English overview for the Chinese FDS data structures lecture note; not a full line-by-line translation.
+description: English overview for the Chinese FDS data structures lecture note; not a full line-by-line translation.
 public: true
 avatar_readable: true
 category: algorithms

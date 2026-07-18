@@ -1,6 +1,7 @@
 ---
 title: 计算机系统基础讲义附录
 summary: 计算机系统基础讲义的速查表、更新规则和后续扩展记录。
+description: 计算机系统基础讲义的速查表、更新规则和后续扩展记录。
 public: true
 avatar_readable: true
 author: Lumner

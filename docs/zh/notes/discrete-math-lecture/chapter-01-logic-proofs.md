@@ -1,6 +1,7 @@
 ---
 title: 第 1 章 逻辑与证明
 summary: 命题逻辑、谓词逻辑、推理规则和证明策略。
+description: 命题逻辑、谓词逻辑、推理规则和证明策略。
 public: true
 avatar_readable: true
 author: Lumner

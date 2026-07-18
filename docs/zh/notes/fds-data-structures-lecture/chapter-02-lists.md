@@ -1,6 +1,7 @@
 ---
 title: 2. 抽象数据类型与线性表
 summary: ADT、数组表、链表、双向循环链表、多项式 ADT、多重链表和游标实现。
+description: ADT、数组表、链表、双向循环链表、多项式 ADT、多重链表和游标实现。
 public: true
 avatar_readable: true
 author: Lumner

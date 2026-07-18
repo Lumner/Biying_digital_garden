@@ -8,6 +8,19 @@
       "declaredUpdated": "2026-07-18"
     },
     {
+      "title": "隐私说明",
+      "url": "/zh/privacy/",
+      "updated": "2026-07-18",
+      "locale": "zh"
+    },
+    {
+      "title": "随笔",
+      "url": "/zh/notes/essays/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-05-15"
+    },
+    {
       "title": "计算机系统基础讲义附录",
       "url": "/zh/notes/computer-systems-lecture/appendix-reference/",
       "updated": "2026-07-18",
@@ -20,6 +33,20 @@
       "updated": "2026-07-18",
       "locale": "zh",
       "declaredUpdated": "2026-07-18"
+    },
+    {
+      "title": "系统笔记",
+      "url": "/zh/notes/systems/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-05-15"
+    },
+    {
+      "title": "算法笔记",
+      "url": "/zh/notes/algorithms/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-05-15"
     },
     {
       "title": "第 9 章 关系",
@@ -77,6 +104,19 @@
       "locale": "zh"
     },
     {
+      "title": "站点统计",
+      "url": "/zh/stats/",
+      "updated": "2026-07-18",
+      "locale": "zh"
+    },
+    {
+      "title": "站点笔记",
+      "url": "/zh/notes/site/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-05-15"
+    },
+    {
       "title": "离散数学讲义附录",
       "url": "/zh/notes/discrete-math-lecture/appendix-reference/",
       "updated": "2026-07-18",
@@ -91,11 +131,128 @@
       "declaredUpdated": "2026-07-18"
     },
     {
+      "title": "碧影",
+      "url": "/zh/avatar/",
+      "updated": "2026-07-18",
+      "locale": "zh"
+    },
+    {
+      "title": "留言",
+      "url": "/zh/guestbook/",
+      "updated": "2026-07-18",
+      "locale": "zh"
+    },
+    {
+      "title": "现在",
+      "url": "/zh/now/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-05-21"
+    },
+    {
+      "title": "注册/登录",
+      "url": "/zh/register/",
+      "updated": "2026-07-18",
+      "locale": "zh"
+    },
+    {
+      "title": "模块更新",
+      "url": "/zh/updates/",
+      "updated": "2026-07-18",
+      "locale": "zh"
+    },
+    {
+      "title": "标签",
+      "url": "/zh/notes/tags/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-05-15"
+    },
+    {
+      "title": "数学笔记",
+      "url": "/zh/notes/math/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-05-15"
+    },
+    {
+      "title": "数学实验",
+      "url": "/zh/notes/math-lab/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-05-13"
+    },
+    {
+      "title": "友链",
+      "url": "/zh/friends/",
+      "updated": "2026-07-18",
+      "locale": "zh"
+    },
+    {
+      "title": "关于",
+      "url": "/zh/about/",
+      "updated": "2026-07-18",
+      "locale": "zh"
+    },
+    {
+      "title": "公开边界",
+      "url": "/zh/notes/public-scope/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-05-13"
+    },
+    {
+      "title": "入口",
+      "url": "/zh/",
+      "updated": "2026-07-18",
+      "locale": "zh"
+    },
+    {
       "title": "个人数字花园与碧影",
       "url": "/zh/projects/personal-site-avatar/",
       "updated": "2026-07-18",
       "locale": "zh",
       "declaredUpdated": "2026-07-18"
+    },
+    {
+      "title": "Updates",
+      "url": "/en/updates/",
+      "updated": "2026-07-18",
+      "locale": "en"
+    },
+    {
+      "title": "Tags",
+      "url": "/en/notes/tags/",
+      "updated": "2026-07-18",
+      "locale": "en",
+      "declaredUpdated": "2026-05-15"
+    },
+    {
+      "title": "Systems Notes",
+      "url": "/en/notes/systems/",
+      "updated": "2026-07-18",
+      "locale": "en",
+      "declaredUpdated": "2026-05-15"
+    },
+    {
+      "title": "Site Stats",
+      "url": "/en/stats/",
+      "updated": "2026-07-18",
+      "locale": "en"
+    },
+    {
+      "title": "Site Notes",
+      "url": "/en/notes/site/",
+      "updated": "2026-07-18",
+      "locale": "en",
+      "declaredUpdated": "2026-05-15"
+    },
+    {
+      "title": "Public Scope",
+      "url": "/en/notes/public-scope/",
+      "updated": "2026-07-18",
+      "locale": "en",
+      "declaredUpdated": "2026-05-13"
     },
     {
       "title": "Projects",
@@ -105,6 +262,12 @@
       "declaredUpdated": "2026-07-18"
     },
     {
+      "title": "Privacy Notice",
+      "url": "/en/privacy/",
+      "updated": "2026-07-18",
+      "locale": "en"
+    },
+    {
       "title": "Personal Digital Garden + Biying",
       "url": "/en/projects/personal-site-avatar/",
       "updated": "2026-07-18",
@@ -112,8 +275,47 @@
       "declaredUpdated": "2026-07-18"
     },
     {
+      "title": "Now",
+      "url": "/en/now/",
+      "updated": "2026-07-18",
+      "locale": "en",
+      "declaredUpdated": "2026-05-21"
+    },
+    {
       "title": "Notes",
       "url": "/en/notes/",
+      "updated": "2026-07-18",
+      "locale": "en"
+    },
+    {
+      "title": "Math Notes",
+      "url": "/en/notes/math/",
+      "updated": "2026-07-18",
+      "locale": "en",
+      "declaredUpdated": "2026-05-15"
+    },
+    {
+      "title": "Math Lab",
+      "url": "/en/notes/math-lab/",
+      "updated": "2026-07-18",
+      "locale": "en",
+      "declaredUpdated": "2026-05-13"
+    },
+    {
+      "title": "Home",
+      "url": "/en/",
+      "updated": "2026-07-18",
+      "locale": "en"
+    },
+    {
+      "title": "Guestbook",
+      "url": "/en/guestbook/",
+      "updated": "2026-07-18",
+      "locale": "en"
+    },
+    {
+      "title": "Friends",
+      "url": "/en/friends/",
       "updated": "2026-07-18",
       "locale": "en"
     },
@@ -139,6 +341,13 @@
       "declaredUpdated": "2026-07-18"
     },
     {
+      "title": "Essays",
+      "url": "/en/notes/essays/",
+      "updated": "2026-07-18",
+      "locale": "en",
+      "declaredUpdated": "2026-05-15"
+    },
+    {
       "title": "Discrete Mathematics English Overview",
       "url": "/en/notes/discrete-math-lecture/",
       "updated": "2026-07-18",
@@ -151,6 +360,45 @@
       "updated": "2026-07-18",
       "locale": "en",
       "declaredUpdated": "2026-07-18"
+    },
+    {
+      "title": "Biying",
+      "url": "/en/avatar/",
+      "updated": "2026-07-18",
+      "locale": "en"
+    },
+    {
+      "title": "Algorithms Notes",
+      "url": "/en/notes/algorithms/",
+      "updated": "2026-07-18",
+      "locale": "en",
+      "declaredUpdated": "2026-05-15"
+    },
+    {
+      "title": "Account",
+      "url": "/en/register/",
+      "updated": "2026-07-18",
+      "locale": "en"
+    },
+    {
+      "title": "About",
+      "url": "/en/about/",
+      "updated": "2026-07-18",
+      "locale": "en"
+    },
+    {
+      "title": "AI 笔记",
+      "url": "/zh/notes/ai/",
+      "updated": "2026-07-18",
+      "locale": "zh",
+      "declaredUpdated": "2026-05-15"
+    },
+    {
+      "title": "AI Notes",
+      "url": "/en/notes/ai/",
+      "updated": "2026-07-18",
+      "locale": "en",
+      "declaredUpdated": "2026-05-15"
     },
     {
       "title": "9. 图与拓扑排序",
@@ -277,254 +525,6 @@
       "updated": "2026-07-18",
       "locale": "zh",
       "declaredUpdated": "2026-07-18"
-    },
-    {
-      "title": "隐私说明",
-      "url": "/zh/privacy/",
-      "updated": "2026-07-17",
-      "locale": "zh"
-    },
-    {
-      "title": "碧影",
-      "url": "/zh/avatar/",
-      "updated": "2026-07-17",
-      "locale": "zh"
-    },
-    {
-      "title": "留言",
-      "url": "/zh/guestbook/",
-      "updated": "2026-07-17",
-      "locale": "zh"
-    },
-    {
-      "title": "现在",
-      "url": "/zh/now/",
-      "updated": "2026-07-17",
-      "locale": "zh",
-      "declaredUpdated": "2026-05-21"
-    },
-    {
-      "title": "注册/登录",
-      "url": "/zh/register/",
-      "updated": "2026-07-17",
-      "locale": "zh"
-    },
-    {
-      "title": "关于",
-      "url": "/zh/about/",
-      "updated": "2026-07-17",
-      "locale": "zh"
-    },
-    {
-      "title": "入口",
-      "url": "/zh/",
-      "updated": "2026-07-17",
-      "locale": "zh"
-    },
-    {
-      "title": "Privacy Notice",
-      "url": "/en/privacy/",
-      "updated": "2026-07-17",
-      "locale": "en"
-    },
-    {
-      "title": "Now",
-      "url": "/en/now/",
-      "updated": "2026-07-17",
-      "locale": "en",
-      "declaredUpdated": "2026-05-21"
-    },
-    {
-      "title": "Home",
-      "url": "/en/",
-      "updated": "2026-07-17",
-      "locale": "en"
-    },
-    {
-      "title": "Guestbook",
-      "url": "/en/guestbook/",
-      "updated": "2026-07-17",
-      "locale": "en"
-    },
-    {
-      "title": "Biying",
-      "url": "/en/avatar/",
-      "updated": "2026-07-17",
-      "locale": "en"
-    },
-    {
-      "title": "Account",
-      "url": "/en/register/",
-      "updated": "2026-07-17",
-      "locale": "en"
-    },
-    {
-      "title": "About",
-      "url": "/en/about/",
-      "updated": "2026-07-17",
-      "locale": "en"
-    },
-    {
-      "title": "站点统计",
-      "url": "/zh/stats/",
-      "updated": "2026-06-23",
-      "locale": "zh"
-    },
-    {
-      "title": "模块更新",
-      "url": "/zh/updates/",
-      "updated": "2026-06-23",
-      "locale": "zh"
-    },
-    {
-      "title": "友链",
-      "url": "/zh/friends/",
-      "updated": "2026-06-23",
-      "locale": "zh"
-    },
-    {
-      "title": "Updates",
-      "url": "/en/updates/",
-      "updated": "2026-06-21",
-      "locale": "en"
-    },
-    {
-      "title": "Site Stats",
-      "url": "/en/stats/",
-      "updated": "2026-06-20",
-      "locale": "en"
-    },
-    {
-      "title": "Friends",
-      "url": "/en/friends/",
-      "updated": "2026-06-20",
-      "locale": "en"
-    },
-    {
-      "title": "随笔",
-      "url": "/zh/notes/essays/",
-      "updated": "2026-05-15",
-      "locale": "zh",
-      "declaredUpdated": "2026-05-15"
-    },
-    {
-      "title": "系统笔记",
-      "url": "/zh/notes/systems/",
-      "updated": "2026-05-15",
-      "locale": "zh",
-      "declaredUpdated": "2026-05-15"
-    },
-    {
-      "title": "算法笔记",
-      "url": "/zh/notes/algorithms/",
-      "updated": "2026-05-15",
-      "locale": "zh",
-      "declaredUpdated": "2026-05-15"
-    },
-    {
-      "title": "站点笔记",
-      "url": "/zh/notes/site/",
-      "updated": "2026-05-15",
-      "locale": "zh",
-      "declaredUpdated": "2026-05-15"
-    },
-    {
-      "title": "标签",
-      "url": "/zh/notes/tags/",
-      "updated": "2026-05-15",
-      "locale": "zh",
-      "declaredUpdated": "2026-05-15"
-    },
-    {
-      "title": "数学笔记",
-      "url": "/zh/notes/math/",
-      "updated": "2026-05-15",
-      "locale": "zh",
-      "declaredUpdated": "2026-05-15"
-    },
-    {
-      "title": "数学实验",
-      "url": "/zh/notes/math-lab/",
-      "updated": "2026-05-15",
-      "locale": "zh",
-      "declaredUpdated": "2026-05-13"
-    },
-    {
-      "title": "公开边界",
-      "url": "/zh/notes/public-scope/",
-      "updated": "2026-05-15",
-      "locale": "zh",
-      "declaredUpdated": "2026-05-13"
-    },
-    {
-      "title": "Tags",
-      "url": "/en/notes/tags/",
-      "updated": "2026-05-15",
-      "locale": "en",
-      "declaredUpdated": "2026-05-15"
-    },
-    {
-      "title": "Systems Notes",
-      "url": "/en/notes/systems/",
-      "updated": "2026-05-15",
-      "locale": "en",
-      "declaredUpdated": "2026-05-15"
-    },
-    {
-      "title": "Site Notes",
-      "url": "/en/notes/site/",
-      "updated": "2026-05-15",
-      "locale": "en",
-      "declaredUpdated": "2026-05-15"
-    },
-    {
-      "title": "Public Scope",
-      "url": "/en/notes/public-scope/",
-      "updated": "2026-05-15",
-      "locale": "en",
-      "declaredUpdated": "2026-05-13"
-    },
-    {
-      "title": "Math Notes",
-      "url": "/en/notes/math/",
-      "updated": "2026-05-15",
-      "locale": "en",
-      "declaredUpdated": "2026-05-15"
-    },
-    {
-      "title": "Math Lab",
-      "url": "/en/notes/math-lab/",
-      "updated": "2026-05-15",
-      "locale": "en",
-      "declaredUpdated": "2026-05-13"
-    },
-    {
-      "title": "Essays",
-      "url": "/en/notes/essays/",
-      "updated": "2026-05-15",
-      "locale": "en",
-      "declaredUpdated": "2026-05-15"
-    },
-    {
-      "title": "Algorithms Notes",
-      "url": "/en/notes/algorithms/",
-      "updated": "2026-05-15",
-      "locale": "en",
-      "declaredUpdated": "2026-05-15"
-    },
-    {
-      "title": "AI 笔记",
-      "url": "/zh/notes/ai/",
-      "updated": "2026-05-15",
-      "locale": "zh",
-      "declaredUpdated": "2026-05-15"
-    },
-    {
-      "title": "AI Notes",
-      "url": "/en/notes/ai/",
-      "updated": "2026-05-15",
-      "locale": "en",
-      "declaredUpdated": "2026-05-15"
     }
   ]
 }

@@ -1,6 +1,7 @@
 ---
 title: 第 5 章 归纳与递归
 summary: 数学归纳法、强归纳、递归定义和递归算法。
+description: 数学归纳法、强归纳、递归定义和递归算法。
 public: true
 avatar_readable: true
 author: Lumner

@@ -1,6 +1,7 @@
 ---
 title: 第 2 章 基本结构：集合、函数、序列、基数和矩阵
 summary: 集合、函数、序列、基数和矩阵的基础语言。
+description: 集合、函数、序列、基数和矩阵的基础语言。
 public: true
 avatar_readable: true
 author: Lumner

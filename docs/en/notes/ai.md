@@ -1,6 +1,7 @@
 ---
 title: AI Notes
 summary: Entrance for future AI-related notes.
+description: Entrance for future AI-related notes.
 public: true
 avatar_readable: true
 category: site

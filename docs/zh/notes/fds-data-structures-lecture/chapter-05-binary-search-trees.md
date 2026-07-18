@@ -1,6 +1,7 @@
 ---
 title: 5. 二叉搜索树
 summary: 二叉搜索树定义、查找、最值、插入、删除、懒惰删除和平均/退化情况。
+description: 二叉搜索树定义、查找、最值、插入、删除、懒惰删除和平均/退化情况。
 public: true
 avatar_readable: true
 author: Lumner

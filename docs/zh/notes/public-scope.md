@@ -1,6 +1,7 @@
 ---
 title: 公开边界
 summary: 碧影只读取网站公开内容，不读取 GitHub 活动、草稿或私密资料。
+description: 碧影只读取网站公开内容，不读取 GitHub 活动、草稿或私密资料。
 public: true
 avatar_readable: true
 category: site

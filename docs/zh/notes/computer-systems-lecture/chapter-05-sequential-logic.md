@@ -1,6 +1,7 @@
 ---
 title: 5. 时序逻辑设计
 summary: 锁存器、触发器、时序参数、FSM、寄存器、总线、移位寄存器和计数器。
+description: 锁存器、触发器、时序参数、FSM、寄存器、总线、移位寄存器和计数器。
 public: true
 avatar_readable: true
 author: Lumner

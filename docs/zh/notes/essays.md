@@ -1,6 +1,7 @@
 ---
 title: 随笔
 summary: 更轻的记录与复盘入口。
+description: 更轻的记录与复盘入口。
 public: true
 avatar_readable: true
 category: site

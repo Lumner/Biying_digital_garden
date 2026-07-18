@@ -1,6 +1,7 @@
 ---
 title: Projects
 summary: Project entrance for public real cases, current status, and future project records.
+description: Project entrance for public real cases, current status, and future project records.
 public: true
 avatar_readable: true
 updated: 2026-07-18

@@ -1,6 +1,7 @@
 ---
 title: 3. 组合逻辑设计与 Verilog HDL
 summary: HDL 设计流、Verilog 基础、组合逻辑设计、常用功能块和时序分析。
+description: HDL 设计流、Verilog 基础、组合逻辑设计、常用功能块和时序分析。
 public: true
 avatar_readable: true
 author: Lumner

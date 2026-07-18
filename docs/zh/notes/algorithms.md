@@ -1,6 +1,7 @@
 ---
 title: 算法笔记
 summary: 算法与数据结构相关笔记入口。
+description: 算法与数据结构相关笔记入口。
 public: true
 avatar_readable: true
 category: site

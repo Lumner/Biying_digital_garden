@@ -1,6 +1,7 @@
 ---
 title: 第 6 章 计数
 summary: 加法/乘法原则、排列组合、二项式系数和广义排列组合。
+description: 加法/乘法原则、排列组合、二项式系数和广义排列组合。
 public: true
 avatar_readable: true
 author: Lumner

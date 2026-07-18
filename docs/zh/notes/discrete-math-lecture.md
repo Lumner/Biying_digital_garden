@@ -1,6 +1,7 @@
 ---
 title: 离散数学讲义
 summary: 离散数学中文讲义总览；正文已按章节拆分，并保留旧 URL 与旧锚点跳转入口。
+description: 离散数学中文讲义总览；正文已按章节拆分，并保留旧 URL 与旧锚点跳转入口。
 public: true
 avatar_readable: true
 author: Lumner

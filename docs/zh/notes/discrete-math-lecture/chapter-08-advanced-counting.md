@@ -1,6 +1,7 @@
 ---
 title: 第 8 章 高级计数技术
 summary: 递推关系、分治递推、生成函数、容斥和错排。
+description: 递推关系、分治递推、生成函数、容斥和错排。
 public: true
 avatar_readable: true
 author: Lumner

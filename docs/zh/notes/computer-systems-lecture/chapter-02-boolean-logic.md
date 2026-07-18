@@ -1,6 +1,7 @@
 ---
 title: 2. 布尔代数与数字逻辑基础
 summary: 逻辑变量、基本门、布尔代数、标准形式、Karnaugh Map 和多级优化。
+description: 逻辑变量、基本门、布尔代数、标准形式、Karnaugh Map 和多级优化。
 public: true
 avatar_readable: true
 author: Lumner

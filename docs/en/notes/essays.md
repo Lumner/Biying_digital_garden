@@ -1,6 +1,7 @@
 ---
 title: Essays
 summary: Entrance for lighter notes and reflections.
+description: Entrance for lighter notes and reflections.
 public: true
 avatar_readable: true
 category: site

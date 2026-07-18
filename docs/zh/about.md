@@ -1,6 +1,7 @@
 ---
 title: 关于
 summary: 浙江大学 2025 级人工智能专业本科生，关注 AI 协作式全栈构建、具身智能和长期记录。
+description: 浙江大学 2025 级人工智能专业本科生，关注 AI 协作式全栈构建、具身智能和长期记录。
 public: true
 avatar_readable: true
 tags:

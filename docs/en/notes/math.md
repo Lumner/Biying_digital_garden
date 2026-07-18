@@ -1,6 +1,7 @@
 ---
 title: Math Notes
 summary: Entrance for math-related notes.
+description: Entrance for math-related notes.
 public: true
 avatar_readable: true
 category: site

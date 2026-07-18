@@ -1,6 +1,7 @@
 ---
 title: Home
 summary: Lumner's English entrance for Biying Digital Garden, covering public notes, projects, current work, and Biying.
+description: Lumner's English entrance for Biying Digital Garden, covering public notes, projects, current work, and Biying.
 public: true
 avatar_readable: true
 tags:
