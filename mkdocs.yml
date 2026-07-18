@@ -15,11 +15,9 @@ theme:
     scheme: slate
     primary: black
     accent: cyan
-  font:
-    text: Noto Sans SC
-    code: JetBrains Mono
-  favicon: assets/images/favicon-pikachu.png
-  logo: assets/images/favicon-pikachu.png
+  font: false
+  favicon: assets/images/favicon.svg
+  logo: assets/images/favicon.svg
   features:
     - navigation.tabs
     - navigation.sections
@@ -103,7 +101,6 @@ not_in_nav: |
 plugins:
   - search:
       lang:
-        - zh
         - en
 
 markdown_extensions:
@@ -129,25 +126,15 @@ extra_css:
   - assets/styles/cyber.css?v=20260717-4
 
 extra_javascript:
-  - assets/javascripts/mathjax.js?v=20260521-1
-  - assets/vendor/mathjax/es5/tex-mml-chtml.js?v=20260520-1
   - assets/javascripts/language-switch.js?v=20260717-1
   - assets/javascripts/page-meta.js?v=20260717-1
-  - assets/javascripts/site-stats.js?v=20260717-1
   - assets/javascripts/layout-controls.js?v=20260717-2
-  - assets/javascripts/random-note-cover.js?v=20260521-1
   - assets/javascripts/reveal-on-scroll.js?v=20260717-1
-  - assets/javascripts/toast.js?v=20260521-1
-  - assets/javascripts/notes-hub.js?v=20260521-1
-  - assets/javascripts/friend-links-v20260620.js?v=20260620-1
-  - assets/javascripts/note-reader.js?v=20260521-2
   - assets/javascripts/dom-utils.js?v=20260520-1
   - assets/javascripts/i18n.js?v=20260520-1
   - assets/javascripts/api-client.js?v=20260520-1
   - assets/javascripts/auth.js?v=20260717-1
   - assets/javascripts/biying-chat.js?v=20260717-2
-  - assets/javascripts/guestbook.js?v=20260717-1
-  - assets/javascripts/admin-dashboard.js?v=20260717-1
 
 extra:
   generator: false

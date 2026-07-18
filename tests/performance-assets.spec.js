@@ -1,0 +1,120 @@
+import { expect, test } from "@playwright/test";
+
+import { startStaticSiteServer } from "./static-site-server.js";
+
+let site;
+
+test.beforeAll(async () => {
+  site = await startStaticSiteServer();
+});
+
+test.afterAll(async () => {
+  await site?.close();
+});
+
+async function scriptSources(page, route) {
+  await page.goto(`${site.url}${route}`, { waitUntil: "networkidle" });
+  return page.locator("script[src]").evaluateAll((scripts) =>
+    scripts.map((script) => script.getAttribute("src") || "")
+  );
+}
+
+test("pages do not request Google Fonts", async ({ page }) => {
+  const fontRequests = [];
+  page.on("request", (request) => {
+    const url = request.url();
+    if (url.includes("fonts.googleapis.com") || url.includes("fonts.gstatic.com")) {
+      fontRequests.push(url);
+    }
+  });
+
+  await page.goto(`${site.url}/zh/`, { waitUntil: "networkidle" });
+
+  expect(fontRequests).toEqual([]);
+  await expect(page.locator("head")).not.toContainText("fonts.googleapis.com");
+  await expect(page.locator("head")).not.toContainText("fonts.gstatic.com");
+});
+
+test("feature scripts load only on relevant pages", async ({ page }) => {
+  const home = await scriptSources(page, "/zh/");
+  expect(home.some((src) => src.includes("site-stats.js"))).toBe(true);
+  expect(home.some((src) => src.includes("random-note-cover.js"))).toBe(true);
+  expect(home.some((src) => src.includes("guestbook.js"))).toBe(false);
+  expect(home.some((src) => src.includes("admin-dashboard.js"))).toBe(false);
+  expect(home.some((src) => src.includes("notes-hub.js"))).toBe(false);
+  expect(home.some((src) => src.includes("friend-links-v20260620.js"))).toBe(false);
+
+  const notes = await scriptSources(page, "/zh/notes/");
+  expect(notes.some((src) => src.includes("tex-mml-chtml.chunk-01.js"))).toBe(true);
+  expect(notes.some((src) => src.includes("tex-mml-chtml-loader.js"))).toBe(true);
+  expect(notes.some((src) => src.includes("notes-hub.js"))).toBe(true);
+  expect(notes.some((src) => src.includes("note-reader.js"))).toBe(true);
+  expect(notes.some((src) => src.includes("guestbook.js"))).toBe(false);
+  expect(notes.some((src) => src.includes("admin-dashboard.js"))).toBe(false);
+
+  const guestbook = await scriptSources(page, "/zh/guestbook/");
+  expect(guestbook.some((src) => src.includes("toast.js"))).toBe(true);
+  expect(guestbook.some((src) => src.includes("guestbook.js"))).toBe(true);
+  expect(guestbook.some((src) => src.includes("admin-dashboard.js"))).toBe(false);
+
+  const admin = await scriptSources(page, "/zh/admin/");
+  expect(admin.some((src) => src.includes("toast.js"))).toBe(true);
+  expect(admin.some((src) => src.includes("admin-dashboard.js"))).toBe(true);
+  expect(admin.some((src) => src.includes("guestbook.js"))).toBe(false);
+
+  const friends = await scriptSources(page, "/zh/friends/");
+  expect(friends.some((src) => src.includes("friend-links-v20260620.js"))).toBe(true);
+  expect(friends.some((src) => src.includes("guestbook.js"))).toBe(false);
+  expect(friends.some((src) => src.includes("admin-dashboard.js"))).toBe(false);
+});
+
+test("hero artwork uses modern WebP assets without old PNG backgrounds", async ({ page }) => {
+  await page.emulateMedia({ colorScheme: "dark" });
+  await page.goto(`${site.url}/zh/`, { waitUntil: "networkidle" });
+
+  const darkBackground = await page.locator(".home-immersive-hero").evaluate((node) =>
+    getComputedStyle(node).backgroundImage
+  );
+  expect(darkBackground).toContain("home-hero-rain-1440.webp");
+  expect(darkBackground).not.toContain("home-hero-rain.png");
+
+  await page.evaluate(() => localStorage.setItem("biying-theme", "light"));
+  await page.reload({ waitUntil: "networkidle" });
+  const lightBackground = await page.locator(".home-immersive-hero").evaluate((node) =>
+    getComputedStyle(node).backgroundImage
+  );
+  expect(lightBackground).toContain("home-hero-light-1440.webp");
+  expect(lightBackground).not.toContain("home-hero-light-20260622-large.png");
+});
+
+test("math pages initialize the chunked MathJax bundle", async ({ page }) => {
+  const mathErrors = [];
+  page.on("console", (message) => {
+    if (message.type() === "error" && message.text().includes("MathJax")) {
+      mathErrors.push(message.text());
+    }
+  });
+
+  await page.goto(`${site.url}/zh/notes/fds-data-structures-lecture/`, { waitUntil: "networkidle" });
+
+  await expect(page.locator("html")).toHaveClass(/math-ready/);
+  await expect(page.locator("mjx-container").first()).toBeVisible();
+  expect(mathErrors).toEqual([]);
+});
+
+test("key pages do not emit missing static asset responses", async ({ page }) => {
+  const failures = [];
+  page.on("response", (response) => {
+    const url = new URL(response.url());
+    const staticAsset = /\.(?:css|js|json|png|jpe?g|svg|webp|woff)$/i.test(url.pathname);
+    if (url.origin === site.url && staticAsset && response.status() >= 400) {
+      failures.push(`${response.status()} ${url.pathname}`);
+    }
+  });
+
+  for (const route of ["/zh/", "/zh/notes/", "/zh/guestbook/", "/zh/admin/", "/zh/friends/"]) {
+    await page.goto(`${site.url}${route}`, { waitUntil: "networkidle" });
+  }
+
+  expect(failures).toEqual([]);
+});

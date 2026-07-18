@@ -55,6 +55,7 @@ export default defineConfig({
         /home-branding\.spec\.js$/,
         /no-js\.spec\.js$/,
         /page-meta\.spec\.js$/,
+        /performance-assets\.spec\.js$/,
         /responsive\.spec\.js$/,
         /seo\.spec\.js$/,
         /smoke\.spec\.js$/

@@ -402,7 +402,14 @@ html:not(.math-ready) .md-typeset .arithmatex {
   background:
     linear-gradient(90deg, rgba(2, 6, 8, 0.62), rgba(2, 7, 9, 0.22) 44%, rgba(2, 6, 8, 0.52)),
     linear-gradient(180deg, rgba(2, 7, 9, 0.34), rgba(2, 7, 9, 0.1) 43%, rgba(2, 7, 9, 0.8) 88%),
-    url("../images/home-hero-rain.png") center / cover no-repeat;
+    url("../images/home-hero-rain-960.jpg") center / cover no-repeat;
+  background:
+    linear-gradient(90deg, rgba(2, 6, 8, 0.62), rgba(2, 7, 9, 0.22) 44%, rgba(2, 6, 8, 0.52)),
+    linear-gradient(180deg, rgba(2, 7, 9, 0.34), rgba(2, 7, 9, 0.1) 43%, rgba(2, 7, 9, 0.8) 88%),
+    image-set(
+      url("../images/home-hero-rain-960.webp") type("image/webp"),
+      url("../images/home-hero-rain-960.jpg") type("image/jpeg")
+    ) center / cover no-repeat;
   box-shadow: none;
   margin-bottom: 0;
   margin-right: 0;
@@ -410,6 +417,22 @@ html:not(.math-ready) .md-typeset .arithmatex {
   padding: clamp(6.4rem, 14vh, 8.8rem) clamp(1.1rem, 5vw, 4.6rem) clamp(7.2rem, 17vh, 10rem);
   text-align: center;
   transform: none;
+}
+
+@media (min-width: 64em) {
+  .home-immersive-hero {
+    background:
+      linear-gradient(90deg, rgba(2, 6, 8, 0.62), rgba(2, 7, 9, 0.22) 44%, rgba(2, 6, 8, 0.52)),
+      linear-gradient(180deg, rgba(2, 7, 9, 0.34), rgba(2, 7, 9, 0.1) 43%, rgba(2, 7, 9, 0.8) 88%),
+      url("../images/home-hero-rain-1440.jpg") center / cover no-repeat;
+    background:
+      linear-gradient(90deg, rgba(2, 6, 8, 0.62), rgba(2, 7, 9, 0.22) 44%, rgba(2, 6, 8, 0.52)),
+      linear-gradient(180deg, rgba(2, 7, 9, 0.34), rgba(2, 7, 9, 0.1) 43%, rgba(2, 7, 9, 0.8) 88%),
+      image-set(
+        url("../images/home-hero-rain-1440.webp") type("image/webp"),
+        url("../images/home-hero-rain-1440.jpg") type("image/jpeg")
+      ) center / cover no-repeat;
+  }
 }
 
 .home-immersive-hero::before,
@@ -4002,9 +4025,35 @@ html[data-biying-theme="light"] .home-immersive-hero {
     radial-gradient(circle at 70% 44%, rgba(255, 255, 255, 0.2), transparent 18rem),
     linear-gradient(90deg, rgba(248, 254, 251, 0.52), rgba(248, 254, 251, 0.12) 42%, rgba(248, 254, 251, 0.08)),
     linear-gradient(180deg, rgba(248, 254, 251, 0.16), rgba(248, 254, 251, 0.04) 45%, rgba(244, 250, 247, 0.78) 89%),
-    url("../images/home-hero-light-20260622-large.png") center / cover no-repeat;
+    url("../images/home-hero-light-960.jpg") center / cover no-repeat;
+  background:
+    radial-gradient(circle at 70% 44%, rgba(255, 255, 255, 0.2), transparent 18rem),
+    linear-gradient(90deg, rgba(248, 254, 251, 0.52), rgba(248, 254, 251, 0.12) 42%, rgba(248, 254, 251, 0.08)),
+    linear-gradient(180deg, rgba(248, 254, 251, 0.16), rgba(248, 254, 251, 0.04) 45%, rgba(244, 250, 247, 0.78) 89%),
+    image-set(
+      url("../images/home-hero-light-960.webp") type("image/webp"),
+      url("../images/home-hero-light-960.jpg") type("image/jpeg")
+    ) center / cover no-repeat;
   border-color: transparent;
   box-shadow: none;
+}
+
+@media (min-width: 64em) {
+  html[data-biying-theme="light"] .home-immersive-hero {
+    background:
+      radial-gradient(circle at 70% 44%, rgba(255, 255, 255, 0.2), transparent 18rem),
+      linear-gradient(90deg, rgba(248, 254, 251, 0.52), rgba(248, 254, 251, 0.12) 42%, rgba(248, 254, 251, 0.08)),
+      linear-gradient(180deg, rgba(248, 254, 251, 0.16), rgba(248, 254, 251, 0.04) 45%, rgba(244, 250, 247, 0.78) 89%),
+      url("../images/home-hero-light-1440.jpg") center / cover no-repeat;
+    background:
+      radial-gradient(circle at 70% 44%, rgba(255, 255, 255, 0.2), transparent 18rem),
+      linear-gradient(90deg, rgba(248, 254, 251, 0.52), rgba(248, 254, 251, 0.12) 42%, rgba(248, 254, 251, 0.08)),
+      linear-gradient(180deg, rgba(248, 254, 251, 0.16), rgba(248, 254, 251, 0.04) 45%, rgba(244, 250, 247, 0.78) 89%),
+      image-set(
+        url("../images/home-hero-light-1440.webp") type("image/webp"),
+        url("../images/home-hero-light-1440.jpg") type("image/jpeg")
+      ) center / cover no-repeat;
+  }
 }
 
 html[data-biying-theme="light"] .home-immersive-hero .cyber-button,

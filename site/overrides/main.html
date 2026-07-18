@@ -42,3 +42,45 @@
 {{ super() }}
 {% endblock %}
 
+{% macro biying_script(src) -%}
+  <script src="{{ src | url }}"></script>
+{%- endmacro %}
+
+{% block scripts %}
+{{ super() }}
+{% set page_url = page.url if page and page.url else "" %}
+{% set is_home = page_url in ["zh/", "en/"] %}
+{% set is_notes = page_url.startswith("zh/notes/") or page_url.startswith("en/notes/") %}
+{% set is_stats = page_url in ["zh/stats/", "en/stats/"] %}
+{% set is_guestbook = page_url in ["zh/guestbook/", "en/guestbook/"] %}
+{% set is_admin = page_url in ["zh/admin/", "en/admin/"] %}
+{% set is_friends = page_url in ["zh/friends/", "en/friends/"] %}
+{% if is_home or is_stats %}
+{{ biying_script("assets/javascripts/site-stats.js?v=20260717-1") }}
+{% endif %}
+{% if is_home %}
+{{ biying_script("assets/javascripts/random-note-cover.js?v=20260521-1") }}
+{% endif %}
+{% if is_notes %}
+{{ biying_script("assets/javascripts/mathjax.js?v=20260521-1") }}
+{{ biying_script("assets/vendor/mathjax/es5/tex-mml-chtml.chunk-01.js?v=20260718-1") }}
+{{ biying_script("assets/vendor/mathjax/es5/tex-mml-chtml.chunk-02.js?v=20260718-1") }}
+{{ biying_script("assets/vendor/mathjax/es5/tex-mml-chtml.chunk-03.js?v=20260718-1") }}
+{{ biying_script("assets/vendor/mathjax/es5/tex-mml-chtml.chunk-04.js?v=20260718-1") }}
+{{ biying_script("assets/vendor/mathjax/es5/tex-mml-chtml-loader.js?v=20260718-1") }}
+{{ biying_script("assets/javascripts/notes-hub.js?v=20260521-1") }}
+{{ biying_script("assets/javascripts/note-reader.js?v=20260521-2") }}
+{% endif %}
+{% if is_friends %}
+{{ biying_script("assets/javascripts/friend-links-v20260620.js?v=20260620-1") }}
+{% endif %}
+{% if is_guestbook %}
+{{ biying_script("assets/javascripts/toast.js?v=20260521-1") }}
+{{ biying_script("assets/javascripts/guestbook.js?v=20260717-1") }}
+{% endif %}
+{% if is_admin %}
+{{ biying_script("assets/javascripts/toast.js?v=20260521-1") }}
+{{ biying_script("assets/javascripts/admin-dashboard.js?v=20260717-1") }}
+{% endif %}
+{% endblock %}
+
