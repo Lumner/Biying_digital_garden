@@ -18,7 +18,14 @@ jobs:
       - run: pip install -r requirements.txt
       - run: npm ci
       - run: npx playwright install --with-deps chromium firefox
-      - run: npm run verify:ci
+      - name: Verify release candidate
+        run: npm run verify:release
+      - name: Verify Firefox regression
+        run: npm run test:e2e:cross-browser
+      - name: Verify generated file sync
+        run: npm run check:site-sync
+      - name: Verify reproducible clean build
+        run: git diff --exit-code
       - name: Upload Playwright diagnostics
         if: failure()
         uses: actions/upload-artifact@v4
