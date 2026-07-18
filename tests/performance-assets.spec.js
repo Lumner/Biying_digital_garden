@@ -42,7 +42,7 @@ test("feature scripts load only on relevant pages", async ({ page }) => {
   expect(home.some((src) => src.includes("guestbook.js"))).toBe(false);
   expect(home.some((src) => src.includes("admin-dashboard.js"))).toBe(false);
   expect(home.some((src) => src.includes("notes-hub.js"))).toBe(false);
-  expect(home.some((src) => src.includes("friend-links-v20260620.js"))).toBe(false);
+  expect(home.some((src) => src.includes("friend-links.js"))).toBe(false);
 
   const notes = await scriptSources(page, "/zh/notes/");
   expect(notes.some((src) => src.includes("tex-mml-chtml.chunk-01.js"))).toBe(true);
@@ -63,7 +63,7 @@ test("feature scripts load only on relevant pages", async ({ page }) => {
   expect(admin.some((src) => src.includes("guestbook.js"))).toBe(false);
 
   const friends = await scriptSources(page, "/zh/friends/");
-  expect(friends.some((src) => src.includes("friend-links-v20260620.js"))).toBe(true);
+  expect(friends.some((src) => src.includes("friend-links.js"))).toBe(true);
   expect(friends.some((src) => src.includes("guestbook.js"))).toBe(false);
   expect(friends.some((src) => src.includes("admin-dashboard.js"))).toBe(false);
 });

@@ -74,7 +74,6 @@ def trim_shared_asset_blank_lines() -> None:
         "reveal-on-scroll.js",
         "toast.js",
         "friend-links.js",
-        "friend-links-v20260620.js",
     )
     for path in site.rglob("*.html"):
         with path.open("r", encoding="utf-8", newline="") as handle:

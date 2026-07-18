@@ -1,5 +1,8 @@
 # Website Optimization Execution Plan
 
+> Historical execution snapshot. Do not treat unchecked items or old file paths as
+> current work. Use `CODEX_SITE_DEVELOPMENT_PLAN.md` and the current repository state.
+
 Source: `C:\Users\17597\Desktop\website_optimal.md`
 
 This plan converts every unchecked item in the source checklist into concrete, testable work. Items that depend on live server state are handled with a local fallback or documented as deployment-dependent.

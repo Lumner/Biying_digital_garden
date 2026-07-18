@@ -29,12 +29,34 @@ test.afterAll(async () => {
 
 
 for (const route of routes) {
-  test(`${route} renders without an uncaught page exception`, async ({ page }) => {
+  test(`${route} renders without uncaught exceptions or console errors`, async ({ page }) => {
     const pageErrors = [];
+    const consoleErrors = [];
     page.on("pageerror", (error) => pageErrors.push(error.message));
-    const response = await page.goto(`${site.url}${route}`, { waitUntil: "domcontentloaded" });
+    page.on("console", (message) => {
+      if (message.type() === "error") consoleErrors.push(message.text());
+    });
+    const siteOrigin = new URL(site.url).origin;
+    await page.route(/^https?:\/\//, (externalRoute) => {
+      const requestOrigin = new URL(externalRoute.request().url()).origin;
+      if (requestOrigin === siteOrigin) return externalRoute.continue();
+      return externalRoute.fulfill({ status: 204, body: "" });
+    });
+    await page.route("**/api/**", (apiRoute) => apiRoute.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({
+        available: false,
+        messages: [],
+        users: [],
+        privateMessages: [],
+        guestbookMessages: []
+      })
+    }));
+    const response = await page.goto(`${site.url}${route}`, { waitUntil: "networkidle" });
     expect(response?.status()).toBe(200);
     await expect(page.locator("body")).toBeVisible();
     expect(pageErrors).toEqual([]);
+    expect(consoleErrors).toEqual([]);
   });
 }

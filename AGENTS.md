@@ -23,7 +23,8 @@
 
 主要文件：
 
-- `docs/assets/styles/cyber.css`
+- `docs/assets/styles/`
+- `mkdocs.yml` 中的 `extra_css` 固定顺序
 - `docs/zh/index.md`
 - `docs/en/index.md`
 
@@ -103,4 +104,3 @@ node --check edge-functions/api/chat.js
 node --check edge-functions/api/messages.js
 node --check edge-functions/api/admin-messages.js
 ```
-

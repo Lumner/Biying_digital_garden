@@ -1,5 +1,9 @@
 # Project Handoff
 
+> 历史交接快照：本文档不再作为当前待办或架构入口。请以
+> `CODEX_SITE_DEVELOPMENT_PLAN.md`、`ARCHITECTURE.md`、`AGENTS.md`
+> 和当前代码为准；文中的完成状态与文件路径可能已经过时。
+
 本文档用于交接当前的“碧影数字花园”项目。下一个 AI 或开发者接手时，建议先阅读：
 
 1. `PROJECT_HANDOFF.md`
@@ -37,7 +41,7 @@
 - 主题：MkDocs Material
 - 内容格式：Markdown
 - 数学公式：pymdownx.arithmatex + MathJax
-- 样式：自定义 CSS，主要在 `docs/assets/styles/cyber.css`
+- 样式：自定义 CSS，位于 `docs/assets/styles/`，加载顺序见 `mkdocs.yml`
 - 前端脚本：原生 JavaScript
 
 ### 后端与数据
@@ -243,7 +247,7 @@ git push
 
 ### 前端资源
 
-- `docs/assets/styles/cyber.css`：全站主要样式。
+- `docs/assets/styles/`：全站分层样式，顺序由 `mkdocs.yml` 固定。
 - `docs/assets/javascripts/language-switch.js`：语言切换与导航过滤。
 - `docs/assets/javascripts/random-note-cover.js`：首页随机笔记封面。
 - `docs/assets/javascripts/notes-hub.js`：笔记首页分类、标签、推荐、最近更新。
