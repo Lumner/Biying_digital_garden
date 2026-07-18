@@ -1,9 +1,12 @@
 (function () {
-  const storageKey = "biying-auth-session";
+  const legacyStorageKey = "biying-auth-session";
   const api = window.BiyingApi;
   const dom = window.BiyingDom;
   const i18n = window.BiyingI18n;
-  let cachedSession;
+  let cachedUser = null;
+  let legacyToken = "";
+  let migrationAttempted = false;
+  let refreshPromise = null;
 
   function isChinesePage() {
     return i18n.isChinesePage();
@@ -82,37 +85,29 @@
     return copy[key];
   }
 
-  function readSession() {
-    if (cachedSession) return cachedSession;
+  function takeLegacyToken() {
+    let session = null;
     try {
-      cachedSession = JSON.parse(localStorage.getItem(storageKey) || "null");
+      session = JSON.parse(localStorage.getItem(legacyStorageKey) || "null");
     } catch (error) {
-      cachedSession = null;
+      session = null;
+    } finally {
+      try {
+        localStorage.removeItem(legacyStorageKey);
+      } catch (error) {
+        // Storage can be unavailable; the in-memory migration path still works.
+      }
     }
-    return cachedSession;
+    return typeof session?.token === "string" ? session.token.slice(0, 256) : "";
   }
 
-  function saveSession(session) {
-    cachedSession = session || null;
-    if (cachedSession) {
-      localStorage.setItem(storageKey, JSON.stringify(cachedSession));
-    } else {
-      localStorage.removeItem(storageKey);
-    }
-    window.dispatchEvent(new CustomEvent("biying-auth-change", { detail: cachedSession }));
-  }
-
-  function getToken() {
-    return readSession()?.token || "";
-  }
-
-  function authHeaders() {
-    const token = getToken();
-    return token ? { authorization: `Bearer ${token}` } : {};
+  function saveUser(nextUser) {
+    cachedUser = nextUser || null;
+    window.dispatchEvent(new CustomEvent("biying-auth-change", { detail: cachedUser }));
   }
 
   function user() {
-    return readSession()?.user || null;
+    return cachedUser;
   }
 
   function friendlyError(error) {
@@ -134,37 +129,56 @@
       method: "POST",
       json: payload
     });
-    saveSession({ token: data.token, user: data.user });
+    saveUser(data.user);
     return data;
   }
 
-  async function refresh() {
-    const token = getToken();
-    if (!token) return null;
+  async function migrateLegacySession() {
+    if (migrationAttempted || !legacyToken) return;
+    migrationAttempted = true;
+    const token = legacyToken;
+    legacyToken = "";
     try {
-      const data = await api.request("/api/auth", {
-        headers: authHeaders(),
-        cache: "no-store"
+      await api.request("/api/auth", {
+        method: "POST",
+        headers: { authorization: `Bearer ${token}` },
+        json: { action: "migrate_session" }
       });
-      if (!data.user) {
-        saveSession(null);
-        return null;
-      }
-      saveSession({ token, user: data.user });
-      return data.user;
     } catch (error) {
-      saveSession(null);
-      return null;
+      // A failed migration becomes a signed-out state and is never retried.
     }
   }
 
-  async function logout() {
-    const token = getToken();
-    saveSession(null);
-    if (token) {
-      await api.request("/api/auth", { method: "DELETE", headers: { authorization: `Bearer ${token}` } }).catch(() => {});
+  async function refreshFromCookie() {
+    await migrateLegacySession();
+    try {
+      const data = await api.request("/api/auth", { cache: "no-store" });
+      if (data.user) {
+        saveUser(data.user);
+        return data.user;
+      }
+    } catch (error) {
+      // Missing, expired, or unavailable cookies all resolve to signed out.
     }
+    saveUser(null);
+    return null;
   }
+
+  function refresh() {
+    if (!refreshPromise) {
+      refreshPromise = refreshFromCookie().finally(() => {
+        refreshPromise = null;
+      });
+    }
+    return refreshPromise;
+  }
+
+  async function logout() {
+    saveUser(null);
+    await api.request("/api/auth", { method: "DELETE" }).catch(() => {});
+  }
+
+  legacyToken = takeLegacyToken();
 
   function renderStatus(root) {
     const current = user();
@@ -495,9 +509,7 @@
 
   window.BiyingAuth = {
     accountUrl,
-    authHeaders,
     friendlyError,
-    getToken,
     isChinesePage,
     logout,
     refresh,

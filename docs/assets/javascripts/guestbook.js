@@ -55,10 +55,6 @@
     return auth() ? auth().accountUrl() : dom.accountUrl();
   }
 
-  function authHeaders() {
-    return auth() ? auth().authHeaders() : {};
-  }
-
   function escapeHtml(value) {
     return dom.escapeHtml(value);
   }
@@ -88,8 +84,7 @@
 
   async function fetchMessages() {
     const data = await api.request("/api/messages", {
-      cache: "no-store",
-      headers: authHeaders()
+      cache: "no-store"
     });
     return Array.isArray(data.messages) ? data.messages : [];
   }
@@ -97,7 +92,6 @@
   async function postMessage(message) {
     return api.request("/api/messages", {
       method: "POST",
-      headers: authHeaders(),
       json: message
     });
   }
@@ -105,15 +99,13 @@
   async function editMessage(id, content) {
     return api.request(`/api/messages?id=${encodeURIComponent(id)}`, {
       method: "PUT",
-      headers: authHeaders(),
       json: { content }
     });
   }
 
   async function deleteMessage(id) {
     return api.request(`/api/messages?id=${encodeURIComponent(id)}`, {
-      method: "DELETE",
-      headers: authHeaders()
+      method: "DELETE"
     });
   }
 
