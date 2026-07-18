@@ -28,17 +28,31 @@
     return String(value || "").replace(/\/+$/, "") || "/";
   }
 
-  function formText(formData, name) {
-    return String(formData.get(name) || "").trim();
+  function setLiveStatus(element, message, state = "idle") {
+    if (!element) return;
+    element.textContent = message || "";
+    element.dataset.state = state;
+    const isError = state === "error";
+    element.setAttribute("role", isError ? "alert" : "status");
+    element.setAttribute("aria-live", isError ? "assertive" : "polite");
+  }
+
+  function setBusy(root, busy, selector = "button[type='submit']") {
+    if (!root) return;
+    root.setAttribute("aria-busy", String(busy));
+    root.querySelectorAll(selector).forEach((button) => {
+      button.disabled = busy;
+    });
   }
 
   window.BiyingDom = {
     accountUrl,
     escapeHtml,
     formatDate,
-    formText,
     isChinesePage,
     locale,
-    normalizePath
+    normalizePath,
+    setBusy,
+    setLiveStatus
   };
 })();

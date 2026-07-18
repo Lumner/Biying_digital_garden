@@ -93,15 +93,6 @@
     return `${text("loginRequired")} <a href="${escapeHtml(accountUrl())}">${escapeHtml(text("account"))}</a>`;
   }
 
-  function setChatStatus(element, message, state = "idle") {
-    if (!element) return;
-    element.textContent = message || "";
-    element.dataset.state = state;
-    const isError = state === "error";
-    element.setAttribute("role", isError ? "alert" : "status");
-    element.setAttribute("aria-live", isError ? "assertive" : "polite");
-  }
-
   function chatStorageKey() {
     const user = currentUser()?.username || "guest";
     return `${storageVersion}:${dom.locale()}:${user}`;
@@ -736,7 +727,6 @@
     const clear = root.querySelector(".biying-chat__clear");
     const authNote = root.querySelector("[data-biying-auth-note]");
     const status = root.querySelector("[data-biying-chat-status]");
-    const submit = form.querySelector("button[type='submit']");
     hydrateChatState();
 
     function updateAuthNote() {
@@ -769,12 +759,12 @@
       clearPersistedChat();
       log.innerHTML = "";
       addMessage(log, "biying", text("initial"));
-      setChatStatus(status, text("cleared"), "success");
+      dom.setLiveStatus(status, text("cleared"), "success");
     });
 
     input.addEventListener("input", () => {
       input.removeAttribute("aria-invalid");
-      if (status.dataset.state === "error") setChatStatus(status, "", "idle");
+      if (status.dataset.state === "error") dom.setLiveStatus(status, "", "idle");
     });
 
     input.addEventListener("keydown", (event) => {
@@ -788,14 +778,14 @@
       if (state.busy) return;
       if (!currentUser()) {
         upsertMessage(log, "auth-required", "biying", accountPrompt(), { html: true, remember: false });
-        setChatStatus(status, text("loginRequired"), "error");
+        dom.setLiveStatus(status, text("loginRequired"), "error");
         return;
       }
       const query = input.value.trim();
       if (!query) {
         addMessage(log, "biying", text("empty"));
         input.setAttribute("aria-invalid", "true");
-        setChatStatus(status, text("empty"), "error");
+        dom.setLiveStatus(status, text("empty"), "error");
         input.focus();
         return;
       }
@@ -805,9 +795,8 @@
       const pending = addMessage(log, "biying", '<span class="typing-dots" aria-hidden="true"><i></i><i></i><i></i></span>', { remember: false, html: true });
       pending.classList.add("is-typing");
       state.busy = true;
-      form.setAttribute("aria-busy", "true");
-      submit.disabled = true;
-      setChatStatus(status, text("thinking"), "loading");
+      dom.setBusy(form, true);
+      dom.setLiveStatus(status, text("thinking"), "loading");
       try {
         let response;
         let live;
@@ -852,7 +841,7 @@
           state.history.push({ role: "assistant", content: response.answer });
         }
         persistChatState();
-        setChatStatus(
+        dom.setLiveStatus(
           status,
           response.html ? plainText(response.answer).trim() : String(response.answer || "").trim(),
           "success"
@@ -860,11 +849,10 @@
       } catch (error) {
         pending.classList.remove("is-typing");
         pending.textContent = text("error");
-        setChatStatus(status, text("error"), "error");
+        dom.setLiveStatus(status, text("error"), "error");
       } finally {
         state.busy = false;
-        form.setAttribute("aria-busy", "false");
-        submit.disabled = false;
+        dom.setBusy(form, false);
       }
     });
   }

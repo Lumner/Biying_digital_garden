@@ -197,7 +197,7 @@
 {% set is_admin = page_url in ["zh/admin/", "en/admin/"] %}
 {% set is_friends = page_url in ["zh/friends/", "en/friends/"] %}
 {% if is_home or is_stats %}
-{{ biying_script("assets/javascripts/site-stats.js?v=20260717-1") }}
+{{ biying_script("assets/javascripts/site-stats.js?v=20260718-1") }}
 {% endif %}
 {% if is_home %}
 {{ biying_script("assets/javascripts/random-note-cover.js?v=20260521-1") }}
@@ -217,11 +217,11 @@
 {% endif %}
 {% if is_guestbook %}
 {{ biying_script("assets/javascripts/toast.js?v=20260521-1") }}
-{{ biying_script("assets/javascripts/guestbook.js?v=20260717-1") }}
+{{ biying_script("assets/javascripts/guestbook.js?v=20260718-1") }}
 {% endif %}
 {% if is_admin %}
 {{ biying_script("assets/javascripts/toast.js?v=20260521-1") }}
-{{ biying_script("assets/javascripts/admin-dashboard.js?v=20260717-1") }}
+{{ biying_script("assets/javascripts/admin-dashboard.js?v=20260718-1") }}
 {% endif %}
 {% endblock %}
 

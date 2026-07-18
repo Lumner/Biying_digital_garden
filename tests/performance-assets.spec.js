@@ -118,3 +118,70 @@ test("key pages do not emit missing static asset responses", async ({ page }) =>
 
   expect(failures).toEqual([]);
 });
+
+test("shared frontend utilities preserve live status and busy-state behavior", async ({ page }) => {
+  await page.goto(`${site.url}/zh/register/`, { waitUntil: "networkidle" });
+
+  const state = await page.evaluate(() => {
+    const status = document.createElement("p");
+    const form = document.createElement("form");
+    const button = document.createElement("button");
+    button.type = "submit";
+    form.appendChild(button);
+
+    window.BiyingDom.setLiveStatus(status, "请求失败", "error");
+    window.BiyingDom.setBusy(form, true);
+    const busy = {
+      text: status.textContent,
+      state: status.dataset.state,
+      role: status.getAttribute("role"),
+      live: status.getAttribute("aria-live"),
+      ariaBusy: form.getAttribute("aria-busy"),
+      disabled: button.disabled
+    };
+    window.BiyingDom.setBusy(form, false);
+    return {
+      ...busy,
+      restoredBusy: form.getAttribute("aria-busy"),
+      restoredDisabled: button.disabled
+    };
+  });
+
+  expect(state).toEqual({
+    text: "请求失败",
+    state: "error",
+    role: "alert",
+    live: "assertive",
+    ariaBusy: "true",
+    disabled: true,
+    restoredBusy: "false",
+    restoredDisabled: false
+  });
+});
+
+test("site statistics use the shared JSON API client", async ({ page }) => {
+  const requests = [];
+  await page.route("**/api/stats", async (route) => {
+    requests.push({
+      method: route.request().method(),
+      contentType: route.request().headers()["content-type"] || "",
+      body: route.request().postDataJSON()
+    });
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({ totalVisitors: 12, pageViews: 34 })
+    });
+  });
+
+  await page.goto(`${site.url}/zh/`, { waitUntil: "networkidle" });
+
+  await expect(page.locator("[data-site-stat='totalVisitors']")).toHaveText("12");
+  await expect(page.locator("[data-site-stat='pageViews']")).toHaveText("34");
+  await expect(page.locator("[data-site-stat-status]")).toHaveText("来访脚印已更新");
+  expect(requests).toHaveLength(1);
+  expect(requests[0].method).toBe("POST");
+  expect(requests[0].contentType).toContain("application/json");
+  expect(requests[0].body).toMatchObject({ locale: "zh" });
+  expect(requests[0].body.visitorId).toBeTruthy();
+});
