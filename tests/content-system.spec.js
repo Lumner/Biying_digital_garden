@@ -109,15 +109,15 @@ test("english course pages are labeled as overviews and link back to Chinese ful
 test("english notes index presents course entries as overviews", async ({ page }) => {
   const response = await page.goto(`${site.url}/en/notes/`, { waitUntil: "networkidle" });
   expect(response?.status()).toBe(200);
-  const main = page.locator("main");
+  const article = page.locator("article.md-content__inner");
 
-  await expect(main).toContainText("The English course pages are overview entrances");
-  await expect(main).toContainText("Discrete Mathematics English Overview");
-  await expect(main).toContainText("Computer Systems English Overview");
-  await expect(main).toContainText("FDS Data Structures English Overview");
-  await expect(main).not.toContainText("Discrete Mathematics Lecture Notes");
-  await expect(main).not.toContainText("Computer Systems Fundamentals Lecture Notes");
-  await expect(main).not.toContainText("FDS Data Structures Fundamentals Lecture Notes");
+  await expect(article).toContainText("The English course pages are overview entrances");
+  await expect(article).toContainText("Discrete Mathematics English Overview");
+  await expect(article).toContainText("Computer Systems English Overview");
+  await expect(article).toContainText("FDS Data Structures English Overview");
+  await expect(article).not.toContainText("Discrete Mathematics Lecture Notes");
+  await expect(article).not.toContainText("Computer Systems Fundamentals Lecture Notes");
+  await expect(article).not.toContainText("FDS Data Structures Fundamentals Lecture Notes");
 });
 
 test("discrete math Chinese note keeps old URL while chapters move to stable subpaths", async ({ page }) => {

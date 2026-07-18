@@ -19,7 +19,7 @@ async function scriptSources(page, route) {
   );
 }
 
-test("pages do not request Google Fonts", async ({ page }) => {
+test("original Noto Sans SC and JetBrains Mono typography is restored", async ({ page }) => {
   const fontRequests = [];
   page.on("request", (request) => {
     const url = request.url();
@@ -30,9 +30,12 @@ test("pages do not request Google Fonts", async ({ page }) => {
 
   await page.goto(`${site.url}/zh/`, { waitUntil: "networkidle" });
 
-  expect(fontRequests).toEqual([]);
-  await expect(page.locator("head")).not.toContainText("fonts.googleapis.com");
-  await expect(page.locator("head")).not.toContainText("fonts.gstatic.com");
+  expect(fontRequests.some((url) =>
+    url.includes("fonts.googleapis.com") &&
+    url.includes("Noto+Sans+SC") &&
+    url.includes("JetBrains+Mono")
+  )).toBe(true);
+  await expect(page.locator('link[href*="fonts.googleapis.com"]')).toHaveCount(1);
 });
 
 test("feature scripts load only on relevant pages", async ({ page }) => {
@@ -68,7 +71,7 @@ test("feature scripts load only on relevant pages", async ({ page }) => {
   expect(friends.some((src) => src.includes("admin-dashboard.js"))).toBe(false);
 });
 
-test("hero artwork uses modern WebP assets without old PNG backgrounds", async ({ page }) => {
+test("hero artwork uses the original rain and light illustrations", async ({ page }) => {
   await page.emulateMedia({ colorScheme: "dark" });
   await page.goto(`${site.url}/zh/`, { waitUntil: "networkidle" });
 
@@ -76,7 +79,6 @@ test("hero artwork uses modern WebP assets without old PNG backgrounds", async (
     getComputedStyle(node).backgroundImage
   );
   expect(darkBackground).toContain("home-hero-rain-1440.webp");
-  expect(darkBackground).not.toContain("home-hero-rain.png");
 
   await page.evaluate(() => localStorage.setItem("biying-theme", "light"));
   await page.reload({ waitUntil: "networkidle" });
@@ -84,7 +86,6 @@ test("hero artwork uses modern WebP assets without old PNG backgrounds", async (
     getComputedStyle(node).backgroundImage
   );
   expect(lightBackground).toContain("home-hero-light-1440.webp");
-  expect(lightBackground).not.toContain("home-hero-light-20260622-large.png");
 });
 
 test("math pages initialize the chunked MathJax bundle", async ({ page }) => {

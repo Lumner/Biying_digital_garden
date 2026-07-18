@@ -9,7 +9,6 @@ SITE_DIR = ROOT / "site"
 EDGE_FUNCTIONS_DIR = ROOT / "edge-functions"
 SITE_EDGE_FUNCTIONS_DIR = SITE_DIR / "edge-functions"
 LEGACY_PUBLISHED_ASSETS = (
-    "assets/images/favicon-pikachu.png",
     "assets/images/home-hero-light.png",
     "assets/images/home-hero-light-20260622.png",
     "assets/images/home-hero-light-20260622-large.png",

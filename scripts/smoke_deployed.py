@@ -42,7 +42,7 @@ class StaticCheck:
 
 STATIC_CHECKS = (
     StaticCheck(
-        "/assets/styles/tokens.css",
+        "/assets/styles/cyber.css",
         "text/css",
         b":root",
     ),
@@ -52,15 +52,15 @@ STATIC_CHECKS = (
         b"window.BiyingDom",
     ),
     StaticCheck(
-        "/assets/images/home-hero-rain-960.webp",
+        "/assets/images/home-hero-rain-1440.webp",
         "image/webp",
         b"RIFF",
         minimum_bytes=1_000,
     ),
     StaticCheck(
-        "/assets/images/favicon.svg",
-        "image/svg+xml",
-        b"<svg",
+        "/assets/images/favicon-pikachu.png",
+        "image/png",
+        b"\x89PNG",
     ),
 )
 
@@ -128,9 +128,12 @@ def check_page(base_url: str, path: str, timeout: float) -> None:
         require(b"language-gateway" in response.body, "root language gateway is missing")
     elif path == "/zh/":
         require(b'data-biying-lang="zh"' in response.body, "Chinese locale marker is missing")
-        require(b"assets/styles/tokens.css?v=20260718-1" in response.body, "phase 8 CSS is missing")
+        require(
+            b"assets/styles/cyber.css?v=20260718-original-ui-1" in response.body,
+            "original UI stylesheet is missing",
+        )
         require(b"assets/javascripts/dom-utils.js?v=20260718-1" in response.body, "phase 8 JS is missing")
-        require(b"assets/styles/cyber.css" not in response.body, "legacy cyber.css is still published")
+        require(b"assets/styles/tokens.css" not in response.body, "split UI styles are still published")
     elif path == "/en/":
         require(b'data-biying-lang="en"' in response.body, "English locale marker is missing")
 

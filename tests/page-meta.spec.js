@@ -31,18 +31,3 @@ test("Updates page renders recent page metadata automatically", async ({ page })
   const hrefs = await links.evaluateAll((nodes) => nodes.map((node) => node.getAttribute("href") || ""));
   expect(hrefs.every((href) => href.startsWith("/zh/"))).toBe(true);
 });
-
-test("Now pages show a gentle stale notice from updated metadata", async ({ page }) => {
-  const locales = [
-    { route: "/zh/now/", text: "这张近况切片已经有一阵子没更新" },
-    { route: "/en/now/", text: "This Now snapshot may be getting old" }
-  ];
-
-  for (const locale of locales) {
-    await page.goto(`${site.url}${locale.route}`, { waitUntil: "networkidle" });
-    const notice = page.locator("[data-now-stale-notice]");
-    await expect(notice).toBeVisible();
-    await expect(notice).toContainText(locale.text);
-    await expect(notice.locator("time")).toHaveAttribute("datetime", "2026-05-21");
-  }
-});

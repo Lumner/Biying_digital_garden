@@ -41,18 +41,18 @@ class SmokeHandler(BaseHTTPRequestHandler):
             return self.respond_json(401, {"user": None})
 
         static = {
-            "/assets/styles/tokens.css": ("text/css", b":root { --test: 1; }"),
+            "/assets/styles/cyber.css": ("text/css", b":root { --test: 1; }"),
             "/assets/javascripts/dom-utils.js": (
                 "text/javascript",
                 b"window.BiyingDom = {};",
             ),
-            "/assets/images/home-hero-rain-960.webp": (
+            "/assets/images/home-hero-rain-1440.webp": (
                 "image/webp",
                 b"RIFF" + b"x" * 1_100,
             ),
-            "/assets/images/favicon.svg": (
-                "image/svg+xml",
-                b'<svg xmlns="http://www.w3.org/2000/svg"></svg>',
+            "/assets/images/favicon-pikachu.png": (
+                "image/png",
+                b"\x89PNG" + b"x" * 100,
             ),
         }
         if path in static:
@@ -69,7 +69,7 @@ class SmokeHandler(BaseHTTPRequestHandler):
             body = (
                 f'<html data-biying-lang="{locale}">'
                 f"{canonical}"
-                '<link href="assets/styles/tokens.css?v=20260718-1">'
+                '<link href="assets/styles/cyber.css?v=20260718-original-ui-1">'
                 '<script src="assets/javascripts/dom-utils.js?v=20260718-1"></script>'
                 "</html>"
             ).encode()

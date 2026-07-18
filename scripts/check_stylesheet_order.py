@@ -13,19 +13,7 @@ DOCS = ROOT / "docs"
 SITE = ROOT / "site"
 CONFIG = ROOT / "mkdocs.yml"
 EXPECTED_STYLES = [
-    "assets/styles/tokens.css?v=20260718-1",
-    "assets/styles/themes/dark.css?v=20260718-1",
-    "assets/styles/base.css?v=20260718-1",
-    "assets/styles/pages/home.css?v=20260718-1",
-    "assets/styles/components.css?v=20260718-1",
-    "assets/styles/pages/notes.css?v=20260718-1",
-    "assets/styles/pages/projects.css?v=20260718-1",
-    "assets/styles/layout.css?v=20260718-1",
-    "assets/styles/pages/chat.css?v=20260718-1",
-    "assets/styles/pages/account.css?v=20260718-1",
-    "assets/styles/motion.css?v=20260718-1",
-    "assets/styles/themes/light.css?v=20260718-1",
-    "assets/styles/responsive.css?v=20260718-1",
+    "assets/styles/cyber.css?v=20260718-original-ui-1",
 ]
 CSS_URL_RE = re.compile(r"url\(\s*([\"']?)([^\"')]+)\1\s*\)")
 
@@ -63,7 +51,7 @@ def main() -> None:
     config = yaml.safe_load(CONFIG.read_text(encoding="utf-8")) or {}
     configured = config.get("extra_css") or []
     if configured != EXPECTED_STYLES:
-        errors.append("mkdocs.yml extra_css does not match the reviewed fixed order")
+        errors.append("mkdocs.yml extra_css does not match the reviewed original UI baseline")
 
     expected_paths = [asset_path(value) for value in EXPECTED_STYLES]
     for relative_path in expected_paths:
@@ -84,10 +72,6 @@ def main() -> None:
                     f"{relative_path} references a missing relative asset: {value}"
                 )
 
-    legacy = DOCS / "assets" / "styles" / "cyber.css"
-    if legacy.exists():
-        errors.append("legacy monolithic stylesheet still exists: assets/styles/cyber.css")
-
     checked_pages = 0
     for path in sorted(SITE.rglob("*.html")):
         parser = StylesheetParser()
@@ -106,7 +90,7 @@ def main() -> None:
 
     fail(errors)
     print(
-        f"Stylesheet order validation passed for {len(expected_paths)} files "
+        f"Original UI stylesheet validation passed for {len(expected_paths)} file "
         f"across {checked_pages} generated pages."
     )
 

@@ -7,23 +7,29 @@ let site;
 const locales = [
   {
     code: "zh",
-    title: "Lumner 的碧影数字花园",
-    primary: "查看项目",
-    secondary: "和碧影对话",
-    nav: ["首页", "笔记", "项目", "关于", "碧影", "更多"],
-    auxiliary: ["现在", "留言", "友链", "注册/登录", "隐私", "模块更新"],
-    repeatedHeadings: ["从这里继续向下走", "可以从哪里逛起", "从哪里开始"],
-    emptyCategories: ["AI", "随笔"]
+    title: "碧影数字花园",
+    phrases: [
+      "向下扎根，也向光生长。",
+      "把每一次认真，慢慢写成答案。",
+      "愿好奇心不熄，愿行动有回声。",
+      "在热爱里长期主义，在日常里保持明亮。"
+    ],
+    actions: ["和碧影对话", "查看项目", "进入笔记"],
+    routes: ["此刻", "笔记", "碧影"],
+    nav: ["首页", "现在", "关于", "笔记", "项目", "碧影", "留言", "友链", "注册/登录", "模块更新"]
   },
   {
     code: "en",
-    title: "Lumner's Biying Digital Garden",
-    primary: "View Projects",
-    secondary: "Talk to Biying",
-    nav: ["Home", "Notes", "Projects", "About", "Biying", "More"],
-    auxiliary: ["Now", "Guestbook", "Friends", "Account", "Privacy", "Updates"],
-    repeatedHeadings: ["Keep walking from here", "Public Signals", "Ways In"],
-    emptyCategories: ["AI", "Essays"]
+    title: "Biying Digital Garden",
+    phrases: [
+      "Root the work, keep moving toward light.",
+      "Let small honest steps become a visible path.",
+      "Stay curious. Build gently. Keep going.",
+      "Make ordinary days bright enough to remember."
+    ],
+    actions: ["Talk to Biying", "View Projects", "Read Notes"],
+    routes: ["Now", "Notes", "Biying"],
+    nav: ["Home", "Now", "About", "Notes", "Projects", "Biying", "Guestbook", "Friends", "Account", "Updates"]
   }
 ];
 
@@ -36,36 +42,32 @@ test.afterAll(async () => {
 });
 
 for (const locale of locales) {
-  test(`${locale.code} homepage clarifies identity and keeps a single hero CTA pair`, async ({ page }) => {
+  test(`${locale.code} homepage preserves the original immersive hero contract`, async ({ page }) => {
     await page.goto(`${site.url}/${locale.code}/`, { waitUntil: "networkidle" });
 
     const hero = page.locator(".home-immersive-hero");
     await expect(hero.locator(".home-title")).toHaveText(locale.title);
+    await expect(hero.locator("[data-home-phrase]")).toHaveText(locale.phrases);
+    await expect(hero.locator(".cyber-actions .cyber-button")).toHaveText(locale.actions);
     await expect(hero.locator(".cyber-actions .cyber-button:not(.secondary)")).toHaveCount(1);
-    await expect(hero.locator(".cyber-actions .cyber-button.secondary")).toHaveCount(1);
-    await expect(hero.locator(".cyber-actions .cyber-button:not(.secondary)")).toHaveText(locale.primary);
-    await expect(hero.locator(".cyber-actions .cyber-button.secondary")).toHaveText(locale.secondary);
+    await expect(hero.locator(".cyber-actions .cyber-button.secondary")).toHaveCount(2);
+    await expect(hero.locator(".home-flow-ribbon")).toHaveCount(2);
+    await expect(hero.locator(".home-hero-grid")).toHaveCount(1);
+    await expect(hero.locator(".home-hero-scan")).toHaveCount(1);
   });
 
-  test(`${locale.code} homepage removes repeated route lists and avoids empty category cards`, async ({ page }) => {
+  test(`${locale.code} homepage preserves the original layered content routes`, async ({ page }) => {
     await page.goto(`${site.url}/${locale.code}/`, { waitUntil: "networkidle" });
 
-    await expect(page.locator(".home-below-fold__routes")).toHaveCount(0);
-    await expect(page.locator(".home-section--evidence .cyber-card")).toHaveCount(3);
-
-    const mainText = await page.locator("main").textContent();
-    for (const heading of locale.repeatedHeadings) {
-      expect(mainText).not.toContain(heading);
-    }
-    expect(mainText).not.toMatch(/待补充|占位|TBD|placeholder|lorem/i);
-
-    const evidenceTitles = await page.locator(".home-section--evidence .cyber-card h3").allTextContents();
-    for (const category of locale.emptyCategories) {
-      expect(evidenceTitles.map((title) => title.trim())).not.toContain(category);
-    }
+    await expect(page.locator(".home-below-fold__routes a")).toHaveCount(3);
+    await expect(page.locator(".home-below-fold__routes a > span")).toHaveText(locale.routes);
+    await expect(page.locator(".home-pulse__item")).toHaveCount(3);
+    await expect(page.locator(".module-update-preview a")).toHaveCount(3);
+    await expect(page.locator(".home-section--signals .cyber-card")).toHaveCount(5);
+    await expect(page.locator(".home-section--paths .signal-item")).toHaveCount(3);
   });
 
-  test(`${locale.code} top navigation exposes core destinations and moves utilities into more`, async ({ page }) => {
+  test(`${locale.code} top navigation preserves the original direct destinations`, async ({ page }) => {
     await page.goto(`${site.url}/${locale.code}/`, { waitUntil: "networkidle" });
 
     const visibleTabs = (await page.locator(".md-tabs__item:visible").allTextContents())
@@ -75,13 +77,11 @@ for (const locale of locales) {
     for (const item of locale.nav) {
       expect(visibleTabs).toContain(item);
     }
-    for (const item of locale.auxiliary) {
-      expect(visibleTabs).not.toContain(item);
-    }
+    expect(visibleTabs).not.toContain(locale.code === "zh" ? "更多" : "More");
   });
 }
 
-test("English public identity uses 2025 cohort wording", async ({ page }) => {
+test("English public identity keeps the verified 2025 cohort wording", async ({ page }) => {
   await page.goto(`${site.url}/en/about/`, { waitUntil: "networkidle" });
 
   const mainText = await page.locator("main").textContent();

@@ -1,156 +1,95 @@
 (function () {
-  const storageKey = "biying-sidebar-preferences-v1";
-  const desktop = window.matchMedia("(min-width: 960px)");
-  const controls = new Map();
-  let preferences = readPreferences();
+  function mountPrimaryEdgePeek() {
+    let timer = 0;
 
-  const definitions = [
-    {
-      bodyClass: "sidebar-primary-open",
-      id: "biying-sidebar-primary",
-      kind: "primary",
-      selector: ".md-sidebar--primary"
-    },
-    {
-      bodyClass: "sidebar-secondary-open",
-      id: "biying-sidebar-secondary",
-      kind: "secondary",
-      selector: ".md-sidebar--secondary"
-    }
-  ];
-
-  function currentLang() {
-    return window.location.pathname.includes("/en/") ? "en" : "zh";
-  }
-
-  function copy(kind, expanded) {
-    const english = currentLang() === "en";
-    if (kind === "primary") {
-      return {
-        label: english ? "Navigation" : "导航",
-        name: expanded
-          ? (english ? "Close site navigation" : "收起主导航")
-          : (english ? "Open site navigation" : "展开主导航")
-      };
-    }
-    return {
-      label: english ? "On this page" : "目录",
-      name: expanded
-        ? (english ? "Close table of contents" : "收起本页目录")
-        : (english ? "Open table of contents" : "展开本页目录")
-    };
-  }
-
-  function readPreferences() {
-    try {
-      const stored = JSON.parse(localStorage.getItem(storageKey) || "{}");
-      return {
-        primary: stored.primary === true,
-        secondary: stored.secondary === true
-      };
-    } catch (error) {
-      return { primary: false, secondary: false };
-    }
-  }
-
-  function savePreferences() {
-    try {
-      localStorage.setItem(storageKey, JSON.stringify(preferences));
-    } catch (error) {
-      // Device storage may be unavailable. The current page state still works.
-    }
-  }
-
-  function setExpanded(control, expanded, persist = true) {
-    const next = Boolean(expanded);
-    const text = copy(control.kind, next);
-    control.expanded = next;
-    control.button.setAttribute("aria-expanded", String(next));
-    control.button.setAttribute("aria-label", text.name);
-    control.button.setAttribute("title", text.name);
-    control.button.querySelector("[data-sidebar-handle-label]").textContent = text.label;
-    control.button.querySelector("[data-sidebar-handle-icon]").textContent =
-      control.kind === "primary"
-        ? (next ? "‹" : "›")
-        : (next ? "›" : "‹");
-    document.body.classList.toggle(control.bodyClass, next);
-
-    if (desktop.matches) {
-      control.sidebar.toggleAttribute("inert", !next);
-    } else {
-      control.sidebar.removeAttribute("inert");
+    function enabled() {
+      return !window.matchMedia("(max-width: 959px)").matches;
     }
 
-    preferences = { ...preferences, [control.kind]: next };
-    if (persist) savePreferences();
+    function sidebar() {
+      return document.querySelector(".md-sidebar--primary");
+    }
+
+    function openPrimary(target) {
+      if (!target) return;
+      document.body.classList.add("sidebar-primary-peek");
+      window.clearTimeout(timer);
+    }
+
+    function closePrimary(target) {
+      if (!target) return;
+      document.body.classList.remove("sidebar-primary-peek");
+    }
+
+    function closePrimarySoon(target) {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => {
+        if (target.matches(":hover") || target.contains(document.activeElement)) return;
+        closePrimary(target);
+      }, 140);
+    }
+
+    function pointerInsideOpenSidebar(event, target) {
+      if (!document.body.classList.contains("sidebar-primary-peek")) return false;
+      const rect = target.getBoundingClientRect();
+      return (
+        event.clientX >= Math.max(0, rect.left - 8) &&
+        event.clientX <= rect.right + 18 &&
+        event.clientY >= rect.top &&
+        event.clientY <= rect.bottom
+      );
+    }
+
+    document.addEventListener("pointermove", (event) => {
+      if (!enabled()) return;
+      const target = sidebar();
+      if (!target) return;
+      if (event.clientX <= 34 || pointerInsideOpenSidebar(event, target)) {
+        openPrimary(target);
+      } else {
+        closePrimarySoon(target);
+      }
+    }, { passive: true });
+
+    document.addEventListener("pointerdown", (event) => {
+      if (!enabled()) return;
+      const target = sidebar();
+      if (!target) return;
+      if (event.clientX <= 34 || target.contains(event.target)) {
+        openPrimary(target);
+        timer = window.setTimeout(() => closePrimary(target), 4200);
+      } else {
+        closePrimary(target);
+      }
+    }, { passive: true });
+
+    const target = sidebar();
+    if (target) {
+      target.addEventListener("mouseenter", () => openPrimary(target));
+      target.addEventListener("mouseleave", () => closePrimarySoon(target));
+    }
   }
 
-  function makeHandle(definition, sidebar) {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = `sidebar-handle sidebar-handle--${definition.kind}`;
-    button.dataset.sidebarHandle = definition.kind;
-    button.setAttribute("aria-controls", sidebar.id);
-    button.innerHTML = [
-      '<span class="sidebar-handle__label" data-sidebar-handle-label></span>',
-      '<span class="sidebar-handle__icon" data-sidebar-handle-icon aria-hidden="true"></span>'
-    ].join("");
-    return button;
-  }
-
-  function hasNavigation(sidebar) {
-    return Boolean(sidebar.querySelector(".md-nav a[href]"));
-  }
-
-  function mountSidebarControls() {
-    definitions.forEach((definition) => {
-      const sidebar = document.querySelector(definition.selector);
-      if (!sidebar || !hasNavigation(sidebar)) return;
-      if (desktop.matches && window.getComputedStyle(sidebar).display === "none") return;
-
-      if (!sidebar.id) sidebar.id = definition.id;
-      const button = makeHandle(definition, sidebar);
-      const control = {
-        ...definition,
-        button,
-        expanded: false,
-        sidebar
-      };
-      button.addEventListener("click", () => setExpanded(control, !control.expanded));
-      document.body.appendChild(button);
-      controls.set(definition.kind, control);
-    });
-
-    if (!controls.size) return;
-    document.body.classList.add("sidebar-controls-ready");
-    controls.forEach((control) => {
-      setExpanded(control, preferences[control.kind] === true, false);
-    });
-
-    desktop.addEventListener?.("change", () => {
-      controls.forEach((control) => setExpanded(control, control.expanded, false));
-    });
-
-    document.addEventListener("keydown", (event) => {
-      if (event.key !== "Escape" || !desktop.matches) return;
-      controls.forEach((control) => {
-        if (control.expanded) setExpanded(control, false);
-      });
-    });
-
-    window.addEventListener("beforeprint", () => {
-      controls.forEach((control) => control.sidebar.removeAttribute("inert"));
-    });
-    window.addEventListener("afterprint", () => {
-      controls.forEach((control) => setExpanded(control, control.expanded, false));
-    });
+  function mountSecondaryDirectPeek() {
+    let timer = 0;
+    document.addEventListener("pointerdown", (event) => {
+      if (window.matchMedia("(max-width: 959px)").matches) return;
+      const sidebar = document.querySelector(".md-sidebar--secondary");
+      if (!sidebar) return;
+      if (sidebar.contains(event.target)) {
+        document.body.classList.add("sidebar-secondary-peek");
+        window.clearTimeout(timer);
+        timer = window.setTimeout(() => document.body.classList.remove("sidebar-secondary-peek"), 4200);
+      } else {
+        document.body.classList.remove("sidebar-secondary-peek");
+      }
+    }, { passive: true });
   }
 
   function mountKeyboardScrollableRegions() {
-    const candidates = document.querySelectorAll(
+    document.querySelectorAll(
       ".md-typeset__scrollwrap, .highlight code, pre > code"
-    );
-    candidates.forEach((element) => {
+    ).forEach((element) => {
       const horizontallyScrollable = element.scrollWidth > element.clientWidth + 1;
       const verticallyScrollable = element.scrollHeight > element.clientHeight + 1;
       if (!horizontallyScrollable && !verticallyScrollable) return;
@@ -159,14 +98,9 @@
     });
   }
 
-  function mount() {
-    mountSidebarControls();
+  document.addEventListener("DOMContentLoaded", () => {
+    mountPrimaryEdgePeek();
+    mountSecondaryDirectPeek();
     mountKeyboardScrollableRegions();
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", mount, { once: true });
-  } else {
-    mount();
-  }
+  });
 })();

@@ -91,39 +91,16 @@ for (const locale of locales) {
     if (viewport.width <= 896) {
       const menu = page.locator("label.md-header__button[for='__drawer']");
       const title = page.locator(".md-header__title");
-      const tools = page.locator("[data-mobile-tools-toggle]");
+      const search = page.locator("label.md-header__button[for='__search']");
+      const theme = page.locator(".md-header__inner > .theme-switcher");
+      const language = page.locator(".md-header__inner > .lang-switcher");
 
       await expect(menu).toBeVisible();
-      await expect(title).toContainText(locale.brand);
-      await expect(tools).toBeVisible();
-      await expect(page.locator("label.md-header__button[for='__search']")).toBeHidden();
-      await expect(page.locator(".md-header__inner > .theme-switcher")).toBeHidden();
-      await expect(page.locator(".md-header__inner > .lang-switcher")).toBeHidden();
-
-      const boxes = await Promise.all([menu, title, tools].map((locator) => locator.boundingBox()));
-      expect(boxes.every(Boolean)).toBe(true);
-      expect(boxes[0].width).toBeGreaterThanOrEqual(44);
-      expect(boxes[0].height).toBeGreaterThanOrEqual(44);
-      expect(boxes[2].width).toBeGreaterThanOrEqual(44);
-      expect(boxes[2].height).toBeGreaterThanOrEqual(44);
-      expect(boxes[0].x + boxes[0].width).toBeLessThanOrEqual(boxes[1].x + 1);
-      expect(boxes[1].x + boxes[1].width).toBeLessThanOrEqual(boxes[2].x + 1);
-
-      await tools.click();
-      const toolMenu = page.locator("[data-mobile-tools-menu]");
-      await expect(toolMenu).toBeVisible();
-
-      const search = page.locator("[data-mobile-search]");
-      const theme = page.locator("[data-mobile-theme]");
-      const language = page.locator("[data-mobile-language]");
-      await expect(search).toHaveAccessibleName(locale.search);
-      await expect(theme).toHaveAccessibleName(locale.theme);
-      await expect(language).toHaveAccessibleName(locale.language);
-      for (const target of [search, theme, language]) {
-        const targetBox = await target.boundingBox();
-        expect(targetBox).not.toBeNull();
-        expect(targetBox.height).toBeGreaterThanOrEqual(44);
-      }
+      await expect(title).toBeVisible();
+      await expect(search).toBeVisible();
+      await expect(theme).toBeVisible();
+      await expect(language).toBeVisible();
+      await expect(page.locator("[data-mobile-tools-toggle]")).toHaveCount(0);
 
       await search.click();
       await expect(page.locator("#__search")).toBeChecked();
@@ -140,7 +117,7 @@ for (const locale of locales) {
     await expect(page.locator(".md-tabs").getByText(locale.notes).first()).toBeVisible();
     await expect(page.locator(".md-header__inner > .theme-switcher")).toBeVisible();
     await expect(page.locator(".md-header__inner > .lang-switcher")).toBeVisible();
-    await expect(page.locator("[data-mobile-tools-toggle]")).toBeHidden();
+    await expect(page.locator("[data-mobile-tools-toggle]")).toHaveCount(0);
   });
 
   test(`${locale.code} announcement stays within two lines`, async ({ page }) => {
@@ -159,17 +136,20 @@ for (const locale of locales) {
     expect(metrics.height).toBeLessThanOrEqual(metrics.lineHeight * 2 + 1);
   });
 
-  test(`${locale.code} chat input appears in the initial viewport`, async ({ page }) => {
+  test(`${locale.code} original chat introduction keeps the input reachable`, async ({ page }) => {
     await page.goto(`${site.url}/${locale.code}/avatar/`, { waitUntil: "networkidle" });
 
     const viewport = page.viewportSize();
     const input = page.locator(".interaction-shell--page-chat textarea");
+    await input.scrollIntoViewIfNeeded();
     const box = await input.boundingBox();
 
     expect(viewport).not.toBeNull();
     expect(box).not.toBeNull();
     expect(box.y).toBeGreaterThanOrEqual(0);
     expect(box.y + box.height).toBeLessThanOrEqual(viewport.height + 1);
+    expect(box.x).toBeGreaterThanOrEqual(0);
+    expect(box.x + box.width).toBeLessThanOrEqual(viewport.width + 1);
   });
 }
 

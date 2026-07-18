@@ -1,6 +1,4 @@
 (function () {
-  const NOW_STALE_DAYS = 45;
-
   function normalizePath(value) {
     return String(value || "").replace(/\/+$/, "") || "/";
   }
@@ -14,11 +12,7 @@
     return {
       updated: zh ? "最近更新" : "Last updated",
       updatedPrefix: zh ? "更新：" : "Updated: ",
-      empty: zh ? "还没有可显示的更新记录。" : "No update records yet.",
-      nowStaleTitle: zh ? "这张近况切片已经有一阵子没更新" : "This Now snapshot may be getting old",
-      nowStaleBody: zh
-        ? "它仍然可以帮助你了解长期方向；最新安排请以之后的更新、项目页或模块记录为准。最近更新："
-        : "It can still help you understand the long-term direction; for the latest details, check later updates, project pages, or module records. Last updated: "
+      empty: zh ? "还没有可显示的更新记录。" : "No update records yet."
     }[key];
   }
 
@@ -59,15 +53,6 @@
       .some((node) => /更新|Updated|Last updated/i.test(node.textContent || ""));
   }
 
-  function daysSince(value) {
-    const match = String(value || "").match(/^(\d{4})-(\d{2})-(\d{2})$/);
-    if (!match) return 0;
-    const updated = Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3]));
-    const now = new Date();
-    const today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
-    return Math.floor((today - updated) / 86400000);
-  }
-
   function mountMeta(item) {
     if (!item || !item.updated || document.querySelector("[data-page-updated]") || pageAlreadyShowsDate()) return;
     const title = document.querySelector(".md-typeset h1");
@@ -77,23 +62,6 @@
     strip.dataset.pageUpdated = "true";
     strip.innerHTML = `<span>${copy("updated")}</span><time datetime="${item.updated}">${item.updated}</time>`;
     title.insertAdjacentElement("afterend", strip);
-  }
-
-  function mountNowStaleNotice(item, currentPath) {
-    const declaredUpdated = item?.declaredUpdated || item?.updated || "";
-    if (!item || !declaredUpdated || !currentPath.match(/^\/(zh|en)\/now$/)) return;
-    if (document.querySelector("[data-now-stale-notice]")) return;
-    if (daysSince(declaredUpdated) <= NOW_STALE_DAYS) return;
-    const pagehead = document.querySelector(".garden-pagehead");
-    if (!pagehead) return;
-    const notice = document.createElement("p");
-    notice.className = "now-stale-notice";
-    notice.dataset.nowStaleNotice = "true";
-    notice.innerHTML = `
-      <strong>${copy("nowStaleTitle")}</strong>
-      <span>${copy("nowStaleBody")}<time datetime="${esc(declaredUpdated)}">${esc(declaredUpdated)}</time></span>
-    `;
-    pagehead.insertAdjacentElement("afterend", notice);
   }
 
   function mountLatestUpdatedPill(items) {
@@ -129,11 +97,9 @@
     try {
       const current = normalizePath(window.location.pathname);
       const { items } = await loadMeta();
-      const currentItem = items.find((item) => normalizePath(item.url) === current);
       mountLatestUpdatedPill(items);
       mountRecentUpdates(items);
-      mountMeta(currentItem);
-      mountNowStaleNotice(currentItem, current);
+      mountMeta(items.find((item) => normalizePath(item.url) === current));
     } catch (error) {
       // Metadata is decorative; the page should stay readable if it is unavailable.
     }

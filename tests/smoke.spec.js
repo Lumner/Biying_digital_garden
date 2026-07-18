@@ -51,6 +51,13 @@ for (const route of routes) {
           body: '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"></urlset>'
         });
       }
+      if (requestUrl.hostname === "fonts.googleapis.com") {
+        return externalRoute.fulfill({
+          status: 200,
+          contentType: "text/css",
+          body: ""
+        });
+      }
       return externalRoute.fulfill({
         status: 204,
         contentType: "text/plain",

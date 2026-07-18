@@ -2,6 +2,6 @@
   "maxTotalBytes": 10000000,
   "maxRasterBytes": 4000000,
   "maxSingleAssetBytes": 650000,
-  "maxFaviconBytes": 100000,
+  "maxFaviconBytes": 600000,
   "allowSourceMaps": false
 }

@@ -69,10 +69,8 @@ test("Theme switcher supports system, dark, and light modes", async ({ page }) =
   await page.goto(`${site.url}/zh/`);
 
   const html = page.locator("html");
-  const tools = page.locator("[data-mobile-tools-toggle]");
-  const switcher = page.locator("[data-mobile-theme]");
+  const switcher = page.locator(".md-header__inner > [data-theme-switcher]");
 
-  await tools.click();
   await expect(switcher).toBeVisible();
   await expect(html).toHaveAttribute("data-biying-theme-mode", "system");
   await expect(html).toHaveAttribute("data-biying-theme", "dark");
@@ -92,7 +90,6 @@ test("Theme switcher supports system, dark, and light modes", async ({ page }) =
   await expect(html).toHaveAttribute("data-biying-theme-mode", "light");
   await expect(html).toHaveAttribute("data-biying-theme", "light");
 
-  await tools.click();
   await switcher.click();
   await expect(html).toHaveAttribute("data-biying-theme-mode", "system");
   await expect(html).toHaveAttribute("data-biying-theme", "dark");
