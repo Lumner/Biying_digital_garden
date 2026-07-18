@@ -77,6 +77,8 @@ test("print mode keeps article content and table of contents visible", async ({ 
 test("root entry keeps manual language links without JavaScript", async ({ page }) => {
   await page.goto(`${site.url}/`, { waitUntil: "domcontentloaded" });
   const article = page.locator("article");
+  await expect(article.locator(".language-gateway")).toBeVisible();
+  await expect(article.getByRole("heading", { name: /选择语言/ })).toBeVisible();
   await expect(article.locator('a[href$="zh/"]')).toBeVisible();
   await expect(article.locator('a[href$="en/"]')).toBeVisible();
 });

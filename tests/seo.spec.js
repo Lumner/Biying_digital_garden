@@ -139,6 +139,20 @@ test("social card is a 1200 by 630 image", async ({ page }) => {
 });
 
 
+test("root language entry never forces a JavaScript redirect", async ({ page, request }) => {
+  await page.goto(`${site.url}/`, { waitUntil: "networkidle" });
+  await expect(page).toHaveURL(`${site.url}/`);
+  await expect(page.locator(".language-gateway")).toBeVisible();
+  await expect(page.locator('.language-gateway a[href$="/zh/"]')).toBeVisible();
+  await expect(page.locator('.language-gateway a[href$="/en/"]')).toBeVisible();
+
+  const response = await request.get(`${site.url}/`);
+  const html = await response.text();
+  expect(html).not.toContain("location.replace");
+  expect(html).not.toContain("location.assign");
+});
+
+
 test("sitemap includes both language roots", async ({ request }) => {
   const response = await request.get(`${site.url}/sitemap.xml`);
   expect(response.ok()).toBe(true);

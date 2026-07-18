@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="?????????????????? Lumner ??????????? AI ?????">
+        <meta name="description" content="碧影数字花园的中英文语言入口，可进入 Lumner 的公开笔记、项目记录与 AI 内容向导。">
       
       
         <meta name="author" content="Lumner">
@@ -72,7 +72,7 @@
 <link rel="alternate" hreflang="x-default" href="https://www.biying.site/">
 
 <meta property="og:title" content="Start - 碧影数字花园">
-<meta property="og:description" content="?????????????????? Lumner ??????????? AI ?????">
+<meta property="og:description" content="碧影数字花园的中英文语言入口，可进入 Lumner 的公开笔记、项目记录与 AI 内容向导。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.biying.site/">
 <meta property="og:site_name" content="碧影数字花园">
@@ -84,7 +84,7 @@
 <meta property="og:image:alt" content="碧影数字花园 / Biying Digital Garden">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Start - 碧影数字花园">
-<meta name="twitter:description" content="?????????????????? Lumner ??????????? AI ?????">
+<meta name="twitter:description" content="碧影数字花园的中英文语言入口，可进入 Lumner 的公开笔记、项目记录与 AI 内容向导。">
 <meta name="twitter:image" content="https://www.biying.site/assets/images/og-biying.jpg">
 <meta name="twitter:image:alt" content="碧影数字花园 / Biying Digital Garden">
 
@@ -2785,14 +2785,29 @@
   
 
 
-  <h1>Start</h1>
-
-<script>
-  const preferred = navigator.language && navigator.language.toLowerCase().startsWith("zh") ? "zh" : "en";
-  window.location.replace(`./${preferred}/`);
-</script>
-
-<p>如果页面没有自动跳转，请进入 <a href="zh/">中文入口</a> 或 <a href="en/">English entrance</a>。</p>
+<section class="language-gateway" aria-labelledby="language-gateway-title">
+  <div class="language-gateway__signal" aria-hidden="true"></div>
+  <p class="language-gateway__kicker">BIYING DIGITAL GARDEN</p>
+  <h1 id="language-gateway-title">选择语言 <span>/ Choose a language</span></h1>
+  <p class="language-gateway__intro">
+    欢迎来到 Lumner 的碧影数字花园。这里不会自动跳转，请选择你想阅读的语言。
+    <br>
+    Welcome to Lumner's Biying Digital Garden. Choose the language you want to read.
+  </p>
+  <div class="language-gateway__choices" aria-label="Language choices">
+    <a class="language-gateway__choice" href="./zh/">
+      <span class="language-gateway__code">ZH-CN</span>
+      <strong>进入中文站</strong>
+      <span>公开笔记、项目、近况与碧影</span>
+    </a>
+    <a class="language-gateway__choice" href="./en/">
+      <span class="language-gateway__code">EN</span>
+      <strong>Enter English site</strong>
+      <span>Public notes, projects, current work, and Biying</span>
+    </a>
+  </div>
+  <p class="language-gateway__note">你的选择由你决定；此页面不读取或保存语言偏好。</p>
+</section>
 
 
 
