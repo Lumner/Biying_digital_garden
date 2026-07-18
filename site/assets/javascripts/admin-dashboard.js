@@ -1,5 +1,4 @@
 (function () {
-  const storageKey = "biying-admin-token";
   const api = window.BiyingApi;
   const dom = window.BiyingDom;
   const i18n = window.BiyingI18n;
@@ -14,12 +13,12 @@
       token: zh ? "管理员 token" : "Admin token",
       connect: zh ? "进入后台" : "Open dashboard",
       refresh: zh ? "刷新" : "Refresh",
-      forget: zh ? "忘记此设备上的 token" : "Forget token on this device",
+      forget: zh ? "退出后台" : "Sign out",
       users: zh ? "注册用户" : "Registered Users",
       inbox: zh ? "私信收件箱" : "Private Inbox",
       guestbook: zh ? "公开留言管理" : "Guestbook Moderation",
       dashboardReady: zh ? "后台数据已更新。" : "Dashboard data updated.",
-      tokenForgotten: zh ? "已清除此设备上的管理员 token。" : "Admin token removed from this device.",
+      tokenForgotten: zh ? "已退出后台并清除短期会话。" : "Signed out and cleared the short-lived session.",
       updated: zh ? "已更新。" : "Updated.",
       deleted: zh ? "已删除。" : "Deleted.",
       accountDeleted: zh ? "用户已注销。" : "User deleted.",
@@ -57,7 +56,7 @@
       expiresAt: zh ? "过期时间" : "Expires",
       codeHint: zh ? "把它私下发给用户；过期后或使用一次后就会失效。" : "Send it privately; it expires or becomes invalid after one use.",
       minutesPrompt: zh ? "恢复码有效分钟数（5-1440）" : "Recovery-code validity in minutes (5-1440)",
-      unauthorized: zh ? "管理员 token 不正确。" : "The admin token is incorrect.",
+      unauthorized: zh ? "管理员 token 不正确，或短期会话已过期。" : "The admin token is incorrect or the short-lived session has expired.",
       tokenRequired: zh ? "请填写管理员 token。" : "Enter the admin token.",
       kv: zh ? "后台需要先绑定 BIYING_KV。" : "The dashboard requires BIYING_KV.",
       loading: zh ? "正在加载后台数据……" : "Loading dashboard data…",
@@ -72,22 +71,6 @@
 
   function formatDate(value) {
     return dom.formatDate(value, "-");
-  }
-
-  function readToken() {
-    return sessionStorage.getItem(storageKey) || "";
-  }
-
-  function saveToken(token) {
-    if (token) sessionStorage.setItem(storageKey, token);
-    else sessionStorage.removeItem(storageKey);
-  }
-
-  function headers() {
-    return {
-      "content-type": "application/json",
-      authorization: `Bearer ${readToken()}`
-    };
   }
 
   function friendlyError(error) {
@@ -116,15 +99,28 @@
 
   async function loadDashboard() {
     return api.request("/api/admin", {
-      cache: "no-store",
-      headers: headers()
+      cache: "no-store"
+    });
+  }
+
+  async function createAdminSession(token) {
+    return api.request("/api/admin", {
+      method: "POST",
+      headers: { authorization: `Bearer ${token}` },
+      json: { action: "create_session" }
+    });
+  }
+
+  async function closeAdminSession() {
+    return api.request("/api/admin", {
+      method: "POST",
+      json: { action: "logout" }
     });
   }
 
   async function issueCode(username, minutes) {
     return api.request("/api/admin", {
       method: "POST",
-      headers: headers(),
       json: {
         action: "issue_recovery_code",
         username,
@@ -136,15 +132,13 @@
   async function updateMessage(id, status, kind = "private") {
     return api.request(`/api/admin?id=${encodeURIComponent(id)}&kind=${encodeURIComponent(kind)}`, {
       method: "PUT",
-      headers: headers(),
       json: { status }
     });
   }
 
   async function deleteMessage(id, kind = "private") {
     return api.request(`/api/admin?id=${encodeURIComponent(id)}&kind=${encodeURIComponent(kind)}`, {
-      method: "DELETE",
-      headers: headers()
+      method: "DELETE"
     });
   }
 
@@ -285,8 +279,6 @@
     let guestbookMessages = [];
     let privateFilter = "all";
     let guestbookFilter = "all";
-    tokenInput.value = readToken();
-
     function setTab(name) {
       tabs.forEach((tab) => {
         const active = tab.dataset.adminTab === name;
@@ -325,7 +317,6 @@
     }
 
     async function refresh(options = {}) {
-      if (!readToken()) return;
       setDashboardBusy(root, true);
       if (options.announce !== false) dom.setLiveStatus(status, text("loading"), "loading");
       try {
@@ -345,6 +336,10 @@
           dom.setLiveStatus(status, "", "idle");
         }
       } catch (error) {
+        if (options.silentUnauthorized && Number(error && error.status) === 401) {
+          dom.setLiveStatus(status, "", "idle");
+          return;
+        }
         dom.setLiveStatus(status, notify(friendlyError(error), "error"), "error");
       } finally {
         setDashboardBusy(root, false);
@@ -361,8 +356,17 @@
         return;
       }
       tokenInput.removeAttribute("aria-invalid");
-      saveToken(token);
-      await refresh({ announce: true });
+      tokenInput.value = "";
+      setDashboardBusy(root, true);
+      try {
+        await createAdminSession(token);
+        await refresh({ announce: true });
+      } catch (error) {
+        dom.setLiveStatus(status, notify(friendlyError(error), "error"), "error");
+      } finally {
+        tokenInput.value = "";
+        setDashboardBusy(root, false);
+      }
     });
 
     tokenInput.addEventListener("input", () => tokenInput.removeAttribute("aria-invalid"));
@@ -401,16 +405,20 @@
       } else if (refreshButton) {
         await refresh({ announce: true });
       } else if (forgetButton) {
-        saveToken("");
-        tokenInput.value = "";
-        usersSlot.innerHTML = "";
-        privateSlot.innerHTML = "";
-        guestbookSlot.innerHTML = "";
-        recovery.hidden = true;
-        setCount("users", 0);
-        setCount("inbox", 0);
-        setCount("guestbook", 0);
-        dom.setLiveStatus(status, notify(text("tokenForgotten"), "success"), "success");
+        try {
+          await closeAdminSession();
+          tokenInput.value = "";
+          usersSlot.innerHTML = "";
+          privateSlot.innerHTML = "";
+          guestbookSlot.innerHTML = "";
+          recovery.hidden = true;
+          setCount("users", 0);
+          setCount("inbox", 0);
+          setCount("guestbook", 0);
+          dom.setLiveStatus(status, notify(text("tokenForgotten"), "success"), "success");
+        } catch (error) {
+          dom.setLiveStatus(status, notify(friendlyError(error), "error"), "error");
+        }
       } else if (issueButton) {
         const minutes = Number(window.prompt(text("minutesPrompt"), "30"));
         if (!minutes) return;
@@ -492,9 +500,7 @@
       }
     });
 
-    if (readToken()) {
-      refresh();
-    }
+    refresh({ silentUnauthorized: true });
   }
 
   document.addEventListener("DOMContentLoaded", () => {

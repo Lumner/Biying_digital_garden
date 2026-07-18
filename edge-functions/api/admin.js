@@ -1,9 +1,15 @@
 import {
+  ADMIN_SESSION_COOKIE_NAME,
+  adminSessionKey,
   apiResponder,
+  currentAdmin,
+  deleteKvKey,
   enforceRateLimit,
+  envValue,
   getClientIp,
   getKv,
-  isAdmin,
+  isAdminToken,
+  mutationOriginAllowed,
   normalizeUsername,
   readJson
 } from "./_shared.js";
@@ -11,6 +17,9 @@ import {
 const encoder = new TextEncoder();
 const DEFAULT_PAGE_SIZE = 200;
 const MAX_PAGE_SIZE = 200;
+const DEFAULT_ADMIN_SESSION_MINUTES = 20;
+const MIN_ADMIN_SESSION_MINUTES = 15;
+const MAX_ADMIN_SESSION_MINUTES = 30;
 
 function randomCode() {
   const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
@@ -21,6 +30,44 @@ function randomCode() {
 
 function bytesToHex(bytes) {
   return Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join("");
+}
+
+function randomHex(bytes = 32) {
+  const data = new Uint8Array(bytes);
+  crypto.getRandomValues(data);
+  return bytesToHex(data);
+}
+
+function adminSessionMinutes(env) {
+  const configured = Number(envValue(
+    env,
+    "BIYING_ADMIN_SESSION_MINUTES",
+    DEFAULT_ADMIN_SESSION_MINUTES
+  ));
+  return Number.isSafeInteger(configured)
+    && configured >= MIN_ADMIN_SESSION_MINUTES
+    && configured <= MAX_ADMIN_SESSION_MINUTES
+    ? configured
+    : DEFAULT_ADMIN_SESSION_MINUTES;
+}
+
+function adminSessionCookie(token, maxAge) {
+  const value = token ? encodeURIComponent(token) : "";
+  const expires = maxAge === 0 ? "; Expires=Thu, 01 Jan 1970 00:00:00 GMT" : "";
+  return `${ADMIN_SESSION_COOKIE_NAME}=${value}; Path=/api; HttpOnly; Secure; SameSite=Strict; Max-Age=${maxAge}${expires}`;
+}
+
+async function createAdminSession(kv, env) {
+  const minutes = adminSessionMinutes(env);
+  const maxAge = minutes * 60;
+  const now = Date.now();
+  const session = {
+    token: randomHex(32),
+    createdAt: new Date(now).toISOString(),
+    expiresAt: new Date(now + maxAge * 1000).toISOString()
+  };
+  await kv.put(adminSessionKey(session.token), JSON.stringify(session));
+  return { session, maxAge };
 }
 
 async function hashText(value) {
@@ -171,10 +218,11 @@ export function onRequestOptions(context = {}) {
 export async function onRequestGet({ request, env }) {
   const reply = apiResponder(request, env);
   try {
-    if (!isAdmin(request, env)) {
+    const kv = getKv(env);
+    const admin = await currentAdmin(request, env, { kv });
+    if (!admin) {
       return reply.json({ error: "unauthorized" }, { status: 401 });
     }
-    const kv = getKv(env);
     if (!kv || !kv.get || !kv.list) {
       return reply.json({ error: "kv_not_configured" }, { status: 503 });
     }
@@ -199,17 +247,57 @@ export async function onRequestGet({ request, env }) {
   }
 }
 
-export async function onRequestPost({ request, env, clientIp }) {
+export async function onRequestPost(context) {
+  const { request, env, clientIp } = context;
   const reply = apiResponder(request, env);
+  const waitUntil = typeof context.waitUntil === "function"
+    ? (promise) => context.waitUntil(promise)
+    : undefined;
   try {
-    if (!isAdmin(request, env)) {
-      return reply.json({ error: "unauthorized" }, { status: 401 });
-    }
     const kv = getKv(env);
     if (!kv || !kv.get || !kv.put) {
       return reply.json({ error: "kv_not_configured" }, { status: 503 });
     }
     const body = await readJson(request);
+    if (body.action === "create_session") {
+      if (!isAdminToken(request, env)) {
+        return reply.json({ error: "unauthorized" }, { status: 401 });
+      }
+      if (!mutationOriginAllowed(request, env, { required: true })) {
+        return reply.json({ error: "origin_not_allowed" }, { status: 403 });
+      }
+      const limited = await limitAdminWrite(kv, request, clientIp, "session", reply);
+      if (limited) return limited;
+      const { session, maxAge } = await createAdminSession(kv, env);
+      return reply.json({
+        ok: true,
+        expiresAt: session.expiresAt
+      }, {
+        headers: {
+          "cache-control": "no-store",
+          "set-cookie": adminSessionCookie(session.token, maxAge)
+        }
+      });
+    }
+
+    const admin = await currentAdmin(request, env, { kv, waitUntil });
+    if (!admin) {
+      return reply.json({ error: "unauthorized" }, { status: 401 });
+    }
+    if (!mutationOriginAllowed(request, env, { authSource: admin.authSource })) {
+      return reply.json({ error: "origin_not_allowed" }, { status: 403 });
+    }
+    if (body.action === "logout") {
+      if (admin.authSource === "cookie" && admin.token) {
+        await deleteKvKey(kv, adminSessionKey(admin.token), waitUntil);
+      }
+      return reply.json({ ok: true }, {
+        headers: {
+          "cache-control": "no-store",
+          "set-cookie": adminSessionCookie("", 0)
+        }
+      });
+    }
     if (body.action !== "issue_recovery_code") {
       return reply.json({ error: "unsupported_action" }, { status: 400 });
     }
@@ -249,12 +337,16 @@ export async function onRequestPost({ request, env, clientIp }) {
 export async function onRequestPut({ request, env, clientIp }) {
   const reply = apiResponder(request, env);
   try {
-    if (!isAdmin(request, env)) {
+    const kv = getKv(env);
+    const admin = await currentAdmin(request, env, { kv });
+    if (!admin) {
       return reply.json({ error: "unauthorized" }, { status: 401 });
     }
-    const kv = getKv(env);
     if (!kv || !kv.get || !kv.put) {
       return reply.json({ error: "kv_not_configured" }, { status: 503 });
+    }
+    if (!mutationOriginAllowed(request, env, { authSource: admin.authSource })) {
+      return reply.json({ error: "origin_not_allowed" }, { status: 403 });
     }
     const url = new URL(request.url);
     const id = url.searchParams.get("id");
@@ -286,12 +378,16 @@ export async function onRequestPut({ request, env, clientIp }) {
 export async function onRequestDelete({ request, env, clientIp }) {
   const reply = apiResponder(request, env);
   try {
-    if (!isAdmin(request, env)) {
+    const kv = getKv(env);
+    const admin = await currentAdmin(request, env, { kv });
+    if (!admin) {
       return reply.json({ error: "unauthorized" }, { status: 401 });
     }
-    const kv = getKv(env);
     if (!kv || !kv.get || !kv.delete) {
       return reply.json({ error: "kv_not_configured" }, { status: 503 });
+    }
+    if (!mutationOriginAllowed(request, env, { authSource: admin.authSource })) {
+      return reply.json({ error: "origin_not_allowed" }, { status: 403 });
     }
     const url = new URL(request.url);
     const id = url.searchParams.get("id");

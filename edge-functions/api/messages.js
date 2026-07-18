@@ -1,11 +1,11 @@
 import {
   apiResponder,
   cleanText,
+  currentAdmin,
   currentSession,
   enforceRateLimit,
   getClientIp,
   getKv,
-  isAdmin,
   mutationOriginAllowed,
   readJson
 } from "./_shared.js";
@@ -74,7 +74,7 @@ export async function onRequestGet(context) {
     : undefined;
   try {
     const kv = getKv(env);
-    const admin = isAdmin(request, env);
+    const admin = await currentAdmin(request, env, { kv, waitUntil });
     const session = await currentSession(request, kv, { env, waitUntil });
     return reply.json({ messages: await listMessages(kv, session, admin) });
   } catch (error) {
@@ -157,12 +157,14 @@ export async function onRequestPut(context) {
       return reply.json({ error: "kv_not_configured" }, { status: 503 });
     }
 
-    const admin = isAdmin(request, env);
+    const admin = await currentAdmin(request, env, { kv, waitUntil });
     const session = await currentSession(request, kv, { env, waitUntil });
     if (!admin && !session) {
       return reply.json({ error: "auth_required" }, { status: 401 });
     }
-    if (!mutationOriginAllowed(request, env, { authSource: session?.authSource })) {
+    if (!mutationOriginAllowed(request, env, {
+      authSource: admin?.authSource || session?.authSource
+    })) {
       return reply.json({ error: "origin_not_allowed" }, { status: 403 });
     }
 
@@ -210,12 +212,14 @@ export async function onRequestDelete(context) {
       return reply.json({ error: "kv_not_configured" }, { status: 503 });
     }
 
-    const admin = isAdmin(request, env);
+    const admin = await currentAdmin(request, env, { kv, waitUntil });
     const session = await currentSession(request, kv, { env, waitUntil });
     if (!admin && !session) {
       return reply.json({ error: "auth_required" }, { status: 401 });
     }
-    if (!mutationOriginAllowed(request, env, { authSource: session?.authSource })) {
+    if (!mutationOriginAllowed(request, env, {
+      authSource: admin?.authSource || session?.authSource
+    })) {
       return reply.json({ error: "origin_not_allowed" }, { status: 403 });
     }
 
