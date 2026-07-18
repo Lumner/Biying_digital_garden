@@ -1042,7 +1042,7 @@ git revert <服务端双读提交号>
 - 不存在用户和损坏记录会执行当前配置成本的虚拟哈希；旧低迭代记录密码错误时补足差额工作量。密码摘要比较改为固定遍历路径。
 - `npm run benchmark:password -- <iterations> <runs>` 可做本地参考。EdgeOne 预览环境可临时设置 `BIYING_PASSWORD_BENCHMARK_ENABLED=1`，通过管理员短会话调用 `benchmark_password_hash` 动作取得运行时中位数和 P95；测完立即恢复为 `0`。
 - 当前本机 100,000 次参考中位数约 15ms，不能代表 EdgeOne 运行时，因此未据此提高默认值。阶段完成前必须在预览环境选出中位数约 100–250ms 的值，并确认不低于现有 100,000 次。
-- 本地完整发布验证通过：API 37 项、Chromium Playwright 195 项通过且 7 项按设备条件跳过，50 个 JavaScript 文件、81 页元数据与 8.48 MiB 发布预算均通过。EdgeOne 预览基准和真实凭据写入流程仍是本阶段最终门禁。
+- 本地完整发布验证通过：API 37 项、Chromium Playwright 195 项通过且 7 项按设备条件跳过、Firefox 33 项通过，50 个 JavaScript 文件、81 页元数据与 8.49 MiB 发布预算均通过。EdgeOne 预览基准和真实凭据写入流程仍是本阶段最终门禁。
 
 ---
 
