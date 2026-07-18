@@ -13,6 +13,7 @@ import {
   normalizeUsername,
   readJson
 } from "./_shared.js";
+import { benchmarkPasswordHash } from "./auth.js";
 
 const encoder = new TextEncoder();
 const DEFAULT_PAGE_SIZE = 200;
@@ -296,6 +297,27 @@ export async function onRequestPost(context) {
           "cache-control": "no-store",
           "set-cookie": adminSessionCookie("", 0)
         }
+      });
+    }
+    if (body.action === "benchmark_password_hash") {
+      if (
+        envValue(env, "BIYING_PASSWORD_BENCHMARK_ENABLED", "0") !== "1"
+        || admin.authSource !== "cookie"
+      ) {
+        return reply.json({ error: "benchmark_disabled" }, { status: 403 });
+      }
+      const limited = await enforceRateLimit(kv, {
+        action: "admin_password_benchmark",
+        identifier: getClientIp(request, clientIp),
+        limit: 3,
+        windowMs: 60 * 60 * 1000
+      }, reply);
+      if (limited) return limited;
+      return reply.json({
+        ok: true,
+        benchmark: await benchmarkPasswordHash(env, body.runs)
+      }, {
+        headers: { "cache-control": "no-store" }
       });
     }
     if (body.action !== "issue_recovery_code") {

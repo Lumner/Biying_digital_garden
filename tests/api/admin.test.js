@@ -297,3 +297,61 @@ test("admin dashboard never persists the master token in Web Storage", async () 
   assert.match(source, /action:\s*"create_session"/);
   assert.match(source, /action:\s*"logout"/);
 });
+
+
+test("password benchmark is disabled by default and requires an admin cookie", async () => {
+  const token = "admin-token";
+  const kv = new MemoryKV();
+  const env = {
+    BIYING_ADMIN_TOKEN: token,
+    BIYING_KV: kv,
+    BIYING_PASSWORD_BENCHMARK_ENABLED: "1",
+    BIYING_PASSWORD_ITERATIONS: "100000"
+  };
+  const bearerOnly = await onRequestPost({
+    request: adminAction({ action: "benchmark_password_hash" }, {
+      token,
+      origin: "https://www.biying.site"
+    }),
+    env,
+    clientIp: "203.0.113.63"
+  });
+  assert.equal(bearerOnly.status, 403);
+
+  const created = await onRequestPost({
+    request: adminAction({ action: "create_session" }, {
+      token,
+      origin: "https://www.biying.site"
+    }),
+    env,
+    clientIp: "203.0.113.63"
+  });
+  const benchmarked = await onRequestPost({
+    request: adminAction({ action: "benchmark_password_hash", runs: 3 }, {
+      cookie: cookiePair(created),
+      origin: "https://www.biying.site"
+    }),
+    env,
+    clientIp: "203.0.113.63"
+  });
+
+  assert.equal(benchmarked.status, 200);
+  const payload = await benchmarked.json();
+  assert.equal(payload.benchmark.iterations, 100000);
+  assert.equal(payload.benchmark.runs, 3);
+  assert.equal(typeof payload.benchmark.medianMs, "number");
+  assert.equal(typeof payload.benchmark.withinTarget, "boolean");
+
+  const disabled = await onRequestPost({
+    request: adminAction({ action: "benchmark_password_hash" }, {
+      cookie: cookiePair(created),
+      origin: "https://www.biying.site"
+    }),
+    env: {
+      ...env,
+      BIYING_PASSWORD_BENCHMARK_ENABLED: "0"
+    },
+    clientIp: "203.0.113.63"
+  });
+  assert.equal(disabled.status, 403);
+});

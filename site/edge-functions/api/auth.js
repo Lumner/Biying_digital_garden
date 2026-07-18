@@ -17,6 +17,13 @@ import {
 
 const SESSION_DAYS = 30;
 const SESSION_SECONDS = SESSION_DAYS * 24 * 60 * 60;
+const PASSWORD_ALGORITHM = "pbkdf2-sha256";
+const PASSWORD_VERSION = 2;
+const LEGACY_PASSWORD_ITERATIONS = 100000;
+const DEFAULT_PASSWORD_ITERATIONS = LEGACY_PASSWORD_ITERATIONS;
+const MIN_PASSWORD_ITERATIONS = LEGACY_PASSWORD_ITERATIONS;
+const MAX_PASSWORD_ITERATIONS = 1000000;
+const DUMMY_PASSWORD_SALT = "9f4d7a2c65183eb0d6a947c135f28b0e";
 const encoder = new TextEncoder();
 
 function userKey(username) {
@@ -45,7 +52,20 @@ function randomHex(bytes = 32) {
   return bytesToHex(data);
 }
 
-async function hashPassword(password, salt) {
+function passwordIterations(env) {
+  const configured = Number(envValue(
+    env,
+    "BIYING_PASSWORD_ITERATIONS",
+    DEFAULT_PASSWORD_ITERATIONS
+  ));
+  return Number.isSafeInteger(configured)
+    && configured >= MIN_PASSWORD_ITERATIONS
+    && configured <= MAX_PASSWORD_ITERATIONS
+    ? configured
+    : DEFAULT_PASSWORD_ITERATIONS;
+}
+
+async function hashPassword(password, salt, iterations) {
   const key = await crypto.subtle.importKey(
     "raw",
     encoder.encode(password),
@@ -57,13 +77,126 @@ async function hashPassword(password, salt) {
     {
       name: "PBKDF2",
       salt: hexToBytes(salt),
-      iterations: 100000,
+      iterations,
       hash: "SHA-256"
     },
     key,
     256
   );
   return bytesToHex(new Uint8Array(bits));
+}
+
+function passwordRecordIsValid(user) {
+  const algorithm = user?.passwordAlgorithm || PASSWORD_ALGORITHM;
+  const iterations = user?.passwordIterations === undefined
+    ? LEGACY_PASSWORD_ITERATIONS
+    : Number(user.passwordIterations);
+  const version = user?.passwordVersion === undefined
+    ? 1
+    : Number(user.passwordVersion);
+  return Boolean(
+    algorithm === PASSWORD_ALGORITHM
+    && Number.isSafeInteger(iterations)
+    && iterations >= MIN_PASSWORD_ITERATIONS
+    && iterations <= MAX_PASSWORD_ITERATIONS
+    && Number.isSafeInteger(version)
+    && version >= 1
+    && version <= PASSWORD_VERSION
+    && /^[a-f0-9]{32}$/i.test(String(user?.salt || ""))
+    && /^[a-f0-9]{64}$/i.test(String(user?.passwordHash || ""))
+  );
+}
+
+function storedPasswordIterations(user) {
+  return user.passwordIterations === undefined
+    ? LEGACY_PASSWORD_ITERATIONS
+    : Number(user.passwordIterations);
+}
+
+function constantTimeHexEqual(left, right) {
+  const first = String(left || "");
+  const second = String(right || "");
+  let difference = first.length ^ second.length;
+  const length = Math.max(first.length, second.length);
+  for (let index = 0; index < length; index += 1) {
+    difference |= (first.charCodeAt(index) || 0) ^ (second.charCodeAt(index) || 0);
+  }
+  return difference === 0;
+}
+
+async function newPasswordRecord(password, env) {
+  const iterations = passwordIterations(env);
+  const salt = randomHex(16);
+  return {
+    salt,
+    passwordHash: await hashPassword(password, salt, iterations),
+    passwordAlgorithm: PASSWORD_ALGORITHM,
+    passwordIterations: iterations,
+    passwordVersion: PASSWORD_VERSION
+  };
+}
+
+async function verifyPassword(raw, password, env) {
+  const currentIterations = passwordIterations(env);
+  let user;
+  try {
+    user = raw ? JSON.parse(raw) : undefined;
+  } catch (error) {
+    user = undefined;
+  }
+  if (!user || !passwordRecordIsValid(user)) {
+    await hashPassword(password, DUMMY_PASSWORD_SALT, currentIterations);
+    return { valid: false };
+  }
+
+  const iterations = storedPasswordIterations(user);
+  const candidate = await hashPassword(password, user.salt, iterations);
+  const valid = constantTimeHexEqual(candidate, user.passwordHash);
+  if (!valid && iterations < currentIterations) {
+    await hashPassword(
+      password,
+      DUMMY_PASSWORD_SALT,
+      currentIterations - iterations
+    );
+  }
+  return { valid, user, iterations };
+}
+
+function passwordNeedsUpgrade(user, iterations, env) {
+  return (
+    user.passwordAlgorithm !== PASSWORD_ALGORITHM
+    || Number(user.passwordVersion || 1) < PASSWORD_VERSION
+    || user.passwordIterations === undefined
+    || iterations < passwordIterations(env)
+  );
+}
+
+export async function benchmarkPasswordHash(env, requestedRuns = 3) {
+  const runs = Math.min(7, Math.max(3, Number(requestedRuns) || 3));
+  const iterations = passwordIterations(env);
+  const samplesMs = [];
+  const now = () => globalThis.performance?.now?.() || Date.now();
+  await hashPassword("benchmark-only-password", randomHex(16), iterations);
+  for (let run = 0; run < runs; run += 1) {
+    const startedAt = now();
+    await hashPassword("benchmark-only-password", randomHex(16), iterations);
+    samplesMs.push(now() - startedAt);
+  }
+  const sorted = [...samplesMs].sort((left, right) => left - right);
+  const medianMs = sorted[Math.floor(sorted.length / 2)];
+  const p95Ms = sorted[Math.min(
+    sorted.length - 1,
+    Math.ceil(sorted.length * 0.95) - 1
+  )];
+  return {
+    iterations,
+    runs,
+    medianMs: Number(medianMs.toFixed(2)),
+    p95Ms: Number(p95Ms.toFixed(2)),
+    targetMinMs: 100,
+    targetMaxMs: 250,
+    withinTarget: medianMs >= 100 && medianMs <= 250
+  };
 }
 
 async function hashText(value) {
@@ -157,14 +290,12 @@ async function register(kv, body, env, reply) {
     return reply.json({ error: "username_taken" }, { status: 409 });
   }
 
-  const salt = randomHex(16);
-  const passwordHash = await hashPassword(password, salt);
+  const passwordRecord = await newPasswordRecord(password, env);
   const user = {
     id: randomHex(12),
     username,
     displayName,
-    salt,
-    passwordHash,
+    ...passwordRecord,
     sessionVersion: 0,
     createdAt: new Date().toISOString()
   };
@@ -224,12 +355,10 @@ async function resetPassword(kv, body, env, reply, waitUntil) {
   }
 
   const user = JSON.parse(raw);
-  const salt = randomHex(16);
-  const passwordHash = await hashPassword(password, salt);
+  const passwordRecord = await newPasswordRecord(password, env);
   const updatedUser = {
     ...user,
-    salt,
-    passwordHash,
+    ...passwordRecord,
     sessionVersion: sessionVersion(user) + 1,
     passwordUpdatedAt: new Date().toISOString()
   };
@@ -245,13 +374,18 @@ async function login(kv, body, env, reply) {
   const username = normalizeUsername(body.username);
   const password = String(body.password || "");
   const raw = await kv.get(userKey(username), { type: "text" });
-  if (!raw) {
+  const verification = await verifyPassword(raw, password, env);
+  if (!verification.valid) {
     return reply.json({ error: "invalid_credentials" }, { status: 401 });
   }
-  const user = JSON.parse(raw);
-  const passwordHash = await hashPassword(password, user.salt);
-  if (passwordHash !== user.passwordHash) {
-    return reply.json({ error: "invalid_credentials" }, { status: 401 });
+  let user = verification.user;
+  if (passwordNeedsUpgrade(user, verification.iterations, env)) {
+    user = {
+      ...user,
+      ...await newPasswordRecord(password, env),
+      passwordRehashedAt: new Date().toISOString()
+    };
+    await kv.put(userKey(username), JSON.stringify(user));
   }
   const session = await createSession(kv, user);
   return sessionResponse(reply, session, user, env);

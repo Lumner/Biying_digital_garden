@@ -58,6 +58,10 @@ test("registration creates a user session that can be read and logged out", asyn
   assert.match(registration.token, /^[a-f0-9]{64}$/);
   assert.equal(kv.keys("user_").length, 1);
   assert.equal(kv.keys("session_").length, 1);
+  const storedUser = JSON.parse(await kv.get("user_test_user"));
+  assert.equal(storedUser.passwordAlgorithm, "pbkdf2-sha256");
+  assert.equal(storedUser.passwordIterations, 100000);
+  assert.equal(storedUser.passwordVersion, 2);
 
   const authorization = `Bearer ${registration.token}`;
   const current = await onRequestGet({
@@ -129,6 +133,129 @@ test("login accepts the correct password and rejects incorrect credentials", asy
   assert.equal(payload.ok, true);
   assert.equal(payload.user.username, "reader");
   assert.match(payload.token, /^[a-f0-9]{64}$/);
+});
+
+
+test("legacy password records login and upgrade lazily without a bulk reset", async () => {
+  const kv = new MemoryKV();
+  const password = "legacy secure password";
+  await onRequestPost({
+    request: request({
+      username: "legacy_hash",
+      password
+    }),
+    env: { BIYING_KV: kv },
+    clientIp: "203.0.113.70"
+  });
+
+  const legacy = JSON.parse(await kv.get("user_legacy_hash"));
+  const oldSalt = legacy.salt;
+  const oldHash = legacy.passwordHash;
+  delete legacy.passwordAlgorithm;
+  delete legacy.passwordIterations;
+  delete legacy.passwordVersion;
+  await kv.put("user_legacy_hash", JSON.stringify(legacy));
+
+  const login = await onRequestPost({
+    request: request({
+      action: "login",
+      username: "legacy_hash",
+      password
+    }),
+    env: {
+      BIYING_KV: kv,
+      BIYING_PASSWORD_ITERATIONS: "120000"
+    },
+    clientIp: "203.0.113.71"
+  });
+  assert.equal(login.status, 200);
+
+  const upgraded = JSON.parse(await kv.get("user_legacy_hash"));
+  assert.equal(upgraded.passwordAlgorithm, "pbkdf2-sha256");
+  assert.equal(upgraded.passwordIterations, 120000);
+  assert.equal(upgraded.passwordVersion, 2);
+  assert.notEqual(upgraded.salt, oldSalt);
+  assert.notEqual(upgraded.passwordHash, oldHash);
+  assert.match(upgraded.passwordRehashedAt, /^\d{4}-\d{2}-\d{2}T/);
+
+  const secondLogin = await onRequestPost({
+    request: request({
+      action: "login",
+      username: "legacy_hash",
+      password
+    }),
+    env: {
+      BIYING_KV: kv,
+      BIYING_PASSWORD_ITERATIONS: "120000"
+    },
+    clientIp: "203.0.113.72"
+  });
+  assert.equal(secondLogin.status, 200);
+});
+
+
+test("unknown users and legacy wrong passwords perform equivalent PBKDF2 work", async () => {
+  const kv = new MemoryKV();
+  const password = "legacy secure password";
+  await onRequestPost({
+    request: request({
+      username: "known_hash",
+      password
+    }),
+    env: { BIYING_KV: kv },
+    clientIp: "203.0.113.73"
+  });
+  const legacy = JSON.parse(await kv.get("user_known_hash"));
+  delete legacy.passwordAlgorithm;
+  delete legacy.passwordIterations;
+  delete legacy.passwordVersion;
+  await kv.put("user_known_hash", JSON.stringify(legacy));
+
+  const iterations = [];
+  const originalDeriveBits = crypto.subtle.deriveBits;
+  crypto.subtle.deriveBits = async function (algorithm, ...args) {
+    iterations.push(Number(algorithm.iterations));
+    return Reflect.apply(originalDeriveBits, this, [algorithm, ...args]);
+  };
+
+  try {
+    const env = {
+      BIYING_KV: kv,
+      BIYING_PASSWORD_ITERATIONS: "120000"
+    };
+    const missing = await onRequestPost({
+      request: request({
+        action: "login",
+        username: "missing_hash",
+        password: "wrong password"
+      }),
+      env,
+      clientIp: "203.0.113.74"
+    });
+    assert.equal(missing.status, 401);
+    const missingWork = iterations.splice(0);
+
+    const incorrect = await onRequestPost({
+      request: request({
+        action: "login",
+        username: "known_hash",
+        password: "wrong password"
+      }),
+      env,
+      clientIp: "203.0.113.75"
+    });
+    assert.equal(incorrect.status, 401);
+    const incorrectWork = iterations.splice(0);
+
+    assert.deepEqual(missingWork, [120000]);
+    assert.deepEqual(incorrectWork, [100000, 20000]);
+    assert.equal(
+      missingWork.reduce((total, value) => total + value, 0),
+      incorrectWork.reduce((total, value) => total + value, 0)
+    );
+  } finally {
+    crypto.subtle.deriveBits = originalDeriveBits;
+  }
 });
 
 
@@ -240,6 +367,9 @@ test("one-time recovery codes invalidate older sessions and cannot be reused", a
 
   const user = JSON.parse(await kv.get("user_recover_me"));
   assert.equal(user.sessionVersion, 1);
+  assert.equal(user.passwordAlgorithm, "pbkdf2-sha256");
+  assert.equal(user.passwordIterations, 100000);
+  assert.equal(user.passwordVersion, 2);
 });
 
 
