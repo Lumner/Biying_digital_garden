@@ -530,13 +530,13 @@ CI 安装 Chromium 与 Firefox；WebKit 可以作为后续定时测试，不作�
 
 ### 6.1 功能开关
 
-后端高风险变更使用环境变量开关：
+后端高风险变更使用环境变量开关。下表同时列出当前已实现开关和后续阶段的目标设计：
 
-| 变量 | 可选值 | 默认值 | 用途 |
-|---|---|---|---|
-| `BIYING_AUTH_MODE` | `bearer` / `dual` / `cookie` | `bearer` | 用户会话迁移 |
-| `BIYING_STATS_WRITE_ENABLED` | `0` / `1` | `1` | 紧急停止统计写入 |
-| `BIYING_STRICT_ORIGIN_CHECK` | `0` / `1` | `0`，验证后改为 `1` | 分阶段启用 Origin 校验 |
+| 变量 | 可选值 | 默认值 | 用途 | 当前状态 |
+|---|---|---|---|---|
+| `BIYING_AUTH_MODE` | `bearer` / `dual` / `cookie` | `bearer` | 用户会话迁移 | 阶段 2B 待实现，当前运行时代码不读取 |
+| `BIYING_STATS_WRITE_ENABLED` | `0` / `1` | `1` | 紧急停止统计写入 | 已实现 |
+| `BIYING_STRICT_ORIGIN_CHECK` | `0` / `1` | `0`，验证后改为 `1` | 分阶段启用 Origin 校验 | 阶段 2B 待实现，当前运行时代码不读取 |
 
 规则：
 
@@ -1787,10 +1787,9 @@ git push
 
 认证故障：
 
-```text
-BIYING_AUTH_MODE=bearer
-BIYING_STRICT_ORIGIN_CHECK=0
-```
+- `BIYING_AUTH_MODE` 和 `BIYING_STRICT_ORIGIN_CHECK` 属于阶段 2B 的待实现设计，当前运行时代码不读取，不能用于生产紧急回滚。
+- 当前应通过 `git revert` 回滚到最近一个认证路径已验证的 `main` 提交，重新发布后执行线上只读冒烟。
+- 阶段 2B 完成并通过开关契约测试后，才能按阶段 2B 的“快速回滚”步骤切换这两个变量。
 
 统计写入异常：
 
