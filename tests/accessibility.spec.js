@@ -49,9 +49,13 @@ function compactViolations(violations) {
 
 
 async function seedAuthenticatedSession(page) {
-  await page.addInitScript((session) => {
-    localStorage.setItem("biying-auth-session", JSON.stringify(session));
-  }, testSession);
+  await page.context().addCookies([{
+    name: "biying_session",
+    value: testSession.token,
+    url: site.url,
+    httpOnly: true,
+    sameSite: "Lax"
+  }]);
 }
 
 
@@ -323,6 +327,7 @@ test("login can be completed by keyboard and field errors are programmatically a
   await page.keyboard.press("Enter");
   await expect(page.locator("[data-auth-signed-in]")).toBeVisible();
   await expect(page.locator("[data-auth-signed-in]")).toContainText(testUser.displayName);
+  expect(await page.evaluate(() => localStorage.getItem("biying-auth-session"))).toBeNull();
 });
 
 

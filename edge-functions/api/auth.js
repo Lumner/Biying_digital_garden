@@ -1,18 +1,29 @@
 import {
   apiResponder,
+  authenticationMode,
   currentSession,
   deleteKvKey,
   enforceRateLimit,
   envValue,
   getClientIp,
   getKv,
+  mutationOriginAllowed,
   normalizeUsername,
-  readBearer,
   readJson,
+  SESSION_COOKIE_NAME,
+  sessionCredentials,
   sessionKey
 } from "./_shared.js";
 
 const SESSION_DAYS = 30;
+const SESSION_SECONDS = SESSION_DAYS * 24 * 60 * 60;
+const PASSWORD_ALGORITHM = "pbkdf2-sha256";
+const PASSWORD_VERSION = 2;
+const LEGACY_PASSWORD_ITERATIONS = 100000;
+const DEFAULT_PASSWORD_ITERATIONS = LEGACY_PASSWORD_ITERATIONS;
+const MIN_PASSWORD_ITERATIONS = LEGACY_PASSWORD_ITERATIONS;
+const MAX_PASSWORD_ITERATIONS = 1000000;
+const DUMMY_PASSWORD_SALT = "9f4d7a2c65183eb0d6a947c135f28b0e";
 const encoder = new TextEncoder();
 
 function userKey(username) {
@@ -41,7 +52,20 @@ function randomHex(bytes = 32) {
   return bytesToHex(data);
 }
 
-async function hashPassword(password, salt) {
+function passwordIterations(env) {
+  const configured = Number(envValue(
+    env,
+    "BIYING_PASSWORD_ITERATIONS",
+    DEFAULT_PASSWORD_ITERATIONS
+  ));
+  return Number.isSafeInteger(configured)
+    && configured >= MIN_PASSWORD_ITERATIONS
+    && configured <= MAX_PASSWORD_ITERATIONS
+    ? configured
+    : DEFAULT_PASSWORD_ITERATIONS;
+}
+
+async function hashPassword(password, salt, iterations) {
   const key = await crypto.subtle.importKey(
     "raw",
     encoder.encode(password),
@@ -53,13 +77,126 @@ async function hashPassword(password, salt) {
     {
       name: "PBKDF2",
       salt: hexToBytes(salt),
-      iterations: 100000,
+      iterations,
       hash: "SHA-256"
     },
     key,
     256
   );
   return bytesToHex(new Uint8Array(bits));
+}
+
+function passwordRecordIsValid(user) {
+  const algorithm = user?.passwordAlgorithm || PASSWORD_ALGORITHM;
+  const iterations = user?.passwordIterations === undefined
+    ? LEGACY_PASSWORD_ITERATIONS
+    : Number(user.passwordIterations);
+  const version = user?.passwordVersion === undefined
+    ? 1
+    : Number(user.passwordVersion);
+  return Boolean(
+    algorithm === PASSWORD_ALGORITHM
+    && Number.isSafeInteger(iterations)
+    && iterations >= MIN_PASSWORD_ITERATIONS
+    && iterations <= MAX_PASSWORD_ITERATIONS
+    && Number.isSafeInteger(version)
+    && version >= 1
+    && version <= PASSWORD_VERSION
+    && /^[a-f0-9]{32}$/i.test(String(user?.salt || ""))
+    && /^[a-f0-9]{64}$/i.test(String(user?.passwordHash || ""))
+  );
+}
+
+function storedPasswordIterations(user) {
+  return user.passwordIterations === undefined
+    ? LEGACY_PASSWORD_ITERATIONS
+    : Number(user.passwordIterations);
+}
+
+function constantTimeHexEqual(left, right) {
+  const first = String(left || "");
+  const second = String(right || "");
+  let difference = first.length ^ second.length;
+  const length = Math.max(first.length, second.length);
+  for (let index = 0; index < length; index += 1) {
+    difference |= (first.charCodeAt(index) || 0) ^ (second.charCodeAt(index) || 0);
+  }
+  return difference === 0;
+}
+
+async function newPasswordRecord(password, env) {
+  const iterations = passwordIterations(env);
+  const salt = randomHex(16);
+  return {
+    salt,
+    passwordHash: await hashPassword(password, salt, iterations),
+    passwordAlgorithm: PASSWORD_ALGORITHM,
+    passwordIterations: iterations,
+    passwordVersion: PASSWORD_VERSION
+  };
+}
+
+async function verifyPassword(raw, password, env) {
+  const currentIterations = passwordIterations(env);
+  let user;
+  try {
+    user = raw ? JSON.parse(raw) : undefined;
+  } catch (error) {
+    user = undefined;
+  }
+  if (!user || !passwordRecordIsValid(user)) {
+    await hashPassword(password, DUMMY_PASSWORD_SALT, currentIterations);
+    return { valid: false };
+  }
+
+  const iterations = storedPasswordIterations(user);
+  const candidate = await hashPassword(password, user.salt, iterations);
+  const valid = constantTimeHexEqual(candidate, user.passwordHash);
+  if (!valid && iterations < currentIterations) {
+    await hashPassword(
+      password,
+      DUMMY_PASSWORD_SALT,
+      currentIterations - iterations
+    );
+  }
+  return { valid, user, iterations };
+}
+
+function passwordNeedsUpgrade(user, iterations, env) {
+  return (
+    user.passwordAlgorithm !== PASSWORD_ALGORITHM
+    || Number(user.passwordVersion || 1) < PASSWORD_VERSION
+    || user.passwordIterations === undefined
+    || iterations < passwordIterations(env)
+  );
+}
+
+export async function benchmarkPasswordHash(env, requestedRuns = 3) {
+  const runs = Math.min(7, Math.max(3, Number(requestedRuns) || 3));
+  const iterations = passwordIterations(env);
+  const samplesMs = [];
+  const now = () => globalThis.performance?.now?.() || Date.now();
+  await hashPassword("benchmark-only-password", randomHex(16), iterations);
+  for (let run = 0; run < runs; run += 1) {
+    const startedAt = now();
+    await hashPassword("benchmark-only-password", randomHex(16), iterations);
+    samplesMs.push(now() - startedAt);
+  }
+  const sorted = [...samplesMs].sort((left, right) => left - right);
+  const medianMs = sorted[Math.floor(sorted.length / 2)];
+  const p95Ms = sorted[Math.min(
+    sorted.length - 1,
+    Math.ceil(sorted.length * 0.95) - 1
+  )];
+  return {
+    iterations,
+    runs,
+    medianMs: Number(medianMs.toFixed(2)),
+    p95Ms: Number(p95Ms.toFixed(2)),
+    targetMinMs: 100,
+    targetMaxMs: 250,
+    withinTarget: medianMs >= 100 && medianMs <= 250
+  };
 }
 
 async function hashText(value) {
@@ -104,7 +241,36 @@ async function createSession(kv, user) {
   return session;
 }
 
-async function register(kv, body, reply) {
+function sessionCookie(token, maxAge = SESSION_SECONDS) {
+  const value = token ? encodeURIComponent(token) : "";
+  const expires = maxAge === 0 ? "; Expires=Thu, 01 Jan 1970 00:00:00 GMT" : "";
+  return `${SESSION_COOKIE_NAME}=${value}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${maxAge}${expires}`;
+}
+
+function sessionResponse(reply, session, user, env, init = {}) {
+  const mode = authenticationMode(env);
+  const payload = {
+    ok: true,
+    user: publicUser(user)
+  };
+  if (mode !== "cookie") payload.token = session.token;
+  const headers = {
+    "cache-control": "no-store",
+    ...(init.headers || {})
+  };
+  if (mode !== "bearer") headers["set-cookie"] = sessionCookie(session.token);
+  return reply.json(payload, { ...init, headers });
+}
+
+function clearedSessionHeaders(env) {
+  const headers = { "cache-control": "no-store" };
+  if (authenticationMode(env) !== "bearer") {
+    headers["set-cookie"] = sessionCookie("", 0);
+  }
+  return headers;
+}
+
+async function register(kv, body, env, reply) {
   const username = normalizeUsername(body.username);
   const displayName = cleanDisplayName(username);
   const password = String(body.password || "");
@@ -124,23 +290,18 @@ async function register(kv, body, reply) {
     return reply.json({ error: "username_taken" }, { status: 409 });
   }
 
-  const salt = randomHex(16);
-  const passwordHash = await hashPassword(password, salt);
+  const passwordRecord = await newPasswordRecord(password, env);
   const user = {
     id: randomHex(12),
     username,
     displayName,
-    salt,
-    passwordHash,
+    ...passwordRecord,
     sessionVersion: 0,
     createdAt: new Date().toISOString()
   };
   await kv.put(userKey(username), JSON.stringify(user));
   const session = await createSession(kv, user);
-  return reply.json(
-    { ok: true, token: session.token, user: publicUser(user) },
-    { status: 201 }
-  );
+  return sessionResponse(reply, session, user, env, { status: 201 });
 }
 
 async function resetPassword(kv, body, env, reply, waitUntil) {
@@ -194,12 +355,10 @@ async function resetPassword(kv, body, env, reply, waitUntil) {
   }
 
   const user = JSON.parse(raw);
-  const salt = randomHex(16);
-  const passwordHash = await hashPassword(password, salt);
+  const passwordRecord = await newPasswordRecord(password, env);
   const updatedUser = {
     ...user,
-    salt,
-    passwordHash,
+    ...passwordRecord,
     sessionVersion: sessionVersion(user) + 1,
     passwordUpdatedAt: new Date().toISOString()
   };
@@ -208,23 +367,52 @@ async function resetPassword(kv, body, env, reply, waitUntil) {
     await deleteKvKey(kv, recoveryStorageKey, waitUntil);
   }
   const session = await createSession(kv, updatedUser);
-  return reply.json({ ok: true, token: session.token, user: publicUser(updatedUser) });
+  return sessionResponse(reply, session, updatedUser, env);
 }
 
-async function login(kv, body, reply) {
+async function login(kv, body, env, reply) {
   const username = normalizeUsername(body.username);
   const password = String(body.password || "");
   const raw = await kv.get(userKey(username), { type: "text" });
-  if (!raw) {
+  const verification = await verifyPassword(raw, password, env);
+  if (!verification.valid) {
     return reply.json({ error: "invalid_credentials" }, { status: 401 });
   }
-  const user = JSON.parse(raw);
-  const passwordHash = await hashPassword(password, user.salt);
-  if (passwordHash !== user.passwordHash) {
-    return reply.json({ error: "invalid_credentials" }, { status: 401 });
+  let user = verification.user;
+  if (passwordNeedsUpgrade(user, verification.iterations, env)) {
+    user = {
+      ...user,
+      ...await newPasswordRecord(password, env),
+      passwordRehashedAt: new Date().toISOString()
+    };
+    await kv.put(userKey(username), JSON.stringify(user));
   }
   const session = await createSession(kv, user);
-  return reply.json({ ok: true, token: session.token, user: publicUser(user) });
+  return sessionResponse(reply, session, user, env);
+}
+
+async function migrateSession(kv, request, env, reply, waitUntil) {
+  if (authenticationMode(env) !== "dual") {
+    return reply.json({ error: "migration_unavailable" }, { status: 409 });
+  }
+  const session = await currentSession(request, kv, {
+    env,
+    mode: "bearer",
+    waitUntil
+  });
+  if (!session) {
+    return reply.json({ error: "auth_required" }, { status: 401 });
+  }
+  return reply.json({
+    ok: true,
+    migrated: true,
+    user: publicUser(session)
+  }, {
+    headers: {
+      "cache-control": "no-store",
+      "set-cookie": sessionCookie(session.token)
+    }
+  });
 }
 
 async function limitAuthRequest(kv, request, clientIp, body, reply) {
@@ -262,9 +450,12 @@ export async function onRequestGet(context) {
     if (!kv || !kv.get) {
       return reply.json({ error: "kv_not_configured" }, { status: 503 });
     }
-    const session = await currentSession(request, kv, { waitUntil });
+    const session = await currentSession(request, kv, { env, waitUntil });
     if (!session) return reply.json({ user: null }, { status: 401 });
-    return reply.json({ user: publicUser(session) });
+    return reply.json(
+      { user: publicUser(session) },
+      { headers: { "cache-control": "no-store" } }
+    );
   } catch (error) {
     return reply.error(error, "auth_failed");
   }
@@ -282,13 +473,19 @@ export async function onRequestPost(context) {
       return reply.json({ error: "kv_not_configured" }, { status: 503 });
     }
     const body = await readJson(request);
+    if (!mutationOriginAllowed(request, env, { setsSessionCookie: true })) {
+      return reply.json({ error: "origin_not_allowed" }, { status: 403 });
+    }
+    if (body.action === "migrate_session") {
+      return migrateSession(kv, request, env, reply, waitUntil);
+    }
     const limited = await limitAuthRequest(kv, request, clientIp, body, reply);
     if (limited) return limited;
-    if (body.action === "login") return login(kv, body, reply);
+    if (body.action === "login") return login(kv, body, env, reply);
     if (body.action === "reset_password") {
       return resetPassword(kv, body, env, reply, waitUntil);
     }
-    return register(kv, body, reply);
+    return register(kv, body, env, reply);
   } catch (error) {
     return reply.error(error, "auth_failed");
   }
@@ -298,10 +495,22 @@ export async function onRequestDelete({ request, env }) {
   const reply = apiResponder(request, env);
   try {
     const kv = getKv(env);
-    if (!kv || !kv.delete) return reply.json({ ok: true });
-    const token = readBearer(request);
-    if (token) await kv.delete(sessionKey(token));
-    return reply.json({ ok: true });
+    const credentials = sessionCredentials(request, env);
+    const authSource = credentials.some(({ source }) => source === "cookie")
+      ? "cookie"
+      : credentials[0]?.source || "";
+    if (!mutationOriginAllowed(request, env, {
+      authSource,
+      setsSessionCookie: true
+    })) {
+      return reply.json({ error: "origin_not_allowed" }, { status: 403 });
+    }
+    if (kv && kv.delete) {
+      await Promise.all(
+        credentials.map(({ token }) => kv.delete(sessionKey(token)))
+      );
+    }
+    return reply.json({ ok: true }, { headers: clearedSessionHeaders(env) });
   } catch (error) {
     return reply.error(error, "logout_failed");
   }

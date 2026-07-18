@@ -28,7 +28,7 @@
 
   async function request(url, options = {}) {
     const headers = { ...(options.headers || {}) };
-    const init = { ...options, headers };
+    const init = { credentials: "same-origin", ...options, headers };
     if (options.json !== undefined) {
       headers["content-type"] = headers["content-type"] || "application/json";
       init.body = JSON.stringify(options.json);

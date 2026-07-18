@@ -12,6 +12,16 @@ test.afterAll(async () => {
   await site?.close();
 });
 
+async function seedHttpOnlySession(page, value = "test-token") {
+  await page.context().addCookies([{
+    name: "biying_session",
+    value,
+    url: site.url,
+    httpOnly: true,
+    sameSite: "Lax"
+  }]);
+}
+
 test("Homepage hamburger opens the mobile navigation drawer", async ({ page }) => {
   await page.goto(`${site.url}/zh/`);
 
@@ -142,17 +152,8 @@ test("Account page hides auth forms after sign in and supports sign out", async 
     });
   });
 
+  await seedHttpOnlySession(page);
   await page.goto(`${site.url}/zh/register/`);
-  await page.evaluate(() => {
-    localStorage.setItem("biying-auth-session", JSON.stringify({
-      token: "test-token",
-      user: {
-        username: "biying",
-        displayName: "biying"
-      }
-    }));
-  });
-  await page.reload();
 
   await expect(page.locator("[data-auth-signed-in]")).toBeVisible();
   await expect(page.locator("[data-auth-access]")).toBeHidden();
@@ -164,6 +165,105 @@ test("Account page hides auth forms after sign in and supports sign out", async 
   await expect(page.locator("[data-auth-access]")).toBeVisible();
   await expect(page.locator("[data-auth-login]")).toBeVisible();
   await expect(page.locator("[data-auth-signed-in]")).toBeHidden();
+});
+
+test("Account login keeps credentials out of Web Storage and script-visible cookies", async ({ page }) => {
+  let loginAuthorization = "";
+  await page.route(`${site.url}/api/auth`, async (route) => {
+    if (route.request().method() === "GET") {
+      await route.fulfill({
+        status: 401,
+        contentType: "application/json",
+        body: JSON.stringify({ user: null })
+      });
+      return;
+    }
+    loginAuthorization = route.request().headers().authorization || "";
+    await route.fulfill({
+      contentType: "application/json",
+      headers: {
+        "set-cookie": "biying_session=new-cookie-session; Path=/; HttpOnly; SameSite=Lax"
+      },
+      body: JSON.stringify({
+        ok: true,
+        user: {
+          username: "cookie_reader",
+          displayName: "Cookie Reader"
+        }
+      })
+    });
+  });
+
+  await page.goto(`${site.url}/zh/register/`);
+  const login = page.locator("[data-auth-login]");
+  await login.getByLabel(/用户名/).fill("cookie_reader");
+  await login.getByLabel(/密码/).fill("a secure password");
+  await login.getByRole("button", { name: "登录", exact: true }).click();
+
+  await expect(page.locator("[data-auth-signed-in]")).toContainText("Cookie Reader");
+  expect(loginAuthorization).toBe("");
+  expect(await page.evaluate(() => localStorage.getItem("biying-auth-session"))).toBeNull();
+  expect(await page.evaluate(() => document.cookie)).not.toContain("biying_session");
+  const cookie = (await page.context().cookies(site.url))
+    .find((item) => item.name === "biying_session");
+  expect(cookie?.httpOnly).toBe(true);
+});
+
+test("Legacy Web Storage session migrates once and is then removed", async ({ page }) => {
+  let migrations = 0;
+  await page.route(`${site.url}/api/auth`, async (route) => {
+    if (route.request().method() === "POST") {
+      const payload = route.request().postDataJSON();
+      if (payload.action === "migrate_session") {
+        migrations += 1;
+        expect(route.request().headers().authorization).toBe("Bearer legacy-token");
+        await route.fulfill({
+          contentType: "application/json",
+          headers: {
+            "set-cookie": "biying_session=migrated-cookie; Path=/; HttpOnly; SameSite=Lax"
+          },
+          body: JSON.stringify({
+            ok: true,
+            migrated: true,
+            user: {
+              username: "legacy_reader",
+              displayName: "Legacy Reader"
+            }
+          })
+        });
+        return;
+      }
+    }
+    const user = migrations
+      ? { username: "legacy_reader", displayName: "Legacy Reader" }
+      : null;
+    await route.fulfill({
+      status: user ? 200 : 401,
+      contentType: "application/json",
+      body: JSON.stringify({ user })
+    });
+  });
+
+  await page.goto(`${site.url}/zh/register/`);
+  await page.evaluate(() => {
+    localStorage.setItem("biying-auth-session", JSON.stringify({
+      token: "legacy-token",
+      user: {
+        username: "legacy_reader",
+        displayName: "Legacy Reader"
+      }
+    }));
+  });
+  await page.reload();
+
+  await expect(page.locator("[data-auth-signed-in]")).toContainText("Legacy Reader");
+  expect(migrations).toBe(1);
+  expect(await page.evaluate(() => localStorage.getItem("biying-auth-session"))).toBeNull();
+  expect(await page.evaluate(() => document.cookie)).not.toContain("biying_session");
+
+  await page.reload();
+  await expect(page.locator("[data-auth-signed-in]")).toContainText("Legacy Reader");
+  expect(migrations).toBe(1);
 });
 
 test("Interactive controls keep usable cursor semantics", async ({ page }) => {
@@ -391,17 +491,8 @@ test("Biying chat reveals answers progressively", async ({ page }) => {
     });
   });
 
+  await seedHttpOnlySession(page);
   await page.goto(`${site.url}/zh/avatar/`);
-  await page.evaluate(() => {
-    localStorage.setItem("biying-auth-session", JSON.stringify({
-      token: "test-token",
-      user: {
-        username: "biying",
-        displayName: "biying"
-      }
-    }));
-  });
-  await page.reload();
 
   const chat = page.locator(".interaction-shell--page-chat .biying-chat");
   await chat.locator("textarea").fill("Please stream the response.");
@@ -446,17 +537,8 @@ test("Biying markdown keeps ordered list numbering across blank lines", async ({
     });
   });
 
+  await seedHttpOnlySession(page);
   await page.goto(`${site.url}/zh/avatar/`);
-  await page.evaluate(() => {
-    localStorage.setItem("biying-auth-session", JSON.stringify({
-      token: "test-token",
-      user: {
-        username: "biying",
-        displayName: "biying"
-      }
-    }));
-  });
-  await page.reload();
 
   const chat = page.locator(".interaction-shell--page-chat .biying-chat");
   await chat.locator("textarea").fill("Please return a numbered list.");
@@ -472,6 +554,8 @@ test("Biying markdown keeps ordered list numbering across blank lines", async ({
 
 test("Biying chat requests and parses event-stream answers", async ({ page }) => {
   let requestedStreaming = false;
+  let requestAuthorization = "";
+  let requestCookie = "";
   let resolveChatRequest;
   const chatRequested = new Promise((resolve) => {
     resolveChatRequest = resolve;
@@ -492,6 +576,8 @@ test("Biying chat requests and parses event-stream answers", async ({ page }) =>
 
   await page.route(`${site.url}/api/chat`, async (route) => {
     requestedStreaming = route.request().postDataJSON().stream === true;
+    requestAuthorization = route.request().headers().authorization || "";
+    requestCookie = route.request().headers().cookie || "";
     resolveChatRequest();
     await new Promise((resolve) => setTimeout(resolve, 180));
     await route.fulfill({
@@ -514,17 +600,8 @@ test("Biying chat requests and parses event-stream answers", async ({ page }) =>
     });
   });
 
+  await seedHttpOnlySession(page);
   await page.goto(`${site.url}/zh/avatar/`);
-  await page.evaluate(() => {
-    localStorage.setItem("biying-auth-session", JSON.stringify({
-      token: "test-token",
-      user: {
-        username: "biying",
-        displayName: "biying"
-      }
-    }));
-  });
-  await page.reload();
 
   const chat = page.locator(".interaction-shell--page-chat .biying-chat");
   await chat.locator("textarea").fill("Use real stream mode.");
@@ -537,6 +614,8 @@ test("Biying chat requests and parses event-stream answers", async ({ page }) =>
   await expect(chat.locator(".biying-message.biying").last()).toContainText("second streamed piece");
   await expect(chat.locator(".biying-sources a")).toHaveAttribute("href", "/zh/notes/");
   expect(requestedStreaming).toBe(true);
+  expect(requestAuthorization).toBe("");
+  expect(requestCookie).toContain("biying_session=test-token");
 });
 
 test("Biying chat restores local transcript and skips transient auth prompts", async ({ page }) => {

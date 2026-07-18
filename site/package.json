@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build:social-card": "node scripts/render_social_card.mjs",
+    "benchmark:password": "node scripts/benchmark_password_hash.mjs",
     "build:site": "python scripts/build_site.py",
     "check:budget": "python scripts/check_site_budget.py",
     "check:css": "python scripts/check_stylesheet_order.py",
@@ -17,7 +18,7 @@
     "test:api": "node --test tests/api/admin.test.js tests/api/auth.test.js tests/api/messages.test.js tests/api/security.test.js tests/api/stats.test.js",
     "test:deployment": "python -m unittest discover -s tests -p \"test_smoke_deployed.py\"",
     "test:e2e": "playwright test --project=mobile-small --project=mobile-chromium --project=tablet-chromium --project=desktop-chromium",
-    "test:e2e:cross-browser": "playwright test --project=desktop-firefox",
+    "test:e2e:cross-browser": "node scripts/run_firefox_tests.mjs",
     "test:mobile": "playwright test --project=mobile-chromium",
     "validate:public": "python scripts/validate_public_scope.py",
     "verify:ci": "python scripts/verify_release.py --ci",

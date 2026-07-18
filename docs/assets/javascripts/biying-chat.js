@@ -75,10 +75,6 @@
     return auth() ? auth().accountUrl() : dom.accountUrl();
   }
 
-  function authHeaders() {
-    return auth() ? auth().authHeaders() : {};
-  }
-
   function escapeHtml(value) {
     return dom.escapeHtml(value);
   }
@@ -466,8 +462,8 @@
   async function askApiStream(query, history, onDelta) {
     const response = await fetch("/api/chat", {
       method: "POST",
+      credentials: "same-origin",
       headers: {
-        ...authHeaders(),
         "content-type": "application/json",
         "accept": "text/event-stream"
       },

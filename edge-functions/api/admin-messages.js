@@ -1,9 +1,10 @@
 import {
   apiResponder,
+  currentAdmin,
   enforceRateLimit,
   getClientIp,
   getKv,
-  isAdmin
+  mutationOriginAllowed
 } from "./_shared.js";
 
 export function onRequestOptions(context = {}) {
@@ -13,15 +14,19 @@ export function onRequestOptions(context = {}) {
 export async function onRequestDelete({ request, env, clientIp }) {
   const reply = apiResponder(request, env, "DELETE, OPTIONS");
   try {
-    if (!isAdmin(request, env)) {
+    const kv = getKv(env);
+    const admin = await currentAdmin(request, env, { kv });
+    if (!admin) {
       return reply.json({ error: "unauthorized" }, { status: 401 });
+    }
+    if (!mutationOriginAllowed(request, env, { authSource: admin.authSource })) {
+      return reply.json({ error: "origin_not_allowed" }, { status: 403 });
     }
     const url = new URL(request.url);
     const id = url.searchParams.get("id");
     if (!id) {
       return reply.json({ error: "id_required" }, { status: 400 });
     }
-    const kv = getKv(env);
     if (!kv || !kv.delete) {
       return reply.json({ error: "kv_not_configured" }, { status: 503 });
     }

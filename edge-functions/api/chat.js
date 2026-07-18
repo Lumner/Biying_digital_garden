@@ -6,6 +6,7 @@ import {
   envValue,
   getClientIp,
   getKv,
+  mutationOriginAllowed,
   readJson
 } from "./_shared.js";
 
@@ -341,9 +342,12 @@ export async function onRequestPost(context) {
     if (!kv || !kv.get) {
       return reply.json({ error: "kv_not_configured" }, { status: 503 });
     }
-    const session = await currentSession(request, kv, { waitUntil });
+    const session = await currentSession(request, kv, { env, waitUntil });
     if (!session) {
       return reply.json({ error: "auth_required" }, { status: 401 });
+    }
+    if (!mutationOriginAllowed(request, env, { authSource: session.authSource })) {
+      return reply.json({ error: "origin_not_allowed" }, { status: 403 });
     }
 
     const body = await readJson(request);

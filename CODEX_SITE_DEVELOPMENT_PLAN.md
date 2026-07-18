@@ -534,9 +534,13 @@ CI 安装 Chromium 与 Firefox；WebKit 可以作为后续定时测试，不作�
 
 | 变量 | 可选值 | 默认值 | 用途 | 当前状态 |
 |---|---|---|---|---|
-| `BIYING_AUTH_MODE` | `bearer` / `dual` / `cookie` | `bearer` | 用户会话迁移 | 阶段 2B 待实现，当前运行时代码不读取 |
+| `BIYING_AUTH_MODE` | `bearer` / `dual` / `cookie` | `bearer` | 用户会话迁移 | 阶段 2B 已实现；生产切换仍需批准 |
+| `BIYING_ADMIN_AUTH_MODE` | `token` / `dual` / `cookie` | `dual` | 管理员短会话灰度与紧急降级 | 阶段 2C 已实现；生产切换到 `cookie` 待验收 |
+| `BIYING_ADMIN_SESSION_MINUTES` | `15`–`30` | `20` | 管理员短会话有效期 | 阶段 2C 已实现 |
+| `BIYING_PASSWORD_ITERATIONS` | `100000`–`1000000` | `100000` | 新密码记录与惰性升级的 PBKDF2 迭代次数 | 阶段 2C 已实现；正式值待预览基准 |
+| `BIYING_PASSWORD_BENCHMARK_ENABLED` | `0` / `1` | `0` | 临时开启管理员预览基准动作 | 阶段 2C 已实现；生产必须保持 `0` |
 | `BIYING_STATS_WRITE_ENABLED` | `0` / `1` | `1` | 紧急停止统计写入 | 已实现 |
-| `BIYING_STRICT_ORIGIN_CHECK` | `0` / `1` | `0`，验证后改为 `1` | 分阶段启用 Origin 校验 | 阶段 2B 待实现，当前运行时代码不读取 |
+| `BIYING_STRICT_ORIGIN_CHECK` | `0` / `1` | `0`，验证后改为 `1` | 分阶段启用 Origin 校验 | 阶段 2B 已实现；Cookie 写请求始终校验，生产全量严格模式待批准 |
 
 规则：
 
@@ -561,7 +565,8 @@ CI 安装 Chromium 与 Firefox；WebKit 可以作为后续定时测试，不作�
 ```json
 {
   "passwordAlgorithm": "pbkdf2-sha256",
-  "passwordIterations": 100000
+  "passwordIterations": 100000,
+  "passwordVersion": 2
 }
 ```
 
@@ -600,8 +605,8 @@ Codex 每完成一个阶段后更新本表。
 | 0. 锁定可复现基线 | P0 | Completed | `5261f77` | 依赖已锁定，生成时间改为可复现来源日期 |
 | 1. 建立统一自动测试与 CI 质量门 | P0 | Completed | `e1e14c9` | 84 项 Chromium E2E 与 10 项 API 测试纳入统一门禁；Firefox 由 CI 验证 |
 | 2A. 低风险安全与隐私修复 | P0 | Completed | `c4b2237` | CORS、恢复、会话失效、写入限流、统计最小化、隐私页和后台分页已完成 |
-| 2B. 用户会话迁移到安全 Cookie | P0 | Pending |  |  |
-| 2C. 管理后台与密码哈希强化 | P1 | Pending |  |  |
+| 2B. 用户会话迁移到安全 Cookie | P0 | In progress | `6f560ba`, `fc51318` | 代码与自动测试已完成；待生产设置 `dual`、发布观察和人工凭据流程验收 |
+| 2C. 管理后台与密码哈希强化 | P1 | In progress | `73ef958`, `0e84514` | 代码与自动测试已完成；待 EdgeOne 预览基准、后台真实流程与 Cookie-only 验收 |
 | 3A. 移动端与响应式修复 | P0 | Completed | `ad0d204` | 窄屏标题、合并头部工具、触控尺寸、安全区和聊天首屏已完成 |
 | 3B. 表单、弹层与读屏无障碍 | P0 | Completed | `bc9d546` | 表单标签、键盘弹层、状态播报、跳转正文和焦点样式已完成 |
 | 3C. 渐进增强、侧栏和动效收敛 | P1 | Completed | 本阶段提交 | 渐进显示、侧栏把手、本地偏好、打印/低动态模式和系统光标已完成 |
@@ -932,7 +937,7 @@ BIYING_STRICT_ORIGIN_CHECK=1
 - 浏览器开发者工具中，站点脚本无法读取会话 Cookie。
 - 新登录不再产生本地 Token。
 - 旧用户可以平滑迁移。
-- 切换 `BIYING_AUTH_MODE=bearer` 可以恢复旧服务端认证路径。
+- 切换 `BIYING_AUTH_MODE=bearer` 可以恢复旧服务端认证路径；若前端迁移已经发布，仍需先回滚前端才能恢复完整站点认证。
 
 ### 提交拆分
 
@@ -945,14 +950,19 @@ refactor: migrate frontend auth away from local storage
 
 ### 快速回滚
 
-第一步，无需重新部署：
+仅部署服务端双读、尚未部署前端迁移时，可以无需重新部署切回：
 
 ```text
 BIYING_AUTH_MODE=bearer
 BIYING_STRICT_ORIGIN_CHECK=0
 ```
 
-第二步，如仍有问题：
+前端迁移已经发布后，不得直接切到 `bearer`，否则新前端不会发送会话 Token。此时按以下顺序回滚：
+
+1. 保持 `BIYING_AUTH_MODE=dual`，先设 `BIYING_STRICT_ORIGIN_CHECK=0`。
+2. 回滚前端 Cookie 迁移并重新发布。
+3. 确认旧前端重新发送 Bearer 后，再设 `BIYING_AUTH_MODE=bearer`。
+4. 如仍有问题，再回滚服务端双读。
 
 ```powershell
 git revert <前端Cookie迁移提交号>
@@ -960,6 +970,15 @@ git revert <服务端双读提交号>
 ```
 
 不得删除已有会话数据。
+
+### 当前实施记录
+
+- `6f560ba` 实现 `bearer`、`dual`、`cookie` 三种服务端模式；默认仍为 `bearer`。Dual 优先 Cookie，Cookie 失效时可回退到有效 Bearer；Cookie-only 不再在响应 JSON 中暴露 Token。
+- 登录、注册和密码重置在 Dual/Cookie 模式设置 `biying_session`，属性为 `Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=2592000`；退出会删除所有当前模式接受的 KV 会话并返回 `Max-Age=0`。
+- Cookie 认证写请求始终校验精确 Origin；`BIYING_STRICT_ORIGIN_CHECK=1` 时 Bearer 写请求也执行相同校验。允许来源使用精确 CORS 回显与 `Access-Control-Allow-Credentials: true`，不使用 `*`。
+- `fc51318` 让统一 API 客户端和聊天流请求使用同源凭据；账户、留言和聊天不再构造 Authorization。旧 `biying-auth-session` 只从 Web Storage 读取一次用于 Dual 迁移，读取后立即删除，失败不重试。
+- 本地完整发布验证通过：API 29 项；Chromium Playwright 194 项通过、7 项按设备条件跳过，Firefox 33 项通过；49 个 JavaScript 文件、20 个一方脚本资源图、81 页元数据与 8.47 MiB 发布预算均通过。
+- 本阶段尚未修改 EdgeOne 生产环境变量，也没有使用真实账户执行写入。完成生产 `dual` 发布、登录/留言/聊天/退出人工验收和观察后，才能把状态改为 `Completed`；`cookie` 与全量严格 Origin 仍需站点主人单独批准。
 
 ---
 
@@ -1012,6 +1031,18 @@ git revert <服务端双读提交号>
 - 管理员会话与密码参数升级分别提交。
 - 回滚代码不删除新增字段。
 - 如管理员 Cookie 路径故障，先恢复旧后台提交，不回滚用户 Cookie 会话。
+
+### 当前实施记录
+
+- `73ef958` 新增 20 分钟管理员短会话。主 Token 只由后台登录表单发送到 `create_session`，随后清空输入；会话使用 `biying_admin_session`，属性为 `Path=/api; HttpOnly; Secure; SameSite=Strict; Max-Age=1200`。
+- 管理员会话存入独立的 `admin_session_*` 前缀，记录自身携带 `expiresAt`；未假设 EdgeOne KV 支持 TTL 参数。过期记录在读取时删除，退出动作同时删除 KV 记录并清除 Cookie。
+- `BIYING_ADMIN_AUTH_MODE` 默认 `dual`，便于旧 Bearer 调用与新 Cookie 后台并存；完成真实流程验收后再切为 `cookie`。`token` 仅用于紧急恢复旧调用方式，不影响用户侧 `BIYING_AUTH_MODE`。
+- 后台脚本不再读取或写入 `localStorage` / `sessionStorage`，刷新页面会在 20 分钟有效期内通过 HttpOnly Cookie 恢复；删除内容和注销用户的二次确认保持不变。
+- `0e84514` 为新注册、密码重置和惰性升级记录写入 `passwordAlgorithm`、`passwordIterations`、`passwordVersion`。缺少这些字段的旧记录仍按 100,000 次 PBKDF2-SHA256 验证，成功后才以当前配置重新加盐哈希。
+- 不存在用户和损坏记录会执行当前配置成本的虚拟哈希；旧低迭代记录密码错误时补足差额工作量。密码摘要比较改为固定遍历路径。
+- `npm run benchmark:password -- <iterations> <runs>` 可做本地参考。EdgeOne 预览环境可临时设置 `BIYING_PASSWORD_BENCHMARK_ENABLED=1`，通过管理员短会话调用 `benchmark_password_hash` 动作取得运行时中位数和 P95；测完立即恢复为 `0`。
+- 当前本机 100,000 次参考中位数约 15ms，不能代表 EdgeOne 运行时，因此未据此提高默认值。阶段完成前必须在预览环境选出中位数约 100–250ms 的值，并确认不低于现有 100,000 次。
+- 本地完整发布验证通过：API 37 项、Chromium Playwright 195 项通过且 7 项按设备条件跳过、Firefox 33 项通过，50 个 JavaScript 文件、81 页元数据与 8.49 MiB 发布预算均通过。EdgeOne 预览基准和真实凭据写入流程仍是本阶段最终门禁。
 
 ---
 
@@ -1787,9 +1818,9 @@ git push
 
 认证故障：
 
-- `BIYING_AUTH_MODE` 和 `BIYING_STRICT_ORIGIN_CHECK` 属于阶段 2B 的待实现设计，当前运行时代码不读取，不能用于生产紧急回滚。
-- 当前应通过 `git revert` 回滚到最近一个认证路径已验证的 `main` 提交，重新发布后执行线上只读冒烟。
-- 阶段 2B 完成并通过开关契约测试后，才能按阶段 2B 的“快速回滚”步骤切换这两个变量。
+- 阶段 2B 已实现 `BIYING_AUTH_MODE` 和 `BIYING_STRICT_ORIGIN_CHECK`，但切换生产值仍需站点主人批准。
+- 新前端在线时应先保持 `BIYING_AUTH_MODE=dual` 并设 `BIYING_STRICT_ORIGIN_CHECK=0`；不要直接切到 `bearer`。
+- 如需恢复 Bearer-only，先回滚前端 Cookie 迁移并确认旧前端已重新发送 Authorization，再设 `BIYING_AUTH_MODE=bearer`；必要时继续回滚服务端双读。
 
 统计写入异常：
 
