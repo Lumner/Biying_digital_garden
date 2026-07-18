@@ -110,6 +110,8 @@ BIYING_ADMIN_TOKEN=自定义管理 token
 BIYING_RECOVERY_TOKEN=全局应急恢复码（可选，不建议日常使用）
 BIYING_ALLOWED_ORIGINS=额外允许的精确来源，多个值用逗号分隔（可选）
 BIYING_STATS_WRITE_ENABLED=1
+BIYING_AUTH_MODE=dual
+BIYING_STRICT_ORIGIN_CHECK=0
 ```
 
 如果使用 OpenAI：
@@ -122,9 +124,39 @@ BIYING_ADMIN_TOKEN=自定义管理 token
 BIYING_RECOVERY_TOKEN=全局应急恢复码（可选，不建议日常使用）
 BIYING_ALLOWED_ORIGINS=额外允许的精确来源，多个值用逗号分隔（可选）
 BIYING_STATS_WRITE_ENABLED=1
+BIYING_AUTH_MODE=dual
+BIYING_STRICT_ORIGIN_CHECK=0
 ```
 
 正式来源 `https://www.biying.site` 始终在 API 跨域白名单中。只有在本地页面需要跨域调用 Functions 时，才把完整来源（例如 `http://127.0.0.1:8000`）显式加入 `BIYING_ALLOWED_ORIGINS`；不要配置 `*`。把 `BIYING_STATS_WRITE_ENABLED` 设为 `0` 可以临时停止统计写入，同时保留统计读取。
+
+### 用户会话 Cookie 上线顺序
+
+`BIYING_AUTH_MODE` 支持：
+
+- `bearer`：只接受旧的 `Authorization: Bearer`，也是变量缺失或值无效时的兼容默认值。
+- `dual`：优先读取 `biying_session` Cookie，同时接受旧 Bearer；用于迁移期。为兼容尚未更新的前端，登录响应仍包含 Token，但新前端会忽略它且不写入 Web Storage。
+- `cookie`：只接受 `biying_session` Cookie；只能在迁移观察完成后启用。
+
+安全上线顺序：
+
+1. 在合并阶段 2B 前，先把 Production 和 Preview 的 `BIYING_AUTH_MODE` 设为 `dual`，把 `BIYING_STRICT_ORIGIN_CHECK` 设为 `0`。旧代码不会读取这两个变量，因此提前设置不会改变当前行为。
+2. 发布同时包含服务端双读和前端 Cookie 迁移的候选版本。
+3. 验证注册、登录和密码重置响应都带有 `biying_session`，并包含 `Path=/; HttpOnly; Secure; SameSite=Lax`。
+4. 验证刷新账户页仍保持登录、旧 `biying-auth-session` 已从 `localStorage` 删除、留言/编辑/删除、碧影聊天和退出登录正常。
+5. 观察稳定后先把 `BIYING_STRICT_ORIGIN_CHECK` 设为 `1`，再次验证全部写操作。
+6. 只有在迁移窗口结束并得到站点主人批准后，才把 `BIYING_AUTH_MODE` 设为 `cookie`。
+
+Cookie 认证写请求会校验精确 `Origin`；允许跨域来源时响应会使用精确 `Access-Control-Allow-Origin` 和 `Access-Control-Allow-Credentials: true`，不得配置通配符。
+
+阶段 2B 完整发布后的紧急降级顺序：
+
+1. 先保持 `BIYING_AUTH_MODE=dual`，把 `BIYING_STRICT_ORIGIN_CHECK=0`，这样新 Cookie 前端和旧 Bearer 前端都仍可工作。
+2. 如问题来自前端迁移，先回滚 `refactor: migrate frontend auth away from local storage` 并重新发布。
+3. 确认旧前端重新发送 Bearer 后，才可把 `BIYING_AUTH_MODE=bearer`。
+4. 如仍需撤销服务端，再回滚 `feat: add dual-mode secure cookie sessions`。
+
+不要在新前端仍在线时直接切到 `bearer`：新前端不会保存或发送会话 Token，这会导致登录和受保护操作失效。回滚过程中不得删除 `session_*` 数据。
 
 ## 6. KV
 

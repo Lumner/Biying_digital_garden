@@ -534,9 +534,9 @@ CI 安装 Chromium 与 Firefox；WebKit 可以作为后续定时测试，不作�
 
 | 变量 | 可选值 | 默认值 | 用途 | 当前状态 |
 |---|---|---|---|---|
-| `BIYING_AUTH_MODE` | `bearer` / `dual` / `cookie` | `bearer` | 用户会话迁移 | 阶段 2B 待实现，当前运行时代码不读取 |
+| `BIYING_AUTH_MODE` | `bearer` / `dual` / `cookie` | `bearer` | 用户会话迁移 | 阶段 2B 已实现；生产切换仍需批准 |
 | `BIYING_STATS_WRITE_ENABLED` | `0` / `1` | `1` | 紧急停止统计写入 | 已实现 |
-| `BIYING_STRICT_ORIGIN_CHECK` | `0` / `1` | `0`，验证后改为 `1` | 分阶段启用 Origin 校验 | 阶段 2B 待实现，当前运行时代码不读取 |
+| `BIYING_STRICT_ORIGIN_CHECK` | `0` / `1` | `0`，验证后改为 `1` | 分阶段启用 Origin 校验 | 阶段 2B 已实现；Cookie 写请求始终校验，生产全量严格模式待批准 |
 
 规则：
 
@@ -600,7 +600,7 @@ Codex 每完成一个阶段后更新本表。
 | 0. 锁定可复现基线 | P0 | Completed | `5261f77` | 依赖已锁定，生成时间改为可复现来源日期 |
 | 1. 建立统一自动测试与 CI 质量门 | P0 | Completed | `e1e14c9` | 84 项 Chromium E2E 与 10 项 API 测试纳入统一门禁；Firefox 由 CI 验证 |
 | 2A. 低风险安全与隐私修复 | P0 | Completed | `c4b2237` | CORS、恢复、会话失效、写入限流、统计最小化、隐私页和后台分页已完成 |
-| 2B. 用户会话迁移到安全 Cookie | P0 | Pending |  |  |
+| 2B. 用户会话迁移到安全 Cookie | P0 | In progress | `6f560ba`, `fc51318` | 代码与自动测试已完成；待生产设置 `dual`、发布观察和人工凭据流程验收 |
 | 2C. 管理后台与密码哈希强化 | P1 | Pending |  |  |
 | 3A. 移动端与响应式修复 | P0 | Completed | `ad0d204` | 窄屏标题、合并头部工具、触控尺寸、安全区和聊天首屏已完成 |
 | 3B. 表单、弹层与读屏无障碍 | P0 | Completed | `bc9d546` | 表单标签、键盘弹层、状态播报、跳转正文和焦点样式已完成 |
@@ -932,7 +932,7 @@ BIYING_STRICT_ORIGIN_CHECK=1
 - 浏览器开发者工具中，站点脚本无法读取会话 Cookie。
 - 新登录不再产生本地 Token。
 - 旧用户可以平滑迁移。
-- 切换 `BIYING_AUTH_MODE=bearer` 可以恢复旧服务端认证路径。
+- 切换 `BIYING_AUTH_MODE=bearer` 可以恢复旧服务端认证路径；若前端迁移已经发布，仍需先回滚前端才能恢复完整站点认证。
 
 ### 提交拆分
 
@@ -945,14 +945,19 @@ refactor: migrate frontend auth away from local storage
 
 ### 快速回滚
 
-第一步，无需重新部署：
+仅部署服务端双读、尚未部署前端迁移时，可以无需重新部署切回：
 
 ```text
 BIYING_AUTH_MODE=bearer
 BIYING_STRICT_ORIGIN_CHECK=0
 ```
 
-第二步，如仍有问题：
+前端迁移已经发布后，不得直接切到 `bearer`，否则新前端不会发送会话 Token。此时按以下顺序回滚：
+
+1. 保持 `BIYING_AUTH_MODE=dual`，先设 `BIYING_STRICT_ORIGIN_CHECK=0`。
+2. 回滚前端 Cookie 迁移并重新发布。
+3. 确认旧前端重新发送 Bearer 后，再设 `BIYING_AUTH_MODE=bearer`。
+4. 如仍有问题，再回滚服务端双读。
 
 ```powershell
 git revert <前端Cookie迁移提交号>
@@ -960,6 +965,15 @@ git revert <服务端双读提交号>
 ```
 
 不得删除已有会话数据。
+
+### 当前实施记录
+
+- `6f560ba` 实现 `bearer`、`dual`、`cookie` 三种服务端模式；默认仍为 `bearer`。Dual 优先 Cookie，Cookie 失效时可回退到有效 Bearer；Cookie-only 不再在响应 JSON 中暴露 Token。
+- 登录、注册和密码重置在 Dual/Cookie 模式设置 `biying_session`，属性为 `Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=2592000`；退出会删除所有当前模式接受的 KV 会话并返回 `Max-Age=0`。
+- Cookie 认证写请求始终校验精确 Origin；`BIYING_STRICT_ORIGIN_CHECK=1` 时 Bearer 写请求也执行相同校验。允许来源使用精确 CORS 回显与 `Access-Control-Allow-Credentials: true`，不使用 `*`。
+- `fc51318` 让统一 API 客户端和聊天流请求使用同源凭据；账户、留言和聊天不再构造 Authorization。旧 `biying-auth-session` 只从 Web Storage 读取一次用于 Dual 迁移，读取后立即删除，失败不重试。
+- 本地完整发布验证通过：API 29 项；Chromium Playwright 194 项通过、7 项按设备条件跳过，Firefox 33 项通过；49 个 JavaScript 文件、20 个一方脚本资源图、81 页元数据与 8.47 MiB 发布预算均通过。
+- 本阶段尚未修改 EdgeOne 生产环境变量，也没有使用真实账户执行写入。完成生产 `dual` 发布、登录/留言/聊天/退出人工验收和观察后，才能把状态改为 `Completed`；`cookie` 与全量严格 Origin 仍需站点主人单独批准。
 
 ---
 
@@ -1787,9 +1801,9 @@ git push
 
 认证故障：
 
-- `BIYING_AUTH_MODE` 和 `BIYING_STRICT_ORIGIN_CHECK` 属于阶段 2B 的待实现设计，当前运行时代码不读取，不能用于生产紧急回滚。
-- 当前应通过 `git revert` 回滚到最近一个认证路径已验证的 `main` 提交，重新发布后执行线上只读冒烟。
-- 阶段 2B 完成并通过开关契约测试后，才能按阶段 2B 的“快速回滚”步骤切换这两个变量。
+- 阶段 2B 已实现 `BIYING_AUTH_MODE` 和 `BIYING_STRICT_ORIGIN_CHECK`，但切换生产值仍需站点主人批准。
+- 新前端在线时应先保持 `BIYING_AUTH_MODE=dual` 并设 `BIYING_STRICT_ORIGIN_CHECK=0`；不要直接切到 `bearer`。
+- 如需恢复 Bearer-only，先回滚前端 Cookie 迁移并确认旧前端已重新发送 Authorization，再设 `BIYING_AUTH_MODE=bearer`；必要时继续回滚服务端双读。
 
 统计写入异常：
 
