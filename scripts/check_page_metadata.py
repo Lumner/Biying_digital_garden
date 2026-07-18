@@ -42,6 +42,8 @@ class MetadataParser(HTMLParser):
         super().__init__(convert_charrefs=True)
         self._inside_title = False
         self._title_parts: list[str] = []
+        self.document_languages: list[str] = []
+        self.biying_languages: list[str] = []
         self.titles: list[str] = []
         self.descriptions: list[str] = []
         self.canonicals: list[str] = []
@@ -54,7 +56,12 @@ class MetadataParser(HTMLParser):
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         attributes = {key.lower(): value or "" for key, value in attrs}
-        if tag.lower() == "title":
+        if tag.lower() == "html":
+            self.document_languages.append(attributes.get("lang", "").strip())
+            self.biying_languages.append(
+                attributes.get("data-biying-lang", "").strip()
+            )
+        elif tag.lower() == "title":
             self._inside_title = True
             self._title_parts = []
         elif tag.lower() == "meta" and attributes.get("name", "").lower() == "description":
@@ -184,7 +191,13 @@ def main() -> None:
         label = str(path.relative_to(SITE)).replace("\\", "/")
         route = route_for_page(path)
         expected_canonical = EXPECTED_ORIGIN + route
+        expected_locale = "en" if route.startswith("/en/") else "zh"
+        expected_language = "en" if expected_locale == "en" else "zh-CN"
 
+        if parser.document_languages != [expected_language]:
+            failures.append(f"{label}: document language must be {expected_language}")
+        if parser.biying_languages != [expected_locale]:
+            failures.append(f"{label}: data-biying-lang must be {expected_locale}")
         if len(parser.titles) != 1 or not parser.titles[0]:
             failures.append(f"{label}: expected exactly one non-empty <title>")
         if len(parser.descriptions) != 1 or not parser.descriptions[0]:

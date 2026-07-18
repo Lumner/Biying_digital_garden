@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import re
 import subprocess
 import sys
 from datetime import date, datetime, time, timezone
@@ -17,6 +18,7 @@ REPRODUCIBLE_SOURCE_PATHS = (
     "package.json",
     "requirements.txt",
 )
+HTML_OPENING_TAG = re.compile(r'<html lang="[^"]+" class="no-js">')
 
 
 def run(*args: str) -> None:
@@ -100,6 +102,30 @@ def trim_shared_asset_blank_lines() -> None:
                 handle.write(cleaned)
 
 
+def set_document_languages() -> None:
+    site = ROOT / "site"
+    if not site.exists():
+        return
+    for path in site.rglob("*.html"):
+        relative = path.relative_to(site).as_posix()
+        if relative.startswith("overrides/"):
+            continue
+        locale = "en" if relative.startswith("en/") else "zh"
+        language = "en" if locale == "en" else "zh-CN"
+        with path.open("r", encoding="utf-8", newline="") as handle:
+            original = handle.read()
+        if "<html" not in original:
+            continue
+        replacement = (
+            f'<html lang="{language}" class="no-js" data-biying-lang="{locale}">'
+        )
+        updated, count = HTML_OPENING_TAG.subn(replacement, original, count=1)
+        if count != 1:
+            raise RuntimeError(f"Could not set document language for {relative}")
+        with path.open("w", encoding="utf-8", newline="") as handle:
+            handle.write(updated)
+
+
 def main() -> None:
     os.environ["SOURCE_DATE_EPOCH"] = reproducible_source_date_epoch()
     print(f"Using SOURCE_DATE_EPOCH={os.environ['SOURCE_DATE_EPOCH']}.")
@@ -107,6 +133,7 @@ def main() -> None:
     run(sys.executable, "scripts/build_page_meta.py")
     run(sys.executable, "scripts/build_knowledge.py")
     run(sys.executable, "-m", "mkdocs", "build", "--strict")
+    set_document_languages()
     trim_shared_asset_blank_lines()
     run(sys.executable, "scripts/package_site.py")
 
