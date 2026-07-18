@@ -48,6 +48,7 @@ export default defineConfig({
       name: "desktop-chromium",
       testMatch: [
         /accessibility\.spec\.js$/,
+        /admin-dashboard\.spec\.js$/,
         /companion\.spec\.js$/,
         /content-system\.spec\.js$/,
         /desktop-sidebar\.spec\.js$/,

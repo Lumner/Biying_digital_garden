@@ -105,7 +105,16 @@ OPENAI_API_KEY=可选
 OPENAI_MODEL=gpt-4.1-mini
 BIYING_ADMIN_TOKEN=后台管理员 token
 BIYING_RECOVERY_TOKEN=可选的全局应急恢复码（不建议日常使用）
+BIYING_ADMIN_AUTH_MODE=dual
+BIYING_ADMIN_SESSION_MINUTES=20
+BIYING_PASSWORD_ITERATIONS=100000
 ```
+
+管理员后台会把长期 Token 换成 15–30 分钟的 HttpOnly Cookie，不会把
+Token 写入 Web Storage。`BIYING_ADMIN_AUTH_MODE` 验收期间使用 `dual`，
+确认后台登录、刷新、敏感操作与退出都正常后再切到 `cookie`。
+`BIYING_PASSWORD_ITERATIONS` 必须先在 EdgeOne 预览环境测量，不能直接照搬
+本机结果；未配置时保持兼容旧记录的 `100000`。
 
 KV 绑定名建议：
 

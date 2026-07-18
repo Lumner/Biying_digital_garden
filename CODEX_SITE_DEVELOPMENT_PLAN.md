@@ -535,6 +535,10 @@ CI 安装 Chromium 与 Firefox；WebKit 可以作为后续定时测试，不作�
 | 变量 | 可选值 | 默认值 | 用途 | 当前状态 |
 |---|---|---|---|---|
 | `BIYING_AUTH_MODE` | `bearer` / `dual` / `cookie` | `bearer` | 用户会话迁移 | 阶段 2B 已实现；生产切换仍需批准 |
+| `BIYING_ADMIN_AUTH_MODE` | `token` / `dual` / `cookie` | `dual` | 管理员短会话灰度与紧急降级 | 阶段 2C 已实现；生产切换到 `cookie` 待验收 |
+| `BIYING_ADMIN_SESSION_MINUTES` | `15`–`30` | `20` | 管理员短会话有效期 | 阶段 2C 已实现 |
+| `BIYING_PASSWORD_ITERATIONS` | `100000`–`1000000` | `100000` | 新密码记录与惰性升级的 PBKDF2 迭代次数 | 阶段 2C 已实现；正式值待预览基准 |
+| `BIYING_PASSWORD_BENCHMARK_ENABLED` | `0` / `1` | `0` | 临时开启管理员预览基准动作 | 阶段 2C 已实现；生产必须保持 `0` |
 | `BIYING_STATS_WRITE_ENABLED` | `0` / `1` | `1` | 紧急停止统计写入 | 已实现 |
 | `BIYING_STRICT_ORIGIN_CHECK` | `0` / `1` | `0`，验证后改为 `1` | 分阶段启用 Origin 校验 | 阶段 2B 已实现；Cookie 写请求始终校验，生产全量严格模式待批准 |
 
@@ -561,7 +565,8 @@ CI 安装 Chromium 与 Firefox；WebKit 可以作为后续定时测试，不作�
 ```json
 {
   "passwordAlgorithm": "pbkdf2-sha256",
-  "passwordIterations": 100000
+  "passwordIterations": 100000,
+  "passwordVersion": 2
 }
 ```
 
@@ -601,7 +606,7 @@ Codex 每完成一个阶段后更新本表。
 | 1. 建立统一自动测试与 CI 质量门 | P0 | Completed | `e1e14c9` | 84 项 Chromium E2E 与 10 项 API 测试纳入统一门禁；Firefox 由 CI 验证 |
 | 2A. 低风险安全与隐私修复 | P0 | Completed | `c4b2237` | CORS、恢复、会话失效、写入限流、统计最小化、隐私页和后台分页已完成 |
 | 2B. 用户会话迁移到安全 Cookie | P0 | In progress | `6f560ba`, `fc51318` | 代码与自动测试已完成；待生产设置 `dual`、发布观察和人工凭据流程验收 |
-| 2C. 管理后台与密码哈希强化 | P1 | Pending |  |  |
+| 2C. 管理后台与密码哈希强化 | P1 | In progress | `73ef958`, `0e84514` | 代码与自动测试已完成；待 EdgeOne 预览基准、后台真实流程与 Cookie-only 验收 |
 | 3A. 移动端与响应式修复 | P0 | Completed | `ad0d204` | 窄屏标题、合并头部工具、触控尺寸、安全区和聊天首屏已完成 |
 | 3B. 表单、弹层与读屏无障碍 | P0 | Completed | `bc9d546` | 表单标签、键盘弹层、状态播报、跳转正文和焦点样式已完成 |
 | 3C. 渐进增强、侧栏和动效收敛 | P1 | Completed | 本阶段提交 | 渐进显示、侧栏把手、本地偏好、打印/低动态模式和系统光标已完成 |
@@ -1026,6 +1031,18 @@ git revert <服务端双读提交号>
 - 管理员会话与密码参数升级分别提交。
 - 回滚代码不删除新增字段。
 - 如管理员 Cookie 路径故障，先恢复旧后台提交，不回滚用户 Cookie 会话。
+
+### 当前实施记录
+
+- `73ef958` 新增 20 分钟管理员短会话。主 Token 只由后台登录表单发送到 `create_session`，随后清空输入；会话使用 `biying_admin_session`，属性为 `Path=/api; HttpOnly; Secure; SameSite=Strict; Max-Age=1200`。
+- 管理员会话存入独立的 `admin_session_*` 前缀，记录自身携带 `expiresAt`；未假设 EdgeOne KV 支持 TTL 参数。过期记录在读取时删除，退出动作同时删除 KV 记录并清除 Cookie。
+- `BIYING_ADMIN_AUTH_MODE` 默认 `dual`，便于旧 Bearer 调用与新 Cookie 后台并存；完成真实流程验收后再切为 `cookie`。`token` 仅用于紧急恢复旧调用方式，不影响用户侧 `BIYING_AUTH_MODE`。
+- 后台脚本不再读取或写入 `localStorage` / `sessionStorage`，刷新页面会在 20 分钟有效期内通过 HttpOnly Cookie 恢复；删除内容和注销用户的二次确认保持不变。
+- `0e84514` 为新注册、密码重置和惰性升级记录写入 `passwordAlgorithm`、`passwordIterations`、`passwordVersion`。缺少这些字段的旧记录仍按 100,000 次 PBKDF2-SHA256 验证，成功后才以当前配置重新加盐哈希。
+- 不存在用户和损坏记录会执行当前配置成本的虚拟哈希；旧低迭代记录密码错误时补足差额工作量。密码摘要比较改为固定遍历路径。
+- `npm run benchmark:password -- <iterations> <runs>` 可做本地参考。EdgeOne 预览环境可临时设置 `BIYING_PASSWORD_BENCHMARK_ENABLED=1`，通过管理员短会话调用 `benchmark_password_hash` 动作取得运行时中位数和 P95；测完立即恢复为 `0`。
+- 当前本机 100,000 次参考中位数约 15ms，不能代表 EdgeOne 运行时，因此未据此提高默认值。阶段完成前必须在预览环境选出中位数约 100–250ms 的值，并确认不低于现有 100,000 次。
+- 本地完整发布验证通过：API 37 项、Chromium Playwright 195 项通过且 7 项按设备条件跳过，50 个 JavaScript 文件、81 页元数据与 8.48 MiB 发布预算均通过。EdgeOne 预览基准和真实凭据写入流程仍是本阶段最终门禁。
 
 ---
 
