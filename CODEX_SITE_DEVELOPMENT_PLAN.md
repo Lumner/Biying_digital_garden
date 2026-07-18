@@ -607,7 +607,7 @@ Codex 每完成一个阶段后更新本表。
 | 3C. 渐进增强、侧栏和动效收敛 | P1 | Completed | 本阶段提交 | 渐进显示、侧栏把手、本地偏好、打印/低动态模式和系统光标已完成 |
 | 4. 首页、导航和品牌定位重构 | P1 | Completed | `f47c124`, `e65fb84` | 按暂无人工回复策略完成：只使用仓库已验证事实，保留现有视觉，首页结构与内容日期可分别回滚 |
 | 5. 项目与长篇内容体系完善 | P1/P2 | Completed | `860cd7d`, `3ac78c5`, `67b96b6`, `76173eb`, `2911cfd`, `bc4378e` | 项目案例结构化、英文讲义标明 Overview；三门中文长讲义按课程拆分并保留旧 URL 与锚点入口，章节入口收敛到课程主页 |
-| 6. 资源与加载性能优化 | P1 | Pending |  |  |
+| 6. 资源与加载性能优化 | P1 | Completed | `0e2af1f` | Hero 与 favicon 改用轻量发布资产；脚本按页面加载；移除 Google Fonts、source maps 与未请求大文件；预算收紧并通过完整发布验证 |
 | 7. SEO、分享卡片与多语言发现 | P1 | Pending |  | 分享图需要视觉确认 |
 | 8. CSS/JavaScript 可维护性重构 | P2 | Pending |  |  |
 | 9. 发布、线上冒烟与回滚演练 | P0 | Pending |  | 需要发布批准 |
@@ -1496,6 +1496,16 @@ perf: remove external fonts and source maps
 ### 回滚
 
 每类优化单独提交。图片回滚时源图和生成站点一起恢复。
+
+### 完成记录
+
+- 首页 Hero 发布资产改为 960/1440 宽 WebP + JPEG 回退，favicon 改用轻量 SVG；旧大图和旧 favicon 保留在源码历史中，但生产打包会从 `site/` 剔除。
+- Material Google Fonts 运行时依赖已关闭，站点回到系统字体栈。
+- MathJax 本地大包拆分为 4 个小 chunk，并仅在笔记页面按需加载；公式页面增加 chunk 初始化与渲染测试。
+- 留言、后台、友链、笔记目录、统计和随机封面脚本改为模板条件加载，首页不再请求后台、留言、友链和笔记目录脚本。
+- 生产打包剔除 source maps、旧大图、旧 MathJax 单包和未请求的 `wordcut.js`；预算收紧为 10 MB / 4 MB raster / 650 KB single asset / 100 KB favicon / no source maps。
+- 新增 `tests/performance-assets.spec.js`，覆盖 Google Fonts、页面级脚本、Hero WebP、MathJax chunk 和静态资源 404。
+- 完整发布验证通过：`npm run verify:release`，184 passed、7 skipped；发布目录 8.09 MiB，最大单文件 593.66 KiB，source maps 0。
 
 ---
 
