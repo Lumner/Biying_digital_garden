@@ -1,6 +1,7 @@
 ---
 title: Public Scope
 summary: Biying only reads public website content, not GitHub activity, drafts, or private materials.
+description: Biying only reads public website content, not GitHub activity, drafts, or private materials.
 public: true
 avatar_readable: true
 category: site

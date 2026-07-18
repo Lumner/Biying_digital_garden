@@ -1,6 +1,7 @@
 ---
 title: Friends
 summary: A place for friends' sites, avatars, links, and short introductions.
+description: A place for friends' sites, avatars, links, and short introductions.
 public: true
 avatar_readable: true
 tags:

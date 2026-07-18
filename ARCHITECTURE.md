@@ -324,20 +324,29 @@ Node 侧配置。当前主要用于预留 EdgeOne CLI：
 
 ## 静态资源：`docs/assets/`
 
-### `docs/assets/styles/cyber.css`
+### `docs/assets/styles/`
 
-全站自定义样式。负责：
+全站自定义样式按固定层叠顺序拆分：
 
-- 赛博风格背景
-- 首页 hero
-- 卡片
-- 碧影视觉终端
-- 语言切换按钮
-- 聊天框
-- 留言板
-- 响应式布局
+```text
+tokens.css
+themes/dark.css
+base.css
+pages/home.css
+components.css
+pages/notes.css
+pages/projects.css
+layout.css
+pages/chat.css
+pages/account.css
+motion.css
+themes/light.css
+responsive.css
+```
 
-如果你想改网站视觉，主要改这里。
+文件顺序由 `mkdocs.yml` 的 `extra_css` 明确声明，不允许改成深层 `@import`。
+`scripts/check_stylesheet_order.py` 会检查源文件、相对资源和全部生成页面的加载顺序。
+首轮拆分刻意保留原始层叠关系；移动规则前必须先确认跨文件覆盖和响应式顺序。
 
 ### `docs/assets/javascripts/mathjax.js`
 
@@ -355,13 +364,34 @@ $$
 
 ### `docs/assets/javascripts/language-switch.js`
 
-语言切换脚本。负责：
+语言和主题入口脚本。负责：
 
 - 判断当前页面是 `/zh/` 还是 `/en/`
 - 顶部显示 `中文 / EN` 切换按钮
 - 根据当前语言隐藏另一套导航
+- 管理 system / dark / light 三态主题
+- 同步桌面与移动端工具按钮
 
 后续新增页面时，不需要改这个脚本。只要在 `mkdocs.yml` 里成对添加中英文页面即可。
+
+### 共享前端工具
+
+- `dom-utils.js`：路径、转义、日期、可访问状态和表单忙碌状态。
+- `i18n.js`：统一判断当前页面语言。
+- `api-client.js`：JSON 请求、统一 API 错误和友好错误码解析。
+- `toast.js`：留言与后台的视觉通知。
+
+这些脚本按 `mkdocs.yml` 中的顺序先于账户、聊天等领域脚本加载。
+领域脚本保留自己的文案映射，但不应重复实现请求解析、live status 或 busy state。
+
+### 页面级前端脚本
+
+- `site-stats.js`：只在首页和统计页加载，复用统一 API 客户端。
+- `friend-links.js`：只在友链页加载，读取唯一数据源 `assets/data/friend-links.json`。
+- `notes-hub.js`、`note-reader.js`：只在笔记相关页面加载。
+- `guestbook.js`、`admin-dashboard.js`：分别只在留言页和后台页加载。
+
+`scripts/check_frontend_assets.py` 会阻止同页重复脚本、未引用的一方脚本和日期版友链资源重新出现。
 
 ### `docs/assets/javascripts/auth.js`
 
@@ -797,10 +827,10 @@ mkdocs.yml
 
 ### 修改视觉风格
 
-主要改：
+按职责修改 `docs/assets/styles/` 下的对应文件，并保持 `mkdocs.yml` 中的加载顺序：
 
 ```txt
-docs/assets/styles/cyber.css
+docs/assets/styles/
 ```
 
 ### 修改语言切换

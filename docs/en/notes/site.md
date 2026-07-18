@@ -1,6 +1,7 @@
 ---
 title: Site Notes
 summary: Notes about the site itself.
+description: Notes about the site itself.
 public: true
 avatar_readable: true
 category: site

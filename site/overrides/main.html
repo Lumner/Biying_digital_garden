@@ -2,6 +2,147 @@
 
 {% block extrahead %}
 {{ super() }}
+{% set page_url = page.url if page and page.url else "" %}
+{% set page_meta = page.meta if page and page.meta else {} %}
+{% set page_title = page_meta.title if page_meta.title else config.site_name %}
+{% set seo_title = page_title ~ " - " ~ config.site_name %}
+{% set seo_description = page_meta.description if page_meta.description else config.site_description %}
+{% set seo_url = page.canonical_url if page and page.canonical_url else config.site_url %}
+{% set seo_image = config.site_url ~ "assets/images/og-biying.jpg" %}
+{% set locale = "en" if page_url.startswith("en/") else "zh" %}
+{% set language = "en" if locale == "en" else "zh-CN" %}
+{% set og_locale = "en_US" if locale == "en" else "zh_CN" %}
+{% set date_modified = page_meta.updated | string if page_meta.updated else none %}
+{% set alternates = namespace(zh=config.site_url ~ "zh/", en=config.site_url ~ "en/") %}
+{% if page_url.startswith("zh/") %}
+{% set alternate_suffix = page_url[3:] %}
+{% set alternates.zh = seo_url %}
+{% set alternates.en = config.site_url ~ "en/" ~ alternate_suffix %}
+{% if page_url.startswith("zh/notes/computer-systems-lecture/") %}
+{% set alternates.en = config.site_url ~ "en/notes/computer-systems-lecture/" %}
+{% elif page_url.startswith("zh/notes/discrete-math-lecture/") %}
+{% set alternates.en = config.site_url ~ "en/notes/discrete-math-lecture/" %}
+{% elif page_url.startswith("zh/notes/fds-data-structures-lecture/") %}
+{% set alternates.en = config.site_url ~ "en/notes/fds-data-structures-lecture/" %}
+{% endif %}
+{% elif page_url.startswith("en/") %}
+{% set alternate_suffix = page_url[3:] %}
+{% set alternates.zh = config.site_url ~ "zh/" ~ alternate_suffix %}
+{% set alternates.en = seo_url %}
+{% endif %}
+<link rel="alternate" hreflang="zh-CN" href="{{ alternates.zh }}">
+<link rel="alternate" hreflang="en" href="{{ alternates.en }}">
+<link rel="alternate" hreflang="x-default" href="{{ config.site_url }}">
+{% if page_meta.robots %}
+<meta name="robots" content="{{ page_meta.robots }}">
+{% endif %}
+<meta property="og:title" content="{{ seo_title }}">
+<meta property="og:description" content="{{ seo_description }}">
+<meta property="og:type" content="{% if page_url.startswith('zh/notes/') or page_url.startswith('en/notes/') or page_url.startswith('zh/projects/') or page_url.startswith('en/projects/') %}article{% else %}website{% endif %}">
+<meta property="og:url" content="{{ seo_url }}">
+<meta property="og:site_name" content="{{ config.site_name }}">
+<meta property="og:locale" content="{{ og_locale }}">
+<meta property="og:locale:alternate" content="{{ 'zh_CN' if locale == 'en' else 'en_US' }}">
+<meta property="og:image" content="{{ seo_image }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="碧影数字花园 / Biying Digital Garden">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ seo_title }}">
+<meta name="twitter:description" content="{{ seo_description }}">
+<meta name="twitter:image" content="{{ seo_image }}">
+<meta name="twitter:image:alt" content="碧影数字花园 / Biying Digital Garden">
+{% if page_url in ["", "zh/", "en/"] %}
+<script type="application/ld+json">
+{{ {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": config.site_url ~ "#website",
+  "name": config.site_name,
+  "url": config.site_url,
+  "inLanguage": ["zh-CN", "en"],
+  "publisher": {"@id": config.site_url ~ "#person"},
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": config.site_url ~ locale ~ "/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+} | tojson }}
+</script>
+{% endif %}
+{% if page_url in ["zh/", "en/"] %}
+<script type="application/ld+json">
+{{ {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": config.site_url ~ "#person",
+  "name": "Lumner",
+  "url": config.site_url ~ locale ~ "/about/",
+  "sameAs": ["https://github.com/Lumner"],
+  "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "Zhejiang University"
+  }
+} | tojson }}
+</script>
+{% endif %}
+{% if page_url.startswith("zh/projects/") or page_url.startswith("en/projects/") %}
+{% set creative_work = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "@id": seo_url ~ "#creative-work",
+  "name": page_title,
+  "headline": page_title,
+  "description": seo_description,
+  "url": seo_url,
+  "inLanguage": language,
+  "author": {"@id": config.site_url ~ "#person"},
+  "isPartOf": {"@id": config.site_url ~ "#website"}
+} %}
+{% if date_modified %}{% set _ = creative_work.update({"dateModified": date_modified}) %}{% endif %}
+<script type="application/ld+json">
+{{ creative_work | tojson }}
+</script>
+{% elif page_url.startswith("zh/notes/") or page_url.startswith("en/notes/") %}
+{% set tech_article = {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "@id": seo_url ~ "#article",
+  "headline": page_title,
+  "description": seo_description,
+  "url": seo_url,
+  "inLanguage": language,
+  "author": {"@id": config.site_url ~ "#person"},
+  "isPartOf": {"@id": config.site_url ~ "#website"}
+} %}
+{% if date_modified %}{% set _ = tech_article.update({"dateModified": date_modified}) %}{% endif %}
+<script type="application/ld+json">
+{{ tech_article | tojson }}
+</script>
+{% endif %}
+{% if page_url not in ["", "zh/", "en/"] %}
+<script type="application/ld+json">
+{{ {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home" if locale == "en" else "首页",
+      "item": config.site_url ~ locale ~ "/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": page_title,
+      "item": seo_url
+    }
+  ]
+} | tojson }}
+</script>
+{% endif %}
+<script src="{{ 'assets/javascripts/locale-search.js?v=20260718-1' | url }}"></script>
 <script>
 (function () {
   var lang = location.pathname.indexOf("/en/") !== -1 ? "en" : "zh";
@@ -40,5 +181,47 @@
 {% block content %}
 <span id="main-content" class="biying-main-target" tabindex="-1"></span>
 {{ super() }}
+{% endblock %}
+
+{% macro biying_script(src) -%}
+  <script src="{{ src | url }}"></script>
+{%- endmacro %}
+
+{% block scripts %}
+{{ super() }}
+{% set page_url = page.url if page and page.url else "" %}
+{% set is_home = page_url in ["zh/", "en/"] %}
+{% set is_notes = page_url.startswith("zh/notes/") or page_url.startswith("en/notes/") %}
+{% set is_stats = page_url in ["zh/stats/", "en/stats/"] %}
+{% set is_guestbook = page_url in ["zh/guestbook/", "en/guestbook/"] %}
+{% set is_admin = page_url in ["zh/admin/", "en/admin/"] %}
+{% set is_friends = page_url in ["zh/friends/", "en/friends/"] %}
+{% if is_home or is_stats %}
+{{ biying_script("assets/javascripts/site-stats.js?v=20260718-1") }}
+{% endif %}
+{% if is_home %}
+{{ biying_script("assets/javascripts/random-note-cover.js?v=20260521-1") }}
+{% endif %}
+{% if is_notes %}
+{{ biying_script("assets/javascripts/mathjax.js?v=20260521-1") }}
+{{ biying_script("assets/vendor/mathjax/es5/tex-mml-chtml.chunk-01.js?v=20260718-1") }}
+{{ biying_script("assets/vendor/mathjax/es5/tex-mml-chtml.chunk-02.js?v=20260718-1") }}
+{{ biying_script("assets/vendor/mathjax/es5/tex-mml-chtml.chunk-03.js?v=20260718-1") }}
+{{ biying_script("assets/vendor/mathjax/es5/tex-mml-chtml.chunk-04.js?v=20260718-1") }}
+{{ biying_script("assets/vendor/mathjax/es5/tex-mml-chtml-loader.js?v=20260718-1") }}
+{{ biying_script("assets/javascripts/notes-hub.js?v=20260521-1") }}
+{{ biying_script("assets/javascripts/note-reader.js?v=20260521-2") }}
+{% endif %}
+{% if is_friends %}
+{{ biying_script("assets/javascripts/friend-links.js?v=20260718-1") }}
+{% endif %}
+{% if is_guestbook %}
+{{ biying_script("assets/javascripts/toast.js?v=20260521-1") }}
+{{ biying_script("assets/javascripts/guestbook.js?v=20260718-1") }}
+{% endif %}
+{% if is_admin %}
+{{ biying_script("assets/javascripts/toast.js?v=20260521-1") }}
+{{ biying_script("assets/javascripts/admin-dashboard.js?v=20260718-1") }}
+{% endif %}
 {% endblock %}
 

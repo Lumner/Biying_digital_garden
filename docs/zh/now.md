@@ -1,8 +1,10 @@
 ---
 title: 现在
 summary: 记录最近正在做的事情：个人数字网站、AI 协作式全栈构建、具身智能和长期记录。
+description: 记录最近正在做的事情：个人数字网站、AI 协作式全栈构建、具身智能和长期记录。
 public: true
 avatar_readable: true
+updated: 2026-05-21
 tags:
   - now
   - status

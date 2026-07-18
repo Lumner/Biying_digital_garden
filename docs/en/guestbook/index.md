@@ -1,6 +1,7 @@
 ---
 title: Guestbook
 summary: A public guestbook where all messages are displayed publicly by default.
+description: A public guestbook where all messages are displayed publicly by default.
 public: true
 avatar_readable: true
 tags:

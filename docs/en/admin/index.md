@@ -1,6 +1,8 @@
 ---
 title: Site Admin
 summary: Private owner dashboard for the site.
+description: Private owner dashboard for the site.
+robots: noindex, nofollow
 public: false
 avatar_readable: false
 tags:

@@ -1,0 +1,12 @@
+:root {
+  --cyber-bg: #060b0e;
+  --cyber-panel: rgba(8, 18, 22, 0.84);
+  --cyber-panel-solid: #0a171b;
+  --cyber-line: rgba(112, 244, 219, 0.18);
+  --cyber-line-strong: rgba(112, 244, 219, 0.56);
+  --cyber-text: #e6fff9;
+  --cyber-muted: #9cbfba;
+  --cyber-reader: rgba(5, 12, 15, 0.42);
+  --md-primary-fg-color: #051017;
+  --md-accent-fg-color: #39f5d4;
+}

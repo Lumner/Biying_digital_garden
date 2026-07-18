@@ -1,9 +1,11 @@
 (function () {
+  const api = window.BiyingApi;
+  const dom = window.BiyingDom;
   const endpoint = "/api/stats";
   const visitorKey = "biying_site_visitor_id";
 
   function locale() {
-    return window.location.pathname.startsWith("/en/") ? "en" : "zh";
+    return dom.locale();
   }
 
   function copy(key) {
@@ -56,16 +58,12 @@
   }
 
   async function requestStats(method, body) {
-    const init = {
+    const options = {
       method,
-      cache: "no-store",
-      headers: { "content-type": "application/json" }
+      cache: "no-store"
     };
-    if (body) init.body = JSON.stringify(body);
-    const response = await fetch(endpoint, init);
-    const data = await response.json().catch(() => ({}));
-    if (!response.ok && !data.available) throw new Error(data.error || "stats_unavailable");
-    return data;
+    if (body) options.json = body;
+    return api.request(endpoint, options);
   }
 
   async function loadStats() {

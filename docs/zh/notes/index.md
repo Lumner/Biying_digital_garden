@@ -1,6 +1,7 @@
 ---
 title: 笔记
 summary: 公开笔记入口，放着课程讲义、站点说明和一些慢慢整理出来的内容。
+description: 公开笔记入口，放着课程讲义、站点说明和一些慢慢整理出来的内容。
 public: true
 avatar_readable: true
 tags:
@@ -56,33 +57,33 @@ tags:
 <div class="note-library">
   <section class="note-tile">
     <h3>离散数学讲义</h3>
-    <p>覆盖逻辑与证明、集合与函数、算法、归纳递归、计数、关系等主题。</p>
+    <p>已拆分为章节页，覆盖逻辑与证明、集合与函数、算法、归纳递归、计数、关系等主题。</p>
     <div class="note-tile__meta">
       <span class="cyber-tag">数学</span>
       <span class="cyber-tag">证明</span>
       <span class="cyber-tag">计数</span>
     </div>
-    <a href="./discrete-math-lecture/">阅读</a>
+    <a href="./discrete-math-lecture/">进入总览</a>
   </section>
   <section class="note-tile">
     <h3>计算机系统基础讲义</h3>
-    <p>覆盖信息表示、布尔代数、组合逻辑、运算部件、时序逻辑、ISA 与 RISC-V。</p>
+    <p>已拆分为章节页，覆盖信息表示、布尔代数、组合逻辑、运算部件、时序逻辑、ISA 与 RISC-V。</p>
     <div class="note-tile__meta">
       <span class="cyber-tag">系统</span>
       <span class="cyber-tag">逻辑</span>
       <span class="cyber-tag">RISC-V</span>
     </div>
-    <a href="./computer-systems-lecture/">阅读</a>
+    <a href="./computer-systems-lecture/">进入总览</a>
   </section>
   <section class="note-tile">
     <h3>FDS 数据结构基础讲义</h3>
-    <p>覆盖算法分析、线性表、栈队列、树、堆、并查集、线段树、图与拓扑排序。</p>
+    <p>已拆分为章节页，覆盖算法分析、线性表、栈队列、树、堆、并查集、线段树、图与拓扑排序。</p>
     <div class="note-tile__meta">
       <span class="cyber-tag">算法</span>
       <span class="cyber-tag">数据结构</span>
       <span class="cyber-tag">图</span>
     </div>
-    <a href="./fds-data-structures-lecture/">阅读</a>
+    <a href="./fds-data-structures-lecture/">进入总览</a>
   </section>
 </div>
 

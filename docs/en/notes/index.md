@@ -1,6 +1,7 @@
 ---
 title: Notes
 summary: Public notes entrance, including public scope and math rendering tests.
+description: Public notes entrance, including public scope and math rendering tests.
 public: true
 avatar_readable: true
 tags:
@@ -10,7 +11,7 @@ tags:
 <section class="garden-pagehead">
   <div class="garden-pagehead__eyebrow">NOTES</div>
   <h1 class="garden-pagehead__title">Notes</h1>
-  <p class="garden-pagehead__lead">A home for the notes I am willing to leave in public: course notes, math checks, and a clear record of what belongs in Biying's answer range.</p>
+  <p class="garden-pagehead__lead">A home for the notes I am willing to leave in public: Chinese source notes, English overviews, math checks, and a clear record of what belongs in Biying's answer range.</p>
   <div class="garden-pagehead__meta">
     <span class="status-pill">Chinese Source</span>
     <span class="status-pill leaf">Biying-readable</span>
@@ -18,7 +19,7 @@ tags:
   </div>
 </section>
 
-Chinese is the source language here, and I keep the English side in step as much as I can. `public` and `avatar_readable` together decide what can enter Biying's knowledge base.
+Chinese is the source language here. The English course pages are overview entrances, not complete line-by-line translations. `public` and `avatar_readable` together decide what can enter Biying's knowledge base.
 
 <div class="note-entry-grid" aria-label="Reading entrances">
   <a href="#course-notes">
@@ -55,34 +56,34 @@ Chinese is the source language here, and I keep the English side in step as much
 
 <div class="note-library">
   <section class="note-tile">
-    <h3>Discrete Mathematics Lecture Notes</h3>
-    <p>Logic and proofs, sets and functions, algorithms, induction and recursion, counting, and relations.</p>
+    <h3>Discrete Mathematics English Overview</h3>
+    <p>English map for the Chinese full note: logic and proofs, sets and functions, algorithms, induction and recursion, counting, and relations.</p>
     <div class="note-tile__meta">
       <span class="cyber-tag">Math</span>
       <span class="cyber-tag">Proofs</span>
       <span class="cyber-tag">Counting</span>
     </div>
-    <a href="./discrete-math-lecture/">Read</a>
+    <a href="./discrete-math-lecture/">Open overview</a>
   </section>
   <section class="note-tile">
-    <h3>Computer Systems Fundamentals Lecture Notes</h3>
-    <p>Information representation, Boolean algebra, combinational logic, arithmetic units, sequential logic, ISA, and RISC-V.</p>
+    <h3>Computer Systems English Overview</h3>
+    <p>English map for the Chinese full note: information representation, Boolean algebra, combinational logic, arithmetic units, sequential logic, ISA, and RISC-V.</p>
     <div class="note-tile__meta">
       <span class="cyber-tag">Systems</span>
       <span class="cyber-tag">Logic</span>
       <span class="cyber-tag">RISC-V</span>
     </div>
-    <a href="./computer-systems-lecture/">Read</a>
+    <a href="./computer-systems-lecture/">Open overview</a>
   </section>
   <section class="note-tile">
-    <h3>FDS Data Structures Fundamentals Lecture Notes</h3>
-    <p>Algorithm analysis, lists, stacks and queues, trees, heaps, union-find, segment trees, graphs, and topological sorting.</p>
+    <h3>FDS Data Structures English Overview</h3>
+    <p>English map for the Chinese full note: algorithm analysis, lists, stacks and queues, trees, heaps, union-find, segment trees, graphs, and topological sorting.</p>
     <div class="note-tile__meta">
       <span class="cyber-tag">Algorithms</span>
       <span class="cyber-tag">Structures</span>
       <span class="cyber-tag">Graphs</span>
     </div>
-    <a href="./fds-data-structures-lecture/">Read</a>
+    <a href="./fds-data-structures-lecture/">Open overview</a>
   </section>
 </div>
 

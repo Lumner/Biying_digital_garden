@@ -1,6 +1,7 @@
 ---
 title: 模块更新
 summary: 记录站点各个公开模块最近的维护状态，方便快速了解哪里刚刚有变化。
+description: 记录站点各个公开模块最近的维护状态，方便快速了解哪里刚刚有变化。
 public: true
 avatar_readable: true
 tags:

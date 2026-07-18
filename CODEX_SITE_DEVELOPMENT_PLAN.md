@@ -530,13 +530,13 @@ CI 安装 Chromium 与 Firefox；WebKit 可以作为后续定时测试，不作�
 
 ### 6.1 功能开关
 
-后端高风险变更使用环境变量开关：
+后端高风险变更使用环境变量开关。下表同时列出当前已实现开关和后续阶段的目标设计：
 
-| 变量 | 可选值 | 默认值 | 用途 |
-|---|---|---|---|
-| `BIYING_AUTH_MODE` | `bearer` / `dual` / `cookie` | `bearer` | 用户会话迁移 |
-| `BIYING_STATS_WRITE_ENABLED` | `0` / `1` | `1` | 紧急停止统计写入 |
-| `BIYING_STRICT_ORIGIN_CHECK` | `0` / `1` | `0`，验证后改为 `1` | 分阶段启用 Origin 校验 |
+| 变量 | 可选值 | 默认值 | 用途 | 当前状态 |
+|---|---|---|---|---|
+| `BIYING_AUTH_MODE` | `bearer` / `dual` / `cookie` | `bearer` | 用户会话迁移 | 阶段 2B 待实现，当前运行时代码不读取 |
+| `BIYING_STATS_WRITE_ENABLED` | `0` / `1` | `1` | 紧急停止统计写入 | 已实现 |
+| `BIYING_STRICT_ORIGIN_CHECK` | `0` / `1` | `0`，验证后改为 `1` | 分阶段启用 Origin 校验 | 阶段 2B 待实现，当前运行时代码不读取 |
 
 规则：
 
@@ -605,11 +605,11 @@ Codex 每完成一个阶段后更新本表。
 | 3A. 移动端与响应式修复 | P0 | Completed | `ad0d204` | 窄屏标题、合并头部工具、触控尺寸、安全区和聊天首屏已完成 |
 | 3B. 表单、弹层与读屏无障碍 | P0 | Completed | `bc9d546` | 表单标签、键盘弹层、状态播报、跳转正文和焦点样式已完成 |
 | 3C. 渐进增强、侧栏和动效收敛 | P1 | Completed | 本阶段提交 | 渐进显示、侧栏把手、本地偏好、打印/低动态模式和系统光标已完成 |
-| 4. 首页、导航和品牌定位重构 | P1 | Pending |  | 需要内容/视觉确认 |
-| 5. 项目与长篇内容体系完善 | P1/P2 | Pending |  | 需要真实资料 |
-| 6. 资源与加载性能优化 | P1 | Pending |  |  |
-| 7. SEO、分享卡片与多语言发现 | P1 | Pending |  | 分享图需要视觉确认 |
-| 8. CSS/JavaScript 可维护性重构 | P2 | Pending |  |  |
+| 4. 首页、导航和品牌定位重构 | P1 | Completed | `f47c124`, `e65fb84` | 按暂无人工回复策略完成：只使用仓库已验证事实，保留现有视觉，首页结构与内容日期可分别回滚 |
+| 5. 项目与长篇内容体系完善 | P1/P2 | Completed | `860cd7d`, `3ac78c5`, `67b96b6`, `76173eb`, `2911cfd`, `bc4378e` | 项目案例结构化、英文讲义标明 Overview；三门中文长讲义按课程拆分并保留旧 URL 与锚点入口，章节入口收敛到课程主页 |
+| 6. 资源与加载性能优化 | P1 | Completed | `0e2af1f` | Hero 与 favicon 改用轻量发布资产；脚本按页面加载；移除 Google Fonts、source maps 与未请求大文件；预算收紧并通过完整发布验证 |
+| 7. SEO、分享卡片与多语言发现 | P1 | Completed | `5eb2dee`, `02c3095`, `f3f5570` | 81 页独立描述与双语元数据、原创分享图、无 JS 语言入口和当前语言搜索过滤已完成 |
+| 8. CSS/JavaScript 可维护性重构 | P2 | Completed | `0e189eb`, `146225f`, `6a569e0`, `ba32046` | 单体样式机械拆分为固定顺序的 13 个文件；共享前端工具、资源图门禁、控制台门禁和过时资源清理已完成 |
 | 9. 发布、线上冒烟与回滚演练 | P0 | Pending |  | 需要发布批准 |
 
 状态只使用：
@@ -1497,6 +1497,16 @@ perf: remove external fonts and source maps
 
 每类优化单独提交。图片回滚时源图和生成站点一起恢复。
 
+### 完成记录
+
+- 首页 Hero 发布资产改为 960/1440 宽 WebP + JPEG 回退，favicon 改用轻量 SVG；旧大图和旧 favicon 保留在源码历史中，但生产打包会从 `site/` 剔除。
+- Material Google Fonts 运行时依赖已关闭，站点回到系统字体栈。
+- MathJax 本地大包拆分为 4 个小 chunk，并仅在笔记页面按需加载；公式页面增加 chunk 初始化与渲染测试。
+- 留言、后台、友链、笔记目录、统计和随机封面脚本改为模板条件加载，首页不再请求后台、留言、友链和笔记目录脚本。
+- 生产打包剔除 source maps、旧大图、旧 MathJax 单包和未请求的 `wordcut.js`；预算收紧为 10 MB / 4 MB raster / 650 KB single asset / 100 KB favicon / no source maps。
+- 新增 `tests/performance-assets.spec.js`，覆盖 Google Fonts、页面级脚本、Hero WebP、MathJax chunk 和静态资源 404。
+- 完整发布验证通过：`npm run verify:release`，184 passed、7 skipped；发布目录 8.09 MiB，最大单文件 593.66 KiB，source maps 0。
+
 ---
 
 ## 阶段 7：SEO、分享卡片与多语言发现
@@ -1580,6 +1590,16 @@ feat: keep search results within current locale
 
 元数据、根入口、搜索过滤分别提交，可独立回滚。
 
+### 完成记录
+
+- 81 个 Markdown 页面均具有独立 `description`，生成页同时输出准确 canonical、`zh-CN` / `en` / `x-default` alternate、Open Graph、Twitter Card 和可解析 JSON-LD。
+- 首页输出 `Person` 与 `WebSite`，项目、笔记和面包屑分别输出对应的 `CreativeWork`、`TechArticle` 与 `BreadcrumbList` 结构化数据；后台页面明确禁止索引。
+- 新增可重复生成的 1200 × 630 原创分享图 `og-biying.jpg`，已人工检查中英文文字、尺寸和画面；生成命令为 `npm run build:social-card`。
+- 根路径改为静态双语选择页，禁用 JavaScript 时仍可进入中文或英文站点，不再执行强制跳转。
+- 搜索索引在交给 Material 搜索工作线程前按当前路径语言过滤，并保留结果层兜底；中文页不会混入英文结果，英文页同理。
+- 元数据检查扩展为全站唯一描述、规范链接、可访问 alternate、社交图和 JSON-LD 校验；SEO 浏览器测试覆盖分享图尺寸、无脚本根入口和双语搜索隔离。
+- 完整发布验证通过：API 21 项通过；Playwright 190 项通过、7 项按平台跳过；81 页元数据通过；发布目录 8.39 MiB，最大单文件 594.27 KiB，source maps 为 0。
+
 ---
 
 ## 阶段 8：CSS 与 JavaScript 可维护性重构
@@ -1658,6 +1678,18 @@ chore: remove obsolete assets and stale architecture notes
 ### 回滚
 
 CSS、JavaScript 和文档清理分别提交。
+
+### 完成记录
+
+- 原单体 `cyber.css` 按原始层叠顺序机械拆分为 13 个职责文件，`mkdocs.yml` 显式固定加载顺序；首次拆分不移动选择器、不改写视觉规则，嵌套目录中的图片相对路径已同步校正。
+- 新增 `scripts/check_stylesheet_order.py` 与 `npm run check:css`，会校验源文件集合、禁止 `@import`、相对资源存在、旧单体文件消失，以及 82 个生成页面中的加载顺序。
+- `dom-utils.js` 统一 live status 与 busy state，账户、留言、后台和碧影聊天复用共享实现；站点统计改用统一 API 客户端和语言工具。
+- 删除已确认无调用的旧主题函数和 i18n/表单辅助代码；保留聊天流、领域错误文案、认证接口和后台端点等高风险边界，未做行为改写。
+- 友链脚本与数据各收敛为唯一无日期文件，删除日期版副本；历史方案文档增加历史状态说明，当前架构和协作说明已与样式、脚本结构对齐。
+- 新增 `scripts/check_frontend_assets.py` 与 `npm run check:frontend`，阻止生成页重复加载一方脚本、未引用的一方脚本和日期版友链资源回归；当前覆盖 20 个一方脚本与 83 个生成页面。
+- 关键路由冒烟测试同时拦截未捕获异常与本地/API 控制台错误；友链、资源契约和控制台定向测试 19 项通过。双语搜索测试改为等待搜索组件明确就绪并按真实键盘事件输入，连续复跑 20 项通过。
+- 完整发布验证通过：API 21 项通过；Playwright 192 项通过、7 项按设备条件跳过；49 个 JavaScript 文件语法通过；81 页元数据通过；发布目录 8.47 MiB，距总量预算 1.07 MiB，最大单文件 594.27 KiB，source maps 为 0。
+- 独立回滚：CSS 拆分 `git revert 0e189eb`；共享工具 `git revert 146225f`；资源与文档清理 `git revert 6a569e0`；搜索测试稳定化 `git revert ba32046`。整体回滚时按新到旧顺序执行。
 
 ---
 
@@ -1755,10 +1787,9 @@ git push
 
 认证故障：
 
-```text
-BIYING_AUTH_MODE=bearer
-BIYING_STRICT_ORIGIN_CHECK=0
-```
+- `BIYING_AUTH_MODE` 和 `BIYING_STRICT_ORIGIN_CHECK` 属于阶段 2B 的待实现设计，当前运行时代码不读取，不能用于生产紧急回滚。
+- 当前应通过 `git revert` 回滚到最近一个认证路径已验证的 `main` 提交，重新发布后执行线上只读冒烟。
+- 阶段 2B 完成并通过开关契约测试后，才能按阶段 2B 的“快速回滚”步骤切换这两个变量。
 
 统计写入异常：
 

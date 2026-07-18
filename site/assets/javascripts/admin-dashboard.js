@@ -106,20 +106,12 @@
     return message;
   }
 
-  function setStatus(element, message, state = "idle") {
-    if (!element) return;
-    element.textContent = message || "";
-    element.dataset.state = state;
-    const isError = state === "error";
-    element.setAttribute("role", isError ? "alert" : "status");
-    element.setAttribute("aria-live", isError ? "assertive" : "polite");
-  }
-
   function setDashboardBusy(root, busy) {
-    root.setAttribute("aria-busy", String(busy));
-    root.querySelectorAll(".admin-token-form button[type='submit'], [data-admin-refresh]").forEach((button) => {
-      button.disabled = busy;
-    });
+    dom.setBusy(
+      root,
+      busy,
+      ".admin-token-form button[type='submit'], [data-admin-refresh]"
+    );
   }
 
   async function loadDashboard() {
@@ -335,7 +327,7 @@
     async function refresh(options = {}) {
       if (!readToken()) return;
       setDashboardBusy(root, true);
-      if (options.announce !== false) setStatus(status, text("loading"), "loading");
+      if (options.announce !== false) dom.setLiveStatus(status, text("loading"), "loading");
       try {
         const data = await loadDashboard();
         const users = data.users || [];
@@ -348,12 +340,12 @@
         applyPrivateFilters();
         applyGuestbookFilters();
         if (options.announce) {
-          setStatus(status, notify(text("dashboardReady"), "success"), "success");
+          dom.setLiveStatus(status, notify(text("dashboardReady"), "success"), "success");
         } else {
-          setStatus(status, "", "idle");
+          dom.setLiveStatus(status, "", "idle");
         }
       } catch (error) {
-        setStatus(status, notify(friendlyError(error), "error"), "error");
+        dom.setLiveStatus(status, notify(friendlyError(error), "error"), "error");
       } finally {
         setDashboardBusy(root, false);
       }
@@ -364,7 +356,7 @@
       const token = tokenInput.value.trim();
       if (!token) {
         tokenInput.setAttribute("aria-invalid", "true");
-        setStatus(status, text("tokenRequired"), "error");
+        dom.setLiveStatus(status, text("tokenRequired"), "error");
         tokenInput.focus();
         return;
       }
@@ -418,7 +410,7 @@
         setCount("users", 0);
         setCount("inbox", 0);
         setCount("guestbook", 0);
-        setStatus(status, notify(text("tokenForgotten"), "success"), "success");
+        dom.setLiveStatus(status, notify(text("tokenForgotten"), "success"), "success");
       } else if (issueButton) {
         const minutes = Number(window.prompt(text("minutesPrompt"), "30"));
         if (!minutes) return;
@@ -430,32 +422,32 @@
             <span>${text("expiresAt")}: ${escapeHtml(formatDate(result.expiresAt))}</span>
             <p>${text("codeHint")}</p>
           `;
-          setStatus(status, notify(text("codeReady"), "success"), "success");
+          dom.setLiveStatus(status, notify(text("codeReady"), "success"), "success");
         } catch (error) {
-          setStatus(status, notify(friendlyError(error), "error"), "error");
+          dom.setLiveStatus(status, notify(friendlyError(error), "error"), "error");
         }
       } else if (toggleButton) {
         try {
           await updateMessage(toggleButton.dataset.toggleMessage, toggleButton.dataset.nextStatus);
           await refresh();
-          setStatus(status, notify(text("updated"), "success"), "success");
+          dom.setLiveStatus(status, notify(text("updated"), "success"), "success");
         } catch (error) {
-          setStatus(status, notify(friendlyError(error), "error"), "error");
+          dom.setLiveStatus(status, notify(friendlyError(error), "error"), "error");
         }
       } else if (copyButton) {
         try {
           await navigator.clipboard.writeText(copyButton.dataset.copyContact || "");
-          setStatus(status, notify(text("copied"), "success"), "success");
+          dom.setLiveStatus(status, notify(text("copied"), "success"), "success");
         } catch (error) {
-          setStatus(status, notify(text("failed"), "error"), "error");
+          dom.setLiveStatus(status, notify(text("failed"), "error"), "error");
         }
       } else if (deleteButton && window.confirm(text("deleteConfirm"))) {
         try {
           await deleteMessage(deleteButton.dataset.deletePrivate);
           await refresh();
-          setStatus(status, notify(text("deleted"), "success"), "success");
+          dom.setLiveStatus(status, notify(text("deleted"), "success"), "success");
         } catch (error) {
-          setStatus(status, notify(friendlyError(error), "error"), "error");
+          dom.setLiveStatus(status, notify(friendlyError(error), "error"), "error");
         }
       } else if (privateFilterButton) {
         privateFilter = privateFilterButton.dataset.adminPrivateFilter;
@@ -477,25 +469,25 @@
         try {
           await updateMessage(toggleGuestbookButton.dataset.toggleGuestbook, toggleGuestbookButton.dataset.nextStatus, "guestbook");
           await refresh();
-          setStatus(status, notify(text("updated"), "success"), "success");
+          dom.setLiveStatus(status, notify(text("updated"), "success"), "success");
         } catch (error) {
-          setStatus(status, notify(friendlyError(error), "error"), "error");
+          dom.setLiveStatus(status, notify(friendlyError(error), "error"), "error");
         }
       } else if (deleteGuestbookButton && window.confirm(text("deleteConfirm"))) {
         try {
           await deleteMessage(deleteGuestbookButton.dataset.deleteGuestbook, "guestbook");
           await refresh();
-          setStatus(status, notify(text("deleted"), "success"), "success");
+          dom.setLiveStatus(status, notify(text("deleted"), "success"), "success");
         } catch (error) {
-          setStatus(status, notify(friendlyError(error), "error"), "error");
+          dom.setLiveStatus(status, notify(friendlyError(error), "error"), "error");
         }
       } else if (deleteUserButton && window.confirm(text("unregisterConfirm"))) {
         try {
           await deleteMessage(deleteUserButton.dataset.deleteUser, "user");
           await refresh();
-          setStatus(status, notify(text("accountDeleted"), "success"), "success");
+          dom.setLiveStatus(status, notify(text("accountDeleted"), "success"), "success");
         } catch (error) {
-          setStatus(status, notify(friendlyError(error), "error"), "error");
+          dom.setLiveStatus(status, notify(friendlyError(error), "error"), "error");
         }
       }
     });

@@ -1,6 +1,7 @@
 ---
 title: 数学笔记
 summary: 数学相关笔记入口。
+description: 数学相关笔记入口。
 public: true
 avatar_readable: true
 category: site

@@ -1,6 +1,7 @@
 ---
 title: 站点笔记
 summary: 关于这个网站本身的说明与实验。
+description: 关于这个网站本身的说明与实验。
 public: true
 avatar_readable: true
 category: site

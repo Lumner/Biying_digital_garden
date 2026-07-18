@@ -86,22 +86,6 @@
     return message;
   }
 
-  function setStatus(element, message, state = "idle") {
-    if (!element) return;
-    element.textContent = message || "";
-    element.dataset.state = state;
-    const isError = state === "error";
-    element.setAttribute("role", isError ? "alert" : "status");
-    element.setAttribute("aria-live", isError ? "assertive" : "polite");
-  }
-
-  function setBusy(root, busy) {
-    root.setAttribute("aria-busy", String(busy));
-    root.querySelectorAll(".guestbook__form button[type='submit']").forEach((button) => {
-      button.disabled = busy;
-    });
-  }
-
   async function fetchMessages() {
     const data = await api.request("/api/messages", {
       cache: "no-store",
@@ -218,18 +202,18 @@
 
     async function refresh(highlightId = "", options = {}) {
       renderForm(formSlot);
-      if (options.announceLoading !== false) setStatus(status, copy("loading"), "loading");
-      setBusy(root, true);
+      if (options.announceLoading !== false) dom.setLiveStatus(status, copy("loading"), "loading");
+      dom.setBusy(root, true);
       let loaded = true;
       try {
         state.messages = await fetchMessages();
-        if (options.announceLoading !== false) setStatus(status, "", "idle");
+        if (options.announceLoading !== false) dom.setLiveStatus(status, "", "idle");
       } catch (error) {
-        setStatus(status, notify(friendlyError(error), "error"), "error");
+        dom.setLiveStatus(status, notify(friendlyError(error), "error"), "error");
         state.messages = [];
         loaded = false;
       } finally {
-        setBusy(root, false);
+        dom.setBusy(root, false);
       }
       renderList(list, state.messages, highlightId);
       count.textContent = String(state.messages.length);
@@ -255,25 +239,25 @@
       if (!message.content) {
         const textarea = form.querySelector("textarea[name='content']");
         textarea?.setAttribute("aria-invalid", "true");
-        setStatus(status, notify(copy("empty"), "warning"), "error");
+        dom.setLiveStatus(status, notify(copy("empty"), "warning"), "error");
         textarea?.focus();
         return;
       }
       if (message.website) return;
-      setStatus(status, copy("saving"), "loading");
-      setBusy(root, true);
+      dom.setLiveStatus(status, copy("saving"), "loading");
+      dom.setBusy(root, true);
       try {
         const result = await postMessage(message);
         form.reset();
         const loaded = await refresh(result && result.message ? result.message.id : "", {
           announceLoading: false
         });
-        if (loaded) setStatus(status, notify(copy("saved"), "success"), "success");
+        if (loaded) dom.setLiveStatus(status, notify(copy("saved"), "success"), "success");
       } catch (error) {
-        setStatus(status, notify(friendlyError(error), "error"), "error");
+        dom.setLiveStatus(status, notify(friendlyError(error), "error"), "error");
         form.querySelector("textarea[name='content']")?.setAttribute("aria-invalid", "true");
       } finally {
-        setBusy(root, false);
+        dom.setBusy(root, false);
       }
     });
 
@@ -284,7 +268,7 @@
       const hint = formSlot.querySelector("[data-guestbook-privacy]");
       textarea.removeAttribute("aria-invalid");
       if (status.dataset.state === "error" && status.textContent === copy("empty")) {
-        setStatus(status, "", "idle");
+        dom.setLiveStatus(status, "", "idle");
       }
       if (counter) counter.textContent = `${textarea.value.length} / 800 ${copy("characters")}`;
       if (hint) {
@@ -308,24 +292,24 @@
           if (next === null) return;
           const content = next.trim();
           if (!content) {
-            setStatus(status, notify(copy("empty"), "warning"), "error");
+            dom.setLiveStatus(status, notify(copy("empty"), "warning"), "error");
             return;
           }
-          setStatus(status, copy("saving"), "loading");
+          dom.setLiveStatus(status, copy("saving"), "loading");
           await editMessage(id, content);
           successMessage = copy("saved");
         } else {
           if (!window.confirm(copy("deleteConfirm"))) return;
-          setStatus(status, copy("saving"), "loading");
+          dom.setLiveStatus(status, copy("saving"), "loading");
           const card = list.querySelector(`[data-id="${CSS.escape(id)}"]`);
           if (card) card.classList.add("is-removing");
           await deleteMessage(id);
           successMessage = copy("deleted");
         }
         const loaded = await refresh("", { announceLoading: false });
-        if (loaded) setStatus(status, notify(successMessage, "success"), "success");
+        if (loaded) dom.setLiveStatus(status, notify(successMessage, "success"), "success");
       } catch (error) {
-        setStatus(status, notify(friendlyError(error), "error"), "error");
+        dom.setLiveStatus(status, notify(friendlyError(error), "error"), "error");
       }
     });
   }

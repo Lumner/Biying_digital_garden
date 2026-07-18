@@ -1,6 +1,7 @@
 ---
 title: About
 summary: An undergraduate AI student at Zhejiang University, interested in AI-assisted full-stack building, embodied intelligence, and long-term notes.
+description: An undergraduate AI student at Zhejiang University, interested in AI-assisted full-stack building, embodied intelligence, and long-term notes.
 public: true
 avatar_readable: true
 tags:
@@ -16,13 +17,13 @@ tags:
   <h1 class="garden-pagehead__title">About Me</h1>
   <p class="garden-pagehead__lead">I study AI and practice turning ideas into things people can actually open, use, and respond to. This site keeps my learning, projects, and a little everyday texture.</p>
   <div class="garden-pagehead__meta">
-    <span class="status-pill leaf">Class of 2025</span>
+    <span class="status-pill leaf">2025 cohort</span>
     <span class="status-pill">Artificial Intelligence</span>
     <span class="status-pill warm">Long-Term Notes</span>
   </div>
 </section>
 
-I am a **Class of 2025 undergraduate student majoring in Artificial Intelligence at Zhejiang University**. This site is a small room I keep for myself: learning notes, project traces, recent thoughts, and Biying, who gives visitors a conversational way into the public parts of it.
+I am a **2025 cohort undergraduate student majoring in Artificial Intelligence at Zhejiang University**. This site is a small room I keep for myself: learning notes, project traces, recent thoughts, and Biying, who gives visitors a conversational way into the public parts of it.
 
 I do not want it to read like a stiff profile. I would rather let the process show: what I am learning, why something caught my attention, and how a loose idea slowly becomes something real.
 
@@ -54,7 +55,7 @@ I also want the process to stay honest. Notes should keep more than conclusions;
 <div class="surface-grid">
   <div class="surface-tile">
     <strong>Identity</strong>
-    <span>Class of 2025 undergraduate AI student at Zhejiang University.</span>
+    <span>2025 cohort undergraduate AI student at Zhejiang University.</span>
   </div>
   <div class="surface-tile">
     <strong>Interests</strong>

@@ -1,6 +1,7 @@
 ---
 title: 数学实验
 summary: 用于验证 MkDocs 中的行内公式和块级公式渲染。
+description: 用于验证 MkDocs 中的行内公式和块级公式渲染。
 public: true
 avatar_readable: true
 category: math

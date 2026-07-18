@@ -60,11 +60,12 @@ def reproducible_source_date_epoch() -> str:
     return utc_midnight_epoch(datetime.now().astimezone().date())
 
 
-def trim_shared_script_blank_lines() -> None:
+def trim_shared_asset_blank_lines() -> None:
     site = ROOT / "site"
     if not site.exists():
         return
     markers = (
+        "assets/styles/",
         "dom-utils.js",
         "i18n.js",
         "api-client.js",
@@ -73,7 +74,6 @@ def trim_shared_script_blank_lines() -> None:
         "reveal-on-scroll.js",
         "toast.js",
         "friend-links.js",
-        "friend-links-v20260620.js",
     )
     for path in site.rglob("*.html"):
         with path.open("r", encoding="utf-8", newline="") as handle:
@@ -107,7 +107,7 @@ def main() -> None:
     run(sys.executable, "scripts/build_page_meta.py")
     run(sys.executable, "scripts/build_knowledge.py")
     run(sys.executable, "-m", "mkdocs", "build", "--strict")
-    trim_shared_script_blank_lines()
+    trim_shared_asset_blank_lines()
     run(sys.executable, "scripts/package_site.py")
 
 

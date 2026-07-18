@@ -1,6 +1,7 @@
 ---
 title: 站点统计
 summary: 记录这座数字花园被看见的次数。
+description: 记录这座数字花园被看见的次数。
 public: true
 avatar_readable: true
 tags:

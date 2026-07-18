@@ -1,6 +1,7 @@
 ---
 title: Tags
 summary: Browse all public notes by tag.
+description: Browse all public notes by tag.
 public: true
 avatar_readable: true
 category: site

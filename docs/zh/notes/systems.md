@@ -1,6 +1,7 @@
 ---
 title: 系统笔记
 summary: 系统相关笔记入口。
+description: 系统相关笔记入口。
 public: true
 avatar_readable: true
 category: site

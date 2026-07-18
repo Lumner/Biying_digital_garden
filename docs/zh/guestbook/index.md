@@ -1,6 +1,7 @@
 ---
 title: 留言
 summary: 公开留言板，适合留下别人也可以看见的一句话。
+description: 公开留言板，适合留下别人也可以看见的一句话。
 public: true
 avatar_readable: true
 tags:

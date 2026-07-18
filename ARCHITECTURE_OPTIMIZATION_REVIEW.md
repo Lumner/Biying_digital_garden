@@ -1,5 +1,8 @@
 # Architecture Optimization Review
 
+> 历史评审快照：其中部分风险和待办已经完成或被后续方案替代。
+> 当前执行状态以 `CODEX_SITE_DEVELOPMENT_PLAN.md` 和 `ARCHITECTURE.md` 为准。
+
 本文档记录当前项目架构检查结果，重点覆盖前端、后端、构建部署、数据流和后续可维护性。项目当前形态是：
 
 - MkDocs Material 静态站点

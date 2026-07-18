@@ -1,11 +1,12 @@
 ---
-title: Computer Systems Fundamentals Lecture Notes
-summary: Lecture notes for computer systems fundamentals, covering information representation, Boolean algebra, combinational logic, arithmetic units, sequential logic, ISA, and RISC-V.
+title: Computer Systems English Overview
+summary: English overview for the Chinese computer systems fundamentals lecture note; not a full line-by-line translation.
+description: English overview for the Chinese computer systems fundamentals lecture note; not a full line-by-line translation.
 public: true
 avatar_readable: true
 category: systems
 recommended: true
-updated: 2026-05-21
+updated: 2026-07-18
 reading_order: 20
 tags:
   - computer-systems
@@ -13,14 +14,20 @@ tags:
   - course-note
 ---
 
-# Computer Systems Fundamentals Lecture Notes
+# Computer Systems English Overview
 
-!!! info "Translation status"
-    This is an English companion version generated for the bilingual site. It summarizes and translates the structure of the Chinese source while keeping key mathematical and technical notation intact. A full line-by-line translation can be generated later with `scripts/translate.py` after an API key is configured.
+!!! info "English overview status"
+    This page is an English overview, not a full line-by-line translation. The Chinese full note remains the source of record for complete explanations, examples, tables, diagrams, and chapter structure.
+
+## Source and Language Boundary
+
+- Chinese full version: [计算机系统基础讲义](../../zh/notes/computer-systems-lecture.md)
+- Original source file: `note/SYS_计算机系统基础讲义.md`
+- Language status: overview only; use the Chinese full version for detailed study.
 
 ## What This Note Covers
 
-Lecture notes for computer systems fundamentals, covering information representation, Boolean algebra, combinational logic, arithmetic units, sequential logic, ISA, and RISC-V.
+This overview maps the Chinese computer systems fundamentals note, covering information representation, Boolean algebra, combinational logic, arithmetic units, sequential logic, ISA, and RISC-V.
 
 ## Study Outline
 
@@ -40,4 +47,4 @@ The Chinese source contains mathematical notation and technical symbols. Example
 
 ## How to Use This Page
 
-Use this English page as a quick map before reading the Chinese lecture note. The Chinese page contains the complete detailed content, formulas, examples, tables, and course structure. This companion page makes the topic discoverable to English visitors and gives Biying enough English context to explain what the note is about.
+Use this English overview as a quick map before reading the Chinese full note. The Chinese page contains the complete detailed content, formulas, examples, tables, diagrams, and course structure. This overview makes the topic discoverable to English visitors and gives Biying enough English context to explain what the note is about without overstating the translation status.

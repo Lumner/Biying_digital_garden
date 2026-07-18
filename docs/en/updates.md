@@ -1,6 +1,7 @@
 ---
 title: Updates
 summary: Recent maintenance notes for each public module of the site.
+description: Recent maintenance notes for each public module of the site.
 public: true
 avatar_readable: true
 tags:

@@ -1,6 +1,7 @@
 ---
 title: Site Stats
 summary: Visitor and page-view statistics for Biying Digital Garden.
+description: Visitor and page-view statistics for Biying Digital Garden.
 public: true
 avatar_readable: true
 tags:

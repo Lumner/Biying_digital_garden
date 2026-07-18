@@ -26,8 +26,11 @@ def verify_quick() -> None:
 def verify_full() -> None:
     run("Build site", sys.executable, "scripts/build_site.py")
     run("Public content boundary", sys.executable, "scripts/validate_public_scope.py")
+    run("Stylesheet order", NPM, "run", "check:css")
     run("JavaScript syntax", NPM, "run", "check:js")
+    run("Frontend asset graph", NPM, "run", "check:frontend")
     run("API unit tests", NPM, "run", "test:api")
+    run("Deployment smoke unit tests", NPM, "run", "test:deployment")
     run("Page metadata", sys.executable, "scripts/check_page_metadata.py")
     run("Site budget", sys.executable, "scripts/check_site_budget.py")
     run("Browser regression", NPM, "run", "test:e2e")

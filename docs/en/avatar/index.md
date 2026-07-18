@@ -1,6 +1,7 @@
 ---
 title: Biying
 summary: Talk with Biying, who helps visitors move through the public parts of this site at an easy pace.
+description: Talk with Biying, who helps visitors move through the public parts of this site at an easy pace.
 public: true
 avatar_readable: true
 tags:

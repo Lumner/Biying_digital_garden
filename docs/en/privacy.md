@@ -1,6 +1,7 @@
 ---
 title: Privacy Notice
 summary: Explains the data handled by site accounts, messages, private contact forms, and anonymous visit statistics.
+description: Explains the data handled by site accounts, messages, private contact forms, and anonymous visit statistics.
 public: true
 avatar_readable: false
 tags:

@@ -1,6 +1,7 @@
 ---
 title: 标签
 summary: 按标签浏览所有公开笔记。
+description: 按标签浏览所有公开笔记。
 public: true
 avatar_readable: true
 category: site

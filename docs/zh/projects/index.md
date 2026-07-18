@@ -1,9 +1,10 @@
 ---
 title: 项目
-summary: 项目入口，展示公开作品、阶段成果和正在继续打磨的内容。
+summary: 项目入口，展示已经公开的真实案例、阶段状态和后续待补的项目记录。
+description: 项目入口，展示已经公开的真实案例、阶段状态和后续待补的项目记录。
 public: true
 avatar_readable: true
-updated: 2026-05-21
+updated: 2026-07-18
 tags:
   - projects
 ---
@@ -11,50 +12,50 @@ tags:
 <section class="garden-pagehead">
   <div class="garden-pagehead__eyebrow">PROJECTS</div>
   <h1 class="garden-pagehead__title">项目</h1>
-  <p class="garden-pagehead__lead">这里放我愿意认真讲清楚的作品：为什么开始、怎么做、现在走到哪一步、还有哪里不够好。</p>
+  <p class="garden-pagehead__lead">这里先放已经能公开讲清楚的真实案例。数量还少，所以它暂时不是“完整项目集”，而是一个会逐步补齐的项目入口。</p>
   <div class="garden-pagehead__meta">
-    <span class="status-pill">作品记录</span>
+    <span class="status-pill">真实案例</span>
     <span class="status-pill leaf">过程复盘</span>
-    <span class="status-pill warm">更新：2026-05-21</span>
+    <span class="status-pill warm">更新：2026-07-18</span>
   </div>
 </section>
 
-<p class="section-lede">我希望项目页不只是“做过什么”的清单，也能留下思考的纹理。每个项目都会尽量写清它为什么开始、我做过哪些取舍、已经落地了什么，以及之后还想怎么继续。</p>
+<p class="section-lede">项目页优先回答几个问题：为什么做、我负责什么、受哪些限制、做过哪些关键决策、现在有什么可验证结果、还有哪里不够好。没有公开证据的内容不会被写成成果。</p>
 
 <div class="project-framework" aria-label="项目记录方式">
   <div>
-    <strong>为什么做</strong>
-    <span>先说明问题、动机和这个项目想解决什么。</span>
+    <strong>事实优先</strong>
+    <span>只展示已经公开、能从仓库或页面验证的项目。</span>
   </div>
   <div>
-    <strong>我做了什么</strong>
-    <span>记录真正动手完成的部分，而不是只罗列技术名词。</span>
+    <strong>过程优先</strong>
+    <span>记录问题、取舍、实现和复盘，而不是只罗列技术名词。</span>
   </div>
   <div>
-    <strong>接下来</strong>
-    <span>把还不够好的地方也写下来，方便继续往前推。</span>
+    <strong>状态诚实</strong>
+    <span>还没有指标或截图时写“当前状态”，不写虚构结果。</span>
   </div>
 </div>
 
 <div class="project-list">
   <section class="work-card work-card--featured">
     <div class="work-card__top">
-      <span class="work-card__status">当前状态：站点、碧影、公开知识库和移动端基础验证已打通</span>
+      <span class="work-card__status">当前状态：已形成站点、碧影、公开知识库、留言和自动验证的基础闭环</span>
       <h3>个人数字花园与碧影</h3>
     </div>
-    <p>一个双语个人网站，把公开笔记、项目记录、留言、公开知识库和碧影对话放进同一个会长期生长的入口里。</p>
+    <p>一个双语个人网站，把公开笔记、项目记录、留言、公开知识库和碧影对话放进同一个长期入口。</p>
     <div class="work-card__facts">
       <div>
-        <strong>核心</strong>
-        <span>双语内容、公开知识检索、访客留言和碧影对话边界。</span>
+        <strong>我负责</strong>
+        <span>信息架构、前端交互、公开知识构建、边缘接口、验证和部署流程。</span>
       </div>
       <div>
-        <strong>我负责</strong>
-        <span>信息架构、前端交互、线上接口、RAG 检索、构建验证和部署流程。</span>
+        <strong>证据</strong>
+        <span>项目详情、公开边界、测试脚本、构建脚本和生成站点均在仓库中。</span>
       </div>
       <div>
         <strong>下一步</strong>
-        <span>继续补充真实项目复盘，并单独处理 npm 依赖审计和线上环境配置。</span>
+        <span>继续补真实案例；线上配置、依赖审计和长篇内容拆分分开处理。</span>
       </div>
     </div>
     <div class="work-card__tags">
@@ -64,8 +65,8 @@ tags:
       <span class="cyber-tag">Playwright</span>
       <span class="cyber-tag">双语内容</span>
     </div>
-    <a class="work-card__link" href="./personal-site-avatar/">进入详情</a>
+    <a class="work-card__link" href="./personal-site-avatar/">进入案例</a>
   </section>
 </div>
 
-<p class="quiet-panel">后续新增项目时，我会尽量沿用同一套结构：背景、技术栈、做了什么、成果、不足、下一步。这样既方便自己回看，也方便来访的人很快抓住重点。</p>
+<p class="quiet-panel">等这里至少有 2–3 个真实案例后，再把它强调为完整项目集。当前阶段先把唯一公开案例写扎实。</p>

@@ -52,14 +52,6 @@
     return "system";
   }
 
-  function currentTheme() {
-    const mode = currentThemeMode();
-    if (mode === "system") return systemTheme();
-    const theme = document.documentElement.dataset.biyingTheme;
-    if (theme === "light" || theme === "dark") return theme;
-    return mode;
-  }
-
   function themeLabel(mode = currentThemeMode()) {
     const lang = currentLang();
     if (mode === "system") return lang === "en" ? "Theme follows system; click for dark mode" : "主题跟随系统；点击切换到深色模式";
@@ -106,21 +98,6 @@
       // Storage can be blocked in private contexts. The current page still updates.
     }
     applyThemeMode(nextMode);
-  }
-
-  function setTheme(theme) {
-    document.documentElement.dataset.biyingTheme = theme;
-    try {
-      localStorage.setItem("biying-theme", theme);
-    } catch (error) {
-      // Storage can be blocked in private contexts. The current page still updates.
-    }
-    const button = document.querySelector("[data-theme-switcher]");
-    if (button) {
-      button.setAttribute("aria-label", themeLabel(theme));
-      button.setAttribute("title", themeLabel(theme));
-      button.setAttribute("aria-pressed", theme === "light" ? "true" : "false");
-    }
   }
 
   function makeOption(label, lang) {

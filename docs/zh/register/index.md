@@ -1,6 +1,7 @@
 ---
 title: 注册/登录
 summary: 注册或登录后，可以留言、编辑自己的留言，也可以和碧影继续聊天。
+description: 注册或登录后，可以留言、编辑自己的留言，也可以和碧影继续聊天。
 public: true
 avatar_readable: false
 tags:

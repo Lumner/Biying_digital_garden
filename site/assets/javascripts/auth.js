@@ -203,15 +203,6 @@
     return dom.escapeHtml(value);
   }
 
-  function setLiveStatus(element, message, state = "idle") {
-    if (!element) return;
-    element.textContent = message || "";
-    element.dataset.state = state;
-    const isError = state === "error";
-    element.setAttribute("role", isError ? "alert" : "status");
-    element.setAttribute("aria-live", isError ? "assertive" : "polite");
-  }
-
   function setDescriptionReference(field, id, enabled) {
     if (!field || !id) return;
     const references = new Set(
@@ -243,11 +234,8 @@
       });
     }
     const busy = state === "loading";
-    form.setAttribute("aria-busy", String(busy));
-    form.querySelectorAll("button[type='submit']").forEach((button) => {
-      button.disabled = busy;
-    });
-    setLiveStatus(status, message, state);
+    dom.setBusy(form, busy);
+    dom.setLiveStatus(status, message, state);
   }
 
   function errorFields(error, mode) {
@@ -409,7 +397,7 @@
       await logout();
       switchAccountMode(root, "login");
       renderStatus(root);
-      setLiveStatus(globalStatus, text("signedOut"), "success");
+      dom.setLiveStatus(globalStatus, text("signedOut"), "success");
     });
 
     root.querySelector("[data-auth-register]").addEventListener("submit", async (event) => {
@@ -425,7 +413,7 @@
         });
         form.reset();
         setFormStatus(form, text("saved"), "success");
-        setLiveStatus(globalStatus, text("saved"), "success");
+        dom.setLiveStatus(globalStatus, text("saved"), "success");
       } catch (error) {
         setFormStatus(form, friendlyError(error), "error", errorFields(error, "register"));
       }
@@ -445,7 +433,7 @@
         });
         form.reset();
         setFormStatus(form, text("saved"), "success");
-        setLiveStatus(globalStatus, text("saved"), "success");
+        dom.setLiveStatus(globalStatus, text("saved"), "success");
       } catch (error) {
         setFormStatus(form, friendlyError(error), "error", errorFields(error, "login"));
       }
@@ -466,7 +454,7 @@
         });
         form.reset();
         setFormStatus(form, text("resetSaved"), "success");
-        setLiveStatus(globalStatus, text("resetSaved"), "success");
+        dom.setLiveStatus(globalStatus, text("resetSaved"), "success");
       } catch (error) {
         setFormStatus(form, friendlyError(error), "error", errorFields(error, "reset"));
       }

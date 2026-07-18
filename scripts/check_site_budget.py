@@ -73,6 +73,15 @@ def main() -> None:
     print("Largest files:")
     for path, size in sorted(sizes.items(), key=lambda item: item[1], reverse=True)[:10]:
         print(f"- {path.relative_to(SITE).as_posix()}: {human_bytes(size)}")
+    print("Budget margins:")
+    for label, actual, maximum in checks:
+        margin = maximum - actual
+        status = "under" if margin >= 0 else "over"
+        print(f"- {label}: {human_bytes(abs(margin))} {status} budget")
+    if budget.get("allowSourceMaps", False):
+        print("- source maps: allowed")
+    else:
+        print(f"- source maps: {len(source_maps)} packaged")
 
     if failures:
         print("Site budget failed:")
