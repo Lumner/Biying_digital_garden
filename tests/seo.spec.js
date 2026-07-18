@@ -158,16 +158,17 @@ for (const [route, locale, otherLocale] of [
   ["/en/", "en", "zh"]
 ]) {
   test(`${route} search only shows ${locale} results`, async ({ page }) => {
-    await page.goto(`${site.url}${route}`, { waitUntil: "domcontentloaded" });
+    await page.goto(`${site.url}${route}`, { waitUntil: "networkidle" });
     await page.locator("#__search").evaluate((toggle) => {
       toggle.checked = true;
       toggle.dispatchEvent(new Event("change", { bubbles: true }));
     });
     const query = page.locator('[data-md-component="search-query"]');
     await expect(query).toBeVisible();
-    await query.fill("AI");
-
     const result = page.locator('[data-md-component="search-result"]');
+    await expect(result.locator(".md-search-result__meta")).toHaveText("键入以开始搜索");
+    await query.pressSequentially("AI");
+
     await expect(result).toHaveAttribute("data-biying-search-locale", locale);
     await expect.poll(async () =>
       result.locator(`.md-search-result__item[data-biying-search-locale="${locale}"]`).count()
